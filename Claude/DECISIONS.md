@@ -369,3 +369,22 @@ Dozenten-Regel „keine Debug-Logs im Build"; das Warum lebt in DECISIONS/Header
 nicht inline. Aus Isors Praxis-Feedback in Session 2026-07-23.
 Verworfen: einzeilige XML-Summaries; der „2–3 Zeilen erlaubt"-Inline-Zusatz
 (führte zu Über-Kommentierung).
+
+## 2026-07-25 — Dichte-Filter vor der Steigung; Würfel an einer Stelle
+Was: Umsetzung der DensityStrategy (2026-07-21). Der Dichte-Filter läuft im
+ObjectPlacer zwischen Höhenband und Steigung — nicht als letzte Stufe wie im
+Design-Text („4. Filterstufe") skizziert. Der Würfel lebt an genau einer Stelle
+(`random.NextDouble() >= p`), die Strategie liefert nur p (float, nicht bool).
+Fehlende Maske (`_density == null`) = Uniform, deshalb ist ein Uniform-Asset
+optional. NoiseMask cacht den Seed→Offset in OnEnable/OnValidate.
+Warum: billig→teuer. Die Maske kostet höchstens einen Perlin-Aufruf (NoiseMask)
+oder gar nichts (Uniform/Probability), die Steigung vier SampleHeight-Aufrufe
+(~20 Perlin bei 5 Oktaven) — früh per Maske verworfene Kandidaten sparen die
+teure Rechnung. float trägt die Gewichtung (bool verwürfe die Abstufung); ein
+Würfel-Ort + ein Seed-Strom hält die Platzierung deterministisch. Der Offset-
+Cache ist abgeleiteter Zustand (Antwort bleibt reine Funktion von x,z), kein
+veränderlicher Zustand. Setzt DECISIONS 2026-07-21 „Dichte-Steuerung als
+DensityStrategy" um.
+Verworfen: Dichte als letzte Stufe (Text-Reihenfolge, teurer); bool `Accepts`
+mit Würfel in der Strategie (Abstufung weg, Zufall im zustandslosen Asset);
+Uniform als Pflicht-Asset (null genügt).

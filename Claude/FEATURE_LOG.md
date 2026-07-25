@@ -108,3 +108,13 @@ Format: `- JJJJ-MM-TT — Feature (1–2 Sätze: was und wo)`
   optional an die Boden-Normale gekippt, zufällige Scale. `placementSeed` in
   TerrainConfig ergänzt. Kompiliert sauber; noch nicht an den Presenter gehängt
   (kommt im Panel-Block).
+- 2026-07-25 — DensityStrategy (`Systems/TerrainGenerator/Scripts/Density/`):
+  Strategy-Pattern für die Platzierungsdichte. Abstrakte `DensityStrategy`
+  (ScriptableObject) mit `AcceptanceProbability(worldX, worldZ) → 0–1`; drei
+  konkrete Assets — `UniformDensity` (immer 1), `ProbabilityDensity` (fester
+  Regler 0–1), `NoiseMaskDensity` (Perlin-Wert direkt als Wahrscheinlichkeit,
+  eigener Seed→Offset wie BuildOctaveOffsets + Scale, Offset in OnEnable/
+  OnValidate gecacht). Feld `Density` in `Placeable` (leer/null = Uniform, kein
+  Pflicht-Asset). ObjectPlacer würfelt an genau einer Stelle: neue Filterstufe
+  zwischen Höhenband und Steigung (`random.NextDouble() >= acceptance` →
+  verworfen). Kompiliert im Editor; Zuweisung ans Placeable kommt mit dem Panel.

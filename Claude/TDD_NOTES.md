@@ -213,3 +213,14 @@ Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
   optional FromToRotation(up, normal) * Euler(yaw) — Tilt links, Yaw rechts, denn
   Quaternion-Multiplikation ist nicht vertauschbar (falsche Reihenfolge schwenkt die
   Achse von der Normale weg). Scale = Lerp(min, max, rand).
+- 2026-07-25 — [Pattern] Strategy umgesetzt: DensityStrategy (abstract SO,
+  AcceptanceProbability(x,z)→0–1) + UniformDensity/ProbabilityDensity/
+  NoiseMaskDensity. Der Placer ruft nur die Basis, kennt die Konkreten nicht →
+  neue Dichte-Art = neues Asset, ObjectPlacer unberührt (Open/Closed; zweites
+  Muster fürs TDD neben MVP). float statt bool: die Gewichtung braucht die
+  Abstufung, der Würfel sitzt an einer Stelle im Placer (Determinismus über
+  einen Seed-Strom, feste Ziehungsreihenfolge). NoiseMask: Perlin liefert von
+  Haus aus ~0–1 = fertige Wahrscheinlichkeit; Seed→Offset (wie
+  BuildOctaveOffsets, ±10000 gegen Float-Terracing), Scale zoomt die Wolken;
+  Offset in OnEnable/OnValidate gecacht — abgeleiteter Cache, kein
+  veränderlicher Zustand. Dichte-Stufe billig→teuer vor der Steigung.
