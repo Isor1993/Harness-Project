@@ -53,10 +53,15 @@ Ausgearbeitet wird am Harness nur noch, was der Praxisbetrieb verlangt.
    Damit ist die Platzierungs-Stufe fertig und sichtbar verifiziert.
    Offene Design-Frage bleibt: höhen-/steigungsabhängige Texturierung
    (Berg vs. Flachland; bleibt erster Streichkandidat).
-4. [ ] Design-Session „Platzierung Ausbau + Massen-Rendering": Blocker-Liste
+   **Massen-Rendering (Gras) durchdesignt (2026-07-26)**: Gras via
+   GPU-Instancing statt GameObjects (DECISIONS) — nächster Baustein
+   `InstancedRenderer` (erst messen, ob die GameObject-Zahl der Crash ist,
+   dann `Instantiate`→`DrawMeshInstanced`). Offen: Baum-Scale-Bug
+   (Prefab-Transform-Komposition). Erster Blender-Versuch Gras-Mesh
+   8k→~500 gemacht, aber Decimate kippt Normalen → geparkt (Punkt 9).
+4. [ ] Design-Session „Platzierung Ausbau": Blocker-Liste
    (Gras meidet Bäume/Häuser — macht die Prioritätsreihenfolge erst
-   wirksam), Dorf-/Village-Schritt, Massen-Rendering ohne GameObjects
-   (zusammen mit Punkt 6 denken), NoiseMask-Kontrast (Perlin liefert fast
+   wirksam), Dorf-/Village-Schritt, NoiseMask-Kontrast (Perlin liefert fast
    nur Werte um 0,5 → Remap-Kurve), Tool-Layout-Politur
 5. [ ] TDD für die Uni-Abgabe aus TDD_NOTES.md generieren, plus UML-
    Klassendiagramm und Ablaufdiagramm fürs Tool (beides Pflichtabgabe,
@@ -66,7 +71,9 @@ Ausgearbeitet wird am Harness nur noch, was der Praxisbetrieb verlangt.
 8. [ ] Uni: akademische Aufgabe — eine zusätzliche Quelle ergänzen
 9. [ ] Uni: Gras-Models aus Blender optimieren — zu viele Triangles
    (Dozenten-Feedback, Performance-Risiko bei Massen-Platzierung durchs
-   PCG-Tool)
+   PCG-Tool). Erster Versuch 2026-07-26 (8k→~500 via Decimate) kippte die
+   Normalen (schwarze Flächen) → geparkt; Fix `Shift+N` + Material
+   „Render Face: Both", sauberer wären Grass-Cards + Alpha-Textur.
 10. [ ] Uni: Gesamt-Review des Projekts vor der Portfolio-Abgabe
    (Bugs, Verbesserungen, Testen; bekannte halbfertige Stellen werden
    beim PCG-Zusammenbau sichtbar und nach und nach gefixt)

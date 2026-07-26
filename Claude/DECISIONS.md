@@ -420,3 +420,26 @@ Verworfen: Korrektur-Rotation strukturell an ein Kind-Objekt auslagern
 hunderttausenden Objekten); Achsen-Korrektur nur über den Import erzwingen
 (`Bake Axis Conversion` dreht bereits konvertierte Blender-Dateien ein
 zweites Mal und legt sie damit erst um).
+
+## 2026-07-26 — Gras-Rendering: GPU-Instancing statt GameObjects (Tür B)
+Was: Masse-Deko (Gras, Steine, Blumen) wird nicht per Instantiate als
+GameObject platziert, sondern als reine Transform-Daten (`Matrix4x4`-Liste, vom
+ObjectPlacer erzeugt) per `Graphics.DrawMeshInstanced` gezeichnet (Material mit
+„Enable GPU Instancing"). Der Rendering-Weg wird eine eigene, pro Placeable
+wählbare `RenderStrategy` (GameObject vs. Instanced). Bäume/Häuser bleiben
+GameObjects (wenige, interaktiv). Gras-Verformen zum Spieler bleibt der
+Shader-Bend über eine globale Spielerposition — GPU-Sache, braucht kein
+GameObject, mit Instancing voll kompatibel.
+Warum: Ein GameObject je Halm skaliert nicht — Millionen Halme = GB Overhead,
+Millionen Draw Calls, CPU-Tod pro Frame (aktuell Editor-Ruckeln + Crash-
+Verdacht). Kernsatz: Zeichnen braucht kein GameObject; Platzierung ist Daten,
+Rendering ein getrennter Schritt. Instancing ist Unitys empfohlener Weg für
+viele Kopien desselben Meshes. Der RenderStrategy-Split hält die Platzierungs-
+Logik unberührt (wie schon DensityStrategy) und liefert fürs TDD ein zweites
+sichtbares Pattern. Konkretisiert DECISIONS 2026-07-21 „Tool-Panel" (dort als
+„Gras-Masse-Rendering später kapselbar" vorgemerkt).
+Verworfen: nur das Material-Häkchen setzen (senkt Draw Calls, lässt aber die
+GameObjects und damit CPU/RAM/Crash bestehen); ein großes gebackenes Mesh wie
+Minecraft-Chunks (lohnt bei unterschiedlicher Geometrie, nicht bei tausenden
+identischen Halmen); Bäume jetzt auch instancieren (wenige, sollen anklickbar
+bleiben — erst bei echter Masse nötig).
