@@ -47,21 +47,27 @@ Ausgearbeitet wird am Harness nur noch, was der Praxisbetrieb verlangt.
    Typ + Regel-Filter Wasser/Höhe/Steigung + Ausrichtung; V 0.0010) und die
    **DensityStrategy** (Strategy-Pattern: abstract SO + Uniform/Probability/
    NoiseMask, Dichte-Filterstufe billig→teuer vor der Steigung; V 0.0011)
-   gebaut; als Nächstes der letzte Baustein **Tool-Panel/Presenter** (Ziel:
-   Ende Juli). Offene
-   Design-Frage bleibt nur noch: höhen-/steigungsabhängige Texturierung
-   (Berg vs. Flachland; bleibt erster Streichkandidat). Inkrementelles/
-   einzelnes Generieren ist im Platzierungs-Design gelöst (getrennte
-   „Place Objects"-Buttons, kein Terrain-Rebuild).
-4. [ ] TDD für die Uni-Abgabe aus TDD_NOTES.md generieren (Ziel: Ende
-   Juli; Portfolio-Abgabe 2026-08-21)
-5. [ ] Uni: Threadoptimierung (K2, K3, S3; formativ 2026-08-07)
-6. [ ] Uni: Spiel-Kleinteile — Menü, Interaktion, evtl. Player Controller
-7. [ ] Uni: akademische Aufgabe — eine zusätzliche Quelle ergänzen
-8. [ ] Uni: Gras-Models aus Blender optimieren — zu viele Triangles
+   gebaut. **Tool-Panel/Presenter erledigt (2026-07-25)**: Platzierung hängt
+   am Tool, pro-Typ Place/Clear aus der Liste erzeugt, Gruppe je Typ unter
+   „Generated Placement"; Platzierung komponiert mit dem Prefab-Transform.
+   Damit ist die Platzierungs-Stufe fertig und sichtbar verifiziert.
+   Offene Design-Frage bleibt: höhen-/steigungsabhängige Texturierung
+   (Berg vs. Flachland; bleibt erster Streichkandidat).
+4. [ ] Design-Session „Platzierung Ausbau + Massen-Rendering": Blocker-Liste
+   (Gras meidet Bäume/Häuser — macht die Prioritätsreihenfolge erst
+   wirksam), Dorf-/Village-Schritt, Massen-Rendering ohne GameObjects
+   (zusammen mit Punkt 6 denken), NoiseMask-Kontrast (Perlin liefert fast
+   nur Werte um 0,5 → Remap-Kurve), Tool-Layout-Politur
+5. [ ] TDD für die Uni-Abgabe aus TDD_NOTES.md generieren, plus UML-
+   Klassendiagramm und Ablaufdiagramm fürs Tool (beides Pflichtabgabe,
+   siehe ASSIGNMENT_TOOL; Ziel: Ende Juli; Portfolio-Abgabe 2026-08-21)
+6. [ ] Uni: Threadoptimierung (K2, K3, S3; formativ 2026-08-07)
+7. [ ] Uni: Spiel-Kleinteile — Menü, Interaktion, evtl. Player Controller
+8. [ ] Uni: akademische Aufgabe — eine zusätzliche Quelle ergänzen
+9. [ ] Uni: Gras-Models aus Blender optimieren — zu viele Triangles
    (Dozenten-Feedback, Performance-Risiko bei Massen-Platzierung durchs
    PCG-Tool)
-9. [ ] Uni: Gesamt-Review des Projekts vor der Portfolio-Abgabe
+10. [ ] Uni: Gesamt-Review des Projekts vor der Portfolio-Abgabe
    (Bugs, Verbesserungen, Testen; bekannte halbfertige Stellen werden
    beim PCG-Zusammenbau sichtbar und nach und nach gefixt)
 

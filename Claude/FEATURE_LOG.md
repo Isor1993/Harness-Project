@@ -118,3 +118,23 @@ Format: `- JJJJ-MM-TT — Feature (1–2 Sätze: was und wo)`
   Pflicht-Asset). ObjectPlacer würfelt an genau einer Stelle: neue Filterstufe
   zwischen Höhenband und Steigung (`random.NextDouble() >= acceptance` →
   verworfen). Kompiliert im Editor; Zuweisung ans Placeable kommt mit dem Panel.
+- 2026-07-25 — Tool-Panel/Presenter: die Platzierung hängt am Editor-Tool und
+  ist erstmals sichtbar. `TerrainToolPresenter` um `PlaceObjects` (alle Typen /
+  ein Typ), `ClearObjects` (alle / ein Typ), `ClearTerrain`, `GenerateComplete`
+  und die Helfer `TypeName`, `GetOrCreatePlacementRoot`, `SpawnType` erweitert;
+  `Clear(string)` als privater Helfer hinter Absichts-Methoden. Hierarchie:
+  „Generated Placement" als Kind des Terrain-Roots (Terrain-Regenerieren räumt
+  die Platzierung damit automatisch weg), darunter eine Gruppe je Typ
+  (`0_GrassSingle`). `ObjectPlacer.Place(config, placeableIndex)` streut jetzt
+  einen Typ statt aller; die Typ-Schleife liegt im Presenter.
+  `TerrainToolWindow` zeigt Generate Complete, die Einzel-Stufen und eine aus
+  dem `Placeables`-Array erzeugte Zeile je Typ mit Place/Clear. Verifiziert:
+  Gras platziert (211.000 Objekte bei minSpacing 2,7), Wasser-, Höhen- und
+  Steigungs-Filter sowie AlignToGround sichtbar korrekt.
+- 2026-07-25 — Platzierung komponiert mit dem Prefab-Transform: Rotation und
+  Scale der Instanz werden nicht mehr überschrieben, sondern mit den im Prefab
+  hinterlegten Werten multipliziert (`placement.Rotation * prefabRotation`,
+  `prefabScale * placement.Scale`), gelesen von der frisch erzeugten Instanz.
+  Damit überleben Achsen-Korrekturen aus dem DCC-Tool die Platzierung.
+  Verifiziert mit dem Birken-FBX (Prefab-Root X = 90): Bäume stehen aufrecht
+  und drehen sich zufällig um die eigene Achse.

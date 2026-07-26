@@ -388,3 +388,35 @@ DensityStrategy" um.
 Verworfen: Dichte als letzte Stufe (Text-Reihenfolge, teurer); bool `Accepts`
 mit Würfel in der Strategie (Abstufung weg, Zufall im zustandslosen Asset);
 Uniform als Pflicht-Asset (null genügt).
+
+## 2026-07-25 — Placer-Einstieg pro Typ, eine Hierarchie-Gruppe je Placeable
+Was: `ObjectPlacer.Place(config, placeableIndex)` streut genau einen Typ; die
+Schleife über alle Typen liegt im Presenter, der pro Typ eine eigene Gruppe
+(`{index}_{Prefabname}`) unter „Generated Placement" anlegt. Seed-Ableitung
+bleibt `placementSeed + index`. Setzt DECISIONS 2026-07-21 „Tool-Panel" um.
+Warum: Der Presenter muss ohnehin pro Typ gruppieren — so gibt es die Schleife
+nur einmal (DRY), und das alte `Place(config)` entfällt statt als toter Code
+zu bleiben. Der Index im Namen hält ihn eindeutig (zwei Typen dürfen dasselbe
+Prefab nutzen) und macht die Prioritätsreihenfolge in der Hierarchie sichtbar.
+Unveränderte Seed-Ableitung heißt: ein einzeln platzierter Typ sieht identisch
+aus wie derselbe Typ im Komplettlauf — Voraussetzung fürs Tunen. Nebenwirkung:
+Umsortieren der Placeables ändert die Indizes und damit alle Verteilungen.
+Verworfen: `Place(config)` zusätzlich behalten (toter Code); Typ-Zugehörigkeit
+als Feld im `Placement`-struct (bläht den tausendfachen Wert auf); eine flache
+Wurzel ohne Typ-Gruppen (Einzel-Clear nicht möglich).
+
+## 2026-07-25 — Platzierung komponiert mit dem Prefab-Transform
+Was: Der Presenter überschreibt Rotation und Scale der Instanz nicht mehr,
+sondern multipliziert sie mit den im Prefab hinterlegten Werten
+(`placement.Rotation * prefabRotation`, `prefabScale * placement.Scale`),
+gelesen von der frisch erzeugten Instanz statt vom Prefab-Asset.
+Warum: Modelle aus Blender brauchen oft eine Achsen-Korrektur am Prefab-Root;
+absolutes Setzen der Rotation löschte sie und legte alle Bäume um. Reihenfolge
+`placement * prefab` ist zwingend — Quaternionen wirken von rechts nach links,
+also erst aufrichten, dann drehen/neigen. Von der Instanz gelesen, weil das
+Prefab-Asset seine Transform-Werte nicht zuverlässig herausgibt.
+Verworfen: Korrektur-Rotation strukturell an ein Kind-Objekt auslagern
+(Wrapper-Prefab — funktioniert, kostet aber einen Transform je Instanz bei
+hunderttausenden Objekten); Achsen-Korrektur nur über den Import erzwingen
+(`Bake Axis Conversion` dreht bereits konvertierte Blender-Dateien ein
+zweites Mal und legt sie damit erst um).
