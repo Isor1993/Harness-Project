@@ -389,7 +389,7 @@ Verworfen: Dichte als letzte Stufe (Text-Reihenfolge, teurer); bool `Accepts`
 mit Würfel in der Strategie (Abstufung weg, Zufall im zustandslosen Asset);
 Uniform als Pflicht-Asset (null genügt).
 
-## 2026-07-25 — Placer-Einstieg pro Typ, eine Hierarchie-Gruppe je Placeable
+## 2026-07-26 — Placer-Einstieg pro Typ, eine Hierarchie-Gruppe je Placeable
 Was: `ObjectPlacer.Place(config, placeableIndex)` streut genau einen Typ; die
 Schleife über alle Typen liegt im Presenter, der pro Typ eine eigene Gruppe
 (`{index}_{Prefabname}`) unter „Generated Placement" anlegt. Seed-Ableitung
@@ -405,7 +405,7 @@ Verworfen: `Place(config)` zusätzlich behalten (toter Code); Typ-Zugehörigkeit
 als Feld im `Placement`-struct (bläht den tausendfachen Wert auf); eine flache
 Wurzel ohne Typ-Gruppen (Einzel-Clear nicht möglich).
 
-## 2026-07-25 — Platzierung komponiert mit dem Prefab-Transform
+## 2026-07-26 — Platzierung komponiert mit dem Prefab-Transform
 Was: Der Presenter überschreibt Rotation und Scale der Instanz nicht mehr,
 sondern multipliziert sie mit den im Prefab hinterlegten Werten
 (`placement.Rotation * prefabRotation`, `prefabScale * placement.Scale`),
@@ -421,6 +421,76 @@ hunderttausenden Objekten); Achsen-Korrektur nur über den Import erzwingen
 (`Bake Axis Conversion` dreht bereits konvertierte Blender-Dateien ein
 zweites Mal und legt sie damit erst um).
 
+## 2026-07-29 — GDD als Maßstab, Short-GDD-Ansatz
+Was: GDD.md wird als Short GDD angelegt (ein Bildschirm, wächst mit) und ist
+der Maßstab, an dem Roadmap und bestehende Entscheidungen geprüft werden.
+„Offen" ist ein ausdrücklich gültiger Eintrag. Der Umbau des Bestehenden
+Richtung GDD beginnt erst **nach** der Uni-Abgabe (Portfolio 2026-08-21);
+bis dahin ändert das GDD an der Uni-Arbeit nichts.
+Warum: Die Systeme, die jetzt entstehen, sollen die Basis für kommende
+Semester sein — ohne festgehaltene Design-Absicht werden Architektur-
+Entscheidungen geraten statt begründet. Ein volles GDD hätte die Zeit bis
+zur Abgabe gekostet, ohne dort einen Beitrag zu leisten. Offene Fragen sind
+die wertvollste Information: Jede markiert eine Stelle, an der die
+Architektur eine Tür offen halten muss; jede beantwortete Frage erlaubt es,
+eine Tür zu schließen und einfacher zu bauen.
+Verworfen: vollständiges GDD vor der Abgabe; ganz ohne GDD weiterbauen;
+das Bestehende sofort am GDD ausrichten (gefährdet die Abgabe).
+
+## 2026-07-29 — Welt-Wahrheit (Seed oder Szene): vertagt, Befund festgehalten
+Was: **Keine Entscheidung.** Festgehalten wird nur die Herleitung, damit sie
+nicht verloren geht: Aus dem Koop-Modell (GDD — Gast joint in die Welt des
+Hosts) folgt, dass beim Join entweder die fertige Welt oder ihre Anleitung
+übertragen werden muss; Anleitung (Seed für Floors, Änderungsliste gegenüber
+dem Ausgangszustand fürs Village) ist um Größenordnungen kleiner als
+Weltdaten. Save-System und Multiplayer-Sync beantworten dieselbe Frage.
+Entschieden wird nach der Uni-Abgabe, in einer eigenen Design-Session.
+Warum: Die Frage ist noch nicht entscheidungsreif — Multiplayer liegt weit
+hinten, und bis dahin können sich Anforderungen und Möglichkeiten ändern.
+Bis zur Abgabe hat sie keine Auswirkung. Die bestehenden Entscheidungen
+(deterministischer `placementSeed`, keine gespeicherte Placement-Liste,
+zustandslose Pipeline) halten die Tür ohnehin offen, ohne Mehrarbeit.
+Verworfen: jetzt auf „Seed ist die Wahrheit" festlegen (nicht
+entscheidungsreif); den Befund gar nicht festhalten (Herleitung ginge
+verloren und müsste neu erarbeitet werden).
+
+## 2026-07-29 — Geltungsbereiche dreier Entscheidungen präzisiert
+Was: Drei bestehende Einträge sind pauschaler formuliert als gemeint; ihre
+Grenze wird benannt, der Inhalt bleibt unverändert.
+(1) „Terrain-Mesh komplett im Code" (2026-07-18) gilt für **generierte**
+Gebiete — die Tower-Floors. Das Village wird laut GDD ein festes Grundmesh,
+prozedural ist dort nur die Objekt-Platzierung darauf.
+(2) „Terrain-Tool als MVP mit EditorWindow" (2026-07-18) beschreibt den
+Uni-Stand: Die Pipeline wird ausschließlich aus dem Editor aufgerufen. Laut
+GDD entsteht ein Floor beim Portal-Eintritt, also zur Laufzeit — die
+Pipeline-Stufen brauchen später einen zweiten Aufrufer. Das Tool bleibt der
+Editor-Aufrufer für Vorschau und Preset-Tuning.
+(3) „Projekt-Typ Uni/Privat … ändert sich nie mitten im Projekt"
+(2026-07-17) trifft nicht zu: Isor's Tower ist der Uni-Prototyp, der nach
+dem Studium als privates Release-Projekt weiterläuft. Der Typ wechselt genau
+einmal, zum Studienende — das ist der geplante Ablauf, kein Sonderfall, und
+genau der Moment, in dem Block 1 (Uni-Pflichtregeln) entfernt wird.
+Warum: Pauschale Formulierungen werden später als Verbot gelesen und führen
+zu Umbauten, die nie nötig waren. Keine der drei Korrekturen verlangt eine
+Code-Änderung vor der Abgabe.
+Verworfen: die Einträge umschreiben (Historie ginge verloren); sie
+unverändert stehen lassen (führen später in die Irre).
+
+## 2026-07-29 — Globales Poisson: bekannte Grenze, keine Lösung vorentschieden
+Was: Der globale Poisson-Disc-Durchgang (2026-07-21) bleibt bis zur Abgabe
+unverändert. Festgehalten wird nur die Grenze: „global" verlangt, die ganze
+Karte auf einmal zu berechnen — das trägt bei ~2 km, aber nicht bei einem
+Village, das laut GDD um ein Vielfaches wachsen kann, und nicht bei
+zellenweise nachgeladener Welt. Wie ersetzt wird, ist **offen** und wird
+nach der Abgabe neu bewertet; zellen-lokales Poisson ist eine Möglichkeit
+unter mehreren, kein gesetzter Weg.
+Warum: Die Grenze jetzt zu kennen verhindert, dass darauf aufgebaut wird;
+sie jetzt zu lösen wäre verfrüht, weil sich Anforderungen und verfügbare
+Verfahren bis dahin ändern können. Für die Abgabe hat die Grenze keine
+Auswirkung — die Abgabe-Welt wird ohnehin verkleinert.
+Verworfen: jetzt auf zellen-lokales Poisson festlegen (verfrüht); die
+Grenze nicht dokumentieren (würde später als Überraschung auftauchen).
+
 ## 2026-07-26 — Gras-Rendering: GPU-Instancing statt GameObjects (Tür B)
 Was: Masse-Deko (Gras, Steine, Blumen) wird nicht per Instantiate als
 GameObject platziert, sondern als reine Transform-Daten (`Matrix4x4`-Liste, vom
@@ -431,8 +501,8 @@ GameObjects (wenige, interaktiv). Gras-Verformen zum Spieler bleibt der
 Shader-Bend über eine globale Spielerposition — GPU-Sache, braucht kein
 GameObject, mit Instancing voll kompatibel.
 Warum: Ein GameObject je Halm skaliert nicht — Millionen Halme = GB Overhead,
-Millionen Draw Calls, CPU-Tod pro Frame (aktuell Editor-Ruckeln + Crash-
-Verdacht). Kernsatz: Zeichnen braucht kein GameObject; Platzierung ist Daten,
+Millionen Draw Calls, CPU-Tod pro Frame (bestätigt: Editor-Ruckeln und
+Crash bei ~1 Mio Objekten Gras+Bäume). Kernsatz: Zeichnen braucht kein GameObject; Platzierung ist Daten,
 Rendering ein getrennter Schritt. Instancing ist Unitys empfohlener Weg für
 viele Kopien desselben Meshes. Der RenderStrategy-Split hält die Platzierungs-
 Logik unberührt (wie schon DensityStrategy) und liefert fürs TDD ein zweites

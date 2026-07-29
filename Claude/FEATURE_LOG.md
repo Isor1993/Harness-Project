@@ -118,7 +118,7 @@ Format: `- JJJJ-MM-TT — Feature (1–2 Sätze: was und wo)`
   Pflicht-Asset). ObjectPlacer würfelt an genau einer Stelle: neue Filterstufe
   zwischen Höhenband und Steigung (`random.NextDouble() >= acceptance` →
   verworfen). Kompiliert im Editor; Zuweisung ans Placeable kommt mit dem Panel.
-- 2026-07-25 — Tool-Panel/Presenter: die Platzierung hängt am Editor-Tool und
+- 2026-07-26 — Tool-Panel/Presenter: die Platzierung hängt am Editor-Tool und
   ist erstmals sichtbar. `TerrainToolPresenter` um `PlaceObjects` (alle Typen /
   ein Typ), `ClearObjects` (alle / ein Typ), `ClearTerrain`, `GenerateComplete`
   und die Helfer `TypeName`, `GetOrCreatePlacementRoot`, `SpawnType` erweitert;
@@ -131,7 +131,7 @@ Format: `- JJJJ-MM-TT — Feature (1–2 Sätze: was und wo)`
   dem `Placeables`-Array erzeugte Zeile je Typ mit Place/Clear. Verifiziert:
   Gras platziert (211.000 Objekte bei minSpacing 2,7), Wasser-, Höhen- und
   Steigungs-Filter sowie AlignToGround sichtbar korrekt.
-- 2026-07-25 — Platzierung komponiert mit dem Prefab-Transform: Rotation und
+- 2026-07-26 — Platzierung komponiert mit dem Prefab-Transform: Rotation und
   Scale der Instanz werden nicht mehr überschrieben, sondern mit den im Prefab
   hinterlegten Werten multipliziert (`placement.Rotation * prefabRotation`,
   `prefabScale * placement.Scale`), gelesen von der frisch erzeugten Instanz.

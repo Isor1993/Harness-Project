@@ -16,7 +16,7 @@ keine Inhalte. Status: ohne Vermerk = existiert, (geplant) = noch nicht gebaut.
 | GLOSSARY.md | (geplant) Projektbegriffe mit fester Bedeutung |
 | CODE_GUIDELINES.md | Code-Konventionen: Namen, Architektur, Tests (Rohmaterial) |
 | TDD_NOTES.md | Stoffsammlung fürs Uni-TDD (Technical Design Document) — grobe Einträge, aus denen das Abgabe-TDD generiert wird |
-| GDD.md | (geplant) Design-Absicht des Spiels — das Game Design Document |
+| GDD.md | Design-Absicht des Spiels — das Game Design Document (Short GDD, wächst mit) |
 | GDD_RULES.md | (geplant) Nur Schreib- und Pflegeregeln für GDD.md |
 | KNOWLEDGE_RULES.md | Schreib- und Ablageregeln für das externe Wissensarchiv `C:\Repos Isor\Knowledge\` |
 | ASSIGNMENT_PCG.md | Originaltext Uni-Aufgabe „Prozedurale Erweiterung der Spielwelt" (Referenz, unverändert lassen) |

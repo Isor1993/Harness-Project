@@ -224,7 +224,7 @@ Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
   BuildOctaveOffsets, ±10000 gegen Float-Terracing), Scale zoomt die Wolken;
   Offset in OnEnable/OnValidate gecacht — abgeleiteter Cache, kein
   veränderlicher Zustand. Dichte-Stufe billig→teuer vor der Steigung.
-- 2026-07-25 — [Tools] Panel fertig: MVP bleibt tragend — die View zeichnet nur
+- 2026-07-26 — [Tools] Panel fertig: MVP bleibt tragend — die View zeichnet nur
   und kennt keine Objektnamen, der Presenter besitzt die Szenen-Objekte. Vier
   Absichts-Methoden als Überladungspaare (PlaceObjects/ClearObjects je alle bzw.
   ein Typ) statt eines öffentlichen `Clear(string)`: der Aufrufer nennt die
@@ -233,20 +233,20 @@ Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
   neue Zeile ohne Code-Change). Fürs UML: TerrainToolWindow → TerrainToolPresenter
   → {HeightmapGenerator, MeshBuilder, ObjectPlacer}; Einbahnstraße, das Model
   kennt weder View noch Presenter.
-- 2026-07-25 — [Tools] Hierarchie als Aufräum-Mechanismus: „Generated Placement"
+- 2026-07-26 — [Tools] Hierarchie als Aufräum-Mechanismus: „Generated Placement"
   ist Kind des Terrain-Roots, darunter eine Gruppe je Typ. Terrain-Regenerieren
   zerstört den Root und nimmt die veraltete Platzierung automatisch mit — kein
   eigener Invalidierungs-Code. Einzel-Typ-Place leert nur seine Gruppe (kein
   Clear der Wurzel), damit Tunen eines Typs die anderen stehen lässt.
   `transform.Find` statt `GameObject.Find` für Kinder: sucht nur im Teilbaum,
   immun gegen gleichnamige Objekte anderswo.
-- 2026-07-25 — [Platzierung] Prefab-Transform komponieren statt ersetzen:
+- 2026-07-26 — [Platzierung] Prefab-Transform komponieren statt ersetzen:
   Instanz-Rotation = placement.Rotation * prefabRotation, Scale = prefabScale *
   placement.Scale. Quaternion-Reihenfolge ist nicht vertauschbar — rechts steht,
   was zuerst wirkt (Achsen-Korrektur aufrichten), links das Nachträgliche (Yaw,
   Boden-Neigung). Umgekehrt kippt die Korrektur die bereits zufällig gedrehte
   Achse. Gleiche Lektion wie bei FromToRotation × Euler(yaw) vom 23.07.
-- 2026-07-25 — [Assets] Blender→Unity Achsen-Falle (TDD-Kapitel „Erweiterungen"/
+- 2026-07-26 — [Assets] Blender→Unity Achsen-Falle (TDD-Kapitel „Erweiterungen"/
   Lessons Learned): Blender ist Z-up, Unity Y-up. Blenders FBX-Exporter
   konvertiert bereits; Unitys Import-Option „Bake Axis Conversion" ist für
   *nicht* konvertierte Dateien gedacht und dreht eine korrekte Datei ein zweites
@@ -254,7 +254,7 @@ Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
   Root wird von jedem prozeduralen Placer überschrieben, der Rotation absolut
   setzt. Prüfreihenfolge: Modell in Blender bei Rotation 0 aufrecht (Stamm
   entlang +Z, Ursprung am Fuß) → Import-Optionen → erst dann den Code verdächtigen.
-- 2026-07-25 — [Performance] Baseline für die Threading-Abgabe: 211.000
+- 2026-07-26 — [Performance] Baseline für die Threading-Abgabe: 211.000
   Gras-GameObjects bei minSpacing 2,7 auf 2048 m machen den Editor zäh. Anzahl
   wächst quadratisch zum Abstand (~Fläche/(1,3·r²)): 2,7 m ≈ 211.000, 8 m
   ≈ 25.000, 12 m ≈ 11.000. Kostentreiber ist nicht primär das Rendering, sondern
