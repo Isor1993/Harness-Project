@@ -491,6 +491,96 @@ Auswirkung — die Abgabe-Welt wird ohnehin verkleinert.
 Verworfen: jetzt auf zellen-lokales Poisson festlegen (verfrüht); die
 Grenze nicht dokumentieren (würde später als Überraschung auftauchen).
 
+## 2026-07-30 — Abgabe-Szene, Spielbar-Definition, Village als eigenes Prefab
+Was: `Village.unity` (die generierte Szene) ist die Abgabe-Szene;
+`Scene_StartEntry_Village` wird nur noch Fundgrube (VFX, Global Volume,
+HerdManager). „Spielbar" heißt für die Abgabe: Menü → Village → laufen →
+bevölkerte Welt → einige Dinge reagieren → Pause/Quit, Konsole fehlerfrei —
+kein Kampf, keine Quests. Alles Handgebaute im Dorf wird **ein** `Village`-
+Prefab, das neben dem Tool-Ast in der Szene liegt.
+Warum: Die generierte Szene zeigt Tool und Pipeline im echten Einsatz — das
+ist der benotete Teil; die alte Szene aufzuwerten hieße, das generierte
+Terrain gegen handgebautes zu tauschen (Doppelarbeit). Kampf steht in keinem
+Feedbackelement beider Aufgaben. Ein Prefab ist eine Wahrheit, überlebt Szene
+und Terrain-Rebuild, erlaubt verschachtelte Haus-Prefabs und Varianten
+(„Village klein" für die Abgabe) und trifft die GDD-Trennung „festes Dorf,
+prozedurale Bepflanzung darauf".
+Verworfen: alte Szene als Abgabe; beide Szenen pflegen (zwei NavMesh-Bakes,
+zwei Bug-Quellen); volle Gameplay-Schleife; reine Tech-Demo ohne Player
+(verschenkt Lernziel S3); Dorf als lose Objektsammlung in der Szene.
+
+## 2026-07-30 — Hierarchie-Vertrag: generierter Ast gegen handgebauten Ast
+Was: Was unter „Generated …" liegt, gehört dem Tool und ist jederzeit
+wegwerfbar; Handgesetztes liegt **daneben, nie darunter**. Szenen-Wurzeln:
+`Generated Terrain` (Tool), `Village` (Prefab), `Navigation`, `Player`, `Game`.
+Warum: `TerrainToolPresenter` sucht den Terrain-Root, löscht ihn per
+`DestroyImmediate` und legt ihn neu an (Zeile 74–79) — bewusst so, damit
+veraltete Platzierung automatisch verschwindet. Genau deshalb löscht ein
+einziger Generate-Klick alles, was versehentlich darunter liegt.
+Verworfen: Häuser/NPCs unter dem Terrain-Root; Aufräumen statt Neuanlegen im
+Presenter (der Rebuild ist gewollt, siehe DECISIONS 2026-07-19).
+
+## 2026-07-30 — NavMeshSurface raus aus dem generierten Ast
+Was: Der `NavMeshSurface` zieht von „Generated Terrain" auf ein eigenes
+Szenen-Objekt `Navigation` (kein Prefab). Reihenfolge festgezurrt:
+Weltgröße/Verteilung final → NavMesh backen → NPCs setzen.
+Warum: Fund dieser Session — der Surface sitzt heute auf genau dem Objekt,
+das jedes Generate zerstört; danach ist die gebackene NavMesh an niemanden
+mehr angeschlossen und jeder `NavMeshAgent` steht auf nichts, ohne Fehler in
+der Konsole. Backen ist zudem teuer und skaliert quadratisch: bei Voxelgröße
+0,1667 m sind es auf 2048 m Kante ~151 Mio Voxelspalten, auf 512 m nur
+~9,4 Mio (16×) — jede spätere Terrain-Änderung wirft die Bake weg. Ins
+Village-Prefab kann der Surface nicht, weil der begehbare Boden (das
+generierte Terrain) außerhalb des Prefabs liegt.
+Verworfen: Surface im Village-Prefab; NPCs vor der finalen Weltgröße setzen;
+NavMesh-Bake nach jedem Generate automatisch mitlaufen lassen (Minuten pro
+Klick beim Tunen).
+
+## 2026-07-30 — NPC-Platzierung: die Ortsbindung entscheidet, nicht die Gattung
+Was: Was an einem **bestimmten** Ort stehen muss (Herde beim Dorf, später
+Händler), wird von Hand ins Village-Prefab gesetzt. Was nur **irgendwo
+passend** stehen muss (Goblins im Umland), streut der ObjectPlacer als
+`Placeable`-Zeile. Für NPC-Placeables gilt: `alignToGround` aus, Scale fix
+(1,0), sonst kippen und stauchen sie wie Deko.
+Warum: Lernziel S3 der PCG-Aufgabe verlangt ausdrücklich eine „generierte
+Bevölkerung"; der Placer ist prefab-blind, ein Goblin kostet ihn keine Zeile
+neuen Code. Handgesetzt bleibt, was Komposition braucht — dafür ist ein
+Zufallsstreuer das falsche Werkzeug. Ein Kriterium („muss es dort stehen?")
+statt zweier Gewohnheiten hält die Grenze überprüfbar.
+Verworfen: alles per Placer (Dorfbild dem Zufall überlassen); alles von Hand
+(S3 ungenutzt); Trennung nach Gattung (Schafe hier, Goblins dort).
+
+## 2026-07-30 — Erster Baustein: Interaktion anschließen, Fackel als zwei Klassen
+Was: Nächster Baustein ist nicht das Dorf, sondern das Interaktionssystem in
+Betrieb nehmen: Layer `Interactable` anlegen, `PlayerInteractor` und
+`InteractionPromptView` samt Prompt-UI ins Player-Prefab, dann `Torch`
+(Fähigkeit: `IsLit`, schaltet VFX und Light) + `TorchInteractable` (Adapter,
+liefert den Prompt und leitet weiter), danach die Schafe.
+Warum: `IInteractable`, `PlayerInteractor`, `InteractionPromptView` und
+`SheepInteractable` existieren seit 27.07., sind aber **nirgends verdrahtet** —
+die Script-GUIDs kommen weder im Player-Prefab noch in `Village.unity` vor.
+Es fehlt kein Code, sondern der Anschluss. Zwei Klassen für die Fackel, weil
+der `DayNightCycleEventManager` sie abends schalten muss, ohne dass jemand
+auf sie zielt: zwei Aufrufer für dieselbe Fähigkeit = Fähigkeit und Adapter
+trennen, genau wie `Sheep` / `SheepInteractable`.
+Verworfen: eine Klasse für Fackel und Interaktion zugleich; das bestehende
+System zum Lernen neu schreiben (es läuft, und die Zeit bis 2026-08-21 ist
+knapp — gelernt wird am neuen Stück).
+
+## 2026-07-30 — Prompt-Aktualisierung: Vergleich auf den Prompt erweitern
+Was: `PlayerInteractor.UpdateTarget` vergleicht künftig Ziel **und**
+Prompt-Text; nur wenn beides unverändert ist, bricht es ab.
+Warum: Objekte mit wechselndem Prompt bleiben sonst auf dem alten Text
+stehen — die Fackel brennt, angezeigt wird weiter „Light torch", weil
+`ReferenceEquals` dasselbe Objekt sieht. „Ziel gleich" ist eben nicht
+dasselbe wie „Anzeige aktuell". Der erweiterte Vergleich kostet einen
+Property-Aufruf und einen String-Vergleich pro Frame und deckt auch
+Änderungen ab, die der Spieler gar nicht ausgelöst hat (Fackel geht bei
+Sonnenaufgang von selbst aus).
+Verworfen: `_currentTarget = null` nach `Interact` (deckt nur selbst
+ausgelöste Änderungen ab); ein Änderungs-Event im `IInteractable` (bläht den
+Vertrag für jeden Implementierer auf).
+
 ## 2026-07-26 — Gras-Rendering: GPU-Instancing statt GameObjects (Tür B)
 Was: Masse-Deko (Gras, Steine, Blumen) wird nicht per Instantiate als
 GameObject platziert, sondern als reine Transform-Daten (`Matrix4x4`-Liste, vom

@@ -33,10 +33,23 @@ verlangt; danach wird er wieder aktiv ausgebaut.
   Phase nach der Abgabe (2026-07-29)
 
 ## Als Nächstes — bis zur Uni-Abgabe (2026-08-21)
-1. [ ] **Village spielbar aufbauen:** alle Prefabs setzen, Interactables
-   und die zugehörigen Teile verdrahten, sodass das Village durchgängig
-   funktioniert. Dabei das Bestehende prüfen — was stimmt, was muss
-   optimiert werden.
+1. [ ] **Village spielbar aufbauen.** Zerfällt in zwei Hälften, die
+   *nicht* zusammenhängen — die zweite hängt an Punkt 2.
+   **1a — sofort machbar (unabhängig von Weltgröße und Terrain):**
+   - Interaktionssystem in Betrieb nehmen: Layer `Interactable` anlegen,
+     `PlayerInteractor` + `InteractionPromptView` samt Prompt-UI ins
+     Player-Prefab (der Code existiert, ist aber nirgends verdrahtet)
+   - Fackel: `Torch` (Fähigkeit) + `TorchInteractable` (Adapter)
+   - Schafe ins Village bringen und zähmbar machen
+   - Prompt-Vergleich im Interactor erweitern (DECISIONS 2026-07-30)
+   **1b — erst nach Punkt 2, weil jede Terrain-Änderung die NavMesh-Bake
+   wegwirft:**
+   - `Village`-Prefab aufbauen: Häuser (Asset oder Primitive — **offen**),
+     Props, Interactables; auf dem Plateau platzieren
+   - `Navigation`-Objekt mit NavMeshSurface neben dem Tool-Ast, backen
+   - NPCs: Herde handgesetzt im Prefab, Goblins per Placer im Umland
+   - Bestehendes prüfen: zwei aktive Kameras in `Village.unity`,
+     Dubletten-Prefab `Torch .prefab`, Birken-Material am Fackel-Mesh
 2. [ ] **Platzierung/Verteilung für die Abgabe finalisieren:**
    - Weltgröße für die Abgabe verkleinern und minSpacing so festsetzen,
      dass die Objektmenge den Editor nicht mehr crasht

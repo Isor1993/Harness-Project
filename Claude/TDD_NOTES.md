@@ -262,3 +262,40 @@ Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
   — GPU Instancing adressiert nur die Draw Calls und greift unter URP oft gar
   nicht, weil der SRP Batcher Vorrang hat. Struktureller Weg: die Placement-Liste
   direkt instanziert zeichnen, ohne GameObjects; hinter dem Presenter kapselbar.
+- 2026-07-30 — [Interaktion] Aufbau des Systems (TDD-Kapitel Architektur):
+  `IInteractable` (Prompt / CanInteract / Interact) ist die einzige Berührungs-
+  linie zwischen Spieler- und Objektseite — der Spieler kennt keine Schafe, die
+  UI kennt nur einen string. Vier Teile: Vertrag (Interface), Sucher
+  (`PlayerInteractor`, Raycast aus der Kamera, Reichweite + LayerMask), Anzeige
+  (`InteractionPromptView`, Event-Abonnent), Adapter (`SheepInteractable`,
+  delegiert an `Sheep`). Alternative Bauform Trigger-Collider beantwortet „was ist
+  nah", der Strahl „was schaue ich an" — für First Person mit Fadenkreuz richtig.
+- 2026-07-30 — [Interaktion] Drei Fallen mit Beleg im eigenen Code:
+  (1) `GetComponentInParent` sucht nur **aufwärts** — der Collider darf tiefer
+  sitzen als das Script, nie höher; sonst kein Treffer, keine Fehlermeldung.
+  (2) Unitys `==`-Überschreibung für zerstörte Objekte sitzt auf
+  `UnityEngine.Object`, nicht auf dem Interface → Cast vor dem Null-Check.
+  (3) Event-Abonnent muss den Startwert selbst nachziehen, weil Events erst bei
+  der nächsten Änderung feuern; jedes `+=` braucht sein `-=` im Gegenstück.
+- 2026-07-30 — [Interaktion] Prompt-Aktualisierung: `ReferenceEquals(target,
+  _currentTarget)` als Abbruchbedingung reicht nur, solange ein Objekt seinen
+  Prompt nie ändert. Fackel an/aus ändert ihn bei gleichbleibendem Ziel → Text
+  friert ein. Fix: Ziel **und** Prompt vergleichen (ein String-Vergleich/Frame).
+  Lektion fürs TDD: „Quelle unverändert" ist nicht dasselbe wie „Ergebnis
+  unverändert" — dieselbe Cache-Invalidierungs-Frage wie beim Höhen-Cache.
+- 2026-07-30 — [Tools/Navigation] NavMesh gegen generierte Welt (TDD-Kapitel
+  Erweiterungen/Lessons Learned): Der `NavMeshSurface` lag auf „Generated
+  Terrain" — dem Objekt, das der Presenter bei jedem Generate per
+  `DestroyImmediate` ersetzt. Folge: Bake-Asset bleibt auf der Platte, ist aber
+  an nichts mehr angeschlossen; Agents verlieren den Boden ohne Konsolenfehler.
+  Bake-Kosten skalieren quadratisch mit der Kantenlänge (Voxel 0,1667 m:
+  2048 m ≈ 151 Mio Spalten, 1024 m ≈ 38 Mio, 512 m ≈ 9,4 Mio). Daraus die
+  Reihenfolge Weltgröße final → backen → NPCs. Tool-Kandidaten, die echte
+  Handarbeit sparen (Bewertungspunkt der Tool-Aufgabe): „Bake NavMesh" und
+  „Village aufs Plateau setzen".
+- 2026-07-30 — [Architektur] Szenen-Vertrag: generierter Ast (Tool-Eigentum,
+  wegwerfbar) gegen handgebauten Ast (Village-Prefab, Navigation, Player, Game).
+  Nebenregel mit Konsequenz fürs Design: Ein Prefab darf keine Referenz in die
+  Szene halten (nur Szene → Prefab). Alles, was aus dem Village-Prefab heraus auf
+  Spieler oder GameController zeigen müsste, braucht ein ScriptableObject als
+  Treffpunkt oder eine Laufzeit-Suche.
