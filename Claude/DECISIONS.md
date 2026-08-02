@@ -603,3 +603,49 @@ GameObjects und damit CPU/RAM/Crash bestehen); ein großes gebackenes Mesh wie
 Minecraft-Chunks (lohnt bei unterschiedlicher Geometrie, nicht bei tausenden
 identischen Halmen); Bäume jetzt auch instancieren (wenige, sollen anklickbar
 bleiben — erst bei echter Masse nötig).
+
+## 2026-08-02 — Interaction-Prompt: statisch serialisiert, dynamisch berechnet, Interface minimal
+Was: `IInteractable.InteractionPrompt` bleibt ein reiner Getter; wie ein
+Implementierer den Text herstellt, ist seine Sache. Statische Prompts aus einem
+serialisierten Feld (Inspector, kein Hardcoding), dynamische aus einer berechneten
+Property. Die Fackel hält zwei serialisierte Texte (`_promptWhenLit`/
+`_promptWhenUnlit`) und wählt live nach `IsLit`.
+Warum: Ein einzelnes serialisiertes Feld kann einen zustandsabhängigen Prompt nicht
+abbilden (fror den Text ein — derselbe „gespeicherter Wert veraltet"-Fehler). Das
+Interface schlank zu halten erlaubt beide Wege ohne Vertrags-Aufblähung.
+Verworfen: Prompt-Pflichtserialisierung im Interface (unmöglich, erzwingt statisch);
+ein einzelnes serialisiertes Feld auch für dynamische Prompts.
+
+## 2026-08-02 — TorchMode-Enum statt zwei Bools
+Was: Zyklus-Kopplung + Startzustand der Fackel als ein Enum `TorchMode`
+(FollowDayNight / StartLit / StartUnlit), nicht zwei unabhängige Bools.
+Warum: Zwei Bools erlauben vier Kombinationen, eine widersprüchlich (folgt +
+Startzustand). Das Enum macht den ungültigen Zustand undarstellbar — der
+Inspector-Picker bietet nur die drei gültigen Modi. Folgt der Projekt-Linie
+„falschen Wert an der Eingabe verhindern" (DECISIONS 2026-07-18) statt Runtime-Guard.
+Verworfen: zwei Bools + OnValidate-Guard; reiner Runtime-Check.
+
+## 2026-08-02 — Pause-Menü-Navigation: Hover setzt Selection, Startauswahl im Controller
+Was: Maus-Hover setzt die EventSystem-Selection (`SelectOnHover`, `Shared/UI/`),
+damit Maus und Tastatur einen Zustand teilen; die Startauswahl beim Öffnen setzt
+`GameController.Pause()` per Code. Voller Maus/Tastatur-Moduswechsel (Cursor +
+Highlight je Gerät) = Polish.
+Warum: Hover-Highlight und Selection sind getrennte Zustände, die auseinanderdriften;
+ein Leer-Klick löscht die Selection. Das Inspector-Feld „First Selected" wirkt nur
+beim Szenenstart, nicht bei später aktiviertem Menü — die Startauswahl gehört dem
+Menü-Besitzer und muss beim Öffnen per Code gesetzt werden. `SelectOnHover` als
+eigenes Shared-UI-Script, weil Hover-Verhalten pro Element in Unity auf dem Element
+wohnt (kein Smell).
+Verworfen: klebrige Re-Selection im GameController-Update als Hauptlösung
+(Hover-Sync ist sauberer); Voll-Moduswechsel jetzt (Aufwand → Polish).
+
+## 2026-08-02 — Celestial-Rig getrennt vom Logik-Objekt; Aufräum-Funde
+Was: Sonne + Mond hängen unter einem eigenen `ClestialPivot` (den `SkyController`
+dreht), getrennt vom DayNightCycle-Logik-Prefab. Nebenbei behoben: freistehende
+Szenen-`Main Camera` gelöscht (Player-Prefab bringt Kamera + AudioListener mit —
+sonst zwei aktive Kameras/Listener), Raycast-Target am unsichtbaren HUD-Container aus.
+Warum: SRP — Logik-Objekt macht Logik, Pivot ist die physische Rig; Sonne/Mond müssen
+unter dem gedrehten Objekt hängen (ein Elternteil dreht sich nicht mit dem Pivot).
+Deckt den Aufräumpunkt „zwei Kameras" aus DECISIONS 2026-07-30.
+Verworfen: Sonne/Mond direkt unters Logik-Objekt (funktioniert, vermischt aber das
+wiederverwendbare Logik-Prefab mit szenen-spezifischen Lichtern).

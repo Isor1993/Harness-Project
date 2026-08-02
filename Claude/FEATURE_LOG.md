@@ -138,3 +138,19 @@ Format: `- JJJJ-MM-TT — Feature (1–2 Sätze: was und wo)`
   Damit überleben Achsen-Korrekturen aus dem DCC-Tool die Platzierung.
   Verifiziert mit dem Birken-FBX (Prefab-Root X = 90): Bäume stehen aufrecht
   und drehen sich zufällig um die eigene Achse.
+- 2026-08-02 — Interaktionssystem in Betrieb + Fackel: Layer `Interactable`,
+  `PlayerInteractor` (Raycast aus der Kamera) + `InteractionPromptView` samt
+  Prompt-UI im HUD verdrahtet (Code existierte seit 27.07., war nirgends
+  angeschlossen). `Torch` (Fähigkeit: `IsLit`, schaltet VFX + Light,
+  `IDayNightListener`) + `TorchInteractable` (Adapter, liefert Prompt, leitet an
+  `Toggle`) unter `Environment/Torch/Scripts/`; `TorchMode`-Enum
+  (FollowDayNight/StartLit/StartUnlit) macht die Zyklus-Kopplung pro Fackel
+  wählbar, Prompt-Texte serialisiert. `PlayerInteractor.UpdateTarget` vergleicht
+  jetzt Ziel UND Prompt (Text springt bei gleichem Objekt um). Tag/Nacht-System
+  (DayNightCycle-Prefab + eigener `ClestialPivot` mit Sonne/Mond) in
+  `Viallage.unity` gebracht. Pause-Menü bedienbar: EventSystem-Startauswahl in
+  `GameController.Pause()` + `SelectOnHover` (`Shared/UI/`, Hover setzt Selection)
+  für Maus/Tastatur; freistehende `Main Camera` gelöscht (zwei Kameras/Listener),
+  Raycast-Target am HUD-Container aus. Verifiziert im Play Mode: zielen → E →
+  Fackel an/aus + Prompt, Debug-Zeit 18 → Fackel selbst an, Pause klick- und
+  tastaturbedienbar.

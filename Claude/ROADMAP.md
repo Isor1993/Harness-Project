@@ -36,12 +36,12 @@ verlangt; danach wird er wieder aktiv ausgebaut.
 1. [ ] **Village spielbar aufbauen.** Zerfällt in zwei Hälften, die
    *nicht* zusammenhängen — die zweite hängt an Punkt 2.
    **1a — sofort machbar (unabhängig von Weltgröße und Terrain):**
-   - Interaktionssystem in Betrieb nehmen: Layer `Interactable` anlegen,
-     `PlayerInteractor` + `InteractionPromptView` samt Prompt-UI ins
-     Player-Prefab (der Code existiert, ist aber nirgends verdrahtet)
-   - Fackel: `Torch` (Fähigkeit) + `TorchInteractable` (Adapter)
-   - Schafe ins Village bringen und zähmbar machen
-   - Prompt-Vergleich im Interactor erweitern (DECISIONS 2026-07-30)
+   - [x] Interaktionssystem in Betrieb (Layer `Interactable`,
+     `PlayerInteractor` + `InteractionPromptView` + Prompt-UI verdrahtet) —
+     2026-08-02, Einzelheiten im FEATURE_LOG.md
+   - [x] Fackel: `Torch` + `TorchInteractable` (+ `TorchMode`-Enum) — 2026-08-02
+   - [x] Prompt-Vergleich im Interactor erweitert (Ziel + Prompt) — 2026-08-02
+   - [ ] Schafe ins Village bringen und zähmbar machen
    **1b — erst nach Punkt 2, weil jede Terrain-Änderung die NavMesh-Bake
    wegwirft:**
    - `Village`-Prefab aufbauen: Häuser (Asset oder Primitive — **offen**),
@@ -71,7 +71,13 @@ verlangt; danach wird er wieder aktiv ausgebaut.
    Nachher dokumentieren. Setzt Punkt 3 voraus: gemessen wird eine
    fertige Pipeline, keine Baustelle.
 5. [ ] **Politur mit der Restzeit:** Audio, Post Processing / Volume,
-   Menü, Tool-Layout — alles, was die Note hebt.
+   Menü, Tool-Layout — alles, was die Note hebt. Vorgemerkt aus der
+   Interaktions-Session (2026-08-02): TMP-Font-Schärfe (Texte pixelig);
+   Fadenkreuz aufwerten + kontextsensitiv (reagiert auf Interactable);
+   Prompt-UI-Stil (Box/Fade, Tastensymbol); HUD beim Pausieren ausblenden;
+   Menü-Sortierung (Pause über HUD) + Maus/Tastatur-Moduswechsel; Sun Source
+   explizit setzen; Kamera-Far-Plane an die finale Weltgröße koppeln
+   (Mond-Culling); Raycast-Target-Hygiene bei UI-Bildern.
 6. [ ] **Gesamt-Review vor der Abgabe:** Bugs, halbfertige Stellen,
    Testen, Feedback einholen und umsetzen.
 
@@ -95,6 +101,14 @@ Reihenfolge noch offen, wird in einer eigenen Design-Session festgelegt.
    voll ausarbeiten.
 6. [ ] **Spiel-Features aufbauen:** Kampf, Loot, Inventar, Crafting,
    Quests — jeweils eigene Design-Sessions.
+7. [ ] **GameObject-/Prefab-Aufbau-Konvention (eigene Design-Session):**
+   einheitliches Schema, wie ein Objekt *innen* aufgebaut ist — Root,
+   Visual/Mesh-Kind, VFX-Kind, Collider, Logik-Komponenten. Aktuell
+   durchgewürfelt (z. B. Torch: Root → Kind „Torch" (Mesh) + Kind „Torch Fire"
+   (VFX)); ein festes Muster für alle Objekte fehlt. Ergänzt die
+   Ordnerstruktur-Regeln in CODE_GUIDELINES um die Innen-Struktur der Prefabs.
+   Idealerweise *vor* dem Bau vieler Village-Prefabs (1b) — Aufwand gegen
+   Abgabe-Zeit abwägen.
 
 ## Später (nur bei Bedarf)
 - Knowledge-Archivierung automatisieren
