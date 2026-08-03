@@ -41,7 +41,8 @@ verlangt; danach wird er wieder aktiv ausgebaut.
      2026-08-02, Einzelheiten im FEATURE_LOG.md
    - [x] Fackel: `Torch` + `TorchInteractable` (+ `TorchMode`-Enum) — 2026-08-02
    - [x] Prompt-Vergleich im Interactor erweitert (Ziel + Prompt) — 2026-08-02
-   - [ ] Schafe ins Village bringen und zähmbar machen
+   - [x] Schafe ins Village bringen und zähmbar machen — 2026-08-03,
+     Einzelheiten im FEATURE_LOG.md
    - [ ] Schafe schlagbar machen (entschieden 2026-08-03, erweitert die
      „kein Kampf"-Linie aus DECISIONS 2026-07-30 um genau einen Schlag):
      Attack-Action im Input + Raycast auf `IDamageable` (baugleich zu
