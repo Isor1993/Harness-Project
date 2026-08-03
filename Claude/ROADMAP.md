@@ -42,6 +42,13 @@ verlangt; danach wird er wieder aktiv ausgebaut.
    - [x] Fackel: `Torch` + `TorchInteractable` (+ `TorchMode`-Enum) — 2026-08-02
    - [x] Prompt-Vergleich im Interactor erweitert (Ziel + Prompt) — 2026-08-02
    - [ ] Schafe ins Village bringen und zähmbar machen
+   - [ ] Schafe schlagbar machen (entschieden 2026-08-03, erweitert die
+     „kein Kampf"-Linie aus DECISIONS 2026-07-30 um genau einen Schlag):
+     Attack-Action im Input + Raycast auf `IDamageable` (baugleich zu
+     `PlayerInteractor.FindTarget`), `DamageType.Physical` bekommt damit
+     seinen ersten Nutzer. Mitzufixen: `Sheep.HandleDamage` flieht nur bei
+     `Sense.CurrentThreat != null` — der Spieler liegt auf Layer `Player`,
+     ein Treffer würde sonst Schaden machen, ohne dass das Schaf wegläuft.
    **1b — erst nach Punkt 2, weil jede Terrain-Änderung die NavMesh-Bake
    wegwirft:**
    - `Village`-Prefab aufbauen: Häuser (Asset oder Primitive — **offen**),
@@ -99,6 +106,10 @@ Reihenfolge noch offen, wird in einer eigenen Design-Session festgelegt.
 5. [ ] **Harness wieder ausbauen:** Review der Regeln nach dem
    Praxisbetrieb, DOC_RULES.md, GDD_RULES.md, GLOSSARY.md, CLAUDE.md
    voll ausarbeiten.
+   - Dabei **alle .md-Dateien einmal komplett durchgehen**: Doppelungen
+     zwischen Dateien finden, überholte Einträge kürzen, Ownership-Grenzen
+     prüfen. DECISIONS.md ist auf über 650 Zeilen gewachsen (vorgemerkt
+     2026-08-03).
 6. [ ] **Spiel-Features aufbauen:** Kampf, Loot, Inventar, Crafting,
    Quests — jeweils eigene Design-Sessions.
 7. [ ] **GameObject-/Prefab-Aufbau-Konvention (eigene Design-Session):**

@@ -21,3 +21,4 @@ keine Inhalte. Status: ohne Vermerk = existiert, (geplant) = noch nicht gebaut.
 | KNOWLEDGE_RULES.md | Schreib- und Ablageregeln für das externe Wissensarchiv `C:\Repos Isor\Knowledge\` |
 | ASSIGNMENT_PCG.md | Originaltext Uni-Aufgabe „Prozedurale Erweiterung der Spielwelt" (Referenz, unverändert lassen) |
 | ASSIGNMENT_TOOL.md | Originaltext Uni-Aufgabe „Engine-Tool-Entwicklung" (Referenz, unverändert lassen) |
+| ASSIGNMENT_THREADING.md | Originaltext Uni-Aufgabe „Threadoptimierung" (Referenz, unverändert lassen) |

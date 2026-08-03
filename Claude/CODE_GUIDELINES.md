@@ -22,6 +22,9 @@ Bei Uni-Projekten gewinnt Block 1 im Konfliktfall, bei privaten Block 2.
 5. PascalCase für Klassen, Structs, Interfaces, Methoden, Enums,
    Konstanten, Properties. Interfaces mit `I`-Präfix. Enum-Typen Singular,
    geflaggte Enums Plural. Callbacks beginnen mit `On`/`Handle`.
+   **Bewusste Abweichung (2026-08-03):** Konstanten schreiben wir
+   SCREAMING_SNAKE (`MAX_TRIES`, `WALK_STOP_DISTANCE`) statt PascalCase —
+   siehe DECISIONS.md.
 6. Format: eine Anweisung pro Zeile (einzeiliger Scope hinter der
    Bedingung erlaubt). Geschweifte Klammern je eigene Zeile (Allman);
    Properties dürfen einzeilig sein.

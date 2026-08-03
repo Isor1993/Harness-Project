@@ -154,3 +154,37 @@ Format: `- JJJJ-MM-TT — Feature (1–2 Sätze: was und wo)`
   Raycast-Target am HUD-Container aus. Verifiziert im Play Mode: zielen → E →
   Fackel an/aus + Prompt, Debug-Zeit 18 → Fackel selbst an, Pause klick- und
   tastaturbedienbar.
+- 2026-08-02 — Schaf-Herde als platzierbares Prefab + FSM-Feinschliff:
+  `HerdManager` (`Systems/HerdManager/Scripts/`) injiziert sich selbst und den
+  Graveyard-Marker per `Sheep.Init(herd, graveyard)` in alle Pool-Mitglieder —
+  die Schafe brauchen keine serialisierten Szenen-Referenzen mehr, die Herde ist
+  als Ganzes platzierbar. Commander als Herdenführer: nur sein Zähmen setzt
+  `SetAllSheepHerdMoving(true)`; `avoidancePriority` 0 für ihn, `Random.Range(30, 70)`
+  für Normal-Schafe. `SheepDodgeBehaviour` (`Entities/Sheep/Scripts/`) um
+  Dodge-Cooldown und EntityId-Tie-Break erweitert (nur das höhere Schaf weicht
+  aus), `TryEnterDodge` nur noch aus `PatrolState`; `DodgeState` kehrt generisch
+  in den gemerkten State zurück, `SheepFSM.ChangeState(SheepStateBase)` dafür
+  public.
+- 2026-08-03 — Zähmen als Umschalter + Cleanup des Schaf-/Herden-/FSM-Codes:
+  `Sheep.Tame()` → `ToggleTame()`, `SheepInteractable` hält die Prompts „Tame"
+  und „Release" als serialisierte Felder und wechselt sie live; `CanInteract`
+  prüft nur noch, ob das Schaf lebt. Neue Datei `SheepAnimatorParameters`
+  (`Systems/SheepFSM/Scripts/`) ersetzt 25 Animator-Magic-Strings in den elf
+  States. Kapselung: `IsHerdMoving` und `Animator` in `Sheep`, die
+  Erkennungsergebnisse in `SheepSense`, `TryGetBestFleeTarget` in
+  `SheepMoveBehaviour`. Behoben: fehlendes `</summary>` in `SheepFSM`,
+  Test-Killschalter in `SheepHealth` hinter `#if UNITY_EDITOR`, fünf
+  `[Range]`-Paare an die Settings-Assets angeglichen, Tippfehler
+  `TransitionDeadState` und `_hasHandledDeath`; `ValidateHerd` warnt beim Start,
+  wenn Slot-Offsets für die Formation fehlen. Verifiziert im Play Mode: Zähmen
+  und Freilassen inklusive Prompt-Wechsel.
+- 2026-08-03 — Nur ein Schaf gleichzeitig zähmbar: `TamedSheepReference`
+  (ScriptableObject, `Entities/Sheep/SO_Settings/`) hält den Zeiger auf das
+  aktuell gezähmte Schaf, projektweit statt pro Herde. `SheepInteractable`
+  verweigert den Prompt an allen anderen Schafen, solange der Zeiger belegt ist;
+  das gezähmte Schaf selbst bleibt immer freilassbar. Der Zeiger wird beim Lesen
+  gegen `IsAlive` und `IsTamed` geprüft und kann darum nicht veralten — ein
+  sterbendes Schaf gibt die Sperre frei, sobald es tot ist. Asset an beiden
+  Sheep-Prefabs verdrahtet, fehlende Zuweisung meldet eine Warnung in `Awake`.
+  Verifiziert im Play Mode: zweites Schaf ohne Prompt, nach dem Freilassen wieder
+  zähmbar.
