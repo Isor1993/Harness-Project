@@ -735,3 +735,66 @@ Verworfen: Zähler im HerdManager (vier Pflegepfade, bei einem vergessenen still
 falsch); Regel pro Herde (heute identisch, bräche still bei der zweiten Herde);
 `CanInteract` um den Interactor erweitern (änderte den Vertrag für alle
 Implementierer, gegen DECISIONS 2026-08-02 „Interface minimal").
+
+## 2026-08-03 — Prefab Painter: Aufbau und Bedienung
+Was: Editor-Tool `Tools > Isor Tower > Prefab Painter` in
+`Assets/Systems/PrefabPainter/Editor/`, MVP wie das Terrain-Tool:
+`PrefabPainterWindow` (View + SceneView-Input), `PrefabPainterPresenter`
+(alle Szenenänderungen inkl. Undo), `BrushSampler` (reine Mathe, fasst die
+Szene nie an), `PainterPalette`/`PaintBrush` als Einstellungs-Asset.
+Gemalt wird unter eine frei gewählte Ziel-Wurzel; die Hierarchie darunter ist
+`<Kategorie>/<Prefabname>/<Prefabname>_001`. Die Kategorie kommt aus dem
+Asset-Pfad des Prefabs (`Assets/Environment/...` → `Environment`),
+überschreibbar pro Pinsel. Drei Pinselformen (Single, Scatter, Line) plus
+Continuous-Schalter; ein Pinsel hält mehrere Prefabs und würfelt pro Objekt
+eins aus. Löschen liegt auf Strg+Klick, ein ganzer Strich ist ein Undo-Schritt.
+Höhe und Normale kommen aus einem Raycast gegen die Collider, nicht aus
+`HeightmapGenerator.SampleHeight`. Das Terrain-Tool zieht mit ins Menü
+`Tools > Isor Tower`. Das Tool ist ausdrücklich nicht Teil der Uni-Abgabe.
+Warum: Der Raycast macht den Painter unabhängig von der Terrain-Pipeline — er
+läuft in jeder Szene auf jedem Collider, liefert die Normale gratis und findet
+auch Bauwerke, die die Heightmap nicht kennt. Der Strahl ignoriert dabei alles
+unter der Ziel-Wurzel, sonst würde ein frisch gesetztes Grasbüschel zum Boden
+für das nächste. Löschen wird mitgebaut, weil Undo nur chronologisch zurück-
+spult und beim Scatter-Malen zwangsläufig übermalt wird. Die Kategorie aus dem
+Pfad zu lesen kostet keine Pflege und deckt sich mit der Ordnerkonvention aus
+CODE_GUIDELINES. Nummeriert wird selbst, weil Unity nur Duplikate nummeriert,
+nicht frische Prefab-Instanzen. Neue Pinsel entstehen als echte `PaintBrush`-
+Instanz statt über die serialisierte Array-Größe — nur so laufen die
+Feld-Initialisierer, sonst startet ein Pinsel mit Radius und Scale 0.
+Verworfen: `SampleHeight` als Höhenquelle (kennt nur die prozedurale Heightmap,
+band das Tool an `TerrainConfig`); Löschen weglassen und auf Undo/Entf setzen;
+eine Pinselform statt drei; Malen im Prefab-Isolationsmodus (dort gibt es kein
+Terrain zum Anpeilen); Determinismus per Seed wie im `ObjectPlacer` (das
+Ergebnis sind gespeicherte Objekte, keine reproduzierbare Generierung).
+
+## 2026-08-04 — Gras-Instancing: nachrechnen, eigenes Gras-Gitter, kein Schatten
+Was: Die Umsetzung von DECISIONS 2026-07-26 wird festgezurrt und aus dem
+Nach-Abgabe-Block vorgezogen. (1) Die Matrizen werden nicht serialisiert, sondern
+beim Laden aus dem `placementSeed` neu berechnet — gespeichert wird nur der Seed.
+(2) Gras bekommt ein eigenes Zellgitter, unabhängig von den Terrain-Chunks: eine
+Matrizenliste je Zelle mit eigener `worldBounds`, Unity cullt die Zellen selbst.
+Kantenlänge als Config-Feld `grassCellSize`, Default 128 m. (3) Gras wirft keine
+Schatten (`ShadowCastingMode.Off`). (4) Der Aufruf ist `Graphics.RenderMeshInstanced`
+statt des 2026-07-26 genannten `Graphics.DrawMeshInstanced` — Unity 6000.5.
+Warum: Serialisiert wären es rund 40–50 MB Text je Platzierungslauf, die bei jedem
+Seed-Tuning neu ins Repo wandern; Nachrechnen kostet nur Ladezeit — und genau diese
+Ladezeit ist das Messobjekt der Threading-Abgabe (ROADMAP Punkt 4), das es bei
+editor-seitigem Ausrechnen gar nicht gäbe. Das Terrain-Chunkgitter hängt an der
+65.535-Vertex-Grenze eines Meshes, das Gras-Gitter an der 1023-Instanzen-Grenze eines
+Batches — zwei verschiedene Zwänge, also zwei Gitter; gekoppelt würde ein Wechsel der
+Terrain-Auflösung ungefragt das Culling mitverändern. 128 m ist bei heutiger Dichte
+(0,05 Halme/m²) die Kante, die eine volle Zelle in genau ein Batch legt (~820 Halme);
+Feld statt Konstante, weil ein halbierter minSpacing die Dichte vervierfacht und die
+optimale Kante halbiert. Schatten von hunderttausenden Halmen kosten einen zweiten
+Render-Durchgang ohne sichtbaren Gewinn.
+Verworfen: Matrizen in Szene oder Asset serialisieren (40–50 MB je Lauf, bläht Repo
+und Editor, und nimmt der Threading-Abgabe ihren Gegenstand); Culling an die
+Terrain-Chunks koppeln (256 m sind zu grob — 34 % statt 27 % gezeichnet bei zugleich
+88 statt 70 Batches, und die Chunkzahl ist eine Auflösungs-Entscheidung);
+64-m-Zellen (2 % weniger Gras für 186 zusätzliche Draw Calls); GPU Resident Drawer
+(braucht weiterhin GameObjects, löst also weder Speicher noch Editor-Absturz);
+Unitys Terrain-Detail-System (setzt Unitys `Terrain`-Komponente voraus, das Terrain
+ist selbst gebaut); `BatchRendererGroup` mit Culling je Halm (großes Gerät, bleibt im
+Nach-Abgabe-Block); Entfernungs-Abschneider jetzt schon bauen (bleibt
+Ein-Zeilen-Reserve, falls das Frustum-Culling allein nicht reicht).

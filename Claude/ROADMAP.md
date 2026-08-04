@@ -50,6 +50,27 @@ verlangt; danach wird er wieder aktiv ausgebaut.
      seinen ersten Nutzer. Mitzufixen: `Sheep.HandleDamage` flieht nur bei
      `Sense.CurrentThreat != null` — der Spieler liegt auf Layer `Player`,
      ein Treffer würde sonst Schaden machen, ohne dass das Schaf wegläuft.
+   - [ ] **Prefab-Pinsel — Hilfstool, ausdrücklich nicht Teil der Abgabe**
+     (2026-08-03): Prefab auswählen und mit der Maus aufs Terrain malen —
+     Radius, Streuung, zufälliger Yaw und Scale. Hängt immer in die
+     `Village`-Prefab-Wurzel ein, **nie** unter `Generated Terrain` (der
+     Presenter löscht diesen Ast bei jedem Generate, siehe DECISIONS
+     2026-07-30). Zweck: Fackeln, Bäume und Grasbüschel im Dorf setzen,
+     statt jedes Objekt einzeln zu platzieren — damit das Village-Prefab
+     schnell fertig wird und Punkt 2 starten kann. Claude baut das Tool
+     komplett, Isor benutzt es. Design **und** Bau in einer eigenen Session.
+     Vorab **offen**, dort zu entscheiden: Pinselform (ein Objekt pro Klick
+     oder Streuung im Radius); Höhe per Raycast gegen den Collider oder
+     direkt über `HeightmapGenerator.SampleHeight`; ob Löschen mitgebaut wird
+     oder Undo und Entf genügen; ob Objekte an der Boden-Normale kippen wie
+     im `ObjectPlacer` oder immer aufrecht stehen.
+   - [ ] **Placer lässt den Dorfkreis aus:** Der `ObjectPlacer` filtert heute
+     nur Wasser, Höhenband, Dichte und Steigung — eine Plateau-Prüfung fehlt,
+     er würde mitten durchs Dorf pflanzen. Abstandsvergleich gegen
+     `PlateauCenterX/Z` + `PlateauRadius` (liegt alles schon in der
+     `TerrainConfig`) als **erste, billigste** Stufe, vor dem `SampleHeight`-
+     Aufruf. Voraussetzung dafür, dass festes Dorf und prozedurale
+     Bepflanzung sich nicht überlagern; gehört fachlich zu Punkt 2.
    **1b — erst nach Punkt 2, weil jede Terrain-Änderung die NavMesh-Bake
    wegwirft:**
    - `Village`-Prefab aufbauen: Häuser (Asset oder Primitive — **offen**),
@@ -58,15 +79,23 @@ verlangt; danach wird er wieder aktiv ausgebaut.
    - NPCs: Herde handgesetzt im Prefab, Goblins per Placer im Umland
    - Bestehendes prüfen: zwei aktive Kameras in `Village.unity`,
      Dubletten-Prefab `Torch .prefab`, Birken-Material am Fackel-Mesh
-2. [ ] **Platzierung/Verteilung für die Abgabe finalisieren:**
-   - Weltgröße für die Abgabe verkleinern und minSpacing so festsetzen,
-     dass die Objektmenge den Editor nicht mehr crasht
+2. [ ] **Gras-Rendering und Verteilung für die Abgabe finalisieren:**
+   - [ ] **GPU-Instancing bauen** (entschieden 2026-08-04, konkretisiert
+     DECISIONS 2026-07-26) — Voraussetzung für alles Weitere in diesem
+     Punkt: `RenderMode` je Placeable, `InstancedRenderer` als
+     `[ExecuteAlways]`-Komponente, Verzweigung in
+     `TerrainToolPresenter.SpawnType`. Vorgezogen aus dem Nach-Abgabe-Block,
+     weil erst dadurch zur Laufzeit etwas Threadbares entsteht (Punkt 4)
+   - Weltgröße für die Abgabe festlegen — nach dem Instancing eine reine
+     Umfangs-Frage, nicht mehr die Crash-Grenze; minSpacing dann nach Optik
+     wählen und `grassCellSize` nachziehen
    - Verteilung ungleichmäßiger machen: dichte und lichte Flächen statt
      gleichmäßigem Teppich. Die NoiseMask liefert fast nur Werte um 0,5
      (Perlin) — Kontrast über eine Remap-Kurve o. Ä. herstellen, damit
      weniger Halme nötig sind
-   - Gras-Mesh: die teurere, schönere Variante nutzen und die Menge
-     daran anpassen; die reduzierte Version bleibt Notfall-Fallback
+   - Gras-Mesh: die teurere, schönere Variante nutzen — der Preis hing nie
+     an den Dreiecken, sondern an der Objektzahl; die reduzierte Version
+     bleibt Notfall-Fallback
    - Falls Zeit: Blocker-Liste befüllen (Gras meidet Bäume/Häuser —
      macht die Prioritätsreihenfolge erst wirksam)
 3. [ ] **Schriftliche Abgaben + Baseline-Messung:** TDD aus TDD_NOTES.md
@@ -101,7 +130,9 @@ Reihenfolge noch offen, wird in einer eigenen Design-Session festgelegt.
    andere Verfahren prüfen.
 3. [ ] **Massen-Bepflanzung als eigenes System:** LOD, Culling und
    Instancing zusammen — welche Objekte überhaupt gezeichnet werden.
-   Großprojekt, eigene Design-Session.
+   Großprojekt, eigene Design-Session. Das Instancing selbst ist
+   vorgezogen (Punkt 2 vor der Abgabe); hier bleiben LOD,
+   Entfernungs-Ausblendung und Culling je Halm via `BatchRendererGroup`.
 4. [ ] **Save-System:** Weltzustand als Änderungsliste gegenüber dem
    Ausgangszustand (deckt zugleich den späteren Multiplayer-Sync ab).
 5. [ ] **Harness wieder ausbauen:** Review der Regeln nach dem
