@@ -33,6 +33,8 @@ verlangt; danach wird er wieder aktiv ausgebaut.
   Phase nach der Abgabe (2026-07-29)
 - [x] Gras-Instancing + LOD + PlacementExclusion + Prefab-Painter
   (2026-08-03 bis 2026-08-05) — Einzelheiten im FEATURE_LOG.md
+- [x] Threadoptimierung inkl. Messreihe und Laufzeit-Placement
+  (2026-08-05) — Einzelheiten im FEATURE_LOG.md
 
 ## Als Nächstes — bis zur Uni-Abgabe (2026-08-21)
 1. [ ] **Village spielbar aufbauen.** Zerfällt in zwei Hälften, die
@@ -77,22 +79,18 @@ verlangt; danach wird er wieder aktiv ausgebaut.
      bei Problemen dann neu bewerten
    - [x] Verteilung ungleichmäßig: Kontrastkurve in `NoiseMaskDensity`
    - [x] Blocker-Bedarf gelöst über `PlacementExclusion` (siehe 1a)
-3. [ ] **Schriftliche Abgaben + Baseline-Messung:** TDD aus TDD_NOTES.md
-   generieren, plus UML-Klassendiagramm und Ablaufdiagramm fürs Tool
-   (Pflicht laut ASSIGNMENT_TOOL); akademische Aufgabe — eine
-   zusätzliche Quelle. Hier zugleich die Laufzeiten der fertigen,
-   unoptimierten Pipeline messen und dokumentieren.
-4. [ ] **Uni: Threadoptimierung** (K2, K3, S3; **formativ 2026-08-07**) —
-   Threading in die fertige Pipeline einbauen, erneut messen, Vorher/
-   Nachher dokumentieren. Setzt Punkt 3 voraus: gemessen wird eine
-   fertige Pipeline, keine Baustelle. Laufzeit-Messobjekt: der
-   Gras-Rebuild beim Laden (Poisson → Filter → Matrizen; entschieden
-   2026-08-05, Messungen vor/nach dem Threading statt jetzt).
-   Parallelisierbar: Filter und Matrizenbau; das Bridson-Sampling bleibt
-   sequenziell (jeder Punkt hängt von den vorherigen ab) — begründet
-   dokumentieren. Fallen: `Mathf.PerlinNoise` läuft nicht unter Burst
-   (→ `Unity.Mathematics.noise`); echte Messungen nur im Development
-   Build, nie im Editor (EditorLoop verfälscht).
+3. [ ] **Schriftliche Abgaben:** TDD aus TDD_NOTES.md generieren, plus
+   UML-Klassendiagramm und Ablaufdiagramm fürs Tool (Pflicht laut
+   ASSIGNMENT_TOOL); akademische Aufgabe — eine zusätzliche Quelle.
+   Baseline-Messung ist mit Punkt 4 erledigt (2026-08-05).
+4. [x] **Uni: Threadoptimierung** (K2, K3, S3; formativ 2026-08-07) —
+   Code und Messreihe fertig (2026-08-05): Gras-Rebuild 122,7 s → 12,4 s
+   (−89,9 %) über vier dokumentierte Zwischenstände, Builds und Logs unter
+   `C:\Repos Isor\Builds\` mit eigener README. Einzelheiten im FEATURE_LOG,
+   Begründungen in DECISIONS, Stoff fürs TDD in TDD_NOTES (alle 2026-08-05).
+   Die Annahme „Bridson bleibt sequenziell" hat sich als halb richtig
+   erwiesen: innerhalb einer Kachel ja, über Kacheln hinweg nein.
+   **Offen:** der TDD-Text selbst (gehört zu Punkt 3).
 5. [ ] **Politur mit der Restzeit:** Audio, Post Processing / Volume,
    Menü, Tool-Layout — alles, was die Note hebt. Vorgemerkt aus der
    Interaktions-Session (2026-08-02): TMP-Font-Schärfe (Texte pixelig);
@@ -117,9 +115,14 @@ Reihenfolge noch offen, wird in einer eigenen Design-Session festgelegt.
    Seed statt Szene festziehen; Village als festes Grundmesh mit
    Placement-Befüllung darauf; Zellen-Struktur, damit ein wachsendes
    Village später streamen kann.
-2. [ ] **Platzierungs-Algorithmen neu bewerten:** globales Poisson-Disc
-   skaliert nicht mit wachsender Welt — zellen-lokal ersetzen oder ganz
-   andere Verfahren prüfen.
+2. [ ] **Platzierungs-Algorithmen neu bewerten:** zellen-lokales Poisson
+   ist mit der Kachelung erledigt (2026-08-05); offen bleibt, ob Bridson
+   für Gras überhaupt das richtige Verfahren ist (Jitter-Grid wäre ein
+   Bruchteil der Arbeit, zeigt aber Raster — für Bäume ungeeignet).
+   Ebenfalls offen aus der Threading-Session: Bucketing des Zellenbaus in
+   die Kachelschleife ziehen (die Punkte liegen dort schon nach Kachel
+   sortiert), Exclusion als Broad Phase je Kachel statt über alle Punkte,
+   und der Aufräumpass für die Kachelränder.
 3. [ ] **Massen-Bepflanzung als eigenes System:** LOD, Culling und
    Instancing zusammen — welche Objekte überhaupt gezeichnet werden.
    Großprojekt, eigene Design-Session. Das Instancing selbst ist

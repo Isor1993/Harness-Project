@@ -348,3 +348,55 @@ Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
   ersetzen" (nach FromToRotation×Yaw und SpawnType); Konsequenz: abgeleitete
   Größen (Halmhöhe fürs Bounds-Padding, Exclusion-Rand) müssen die
   Prefab-Scale mitrechnen.
+- 2026-08-05 — [Performance] Messmethodik der Threading-Abgabe: Messobjekt ist
+  der Gras-Rebuild beim Szenenstart (`InstancedRenderer.Rebuild`), Stoppuhren je
+  Stufe, Ausgabe per `Debug.Log` in `#if UNITY_EDITOR || DEVELOPMENT_BUILD`
+  (Dozenten-Regel „keine Logs im Release" bleibt erfüllt, Messung im Development
+  Build trotzdem möglich). Vier Läufe je Build, erster verworfen (JIT + kalte
+  Caches, im ersten Lauf durchweg der langsamste `cellbuild`), Mittel aus 2–4.
+  Konstanten mitloggen — Kernzahl, Kachelanzahl, Punktzahl —, sonst sind die
+  Logs zweier Builds hinterher nicht mehr auseinanderzuhalten.
+- 2026-08-05 — [Performance] Messreihe Threading (RTX 4060, 8 Kerne/16 Threads,
+  Unity 6000.5.2f1), Ladezeit je Rebuild: Baseline 122,7 s → punktweise
+  parallelisierter Filter 118,1 s (−3,7 %) → Kachelung ohne Threads 98,9 s
+  (−19,4 %) → Kachelung mit `Parallel.For` 16,5 s (−86,6 %) → plus entschärfter
+  Exclusion-Filter 12,4 s (−89,9 %). Die getrennte Zwischenmessung „gekachelt,
+  aber sequenziell" trennt den Cache-Effekt (−19,4 %) vom Thread-Effekt
+  (Kachel-Durchgang 9,2× schneller) — ohne sie wäre beides nicht auseinander-
+  zuhalten.
+- 2026-08-05 — [Performance] Amdahl als Leitfaden statt als Nachwort: Die erste
+  Optimierung (Filter punktweise über den Thread-Pool) scheiterte nicht am
+  Threading, sondern daran, dass der sequenzielle Poisson-Pass 84 % der Laufzeit
+  hielt — der maximal mögliche Gewinn lag damit bei 16,6 %, gemessen wurden
+  3,7 %. Konsequenz: nicht die parallelisierbare Stelle suchen, sondern die
+  teure Stelle parallelisierbar *machen*.
+- 2026-08-05 — [Platzierung/Algorithmus] Poisson kachelweise statt global: Die
+  Welt wird in 8×8 Kacheln geteilt (`PlacementTilesPerAxis`, 1 = altes
+  Verhalten), jede Kachel sampelt und filtert für sich, `Parallel.For` läuft über
+  die Kacheln. Zwei Effekte: das Poisson-Beschleunigungsgitter schrumpft von
+  ~94 MB (4860²) auf ~1,5 MB je Kachel (610²) und passt in den Prozessor-Cache;
+  und der bis dahin unantastbar sequenzielle Teil wird parallelisierbar, weil
+  Kacheln einander nicht lesen. Preis: an Kachelgrenzen kann der Mindestabstand
+  verletzt werden (~28 km Nahtlänge bei 8×8, bei 7,4 Mio Halmen unsichtbar);
+  Lösung wäre ein Aufräumpass nur über die Randstreifen. Kachelzahl 64 begründet
+  über drei Größen: Lastverteilung (4 Pakete je Thread reichen), Cache-Größe,
+  Nahtlänge (verdoppelt sich mit jeder Halbierung der Kachelgröße).
+- 2026-08-05 — [Performance/Threading] Vier Fallen, alle im eigenen Code belegt:
+  (1) `AnimationCurve.Evaluate` cacht intern den zuletzt getroffenen Keyframe →
+  zwei Threads liefern sich falsche Werte, ohne Fehlermeldung. Lösung
+  `CurveLookup`: Kurve einmal auf dem Main Thread in ein `float[]` abtasten,
+  danach nur noch lesen. (2) Ein geteiltes `System.Random` ist nicht thread-sicher
+  *und* macht die Reihenfolge ergebnisrelevant → je Kachel ein eigener Generator,
+  Seeds vorab gezogen. (3) Unitys `==`-Überladung auf Assets greift in nativen
+  Code → `Density != null` vor der Schleife auswerten. (4) `transform.position`
+  ist kein Feldzugriff: der Exclusion-Filter fragte ihn 7,4 Mio mal für einen
+  Wert ab, der sich nie ändert (2,57 s → 0,97 s nach dem Auflösen in
+  `ExclusionArea`). Gemeinsames Muster aller vier: was sich nicht ändert, einmal
+  auf dem Main Thread auflösen, danach nur noch rechnen.
+- 2026-08-05 — [Performance] Verworfener Versuch (gehört ins TDD, weil er die
+  Methodik zeigt): Ergebnisliste des Placers vorab auf Endgröße setzen
+  (`Capacity`). Gemessen 12,2 s gegen 12,4 s — 1,8 %, innerhalb der Streuung,
+  zwei von drei Stufen sogar langsamer. Ursache: Die Liste wird per `AddRange`
+  gefüllt, nicht per einzelnem `Add`; `AddRange` kennt die Elementzahl vorher und
+  wächst in einem Schritt. Änderung zurückgenommen. Beim Exclusion-Filter griff
+  dasselbe Argument dagegen, weil dort einzeln angehängt wird.

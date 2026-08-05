@@ -873,3 +873,47 @@ und dasselbe Werkzeug wie die HeightCurve (Konsistenz, live tunebar).
 Verworfen: festes Formel-Remap (SmoothStep o. Ä. — unsichtbar und nicht pro
 Asset tunebar); minSpacing vergrößern (dünnt gleichmäßig aus, erzeugt keine
 Flecken).
+
+## 2026-08-05 — Placement kachelweise statt punktweise parallelisiert
+Was: Die Welt wird für die Platzierung in `PlacementTilesPerAxis`² Kacheln
+geteilt (Default 8×8 = 64, wie das Terrain-Chunk-Gitter); jede Kachel sampelt
+und filtert eigenständig mit eigenem `System.Random`, `Parallel.For` läuft über
+die Kacheln. 1 stellt das alte Verhalten wieder her.
+Warum: Der erste Versuch parallelisierte nur den Regel-Filter (ein Arbeitspaket
+je Punkt) und brachte 3,7 %, weil der sequenzielle Poisson-Pass 84 % der Zeit
+hielt. Die Kachelung macht den teuren Teil selbst parallelisierbar und schrumpft
+nebenbei das Poisson-Gitter von ~94 MB auf ~1,5 MB je Kachel (Cache) — allein
+das brachte 19,4 % ohne jeden Thread, mit Threads zusammen 86,6 %. Der Code wurde
+dabei kürzer: kein 126-MB-Zufallsarray und kein `Parallel.For` mit
+thread-lokalen Sammlern mehr.
+Verworfen: punktweise Parallelisierung (Deckel bei 16,6 % laut Amdahl); Unity
+Job System + Burst (Pipeline hängt an ScriptableObjects, virtuellen Aufrufen und
+`Mathf.PerlinNoise` — Umbau hätte länger gedauert als die Aufgabe wert ist, und
+die Aufgabe nennt Threadpools ausdrücklich); Padding an den Kachelrändern nach
+Vorbild der Mesh-Normalen (funktioniert dort, weil die Höhe eine Funktion der
+Position ist — ein Poisson-Punkt ist dagegen ein Verlauf und lässt sich vom
+Nachbarn nicht nachrechnen).
+
+## 2026-08-05 — Kachelgrenzen-Ungenauigkeit bewusst akzeptiert
+Was: An den Kachelrändern kann der Poisson-Mindestabstand verletzt werden, weil
+Kacheln einander nicht kennen. Bleibt so, dokumentiert als bekannte Grenze.
+Warum: Bei 8×8 Kacheln entstehen ~28 km Nahtlänge auf 7,4 Mio Halme — optisch
+nicht wahrnehmbar. Die Alternativen kosten spürbar: ein Aufräumpass über die
+Randstreifen (machbar, ~0,5 % der Punkte) oder ein Schachbrett-Verfahren in zwei
+Phasen (halbiert die Parallelität). Bei Bäumen, wo einzelne Abstände auffallen,
+wäre der Aufräumpass nachzuholen.
+Verworfen: feinere Kachelung (verdoppelt die Nahtlänge je Halbierung und bringt
+bei gleichmäßiger Grasdichte keine bessere Lastverteilung).
+
+## 2026-08-05 — Laufzeit-Spawner für instanziertes Placement
+Was: `RuntimePlacementSpawner` auf dem Placement-Root erzeugt beim Szenenstart je
+instanziertem Placeable-Typ ein Kind mit `InstancedRenderer`; `Init` nimmt die
+Anzahl der Messläufe mit. Das Editor-Tool bleibt unverändert daneben bestehen.
+Warum: Der Gras-Renderer entstand bisher nur durch den Tool-Klick — im Build gab
+es das Objekt nicht, also lief kein Placement und es war nichts zu messen. Der
+gesamte Placement-Code lag ohnehin schon in `Scripts/`, nur der Auslöser fehlte.
+Zieht damit den Roadmap-Punkt „Editor-Tool und Laufzeit als zwei Aufrufer
+derselben Stufen" für Gras vor.
+Verworfen: die vom Tool erzeugten Objekte in der Szene speichern (macht
+generierten Inhalt zum Szeneninhalt und widerspricht dem Szenen-Vertrag);
+GameObject-Typen gleich mitziehen (eigener Baustein, Millionen Objekte).

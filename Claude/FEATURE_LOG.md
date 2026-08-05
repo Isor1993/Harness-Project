@@ -227,3 +227,30 @@ Format: `- JJJJ-MM-TT — Feature (1–2 Sätze: was und wo)`
   `GrassCellBuilder` komponiert jetzt Prefab-Root-Scale und -Rotation in die
   Matrix (`prefabScale * placement.Scale`) wie der GameObject-Weg — vorher
   wurde Gras bei Root-Scale 0,3 um Faktor 3,3 zu groß gezeichnet.
+- 2026-08-05 — Messinfrastruktur für die Threading-Abgabe
+  (`Systems/TerrainGenerator/Scripts/`): `PlacementMetrics` (struct) trägt die
+  Stufenzeiten aus dem Placer heraus, `InstancedRenderer` misst Exclusion,
+  Zellenbau und Gesamtzeit und loggt sie in `#if UNITY_EDITOR ||
+  DEVELOPMENT_BUILD`; Feld `Measurement Runs` wiederholt den Rebuild für
+  Messreihen. Geprüft im Development Build, 4 Läufe je Version.
+- 2026-08-05 — `RuntimePlacementSpawner` (`Systems/TerrainGenerator/Scripts/`):
+  erzeugt beim Szenenstart je instanziertem Typ eine Gruppe mit
+  `InstancedRenderer`, sodass Gras auch ohne Editor-Tool im Build entsteht.
+  Sitzt auf „Generated Placement", überspringt Gruppen, die das Tool schon
+  angelegt hat. Geprüft: Play-Mode und Build zeigen Gras, Stacktrace bestätigt
+  den Laufzeit-Pfad.
+- 2026-08-05 — Placement kachelweise parallelisiert: `ObjectPlacer` teilt die
+  Welt in `PlacementTilesPerAxis`² Kacheln, jede sampelt und filtert mit eigenem
+  Generator, `Parallel.For` über die Kacheln; `GrassCellBuilder` baut Matrizen
+  und Bounds ebenfalls parallel. Neu dafür `CurveLookup` (AnimationCurve als
+  thread-sichere Tabelle, genutzt von `TerrainConfig` und `NoiseMaskDensity`).
+  Ladezeit des Gras-Rebuilds 122,7 s → 16,5 s, Punktzahl praktisch unverändert
+  (+0,17 %). Einzelheiten in DECISIONS und TDD_NOTES 2026-08-05.
+- 2026-08-05 — `ExclusionArea` (`Systems/TerrainGenerator/Scripts/`):
+  Exclusion-Zone als reine Zahlen, einmal per `PlacementExclusion.ToArea` aus dem
+  Transform aufgelöst; der Filter testet danach ohne Unity-Zugriff. Vorher wurde
+  `transform` je geprüftem Punkt gelesen (~15 Mio Zugriffe). Stufe 2,57 s →
+  0,97 s, Gesamtladezeit 12,4 s. `PlacementExclusion.Contains` entfällt.
+- 2026-08-05 — `FpsDisplay` (`Systems/Diagnostics/Scripts/`): schreibt Frame-Rate
+  und Frametime gemittelt über ein Intervall in ein HUD-Label; misst ungeskalierte
+  Zeit, damit Pause die Anzeige nicht verfälscht.
