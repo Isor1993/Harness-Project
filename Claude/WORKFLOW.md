@@ -13,7 +13,9 @@ Ownership: Session-Typen und Session-Disziplin.
   `Update V <nächste Nummer>` (vierstellig hochgezählt, z. B. V 0.0003)
   plus fertige Description (was die Session geändert hat). Titel und
   Description immer auf Englisch — das Repo ist englischsprachig.
-  Isor committet selbst über sein Git-Tool.
+  Isor committet selbst über **GitHub Desktop**: Der Vorschlag kommt
+  deshalb als zwei kopierbare Textblöcke „Summary" und „Description",
+  nie als `git commit`-Befehl. Claude committet und pusht nicht.
 - Max. 2–4 parallel offene Sessions.
 - Session-Schnitt an der Baustein-Grenze, nicht am Kontext-Balken:
   Baustein fertig → Sichern → Commit → /clear. Einen neuen Baustein

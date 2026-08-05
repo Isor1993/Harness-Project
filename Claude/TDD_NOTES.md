@@ -299,3 +299,52 @@ Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
   Szene halten (nur Szene → Prefab). Alles, was aus dem Village-Prefab heraus auf
   Spieler oder GameController zeigen müsste, braucht ein ScriptableObject als
   Treffpunkt oder eine Laufzeit-Suche.
+- 2026-08-04 — [Rendering] Gras ohne GameObjects: `Graphics.RenderMeshInstanced`
+  (Unity 6; `DrawMeshInstanced` überholt) zeichnet max. 1023 Instanzen je
+  Aufruf → Schleife in 1023er-Fenstern über das Matrix-Array (start/count als
+  Parameter, Array bleibt ganz). Material braucht „Enable GPU Instancing",
+  sonst `InvalidOperationException`. Aufruf gilt nur einen Frame → `Update` +
+  `[ExecuteAlways]` für den Editor.
+- 2026-08-04 — [Rendering] Culling je Zelle statt je Instanz:
+  `RenderParams.worldBounds` ist die Einheit, die Unity prüft. Eigenes
+  Zellgitter, nicht das Chunk-Gitter (1023er-Batchgrenze vs.
+  65.535-Vertexgrenze — zwei Zwänge, zwei Gitter; optimale Kante =
+  √(1023 / Dichte je m²)). Bounds aus den Fußpunkten wachsen lassen
+  (Encapsulate) + Halmhöhe als Padding (`mesh.bounds.size.y ×
+  prefabScale.y × ScaleMax`), sonst cullt die Box Halmspitzen weg.
+  Zellgröße als Regler: kleiner = präziseres Culling (auch hinter der
+  Kamera), mehr Draw Calls.
+- 2026-08-04 — [Performance] Dreiecks-Budget schlägt Draw Calls: Instancing
+  senkte die Aufrufe (138 Draw Calls für 27k Instanzen vs. 770 für 770
+  GameObjects), aber 190k Büschel × 2.664 Tris = 507 Mio Dreiecke → 4,5 FPS,
+  GPU-limitiert. Fix: LOD-Meshpaar (Halm 20/7 Tris, Referenzsysteme nutzen
+  1–9) + Distanzwahl je Zelle → ~12 Mio Tris, 87+ FPS. Lektion: zwei Regler
+  multiplizieren sich (Halme je Büschel × Büschelzahl); Editor-Stats waren
+  der Beweis, Profiler-Zahlen im Editor dagegen von EditorLoop/Deep Profile
+  dominiert — echte Messung nur im Development Build.
+- 2026-08-04 — [Architektur] Rendering-Zerlegung wie die Platzierung:
+  Settings als Datenkomponente am Prefab (`GrassRenderProfile`), Entscheidung
+  als eigene statische Stufe (`GrassLodSelector`: Zelle+Kamera+Profil →
+  None/High/Low), Renderer zeichnet nur. Unitys LODGroup unbrauchbar ohne
+  Renderer-Komponenten; Mesh LOD (forceMeshLod) verworfen wegen
+  Auto-Vereinfachung. Gleicher Schnitt wie GPU Instancer (LODGroup als
+  Datenquelle, eigene Umschaltung).
+- 2026-08-05 — [Platzierung] PlacementExclusion als Filterstufe zwischen
+  Placer und Konsumenten: Komponente am Objekt bringt die Freifläche mit
+  (Kreis/Box; `Contains` in der Komponente — neue Form ändert den Filter
+  nicht, gleiche Offen/Geschlossen-Linie wie DensityStrategy). Rand = halbe
+  Objektbreite, sonst gilt nur „Mittelpunkt frei", nicht „Fläche frei" —
+  breite Büschel ragen sichtbar über die Kante.
+- 2026-08-05 — [Platzierung] Perlin braucht Kontrast: roh liegen die Werte
+  bei ~0,35–0,65 → als Annahme-Wahrscheinlichkeit „überall ≈ 50 %",
+  gleichmäßiges Rauschen statt Flecken; Scale ohne sichtbaren Effekt
+  (Beleg: 266k/265k/276k Objekte bei Scale 5/100/600). Remap-Kurve
+  (0,42→0, 0,58→1) erzeugt echte Kahl-/Dichtflächen, erst dann steuert
+  Scale die Fleckengröße.
+- 2026-08-05 — [Platzierung] Instancing-Parität mit dem GameObject-Weg:
+  Prefab-Root-Scale und -Rotation in die Matrix komponieren
+  (`prefabScale * placement.Scale`) — vergessen = Gras 3,3× zu groß bei
+  Root-Scale 0,3. Dritte Stelle derselben Lektion „komponieren statt
+  ersetzen" (nach FromToRotation×Yaw und SpawnType); Konsequenz: abgeleitete
+  Größen (Halmhöhe fürs Bounds-Padding, Exclusion-Rand) müssen die
+  Prefab-Scale mitrechnen.

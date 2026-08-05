@@ -188,3 +188,42 @@ Format: `- JJJJ-MM-TT — Feature (1–2 Sätze: was und wo)`
   Sheep-Prefabs verdrahtet, fehlende Zuweisung meldet eine Warnung in `Awake`.
   Verifiziert im Play Mode: zweites Schaf ohne Prompt, nach dem Freilassen wieder
   zähmbar.
+- 2026-08-03 — Prefab-Painter (`Systems/PrefabPainter/Editor/`, MVP wie das
+  Terrain-Tool): Fenster + Presenter + `PainterPalette`-Asset mit
+  `PaintBrush`-Rezepten (Single/Scatter/Line, Radius, MinSpacing, Zufalls-
+  Yaw/Tilt/Scale, Bottom-Snap, Kategorie-Gruppen), malt Prefabs per Raycast
+  auf beliebigen Untergrund, Objekte darüber blocken den Platz, Erase im
+  Radius, Drop-to-Ground für die Selektion, alles Undo-registriert.
+  Editor-Hilfstool, ausdrücklich nicht Abgabe-Umfang. (Doku nachgetragen
+  2026-08-05 — die Bau-Session hatte die Pflicht ausgelassen.)
+- 2026-08-04 — Gras-Rendering per GPU-Instancing
+  (`Systems/TerrainGenerator/Scripts/`): `PlaceableRenderMode` je Placeable
+  (GameObjects/Instanced, GameObjects bleibt 0), `GrassCellBuilder` zerlegt
+  die Placement-Liste in Zellen (`GrassCell`-struct: `Matrix4x4[]` +
+  `Bounds`), `InstancedRenderer` (`[ExecuteAlways]`, sitzt auf der
+  Typ-Gruppe) baut die Zellen bei OnEnable/Init aus dem `placementSeed` neu
+  — Matrizen werden nie serialisiert — und zeichnet je Zelle in
+  ≤1023er-Batches per `Graphics.RenderMeshInstanced`, Schatten aus;
+  `SpawnType` im Presenter verzweigt nach RenderMode. Verifiziert: Gras
+  zeichnet ohne GameObjects, Zell-Culling greift sichtbar.
+- 2026-08-04 — Gras-LOD + Render-Settings am Prefab: `GrassRenderProfile`
+  (Datenkomponente am Gras-Prefab — LowDetailMesh, LodDistance,
+  RenderDistance, CellSize), `GrassLodSelector` entscheidet je Zelle
+  None/High/Low nach Kamera-Distanz, der Renderer zeichnet nur noch.
+  Low-Büschel in Blender aus dem Original abgeleitet (Halm 20 → 7 Tris via
+  Dissolve, Normals per Normal-Edit-Modifier nach oben, Unity-Import
+  „Normals: Import"). Von 507 Mio auf ~12 Mio Dreiecke, 4,5 → ~87 FPS im
+  Editor; 27k Gras-Instanzen in 138 Draw Calls.
+- 2026-08-05 — PlacementExclusion (`Systems/TerrainGenerator/Scripts/`):
+  Komponente markiert Freiflächen (Kreis/Box, Center-Offset, dreht mit dem
+  Objekt, Gizmo immer sichtbar); `PlacementExclusionFilter` als eigene Stufe
+  zwischen Placer und beiden Spawn-Wegen (Instanced und GameObjects) wirft
+  Platzierungen darin raus, Rand = halbe Objektbreite aus den Mesh-Bounds.
+  Formprüfung lebt in der Komponente (`Contains`), der Filter kennt keine
+  Formen. Verifiziert am Haus: Gras- und Baumkante folgen der Zone.
+- 2026-08-05 — NoiseMask-Kontrastkurve + Instancing-Transform-Fix:
+  `NoiseMaskDensity` remappt den Perlin-Wert per AnimationCurve zu echten
+  Kahl-/Dichtflächen (roh lag alles bei ~0,5 → gleichmäßiges Ausdünnen);
+  `GrassCellBuilder` komponiert jetzt Prefab-Root-Scale und -Rotation in die
+  Matrix (`prefabScale * placement.Scale`) wie der GameObject-Weg — vorher
+  wurde Gras bei Root-Scale 0,3 um Faktor 3,3 zu groß gezeichnet.

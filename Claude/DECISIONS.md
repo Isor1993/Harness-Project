@@ -798,3 +798,78 @@ Unitys Terrain-Detail-System (setzt Unitys `Terrain`-Komponente voraus, das Terr
 ist selbst gebaut); `BatchRendererGroup` mit Culling je Halm (großes Gerät, bleibt im
 Nach-Abgabe-Block); Entfernungs-Abschneider jetzt schon bauen (bleibt
 Ein-Zeilen-Reserve, falls das Frustum-Culling allein nicht reicht).
+
+## 2026-08-04 — Gras-Render-Settings am Prefab, LOD-Wahl als eigene Stufe
+Was: Die Rendering-Einstellungen (LowDetailMesh, LodDistance, RenderDistance,
+CellSize) liegen als reine Datenkomponente `GrassRenderProfile` am Gras-Prefab,
+nicht in der TerrainConfig. Die Distanz-Entscheidung je Zelle (None/High/Low)
+trifft `GrassLodSelector` als eigene statische Stufe; der `InstancedRenderer`
+holt Daten und zeichnet nur noch.
+Warum: Die TerrainConfig begann alles Mögliche aufzusammeln (Fattening-Check
+aus den CODE_GUIDELINES schlug an — ein Render-Abstand ist keine
+Terrain-Generierung); am Prefab stehen die Werte da, wo das Gras ist, und
+jeder Typ bringt seine eigenen mit. Die Selector-Stufe ist getrennt, damit
+Fade o. Ä. später dazukommen kann, ohne den Zeichencode anzufassen — gleicher
+Schnitt wie die kommerzielle Referenz (GPU Instancer: LODGroup als
+Datenquelle, Umschaltung im eigenen Renderer).
+Verworfen: `grassCellSize`/`grassRenderDistance` in der TerrainConfig (gebaut
+04.08., wieder ausgebaut); ScriptableObject statt Komponente (lohnt erst,
+wenn mehrere Prefabs dieselben Werte teilen); Unitys LODGroup (arbeitet auf
+Renderer-Komponenten — beim Instancing existieren keine); Unity-6 Mesh LOD /
+`forceMeshLod` (automatische Vereinfachung, verzieht dünne Halme wie
+Decimate); reines Distanz-Culling als Kugel um die Kamera (gebaut 04.08.,
+wieder raus — zeichnet auch hinter dem Rücken und löste das eigentliche
+Dreiecks-Problem nicht).
+
+## 2026-08-04 — Gras-Detailproblem: LOD-Meshpaar von Hand statt Automatik
+Was: Das Detail-Büschel (2.664 Dreiecke, ~110 Halme) bleibt für die Nähe; für
+die Ferne ein handgebautes Low-Büschel (~30 Halme à 7 Dreiecke), aus dem
+Original abgeleitet: Kopie → Halme ausdünnen → Kantenringe per Dissolve
+auflösen (nie Delete — Löcher) → Normals per Normal-Edit-Modifier senkrecht
+(stylized Flächenlicht) → FBX-Export mit Apply Modifiers, Unity-Import
+„Normals: Import".
+Warum: Instancing senkt Draw Calls, nicht Dreiecke — 190k Büschel × 2.664 =
+507 Mio Tris = 4,5 FPS, GPU-limitiert; Budget liegt bei ~15–20 Mio. Referenz-
+Grassysteme nutzen 1–9 Tris je Halm-LOD. Ableiten statt Neubauen hält
+Silhouette und Proportionen identisch → kein sichtbarer Sprung beim
+LOD-Wechsel.
+Verworfen: Decimate/automatisches Vereinfachen (hat das erste LowPoly
+verzogen — legt Dreiecke frei zusammen, Form kippt); Grass-Cards mit
+Alpha-Textur (Shader-Bend/Bewegung auf Flächen sichtbar schlechter — bewusste
+Design-Entscheidung für echte 3D-Halme); fertiges Asset-Pack (Stil-Bruch,
+das Paar war schneller selbst abgeleitet).
+
+## 2026-08-05 — PlacementExclusion: Freiflächen als Komponente am Objekt
+Was: `PlacementExclusion` (Kreis oder Box, Center-Offset, dreht mit dem
+Objekt, Gizmo immer sichtbar) markiert Flächen, in die der Placer nichts
+setzt. `PlacementExclusionFilter` als eigene Stufe zwischen `ObjectPlacer`
+und beiden Konsumenten (InstancedRenderer und SpawnType). Die Formprüfung
+lebt in der Komponente (`Contains`); der Rand wächst um die halbe
+Objektbreite aus den Mesh-Bounds.
+Warum: Jedes Objekt bringt seine Freifläche selbst mit — Haus hinsetzen
+genügt, keine zentral gepflegte Liste, die vom Szenenstand abdriftet
+(gleiche Linie wie GrassRenderProfile: Daten ans Objekt). Filter
+formunabhängig → neue Form ändert ihn nicht (wie DensityStrategy). Der Rand
+ist nötig, weil der Placer Fußpunkte prüft: „Mittelpunkt draußen" hieße
+sonst „Halme ragen trotzdem rein". Ersetzt die geplante Blocker-Liste und
+die angedachte Plateau-Sonderprüfung im Placer.
+Verworfen: Blocker-Liste im Placer (zentrale Pflege); Dorfkreis-Prüfung
+gegen PlateauCenter/Radius (deckt nur das Plateau, nicht einzelne Objekte);
+Laufzeit-Spawn der Schafe als Fix fürs Aufsetzen (Umbau der ganzen
+Herden-Verdrahtung — nach der Abgabe, mit „Pipeline runtime-fähig"); Name
+`GrassExclusion` (galt nach dem Anschluss an SpawnType nicht mehr nur für
+Gras — umbenannt, die eine gesetzte Zone neu verdrahtet).
+
+## 2026-08-05 — NoiseMask bekommt eine Kontrastkurve
+Was: `NoiseMaskDensity` schickt den Perlin-Wert durch eine AnimationCurve
+(Default: bis 0,42 → 0, ab 0,58 → 1, dazwischen Anstieg); erst das Ergebnis
+ist die Annahme-Wahrscheinlichkeit.
+Warum: Perlin liegt fast vollständig bei ~0,35–0,65 — als Wahrscheinlichkeit
+heißt das „überall ≈ 50 %": gleichmäßiges Ausdünnen statt Flecken, und Scale
+hatte sichtbar keinen Effekt (Beleg: 266k/265k/276k Objekte bei Scale
+5/100/600). Die Kurve erzeugt echte Kahl- und Dichtflächen; erst dadurch
+steuert Scale die Fleckengröße. Weniger Objekte bei lebendigerem Bild —
+und dasselbe Werkzeug wie die HeightCurve (Konsistenz, live tunebar).
+Verworfen: festes Formel-Remap (SmoothStep o. Ä. — unsichtbar und nicht pro
+Asset tunebar); minSpacing vergrößern (dünnt gleichmäßig aus, erzeugt keine
+Flecken).

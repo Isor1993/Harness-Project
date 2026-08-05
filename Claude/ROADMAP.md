@@ -31,6 +31,8 @@ verlangt; danach wird er wieder aktiv ausgebaut.
   (2026-07-18 bis 2026-07-26) — Einzelheiten im FEATURE_LOG.md
 - [x] GDD.md als Short GDD: Design-Absicht Isor's Tower, Maßstab für die
   Phase nach der Abgabe (2026-07-29)
+- [x] Gras-Instancing + LOD + PlacementExclusion + Prefab-Painter
+  (2026-08-03 bis 2026-08-05) — Einzelheiten im FEATURE_LOG.md
 
 ## Als Nächstes — bis zur Uni-Abgabe (2026-08-21)
 1. [ ] **Village spielbar aufbauen.** Zerfällt in zwei Hälften, die
@@ -50,27 +52,11 @@ verlangt; danach wird er wieder aktiv ausgebaut.
      seinen ersten Nutzer. Mitzufixen: `Sheep.HandleDamage` flieht nur bei
      `Sense.CurrentThreat != null` — der Spieler liegt auf Layer `Player`,
      ein Treffer würde sonst Schaden machen, ohne dass das Schaf wegläuft.
-   - [ ] **Prefab-Pinsel — Hilfstool, ausdrücklich nicht Teil der Abgabe**
-     (2026-08-03): Prefab auswählen und mit der Maus aufs Terrain malen —
-     Radius, Streuung, zufälliger Yaw und Scale. Hängt immer in die
-     `Village`-Prefab-Wurzel ein, **nie** unter `Generated Terrain` (der
-     Presenter löscht diesen Ast bei jedem Generate, siehe DECISIONS
-     2026-07-30). Zweck: Fackeln, Bäume und Grasbüschel im Dorf setzen,
-     statt jedes Objekt einzeln zu platzieren — damit das Village-Prefab
-     schnell fertig wird und Punkt 2 starten kann. Claude baut das Tool
-     komplett, Isor benutzt es. Design **und** Bau in einer eigenen Session.
-     Vorab **offen**, dort zu entscheiden: Pinselform (ein Objekt pro Klick
-     oder Streuung im Radius); Höhe per Raycast gegen den Collider oder
-     direkt über `HeightmapGenerator.SampleHeight`; ob Löschen mitgebaut wird
-     oder Undo und Entf genügen; ob Objekte an der Boden-Normale kippen wie
-     im `ObjectPlacer` oder immer aufrecht stehen.
-   - [ ] **Placer lässt den Dorfkreis aus:** Der `ObjectPlacer` filtert heute
-     nur Wasser, Höhenband, Dichte und Steigung — eine Plateau-Prüfung fehlt,
-     er würde mitten durchs Dorf pflanzen. Abstandsvergleich gegen
-     `PlateauCenterX/Z` + `PlateauRadius` (liegt alles schon in der
-     `TerrainConfig`) als **erste, billigste** Stufe, vor dem `SampleHeight`-
-     Aufruf. Voraussetzung dafür, dass festes Dorf und prozedurale
-     Bepflanzung sich nicht überlagern; gehört fachlich zu Punkt 2.
+   - [x] Prefab-Pinsel gebaut (2026-08-03, `Systems/PrefabPainter/`) —
+     Hilfstool, nicht Abgabe-Umfang; Einzelheiten im FEATURE_LOG.md
+   - [x] Placer spart Bebautes aus — gelöst über `PlacementExclusion`
+     (Komponente am Objekt statt Plateau-Prüfung im Placer, 2026-08-05,
+     DECISIONS 2026-08-05); wirkt auf beiden Spawn-Wegen
    **1b — erst nach Punkt 2, weil jede Terrain-Änderung die NavMesh-Bake
    wegwirft:**
    - `Village`-Prefab aufbauen: Häuser (Asset oder Primitive — **offen**),
@@ -79,25 +65,18 @@ verlangt; danach wird er wieder aktiv ausgebaut.
    - NPCs: Herde handgesetzt im Prefab, Goblins per Placer im Umland
    - Bestehendes prüfen: zwei aktive Kameras in `Village.unity`,
      Dubletten-Prefab `Torch .prefab`, Birken-Material am Fackel-Mesh
-2. [ ] **Gras-Rendering und Verteilung für die Abgabe finalisieren:**
-   - [ ] **GPU-Instancing bauen** (entschieden 2026-08-04, konkretisiert
-     DECISIONS 2026-07-26) — Voraussetzung für alles Weitere in diesem
-     Punkt: `RenderMode` je Placeable, `InstancedRenderer` als
-     `[ExecuteAlways]`-Komponente, Verzweigung in
-     `TerrainToolPresenter.SpawnType`. Vorgezogen aus dem Nach-Abgabe-Block,
-     weil erst dadurch zur Laufzeit etwas Threadbares entsteht (Punkt 4)
-   - Weltgröße für die Abgabe festlegen — nach dem Instancing eine reine
-     Umfangs-Frage, nicht mehr die Crash-Grenze; minSpacing dann nach Optik
-     wählen und `grassCellSize` nachziehen
-   - Verteilung ungleichmäßiger machen: dichte und lichte Flächen statt
-     gleichmäßigem Teppich. Die NoiseMask liefert fast nur Werte um 0,5
-     (Perlin) — Kontrast über eine Remap-Kurve o. Ä. herstellen, damit
-     weniger Halme nötig sind
-   - Gras-Mesh: die teurere, schönere Variante nutzen — der Preis hing nie
-     an den Dreiecken, sondern an der Objektzahl; die reduzierte Version
-     bleibt Notfall-Fallback
-   - Falls Zeit: Blocker-Liste befüllen (Gras meidet Bäume/Häuser —
-     macht die Prioritätsreihenfolge erst wirksam)
+2. [x] **Gras-Rendering und Verteilung finalisiert** (2026-08-04/05,
+   Einzelheiten im FEATURE_LOG.md, Begründungen in DECISIONS 2026-08-04/05):
+   - [x] GPU-Instancing gebaut — Pipeline `PlaceableRenderMode` →
+     `GrassCellBuilder`/`GrassCell` → `InstancedRenderer`, Verzweigung in
+     `SpawnType`; damit existiert zur Laufzeit das Messobjekt für Punkt 4
+   - [x] Gras-LOD statt „schön ODER schnell": `GrassRenderProfile` am
+     Prefab + `GrassLodSelector` je Zelle; Low-Büschel handgebaut —
+     507 Mio → ~12 Mio Dreiecke, 4,5 → ~87 FPS
+   - [x] Weltgröße bleibt 2048 m, HeightMultiplier 700 (2026-08-05);
+     bei Problemen dann neu bewerten
+   - [x] Verteilung ungleichmäßig: Kontrastkurve in `NoiseMaskDensity`
+   - [x] Blocker-Bedarf gelöst über `PlacementExclusion` (siehe 1a)
 3. [ ] **Schriftliche Abgaben + Baseline-Messung:** TDD aus TDD_NOTES.md
    generieren, plus UML-Klassendiagramm und Ablaufdiagramm fürs Tool
    (Pflicht laut ASSIGNMENT_TOOL); akademische Aufgabe — eine
@@ -106,7 +85,14 @@ verlangt; danach wird er wieder aktiv ausgebaut.
 4. [ ] **Uni: Threadoptimierung** (K2, K3, S3; **formativ 2026-08-07**) —
    Threading in die fertige Pipeline einbauen, erneut messen, Vorher/
    Nachher dokumentieren. Setzt Punkt 3 voraus: gemessen wird eine
-   fertige Pipeline, keine Baustelle.
+   fertige Pipeline, keine Baustelle. Laufzeit-Messobjekt: der
+   Gras-Rebuild beim Laden (Poisson → Filter → Matrizen; entschieden
+   2026-08-05, Messungen vor/nach dem Threading statt jetzt).
+   Parallelisierbar: Filter und Matrizenbau; das Bridson-Sampling bleibt
+   sequenziell (jeder Punkt hängt von den vorherigen ab) — begründet
+   dokumentieren. Fallen: `Mathf.PerlinNoise` läuft nicht unter Burst
+   (→ `Unity.Mathematics.noise`); echte Messungen nur im Development
+   Build, nie im Editor (EditorLoop verfälscht).
 5. [ ] **Politur mit der Restzeit:** Audio, Post Processing / Volume,
    Menü, Tool-Layout — alles, was die Note hebt. Vorgemerkt aus der
    Interaktions-Session (2026-08-02): TMP-Font-Schärfe (Texte pixelig);
@@ -114,7 +100,13 @@ verlangt; danach wird er wieder aktiv ausgebaut.
    Prompt-UI-Stil (Box/Fade, Tastensymbol); HUD beim Pausieren ausblenden;
    Menü-Sortierung (Pause über HUD) + Maus/Tastatur-Moduswechsel; Sun Source
    explizit setzen; Kamera-Far-Plane an die finale Weltgröße koppeln
-   (Mond-Culling); Raycast-Target-Hygiene bei UI-Bildern.
+   (Mond-Culling); Raycast-Target-Hygiene bei UI-Bildern. Neu vorgemerkt
+   aus den Gras-Sessions (2026-08-04/05): Lichtblitz/Specular-Highlight
+   auf dem Terrain (Material-Smoothness bzw. Bloom prüfen);
+   `SheepSense.Update` auf `OverlapSphereNonAlloc` (2 KB GC je Frame);
+   Herden-Placeable tunen (Höhenband, MaxSlope, ShoreMargin) und
+   Boden-Aufsetzen nach dem NavMesh-Bake prüfen; Lightmap-Warnung des
+   generierten Terrains (Mesh hat keine UVs — Contribute GI ausschalten).
 6. [ ] **Gesamt-Review vor der Abgabe:** Bugs, halbfertige Stellen,
    Testen, Feedback einholen und umsetzen.
 
@@ -152,6 +144,11 @@ Reihenfolge noch offen, wird in einer eigenen Design-Session festgelegt.
    Ordnerstruktur-Regeln in CODE_GUIDELINES um die Innen-Struktur der Prefabs.
    Idealerweise *vor* dem Bau vieler Village-Prefabs (1b) — Aufwand gegen
    Abgabe-Zeit abwägen.
+8. [ ] **Gras-Rendering aus `Systems/TerrainGenerator/` herauslösen:**
+   eigener System-Ordner (Umzug im Unity-Editor, macht Isor manuell —
+   .meta-GUIDs); dabei LOD-Fade zwischen den Stufen und Laufzeit-Spawn
+   der Herden (statt Prefab-Verdrahtung; löst auch das Aufsetzen aufs
+   Gelände) mitdenken.
 
 ## Später (nur bei Bedarf)
 - Knowledge-Archivierung automatisieren
