@@ -83,6 +83,21 @@ verlangt; danach wird er wieder aktiv ausgebaut.
    UML-Klassendiagramm und Ablaufdiagramm fürs Tool (Pflicht laut
    ASSIGNMENT_TOOL); akademische Aufgabe — eine zusätzliche Quelle.
    Baseline-Messung ist mit Punkt 4 erledigt (2026-08-05).
+   **Vorgehen ab 2026-08-07:** Das bestehende TDD von oben nach unten
+   durchgehen — Kapitel gegen den heutigen Code prüfen, Veraltetes anpassen,
+   neue Kapitel und Diagramme einreihen. Gliederung bleibt, es wird nur ergänzt.
+   Stand 2026-08-06:
+   - Werkzeug für UML-Diagramme steht (DECISIONS 2026-08-06); Sheep-Komponenten-
+     diagramm erzeugt und geprüft. Offen: FSM-Extraktor, Formen für Ablaufpläne.
+   - Diagramm-Quelldateien gerettet und unter
+     `C:\IsorBackup\01_Uni\Semester_2\Diagramme_Quellen\` abgelegt.
+   - 16 kaputte Bilder im TDD: Isor setzt sie von Hand ein, **nach** dem Wechsel
+     von `.odt` auf `.docx` (die Konvertierung frisst sie sonst erneut).
+   - Dabei mitziehen: Die Uni-Systemgrenzen und die Unity-Ordnerstruktur
+     auseinanderhalten — im Projekt liegt derzeit noch alles unter einem System
+     (siehe Punkt 8). Beim Schreiben gleich sauber trennen, statt später.
+   - Zwei Portfolios mit sieben Aufgaben, vier Ordner davon noch leer
+     (`C:\IsorBackup\01_Uni\Semester_2\Abgabe\`).
 4. [x] **Uni: Threadoptimierung** (K2, K3, S3; formativ 2026-08-07) —
    Code und Messreihe fertig (2026-08-05): Gras-Rebuild 122,7 s → 12,4 s
    (−89,9 %) über vier dokumentierte Zwischenstände, Builds und Logs unter

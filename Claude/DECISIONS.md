@@ -935,9 +935,30 @@ Tragend ist die Reihenfolge in `CanInteract`: Die Schlafprüfung steht **hinter*
 dem `IsTamed`-Early-Return. Das Schlaf-Flag folgt der Tageszeit, nicht dem
 Zustand des Schafs — stünde die Prüfung davor, hinge ein gezähmtes Schaf bei
 Einbruch der Nacht bis zum Morgen am Spieler fest.
-Verworfen: Zähmen weckt ein schlafendes Schaf (berührte `_isSleeping`,
+Verworfen (Zähmen): Zähmen weckt ein schlafendes Schaf (berührte `_isSleeping`,
 `SleepingState` und die Hunger-Pause — drei Stellen für einen seltenen Fall);
 jedem State eine eigene Tame-Prüfung geben (verteilt dieselbe Logik auf sechs
 Dateien und muss bei jedem neuen State mitgepflegt werden); zusätzliche
 `IsCurrentState<DeadState>()`-Absicherung (`IsAlive` fängt es bereits zweifach
 ab, in `CanInteract` und in `ToggleTame`).
+
+## 2026-08-06 — UML-Diagramme werden erzeugt statt gezeichnet
+Was: Die Diagramme fürs TDD entstehen per Skript als fertige `.drawio`-Datei.
+Werkzeuge unter `C:\IsorBackup\05_Werkzeuge\Vorlagen\`: `uml_drawio.py`
+(Klassenkästen + UML-Linienstile), `diagramm_<name>.py` je Diagramm,
+`pruefer.py` (vergleicht das Ergebnis gegen den Quellcode). Claude bedient die
+Skripte, Isor ordnet einmal an; `positionen_lesen()` übernimmt seine Anordnung
+bei jeder Neuerzeugung. Erstes erzeugtes Diagramm: Sheep-Komponentensystem,
+17 Klassen, 18 Beziehungen, Prüfer meldet null Abweichungen.
+Warum: Die alten Diagramme sind veraltet, weil Aktualisieren zu teuer war —
+alles von Hand, bei jeder Code-Änderung neu. Die Aufteilung folgt den Stärken:
+Die Maschine übernimmt Korrektheit (Namen direkt aus dem Code, Linienarten,
+Vollständigkeit), Isor die Optik. Genau die Korrektheit war das Problem
+(zwei falsche `HerdManager`-Methodennamen fielen erst beim Testlauf auf), die
+Optik nie. Der Prüfer ersetzt das Gegenlesen aller Member durch einen Bericht
+von wenigen Zeilen.
+Verworfen: Mermaid als Zwischenformat (draw.io importiert es, macht aber aus der
+gefüllten Kompositionsraute eine hohle Aggregation — die Bedeutung ändert sich
+still); automatische Anordnung (schweres Graph-Problem, Ergebnis wäre schlechter
+als 10–15 Minuten Schieben); Diagramme weiter von Hand zeichnen (der Zustand,
+der zu den veralteten Diagrammen geführt hat).
