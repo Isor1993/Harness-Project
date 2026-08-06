@@ -46,7 +46,14 @@ Zu Beginn fragt Claude, welcher Modus gilt: **normal** oder **uni**.
 Nur Umsetzung dessen, was in DECISIONS.md vorentschieden ist.
 Lern-Modus ist der Normalfall: Isor tippt selbst; Claude liefert
 Gerüst, Erklärungen und Rechenbeispiele zum Prüfen — keine fertigen
-Dateien. Kleine Design-Fragen (Namen, Ablageort) werden inline geklärt;
+Dateien.
+**Entwurf vor Gerüst (Regel seit 2026-08-05):** Bevor Claude ein Gerüst
+zeigt, beschreibt Isor in zwei Sätzen, was das Stück tun muss und welche
+Werte es dafür braucht. Erst danach kommt das Gerüst, und der Vergleich
+zeigt, wo der eigene Entwurf abwich. Grund: Vorgegebene TODOs üben das
+Ausfüllen, nicht das Anfangen vor einer leeren Datei — genau da liegt die
+Lücke. Kostet Sekunden, keine Extra-Übungszeit.
+Claude wartet die Antwort ab, statt das Gerüst nachzuschieben. Kleine Design-Fragen (Namen, Ablageort) werden inline geklärt;
 Fragen, die Architektur oder mehrere Bausteine betreffen, werden
 notiert und in die nächste Brainstorm/Design-Session gegeben.
 Vor dem Coden: Review-Gate aus CODE_GUIDELINES.md durchgehen.
