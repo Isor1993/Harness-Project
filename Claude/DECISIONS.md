@@ -917,3 +917,27 @@ derselben Stufen" für Gras vor.
 Verworfen: die vom Tool erzeugten Objekte in der Szene speichern (macht
 generierten Inhalt zum Szeneninhalt und widerspricht dem Szenen-Vertrag);
 GameObject-Typen gleich mitziehen (eigener Baustein, Millionen Objekte).
+
+## 2026-08-06 — Zähmen wirkt sofort, schlafende Schafe sind nicht zähmbar
+Was: `Sheep.ToggleTame()` schaltet das Flag um und erzwingt beim Zähmen den
+Wechsel in `FollowPlayerState`; das Freilassen bleibt ungezwungen.
+`SheepInteractable.CanInteract` liefert für ein schlafendes, ungezähmtes Schaf
+`false` — der Interactor verwirft das Ziel, der Prompt erscheint gar nicht.
+Dreht die Absicht vom 27.07.2026 um, den Zeitpunkt bewusst der FSM zu überlassen.
+Warum: Nur `PatrolState` und `OnAlertState` prüfen das Tame-Flag von sich aus;
+`Eating`, `Sleeping`, `Idle`, `Regroup`, `HerdMoving` und `Dodge` gar nicht. Ein
+fressendes Schaf reagierte erst beim Sattwerden, ein patrouillierendes erst am
+Wegpunkt, und in `OnAlert` kam die Reaktionszeit obendrauf — der Spieler wartete
+auf seinen eigenen Tastendruck. Das Freilassen braucht keinen Zwang, weil
+`FollowPlayerState.Tick()` `!IsTamed` ohnehin je Frame prüft; damit bleibt die
+ziehende FSM erhalten und nur der Eintritt wird gedrückt.
+Tragend ist die Reihenfolge in `CanInteract`: Die Schlafprüfung steht **hinter**
+dem `IsTamed`-Early-Return. Das Schlaf-Flag folgt der Tageszeit, nicht dem
+Zustand des Schafs — stünde die Prüfung davor, hinge ein gezähmtes Schaf bei
+Einbruch der Nacht bis zum Morgen am Spieler fest.
+Verworfen: Zähmen weckt ein schlafendes Schaf (berührte `_isSleeping`,
+`SleepingState` und die Hunger-Pause — drei Stellen für einen seltenen Fall);
+jedem State eine eigene Tame-Prüfung geben (verteilt dieselbe Logik auf sechs
+Dateien und muss bei jedem neuen State mitgepflegt werden); zusätzliche
+`IsCurrentState<DeadState>()`-Absicherung (`IsAlive` fängt es bereits zweifach
+ab, in `CanInteract` und in `ToggleTame`).

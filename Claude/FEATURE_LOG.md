@@ -254,3 +254,12 @@ Format: `- JJJJ-MM-TT — Feature (1–2 Sätze: was und wo)`
 - 2026-08-05 — `FpsDisplay` (`Systems/Diagnostics/Scripts/`): schreibt Frame-Rate
   und Frametime gemittelt über ein Intervall in ein HUD-Label; misst ungeskalierte
   Zeit, damit Pause die Anzeige nicht verfälscht.
+- 2026-08-06 — Zähmen reagiert sofort: `Sheep.ToggleTame()` wechselt beim Zähmen
+  direkt in `FollowPlayerState` (Freilassen bleibt ungezwungen — `FollowPlayerState`
+  steigt über `!IsTamed` selbst aus); `SheepInteractable.CanInteract` blendet den
+  Prompt für schlafende, ungezähmte Schafe aus, die `IsAsleep`-Prüfung sitzt hinter
+  dem `IsTamed`-Early-Return. Geprüft an sechs Fällen: fressendes und
+  patrouillierendes Schaf folgen sofort, schlafendes zeigt keinen Prompt, gezähmtes
+  bleibt bei Einbruch der Nacht freilassbar, Freilassen geht ohne Flackern nach
+  Regroup, Commander startet die Herdenbewegung wie zuvor. Begründung in
+  DECISIONS 2026-08-06.

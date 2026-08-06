@@ -400,3 +400,26 @@ Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
   gefüllt, nicht per einzelnem `Add`; `AddRange` kennt die Elementzahl vorher und
   wächst in einem Schritt. Änderung zurückgenommen. Beim Exclusion-Filter griff
   dasselbe Argument dagegen, weil dort einzeln angehängt wird.
+- 2026-08-06 — [Architektur/FSM] Ziehende Zustandsmaschine und die eine Stelle, an
+  der sie drücken muss: Die Sheep-FSM prüft ihre Bedingungen zustandsseitig — jeder
+  State fragt selbst ab, ob er wechseln will. Für Weltereignisse trägt das, für
+  Spieler-Eingaben nicht: Von zehn States prüften nur `PatrolState` und
+  `OnAlertState` das Tame-Flag, ein fressendes Schaf reagierte also erst beim
+  Sattwerden. Lösung ist kein Umbau, sondern ein gezielter Bruch — der Auslöser
+  stößt den Wechsel an (Push), und zwar nur in eine Richtung. Das Freilassen bleibt
+  ziehend, weil `FollowPlayerState` seine Abbruchbedingung ohnehin je Frame prüft.
+  Ergebnis: eine Zeile Push gegen sechs States mit eigener Prüfung.
+- 2026-08-06 — [Interaktion] Reihenfolge von Wächtern ist Logik, nicht Kosmetik:
+  In `SheepInteractable.CanInteract` muss die Schlafprüfung hinter „gezähmt darf
+  immer" stehen. Das Schlaf-Flag folgt der Tageszeit, nicht dem Zustand des Schafs
+  — davor stehend hätte es ein bereits gezähmtes Schaf bei Einbruch der Nacht bis
+  zum Morgen am Spieler festgehalten. Gleiche Klasse Fehler wie die
+  Quaternion-Reihenfolge (26.07.) und der Prompt-Cache (30.07.): Die Bausteine sind
+  einzeln richtig, erst ihre Anordnung entscheidet über das Verhalten.
+- 2026-08-06 — [Interaktion] Verweigern statt behandeln als Entwurfsmittel: Statt
+  Zähmen ein schlafendes Schaf aufwecken zu lassen (hätte `_isSleeping`,
+  `SleepingState` und die Hunger-Pause berührt), liefert `CanInteract` schlicht
+  `false`. Weil `PlayerInteractor` jedes Ziel mit `!CanInteract` verwirft, entfällt
+  der Fall samt Prompt ohne eine Zeile UI-Code. Das Interface trägt hier mehr als
+  eine Bedienbarkeits-Abfrage: Es ist die Stelle, an der Sonderfälle billig
+  ausgeschlossen werden können.

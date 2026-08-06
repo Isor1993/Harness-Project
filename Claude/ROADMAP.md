@@ -153,6 +153,16 @@ Reihenfolge noch offen, wird in einer eigenen Design-Session festgelegt.
    der Herden (statt Prefab-Verdrahtung; löst auch das Aufsetzen aufs
    Gelände) mitdenken.
 
+9. [ ] **Repo- und GitHub-System neu ordnen (eigene Design-Session):** Die Repos
+   wachsen stark, weil Texturen und andere Binärdateien mitversioniert werden —
+   Git legt jede Fassung vollständig ab, Binärdateien lassen sich nicht
+   deltakomprimieren, und gelöschte Dateien bleiben in der Historie. Zu klären:
+   was gehört überhaupt ins Repo und was in die Asset-Library unter
+   `C:\IsorBackup\03_AssetLibrary\`, ob Git LFS eingesetzt wird, wie `.gitignore`
+   je Repo aussehen muss, und wie mit der bereits gewachsenen Historie umgegangen
+   wird. Betrifft alle drei Repos. Erst nach der vollständigen Uni-Abgabe
+   (vorgemerkt 2026-08-06).
+
 ## Später (nur bei Bedarf)
 - Knowledge-Archivierung automatisieren
 - ClaudeSetup-artiges Editor-Setup-Script — erst wenn Isor sicher
