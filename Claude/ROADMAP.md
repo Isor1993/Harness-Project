@@ -91,8 +91,15 @@ verlangt; danach wird er wieder aktiv ausgebaut.
      diagramm erzeugt und geprüft. Offen: FSM-Extraktor, Formen für Ablaufpläne.
    - Diagramm-Quelldateien gerettet und unter
      `C:\IsorBackup\01_Uni\Semester_2\Diagramme_Quellen\` abgelegt.
-   - 16 kaputte Bilder im TDD: Isor setzt sie von Hand ein, **nach** dem Wechsel
-     von `.odt` auf `.docx` (die Konvertierung frisst sie sonst erneut).
+   - **Arbeitsdatei:** `01_Uni\Semester_2\Arbeitsdateien\TDD Softwareplanung.docx`
+     — nur noch diese anfassen. Der Wechsel von `.odt` auf `.docx` ist erledigt
+     (2026-08-06); die alten Stände liegen daneben im Sicherungsordner. Grund für
+     den Wechsel: Word übersetzt bei jedem Speichern einer `.odt` zwischen zwei
+     Formaten und verliert dabei Bildverankerungen — so gingen 16 Abbildungen
+     verloren.
+   - Die fehlenden Bilder setzt Isor selbst ein, und zwar **erst beim Durchgehen
+     des jeweiligen Kapitels** — die alten UML-Diagramme werden ohnehin durch die
+     neu erzeugten ersetzt, vorher einzusetzen wäre verlorene Arbeit.
    - Dabei mitziehen: Die Uni-Systemgrenzen und die Unity-Ordnerstruktur
      auseinanderhalten — im Projekt liegt derzeit noch alles unter einem System
      (siehe Punkt 8). Beim Schreiben gleich sauber trennen, statt später.
