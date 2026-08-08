@@ -114,6 +114,15 @@ verlangt; danach wird er wieder aktiv ausgebaut.
      Editor-Tool und die Threading-Umbauten — die fehlen dort komplett.
      Danach Kapitel 7 UML und Kapitel 8 Programmablaufplan, wo die neu
      erzeugten Diagramme eingereiht werden.
+   - **Arbeitsweise ab hier ändert sich** (Isor, 2026-08-08): Bis Kapitel 6.2
+     waren es Korrekturen an bestehendem Text — dort schreibt Claude direkt in
+     die Datei, und das hat sich bewährt. Die neuen Fachkapitel sind kein
+     Korrekturfall mehr: Isor formuliert selbst, Claude liefert Struktur,
+     geprüfte Fakten und Zahlen und glättet hinterher. Grund: Der Text soll von
+     ihm kommen, und das Durchgehen ist zugleich das Lernen des Stoffs.
+   - Beim Kapitel Weltgenerierung wird **gleichzeitig die Unity-Ordnerstruktur
+     angepasst** (Uni-Systemgrenzen gegen Unity-Ordner, siehe Punkt 8) — beides
+     zusammen, damit die Beschreibung zur endgültigen Struktur passt.
    - Der Prefab-Painter wird im TDD bewusst nicht erwähnt (Entscheidung Isor,
      2026-08-07). Wenn er auch nicht mit abgegeben werden soll, muss
      `Assets\Systems\PrefabPainter\` vor der Abgabe aus dem Projekt.
