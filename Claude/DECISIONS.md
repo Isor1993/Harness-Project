@@ -962,3 +962,76 @@ gefüllten Kompositionsraute eine hohle Aggregation — die Bedeutung ändert si
 still); automatische Anordnung (schweres Graph-Problem, Ergebnis wäre schlechter
 als 10–15 Minuten Schieben); Diagramme weiter von Hand zeichnen (der Zustand,
 der zu den veralteten Diagrammen geführt hat).
+
+## 2026-08-07 — Claude bearbeitet die TDD-Datei direkt
+Was: Änderungen am TDD schreibt Claude selbst in
+`01_Uni\Semester_2\Arbeitsdateien\TDD Softwareplanung.docx`, nicht mehr als
+Textblock zum Kopieren. Technisch wird nur `word/document.xml` als Text
+verändert, alle übrigen Archivteile werden unverändert übernommen — Bilder,
+Formatvorlagen und Beziehungen werden nicht angefasst. Vor jeder Änderung
+entsteht eine Kopie unter `Arbeitsdateien\Sicherung\` mit Zeitstempel; nach
+jeder Änderung wird geprüft, dass die Teilezahl gleich blieb und außer
+`document.xml` nichts abweicht. Bedingung: Die Datei darf in Word nicht offen
+sein. Bilder einfügen, Verzeichnisse erzeugen und Seitenumbrüche bleiben bei
+Isor. Neue Aufzählungspunkte werden aus einem bestehenden Punkt derselben
+Liste geklont, damit Nummerierung und Einrückung sicher stimmen.
+Warum: Der Weg über Textblöcke kostete pro Kapitel zweimal Arbeit — Isor musste
+einfügen, und Claude musste anschließend das ganze Dokument neu einlesen, um zu
+sehen, was angekommen ist. Diese Volldumps waren der mit Abstand teuerste Posten
+der Session. Direktes Schreiben spart sie vollständig. Dazu kommt Isors
+Lese-Rechtschreib-Schwäche: Abtippen erzeugt Fehler, Kopieren aus dem Chat
+schleppt Formatierung nach Word.
+Die frühere Zurückhaltung („Claude fasst die .docx nicht an") bezog sich auf den
+Verlust der 16 Abbildungen — der entstand aber durch Words Formatwechsel
+zwischen `.odt` und `.docx`, nicht durch XML-Bearbeitung.
+Verworfen: Textbausteine als `.txt` neben der Arbeitsdatei (ein Umweg mehr statt
+weniger, von Isor nach einem Versuch abgelehnt); Blöcke im Chat mit
+`Strg+Umschalt+V` (funktioniert, löst aber weder die Nacharbeit noch das
+Wiedereinlesen).
+
+## 2026-08-07 — Zeiterfassung im TDD tageweise, ohne Schätzspalte
+Was: Die neuen Zeitkapitel 5.3 bis 5.6 führen eine Zeile pro Arbeitstag statt
+pro Arbeitsschritt und haben nur noch vier Spalten — die Spalte „Geschätzte
+Zeit" entfällt. Die Gliederung folgt den vier Work Items aus Grindstone
+(`Semester2_PCG` 37:41, `Semester 2_Isor Tower` 27:24, `Thread Optimierung`
+9:56, `SoftwarePlanung` 7:44, zusammen 82:45). PCG und Engine-Tool stehen in
+einem gemeinsamen Kapitel.
+Warum: Feiner aufzuteilen als gemessen wurde hieße, die Stunden innerhalb eines
+Tages zu schätzen — erfundene Zahlen in einer Zeiterfassungstabelle. Die
+Tagessumme ist gemessen, und was an dem Tag entstand, steht datiert im
+FEATURE_LOG; damit ist jede Angabe belegt. Geschätzt wurde für diese Module
+nichts, also steht dort auch nichts; die Methodenänderung wird im Fließtext
+benannt statt kaschiert. PCG und Tool gemeinsam, weil das Tool die
+Bedienoberfläche der Pipeline ist und jede Pipeline-Stufe ihre Bedienung sofort
+mitbekam — eine getrennte Erfassung wäre nachträglich konstruiert.
+Festgehalten wird außerdem, dass die Werte eine Untergrenze sind: Tutorials in
+der Freizeit wurden nicht getrackt, und rund zehn Stunden Gras-Arbeit vom
+04./05.08. liegen unter „Isor Tower", gehören fachlich aber zur PCG-Aufgabe.
+Verworfen: Stunden nachträglich auf Einzelaufgaben verteilen; die Schätzspalte
+mit nachgereichten Werten füllen; die Gras-Stunden ins PCG-Kapitel umbuchen
+(hätte die Messung frisiert).
+
+## 2026-08-08 — Beschriftungen und Verweise im TDD sind Word-Felder
+Was: Alle 48 Beschriftungen wurden auf Zählfelder (`SEQ`) umgestellt und mit
+einer Textmarke umschlossen; alle 39 Verweise im Fließtext („siehe Abbildung
+19") wurden zu Verweisfeldern (`REF`) auf diese Marken. Vorher enthielt das
+Dokument kein einziges Feld, alle Nummern waren getippt. Kontrolle: sichtbarer
+Text vorher und nachher zeichengleich (85.453 Zeichen), kein Verweis ohne
+Textmarke, Archivteile 56 → 56.
+Warum: Die neuen Diagramme gehören in die Kapitel UML und Programmablaufplan,
+die **vor** dem Shader-Kapitel stehen. Jedes eingefügte Diagramm hätte von Hand
+31 Beschriftungen und 31 Verweise verschoben — bei jeder Einfügung neu. Zweiter
+Grund: Abbildungs- und Tabellenverzeichnis lassen sich ohne Felder überhaupt
+nicht erzeugen, und beide sind laut Formatierungsvorgaben Pflicht.
+Isors eigener Versuch scheiterte an der Alles-oder-nichts-Eigenschaft: Ein
+`SEQ`-Feld zählt nur andere `SEQ`-Felder, nie getippten Text. Eine einzelne
+automatische Beschriftung zwischen 47 getippten wird deshalb korrekt als
+„Abbildung 1" ausgewiesen und sieht dadurch kaputt aus.
+Merkposten für die Bedienung: `Alt+F9` schaltet zwischen Feldfunktion und Wert
+um — steht die Anzeige auf Feldfunktion, erscheinen alle Felder als Code,
+inklusive der Seitenzahl in der Fußzeile. `Strg+A` und `F9` aktualisiert die
+Werte.
+Verworfen: nur die Beschriftungen umstellen und die 39 Verweise am Ende von Hand
+prüfen (billiger, aber die Handarbeit fällt bei jeder Einfügung erneut an);
+Umstellung erst nach dem Einfügen der Diagramme (dann käme die Umnummerierung
+von Hand obendrauf).

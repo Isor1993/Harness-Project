@@ -86,6 +86,37 @@ verlangt; danach wird er wieder aktiv ausgebaut.
    **Vorgehen ab 2026-08-07:** Das bestehende TDD von oben nach unten
    durchgehen — Kapitel gegen den heutigen Code prüfen, Veraltetes anpassen,
    neue Kapitel und Diagramme einreihen. Gliederung bleibt, es wird nur ergänzt.
+   **Stand 2026-08-08 — Kapitel 1 bis 5 sind durch.** Claude schreibt die
+   Änderungen direkt in die `.docx` (DECISIONS 2026-08-07), Sicherungen unter
+   `Arbeitsdateien\Sicherung\`. Erledigt:
+   - Kapitel 1 Einleitung: Perspektive richtiggestellt (Prototyp ist First
+     Person), `Village Guild` → `Adventure Guild`.
+   - Kapitel 2 Entwicklungsumgebung: Unity-Version auf `6000.5.2f1`, Blender
+     und KI-Assistenz ergänzt, Tabelle 1 überarbeitet.
+   - Kapitel 4 Anforderungen: fehlende Anforderung „prozedurale Erweiterung"
+     ergänzt, 4.2 um sieben Punkte erweitert, **neu 4.3 Weltgenerierung,
+     4.4 Editor-Tool, 4.5 Spielerinteraktion**.
+   - Kapitel 5 Zeitplan: **neu 5.3 bis 5.6** mit Tabellen 4 bis 7 aus den
+     Grindstone-Daten (DECISIONS 2026-08-07); Asset-Tabelle ist dadurch von
+     Tabelle 4 auf Tabelle 8 gerückt.
+   - Beschriftungen und Verweise sind jetzt Word-Felder (DECISIONS 2026-08-08)
+     — neue Abbildungen nur noch über `Verweise → Beschriftung einfügen`, sonst
+     zählt Word sie nicht mit.
+   - Kapitel 6 Architekturübersicht, bestehende Teile geprüft: **6.1
+     DayNightSystem** (Tagesfortschritt und Phase sind zwei getrennte
+     Rechnungen — der alte Text behauptete das Gegenteil; `DayPhase.None`,
+     Nachreichen der Phase beim Anmelden, Schafe und Fackeln als Listener) und
+     **6.2 KI ProtoTyp Sheep** (vier fehlende Komponenten, Sheep-Absatz neu,
+     Zusätze bei Health/Sense/Move/Dodge/HerdManager; bei den States der
+     Dodge-Einstieg über `SheepStateBase.TryEnterDodge` und der Push beim
+     Zähmen). Die elf State-Beschreibungen selbst waren alle korrekt.
+   - **Als Nächstes in Kapitel 6: die neuen Unterkapitel** für Weltgenerierung,
+     Editor-Tool und die Threading-Umbauten — die fehlen dort komplett.
+     Danach Kapitel 7 UML und Kapitel 8 Programmablaufplan, wo die neu
+     erzeugten Diagramme eingereiht werden.
+   - Der Prefab-Painter wird im TDD bewusst nicht erwähnt (Entscheidung Isor,
+     2026-08-07). Wenn er auch nicht mit abgegeben werden soll, muss
+     `Assets\Systems\PrefabPainter\` vor der Abgabe aus dem Projekt.
    Stand 2026-08-06:
    - Werkzeug für UML-Diagramme steht (DECISIONS 2026-08-06); Sheep-Komponenten-
      diagramm erzeugt und geprüft. Offen: FSM-Extraktor, Formen für Ablaufpläne.
@@ -129,6 +160,24 @@ verlangt; danach wird er wieder aktiv ausgebaut.
    generierten Terrains (Mesh hat keine UVs — Contribute GI ausschalten).
 6. [ ] **Gesamt-Review vor der Abgabe:** Bugs, halbfertige Stellen,
    Testen, Feedback einholen und umsetzen.
+   **Endcheck TDD** (erst wenn der Text steht, Reihenfolge egal;
+   Regeln aus `C:\IsorBackup\01_Uni\_Regelwerk\Allgemeine_Formatierungs-
+   vorgaben.pdf`, gesammelt 2026-08-07):
+   - [ ] Wortanzahl auf der Titelseite eintragen
+   - [ ] Datum der Selbstständigkeitserklärung (steht auf 26.02.2026,
+     Rechtevereinbarung darunter schon auf 21.08.2026)
+   - [ ] Unterschrift auf beiden Erklärungen prüfen
+   - [ ] Inhalts-, Abbildungs- und Tabellenverzeichnis erzeugen — fehlen
+     komplett (45 leere Absätze zwischen Titelseite und Kapitel 1,
+     vermutlich beim .odt→.docx-Wechsel verloren); Beschriftungen liegen
+     bereits auf der Formatvorlage „Beschriftung", Word baut sie daraus
+   - [ ] „Isor's Tower" → kursiv ohne Anführungszeichen (Vorgabe:
+     Anführungszeichen ausschließlich für direkte Zitate, Eigennamen
+     kursiv) — ein Suchen-und-Ersetzen-Lauf über das ganze Dokument
+   - [ ] Seitenumbruch vor jedem Hauptkapitel prüfen
+   - [ ] Zeilenabstände und Leerzeilen im ganzen Dokument nachziehen —
+     durch die neuen Texte und Abbildungen sitzen die Umbrüche nicht mehr
+     (bewusst ans Ende gelegt, vorher wäre es doppelte Arbeit)
 
 ## Nach der Uni-Abgabe — Basiszustand für Isor's Tower
 Reihenfolge noch offen, wird in einer eigenen Design-Session festgelegt.
