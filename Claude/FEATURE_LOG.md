@@ -263,3 +263,27 @@ Format: `- JJJJ-MM-TT — Feature (1–2 Sätze: was und wo)`
   bleibt bei Einbruch der Nacht freilassbar, Freilassen geht ohne Flackern nach
   Regroup, Commander startet die Herdenbewegung wie zuvor. Begründung in
   DECISIONS 2026-08-06.
+- 2026-08-08 — Unity-Ordnerstruktur nach Uni-Systemgrenzen getrennt:
+  `Systems/TerrainGenerator/` in vier Systeme aufgeteilt — `WorldGeneration/`
+  (TerrainConfig, HeightmapGenerator, PlateauModifier, MeshBuilder, CurveLookup),
+  `ObjectPlacement/` (Placer, Placeable, Placement, Exclusion-Kette, `Density/`,
+  RuntimePlacementSpawner), `GrassRendering/` (Cell, CellBuilder, LodLevel,
+  LodSelector, RenderProfile, InstancedRenderer) und `TerrainTool/Editor/`
+  (Window, Presenter). 26 Skripte plus 6 Assets, keine Code-Änderung nötig —
+  die Dateien haben weder `namespace` noch `.asmdef`. Zieht ROADMAP-Punkt 8
+  (Gras herauslösen) mit vor.
+- 2026-08-08 — Vier UML-Klassendiagramme für den Terrain-Ast erzeugt
+  (`01_Uni\Semester_2\Diagramme_Quellen\`): Terrain-Pipeline (5 Klassen),
+  Platzierung inkl. Strategy-Muster (14), Gras-Rendering (8) und Editor-Tool
+  mit sichtbarem MVP-Aufbau (8). Je ein Skript unter `05_Werkzeuge\Vorlagen\`,
+  Prüfer meldet bei allen null Abweichungen gegen den Code.
+- 2026-08-08 — DayNightSystem (5 Klassen) und Sheep-FSM (14 Klassen) als
+  erzeugte Diagramme neu gebaut; die handgezeichneten Vorgänger sind archiviert.
+  `Sheep_System_UML` braucht keinen Ersatz — `Sheep_Komponenten` deckt es
+  vollständig ab und enthält sechs Klassen mehr.
+- 2026-08-08 — Diagramm-Werkzeug hält jetzt die gesamte Handarbeit über
+  Neuerzeugungen hinweg: Kastenpositionen (über den Klassennamen statt der Id),
+  Linien-Wegpunkte, Andockpunkte und die Lage der Multiplizitäts-Beschriftungen.
+  Andockpunkte an Member-Zeilen werden auf den Kasten umgerechnet (pixelgleich).
+  Neu `linienstaerke_setzen.py` für handgezeichnete Diagramme. Geprüft: zweiter
+  Lauf erzeugt alle sieben Dateien byte-identisch.

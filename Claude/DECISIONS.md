@@ -1035,3 +1035,61 @@ Verworfen: nur die Beschriftungen umstellen und die 39 Verweise am Ende von Hand
 prüfen (billiger, aber die Handarbeit fällt bei jeder Einfügung erneut an);
 Umstellung erst nach dem Einfügen der Diagramme (dann käme die Umnummerierung
 von Hand obendrauf).
+
+## 2026-08-08 — Unity-Ordner folgen den Uni-Systemgrenzen
+Was: `Systems/TerrainGenerator/` ist in vier Systeme aufgeteilt — `WorldGeneration/`,
+`ObjectPlacement/`, `GrassRendering/` und `TerrainTool/Editor/`. 26 Skripte plus
+6 Assets verschoben, keine Code-Änderung nötig.
+Warum: Das TDD-Kapitel beschreibt die Architektur, und die Beschreibung soll zur
+endgültigen Ablage passen statt zu einer, die kurz danach umgebaut wird. Der Umzug
+war zudem kostenlos: Keine der Dateien hat einen `namespace`, es gibt kein `.asmdef`
+— nichts konnte brechen. Zieht ROADMAP-Punkt 8 (Gras herauslösen) mit vor.
+Verworfen: Threading als eigener Ordner (die Parallelisierung sitzt in `ObjectPlacer`
+und `GrassCellBuilder`, also quer über zwei Systeme — ein eigener Ordner hätte sie
+auseinandergerissen); Umbau erst nach der Abgabe.
+
+## 2026-08-08 — TDD-Kapitel 6.3 nach Pipeline-Stufen statt nach Klassen
+Was: Kapitel 6.3 ist in sieben Unterkapitel entlang der Pipeline gegliedert
+(Überblick, Config, Heightmap, Plateau, Mesh, Placer, Gras-Rendering) statt in eine
+Überschrift je Klasse wie in 6.1 und 6.2.
+Warum: Eine Überschrift je Klasse hätte 24 Unterkapitel ergeben, und der Ablauf der
+Pipeline — das eigentlich Erklärungsbedürftige — wäre in der Liste untergegangen.
+Klassen werden innerhalb ihres Abschnitts genannt und erklärt.
+Verworfen: 24 Einzelkapitel (konsistent zum Rest, aber unlesbar); drei getrennte
+Hauptkapitel je Ordner (hätte die Pipeline als Zusammenhang zerschnitten).
+
+## 2026-08-08 — Vier neue Diagramme für den Terrain-Ast, Sheep-System braucht keins
+Was: Erzeugt wurden Terrain-Pipeline (5 Klassen), Platzierung (14, mit vollständig
+dargestelltem Strategy-Muster), Gras-Rendering (8) und Editor-Tool (8, MVP von links
+nach rechts lesbar). DayNightSystem und Sheep-FSM wurden neu erzeugt, die
+handgezeichneten Vorgänger archiviert.
+Warum: Die Tool-Aufgabe verlangt Klassendiagramm und Ablaufdiagramm, und für den
+gesamten Terrain-Ast existierte keines. Vier statt zwei Diagramme, weil ein einzelnes
+mit 25 Klassen unlesbar würde — das Sheep-Diagramm hat 17 und ist bereits voll.
+`Sheep_System_UML` wurde ersatzlos archiviert: `Sheep_Komponenten` deckt es
+vollständig ab und enthält sechs Klassen mehr.
+Verworfen: alle alten Diagramme sofort neu erzeugen (Prüfung zeigte nur einen harten
+Fehler; die Zeit gehört in die fehlenden Pflichtdiagramme).
+
+## 2026-08-08 — Diagramm-Werkzeug hält die Handarbeit über Neuerzeugungen
+Was: `positionen_lesen` ordnet über den **Klassennamen** zu statt über die Id; neu
+sind `kanten_lesen`/`kanten_wiederherstellen` für Linien-Wegpunkte, Andockpunkte und
+die Lage der Multiplizitäts-Beschriftungen. Andockpunkte an Member-Zeilen werden auf
+den Kasten umgerechnet. Linienstärke zentral als `LINIENSTAERKE = 2`.
+Warum: Vier Verlustwege sind im Praxisbetrieb aufgefallen — draw.io vergibt beim
+Kopieren neue Ids; es dockt gezogene Enden an einzelne Member-Zeilen an; es lässt
+eine Koordinate von 0 weg; und Wegpunkte hielt das Werkzeug gar nicht. Jeder davon
+hätte eine Stunde Anordnung lautlos gekostet. Geprüft: zweiter Lauf erzeugt alle
+sieben Dateien byte-identisch.
+Verworfen: Andockwerte auf 0–1 begrenzen (draw.io lässt sie bewusst überstehen, das
+Begrenzen zog Linienenden auf die Kante zurück); Eintrittspunkte automatisch
+verteilen (hätte die bereits von Hand angeordneten Kanten verrückt — bleibt als
+Kommentar für künftige Diagramme stehen).
+
+## 2026-08-08 — Gras-Verteilung bleibt auf Uniform
+Was: Das Gras-Placeable nutzt `UniformDensity`, nicht die gebaute `NoiseMaskDensity`.
+Warum: Isors Entscheidung beim Tunen — gleichmäßig sieht in der noch leeren Welt
+besser aus. Für das TDD zusätzlich wertvoll: Uniform ist der Worst Case der
+Laufzeitmessung, jede Maske dünnt aus. Die gemessenen 12,4 s sind damit eine obere
+Grenze, kein geschönter Wert. Im Text steht die Maske als gebaut und begründet
+abgeschaltet.

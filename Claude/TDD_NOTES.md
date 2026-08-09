@@ -374,7 +374,10 @@ Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
   Welt wird in 8×8 Kacheln geteilt (`PlacementTilesPerAxis`, 1 = altes
   Verhalten), jede Kachel sampelt und filtert für sich, `Parallel.For` läuft über
   die Kacheln. Zwei Effekte: das Poisson-Beschleunigungsgitter schrumpft von
-  ~94 MB (4860²) auf ~1,5 MB je Kachel (610²) und passt in den Prozessor-Cache;
+  ~134 MB (5793²) auf ~2,1 MB je Kachel (725²) und passt in den Prozessor-Cache
+  (korrigiert 2026-08-08 — die vorher notierten 94 MB/1,5 MB gehörten zu einem
+  MinSpacing von ~0,594; die gesamte Messreihe lief bereits mit 0,5, belegt
+  durch identische Halmzahlen in allen sechs Rohlogs);
   und der bis dahin unantastbar sequenzielle Teil wird parallelisierbar, weil
   Kacheln einander nicht lesen. Preis: an Kachelgrenzen kann der Mindestabstand
   verletzt werden (~28 km Nahtlänge bei 8×8, bei 7,4 Mio Halmen unsichtbar);
@@ -423,3 +426,24 @@ Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
   der Fall samt Prompt ohne eine Zeile UI-Code. Das Interface trägt hier mehr als
   eine Bedienbarkeits-Abfrage: Es ist die Stelle, an der Sonderfälle billig
   ausgeschlossen werden können.
+- 2026-08-08 — [Architektur] Systemgrenzen im Projekt sichtbar gemacht: Der eine
+  Ordner `TerrainGenerator` wurde in vier Systeme getrennt (WorldGeneration,
+  ObjectPlacement, GrassRendering, TerrainTool). Fürs TDD verwertbar ist vor allem
+  die Begründung, dass der Umzug nichts kostete — ohne `namespace` und ohne
+  Assembly Definition hängt in Unity keine Referenz am Pfad, sondern an der GUID
+  der `.meta`-Datei. Threading bekam bewusst keinen eigenen Ordner: Es sitzt in
+  `ObjectPlacer` und `GrassCellBuilder`, also quer über zwei Systeme.
+- 2026-08-08 — [Messung] Belegprüfung der Threading-Messreihe an den Rohlogs:
+  Alle sechs Builds nachgerechnet (Mittel aus Lauf 2–4), jeder dokumentierte Wert
+  bestätigt — 122,7 / 118,1 / 98,9 / 16,5 / 12,4 / 12,2 s. Zusätzlich belegt:
+  Kacheldurchgang 9,19× schneller (92,6 s → 10,1 s) und der sequenzielle
+  Poisson-Anteil der Baseline 84,3 % (103,4 s von 122,7 s) — das ist die
+  Zahlengrundlage der Amdahl-Argumentation. Lehre: Rohlogs aufheben, nicht nur
+  die Zusammenfassung; nur so lässt sich eine Notiz später widerlegen.
+- 2026-08-08 — [Platzierung] MinSpacing 0,5 hat eine Vorgeschichte, die ins
+  Kapitel gehört: Vorher stand er bei ~2 m, weil das Gras durch einen
+  Darstellungsfehler 3,3-fach zu groß gezeichnet wurde (fehlende Prefab-Root-Scale
+  in der Instancing-Matrix). Nach der Korrektur deckte ein Büschel viel weniger
+  Boden, der Abstand musste herunter. Lehre: Ein Darstellungsfehler kann sich als
+  passender Parameterwert tarnen — erst die Korrektur zeigt, dass der Wert nie
+  gestimmt hat.

@@ -220,6 +220,9 @@ prüft mit, wenn er Code zeigt oder reviewt:
 3. Gibt es ein passenderes Werkzeug (siehe oben)?
 4. Naming-Fix: alle Geschwister des Musters mitfixen, nicht nur die
    eine angezeigte Stelle.
+5. Artifact-Check: Steht eines der Skripte, die gleich angefasst werden,
+   in einer Skripte-Zeile von ARTIFACT_INDEX.md? Dann veraltet die Seite
+   durch die Änderung und wird nach dem Coden nachgezogen.
 
 ## Bewusst nicht übernommen
 - ClaudeSetup (Editor-Script baut und verdrahtet Szenen): zurückgestellt —

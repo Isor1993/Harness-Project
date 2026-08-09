@@ -35,6 +35,11 @@ verlangt; danach wird er wieder aktiv ausgebaut.
   (2026-08-03 bis 2026-08-05) — Einzelheiten im FEATURE_LOG.md
 - [x] Threadoptimierung inkl. Messreihe und Laufzeit-Placement
   (2026-08-05) — Einzelheiten im FEATURE_LOG.md
+- [x] Artifact-Seiten nach den drei Typen sortiert (2026-08-05 bis
+  2026-08-08): zehn Seiten mit Symbol, Kind-Badge und Favicon; die Seite
+  „Editor-Tool" beantwortete zwei Fragen und wurde geteilt — der
+  Lernstück-Teil behielt die URL, der projektspezifische Teil ging in
+  „System · Terrain & Gras". Regeln in ARTIFACT_RULES.md
 
 ## Als Nächstes — bis zur Uni-Abgabe (2026-08-21)
 1. [ ] **Village spielbar aufbauen.** Zerfällt in zwei Hälften, die
@@ -110,10 +115,35 @@ verlangt; danach wird er wieder aktiv ausgebaut.
      Zusätze bei Health/Sense/Move/Dodge/HerdManager; bei den States der
      Dodge-Einstieg über `SheepStateBase.TryEnterDodge` und der Push beim
      Zähmen). Die elf State-Beschreibungen selbst waren alle korrekt.
-   - **Als Nächstes in Kapitel 6: die neuen Unterkapitel** für Weltgenerierung,
-     Editor-Tool und die Threading-Umbauten — die fehlen dort komplett.
-     Danach Kapitel 7 UML und Kapitel 8 Programmablaufplan, wo die neu
-     erzeugten Diagramme eingereiht werden.
+   - [x] **Kapitel 6 ist vollständig** (2026-08-08): neu **6.3 Prozedurale
+     Weltgenerierung** (sieben Unterkapitel entlang der Pipeline, DECISIONS
+     2026-08-08), **6.4 Editor-Tool** (sieben Unterkapitel, MVP/Fehlbedienung/
+     bewusste Grenzen) und **6.5 Threadoptimierung** (sechs Unterkapitel:
+     Messverfahren, gescheiterter erster Versuch mit Amdahl-Begründung,
+     Kachelung, vier Thread-Fallen, Messreihe, verworfener Versuch).
+     Dokument von 104.288 auf 149.948 Zeichen. Alle Zahlen gegen Code und
+     Rohlogs geprüft; dabei zwei Speicherwerte der Threading-Notizen
+     korrigiert (134 MB / 2,1 MB statt 94 MB / 1,5 MB — die alten gehörten zu
+     einem früheren MinSpacing).
+   - **Offen in Kapitel 6.5:** Die Messreihe steht als Fließtext und gehört in
+     eine Tabelle (wäre Tabelle 9) — bewusst nicht per XML gebaut, weil eine
+     Word-Tabelle deutlich mehr Struktur braucht als Absätze.
+   - **Als Nächstes: Kapitel 7 UML und Kapitel 8 Programmablaufplan.**
+     Kapitel 7 ist versorgt — sieben erzeugte Diagramme liegen bereit
+     (siehe unten), Isor setzt die Bilder ein. Für Kapitel 8 fehlt noch das
+     Ablaufplan-Werkzeug (Rauten, Start/Ende, Schleifen — rund 60–80 Zeilen in
+     `uml_drawio.py`) und darauf aufbauend der „Generate Complete"-Plan; das
+     ist die letzte offene Pflichtanforderung der Tool-Aufgabe.
+   - **Diagramme (2026-08-08):** Sieben Stück unter
+     `01_Uni\Semester_2\Diagramme_Quellen\`, je ein Skript unter
+     `05_Werkzeuge\Vorlagen\`, alle mit null Prüfer-Abweichungen und von Isor
+     angeordnet: Terrain-Pipeline (5 Klassen), Platzierung (14),
+     Gras-Rendering (8), Editor-Tool (8), DayNightSystem (5), Sheep-FSM (14),
+     Sheep-Komponenten (17). Die handgezeichneten Vorgänger liegen unter
+     `99_Archiv\_Zu_Loeschen\Diagramme_alt_2026-08-08\`.
+     **Ohne Ersatzweg archiviert:** `Sheep_Programmablauf` und
+     `Sheep_Transitionen` — beides Ablauf-/Zustandsdiagramme, für die dem
+     Werkzeug die Formen fehlen. Bei Bedarf zurückholen.
    - **Arbeitsweise ab hier ändert sich** (Isor, 2026-08-08): Bis Kapitel 6.2
      waren es Korrekturen an bestehendem Text — dort schreibt Claude direkt in
      die Datei, und das hat sich bewährt. Die neuen Fachkapitel sind kein
@@ -167,6 +197,20 @@ verlangt; danach wird er wieder aktiv ausgebaut.
    Herden-Placeable tunen (Höhenband, MaxSlope, ShoreMargin) und
    Boden-Aufsetzen nach dem NavMesh-Bake prüfen; Lightmap-Warnung des
    generierten Terrains (Mesh hat keine UVs — Contribute GI ausschalten).
+   Neu vorgemerkt beim TDD-Schreiben (Isor selbst gefunden, 2026-08-08):
+   Magic Numbers im `MeshBuilder` benennen — `INDICES_PER_QUAD = 6`,
+   `PADDING_RING = 1` (Begriff existiert im `HeightmapGenerator` bereits als
+   Konstante, `MeshBuilder` schreibt `- 2`/`+ 1` hart hin) und
+   `NEIGHBOUR_SPAN = 2f` in der Normalen-Formel. Rein mechanisch, kein
+   Verhalten ändert sich. Isors Maßstab: keine Zahl im Code, deren Bedeutung
+   er im Prüfungsgespräch erst herleiten muss.
+   **Nicht** anfassen bis nach der Abgabe: `ObjectPlacer.PlaceType` ist zu
+   lang und müsste zerlegt werden (Isor 2026-08-08) — die Methode ist aber
+   das Messobjekt der Threading-Abgabe, ein Umbau entwertet die Messreihe.
+   Ebenfalls von Isor gefunden (2026-08-08): Im `TerrainToolPresenter` sind
+   public und private Methoden gemischt. Vorher gehört die Regel in
+   CODE_GUIDELINES (Member-Reihenfolge ist dort bisher nicht festgelegt),
+   danach wird danach sortiert — sonst ist es Gefühl statt Maßstab.
 6. [ ] **Gesamt-Review vor der Abgabe:** Bugs, halbfertige Stellen,
    Testen, Feedback einholen und umsetzen.
    **Endcheck TDD** (erst wenn der Text steht, Reihenfolge egal;
