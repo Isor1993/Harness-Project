@@ -125,15 +125,20 @@ verlangt; danach wird er wieder aktiv ausgebaut.
      Rohlogs geprüft; dabei zwei Speicherwerte der Threading-Notizen
      korrigiert (134 MB / 2,1 MB statt 94 MB / 1,5 MB — die alten gehörten zu
      einem früheren MinSpacing).
-   - **Offen in Kapitel 6.5:** Die Messreihe steht als Fließtext und gehört in
-     eine Tabelle (wäre Tabelle 9) — bewusst nicht per XML gebaut, weil eine
-     Word-Tabelle deutlich mehr Struktur braucht als Absätze.
+   - [x] **Kapitel 6.5 Messreihe als Tabelle** (2026-08-09): sechs Messpunkte
+     mit Abschnittszeiten, eingesetzt hinter dem ersten Absatz von „Ergebnis
+     der Messreihe". Sie wird **Tabelle 8**, nicht 9 — in der Dokument-
+     reihenfolge steht sie vor der Asset-Tabelle, die dadurch auf 9 rückt
+     (beide Nummern sind SEQ-Felder, der zwischengespeicherte Text wurde
+     mitgezogen). Tabellenschrift 10 pt statt 12 pt, sonst trennt Word bei
+     sechs Spalten mitten im Wort.
    - **Als Nächstes: Kapitel 7 UML und Kapitel 8 Programmablaufplan.**
      Kapitel 7 ist versorgt — sieben erzeugte Diagramme liegen bereit
-     (siehe unten), Isor setzt die Bilder ein. Für Kapitel 8 fehlt noch das
-     Ablaufplan-Werkzeug (Rauten, Start/Ende, Schleifen — rund 60–80 Zeilen in
-     `uml_drawio.py`) und darauf aufbauend der „Generate Complete"-Plan; das
-     ist die letzte offene Pflichtanforderung der Tool-Aufgabe.
+     (siehe unten), Isor setzt die Bilder ein.
+     Kapitel 8: Ablaufplan-Werkzeug und der „Generate Complete"-Plan sind
+     **fertig** (2026-08-09, Einzelheiten im FEATURE_LOG) — damit ist die
+     letzte Pflichtanforderung der Tool-Aufgabe als Diagramm erfüllt. Offen
+     bleibt der Kapiteltext dazu und das Einsetzen des Bildes.
    - **Diagramme (2026-08-08):** Sieben Stück unter
      `01_Uni\Semester_2\Diagramme_Quellen\`, je ein Skript unter
      `05_Werkzeuge\Vorlagen\`, alle mit null Prüfer-Abweichungen und von Isor
@@ -142,8 +147,43 @@ verlangt; danach wird er wieder aktiv ausgebaut.
      Sheep-Komponenten (17). Die handgezeichneten Vorgänger liegen unter
      `99_Archiv\_Zu_Loeschen\Diagramme_alt_2026-08-08\`.
      **Ohne Ersatzweg archiviert:** `Sheep_Programmablauf` und
-     `Sheep_Transitionen` — beides Ablauf-/Zustandsdiagramme, für die dem
-     Werkzeug die Formen fehlen. Bei Bedarf zurückholen.
+     `Sheep_Transitionen` — beides Ablauf-/Zustandsdiagramme. Für den
+     Programmablauf existieren die Formen seit 2026-08-09; das Zustands-
+     diagramm bräuchte weiterhin eigene Formen. Bei Bedarf zurückholen.
+   - **Achter Plan (2026-08-09):** `Ablauf_Generate_Complete.drawio`, Skript
+     `ablauf_generate_complete.py` — Programmablaufplan für Kapitel 8.
+     Anordnen steht noch aus (Isor).
+   - **Neuntes Diagramm (2026-08-11):** `Zustand_Sheep_FSM.drawio` —
+     Zustandsdiagramm der Sheep-FSM, von Isor angeordnet. Ersetzt das
+     archivierte `Sheep_Transitionen`. Einzelheiten im FEATURE_LOG.
+   - [x] **Kapitel 12 Asset Integration vollständig** (2026-08-11): drei
+     Texturquellen als Unterkapitel, Tabelle 9 auf fünf Zeilen, vier neue
+     Quellen, KI-Textur gekennzeichnet, ChatGPT in Tabelle 1. Lizenzen selbst
+     auf den Seiten geprüft. Einzelheiten im FEATURE_LOG.
+   - [x] **Kapitel 13 Fazit und 14 Änderungsverlauf** (2026-08-11): Fazit
+     dreiteilig (Stand, tragfähige Ergebnisse, offene Punkte nach Bereichen,
+     DECISIONS 2026-08-11); Änderungsverlauf als Tabelle 10 aus den
+     Kapitel-Zeitstempeln. Tabelle 7 auf 51 h Dokumentationszeit nachgezogen.
+   - [x] **Endcheck, maschineller Teil** (2026-08-11): *Isor's Tower* kursiv
+     statt in Anführungszeichen (10 Stellen), Datum der
+     Selbstständigkeitserklärung auf 21.08.2026, die drei Verzeichnisse als
+     Feldgerüst eingesetzt. Dabei gefunden: Die Seitennummerierung war
+     durchgehend römisch und entsprach damit keiner der beiden erlaubten
+     Varianten.
+   - [x] **S4-Abgabe neu erstellt** (2026-08-11): Die verlorene Word-Fassung
+     von „Aufgabe zum Arbeiten nach akademischen Standards" aus der PDF
+     rekonstruiert, mit den Formatvorlagen des TDD. Je Übungstext eine dritte
+     Quelle ergänzt (Feedback der Fachbetreuung) und eine fehlerhafte
+     Quellenangabe berichtigt — Einzelheiten in DECISIONS 2026-08-11.
+     Liegt unter `Arbeitsdateien\`.
+   - **Damit ist das TDD inhaltlich fertig.** Bei Isor liegt nur noch das
+     Layout: Abschnittsumbruch und Seitennummerierung, Seitenumbrüche vor den
+     Hauptkapiteln, Zeilenabstände, leere Absätze vor den Verzeichnissen und
+     zum Schluss Strg+A / F9.
+   - **Bilder in Kapitel 7 gesetzt** (Isor, 2026-08-09): Sheep-Komponenten,
+     Sheep-FSM, DayNightSystem. Überschriften für Terrain-Pipeline,
+     Objektplatzierung, Gras-Rendering und Editor-Tool stehen bereit, ebenso
+     eine Überschrift „Editor-Tool" in Kapitel 8.
    - **Arbeitsweise ab hier ändert sich** (Isor, 2026-08-08): Bis Kapitel 6.2
      waren es Korrekturen an bestehendem Text — dort schreibt Claude direkt in
      die Datei, und das hat sich bewährt. Die neuen Fachkapitel sind kein
@@ -175,6 +215,19 @@ verlangt; danach wird er wieder aktiv ausgebaut.
      (siehe Punkt 8). Beim Schreiben gleich sauber trennen, statt später.
    - Zwei Portfolios mit sieben Aufgaben, vier Ordner davon noch leer
      (`C:\IsorBackup\01_Uni\Semester_2\Abgabe\`).
+3b. [ ] **Abgabe-Ordner sortieren und befüllen** (eigene Session, unmittelbar
+   vor der Abgabe). Unter `C:\IsorBackup_Uni\Semester_2\Abgabe\` liegen
+   zwei Portfolio-Ordner mit je einer README.md und einem Unterordner je
+   Aufgabe, dazu `PDF_Fassungen\`:
+   - `Portfolio_4FSC0PD003.1_Rosenberg` — Softwareplanung,
+     Engine-Tool-Entwicklung, Threadoptimierung
+   - `Portfolio_4FSC0PD004.1_Rosenberg` — KI Prototyp, Simulation der
+     Spieleumgebung, Prozedurale Erweiterung der Spielwelt, Aufgabe zum
+     Arbeiten nach akademischen Standards
+   Zu klären: was je Ordner hineingehört (PDF, Projektdateien, Builds, Logs,
+   Diagramme), ob der Prefab-Painter mitgeht (Entscheidung Isor 2026-08-07:
+   im TDD nicht erwähnt) und ob die Threading-Builds beiliegen müssen.
+
 4. [x] **Uni: Threadoptimierung** (K2, K3, S3; formativ 2026-08-07) —
    Code und Messreihe fertig (2026-08-05): Gras-Rebuild 122,7 s → 12,4 s
    (−89,9 %) über vier dokumentierte Zwischenstände, Builds und Logs unter

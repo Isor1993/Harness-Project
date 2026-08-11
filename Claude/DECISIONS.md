@@ -1093,3 +1093,76 @@ besser aus. Für das TDD zusätzlich wertvoll: Uniform ist der Worst Case der
 Laufzeitmessung, jede Maske dünnt aus. Die gemessenen 12,4 s sind damit eine obere
 Grenze, kein geschönter Wert. Im Text steht die Maske als gebaut und begründet
 abgeschaltet.
+
+## 2026-08-09 — Ablaufpläne über dieselbe Werkzeugkette wie die Klassendiagramme
+Was: Sechs Sinnbilder nach DIN 66001 in `uml_drawio.py` (`knoten`/`pfeil`), ein
+Skript `ablauf_generate_complete.py` je Plan, Ablage und Bedienregeln unverändert.
+Sinnbilder werden über ihre **Id** zugeordnet, nicht über ihren Text.
+Warum: Der Text taugt nicht als Schlüssel — „Ende" kommt in einem Plan mehrfach vor,
+und bei den Klassendiagrammen ist der Name nur deshalb der richtige Schlüssel, weil
+er dort eindeutig ist. Ein zweites Werkzeug wäre die Alternative gewesen; dagegen
+sprach, dass Erhalt der Handarbeit, Linienstärke und Datei-Hülle sonst doppelt
+gepflegt werden müssten. Nachgewiesen, dass die Klassendiagramme unberührt bleiben:
+kein Klassendiagramm hat einen Kasten außerhalb der Swimlanes auf oberster Ebene.
+Verworfen: Ein zweiter Plan für das Innere von `SpawnType` — er würde den ersten
+verdoppeln; `SpawnType` steht als Unterprogramm-Sinnbild darin. Bei Bedarf
+nachziehbar, die Formen sind da.
+
+## 2026-08-09 — Messreihe als Tabelle mit 10-pt-Schrift
+Was: Die Messreihe in TDD 6.5 steht zusätzlich als Tabelle (sechs Messpunkte,
+Spalten Erzeugen/Filtern, Ausschluss, Zellbau, Gesamt, Verbesserung). Tabellenschrift
+10 pt statt der 12 pt des Fließtextes.
+Warum: Bei 12 pt passen sechs Spalten nicht auf die Satzbreite — Word trennt dann
+mitten im Wort („Ausschlussfilte r"). Weiche Trennzeichen halfen nicht, Word zeigt
+sie in dieser Datei durchgehend an. Spalten zu streichen hätte die Aussage gekostet:
+Erst die Abschnittsspalten zeigen, dass der Gewinn zwischen den Messpunkten die
+Stelle wechselt. Die Formatvorgaben regeln Fließtext (11–12 pt) und Beschriftungen
+(9–11 pt), nicht den Tabelleninhalt.
+Nebenwirkung: Die Tabelle steht vor der Asset-Tabelle und wird damit Tabelle 8; die
+Asset-Tabelle rückt auf 9. Beide Nummern sind SEQ-Felder und rechnen beim
+Aktualisieren selbst nach.
+
+## 2026-08-11 — Bogensprung an Kreuzungen, und was eine Skript-Vorgabe darf
+Was: `jumpStyle=arc` zentral in `uml_drawio.py`, damit sich kreuzende Linien einen
+Bogen schlagen. Zweitens: Wo Isor ein Linienende bewusst frei am Kasten gelassen hat,
+wird die Andockvorgabe im Skript **entfernt** statt beibehalten.
+Warum: Zwei sich kreuzende orthogonale Linien sehen ohne Sprung wie ein T aus — man
+sieht nicht, welche wohin führt. Der zweite Punkt ist die wichtigere Lehre: Eine
+Vorgabe im Skript wirkt genau dort, wo in der Datei nichts gespeichert ist. Ein frei
+gelassenes Ende ist deshalb kein „nichts", sondern eine Entscheidung, die das Skript
+respektieren muss. Erkennungsmerkmal: `kanten_lesen` meldet für die Kante keinen
+Andockpunkt, obwohl das Skript einen setzt. Fünf Kanten des Zustandsdiagramms waren
+betroffen, zwei weitere nach Isors zweiter Überarbeitung.
+Nebenbei behoben: `knoten()` schrieb Koordinaten als Ganzzahl und verschob dadurch
+Kästen, die auf halben Pixeln sitzen.
+
+## 2026-08-11 — Fazit dreiteilig statt als Mängelliste
+Was: Kapitel 13 des TDD gliedert sich in erreichten Stand, tragfähige Ergebnisse und
+offene Punkte nach Bereichen. Der Aufwand von 51 Stunden Dokumentation wird benannt
+und mit der mehrsemestrigen Nutzung begründet.
+Warum: Isors Sammlung offener Punkte war vollständig, aber zu 95 % eine Mängelliste.
+Die stärksten Ergebnisse des Semesters sind gedanklich — Amdahl als Auswahlkriterium,
+die Zwischenmessung, der dokumentierte gescheiterte Versuch. Ein Fazit, das nur
+Restarbeit aufzählt, verschenkt sie. Die offenen Punkte stehen weiterhin vollständig
+drin, aber als Reihenfolge-Entscheidung statt als Versäumnis.
+
+## 2026-08-11 — Lizenzkapitel: Quellen selbst nachlesen statt Notizen glauben
+Was: Vor dem Schreiben von TDD 12.4 bis 12.6 wurden alle drei Anbieterseiten
+aufgerufen. Ergebnis: zwei Korrekturen an dem, was in unseren Notizen stand.
+Warum: In `_Nachladen.md` stand pauschal „alle genannten Quellen sind CC0". Für
+freestylized stimmt das nicht — dort gilt eine Royalty Free License, und die
+Einschränkung zur Weitergabe steht nur auf der About-Seite, nicht bei der Textur.
+Zweitens war der Verdacht, die Bäume stammten aus dem falschen Quaternius-Pack, ein
+Fehlalarm: Die beigelegte `License.txt` ist bei allen Packs dieselbe. Lehre: Eine
+Lizenzanalyse ist genau die Stelle, an der eine übernommene Angabe nichts wert ist.
+
+## 2026-08-11 — S4-Abgabe aus dem TDD als Formatvorlagen-Spender gebaut
+Was: Die verlorene Word-Fassung der S4-Aufgabe wurde neu erzeugt, indem alle Teile des
+TDD-Pakets außer `document.xml` übernommen wurden — Formatvorlagen, Schrift, Fußzeile,
+Nummerierung. Der Text kam wortgetreu aus der abgegebenen PDF.
+Warum: So sieht die Abgabe ohne Nacharbeit aus wie das TDD, und es entsteht keine
+zweite Formatwelt. Inhaltlich geändert wurden nur die Quellenangaben: Das Sekundärzitat
+Shaker et al. wurde zum Direktbeleg, die Calgary-Quelle stand mit Vornamen statt
+Nachnamen und mit fremdem Titel im Verzeichnis, und die Einleitung von Übungstext 4
+hatte gar keinen Beleg. Damit ist das Feedback der Fachbetreuung („1–2 mehr Quellen")
+erfüllt, ohne den Text umzuschreiben.

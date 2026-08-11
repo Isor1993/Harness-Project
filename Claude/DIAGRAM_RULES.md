@@ -8,9 +8,10 @@ was gebaut wurde, im FEATURE_LOG.
 ## Ablage
 - Quellen: `C:\IsorBackup\01_Uni\Semester_2\Diagramme_Quellen\`
 - Skripte: `C:\IsorBackup\05_Werkzeuge\Vorlagen\`
-  - `uml_drawio.py` — Kästen, Linienarten, Erhalt der Handarbeit
+  - `uml_drawio.py` — Kästen, Sinnbilder, Linienarten, Erhalt der Handarbeit
   - `pruefer.py` — vergleicht ein Diagramm gegen den Quellcode
-  - `diagramm_<name>.py` — ein Skript je Diagramm
+  - `diagramm_<name>.py` — ein Skript je Klassendiagramm
+  - `ablauf_<name>.py` — ein Skript je Ablaufplan
   - `linienstaerke_setzen.py` — nur für **nicht** erzeugte Diagramme
 - Sicherungen: `Diagramme_Quellen\_Sicherung\`
 - Der Pfad im Skript ist verbindlich. Wird woanders gespeichert, liest das
@@ -43,6 +44,14 @@ was gebaut wurde, im FEATURE_LOG.
    offenes Fenster arbeitet auf seinem eigenen Stand und schreibt beim
    Speichern darüber.
 
+5. **Ein bewusst frei gelassenes Linienende muss auch im Skript frei sein.**
+   Lässt du ein Ende schwebend am Kasten (blau, ohne festen Punkt), steht dazu
+   nichts in der Datei — und dann greift beim nächsten Lauf die Vorgabe aus dem
+   Skript und verschiebt das Ende. Claude erkennt den Fall daran, dass
+   `kanten_lesen` für diese Kante keinen Andockpunkt meldet, obwohl das Skript
+   einen setzt; die Vorgabe gehört dann dort heraus (aufgefallen 2026-08-11 am
+   Zustandsdiagramm, fünf Kanten betroffen).
+
 ## Was ein Lauf erhält
 Kastenpositionen, Linien-Wegpunkte, Andockpunkte und die Lage der
 Multiplizitäts-Beschriftungen. Andockpunkte an einer Member-Zeile werden
@@ -60,6 +69,33 @@ Nicht erhalten wird ein Ende ohne Verbindung (siehe Regel 1).
   „Null Fehler" heißt „nichts Erfundenes dargestellt", nicht „vollständig".
 - Zweiter Lauf muss dieselbe Datei erzeugen. Tut er das nicht, stimmt
   etwas an der Zuordnung nicht.
+
+## Ablaufpläne (zweiter Diagrammtyp, seit 2026-08-09)
+- Sechs Sinnbilder nach DIN 66001: `start`, `ende`, `prozess`, `entscheidung`,
+  `unterprogramm`, `ein_aus`. Bedienung, Ablage und Erhalt der Handarbeit sind
+  dieselben wie bei den Klassendiagrammen — nur die Bausteine im Skript heißen
+  `knoten` und `pfeil` statt `klasse` und `kante`.
+- **Kein Prüferlauf.** Der Prüfer vergleicht Membernamen in Klassenkästen; ein
+  Ablaufplan enthält Fließtext. Was er zeigt, ist von Hand gegen den Code zu
+  lesen — die einzige Absicherung ist die Quellenangabe im Skriptkopf.
+- Die Zuordnung läuft über die **Id** des Sinnbilds, nicht über seinen Text:
+  „Ende" kommt in einem Plan mehrfach vor. Deshalb greift hier Bedienregel 3
+  (nicht zwischen zwei Dateien kopieren) doppelt — mit neuen Ids ist die
+  Anordnung weg.
+- Erhalten wird zusätzlich die **Größe** eines Kastens. Ein von Hand
+  verbreitetes Sinnbild schnurrt also nicht wieder auf die Vorgabe zusammen.
+- Vereinfachungen gegenüber dem Code (zusammengefasste Schleifen, doppelte
+  Prüfungen nur einmal gezeigt) gehören in den Skriptkopf. Sonst lässt sich im
+  Prüfungsgespräch nicht sagen, ob eine Abweichung Absicht oder Fehler ist.
+
+## Feste Darstellungsvorgaben
+Zentral in `uml_drawio.py`, damit alle Diagramme gleich aussehen. Beim nächsten
+Lauf eines Skripts greifen sie automatisch, ohne die Anordnung anzutasten.
+- `LINIENSTAERKE = 2` — 1 ist zu dünn, sobald das Bild ins Dokument verkleinert
+  wird (Isor 2026-08-08).
+- `SPRUNG = jumpStyle=arc` — an jeder Kreuzung ein Bogen. Ohne ihn laufen zwei
+  sich kreuzende Linien wie ein T ineinander, und man sieht nicht mehr, welche
+  wohin gehört (Isor 2026-08-11).
 
 ## Beim Anlegen eines neuen Diagramms
 - Andockpunkte gleich verteilen. Bekommen mehrere Kanten denselben Punkt

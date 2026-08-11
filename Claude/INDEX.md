@@ -22,6 +22,7 @@ keine Inhalte. Status: ohne Vermerk = existiert, (geplant) = noch nicht gebaut.
 | ARTIFACT_RULES.md | Typen, Benennung, Aufbau, Symbole und Pflege der Artifact-Seiten (Handy-Fassung) |
 | ARTIFACT_INDEX.md | Bestand der Artifact-Seiten: welche es gibt, welche Skripte sie beschreiben, wer auf sie zeigt |
 | DIAGRAM_RULES.md | Umgang mit den erzeugten `.drawio`-Diagrammen: Ablage, Arbeitsteilung, Bedienregeln, Prüfung |
+| DOCX_RULES.md | Umgang mit den `.docx`-Abgabedateien: Sicherung, Arbeitsteilung, Fallen beim Ersetzen, Felder, Prüfung |
 | ASSIGNMENT_PCG.md | Originaltext Uni-Aufgabe „Prozedurale Erweiterung der Spielwelt" (Referenz, unverändert lassen) |
 | ASSIGNMENT_TOOL.md | Originaltext Uni-Aufgabe „Engine-Tool-Entwicklung" (Referenz, unverändert lassen) |
 | ASSIGNMENT_THREADING.md | Originaltext Uni-Aufgabe „Threadoptimierung" (Referenz, unverändert lassen) |
