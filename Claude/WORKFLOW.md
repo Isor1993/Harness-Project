@@ -65,3 +65,19 @@ Isor reviewt — erst nach der Lernphase.)
 ### Art (minimal, ungetestet)
 Prompts für Image-Generation/Concepts erzeugen — bildliche Kommunikation
 mit der AI.
+
+### Zeugnis (eingeführt 2026-08-11)
+Standortbestimmung zu einem festen Datum: Notenschätzung der Abgaben,
+Profil zur Arbeitsweise, Profil zum Coding-Stand. Wird bewusst
+wiederholt — der Vergleich zweier Stände ist der Zweck, nicht das
+einzelne Feedback.
+Eigene Regeln in **ASSESSMENT_RULES.md** (Verfahren, Belegpflicht,
+Aufbau, Notenskala); die Zeugnisse selbst in ASSESSMENT_LOG.md.
+Auslöser: `/zeugnis` oder Zuruf.
+Abgrenzung: Diese Session **liest und bewertet nur**. Sie baut nichts,
+entscheidet nichts und schreibt in keine fremde Datei — Befunde gehen
+als Aufgaben in die ROADMAP, nie als Umbau in den Code.
+Doku-Pflicht am Ende, abweichend von der Grundregel: ASSESSMENT_LOG.md
+und ARTIFACT_INDEX.md sind Pflicht, ROADMAP nur um die Befunde ergänzt.
+FEATURE_LOG, DECISIONS, TDD_NOTES und Knowledge bleiben unberührt —
+es wurde nichts gebaut, entschieden oder gelernt.

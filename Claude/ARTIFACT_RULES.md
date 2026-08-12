@@ -30,6 +30,13 @@ beantwortet es zwei, wird es geteilt.
 nicht, die Projektbeschreibung schon; der gemerkte Link soll am
 Stabileren hängen.
 
+**Nicht von dieser Datei geregelt: die Zeugnis-Seiten (🎓).** Sie sind
+kein vierter Typ — die drei Typen sagen, *worauf* eine Seite blickt, ein
+Zeugnis bewertet dagegen. Aufbau und Darstellung folgen den Regeln hier,
+die Pflege nicht: Jedes Zeugnis behält seine eigene URL und wird nie
+aktualisiert. Diese Ausnahme besitzt ASSESSMENT_RULES.md, geführt werden
+die Seiten trotzdem im ARTIFACT_INDEX.
+
 ## Benennung
 
 Titel-Schema: `<Symbol> <Typ> · <Thema>`

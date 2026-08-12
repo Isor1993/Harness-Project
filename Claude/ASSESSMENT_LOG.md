@@ -1,0 +1,432 @@
+# ASSESSMENT_LOG.md — Zwischenzeugnisse
+
+Ownership: Nur die Zeugnisse selbst, neuestes oben. Das Verfahren steht
+in ASSESSMENT_RULES.md. Alte Einträge werden nie überschrieben.
+
+---
+
+## 2026-08-11 — Vor dem Polishing, 10 Tage vor der Portfolio-Abgabe
+
+### Kopf
+
+**Anlass:** Standortbestimmung vor dem Polishing-Durchgang. Das TDD ist
+inhaltlich fertig, das Layout und der Feinschliff am Prototyp stehen aus.
+
+**Stand:** Zwei Portfolios mit sieben Aufgaben, Abgabe Fr 21.08.2026.
+Fachlich fertig sind Threadoptimierung, Engine-Tool, prozedurale
+Weltgenerierung, KI-Prototyp, Shader/VFX und die schriftlichen Kapitel.
+Offen sind das Dokument-Layout, das Village als spielbarer Inhalt und der
+Politur-Durchgang.
+
+**Belegbasis:** TDD `Softwareplanung.docx` (149.948 Zeichen, 14 Kapitel,
+43 Abbildungen, 10 Tabellen), `Aufgabe zum Arbeiten nach akademischen
+Standards (S4).docx` (1.542 Wörter), ASSIGNMENT_TOOL/PCG/THREADING,
+ROADMAP, DECISIONS (1.168 Zeilen), FEATURE_LOG, CODE_GUIDELINES,
+TDD_NOTES, WORKFLOW sowie im Original gelesen: `ObjectPlacer.cs`,
+`TerrainToolPresenter.cs`, `Sheep.cs`, `SheepFSM.cs`, `SheepStateBase.cs`;
+`git log` Isor-Tower (42 Commits seit 03.07.2026, 83 eigene `.cs`-Dateien).
+
+**Erstes Zeugnis — kein Vergleichswert vorhanden.**
+
+---
+
+### 1. Notenbild
+
+Schätzung auf der UK-Skala, begründet gegen die Feedbackelemente der
+jeweiligen Aufgabenstellung. Keine Dozentennote.
+
+| Bereich | Punkte | Klasse | Kurzbegründung |
+|---|---|---|---|
+| Threadoptimierung (K2, K3, S3) | **85** | First | 89,9 % statt geforderter ~10 %, Messreihe mit sechs Punkten, Amdahl als Leitfaden statt Nachwort, verworfener Versuch dokumentiert |
+| Engine-Tool (K2, S1) | **78** | First | MVP sauber getrennt, Fehlbedienung auf zwei Wegen ausgeschlossen, Serialisierung bewusst gelöst, datengetriebene Typ-Zeilen |
+| KI-Prototyp Sheep | **78** | First | 11 States, komponentenbasiert, Push/Pull-Hybrid begründet, Tag-Nacht-Anbindung, Zähmen |
+| Prozedurale Erweiterung (K3, S2, S3) | **74** | First | Pipeline vollständig und begründet; S3 „generierte Bevölkerung" ist die schwache Säule |
+| TDD — Inhalt | **80** | First | Kapitel 6.3–6.5 argumentieren statt zu beschreiben; Fazit ehrlich und nach Bereichen sortiert |
+| TDD — Form (Stand heute) | **45** | Third | Wortanzahl leer, Verzeichnisse nur als Feldgerüst, Seitennummerierung, Umbrüche, Zeilenabstände offen |
+| Akademische Standards (S4) | **70** | First (knapp) | Belegtechnik korrekt und konsequent; Quellenbreite dünn, Deckblatt widersprüchlich |
+| Simulation Spielumgebung (Shader/VFX) | **65** | 2:1 | Funktioniert und ist dokumentiert, aber Kapitel 9/10 sind Screenshot-getrieben statt erklärend |
+
+**Gesamt, wenn das Layout fertig wird: ~75 — First.**
+**Gesamt, wenn das Layout so bleibt: ~62 — 2:1.**
+
+Das ist die wichtigste Zahl in diesem Zeugnis. Der Unterschied zwischen
+den beiden Zeilen ist ungefähr ein Nachmittag Arbeit, und es ist genau
+die Stelle, an der die letzte Abgabe verloren gegangen ist.
+
+---
+
+### 2. Was trägt
+
+**Die Threading-Abgabe ist das beste Stück des Semesters.** Nicht wegen
+der 89,9 %, sondern wegen des Wegs dorthin. Drei Dinge stehen im
+Dokument, die in einer Zweitsemester-Abgabe praktisch nie stehen:
+
+- Der **erste Versuch ist als Fehlschlag dokumentiert** (3,7 % statt der
+  erhofften Wirkung) und wird nicht weggelassen, sondern erklärt: Der
+  sequenzielle Poisson-Pass hielt 84,3 % der Laufzeit, damit war die
+  Obergrenze 16,6 %. Daraus die Schlussfolgerung, nicht die
+  parallelisierbare Stelle zu suchen, sondern die teure Stelle
+  parallelisierbar zu *machen*. Das ist die eigentliche Lehre der
+  Aufgabe, und sie steht als Erkenntnis da, nicht als Zufallstreffer.
+- Die **Zwischenmessung „gekachelt, aber sequenziell"** (98,9 s) trennt
+  den Cache-Effekt vom Thread-Effekt. Ohne sie wären 19,4 Prozentpunkte
+  falsch der Parallelisierung zugeschrieben worden. Diesen Messpunkt
+  hätte niemand verlangt — er ist die Handschrift von jemandem, der
+  wissen will, was wirklich passiert ist.
+- Der **verworfene Versuch** (Ergebnisliste vorbelegen, 12,2 vs. 12,4 s)
+  steht in der Tabelle mit Begründung, warum die plausible Annahme
+  falsch war (`AddRange` kennt die Elementzahl bereits). Ein negatives
+  Ergebnis freiwillig zu berichten ist wissenschaftliches Verhalten.
+
+Dazu die vier Threading-Fallen, alle **im eigenen Code belegt**: das
+interne Keyframe-Caching von `AnimationCurve.Evaluate`, das geteilte
+`System.Random`, Unitys `==`-Überladung im nativen Code und
+`transform.position` als nativer Aufruf (7,4 Mio Abfragen für einen
+konstanten Wert, 2,57 s → 0,97 s). Die Beobachtung, dass **keine dieser
+vier Fallen eine Fehlermeldung erzeugt hätte**, trifft genau den
+Bewertungspunkt „Wurden häufige Probleme dabei bedacht?".
+
+**Die neuen TDD-Kapitel argumentieren.** Kapitel 6.3 bis 6.5 erklären
+nicht, *was* der Code tut, sondern *warum er so und nicht anders ist* —
+mit Zahlen:
+
+- Warum die Oktaven-Offsets bei ±10.000 gedeckelt sind: bei Koordinaten
+  um 100.000 löst float nur in ~0,008er-Schritten auf, der Abfrageabstand
+  liegt bei ~0,004 → zwei Nachbarn runden auf denselben Wert →
+  Terrassen. Das ist ein Float-Präzisionsargument mit Rechnung.
+- Warum die Poisson-Zellkante `r/√2` ist: dann entspricht die Diagonale
+  genau `r`, also höchstens ein Punkt je Zelle, also reicht ein
+  5×5-Block, also linear statt quadratisch. Vier Sätze, kein Wort zu viel.
+- Warum 64 Kacheln: Lastverteilung gegen Cache-Größe gegen Nahtlänge
+  (~28 km), drei Größen gegeneinander abgewogen und die Konsequenz
+  (Mindestabstand an den Kachelrändern verletzbar) offen benannt.
+- Warum das Gras-Zellgitter *nicht* das Chunk-Gitter ist: zwei
+  verschiedene Zwänge (1023 Instanzen je Aufruf vs. 65.535 Vertices je
+  Mesh), eine gemeinsame Größe wäre für beides falsch.
+
+**Das Fazit ist ehrlich und nach Bereichen sortiert.** Der Abschnitt
+„Quelltext" nennt die eigenen Schwachstellen beim Namen — zu lange
+Methode in der Platzierung, unbenannte Zahlenwerte im Netzaufbau,
+gemischte Member-Reihenfolge, `SheepSense` fordert je Bild Speicher an.
+Und er nennt den Grund, warum die lange Methode *nicht* jetzt zerlegt
+wird: sie ist das Messobjekt der Threadoptimierung, ein Umbau entwertet
+die Messreihe. Das ist kein Ausreden, das ist Prioritätenbegründung.
+
+**Die Lizenzanalyse geht über die Aufgabe hinaus.** Fünf Quellen, je
+nach Lizenztyp / Attribution / kommerzielle Nutzung / Gewährleistung /
+Copyleft / Kompatibilität / Projektwirkung durchdekliniert, plus die
+ausdrückliche Kennzeichnung der KI-erzeugten Grastextur. Beim
+`Grass 05`-Material ist sogar aufgefallen, dass die Lizenzseite eine
+Einschränkung nennt, die auf der Materialseite fehlt — und es steht
+dabei, dass diese Einschränkung fürs Projekt folgenlos bleibt. Das ist
+die Sorgfaltsstufe, die man in einer Bachelorarbeit sehen will.
+
+**Der Code ist über Semesterniveau.** Belege aus den gelesenen Dateien:
+
+- Kommentare erklären ausschließlich das Warum. `ObjectPlacer.cs:240`:
+  „Read here, not inside the loop: Unity's `==` overload reaches into
+  native code" — genau richtig, weder Nacherzählung noch Roman.
+- `TerrainToolPresenter.cs:244`: „Composed, not replaced: an axis
+  correction baked into the prefab survives". Die Quaternion-Reihenfolge
+  ist an drei Stellen im Projekt dieselbe Lektion, und sie ist an jeder
+  Stelle als solche erkannt worden.
+- `Sheep.cs`: `Init(herd, graveyard)` statt Szenenreferenzen im Prefab —
+  das ist die richtige Antwort auf „Ein Prefab darf keine Referenz in die
+  Szene halten", und sie kam aus der eigenen Regel.
+- `SheepFSM.cs`: Dictionary-Registry mit `GetState<T>()`, States einmal
+  erzeugt und wiederverwendet, `ChangeState` mit `Exit`/`Enter`-Paar und
+  Selbstwechsel-Schutz. Sauber, klein, richtig.
+- Der Push/Pull-Bruch beim Zähmen ist die reifste Entscheidung im
+  KI-Code: Statt sechs States um eine eigene Prüfung zu erweitern, wurde
+  *eine* Stelle zum Drücken gebracht — und der Grund steht im Kommentar
+  über `ToggleTame`. Zu wissen, wann man ein Muster gezielt bricht, ist
+  ein Stück weiter als das Muster zu kennen.
+
+**Der Harness ist ein Nebenprodukt mit eigenem Wert.** Ein Doku-System
+mit Ownership-Regel je Datei, Leseordnung, Session-Typen und
+Doku-Pflicht vor jedem `/clear` ist kein Studentenverhalten. DECISIONS.md
+mit 1.168 Zeilen samt verworfenen Alternativen ist ein Werkzeug, mit dem
+sich in einem halben Jahr noch rekonstruieren lässt, warum etwas so ist.
+
+---
+
+### 3. Was die Note kostet
+
+Sortiert nach Hebelwirkung — oben steht, was am meisten Note pro Minute
+bringt.
+
+**A — Das Layout des TDD. Aufwand: ein Nachmittag. Wirkung: bis zu 13
+Punkte.**
+Abschnittsumbruch und Seitennummerierung (die durchgehend römische
+Nummerierung entspricht keiner der beiden erlaubten Varianten),
+Seitenumbrüche vor den Hauptkapiteln, Zeilenabstände, leere Absätze vor
+den Verzeichnissen, Strg+A / F9, Wortanzahl auf der Titelseite,
+Unterschriften. Das steht alles schon in der ROADMAP — es ist kein
+unbekanntes Problem, sondern ein Terminproblem. Ein Dokument mit
+150.000 Zeichen exzellentem Inhalt und fehlendem Inhaltsverzeichnis wird
+schlechter bewertet als ein mittelmäßiges mit sauberer Form, weil die
+Form das Erste ist, was der Prüfer sieht. **Diese Aufgabe gehört auf das
+Wochenende 15./16.08., nicht in die Woche danach.**
+
+**B — Widersprüche auf den beiden Deckblättern. Aufwand: 5 Minuten.**
+Zwei Funde, beide auf der Seite, die zuerst gelesen wird:
+- TDD: `Semester: März 2025`. S4: `Semester: März 2026`. Die Modulnummern
+  (`… 0326`) sprechen für 2026 — im TDD steht vermutlich ein Tippfehler.
+- TDD: `Modulname: Game Development Basics`. Die eigene ASSIGNMENT-Datei
+  führt Modul `4FSC0PD003.1` dagegen als „Structured Game Development",
+  und beim zweiten Portfolio stimmt es (`4FSC0PD004` → „Game Dynamics").
+  Bitte gegen Canvas prüfen — wenn der Kursname gilt, ist der TDD-Titel
+  falsch.
+
+**C — Keine Quellenangaben in den Fachkapiteln. Aufwand: 30 Minuten.
+Wirkung: hoch, weil eines der Portfolios „akademische Standards" heißt.**
+Bridson wird namentlich genannt, aber nicht belegt. Amdahl wird
+namentlich genannt, aber nicht belegt. Perlin Noise gar nicht. Im
+S4-Text wird sauber nach Autor/Jahr/Seite zitiert — die Technik sitzt
+also, sie ist im TDD nur nicht angewendet. Drei bis vier Belege in
+Kapitel 6.3 und 6.5 plus ein Literaturverzeichnis am Dokumentende
+schließen die auffälligste Lücke des sonst stärksten Kapitels.
+
+**D — Die Messreihe hat keine Grafik. Aufwand: 20 Minuten.**
+Die Aufgabenstellung sagt wörtlich: „die Performancedaten können gut als
+Bilder visualisiert werden", und das Feedbackelement unter *Person*
+fragt nach der übersichtlichen Zusammenstellung. Es gibt Tabelle 8 und
+sonst nichts. Ein Balkendiagramm der sechs Messpunkte (122,7 / 118,1 /
+98,9 / 16,5 / 12,4 / 12,2 s) ist ein direkter Treffer auf ein benanntes
+Bewertungskriterium.
+
+**E — Kein `namespace` in 83 eigenen Dateien. Aufwand: 10 Minuten (als
+Text), nicht als Umbau.**
+Die eigenen CODE_GUIDELINES führen unter Block 1 (SAE-Pflicht, Regel 8)
+„Namespaces und Ordner strukturieren das Projekt". Tatsächlich verwendet
+keine der 83 eigenen Dateien einen Namespace, und Assembly Definitions
+gibt es auch keine. Das PCG-Feedbackelement fragt unter *Process*
+ausdrücklich: „Wurde die vorgegebene Coding-Convention verwendet?"
+**Nicht jetzt umbauen** — 83 Dateien zehn Tage vor der Abgabe anzufassen
+ist das falsche Risiko, zumal die Beobachtung aus TDD_NOTES
+(2026-08-08), dass Unity-Referenzen an der `.meta`-GUID und nicht am
+Pfad hängen, genau deshalb möglich war. Stattdessen: zwei Sätze im
+Abschnitt „Quelltext" des Fazits, dass die Namensraum-Gliederung bewusst
+aufgeschoben ist und warum. Damit wird aus „Konvention nicht eingehalten"
+ein „Abweichung erkannt und begründet" — derselbe Zug, der bei
+`PlaceType` schon gemacht wurde.
+
+**F — Kapitel 9 und 10 sind der schwächste Teil des Dokuments.**
+Von 43 Abbildungen sind rund 30 Screenshots von Shader- und
+VFX-Graphen, aufgeteilt in „Part 1" bis „Part 5". Ein Node-Graph als
+Bild erklärt die Idee nicht. Was fehlt, ist je Shader ein Absatz „was
+soll er erreichen, welcher Trick macht das, was war das Problem" — beim
+Wasser steht das ansatzweise in Kapitel 5.2 (UV-Richtung, Backface an
+den Plane-Übergängen) und gehört eigentlich nach Kapitel 9. **Wenn Zeit
+knapp wird, ist das der Punkt, den man liegen lässt** — es kostet mehr
+als es bringt, weil die zugehörige Aufgabe schon abgeschlossen ist.
+
+**G — Die inhaltliche Lücke: S3 „generierte Bevölkerung".**
+Das PCG-Lernziel S3 lautet „Erstellen einer Simulation einer gewohnten
+Umgebung mit einer generierten Bevölkerung". Aktuell ist die Herde
+handgesetzt, die Goblins im Umland sind offen, die Glühwürmchen sind
+offen. Der Placer *kann* das — er platziert 7,4 Mio Grasbüschel — er
+tut es für Lebewesen nur nicht. **Eine einzige Herde und ein paar
+Goblins über den Placer statt von Hand zu setzen, deckt ein Lernziel ab,
+das sonst nur halb belegt ist.** Das ist nach dem Layout die zweitbeste
+Investition der verbleibenden Zeit. Hängt allerdings am NavMesh-Bake und
+damit an der finalen Weltgröße (Punkt 1b der ROADMAP).
+
+**H — Kein Nachweis von Fremd-Feedback.**
+Beide Aufgabenstellungen nennen es unter *Person*: „Lass dein Tool von
+deinen Mitstudenten testen" (Tool), „Wurde sich genügend Feedback zur
+Abgabe geholt und dieses umgesetzt?" (PCG). Im TDD steht dazu nichts.
+Falls es Rückmeldungen aus der formativen Abgabe gab: zwei Zeilen im
+Änderungsverlauf oder im Fazit, was zurückkam und was daraufhin geändert
+wurde. Das ist ein Punkt, den man nicht durch Qualität ersetzen kann.
+
+---
+
+### 4. Profil — Person und Arbeitsweise
+
+**Was Isor auszeichnet: Er baut das Werkzeug, mit dem er arbeitet, mit.**
+Der Harness ist dafür der Beleg, aber nicht der einzige. Nach dem
+Laptop-Defekt wurde nicht nur der Datenverlust hingenommen, sondern der
+Prozess geändert (zusätzliche Sicherung, Grindstone für die
+Zeiterfassung) — und das steht auch so im TDD, statt es zu verschweigen.
+Der Diagramm-Generator, der `.drawio`-Dateien aus dem Code erzeugt,
+gehört in dieselbe Reihe: einmal ein Werkzeug bauen statt zehnmal von
+Hand zeichnen.
+
+**Er plant Messungen, bevor er sie braucht.** In TDD_NOTES steht am
+19.07.: „Threading bewusst ans Ende: langsame Version = Baseline-Messdaten
+für die Threading-Abgabe." Das ist siebzehn Tage vor der
+Threading-Session geschrieben. Eine Abgabe so vorzubereiten, dass die
+Ausgangsmessung von selbst entsteht, ist Planung auf einem Niveau, das
+man normalerweise erst im Berufsalltag lernt.
+
+**Er korrigiert sich gegen die eigenen Notizen.** Am 08.08. wurden die
+Rohlogs aller sechs Threading-Builds nachgerechnet und dabei zwei eigene
+Speicherwerte berichtigt (134 MB / 2,1 MB statt 94 MB / 1,5 MB), samt
+Erklärung, woher die falschen Zahlen kamen. Die daraus gezogene Lehre —
+„Rohlogs aufheben, nicht nur die Zusammenfassung; nur so lässt sich eine
+Notiz später widerlegen" — ist der wissenschaftliche Kern des ganzen
+Semesters.
+
+**Er verallgemeinert.** Durch die Notizen zieht sich ein Muster: „gleiche
+Klasse Fehler wie die Quaternion-Reihenfolge und der Prompt-Cache",
+„dritte Stelle derselben Lektion komponieren statt ersetzen". Er sammelt
+nicht Bugfixes, er sammelt Fehlerklassen. Das ist der Unterschied
+zwischen jemandem, der langsam besser wird, und jemandem, der schnell
+besser wird.
+
+**Er entscheidet Umfang bewusst und schreibt die Begründung auf.**
+`PlaceType` nicht anfassen (Messobjekt). Prefab-Painter nicht ins TDD.
+Kein `namespace`-Umbau. Threading ans Ende. Das sind alles Entscheidungen
+gegen den eigenen Aufräumreflex, mit Begründung — und die Begründung
+steht in DECISIONS, nicht nur im Kopf.
+
+**Risiken, ehrlich:**
+
+1. **Fertigstellung ist die wiederkehrende Verlustzone.** Der Inhalt ist
+   jedes Mal stark, der letzte mechanische Meter fehlt. Das ist beim
+   letzten Mal passiert und ist heute wieder der größte Einzelposten
+   (Punkt A). Das ist kein Können-, sondern ein Reihenfolge-Problem: Die
+   Politur wird ans Ende gelegt, und ans Ende passt sie nie ganz.
+   Gegenmittel: Layout-Arbeit ist kein „Rest", sondern ein Baustein mit
+   eigenem Termin — und der Termin muss auf einem Tag liegen, an dem
+   wirklich Zeit ist.
+2. **Der Umfang läuft der Zeit davon.** 51 Stunden Dokumentation, dazu
+   ein selbstgebauter Diagramm-Generator und ein Prefab-Painter, der
+   ausdrücklich nicht Abgabeumfang ist. Jede dieser Investitionen ist für
+   sich richtig begründet — zusammen sind sie der Grund, warum das
+   Village leer ist. Die Zeitrechnung ist unbestechlich: eine Herde
+   platzieren hätte weniger gekostet als der Prefab-Painter.
+3. **Selbstständigkeit ist der erwartbare offene Punkt** — er ist selbst
+   benannt worden, und das ist die halbe Miete. Der Befund ist
+   differenzierter, als es sich anfühlt: Der Code ist getippt, die
+   Architektur ist mitentschieden, die Fehlerklassen sind selbst erkannt.
+   Was noch nicht geübt ist, ist der Anfang vor einer leeren Datei in
+   unbekanntem Gebiet. Genau dafür ist die eigene Regel „Entwurf vor
+   Gerüst" vom 05.08. da — sie ist die richtige Maßnahme, sie braucht
+   jetzt nur Wiederholungen.
+4. **Das Zeitfenster ist enger als es aussieht.** Heute ist Dienstag, der
+   11.08. Abgabe ist Freitag, der 21.08. Bei Mo–Do wenig und am
+   Wochenende viel Zeit bleibt genau **ein volles Wochenende** (15./16.08.)
+   plus Abende. Alles, was mehr als einen halben Tag kostet, muss auf
+   dieses Wochenende — und es passt nicht alles hin. Punkt F und Teile
+   von Punkt G sind die Kandidaten zum Streichen.
+
+---
+
+### 5. Profil — Coding-Stand
+
+**Kurzfassung: Der Code liegt sichtbar über dem zweiten Semester. Was
+fehlt, ist Werkzeugbreite, nicht Denkweise.**
+
+**Was sitzt:**
+
+| Bereich | Beleg | Einordnung |
+|---|---|---|
+| Konsequenter Stil | 83 Dateien mit Header, `<summary>`, `[Tooltip]`, `_camelCase`, Allman | über Semesterniveau — hier fällt sonst fast jeder durch |
+| Trennung von Zuständigkeiten | Pipeline als reine statische Stufen, Szene erst im Presenter | 4. Semester |
+| Entwurfsmuster mit Begründung | MVP im Tool, Strategy bei der Dichte — beide *weil*, nicht *weil man muss* | 4. Semester |
+| Komposition statt Vererbung | Sheep als Knotenpunkt über Komponenten, eine flache Basisklasse für States | solide |
+| Unity-Lebenszyklus | `OnEnable`/`OnDisable`-Paare, `Awake` für eigene, `Start` für fremde Objekte, `Init()`-Injektion | über Semesterniveau |
+| Determinismus als Entwurfsziel | zwei getrennte Seeds, Offsets einmal gebaut und gereicht, Seeds je Kachel vorab gezogen | selten in dieser Ausbildungsphase |
+| Nebenläufigkeit | `Parallel.For` über Kacheln, alles Unveränderliche vorher auf dem Main Thread aufgelöst | deutlich über Semesterniveau |
+| Messen statt raten | Messreihe, Zwischenmessung, verworfene Optimierung | Berufspraxis |
+
+**Was fehlt — und das ist normal für den Zeitpunkt:**
+
+- **Keine automatisierten Tests.** Die Verifikation ist manuell und
+  durchdacht (flach / zufällig / Rampe beim MeshBuilder, Determinismus /
+  Seed-Variation / Oktaven beim Generator), aber es gibt kein
+  Test-Assembly. Für die Abgabe irrelevant, für das dritte Semester und
+  für Bewerbungen ein echter Zugewinn: `HeightmapGenerator` und
+  `MeshBuilder` sind reine Funktionen und damit die einfachsten
+  Testkandidaten, die es gibt.
+- **Keine Namespaces, keine Assembly Definitions.** Siehe Punkt E. Nach
+  der Abgabe der richtige Zeitpunkt — Assembly Definitions verkürzen
+  zusätzlich die Kompilierzeit spürbar.
+- **Methodenlänge.** `PlaceType` (~100 Zeilen) macht Seeding, Kachelschleife,
+  Punktfilter und Transform-Aufbau in einem. Selbst gefunden, bewusst
+  aufgeschoben, richtig entschieden.
+- **Keine Objekt-Pools.** `SheepSense` fordert je Bild Speicher an —
+  selbst gefunden, steht auf der Politur-Liste.
+- **Kein Profiler-gestütztes Arbeiten.** Gemessen wurde per Stoppuhr und
+  `Debug.Log`, was für diese Aufgabe völlig ausreichte und sogar
+  robuster war als Editor-Profiling. Der Unity Profiler und die
+  Frame-Debugger-Ansicht sind trotzdem Werkzeuge, die im dritten
+  Semester dazukommen sollten.
+- **Datenstrukturen jenseits von List/Dictionary/Array** sind noch nicht
+  gebraucht worden. Kommt mit C++ von selbst.
+
+**Zum dritten Semester (C++ und Unreal):** Der Übergang wird leichter
+ausfallen als befürchtet, weil das, was schwer zu lernen ist, schon da
+ist — Zerlegung, Determinismus, Messen, Warum-Kommentare. C++ bringt
+drei Dinge, die C# abgenommen hat: manuelle Lebensdauer von Objekten
+(Zeiger, Referenzen, RAII), Header/Implementierungs-Trennung und den
+fehlenden Sicherheitsgurt (kein `NullReferenceException`, sondern ein
+Absturz oder Schlimmeres). Unreal bringt sein eigenes Vokabular
+(`UPROPERTY`, Actor/Component statt GameObject/MonoBehaviour,
+Blueprints als zweite Sprache daneben). Was **direkt überträgt**: die
+FSM, die Pipeline-Denkweise, die Trennung Model/View/Presenter, das
+Threading-Verständnis. Was **neu wehtun wird**: dass ein Fehler nicht
+mehr höflich meldet, wo er passiert ist.
+
+---
+
+### 6. Nächster Schritt
+
+Reihenfolge bis zum 21.08., nach Hebelwirkung sortiert und gegen die
+verfügbare Zeit geschnitten:
+
+1. **Do/Fr 13.–14.08. (abends, je 1–2 h):** Deckblatt-Widersprüche (B),
+   Quellenangaben in 6.3/6.5 (C), zwei Sätze zum `namespace` im Fazit (E).
+   Alles kleine, abgeschlossene Häppchen — passt in Abende.
+2. **Sa 15.08. (der wichtigste Tag):** Layout des TDD komplett (A).
+   Nicht anfangen, bevor der Tag frei ist, und nicht aufhören, bevor
+   Strg+A / F9 durchgelaufen ist und die Verzeichnisse stehen.
+3. **So 16.08.:** Messreihen-Diagramm (D), dann Village und Herde über
+   den Placer (G), soweit der NavMesh-Bake es zulässt.
+4. **Mo–Do 17.–20.08. (abends):** Politur nach der ROADMAP-Liste,
+   Abgabeordner sortieren und befüllen (ROADMAP 3b), Endcheck.
+5. **Nicht mehr anfangen:** Kapitel 9/10 überarbeiten (F),
+   `namespace`-Umbau, `PlaceType` zerlegen, Prefab-Painter-Fragen.
+
+**Zur Bewerbungsfrage.** Die Einschätzung, erst nach dem dritten
+Semester zu bewerben, ist richtig — aber aus einem anderen Grund als
+angenommen. Es liegt nicht am Können; das Threading-Kapitel allein ist
+ein besseres Bewerbungsstück als das, was viele Absolventen mitbringen.
+Es liegt daran, dass ein Studio zuerst **etwas Spielbares** sehen will:
+einen Build, ein Video von 60 Sekunden, dann erst den Text. Aktuell ist
+der Spieler eine Kapsel, das Dorf leer und es gibt keinen Ton — die
+Systeme sind gut, aber sie *zeigen* sich nicht.
+
+Konkret für die Zeit nach dem 21.08. bis zur Bewerbung: **eine polierte
+vertikale Scheibe schlägt eine große unfertige Welt.** Ein Dorf, eine
+Herde, Ton, Licht, ein Menü und fünf Minuten, die sich rund anfühlen —
+das ist bewerbungsfähig. Dazu die Threading-Messreihe als
+zweiseitige Fallstudie (Ausgangslage, Fehlversuch, Amdahl, Kachelung,
+Messtabelle, Diagramm) als eigenes PDF. Diese zwei Dinge zusammen sind
+eine gute Bewerbung. Realistisch ist der Einstieg als Praktikum oder
+Werkstudent, nicht als Junior — und das ist der normale Weg, kein
+Rückschritt.
+
+---
+
+### 7. Prüfanker fürs nächste Zeugnis
+
+Beim nächsten Mal wird gegen diese Punkte verglichen — jeweils mit einer
+Zahl, damit die Entwicklung messbar ist und nicht nur gefühlt:
+
+1. Ist das TDD-Layout vollständig? (Verzeichnisse vorhanden, Wortanzahl
+   eingetragen, Seitennummerierung regelkonform — ja/nein)
+2. Wie viele Quellenangaben stehen in den Fachkapiteln? (heute: 0)
+3. Wie viele der 83 eigenen `.cs`-Dateien liegen in einem `namespace`?
+   (heute: 0)
+4. Gibt es ein Test-Assembly, und wie viele Tests? (heute: 0)
+5. Steht eine Herde oder ein NPC-Typ über den Placer in der Welt statt
+   von Hand? (heute: nein)
+6. Wie viele Bausteine hat Isor ohne Gerüst begonnen — also nach dem
+   eigenen Entwurf, ohne dass Claude vorher ein Skelett gezeigt hat?
+   (heute: die Regel existiert seit 05.08., Zählung beginnt hier)
+7. Existiert ein spielbarer Build mit Ton und Menü? (heute: nein)
+8. Verhältnis Dokumentationszeit zu Umsetzungszeit im nächsten
+   Abschnitt (heute: 51 h Doku zu ~75 h Umsetzung im 2. Semester)

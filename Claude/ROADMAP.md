@@ -9,9 +9,9 @@ Generischer Harness für Game-Dev-Projekte und Brainstorm-/Learn-Sessions:
 entwickelt und getestet, später pro Projekt (Isor's Tower) kopiert und
 spezialisiert.
 
-## Nahziel (Stand 2026-07-29)
+## Nahziel (Stand 2026-08-12)
 Zwei Phasen, klar getrennt:
-1. **Bis zur Uni-Abgabe (Portfolio 2026-08-21):** Das Uni-Projekt zu Ende
+1. **Bis zur Uni-Abgabe (Frist 2026-08-21):** Das Uni-Projekt zu Ende
    bringen — abgabefähig und benotbar. Keine Umbauten Richtung GDD.
 2. **Nach der Abgabe:** Das Bestehende am GDD.md ausrichten und den
    Basiszustand herstellen, auf dem die kommenden Semester aufbauen.
@@ -34,256 +34,231 @@ verlangt; danach wird er wieder aktiv ausgebaut.
 - [x] Gras-Instancing + LOD + PlacementExclusion + Prefab-Painter
   (2026-08-03 bis 2026-08-05) — Einzelheiten im FEATURE_LOG.md
 - [x] Threadoptimierung inkl. Messreihe und Laufzeit-Placement
-  (2026-08-05) — Einzelheiten im FEATURE_LOG.md
+  (2026-08-05) — Gras-Rebuild 122,7 s → 12,4 s (−89,9 %). Einzelheiten im
+  FEATURE_LOG.md, Stoff fürs TDD in TDD_NOTES.md
+- [x] Gras-Rendering und Verteilung finalisiert (2026-08-04/05):
+  GPU-Instancing, Gras-LOD (507 Mio → ~12 Mio Dreiecke, 4,5 → ~87 FPS),
+  Weltgröße bleibt 2048 m bei HeightMultiplier 700, Kontrastkurve in
+  `NoiseMaskDensity`, Blocker über `PlacementExclusion`
+- [x] Neun Diagramme erzeugt und angeordnet (2026-08-08 bis 2026-08-11) —
+  Terrain-Pipeline, Platzierung, Gras-Rendering, Editor-Tool,
+  DayNightSystem, Sheep-FSM, Sheep-Komponenten, Ablauf Generate Complete,
+  Zustand Sheep-FSM. Skripte unter `05_Werkzeuge\Vorlagen\`, Quellen unter
+  `01_Uni\Semester_2\Diagramme_Quellen\`. Regeln in DIAGRAM_RULES.md
+- [x] Session-Typ „Zeugnis" gebaut (2026-08-11): vierter Typ in
+  WORKFLOW.md, Regeln in ASSESSMENT_RULES.md, Zeugnisse in
+  ASSESSMENT_LOG.md, Auslöser `/zeugnis`; erstes Zeugnis am selben Tag.
+  Begründungen in DECISIONS 2026-08-11
 - [x] Artifact-Seiten nach den drei Typen sortiert (2026-08-05 bis
-  2026-08-08): zehn Seiten mit Symbol, Kind-Badge und Favicon; die Seite
-  „Editor-Tool" beantwortete zwei Fragen und wurde geteilt — der
-  Lernstück-Teil behielt die URL, der projektspezifische Teil ging in
-  „System · Terrain & Gras". Regeln in ARTIFACT_RULES.md
+  2026-08-08): zehn Seiten mit Symbol, Kind-Badge und Favicon. Regeln in
+  ARTIFACT_RULES.md
+- [x] **TDD inhaltlich fertig** (2026-08-11): Kapitel 1 bis 8, 12, 13, 14
+  durch, 149.948 Zeichen, alle Zahlen gegen Code und Rohlogs geprüft.
+  Verlauf und Einzelheiten im FEATURE_LOG.md, Begründungen in DECISIONS.
+  S4-Abgabe („Arbeiten nach akademischen Standards") neu erstellt.
+- [x] **TDD-Layout** (Isor, 2026-08-11): Abschnittsumbruch und
+  Seitennummerierung, Seitenumbrüche, Zeilenabstände, Verzeichnisse
+  erzeugt, Strg+A / F9 durchgelaufen
+- [x] **Abgabe-Ordnerstruktur gebaut und befüllt** (2026-08-12):
+  `01_Uni\Semester_2\Abgabe_Final\` nach SAE-Vorgabe, Vorlage für kommende
+  Semester unter `05_Werkzeuge\Vorlagen\SAE_Abgabe_Struktur\`, Kopierskript
+  `05_Werkzeuge\Abgabe_Projektkopie.ps1`. Beide Projektkopien, alle
+  Diagramme, Videos, Bilder, Logs und PDFs liegen drin. Restliste in
+  `01_Uni\Semester_2\Arbeitsdateien\Abgabe_Packliste.txt`
 
-## Als Nächstes — bis zur Uni-Abgabe (2026-08-21)
-1. [ ] **Village spielbar aufbauen.** Zerfällt in zwei Hälften, die
-   *nicht* zusammenhängen — die zweite hängt an Punkt 2.
-   **1a — sofort machbar (unabhängig von Weltgröße und Terrain):**
-   - [x] Interaktionssystem in Betrieb (Layer `Interactable`,
-     `PlayerInteractor` + `InteractionPromptView` + Prompt-UI verdrahtet) —
-     2026-08-02, Einzelheiten im FEATURE_LOG.md
-   - [x] Fackel: `Torch` + `TorchInteractable` (+ `TorchMode`-Enum) — 2026-08-02
-   - [x] Prompt-Vergleich im Interactor erweitert (Ziel + Prompt) — 2026-08-02
-   - [x] Schafe ins Village bringen und zähmbar machen — 2026-08-03,
-     Einzelheiten im FEATURE_LOG.md
-   - [ ] Schafe schlagbar machen (entschieden 2026-08-03, erweitert die
-     „kein Kampf"-Linie aus DECISIONS 2026-07-30 um genau einen Schlag):
-     Attack-Action im Input + Raycast auf `IDamageable` (baugleich zu
-     `PlayerInteractor.FindTarget`), `DamageType.Physical` bekommt damit
-     seinen ersten Nutzer. Mitzufixen: `Sheep.HandleDamage` flieht nur bei
-     `Sense.CurrentThreat != null` — der Spieler liegt auf Layer `Player`,
-     ein Treffer würde sonst Schaden machen, ohne dass das Schaf wegläuft.
-   - [x] Prefab-Pinsel gebaut (2026-08-03, `Systems/PrefabPainter/`) —
-     Hilfstool, nicht Abgabe-Umfang; Einzelheiten im FEATURE_LOG.md
-   - [x] Placer spart Bebautes aus — gelöst über `PlacementExclusion`
-     (Komponente am Objekt statt Plateau-Prüfung im Placer, 2026-08-05,
-     DECISIONS 2026-08-05); wirkt auf beiden Spawn-Wegen
-   **1b — erst nach Punkt 2, weil jede Terrain-Änderung die NavMesh-Bake
-   wegwirft:**
-   - `Village`-Prefab aufbauen: Häuser (Asset oder Primitive — **offen**),
-     Props, Interactables; auf dem Plateau platzieren
-   - `Navigation`-Objekt mit NavMeshSurface neben dem Tool-Ast, backen
-   - NPCs: Herde handgesetzt im Prefab, Goblins per Placer im Umland
-   - Bestehendes prüfen: zwei aktive Kameras in `Village.unity`,
-     Dubletten-Prefab `Torch .prefab`, Birken-Material am Fackel-Mesh
-2. [x] **Gras-Rendering und Verteilung finalisiert** (2026-08-04/05,
-   Einzelheiten im FEATURE_LOG.md, Begründungen in DECISIONS 2026-08-04/05):
-   - [x] GPU-Instancing gebaut — Pipeline `PlaceableRenderMode` →
-     `GrassCellBuilder`/`GrassCell` → `InstancedRenderer`, Verzweigung in
-     `SpawnType`; damit existiert zur Laufzeit das Messobjekt für Punkt 4
-   - [x] Gras-LOD statt „schön ODER schnell": `GrassRenderProfile` am
-     Prefab + `GrassLodSelector` je Zelle; Low-Büschel handgebaut —
-     507 Mio → ~12 Mio Dreiecke, 4,5 → ~87 FPS
-   - [x] Weltgröße bleibt 2048 m, HeightMultiplier 700 (2026-08-05);
-     bei Problemen dann neu bewerten
-   - [x] Verteilung ungleichmäßig: Kontrastkurve in `NoiseMaskDensity`
-   - [x] Blocker-Bedarf gelöst über `PlacementExclusion` (siehe 1a)
-3. [ ] **Schriftliche Abgaben:** TDD aus TDD_NOTES.md generieren, plus
-   UML-Klassendiagramm und Ablaufdiagramm fürs Tool (Pflicht laut
-   ASSIGNMENT_TOOL); akademische Aufgabe — eine zusätzliche Quelle.
-   Baseline-Messung ist mit Punkt 4 erledigt (2026-08-05).
-   **Vorgehen ab 2026-08-07:** Das bestehende TDD von oben nach unten
-   durchgehen — Kapitel gegen den heutigen Code prüfen, Veraltetes anpassen,
-   neue Kapitel und Diagramme einreihen. Gliederung bleibt, es wird nur ergänzt.
-   **Stand 2026-08-08 — Kapitel 1 bis 5 sind durch.** Claude schreibt die
-   Änderungen direkt in die `.docx` (DECISIONS 2026-08-07), Sicherungen unter
-   `Arbeitsdateien\Sicherung\`. Erledigt:
-   - Kapitel 1 Einleitung: Perspektive richtiggestellt (Prototyp ist First
-     Person), `Village Guild` → `Adventure Guild`.
-   - Kapitel 2 Entwicklungsumgebung: Unity-Version auf `6000.5.2f1`, Blender
-     und KI-Assistenz ergänzt, Tabelle 1 überarbeitet.
-   - Kapitel 4 Anforderungen: fehlende Anforderung „prozedurale Erweiterung"
-     ergänzt, 4.2 um sieben Punkte erweitert, **neu 4.3 Weltgenerierung,
-     4.4 Editor-Tool, 4.5 Spielerinteraktion**.
-   - Kapitel 5 Zeitplan: **neu 5.3 bis 5.6** mit Tabellen 4 bis 7 aus den
-     Grindstone-Daten (DECISIONS 2026-08-07); Asset-Tabelle ist dadurch von
-     Tabelle 4 auf Tabelle 8 gerückt.
-   - Beschriftungen und Verweise sind jetzt Word-Felder (DECISIONS 2026-08-08)
-     — neue Abbildungen nur noch über `Verweise → Beschriftung einfügen`, sonst
-     zählt Word sie nicht mit.
-   - Kapitel 6 Architekturübersicht, bestehende Teile geprüft: **6.1
-     DayNightSystem** (Tagesfortschritt und Phase sind zwei getrennte
-     Rechnungen — der alte Text behauptete das Gegenteil; `DayPhase.None`,
-     Nachreichen der Phase beim Anmelden, Schafe und Fackeln als Listener) und
-     **6.2 KI ProtoTyp Sheep** (vier fehlende Komponenten, Sheep-Absatz neu,
-     Zusätze bei Health/Sense/Move/Dodge/HerdManager; bei den States der
-     Dodge-Einstieg über `SheepStateBase.TryEnterDodge` und der Push beim
-     Zähmen). Die elf State-Beschreibungen selbst waren alle korrekt.
-   - [x] **Kapitel 6 ist vollständig** (2026-08-08): neu **6.3 Prozedurale
-     Weltgenerierung** (sieben Unterkapitel entlang der Pipeline, DECISIONS
-     2026-08-08), **6.4 Editor-Tool** (sieben Unterkapitel, MVP/Fehlbedienung/
-     bewusste Grenzen) und **6.5 Threadoptimierung** (sechs Unterkapitel:
-     Messverfahren, gescheiterter erster Versuch mit Amdahl-Begründung,
-     Kachelung, vier Thread-Fallen, Messreihe, verworfener Versuch).
-     Dokument von 104.288 auf 149.948 Zeichen. Alle Zahlen gegen Code und
-     Rohlogs geprüft; dabei zwei Speicherwerte der Threading-Notizen
-     korrigiert (134 MB / 2,1 MB statt 94 MB / 1,5 MB — die alten gehörten zu
-     einem früheren MinSpacing).
-   - [x] **Kapitel 6.5 Messreihe als Tabelle** (2026-08-09): sechs Messpunkte
-     mit Abschnittszeiten, eingesetzt hinter dem ersten Absatz von „Ergebnis
-     der Messreihe". Sie wird **Tabelle 8**, nicht 9 — in der Dokument-
-     reihenfolge steht sie vor der Asset-Tabelle, die dadurch auf 9 rückt
-     (beide Nummern sind SEQ-Felder, der zwischengespeicherte Text wurde
-     mitgezogen). Tabellenschrift 10 pt statt 12 pt, sonst trennt Word bei
-     sechs Spalten mitten im Wort.
-   - **Als Nächstes: Kapitel 7 UML und Kapitel 8 Programmablaufplan.**
-     Kapitel 7 ist versorgt — sieben erzeugte Diagramme liegen bereit
-     (siehe unten), Isor setzt die Bilder ein.
-     Kapitel 8: Ablaufplan-Werkzeug und der „Generate Complete"-Plan sind
-     **fertig** (2026-08-09, Einzelheiten im FEATURE_LOG) — damit ist die
-     letzte Pflichtanforderung der Tool-Aufgabe als Diagramm erfüllt. Offen
-     bleibt der Kapiteltext dazu und das Einsetzen des Bildes.
-   - **Diagramme (2026-08-08):** Sieben Stück unter
-     `01_Uni\Semester_2\Diagramme_Quellen\`, je ein Skript unter
-     `05_Werkzeuge\Vorlagen\`, alle mit null Prüfer-Abweichungen und von Isor
-     angeordnet: Terrain-Pipeline (5 Klassen), Platzierung (14),
-     Gras-Rendering (8), Editor-Tool (8), DayNightSystem (5), Sheep-FSM (14),
-     Sheep-Komponenten (17). Die handgezeichneten Vorgänger liegen unter
-     `99_Archiv\_Zu_Loeschen\Diagramme_alt_2026-08-08\`.
-     **Ohne Ersatzweg archiviert:** `Sheep_Programmablauf` und
-     `Sheep_Transitionen` — beides Ablauf-/Zustandsdiagramme. Für den
-     Programmablauf existieren die Formen seit 2026-08-09; das Zustands-
-     diagramm bräuchte weiterhin eigene Formen. Bei Bedarf zurückholen.
-   - **Achter Plan (2026-08-09):** `Ablauf_Generate_Complete.drawio`, Skript
-     `ablauf_generate_complete.py` — Programmablaufplan für Kapitel 8.
-     Anordnen steht noch aus (Isor).
-   - **Neuntes Diagramm (2026-08-11):** `Zustand_Sheep_FSM.drawio` —
-     Zustandsdiagramm der Sheep-FSM, von Isor angeordnet. Ersetzt das
-     archivierte `Sheep_Transitionen`. Einzelheiten im FEATURE_LOG.
-   - [x] **Kapitel 12 Asset Integration vollständig** (2026-08-11): drei
-     Texturquellen als Unterkapitel, Tabelle 9 auf fünf Zeilen, vier neue
-     Quellen, KI-Textur gekennzeichnet, ChatGPT in Tabelle 1. Lizenzen selbst
-     auf den Seiten geprüft. Einzelheiten im FEATURE_LOG.
-   - [x] **Kapitel 13 Fazit und 14 Änderungsverlauf** (2026-08-11): Fazit
-     dreiteilig (Stand, tragfähige Ergebnisse, offene Punkte nach Bereichen,
-     DECISIONS 2026-08-11); Änderungsverlauf als Tabelle 10 aus den
-     Kapitel-Zeitstempeln. Tabelle 7 auf 51 h Dokumentationszeit nachgezogen.
-   - [x] **Endcheck, maschineller Teil** (2026-08-11): *Isor's Tower* kursiv
-     statt in Anführungszeichen (10 Stellen), Datum der
-     Selbstständigkeitserklärung auf 21.08.2026, die drei Verzeichnisse als
-     Feldgerüst eingesetzt. Dabei gefunden: Die Seitennummerierung war
-     durchgehend römisch und entsprach damit keiner der beiden erlaubten
-     Varianten.
-   - [x] **S4-Abgabe neu erstellt** (2026-08-11): Die verlorene Word-Fassung
-     von „Aufgabe zum Arbeiten nach akademischen Standards" aus der PDF
-     rekonstruiert, mit den Formatvorlagen des TDD. Je Übungstext eine dritte
-     Quelle ergänzt (Feedback der Fachbetreuung) und eine fehlerhafte
-     Quellenangabe berichtigt — Einzelheiten in DECISIONS 2026-08-11.
-     Liegt unter `Arbeitsdateien\`.
-   - **Damit ist das TDD inhaltlich fertig.** Bei Isor liegt nur noch das
-     Layout: Abschnittsumbruch und Seitennummerierung, Seitenumbrüche vor den
-     Hauptkapiteln, Zeilenabstände, leere Absätze vor den Verzeichnissen und
-     zum Schluss Strg+A / F9.
-   - **Bilder in Kapitel 7 gesetzt** (Isor, 2026-08-09): Sheep-Komponenten,
-     Sheep-FSM, DayNightSystem. Überschriften für Terrain-Pipeline,
-     Objektplatzierung, Gras-Rendering und Editor-Tool stehen bereit, ebenso
-     eine Überschrift „Editor-Tool" in Kapitel 8.
-   - **Arbeitsweise ab hier ändert sich** (Isor, 2026-08-08): Bis Kapitel 6.2
-     waren es Korrekturen an bestehendem Text — dort schreibt Claude direkt in
-     die Datei, und das hat sich bewährt. Die neuen Fachkapitel sind kein
-     Korrekturfall mehr: Isor formuliert selbst, Claude liefert Struktur,
-     geprüfte Fakten und Zahlen und glättet hinterher. Grund: Der Text soll von
-     ihm kommen, und das Durchgehen ist zugleich das Lernen des Stoffs.
-   - Beim Kapitel Weltgenerierung wird **gleichzeitig die Unity-Ordnerstruktur
-     angepasst** (Uni-Systemgrenzen gegen Unity-Ordner, siehe Punkt 8) — beides
-     zusammen, damit die Beschreibung zur endgültigen Struktur passt.
-   - Der Prefab-Painter wird im TDD bewusst nicht erwähnt (Entscheidung Isor,
-     2026-08-07). Wenn er auch nicht mit abgegeben werden soll, muss
-     `Assets\Systems\PrefabPainter\` vor der Abgabe aus dem Projekt.
-   Stand 2026-08-06:
-   - Werkzeug für UML-Diagramme steht (DECISIONS 2026-08-06); Sheep-Komponenten-
-     diagramm erzeugt und geprüft. Offen: FSM-Extraktor, Formen für Ablaufpläne.
-   - Diagramm-Quelldateien gerettet und unter
-     `C:\IsorBackup\01_Uni\Semester_2\Diagramme_Quellen\` abgelegt.
-   - **Arbeitsdatei:** `01_Uni\Semester_2\Arbeitsdateien\TDD Softwareplanung.docx`
-     — nur noch diese anfassen. Der Wechsel von `.odt` auf `.docx` ist erledigt
-     (2026-08-06); die alten Stände liegen daneben im Sicherungsordner. Grund für
-     den Wechsel: Word übersetzt bei jedem Speichern einer `.odt` zwischen zwei
-     Formaten und verliert dabei Bildverankerungen — so gingen 16 Abbildungen
-     verloren.
-   - Die fehlenden Bilder setzt Isor selbst ein, und zwar **erst beim Durchgehen
-     des jeweiligen Kapitels** — die alten UML-Diagramme werden ohnehin durch die
-     neu erzeugten ersetzt, vorher einzusetzen wäre verlorene Arbeit.
-   - Dabei mitziehen: Die Uni-Systemgrenzen und die Unity-Ordnerstruktur
-     auseinanderhalten — im Projekt liegt derzeit noch alles unter einem System
-     (siehe Punkt 8). Beim Schreiben gleich sauber trennen, statt später.
-   - Zwei Portfolios mit sieben Aufgaben, vier Ordner davon noch leer
-     (`C:\IsorBackup\01_Uni\Semester_2\Abgabe\`).
-3b. [ ] **Abgabe-Ordner sortieren und befüllen** (eigene Session, unmittelbar
-   vor der Abgabe). Unter `C:\IsorBackup_Uni\Semester_2\Abgabe\` liegen
-   zwei Portfolio-Ordner mit je einer README.md und einem Unterordner je
-   Aufgabe, dazu `PDF_Fassungen\`:
-   - `Portfolio_4FSC0PD003.1_Rosenberg` — Softwareplanung,
-     Engine-Tool-Entwicklung, Threadoptimierung
-   - `Portfolio_4FSC0PD004.1_Rosenberg` — KI Prototyp, Simulation der
-     Spieleumgebung, Prozedurale Erweiterung der Spielwelt, Aufgabe zum
-     Arbeiten nach akademischen Standards
-   Zu klären: was je Ordner hineingehört (PDF, Projektdateien, Builds, Logs,
-   Diagramme), ob der Prefab-Painter mitgeht (Entscheidung Isor 2026-08-07:
-   im TDD nicht erwähnt) und ob die Threading-Builds beiliegen müssen.
+## Als Nächstes — Abgabe in zwei Ständen
+**Entschieden 2026-08-12:** Es wird zweimal abgegeben. **Stand 1 am
+Sonntag 16.08.** ist vollständig und benotbar — als hätte es keinen
+zweiten Termin. **Stand 2 am Mi/Do 19./20.08.** bringt nur noch
+Kleinigkeiten. Frist ist der 21.08.
 
-4. [x] **Uni: Threadoptimierung** (K2, K3, S3; formativ 2026-08-07) —
-   Code und Messreihe fertig (2026-08-05): Gras-Rebuild 122,7 s → 12,4 s
-   (−89,9 %) über vier dokumentierte Zwischenstände, Builds und Logs unter
-   `C:\Repos Isor\Builds\` mit eigener README. Einzelheiten im FEATURE_LOG,
-   Begründungen in DECISIONS, Stoff fürs TDD in TDD_NOTES (alle 2026-08-05).
-   Die Annahme „Bridson bleibt sequenziell" hat sich als halb richtig
-   erwiesen: innerhalb einer Kachel ja, über Kacheln hinweg nein.
-   **Offen:** der TDD-Text selbst (gehört zu Punkt 3).
-5. [ ] **Politur mit der Restzeit:** Audio, Post Processing / Volume,
-   Menü, Tool-Layout — alles, was die Note hebt. Vorgemerkt aus der
-   Interaktions-Session (2026-08-02): TMP-Font-Schärfe (Texte pixelig);
-   Fadenkreuz aufwerten + kontextsensitiv (reagiert auf Interactable);
-   Prompt-UI-Stil (Box/Fade, Tastensymbol); HUD beim Pausieren ausblenden;
-   Menü-Sortierung (Pause über HUD) + Maus/Tastatur-Moduswechsel; Sun Source
-   explizit setzen; Kamera-Far-Plane an die finale Weltgröße koppeln
-   (Mond-Culling); Raycast-Target-Hygiene bei UI-Bildern. Neu vorgemerkt
-   aus den Gras-Sessions (2026-08-04/05): Lichtblitz/Specular-Highlight
-   auf dem Terrain (Material-Smoothness bzw. Bloom prüfen);
-   `SheepSense.Update` auf `OverlapSphereNonAlloc` (2 KB GC je Frame);
-   Herden-Placeable tunen (Höhenband, MaxSlope, ShoreMargin) und
-   Boden-Aufsetzen nach dem NavMesh-Bake prüfen; Lightmap-Warnung des
-   generierten Terrains (Mesh hat keine UVs — Contribute GI ausschalten).
-   Neu vorgemerkt beim TDD-Schreiben (Isor selbst gefunden, 2026-08-08):
-   Magic Numbers im `MeshBuilder` benennen — `INDICES_PER_QUAD = 6`,
-   `PADDING_RING = 1` (Begriff existiert im `HeightmapGenerator` bereits als
-   Konstante, `MeshBuilder` schreibt `- 2`/`+ 1` hart hin) und
-   `NEIGHBOUR_SPAN = 2f` in der Normalen-Formel. Rein mechanisch, kein
-   Verhalten ändert sich. Isors Maßstab: keine Zahl im Code, deren Bedeutung
-   er im Prüfungsgespräch erst herleiten muss.
-   **Nicht** anfassen bis nach der Abgabe: `ObjectPlacer.PlaceType` ist zu
-   lang und müsste zerlegt werden (Isor 2026-08-08) — die Methode ist aber
-   das Messobjekt der Threading-Abgabe, ein Umbau entwertet die Messreihe.
-   Ebenfalls von Isor gefunden (2026-08-08): Im `TerrainToolPresenter` sind
-   public und private Methoden gemischt. Vorher gehört die Regel in
-   CODE_GUIDELINES (Member-Reihenfolge ist dort bisher nicht festgelegt),
-   danach wird danach sortiert — sonst ist es Gefühl statt Maßstab.
-6. [ ] **Gesamt-Review vor der Abgabe:** Bugs, halbfertige Stellen,
-   Testen, Feedback einholen und umsetzen.
-   **Endcheck TDD** (erst wenn der Text steht, Reihenfolge egal;
-   Regeln aus `C:\IsorBackup\01_Uni\_Regelwerk\Allgemeine_Formatierungs-
-   vorgaben.pdf`, gesammelt 2026-08-07):
-   - [ ] Wortanzahl auf der Titelseite eintragen
-   - [ ] Datum der Selbstständigkeitserklärung (steht auf 26.02.2026,
-     Rechtevereinbarung darunter schon auf 21.08.2026)
-   - [ ] Unterschrift auf beiden Erklärungen prüfen
-   - [ ] Inhalts-, Abbildungs- und Tabellenverzeichnis erzeugen — fehlen
-     komplett (45 leere Absätze zwischen Titelseite und Kapitel 1,
-     vermutlich beim .odt→.docx-Wechsel verloren); Beschriftungen liegen
-     bereits auf der Formatvorlage „Beschriftung", Word baut sie daraus
-   - [ ] „Isor's Tower" → kursiv ohne Anführungszeichen (Vorgabe:
-     Anführungszeichen ausschließlich für direkte Zitate, Eigennamen
-     kursiv) — ein Suchen-und-Ersetzen-Lauf über das ganze Dokument
-   - [ ] Seitenumbruch vor jedem Hauptkapitel prüfen
-   - [ ] Zeilenabstände und Leerzeilen im ganzen Dokument nachziehen —
-     durch die neuen Texte und Abbildungen sitzen die Umbrüche nicht mehr
-     (bewusst ans Ende gelegt, vorher wäre es doppelte Arbeit)
+Grund: Ein vollständiger früher Stand nimmt das Risiko aus der Woche.
+Was am Sonntag steht, kann nicht mehr schiefgehen.
+
+**Zeitbudget:** Mi 4 h, Do 4 h, Fr bis So zusammen rund 17 h — gut 25 h.
+Der Bedarf unten liegt bei 15 bis 18 h. Der Puffer ist Absicht.
+
+**Reihenfolge nach Isors Vorgabe (2026-08-12):** Zuerst das, was das
+Spiel lebendig macht — Ton, UI, Licht, Bepflanzung. Die Dokumentation
+kommt bewusst zuletzt an einem Stück (Sonntag), weil bis dahin noch
+Dinge dazukommen, die im Text stehen müssen. Ein früher Textstand wäre
+doppelte Arbeit. Das Dokument ist ohnehin schon einmal zum Feedback
+eingereicht.
+
+### Mi 12.08. — entfällt
+Planungssession. Isor geht früher schlafen, um Donnerstag mit voller
+Energie zu starten — bewusste Entscheidung, kein Verzug: die tragenden
+Tage sind Fr bis So.
+
+### Do 13.08. — Ton (4 h)
+1. [ ] **Musik und Soundeffekte einbauen.** `Village.unity` enthält
+   derzeit **null AudioSource und null AudioListener** — es gibt keinen
+   Ton. Größter einzelner Eindrucks-Hebel und ein abgeschlossener Block,
+   der in einen 4-Stunden-Abend passt. Reihenfolge: Listener am Spieler
+   prüfen, Umgebungsmusik, dann Einzeleffekte (Schritte, Fackel, Schafe,
+   Interaktion).
+   Lizenzen: Die Quellen kommen als **Zeilen in die Asset-Tabelle
+   (Tabelle 9, Kapitel 12)** — kurze Nennung mit Quelle und Lizenz, kein
+   eigenes Unterkapitel (Isor 2026-08-12: sonst doppelt sich der Text).
+   Beim Herunterladen gleich Quelle und Lizenz mitnotieren, sonst muss
+   das am Sonntag rekonstruiert werden.
+
+### Fr 14.08. — UI (langer Block)
+2. [ ] **In-Game-UI aufwerten:** Fadenkreuz kontextsensitiv auf
+   Interactable, Prompt-Stil (Box, Fade, Tastensymbol), HUD beim
+   Pausieren ausblenden, TMP-Font-Schärfe (Texte sind pixelig).
+3. [ ] **Menü-UI und Options:** Pause über HUD sortieren, Maus-/
+   Tastatur-Moduswechsel, Options-Fenster mit **Lautstärkeregler**
+   (hängt an Punkt 1).
+
+### Sa 15.08. — Welt beleben, dann Abgabe-Material
+4. [ ] **Licht und Bepflanzung:** Fackeln setzen, Glühwürmchen setzen,
+   mehrere Herden verteilen.
+5. [ ] **Baum-LOD nachziehen** — die Stufen kommen aus Blender mit, die
+   Umschaltabstände passen nicht.
+6. [ ] **Terrain-Texturen ansehen** — Umfang bewusst offen, erst schauen
+   was mit wenig Aufwand deutlich besser aussieht.
+7. [ ] **Mindestens eine Herde über den Placer** statt von Hand (~1 h).
+   Lernziel **S3** („generierte Bevölkerung") und damit ein
+   Bewertungskriterium, kein Polish — kleinster Punkt des Tages mit der
+   größten Notenwirkung. Optional daneben ein einfacher Feind (Goblin)
+   über denselben Weg.
+8. [ ] **Abgabe-Build erstellen und durchspielen** (~1 h): kein
+   Development Build. Kommt in beide `release`-Ordner. Die Funktionalität
+   wird laut Vorgabe am Build bewertet.
+9. [ ] **Screenshots** (~1 h): drei je Projektordner, ab 1024x768,
+   `Press1.png`, `Press2.png`, `Press3.png`. Betrifft Engine-Tool, KI
+   Prototyp, Simulation, Prozedurale Erweiterung. Die vorhandenen Bilder
+   sind Shader-Graphen aus dem TDD, keine Spielbilder.
+10. [ ] **Video für Engine-Tool-Entwicklung** (~1 h): 30 bis 90 Sekunden.
+    Der einzige Projektordner ohne Video.
+
+### So 16.08. — Dokumentation und Abgabe (Stand 1)
+Alles am TDD an einem Stück, weil der Text erst dann den fertigen Stand
+beschreibt. Claude legt bis Samstagabend vor (siehe unten), sodass hier
+nur noch eingesetzt und geprüft wird.
+11. [ ] **Deckblatt richtigstellen** (~15 min): steht auf `Semester:
+    März 2025` und `Modulname: Game Development Basics` — beides falsch.
+    Richtig: laufendes Studienjahr und „Structured Game Development"
+    (ASSIGNMENT_TOOL, Modul 4FSC0PD003.1). Vorher gegen Canvas prüfen.
+12. [ ] **Quellenangaben in 6.3 und 6.5 + Literaturverzeichnis** (~2 h):
+    Bridson, Amdahl und Perlin werden namentlich genannt, aber nicht
+    belegt; ein Literaturverzeichnis existiert bisher nicht. Belegtechnik
+    aus dem S4-Text übernehmen.
+13. [ ] **Balkendiagramm der sechs Messpunkte** zu Tabelle 8 einsetzen.
+    Neue Abbildung nur über `Verweise → Beschriftung einfügen`.
+14. [ ] **Zwei Sätze im Fazit** zur fehlenden `namespace`-Gliederung
+    (0 von 83 Dateien) als bewusst aufgeschoben.
+15. [ ] **Audio-Quellen in Tabelle 9 nachtragen** — knapp, Quelle und
+    Lizenz je Zeile, kein eigenes Unterkapitel.
+16. [ ] **Abschluss** (~40 min): Wortanzahl auf der Titelseite
+    eintragen, Unterschrift auf beiden Erklärungen prüfen, Strg+A / F9,
+    beide PDFs exportieren und die Fassungen in `Abgabe_Final`
+    überschreiben.
+17. [ ] **Beide READ_ME fertig schreiben** (~1 h): Platzhalter ersetzen,
+    Kriterien-Kürzel für KI Prototyp und Simulation aus der
+    Aufgabenstellung nachtragen, Kommentarblöcke entfernen, leer
+    gebliebene Ordner löschen.
+18. [ ] **Projektkopien nachziehen** (~5 min): `powershell -File
+    "C:\IsorBackup\05_Werkzeuge\Abgabe_Projektkopie.ps1"`. Zwingend, bevor
+    gezippt wird — die Kopien in `Abgabe_Final` sind sonst der Stand vom
+    12.08. und enthalten weder Ton noch UI noch die Beleuchtung vom
+    Wochenende. Das Skript spiegelt, also werden auch gelöschte und
+    verschobene Dateien nachgezogen.
+19. [ ] **Zippen und hochladen** (~30 min): eine ZIP je Portfolio. Vorher
+    die Upload-Grenze auf Canvas prüfen — 619 MB gesamt, davon 2 × 198 MB
+    Projektkopie und rund 204 MB Videos. Wenn es klemmt, sind die Videos
+    der Hebel: die Vorgabe verlangt nur *ein* Video je Projektordner.
+
+### Was Claude bis Samstagabend vorlegt (kostet Isor keine Zeit)
+Damit der Sonntag nicht überläuft, liegt vorbereitet bereit:
+- [ ] Balkendiagramm der sechs Messpunkte als fertige Bilddatei
+- [ ] Quellenangaben für Bridson, Amdahl und Perlin, formatiert nach der
+  Belegtechnik des S4-Texts, plus die Einträge fürs Literaturverzeichnis
+- [ ] Formulierungsvorschlag für die zwei Fazit-Sätze
+- [ ] Beide READ_ME so weit gefüllt, wie es ohne den fertigen Stand geht
+
+### Geprüft am 2026-08-12 — Village-Altlasten
+- `Village.unity` enthält **null Kamera-Komponenten** direkt in der
+  Szene. Die Notiz „zwei aktive Kameras" vom 2026-08-02 ist erledigt.
+- NavMesh-Bake ist auf dem aktuellen Aufbau, `Environment/Village/` hat
+  genau ein Prefab, `Environment/Terrain/` nur Texturen (Isor).
+- Die zwei Dateien unter `Environment/Torch/Prefab/` (`Torch .prefab` und
+  `Torch.prefab`) sind **Absicht** — zwei Fackeln mit unterschiedlichen
+  Einstellungen (Isor, 2026-08-12). Keine Dublette, nichts zu tun.
+  Die frühere Notiz „Dubletten-Prefab" vom 2026-08-02 war ein Fehlschluss.
+
+Damit sind alle drei Village-Altlasten aus der Notiz vom 2026-08-02
+erledigt oder als Absicht geklärt.
+
+### Nicht mehr geplant
+Das Village-Prefab neu aufbauen (früherer Punkt 1b). Der bestehende
+Aufbau trägt; die Zeit geht stattdessen in Ton, UI und Beleuchtung —
+das ist am Bildschirm sichtbar, ein umgebautes Prefab nicht.
+
+### Mo–Do 17.–20.08. — Stand 2, nur Kleinigkeiten
+Keine großen Änderungen mehr. In Frage kommen:
+- [ ] Politur aus Punkt „Restliste" unten, soweit sie abends passt
+- [ ] Falls es Rückmeldungen zur formativen Abgabe gab: zwei Zeilen im
+  Änderungsverlauf, was zurückkam und was geändert wurde (Feedbackelement
+  *Person* in beiden Aufgabenstellungen)
+- [ ] Was beim Durchspielen am Sonntag auffiel
+- [ ] Die beiden Fackel-Prefabs sprechend umbenennen (heute `Torch .prefab`
+  und `Torch.prefab`, Unterschied nur ein Leerzeichen). Die eine brennt
+  ruhig, die andere aggressiver mit mehr Funken (Isor, 2026-08-12).
+  Vorschlag: `Torch_Calm` und `Torch_Blazing` — oder die Bezeichner des
+  `TorchMode`-Enums, falls die beiden dort schon Werte haben.
+  Passiert im Unity-Editor, wenn ohnehin an den Fackeln gearbeitet wird.
+
+### Bewusst nicht mehr vor der Abgabe
+- Kapitel 9/10 (Shader/VFX) von Screenshots auf erklärenden Text umbauen
+- `namespace`-Umbau über die 83 Dateien
+- `ObjectPlacer.PlaceType` zerlegen — die Methode ist das Messobjekt der
+  Threading-Abgabe, ein Umbau entwertet die Messreihe
+- Schafe schlagbar machen (war ROADMAP 1a): Feature, kein Bewertungspunkt
+- Member-Reihenfolge im `TerrainToolPresenter` sortieren — dazu fehlt die
+  Regel in CODE_GUIDELINES, sonst ist es Gefühl statt Maßstab
+
+### Restliste Politur (nur wenn Zeit bleibt)
+Aus der Interaktions-Session (2026-08-02): TMP-Font-Schärfe (Texte
+pixelig); Fadenkreuz aufwerten + kontextsensitiv; Prompt-UI-Stil
+(Box/Fade, Tastensymbol); HUD beim Pausieren ausblenden; Menü-Sortierung
+(Pause über HUD) + Maus/Tastatur-Moduswechsel; Sun Source explizit
+setzen; Kamera-Far-Plane an die finale Weltgröße koppeln (Mond-Culling);
+Raycast-Target-Hygiene bei UI-Bildern.
+Aus den Gras-Sessions (2026-08-04/05): Lichtblitz/Specular-Highlight auf
+dem Terrain (Material-Smoothness bzw. Bloom prüfen); `SheepSense.Update`
+auf `OverlapSphereNonAlloc` (2 KB GC je Frame); Herden-Placeable tunen
+(Höhenband, MaxSlope, ShoreMargin); Lightmap-Warnung des generierten
+Terrains (Mesh hat keine UVs — Contribute GI ausschalten).
+Beim TDD-Schreiben gefunden (Isor, 2026-08-08): Magic Numbers im
+`MeshBuilder` benennen — `INDICES_PER_QUAD = 6`, `PADDING_RING = 1`,
+`NEIGHBOUR_SPAN = 2f`. Rein mechanisch. Isors Maßstab: keine Zahl im
+Code, deren Bedeutung er im Prüfungsgespräch erst herleiten muss.
+Fehlender Ton und fehlendes Menü sind der größte sichtbare Mangel
+(Zeugnis 2026-08-11) — aber vor der Abgabe nicht mehr realistisch.
+
+### Arbeitsregeln, die weiter gelten
+- **Arbeitsdatei TDD:** `01_Uni\Semester_2\Arbeitsdateien\TDD
+  Softwareplanung.docx` — nur diese anfassen. Sicherungen unter
+  `Arbeitsdateien\Sicherung\`. Regeln in DOCX_RULES.md.
+- **Arbeitsteilung am Text** (Isor, 2026-08-08): Korrekturen an
+  bestehendem Text schreibt Claude direkt in die Datei. Neue Fachkapitel
+  formuliert Isor selbst, Claude liefert Struktur, geprüfte Fakten und
+  Zahlen und glättet hinterher. Grund: Der Text soll von ihm kommen, und
+  das Durchgehen ist zugleich das Lernen des Stoffs.
+- **Word-Felder:** Beschriftungen und Verweise sind Felder — neue
+  Abbildungen nur über `Verweise → Beschriftung einfügen`.
+- **Prefab-Painter** wird im TDD nicht erwähnt (Isor, 2026-08-07), bleibt
+  aber in der Projektkopie (2026-08-11).
+- **Unity-Version:** Das Projekt läuft auf `6000.5.2f1` und weicht damit
+  von den beiden in der Vorgabe genannten Versionen ab. Die Dozentin hat
+  persönlich freigegeben, dass eine eigene Version gewählt werden darf
+  (Isor, 2026-08-12). Kein Handlungsbedarf — hier notiert, falls die
+  Abweichung später jemandem auffällt.
+- **Abgabe-Restliste:** `01_Uni\Semester_2\Arbeitsdateien\
+  Abgabe_Packliste.txt` — dort steht, was in welchem Ordner liegt und was
+  noch fehlt. Diese ROADMAP sagt *wann*, die Packliste sagt *was wohin*.
 
 ## Nach der Uni-Abgabe — Basiszustand für Isor's Tower
 Reihenfolge noch offen, wird in einer eigenen Design-Session festgelegt.
@@ -303,8 +278,8 @@ Reihenfolge noch offen, wird in einer eigenen Design-Session festgelegt.
 3. [ ] **Massen-Bepflanzung als eigenes System:** LOD, Culling und
    Instancing zusammen — welche Objekte überhaupt gezeichnet werden.
    Großprojekt, eigene Design-Session. Das Instancing selbst ist
-   vorgezogen (Punkt 2 vor der Abgabe); hier bleiben LOD,
-   Entfernungs-Ausblendung und Culling je Halm via `BatchRendererGroup`.
+   vorgezogen; hier bleiben LOD, Entfernungs-Ausblendung und Culling je
+   Halm via `BatchRendererGroup`.
 4. [ ] **Save-System:** Weltzustand als Änderungsliste gegenüber dem
    Ausgangszustand (deckt zugleich den späteren Multiplayer-Sync ab).
 5. [ ] **Harness wieder ausbauen:** Review der Regeln nach dem
@@ -322,14 +297,11 @@ Reihenfolge noch offen, wird in einer eigenen Design-Session festgelegt.
    durchgewürfelt (z. B. Torch: Root → Kind „Torch" (Mesh) + Kind „Torch Fire"
    (VFX)); ein festes Muster für alle Objekte fehlt. Ergänzt die
    Ordnerstruktur-Regeln in CODE_GUIDELINES um die Innen-Struktur der Prefabs.
-   Idealerweise *vor* dem Bau vieler Village-Prefabs (1b) — Aufwand gegen
-   Abgabe-Zeit abwägen.
 8. [ ] **Gras-Rendering aus `Systems/TerrainGenerator/` herauslösen:**
    eigener System-Ordner (Umzug im Unity-Editor, macht Isor manuell —
    .meta-GUIDs); dabei LOD-Fade zwischen den Stufen und Laufzeit-Spawn
    der Herden (statt Prefab-Verdrahtung; löst auch das Aufsetzen aufs
    Gelände) mitdenken.
-
 9. [ ] **Repo- und GitHub-System neu ordnen (eigene Design-Session):** Die Repos
    wachsen stark, weil Texturen und andere Binärdateien mitversioniert werden —
    Git legt jede Fassung vollständig ab, Binärdateien lassen sich nicht
@@ -339,6 +311,9 @@ Reihenfolge noch offen, wird in einer eigenen Design-Session festgelegt.
    je Repo aussehen muss, und wie mit der bereits gewachsenen Historie umgegangen
    wird. Betrifft alle drei Repos. Erst nach der vollständigen Uni-Abgabe
    (vorgemerkt 2026-08-06).
+10. [ ] **Studien-Aufbau der Abgabe wiederverwenden:** Die Vorlage unter
+   `05_Werkzeuge\Vorlagen\SAE_Abgabe_Struktur\` beim nächsten Semester
+   gleich zu Beginn kopieren, statt am Ende zu sortieren.
 
 ## Später (nur bei Bedarf)
 - Knowledge-Archivierung automatisieren

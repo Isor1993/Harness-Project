@@ -27,10 +27,31 @@ Zeilen je Eintrag:
 ### 📍 Status · Wo das Projekt steht
 ```
 URL      https://claude.ai/code/artifact/d5e30d97-fafd-4f9e-be83-e727df4d0405
-Stand    2026-08-05
+Stand    2026-08-12
 Quelle   ROADMAP.md
 Skripte  keine — die Seite beschreibt den Projektstand, nicht Code
-Seite →  (noch nicht erfasst)
+Seite →  System · Terrain & Gras; Lernstück Multithreading
+Seite ←  keine
+```
+
+---
+
+## 🎓 Zeugnis
+
+**Kein vierter Typ** — die Seiten gehören zum Session-Typ „Zeugnis"
+(WORKFLOW.md) und werden von ASSESSMENT_RULES.md geregelt. Hier stehen
+sie nur, damit keine URL unerklärt bleibt. Abweichend vom übrigen
+Bestand: Jedes Zeugnis behält seine eigene URL und wird **nie
+nachgezogen** — der alte Stand ist der halbe Zweck. Beim Review-Gate
+sind diese Seiten deshalb zu überspringen.
+
+### 🎓 Zeugnis · 2026-08-11, vor dem Polishing
+```
+URL      https://claude.ai/code/artifact/b9f54327-8f46-4d25-b667-ff66852adc6f
+Datum    2026-08-11 — Zeugnis-Datum, kein Prüfstand; wird nicht nachgezogen
+Quelle   ASSESSMENT_LOG.md (Langfassung), ASSESSMENT_RULES.md (Regeln)
+Skripte  keine — die Seite bewertet den Projektstand, nicht Code
+Seite →  keine
 Seite ←  keine
 ```
 
@@ -176,4 +197,4 @@ Damit nachvollziehbar bleibt, warum eine ID ins Leere zeigt.
   beerbt. Die zwölf Knowledge-Notizen tragen deshalb nur noch die
   Session-Angabe ohne Link.
 
-Stand dieses Index: 2026-08-09.
+Stand dieses Index: 2026-08-12.

@@ -1166,3 +1166,85 @@ Shaker et al. wurde zum Direktbeleg, die Calgary-Quelle stand mit Vornamen statt
 Nachnamen und mit fremdem Titel im Verzeichnis, und die Einleitung von Übungstext 4
 hatte gar keinen Beleg. Damit ist das Feedback der Fachbetreuung („1–2 mehr Quellen")
 erfüllt, ohne den Text umzuschreiben.
+
+## 2026-08-11 — Zeugnis als vierter Session-Typ mit eigener Rules-Datei
+Was: „Zeugnis" wird ein Modus im Harness, nicht eine Ausgabeform. WORKFLOW.md führt
+ihn als vierten Session-Typ neben Brainstorm/Design, Development und Art; die Regeln
+stehen vollständig in ASSESSMENT_RULES.md, die Zeugnisse in ASSESSMENT_LOG.md.
+Auslöser ist der Skill `/zeugnis`, der die Rules-Datei lädt statt sie zu doppeln.
+Warum: Der erste Entwurf hätte „Zeugnis" als vierten Artifact-Typ in ARTIFACT_RULES
+eingehängt. Das war die falsche Ebene — die drei Typen sagen, worauf eine Seite
+blickt, ein Zeugnis bewertet dagegen, und der Kern der Sache ist ohnehin die
+Session, nicht die Seite. Gleiches Muster wie KNOWLEDGE_RULES und ARTIFACT_RULES:
+eigene Datei, kurzer Zeiger von der zuständigen Stelle aus.
+Verworfen: vierter Artifact-Typ (falsche Ebene, hätte die Pflegeregel „aktualisieren
+statt neu anlegen" stillschweigend gebrochen); alles in WORKFLOW.md unterbringen
+(hätte die Datei aufgebläht und die Belegpflicht unauffindbar gemacht); die Regeln
+im Skill selbst halten (der Skill liegt außerhalb des Repos und wäre nicht
+mitversioniert).
+
+## 2026-08-11 — Zeugnis-Artifacts behalten je eine eigene URL
+Was: Benannte Ausnahme von der Pflegeregel in ARTIFACT_RULES: Ein Zeugnis wird nie
+aktualisiert und nie ersetzt, jedes bekommt eine neue URL. Die Ausnahme besitzt
+ASSESSMENT_RULES.md; ARTIFACT_RULES verweist nur darauf, geführt werden die Seiten
+weiterhin im ARTIFACT_INDEX. Beim Review-Gate werden sie übersprungen.
+Warum: Bei Status, System und Lernstück ist der alte Stand wertlos, sobald der neue
+existiert — beim Zeugnis ist er der halbe Zweck. Ein Zeugnis ist keine Ansicht auf
+einen aktuellen Stand, sondern ein datierter Messpunkt.
+Verworfen: eine sammelnde Zeugnis-Seite mit allen Ständen (wäre auf dem Handy
+unlesbar geworden und hätte den direkten Vergleich zweier Termine erschwert).
+
+## 2026-08-12 — Abgabe in zwei Ständen
+Was: Es wird zweimal abgegeben. Stand 1 am So 16.08. ist vollständig und
+benotbar, als gäbe es keinen zweiten Termin; Stand 2 am Mi/Do 19./20.08.
+bringt nur noch Kleinigkeiten. Frist bleibt der 21.08.
+Warum: Ein vollständiger früher Stand nimmt das Risiko aus der letzten Woche —
+was am Sonntag liegt, kann nicht mehr schiefgehen. In der Woche darauf ist
+ohnehin kaum Zeit, dort passen nur kleine Korrekturen.
+Verworfen: einmal abgeben kurz vor der Frist (setzt alles auf einen Tag).
+
+## 2026-08-12 — Spiel vor Dokumentation
+Was: Do Ton, Fr UI, Sa Welt beleben und Abgabe-Material, So die gesamte
+TDD-Restarbeit an einem Stück. Der frühere Plan hatte es umgekehrt.
+Warum: Bis Samstag kommen Ton, UI und Beleuchtung dazu, die im Text stehen
+müssen — ein früher Textstand beschreibt einen Stand, den es Sonntag nicht
+mehr gibt. Zweitens ist der sichtbare Eindruck der schwächste Punkt des
+Projekts (Zeugnis 2026-08-11: „die Systeme sind gut, aber sie zeigen sich
+nicht"), und der Build entscheidet laut Vorgabe über die Funktionalitätsnote.
+Verworfen: Textarbeit in die kurzen Abende legen und das Spiel ans Wochenende
+(hätte doppelte Textarbeit erzeugt).
+
+## 2026-08-12 — Neuer Abgabe-Satz statt Umbau des alten
+Was: Der Endstand wird als eigener Ordner `Semester_2\Abgabe_Final\` nach
+SAE-Vorgabe aufgebaut; die bestehenden Portfolio-Ordner unter `Abgabe\`
+bleiben unangetastet. Die Unity-Projektkopie liegt einmal je Portfolio, nicht
+je Aufgabe — die übrigen Aufgabenordner verweisen über den READ_ME-Baustein
+„Folgende Aufgaben sind in anderen Ordnern zu finden".
+Warum: Die alte Struktur ist der Beleg der formativen Abgaben und weicht in
+drei Punkten von der Vorgabe ab (`Other` statt `other`, README je Aufgabe
+statt einem READ_ME, keine Nummerierung). Getrennt aufbauen kostet nichts und
+kann nichts zerstören. Die Kopie einmal je Portfolio spart 2 × 198 MB und hält
+nur einen Stand nachziehbar.
+Verworfen: die bestehenden Ordner an Ort und Stelle umbenennen; Projektkopie
+je Aufgabenordner.
+
+## 2026-08-12 — READ_ME knapp, Lizenzen als Tabellenzeile
+Was: READ_ME der Abgaben sind Stichpunkte mit einem Ordnerbaum und den
+Kriterien-Kürzeln je Aufgabe — kein Fließtext wie im ersten Semester. Neue
+Audio-Quellen kommen als Zeilen in die Asset-Tabelle (Tabelle 9), nicht als
+eigenes Unterkapitel.
+Warum: Für die Bewertung zählt, dass der Prüfer die geforderten Punkte findet,
+nicht wie ausführlich sie beschrieben sind. Eine Tabellenzeile mit Quelle und
+Lizenz erfüllt den Nachweis vollständig; ein Unterkapitel je Sound würde den
+Text doppeln.
+Verworfen: Feature-Beschreibungen als Fließtext; Audio-Lizenzen als eigenes
+Kapitel wie die Texturquellen in 12.1 bis 12.3.
+
+## 2026-08-12 — Village-Prefab nicht neu aufbauen
+Was: Der geplante Neuaufbau des Village-Prefabs (Häuser, Props, NavMesh) fällt
+vor der Abgabe weg. Stattdessen Ton, UI und Beleuchtung.
+Warum: Der bestehende Aufbau trägt und der NavMesh-Bake ist aktuell (geprüft
+2026-08-12: `Village.unity` enthält null Kamera-Komponenten, die Notiz vom
+2026-08-02 war überholt). Ein umgebautes Prefab sieht man im Build nicht,
+fehlender Ton hört man sofort.
+Verworfen: Village-Neuaufbau am Freitag als großen Block.

@@ -10,7 +10,7 @@ keine Inhalte. Status: ohne Vermerk = existiert, (geplant) = noch nicht gebaut.
 | INDEX.md | Landkarte aller Dokumente |
 | ROADMAP.md | Nur Baureihenfolge — was als Nächstes gebaut wird |
 | DOC_RULES.md | (geplant) Pflegeregeln aller Dokumente — außer GDD.md und KNOWLEDGE.md, die eigene Rules-Dateien haben |
-| WORKFLOW.md | Session-Disziplin: Grundregeln + drei Session-Typen (Brainstorm/Design im Einsatz, Development im Praxistest, Art minimal) |
+| WORKFLOW.md | Session-Disziplin: Grundregeln + vier Session-Typen (Brainstorm/Design im Einsatz, Development im Praxistest, Art minimal, Zeugnis mit eigener Rules-Datei) |
 | FEATURE_LOG.md | Nur fertig Gebautes und Geprüftes — nichts Geplantes |
 | DECISIONS.md | Entscheidungen: was, warum, verworfene Alternativen |
 | GLOSSARY.md | (geplant) Projektbegriffe mit fester Bedeutung |
@@ -23,6 +23,8 @@ keine Inhalte. Status: ohne Vermerk = existiert, (geplant) = noch nicht gebaut.
 | ARTIFACT_INDEX.md | Bestand der Artifact-Seiten: welche es gibt, welche Skripte sie beschreiben, wer auf sie zeigt |
 | DIAGRAM_RULES.md | Umgang mit den erzeugten `.drawio`-Diagrammen: Ablage, Arbeitsteilung, Bedienregeln, Prüfung |
 | DOCX_RULES.md | Umgang mit den `.docx`-Abgabedateien: Sicherung, Arbeitsteilung, Fallen beim Ersetzen, Felder, Prüfung |
+| ASSESSMENT_RULES.md | Regeln des Session-Typs „Zeugnis" (WORKFLOW.md verweist hierher): Auslöser, Session-Disziplin, Belegpflicht, Aufbau, Notenskala, Artifact-Ausnahme |
+| ASSESSMENT_LOG.md | Die Zeugnisse selbst, neuestes oben — Standortbestimmung zu einem festen Datum |
 | ASSIGNMENT_PCG.md | Originaltext Uni-Aufgabe „Prozedurale Erweiterung der Spielwelt" (Referenz, unverändert lassen) |
 | ASSIGNMENT_TOOL.md | Originaltext Uni-Aufgabe „Engine-Tool-Entwicklung" (Referenz, unverändert lassen) |
 | ASSIGNMENT_THREADING.md | Originaltext Uni-Aufgabe „Threadoptimierung" (Referenz, unverändert lassen) |
