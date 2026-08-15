@@ -90,8 +90,18 @@ Planungssession. Isor geht früher schlafen, um Donnerstag mit voller
 Energie zu starten — bewusste Entscheidung, kein Verzug: die tragenden
 Tage sind Fr bis So.
 
-### Do 13.08. — Ton (4 h)
-1. [ ] **Musik und Soundeffekte einbauen.** `Village.unity` enthält
+### Do 13.08. — Ton — ausgefallen, am Fr 14.08. nachgeholt und erledigt
+Isor hatte Mi und Do keine Zeit (Isor, 2026-08-14). Entscheidung: Der
+Ton-Block wurde nicht verschoben, sondern zusammen mit dem Freitagsprogramm
+am 14.08. abgearbeitet. Damit bleibt Stand 1 am Sonntag vollständig und
+Stand 2 frei für Kleinigkeiten.
+1. [x] **Musik und Soundeffekte eingebaut** (2026-08-14) — Mixer mit drei
+   Gruppen, Musik in beiden Szenen, Windböen, Fackelfeuer, Schafe,
+   Spielerschritte, Antwortlaut beim Zähmen. Alle Klänge CC0, Quellen in
+   `03_AssetLibrary\Extern_Frei\Audio\`. Einzelheiten im FEATURE_LOG,
+   Begründungen in DECISIONS 2026-08-14, Stoff fürs TDD in TDD_NOTES.
+   Offen daraus: Audio-Zeilen in Tabelle 9 (Kapitel 12) nachtragen —
+   nur Quelle und Lizenz je Zeile, keine Attributionsformel nötig. `Village.unity` enthält
    derzeit **null AudioSource und null AudioListener** — es gibt keinen
    Ton. Größter einzelner Eindrucks-Hebel und ein abgeschlossener Block,
    der in einen 4-Stunden-Abend passt. Reihenfolge: Listener am Spieler
@@ -196,8 +206,11 @@ Das Village-Prefab neu aufbauen (früherer Punkt 1b). Der bestehende
 Aufbau trägt; die Zeit geht stattdessen in Ton, UI und Beleuchtung —
 das ist am Bildschirm sichtbar, ein umgebautes Prefab nicht.
 
-### Mo–Do 17.–20.08. — Stand 2, nur Kleinigkeiten
-Keine großen Änderungen mehr. In Frage kommen:
+### Mo–Do 17.–20.08. — Stand 2
+- [ ] **Do 20.08.: Ton-Block** — Inhalt siehe Punkt 1 oben. Der einzige
+  große Posten in Stand 2, alles andere sind Kleinigkeiten.
+
+Sonst keine großen Änderungen mehr. In Frage kommen:
 - [ ] Politur aus Punkt „Restliste" unten, soweit sie abends passt
 - [ ] Falls es Rückmeldungen zur formativen Abgabe gab: zwei Zeilen im
   Änderungsverlauf, was zurückkam und was geändert wurde (Feedbackelement

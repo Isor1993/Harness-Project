@@ -447,3 +447,36 @@ Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
   Boden, der Abstand musste herunter. Lehre: Ein Darstellungsfehler kann sich als
   passender Parameterwert tarnen — erst die Korrektur zeigt, dass der Wert nie
   gestimmt hat.
+- 2026-08-14 — [Audio] Unity spielt nur begrenzt viele Quellen wirklich ab:
+  `Max Real Voices` steht voreingestellt auf 32, darüber wird virtualisiert
+  (Quelle läuft weiter, ist aber stumm). Ausgewählt wird nach Lautstärke und
+  `AudioSource.priority` (0 = wichtigste, 255 = unwichtigste, Vorgabe 128).
+  Beobachtet: Am Haus mit rund zwanzig Fackeln brach die Musik ab, weil sie
+  mit Volume 0,3 die leiseste Quelle bei gleicher Priorität war. Behoben
+  über eine Rangfolge (Musik 0, Ambience 32, Schritte 100, Schafe 150,
+  Fackeln 200) statt über ein höheres Voice-Limit.
+- 2026-08-14 — [Audio] Mixergruppen als Zwischenschicht: AudioSources
+  wählen eine Gruppe, die Lautstärkeregelung greift an der Gruppe. Der
+  Mixer rechnet in Dezibel (−80 bis 0), ein UI-Slider liefert 0–1;
+  Umrechnung `Mathf.Log10(wert) * 20`, wobei `Log10(0)` minus unendlich
+  ergibt und abgefangen werden muss.
+- 2026-08-14 — [Audio] Räumliche Klänge brauchen Mono. Ein Stereo-Clip
+  lässt sich nicht im Raum verorten. `Spatial Blend` 0 ignoriert die
+  Entfernung vollständig (Musik, Wind), 1 wertet sie aus (Fackel, Schaf);
+  `Max Distance` steht voreingestellt auf 500 m, bei 2048 m Weltgröße also
+  praktisch überall hörbar.
+- 2026-08-14 — [Audio] Aus einem Clip werden viele Stimmen: zufällige
+  Tonhöhe zwischen 0,9 und 1,1 beim Abspielen. Pitch ist die
+  Abspielgeschwindigkeit, ändert also Tonhöhe und Dauer zusammen (ein 2 s
+  langer Clip dauert bei 0,9 dann 2,22 s). Deshalb reicht ein einziger
+  Schaf-Laut für eine ganze Herde.
+- 2026-08-14 — [Audio] Schrittfrequenz über zurückgelegte Strecke statt
+  Zeittakt: `_distance += velocity.magnitude * Time.deltaTime`, Auslösung
+  bei 2 m. Bei 5 m/s ergibt das alle 0,4 s einen Schritt (24 Frames bei
+  60 FPS), bei halbem Tempo automatisch alle 0,8 s — ohne Umrechnung.
+  Der y-Anteil der Geschwindigkeit muss vorher entfernt werden, sonst zählt
+  die konstante Andruck-Fallgeschwindigkeit (−2) als Bewegung mit.
+- 2026-08-14 — [Formate] Unity importiert weder FLAC noch M4A/AAC noch
+  MIDI. Betraf drei geladene Pakete; ein komplettes Ambience-Paket
+  (Blender Foundation, CC BY 3.0) war dadurch ohne Umwandlung unbrauchbar
+  und wurde zugunsten eines CC0-Pakets zurückgestellt.

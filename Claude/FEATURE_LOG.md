@@ -333,3 +333,32 @@ Format: `- JJJJ-MM-TT — Feature (1–2 Sätze: was und wo)`
   der Tool-Aufgabe erzeugbar. Geprüft: keine Überlappung, zweiter Lauf
   byte-identisch, von Hand verschobener Kasten und gesetzter Wegpunkt
   überleben einen Lauf.
+- 2026-08-14 — Ton-System aufgebaut. `Village.unity` und `MainMenu.unity`
+  hatten vorher **null AudioSource**. Jetzt: `MainMixer` (`Shared/Audio/`)
+  mit den Gruppen Master → Music/SFX und den exponierten Parametern
+  `MasterVolume`, `MusicVolume`, `SfxVolume`; Musik im Hauptmenü
+  (TownTheme) und im Dorf (The Wind), Windböen und Fackelfeuer als
+  Umgebung, Schafe, Spielerschritte und ein Antwortlaut beim Zähmen.
+  Alle verwendeten Klänge stehen unter CC0.
+- 2026-08-14 — `RandomIntervalSound` (`Shared/Audio/Scripts/`): spielt nach
+  gewürfelter Wartezeit einen zufälligen Clip mit zufälliger Tonhöhe. Jede
+  Instanz zählt ihren eigenen Timer, damit eine Herde verstreut blökt statt
+  im Chor. Fällt auf die AudioSource am eigenen Objekt zurück, wenn keine
+  verdrahtet ist — nötig für massenhaft gesetzte Objekte. Läuft an neun
+  Schafen und am Wind.
+- 2026-08-14 — `FootstepPlayer` (`Entities/Player/Scripts/`): zählt die
+  zurückgelegte Strecke statt der Zeit, sodass die Schrittfrequenz ohne
+  Umrechnung am Tempo hängt (2 m je Schritt, bei 5 m/s alle 0,4 s).
+  Nur bei Bodenkontakt und über einer Mindestgeschwindigkeit; beim Anhalten
+  parkt der Zähler auf der Schwelle, damit kurzes Antippen hörbar bleibt
+  und eine Landung aufsetzt. Geprüft im Spiel.
+- 2026-08-14 — `Torch.SetLit` schaltet jetzt auch den Feuerklang, neben
+  Flammen-VFX und Licht. `TorchInteractable` braucht deshalb keinen eigenen
+  Interaktionslaut — das an- und ausgehende Feuer ist die Rückmeldung.
+  `SheepInteractable` spielt beim Zähmen und Freilassen einen Antwortlaut
+  über die vorhandene Schaf-Stimme.
+- 2026-08-14 — Audio-Bestand in der Asset-Library geordnet
+  (`03_AssetLibrary\Extern_Frei\Audio\`): elf Pakete unter `_Pakete\` mit je
+  einer `_Quelle.txt`, daneben `Sortiert\` mit 214 nach Zweck einsortierten
+  Dateien (Ambience, Combat, Creatures, Doors, Fire, Footsteps, Items,
+  Music, UI). `_Katalog.md` verbindet beide Ebenen.
