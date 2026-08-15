@@ -1337,3 +1337,63 @@ Prefabs, Textures.
 Warum: Klänge gehören zum Baustein (Fackelfeuer zur Fackel, Blöken zum
 Schaf); nur Querschnitts-Material liegt in `Shared/Audio/`.
 Verworfen: alle Klänge zentral unter `Shared/Audio/`.
+
+## 2026-08-14 — Einstellungen über PlayerPrefs statt Singleton
+Was: `GameSettings` liegt in jeder Szene einmal auf einem aktiven Objekt und
+liest beim Start aus `PlayerPrefs`. Kein `DontDestroyOnLoad`.
+Warum: Nicht das Objekt muss den Szenenwechsel überleben, sondern die Daten —
+und die liegen ohnehin auf der Platte. Der `AudioMixer` ist ein Asset und
+existiert über beide Szenen hinweg; ihm muss je Szene nur einmal gesagt
+werden, was gilt. Deckt sich mit dem Singleton-Verbot in CODE_GUIDELINES.
+Verworfen: Singleton mit DontDestroyOnLoad; Einstellungen als
+ScriptableObject halten (überlebt den Programmstart nicht).
+
+## 2026-08-14 — Gespeichert wird die Empfindlichkeit, nicht die Reglerstellung
+Was: Unter `MouseSensitivity` liegt der fertige Wert (0,02 bis 0,18), nicht
+die Sliderposition 0–1. Die Reglerstellung wird beim Öffnen per
+`InverseLerp` zurückgerechnet.
+Warum: `PlayerLook` soll den Wert benutzen können, ohne den Slider und
+dessen Wertebereich zu kennen. Andersherum müsste jede Klasse, die die
+Empfindlichkeit liest, die Umrechnung mitschleppen.
+Verworfen: Sliderwert speichern und überall umrechnen.
+
+## 2026-08-14 — Umschalt-Container tragen keine Layout Group
+Was: Ein Panel, das nur zwischen Ansichten umschaltet (`MainMenuUI`,
+`PauseMenuRoot`), bekommt keine Layout Group. Die sitzt jeweils auf dem
+Container, dessen Kinder tatsächlich untereinander stehen (`MainMenuPanel`,
+`Content`). Hintergrundbilder liegen neben diesem Container, nicht darin.
+Warum: Eine Layout Group ordnet **alle** Kinder an — auch ein Vollbild-
+Hintergrund wird dann in die Reihe gestellt und verschiebt alles. Genau
+daran ist die Ausrichtung des Options-Fensters zunächst gescheitert.
+Verworfen: Layout Group aufs Vollbild-Panel legen.
+
+## 2026-08-14 — Options-Panel als geteiltes Prefab trotz szenenspezifischer Verweise
+Was: Ein `OptionsPanel`-Prefab für Hauptmenü und Pausenmenü. Die vier
+Slider-Verbindungen zum lokalen `GameSettings` und die beiden
+Umschalt-Verweise des Zurück-Knopfes werden je Szene als Prefab-Override
+gesetzt.
+Warum: Das Prefab teilt Aufbau, Layout und Beschriftung — das ist der
+Großteil der Pflege. Ohne Prefab müsste jede Layout-Änderung doppelt
+gemacht werden, und genau daran war die Ausrichtung vorher gescheitert.
+Szenenspezifische Verweise gehören ohnehin in die Szene.
+Verworfen: zwei getrennte Options-Fenster.
+
+## 2026-08-15 — Beschädigtes Prefab ersetzen statt reparieren
+Was: Das nicht reagierende Options-Panel im Dorf wurde durch eine frische
+Kopie aus dem Hauptmenü ersetzt, nicht analysiert und geflickt.
+Warum: Vier Stunden Messung hatten alles Erklärbare ausgeschlossen —
+Raycast traf, Position stimmte, Click-Action feuerte, `timeScale`, Cursor,
+EventSystem und Doppel-Systeme waren ohne Befund. Ein Prefab, das viermal
+umgehängt wurde, kann intern Referenzen verlieren, die von außen nicht
+sichtbar sind. Der Austausch dauerte fünf Minuten.
+Verworfen: weitersuchen bis zur Ursache. Merksatz für künftige Fälle: Bei
+unerklärlichem UI-Verhalten früh eine frische Kopie gegentesten.
+
+## 2026-08-15 — Menüzustand beim Öffnen zurücksetzen
+Was: `GameController.Pause()` schaltet die Button-Seite ein und das
+Options-Panel aus, bei jedem Öffnen.
+Warum: Wer das Menü mit ESC verlässt, während die Optionen offen sind,
+bekam beim nächsten Öffnen wieder die Optionen — ohne sichtbaren Weg
+zurück. Der Zustand muss beim Öffnen definiert sein, nicht beim Schließen.
+Verworfen: beim Schließen aufräumen (greift nicht, wenn über ESC statt
+über den Zurück-Knopf geschlossen wird).

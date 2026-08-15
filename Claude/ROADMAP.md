@@ -117,11 +117,81 @@ Stand 2 frei für Kleinigkeiten.
 2. [ ] **In-Game-UI aufwerten:** Fadenkreuz kontextsensitiv auf
    Interactable, Prompt-Stil (Box, Fade, Tastensymbol), HUD beim
    Pausieren ausblenden, TMP-Font-Schärfe (Texte sind pixelig).
-3. [ ] **Menü-UI und Options:** Pause über HUD sortieren, Maus-/
-   Tastatur-Moduswechsel, Options-Fenster mit **Lautstärkeregler**
-   (hängt an Punkt 1).
+   **Optik in einem Rutsch über alle drei Menüs** (Isor, 2026-08-14):
+   Hauptmenü, Pausenmenü und Options sollen wie ein System aussehen —
+   gleiche Schrift, Farben und Abstände. Einzeln aufgehübschte Teile
+   wirken zusammengewürfelt. Größter Einzelhebel ist die TMP-Schärfe,
+   die alle Texte auf einmal betrifft.
+   Offene Frage dabei: Das Options-Panel ist halbtransparent, damit im
+   Pausenmenü das Dorf durchscheint. Im Hauptmenü scheint dadurch der
+   blaue Hintergrund durch — entweder so lassen oder dort einen eigenen
+   Hintergrund hinterlegen. Erst beim Optik-Durchgang entscheiden.
+3. [x] **Menü-UI und Options** — fertig (2026-08-14 gebaut, 2026-08-15
+   im Dorf zum Laufen gebracht). Ursache des Maus-Problems: Das
+   Options-Panel war durch vier Umzüge (Szene → eigenes Prefab →
+   VillageUI → PauseMenuRoot) intern beschädigt; eine frische Kopie aus
+   dem Hauptmenü funktionierte sofort. Alles andere war ausgeschlossen —
+   Raycast traf, Position stimmte, Click-Action feuerte, `timeScale`,
+   Cursor, EventSystem und Doppel-Systeme ohne Befund. **Lehre: Bei
+   unerklärlichem UI-Verhalten zuerst eine frische Kopie testen, bevor
+   man stundenlang misst.**
+   Ebenfalls erledigt: `GameController.Pause()` setzt das Menü beim
+   Öffnen auf die Button-Seite zurück, damit nach ESC im Options-Fenster
+   nicht wieder Options erscheint.
 
-### Sa 15.08. — Welt beleben, dann Abgabe-Material
+   Alter Stand der Beschreibung:
+   Options-Panel gebaut mit vier Reglern (Gesamt, Musik, Effekte,
+   Maus-Empfindlichkeit), Prozentanzeige, `GameSettings` mit
+   Mixer-Anbindung und `PlayerPrefs`-Speicherung. **Im Hauptmenü läuft
+   alles.** Panel liegt als Prefab in `Shared/UI/Prefabs/`.
+
+   **OFFEN — erster Punkt am nächsten Arbeitstag:** Im Pausenmenü des
+   Dorfes reagieren die Slider **nicht auf die Maus** — kein Hover, kein
+   Klick, kein Ziehen. Tastaturnavigation funktioniert, Buttons lassen
+   sich per Enter auslösen. Im Hauptmenü funktioniert dasselbe Prefab
+   einwandfrei.
+
+   Bereits ausgeschlossen (2026-08-14, alles gegen die Dateien geprüft):
+   - `Time.timeScale = 0` — testweise entfernt, keine Änderung
+   - `InGameUI` und `Fps` als Raycast-Blocker — beide deaktiviert, keine
+     Änderung
+   - `Raycast Target` am `PauseMenuRoot` — ausgeschaltet, keine Änderung
+   - fehlender `GraphicRaycaster` — in beiden Canvas vorhanden, gleiche
+     Einstellungen
+   - `CanvasGroup` mit abgeschaltetem `Interactable` — existiert nirgends
+   - zwei EventSystems — es gibt genau eines, korrekt konfiguriert
+     (`Point`, `Left Click`, `Navigate`, `Submit` gesetzt)
+   - Canvas-Unterschiede — beide Screen Space Overlay, gleicher
+     CanvasScaler (1920×1080)
+   - Cursor gesperrt — Mauszeiger ist im Pausenmenü sichtbar
+   Noch nicht getestet: Game-View-Zoom auf 1x stellen und vorher ins
+   Spielfenster klicken (Editor-Artefakt), sowie ein Test im Build.
+
+   Ebenfalls offen: Mit ESC bei offenem Options-Fenster bleibt beim
+   nächsten Öffnen Options statt der Pause-Buttons stehen. Zwei Zeilen in
+   `GameController.Pause()` — Options aus, Pause-Panel an.
+
+### Sa 15.08. — verbraucht für Punkt 3
+Der ganze Samstag ging für das Options-Fenster im Dorf drauf (siehe
+Punkt 3). Die unten geplanten Punkte 4 bis 10 sind **nicht** angefangen
+und rutschen auf Sonntag bzw. in Stand 2.
+
+**Lage am Sa 15.08., 22:30 — Neuplanung für den Sonntag:**
+Fertig sind Ton (Punkt 1) und Menü/Options (Punkt 3). Offen sind alle
+Abgabe-Pflichtteile. Sonntag reicht nur, wenn die Politur gestrichen wird.
+
+Sonntag in dieser Reihenfolge — Pflicht zuerst:
+1. Punkt 7 (Herde über den Placer, Lernziel S3) — ~1 h
+2. Punkt 8 (Abgabe-Build) — ~1 h
+3. Punkt 9 (Screenshots) — ~1 h
+4. Punkt 10 (Video Engine-Tool) — ~1 h
+5. Punkte 11–19 (TDD, READ_ME, Projektkopien, Zippen, Upload) — ~6 h
+
+In Stand 2 (Mo–Do) verschoben, weil sie keine Bewertungskriterien sind:
+Punkt 2 (In-Game-UI-Politur), Punkt 4 (Licht und Bepflanzung),
+Punkt 5 (Baum-LOD), Punkt 6 (Terrain-Texturen).
+
+### Sa 15.08. — ursprüngliche Planung (nicht abgearbeitet)
 4. [ ] **Licht und Bepflanzung:** Fackeln setzen, Glühwürmchen setzen,
    mehrere Herden verteilen.
 5. [ ] **Baum-LOD nachziehen** — die Stufen kommen aus Blender mit, die

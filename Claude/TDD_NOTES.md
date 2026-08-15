@@ -480,3 +480,21 @@ Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
   MIDI. Betraf drei geladene Pakete; ein komplettes Ambience-Paket
   (Blender Foundation, CC BY 3.0) war dadurch ohne Umwandlung unbrauchbar
   und wurde zugunsten eines CC0-Pakets zurückgestellt.
+- 2026-08-14 — [UI] Lautstärke wird logarithmisch wahrgenommen, ein Slider
+  läuft linear. Umrechnung `dB = Log10(wert) * 20`: 1 → 0 dB, 0,5 → −6 dB,
+  0,1 → −20 dB. `Log10(0)` ist minus unendlich, deshalb wird der Wert vor
+  der Umrechnung auf 0,0001 geklemmt — das ergibt exakt −80 dB, das
+  Minimum des Mixers.
+- 2026-08-14 — [UI] Unity-Layout-Gruppen ordnen **alle** Kinder an, auch
+  einen Vollbild-Hintergrund. Trennung nötig: Hintergrund neben den
+  Layout-Container, nicht hinein. Die Anordnung folgt der Reihenfolge in
+  der Hierarchie, nicht den eingetragenen Positionen — ein falsch
+  einsortierter Knopf steht deshalb oben statt unten.
+- 2026-08-14 — [UI] Ein `Content Size Fitter` (Vertical Fit =
+  Preferred Size) neben der Layout Group lässt den Container auf die Höhe
+  seines Inhalts schrumpfen; ohne ihn behält er die Vollbildgröße und die
+  Gruppe sitzt nicht mittig.
+- 2026-08-14 — [Persistenz] `PlayerPrefs` als Schlüssel-Wert-Speicher für
+  Einstellungen: überlebt Szenenwechsel und Programmneustart, kennt nur
+  `int`, `float`, `string` und keine Verschachtelung. Für Spielstände
+  (Weltzustand, Inventar) ungeeignet — dafür braucht es ein eigenes Format.

@@ -362,3 +362,28 @@ Format: `- JJJJ-MM-TT — Feature (1–2 Sätze: was und wo)`
   einer `_Quelle.txt`, daneben `Sortiert\` mit 214 nach Zweck einsortierten
   Dateien (Ambience, Combat, Creatures, Doors, Fire, Footsteps, Items,
   Music, UI). `_Katalog.md` verbindet beide Ebenen.
+- 2026-08-14 — Options-Fenster gebaut: `OptionsPanel` als Prefab
+  (`Shared/UI/Prefabs/`) mit vier Reglern — Gesamtlautstärke, Musik,
+  Effekte, Maus-Empfindlichkeit — je mit Beschriftung und Prozentanzeige,
+  dazu ein Zurück-Knopf. Aufbau wie das Hauptmenü: Vollbild-Panel für den
+  Hintergrund, darin ein mittig verankerter `Content`-Container mit
+  Vertical Layout Group und Content Size Fitter, der die Anordnung rechnet.
+  Im Hauptmenü vollständig in Betrieb; im Pausenmenü des Dorfes reagieren
+  die Slider noch nicht auf die Maus (offener Punkt in der ROADMAP).
+- 2026-08-14 — `GameSettings` (`Shared/UI/Scripts/`): rechnet Reglerwerte
+  in Dezibel um (`Log10(max(v, 0.0001)) * 20`, damit `Log10(0)` nie
+  auftritt), setzt sie am `MainMixer`, schreibt die Prozentanzeige und
+  legt alles in `PlayerPrefs` ab. Liegt bewusst auf einem immer aktiven
+  Objekt statt auf dem Options-Panel, weil ein deaktiviertes Panel sein
+  `Awake` nie ausführt und gespeicherte Werte dann erst nach dem ersten
+  Öffnen greifen würden.
+- 2026-08-14 — `PlayerLook` nimmt die Maus-Empfindlichkeit jetzt von außen
+  an (`SetSensitivity`) und liest den gespeicherten Wert in `Awake` selbst
+  aus `PlayerPrefs` — nötig, weil die Einstellung im Hauptmenü vorgenommen
+  wird, wo es keinen Spieler gibt, der sie entgegennehmen könnte.
+- 2026-08-15 — Options-Fenster auch im Dorf in Betrieb. Das Panel reagierte
+  dort nicht auf die Maus, obwohl Tastaturbedienung ging; eine frische Kopie
+  aus dem Hauptmenü funktionierte sofort. Das alte Panel war durch mehrfaches
+  Umhängen zwischen Prefabs beschädigt. `GameController.Pause()` setzt das
+  Menü beim Öffnen jetzt auf die Button-Seite zurück, damit nach ESC im
+  Options-Fenster nicht wieder Options erscheint.
