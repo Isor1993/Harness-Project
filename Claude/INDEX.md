@@ -15,6 +15,7 @@ keine Inhalte. Status: ohne Vermerk = existiert, (geplant) = noch nicht gebaut.
 | DECISIONS.md | Entscheidungen: was, warum, verworfene Alternativen |
 | GLOSSARY.md | (geplant) Projektbegriffe mit fester Bedeutung |
 | CODE_GUIDELINES.md | Code-Konventionen: Namen, Architektur, Tests (Rohmaterial) |
+| PREFAB_STATUS.md | Prüfstand jedes Prefabs: welche schon durchgesehen sind und was auffiel — Arbeitsliste zu ROADMAP-Punkt 10 |
 | TDD_NOTES.md | Stoffsammlung fürs Uni-TDD (Technical Design Document) — grobe Einträge, aus denen das Abgabe-TDD generiert wird |
 | GDD.md | Design-Absicht des Spiels — das Game Design Document (Short GDD, wächst mit) |
 | GDD_RULES.md | (geplant) Nur Schreib- und Pflegeregeln für GDD.md |

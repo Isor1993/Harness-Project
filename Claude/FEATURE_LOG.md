@@ -387,3 +387,38 @@ Format: `- JJJJ-MM-TT — Feature (1–2 Sätze: was und wo)`
   Umhängen zwischen Prefabs beschädigt. `GameController.Pause()` setzt das
   Menü beim Öffnen jetzt auf die Button-Seite zurück, damit nach ESC im
   Options-Fenster nicht wieder Options erscheint.
+- 2026-08-16 — Menü-Optik über alle drei Fenster vereinheitlicht. Eine
+  Tafel (760 breit, `17130F` Alpha 224, `UISprite` sliced mit PPU-Faktor
+  0.5) trägt Hauptmenü, Pausenmenü und Options; Titel und Buttons in
+  `Oswald Bold SDF`, Beschriftungen englisch. Der Auswahlzustand läuft
+  über eine Ember-Tönung im ColorBlock statt über das vorherige Giftgrün;
+  `SelectOnHover` hängt jetzt auch an den drei Hauptmenü-Buttons, damit
+  nie zwei Einträge gleichzeitig markiert sind.
+- 2026-08-16 — Hauptmenü-Hintergrund: Dorf-Standbild statt Farbfeld, über
+  die Image-Farbe abgedunkelt, mit `Aspect Ratio Fitter` im Modus
+  `Envelope Parent` — füllt jedes Seitenverhältnis ohne Verzerrung.
+- 2026-08-16 — Options-Fenster als feste Tafel statt Vollbild-Schleier;
+  Regler mit Ember-Füllung. Damit bleibt im Dorf das Dorf sichtbar, was
+  vorher nicht der Fall war (zwei Schleier übereinander).
+- 2026-08-16 — In-Game-HUD gebaut. `InGameUI` wurde zu `HudRoot` und ist
+  jetzt der gemeinsame Schalter: `GameController` blendet beim Pausieren nur
+  dieses eine Objekt aus. Vier Ecken plus Mitte — Spieler-Kartusche oben
+  links, Uhr oben rechts, FPS unten links, Zähmzähler unten rechts,
+  Fadenkreuz und Prompt in der Mitte, Ziel-Zustand oben mittig. Alle Tafeln
+  aus demselben Material wie die Menüs.
+- 2026-08-16 — `Health` als allgemeine Komponente
+  (`Assets/Shared/Health/Scripts/`), implementiert `IDamageable`: Leben,
+  Schaden, Heilung, `Normalized` für Balkenanzeigen. Hängt am Spieler und ist
+  für Goblin und Mobs ohne Änderung wiederverwendbar. `SheepHealth` blieb
+  unberührt, weil es im TDD beschrieben ist.
+- 2026-08-16 — Vier HUD-Anzeigen nach einheitlicher Bauart
+  (`Shared/UI/Scripts/`): `TamedSheepDisplay` (Einzelschaf oder Herde folgt),
+  `DayTimeDisplay` (Tag, Uhrzeit, Tagesphase), `HealthBarDisplay` (gefüllte
+  Leiste zu beliebiger `Health`), `TargetStatusDisplay` (Zustand des
+  anvisierten Objekts). Alle vier merken sich den angezeigten Wert, prüfen ihn
+  in `Update` und schreiben nur bei Änderung — TextMeshPro baut sein Mesh sonst
+  in jedem Frame neu auf.
+- 2026-08-16 — `IInteractable` um `StatusText` erweitert: Der
+  Interaktions-Prompt sagt, was ein Tastendruck tut, `StatusText` sagt, was das
+  Objekt ist. Beim Schaf sind das Leben und Hunger, bei der Fackel bleibt es
+  leer. `PlayerInteractor` reicht beides getrennt weiter.

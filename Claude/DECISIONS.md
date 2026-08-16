@@ -1397,3 +1397,113 @@ bekam beim nächsten Öffnen wieder die Optionen — ohne sichtbaren Weg
 zurück. Der Zustand muss beim Öffnen definiert sein, nicht beim Schließen.
 Verworfen: beim Schließen aufräumen (greift nicht, wenn über ESC statt
 über den Zurück-Knopf geschlossen wird).
+
+## 2026-08-16 — Eine Tafel für alle drei Menüs
+Was: Hauptmenü, Pausenmenü und Options bekommen dieselbe zentrierte
+Tafel — 760 breit, `17130F` bei Alpha 224, `UISprite` sliced mit Pixels
+Per Unit Multiplier 0.5, Buttons 460 × 72.
+Warum: Pausenmenü und Options brauchen ohnehin eine Fläche, damit der
+Text vor dem laufenden Spielbild lesbar bleibt. Ein Bauteil, dreimal
+benutzt, ergibt ein System; einzeln aufgehübschte Teile wirken
+zusammengewürfelt (Isors Vorgabe vom 14.08.).
+Verworfen: „Randmenü" ohne Kasten, Titel und Einträge linksbündig aufs
+Bild gesetzt. Sieht im Hauptmenü besser aus, hätte aber neben der
+Pause-Tafel eine zweite Formensprache ergeben.
+
+## 2026-08-16 — Dorf-Screenshot als Menühintergrund
+Was: Das blaue `BackgroundPanel` wird durch ein Standbild aus dem Dorf
+ersetzt (Abenddämmerung, zwei Fackeln als Rahmen, Mitte frei), über die
+Image-Farbe `6E6E6E` abgedunkelt. Dazu ein `Aspect Ratio Fitter` im
+Modus `Envelope Parent` mit 1.7778.
+Warum: Der Screenshot wird ohnehin für die Abgabe gebraucht
+(`Press1–3.png`) — ein Arbeitsgang deckt beides. Der Fitter füllt jedes
+Seitenverhältnis, ohne zu verzerren; beschnitten wird am Rand, deshalb
+bleibt die Bildmitte für die Tafel frei.
+Verworfen: das Farbfeld nur abdunkeln; `Preserve Aspect` (ergäbe Balken).
+
+## 2026-08-16 — Oswald Bold als Titel- und Button-Schrift
+Was: `Oswald Bold SDF` für Titel und Buttons, `LiberationSans SDF` bleibt
+für Labels und Zahlenwerte. Beide Assets von `TextMesh Pro/Examples &
+Extras/` nach `Assets/Shared/UI/Fonts/` verschoben.
+Warum: Liegt bereits im Projekt, Open Font License, kein Download und
+keine zusätzliche Zeile in der Asset-Tabelle. Zwei Schnitte mit klaren
+Rollen genügen. Der Umzug ist nötig, weil der Examples-Ordner zum
+Löschen gedacht ist — wäre er weg, blieben alle Texte leer.
+Verworfen: eine externe Schrift herunterladen (Lizenzfrage und
+Zeitaufwand vor der Abgabe).
+
+## 2026-08-16 — Ein Schleier je Ebene
+Was: Genau ein abdunkelndes Vollbild-Image pro blockierender Ebene. Im
+Dorf ist das `PauseMenuRoot` (Alpha 120), die Options-Instanz dort steht
+auf Alpha 0. Im Hauptmenü ist `OptionsPanel` selbst die blockierende
+Ebene und behält Alpha 120. Das unsichtbare Image bleibt als
+Klick-Blocker erhalten (Raycast Target an).
+Warum: Zwei Schleier übereinander lassen nur rund 28 % des Bildes durch —
+daher das fast schwarze Options-Fenster im Dorf. Der Schleier gehört zu
+dem, was blockiert, nicht an jedes Panel.
+Verworfen: das Options-Panel generell schwächer machen (nimmt dem
+Hauptmenü die Trennung); die Abweichung im Dorf ins Prefab applizieren
+(schaltete den Schleier auch im Hauptmenü ab).
+
+## 2026-08-16 — Prefab-Aufräumen wird aufgeschoben
+Was: Die Menü-Prefabs sind verschachtelt; `Apply All` an der
+Szenen-Instanz schreibt alles ins äußere Prefab. Für das Hauptmenü wurde
+das über den Prefab-Modus korrigiert, für `PauseMenuRoot` bewusst nicht.
+Warum: Das Spiel lädt aus den Szenen, nicht aus den Vorlagen — der Build
+ist korrekt. Ein Struktur-Umbau am Abgabetag ist das falsche Risiko.
+Befunde stehen in PREFAB_STATUS.md, die Aufgabe als ROADMAP-Punkt 10.
+Verworfen: alle Prefab-Instanzen löschen und neu einsetzen (reißt die
+OnClick-Zuweisungen und die GameController-Referenzen ab).
+
+## 2026-08-16 — HUD mit echten Daten statt gemalter Anzeigen
+Was: Das In-Game-HUD bekommt bewusst Anzeigen, für die es noch wenig
+Spielinhalt gibt (Spielername, Lebensleiste, Tag und Uhrzeit,
+Zähmzähler). Jede Anzeige wird aber an eine echte Datenquelle gehängt —
+die Lebensleiste an eine `PlayerHealth` nach dem Muster von
+`SheepHealth`, nicht an einen festen Wert.
+Warum: Isors Ziel ist Spielgefühl, auch bevor alle Systeme stehen. Eine
+fest auf 100 % gemalte Leiste ist im Prüfungsgespräch aber eine
+Behauptung; eine echte Komponente erlaubt die Antwort „das System steht,
+der Schadensverursacher kommt". Zugleich macht das HUD die vorhandene
+Simulation (`SheepHealth`, `SheepHunger`, `DayNightCycle`) erstmals
+sichtbar und zahlt damit auf Lernziel S3 ein.
+Verworfen: Zustandsbalken frei über jedem Schaf (Weltraum-Anzeige,
+Nachführen, Kamera-Ausrichtung, Distanz-Ausblendung — zu teuer); die
+Anzeigen ganz weglassen, weil noch wenig dahintersteht.
+
+## 2026-08-16 — Ein Schalter fürs ganze HUD, nur auf dem Root
+Was: Alle HUD-Teile liegen unter `HudRoot`. Der `GameController` schaltet
+beim Pausieren ausschließlich dieses Objekt, nie die einzelnen Anzeigen.
+Warum: `SetActive(false)` auf dem Root versteckt alles darunter, lässt die
+Kinder aber unangetastet. Ein späterer `HudController` kann die einzelnen
+Anzeigen nach Spielereinstellungen schalten, ohne dass sich beide in die
+Quere kommen — sonst würde das Fortsetzen Anzeigen wieder einschalten, die
+der Spieler bewusst ausgeschaltet hat (Isor).
+Verworfen: jedes Element einzeln schalten; den Root-Schalter im Skript auf
+dasselbe Objekt legen, auf dem das Skript sitzt (schaltet sich selbst ab
+und wacht nie wieder auf — Fehler, der beim `TamedSheepDisplay` auftrat).
+
+## 2026-08-16 — `Health` als Komponente statt Basisklasse
+Was: Neue allgemeine `Health`-Komponente unter `Shared/Health/Scripts/`,
+die an jedes Wesen gehängt wird. `SheepHealth` bleibt unangetastet.
+Warum: Komposition statt Vererbung — der Goblin bekommt sein Leben später
+ohne eine Zeile neuen Code (Isor). `SheepHealth` blieb, weil es im TDD
+beschrieben ist; ein Umbau hätte den Abgabetext falsch gemacht.
+Verworfen: eine gemeinsame Basisklasse, von der beide erben (mein
+Vorschlag — Komposition ist in Unity der übliche Weg); `PlayerHealth` als
+eigene Klasse (hätte den Namen an den Spieler gebunden).
+Nebenbefund: Der Merker `_hasDied` aus `SheepHealth` wurde weggelassen. Der
+Guard `if (!IsAlive) return;` verhindert bereits, dass ein Toter nochmal
+Schaden nimmt — damit kann `OnDied` nicht doppelt feuern.
+
+## 2026-08-16 — Prompt und Zielzustand getrennt
+Was: `IInteractable` bekam neben `InteractionPrompt` eine zweite
+Eigenschaft `StatusText`. Der Prompt zeigt nur Taste und Aktion
+(`[E] Tame`), der Zustand des Ziels erscheint als eigene Anzeige oben
+mittig.
+Warum: Ein Interaktions-Prompt beantwortet eine Frage — welche Taste, welche
+Aktion (Isor). Beides in einem Textfeld zwang die Box auf 620 Pixel Breite
+und ließ den Text umbrechen. Getrennt bleibt der Prompt schmal, und die
+Fackel zeigt gar keine Zustandsanzeige, weil sie einen leeren Text liefert.
+Verworfen: den Zustand an den Prompt-String anhängen (erste Umsetzung am
+selben Tag, wieder zurückgebaut); eine Weltraum-Anzeige über dem Schaf.

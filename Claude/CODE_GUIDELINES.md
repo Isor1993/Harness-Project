@@ -109,6 +109,32 @@ Quelle: Code-Rules des Dozenten (v2.2), gefiltert im Brainstorm 2026-07-17.
 - Keine Singletons/Statics. Abhängigkeiten über Inspector-Wiring;
   gespawnte Objekte bekommen sie per `Init(...)` injiziert.
 
+### Member-Reihenfolge (Isor, 2026-08-16)
+Innerhalb einer Klasse in dieser Folge:
+1. `[SerializeField]`-Felder (die Inspector-Oberfläche)
+2. rein private Felder (interner Zustand)
+3. Properties
+4. Unity-Event-Methoden in Lebenszyklus-Reihenfolge:
+   `Awake` → `OnEnable` → `Start` → `Update` / `FixedUpdate` /
+   `LateUpdate` → `OnDisable` → `OnDestroy`
+5. public Methoden
+6. private Methoden
+
+Begründung: Wer die Klasse zum ersten Mal öffnet, sieht zuerst was sie
+von außen braucht, dann wann sie etwas tut, dann was sie anbietet.
+Die Lebenszyklus-Reihenfolge spiegelt den tatsächlichen Ablauf zur
+Laufzeit — Suchen entfällt.
+
+Innerhalb der `[SerializeField]`-Gruppe stehen Szenen-Objekte und Assets
+getrennt beieinander, nicht gemischt.
+
+**Offen (Isor, 2026-08-16):** Die Liste unter Punkt 4 deckt nur die
+Methoden ab, die bisher vorkommen. Unity dokumentiert die vollständige
+Aufrufreihenfolge („Order of Execution for Event Functions") mit deutlich
+mehr Einträgen — `OnValidate`, `OnTriggerEnter`, `OnCollisionEnter`,
+`OnApplicationQuit` und weitere. Beim Harness-Ausbau übernehmen und hier
+als verbindliche Folge hinterlegen, statt sie je Datei neu zu erraten.
+
 ### Denkmodell: Model-View-Presenter
 - Model = plain C# ohne Unity-API (testbar), View = nur Anzeige,
   Presenter = einzige Brücke. View kennt nie das Model, Model nie die View.

@@ -213,6 +213,44 @@ Punkt 5 (Baum-LOD), Punkt 6 (Terrain-Texturen).
 10. [ ] **Video für Engine-Tool-Entwicklung** (~1 h): 30 bis 90 Sekunden.
     Der einzige Projektordner ohne Video.
 
+### So 16.08. — Ablauf nach Isors Vorgabe (2026-08-15, 22:45)
+**Vormittag bis 17:00 — Politur, in dieser Reihenfolge:**
+1. [x] **Hauptmenü neu gestaltet** (2026-08-16) — Design-Session mit zwei
+   Varianten, entschieden wurde die zentrierte Tafel. Dorf-Screenshot als
+   Hintergrund (deckt zugleich Punkt 9), Oswald Bold SDF für Titel und
+   Buttons, Fackel-Palette, englische Beschriftungen. Werte und
+   Begründungen in DECISIONS 2026-08-16.
+2. [x] **Options-Fenster aufgehübscht** (2026-08-16) — feste Tafel statt
+   Vollbild-Schleier, damit im Dorf das Dorf sichtbar bleibt. Regler in
+   Ember-Füllung. Damit ist die offene ROADMAP-Frage vom 14.08. zur
+   Halbtransparenz erledigt.
+3. [x] **Pausenmenü auf dieselbe Tafel gebracht** (2026-08-16) — Giftgrün
+   ersetzt, ein Schleier je Ebene. Einzelheiten im FEATURE_LOG.
+4. [x] **In-Game-HUD gebaut** (2026-08-16) — in sieben Bausteinen:
+   HUD-Root und Ausblenden beim Pausieren, Zähmzähler, Uhr, Spieler-Kartusche
+   mit neuer `Health`-Komponente, Zielzustand getrennt vom Prompt, Politur
+   über alles. Einzelheiten im FEATURE_LOG, Begründungen in DECISIONS.
+   Zwei Anzeigen zahlen auf **S3** ein, weil sie die vorhandene Simulation
+   erstmals sichtbar machen: Tageszeit und der Zustand der Schafe.
+Wunschliste dafür (Isor): Tageszeit sichtbar machen, Zustandsbalken am
+Schaf, ein umherlaufender Gegner der die Herde verjagt, ggf. Spielerleben.
+Zwei davon zahlen auf **S3** ein („Simulation einer gewohnten Umgebung"):
+die Tageszeit-Anzeige und der Gegner. Der Rest ist Feature, kein Kriterium.
+
+**Ab 17:00 — harte Grenze, dann nur noch Abgabe:**
+Build, Screenshots, Video, TDD, READ_ME, Projektkopien, Zippen, Upload.
+
+**Zeitwarnung (2026-08-15):** Nach 17:00 bleiben etwa sieben Stunden, der
+Bedarf liegt bei acht. Entschärfung: Claude legt am Vormittag parallel die
+Doku-Vorarbeit vor (siehe unten), das spart rund zwei Stunden. Und die
+Frist ist der 21.08. — was am Spielstand hängt (Build, Screenshots, Video,
+Projektkopien) muss Sonntag fertig werden, reiner Text kann Montag folgen.
+
+**Punkt 7 (Herde über den Placer)** bleibt drin, aber mit hartem Deckel von
+einer Stunde. S3 ist ein benanntes Lernziel der Aufgabenstellung, und die
+Placer-Infrastruktur steht bereits. Läuft es nach einer Stunde nicht,
+abbrechen.
+
 ### So 16.08. — Dokumentation und Abgabe (Stand 1)
 Alles am TDD an einem Stück, weil der Text erst dann den fertigen Stand
 beschreibt. Claude legt bis Samstagabend vor (siehe unten), sodass hier
@@ -221,10 +259,16 @@ nur noch eingesetzt und geprüft wird.
     März 2025` und `Modulname: Game Development Basics` — beides falsch.
     Richtig: laufendes Studienjahr und „Structured Game Development"
     (ASSIGNMENT_TOOL, Modul 4FSC0PD003.1). Vorher gegen Canvas prüfen.
-12. [ ] **Quellenangaben in 6.3 und 6.5 + Literaturverzeichnis** (~2 h):
-    Bridson, Amdahl und Perlin werden namentlich genannt, aber nicht
-    belegt; ein Literaturverzeichnis existiert bisher nicht. Belegtechnik
-    aus dem S4-Text übernehmen.
+12. [ ] **Kurze Quellenliste** (~20 min, war mit 2 h angesetzt):
+    Bridson, Amdahl und Perlin werden namentlich genannt. Eine knappe
+    Liste am Dokumentende genügt — Name, Titel, Jahr, Link.
+    **Korrigiert am 2026-08-16 (Isor):** Keine der drei
+    Aufgabenstellungen verlangt Quellenangaben, Zitierweise oder ein
+    Literaturverzeichnis; die Feedbackelemente fragen nach Codequalität,
+    Serialisierung, Bedienbarkeit und nachvollziehbaren Performancedaten.
+    Die frühere Forderung stammte aus dem Kontext der S4-Abgabe
+    („Arbeiten nach akademischen Standards"), einem eigenen Dokument.
+    Das TDD ist ein technisches Dokument, keine Seminararbeit.
 13. [ ] **Balkendiagramm der sechs Messpunkte** zu Tabelle 8 einsetzen.
     Neue Abbildung nur über `Verweise → Beschriftung einfügen`.
 14. [ ] **Zwei Sätze im Fazit** zur fehlenden `namespace`-Gliederung
@@ -299,8 +343,9 @@ Sonst keine großen Änderungen mehr. In Frage kommen:
 - `ObjectPlacer.PlaceType` zerlegen — die Methode ist das Messobjekt der
   Threading-Abgabe, ein Umbau entwertet die Messreihe
 - Schafe schlagbar machen (war ROADMAP 1a): Feature, kein Bewertungspunkt
-- Member-Reihenfolge im `TerrainToolPresenter` sortieren — dazu fehlt die
-  Regel in CODE_GUIDELINES, sonst ist es Gefühl statt Maßstab
+- Member-Reihenfolge im `TerrainToolPresenter` sortieren — die Regel steht
+  seit 2026-08-16 in CODE_GUIDELINES („Member-Reihenfolge"), das Sortieren
+  selbst ist vor der Abgabe trotzdem nicht mehr nötig
 
 ### Restliste Politur (nur wenn Zeit bleibt)
 Aus der Interaktions-Session (2026-08-02): TMP-Font-Schärfe (Texte
@@ -394,7 +439,43 @@ Reihenfolge noch offen, wird in einer eigenen Design-Session festgelegt.
    je Repo aussehen muss, und wie mit der bereits gewachsenen Historie umgegangen
    wird. Betrifft alle drei Repos. Erst nach der vollständigen Uni-Abgabe
    (vorgemerkt 2026-08-06).
-10. [ ] **Studien-Aufbau der Abgabe wiederverwenden:** Die Vorlage unter
+10. [ ] **`SheepHealth` auf die `Health`-Komponente umstellen** (Isor,
+   2026-08-16): Am 16.08. wurde `Assets/Shared/Health/Health.cs` als
+   allgemeine Komponente angelegt — jedes Wesen, das Leben hat, bekommt sie
+   angehängt (Spieler, später Goblin und Mobs). `SheepHealth` blieb dabei
+   unberührt und macht dasselbe ein zweites Mal.
+   Zu tun: prüfen, was in `SheepHealth` wirklich schaf-spezifisch ist
+   (`SheepSettings`, der Testschalter, `Die()` mit Graveyard und FSM), den
+   Rest durch die `Health`-Komponente ersetzen und die Aufrufer nachziehen.
+   Nicht vor der Abgabe gemacht, weil **`SheepHealth` im TDD beschrieben ist**
+   (Isor, 2026-08-16) — ein Umbau hätte den Text falsch gemacht, und das
+   Nachziehen kostet mehr als der Umbau selbst. Dazu hängt die Klasse an FSM,
+   Hungersystem und Graveyard.
+   Entscheidung für Komposition statt Vererbung: Isor, 2026-08-16.
+11. [ ] **`HudController` und HUD-Einstellungen** (vorgemerkt 2026-08-16):
+   Ein Skript auf dem `InGameUI`-Objekt, das die einzelnen HUD-Teile nach
+   gespeicherten Spielereinstellungen ein- und ausblendet (FPS-Anzeige,
+   Fadenkreuz, Uhr, Zähmzähler) — dazu die passenden Schalter im
+   Options-Fenster, nach dem Muster von `GameSettings`.
+   Abgrenzung, die dafür schon gilt (Isor, 2026-08-16): Der
+   `GameController` fasst beim Pausieren **nur das Root-Objekt** an, nie
+   die einzelnen Teile. Sonst würde er beim Fortsetzen Anzeigen wieder
+   einschalten, die der Spieler bewusst ausgeschaltet hat. Damit ist der
+   Controller später ein Aufsatz und kein Umbau.
+11. [ ] **Prefab-Struktur prüfen und aufräumen** (vorgemerkt 2026-08-16):
+   Beim UI-Umbau kam heraus, dass die Menü-Prefabs **verschachtelt** sind —
+   `MainMenuPanel` und `OptionsPanel` liegen *innerhalb* von `MainMenuUI`.
+   Folge: `Apply All` an der Szenen-Instanz schreibt alles ins äußere
+   Prefab (`MainMenuUI.prefab` wuchs von 595 auf 1924 Zeilen), die inneren
+   Vorlagen bleiben leer, und das Dorf zeigt weiter den alten Stand. An die
+   inneren kommt man nur über den Prefab-Modus des äußeren.
+   Zu klären: welche Prefabs überhaupt verschachtelt sein sollen, wo
+   Instanzen umbenannt wurden (`OptionsPanel2` im Dorf ist dieselbe
+   Vorlage wie `OptionsPanel`), und ob angesammelte Overrides zurück in
+   die Vorlagen gehören. Betrifft alle Prefabs, nicht nur die UI —
+   Isor will jedes einzelne einmal durchgehen und prüfen, ob es sinnvoll
+   geschnitten ist. Gehört thematisch zu Punkt 7 (Aufbau-Konvention).
+12. [ ] **Studien-Aufbau der Abgabe wiederverwenden:** Die Vorlage unter
    `05_Werkzeuge\Vorlagen\SAE_Abgabe_Struktur\` beim nächsten Semester
    gleich zu Beginn kopieren, statt am Ende zu sortieren.
 
