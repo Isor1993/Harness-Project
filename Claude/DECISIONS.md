@@ -1496,6 +1496,27 @@ Nebenbefund: Der Merker `_hasDied` aus `SheepHealth` wurde weggelassen. Der
 Guard `if (!IsAlive) return;` verhindert bereits, dass ein Toter nochmal
 Schaden nimmt — damit kann `OnDied` nicht doppelt feuern.
 
+## 2026-08-16 — Versionsschema nach Reifegrad
+Was: Die Build-Version (`Player Settings > Version`) folgt dem Reifegrad des
+Spiels, nicht dem üblichen Semantic Versioning:
+
+| Form | Bedeutung |
+|---|---|
+| `0.0.x` | Prototyp — x zählt die Stände hoch |
+| `0.x.0` | Early Access |
+| `1.x.x` | fertiges Spiel |
+
+Solange die vordere Stelle `0` ist, ist das Spiel nicht fertig; solange die
+mittlere `0` ist, ist es nicht einmal Early Access. Stand 2026-08-16: `0.0.2`.
+Warum: Isor will an der Versionsnummer den Reifegrad ablesen, nicht die Art
+der letzten Änderung. Bei Semantic Versioning stünde die mittlere Stelle für
+neue Funktionen und die hintere für Fehlerbehebungen — das sagt nichts
+darüber, wie weit das Spiel ist, und genau das ist hier die interessante
+Information.
+Verworfen: Semantic Versioning (MAJOR.MINOR.PATCH). Aufgefallen war die
+Vermischung an `0.1.1`, das nach Isors eigenem Schema bereits Early Access
+behauptet hätte.
+
 ## 2026-08-16 — Prompt und Zielzustand getrennt
 Was: `IInteractable` bekam neben `InteractionPrompt` eine zweite
 Eigenschaft `StatusText`. Der Prompt zeigt nur Taste und Aktion

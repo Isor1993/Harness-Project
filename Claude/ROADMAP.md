@@ -347,6 +347,28 @@ Sonst keine großen Änderungen mehr. In Frage kommen:
   seit 2026-08-16 in CODE_GUIDELINES („Member-Reihenfolge"), das Sortieren
   selbst ist vor der Abgabe trotzdem nicht mehr nötig
 
+### Kollision und NavMesh (Isor, 2026-08-16)
+- [ ] **Schafe laufen durch Häuser und Bäume.** Es fehlen Collider, und die
+  platzierten Bäume sind für das NavMesh unsichtbar. Zu klären: Collider an
+  die betroffenen Prefabs, und wie die zur Laufzeit platzierten Objekte ins
+  NavMesh kommen — jeder Baum als `NavMeshObstacle` wäre bei mehreren tausend
+  Bäumen zu teuer, also eher NavMesh-Carving über die Platzierungsdaten oder
+  ein Bake nach dem Placement. Hängt an der Frage, wie viel Welt zur Laufzeit
+  entsteht (ROADMAP-Punkt 1) und braucht eine eigene Design-Session.
+  Am Abgabetag bewusst nicht angefasst.
+
+### Aus dem ersten Abgabe-Build (2026-08-16)
+Der Build lief mit **null Fehlern** durch (77 s). Offen blieben Warnungen:
+- [ ] **Neun Shader-Warnungen** im `GrassMesh_Shader`: `pow(f, e) will not work
+  for negative f, use abs(f)`. Der Shader funktioniert; ein Eingriff im Shader
+  Graph war am Abgabetag unnötiges Risiko. Fix: `abs()` vor die Potenz.
+- [ ] **Eine `CS0414`-Warnung** bleibt: `SheepDodgeBehaviour._hasDrawPoint`
+  wird in `OnDisable`, `Update` und `StartDodgeMovement` gesetzt, aber nur in
+  `OnDrawGizmos` gelesen. Kapseln hieße fünf `#if`-Klammern in der
+  Ablauflogik — beim nächsten Anfassen der Klasse sauber lösen, etwa indem
+  der Zeichenzustand aus dem Agent abgeleitet statt mitgeführt wird.
+  Die anderen sieben Gizmo-Felder wurden am 16.08. gekapselt.
+
 ### Restliste Politur (nur wenn Zeit bleibt)
 Aus der Interaktions-Session (2026-08-02): TMP-Font-Schärfe (Texte
 pixelig); Fadenkreuz aufwerten + kontextsensitiv; Prompt-UI-Stil
@@ -439,7 +461,14 @@ Reihenfolge noch offen, wird in einer eigenen Design-Session festgelegt.
    je Repo aussehen muss, und wie mit der bereits gewachsenen Historie umgegangen
    wird. Betrifft alle drei Repos. Erst nach der vollständigen Uni-Abgabe
    (vorgemerkt 2026-08-06).
-10. [ ] **`SheepHealth` auf die `Health`-Komponente umstellen** (Isor,
+10. [ ] **Ladebildschirm** (Isor, 2026-08-16, für die Woche nach der Abgabe):
+   Der Szenenwechsel vom Hauptmenü ins Dorf läuft heute ohne Rückmeldung —
+   das Bild steht, bis die Szene fertig ist. Gebraucht wird ein Ladebalken
+   zwischen den Szenen. Passt zum bereits vorgesehenen Spielablauf
+   (Terrain im Editor, alles Placement zur Laufzeit hinter einem Ladebalken)
+   und wird spätestens gebraucht, wenn die Laufzeit-Platzierung des Dorfes
+   den Start spürbar verlängert. Betrifft `SceneLoader`.
+11. [ ] **`SheepHealth` auf die `Health`-Komponente umstellen** (Isor,
    2026-08-16): Am 16.08. wurde `Assets/Shared/Health/Health.cs` als
    allgemeine Komponente angelegt — jedes Wesen, das Leben hat, bekommt sie
    angehängt (Spieler, später Goblin und Mobs). `SheepHealth` blieb dabei
@@ -452,7 +481,7 @@ Reihenfolge noch offen, wird in einer eigenen Design-Session festgelegt.
    Nachziehen kostet mehr als der Umbau selbst. Dazu hängt die Klasse an FSM,
    Hungersystem und Graveyard.
    Entscheidung für Komposition statt Vererbung: Isor, 2026-08-16.
-11. [ ] **`HudController` und HUD-Einstellungen** (vorgemerkt 2026-08-16):
+12. [ ] **`HudController` und HUD-Einstellungen** (vorgemerkt 2026-08-16):
    Ein Skript auf dem `InGameUI`-Objekt, das die einzelnen HUD-Teile nach
    gespeicherten Spielereinstellungen ein- und ausblendet (FPS-Anzeige,
    Fadenkreuz, Uhr, Zähmzähler) — dazu die passenden Schalter im
@@ -462,7 +491,7 @@ Reihenfolge noch offen, wird in einer eigenen Design-Session festgelegt.
    die einzelnen Teile. Sonst würde er beim Fortsetzen Anzeigen wieder
    einschalten, die der Spieler bewusst ausgeschaltet hat. Damit ist der
    Controller später ein Aufsatz und kein Umbau.
-11. [ ] **Prefab-Struktur prüfen und aufräumen** (vorgemerkt 2026-08-16):
+13. [ ] **Prefab-Struktur prüfen und aufräumen** (vorgemerkt 2026-08-16):
    Beim UI-Umbau kam heraus, dass die Menü-Prefabs **verschachtelt** sind —
    `MainMenuPanel` und `OptionsPanel` liegen *innerhalb* von `MainMenuUI`.
    Folge: `Apply All` an der Szenen-Instanz schreibt alles ins äußere
@@ -475,7 +504,7 @@ Reihenfolge noch offen, wird in einer eigenen Design-Session festgelegt.
    die Vorlagen gehören. Betrifft alle Prefabs, nicht nur die UI —
    Isor will jedes einzelne einmal durchgehen und prüfen, ob es sinnvoll
    geschnitten ist. Gehört thematisch zu Punkt 7 (Aufbau-Konvention).
-12. [ ] **Studien-Aufbau der Abgabe wiederverwenden:** Die Vorlage unter
+14. [ ] **Studien-Aufbau der Abgabe wiederverwenden:** Die Vorlage unter
    `05_Werkzeuge\Vorlagen\SAE_Abgabe_Struktur\` beim nächsten Semester
    gleich zu Beginn kopieren, statt am Ende zu sortieren.
 

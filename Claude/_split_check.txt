@@ -1,0 +1,8 @@
+
+
+## 2026-08-11 — Vor dem Polishing, 10 Tage vor der Portfolio-Abgabe
+
+### Kopf
+
+**Anlass:** Standortbestimmung vor dem Polishing-Durchgang. Das TDD ist
+inhaltlich fertig, das Layout und der Feinschli

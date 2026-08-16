@@ -45,6 +45,16 @@ Bestand: Jedes Zeugnis behält seine eigene URL und wird **nie
 nachgezogen** — der alte Stand ist der halbe Zweck. Beim Review-Gate
 sind diese Seiten deshalb zu überspringen.
 
+### 🎓 Zeugnis · 2026-08-16, nach dem Politur-Wochenende
+```
+URL      https://claude.ai/code/artifact/dfb56399-a0ac-467c-8efb-feb88940678e
+Datum    2026-08-16 — Zeugnis-Datum, kein Prüfstand; wird nicht nachgezogen
+Quelle   ASSESSMENT_LOG.md (Langfassung), ASSESSMENT_RULES.md (Regeln)
+Skripte  keine — die Seite bewertet den Projektstand, nicht Code
+Seite →  keine
+Seite ←  keine
+```
+
 ### 🎓 Zeugnis · 2026-08-11, vor dem Polishing
 ```
 URL      https://claude.ai/code/artifact/b9f54327-8f46-4d25-b667-ff66852adc6f
