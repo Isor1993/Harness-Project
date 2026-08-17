@@ -48,6 +48,15 @@ Alle vier sind aufgetreten, drei davon hätten Schaden angerichtet.
    als Wort sieht, existiert im XML oft nicht als zusammenhängende Zeichen-
    kette. Für Ersetzungen über Run-Grenzen den Absatz als Ganzes einlesen,
    die Runs zu einem Text zusammensetzen und danach neu aufbauen.
+6. **Beim Klonen einer Tabellenzeile trifft `count=1` immer dieselbe Zelle.**
+   Wer die fünf Zellwerte in einer Schleife nacheinander mit
+   `re.sub(..., count=1)` einsetzt, ersetzt jedes Mal wieder das *erste*
+   Textelement — am Ende steht der letzte Wert in Spalte 1 und die Spalten 2
+   bis 5 tragen noch den Mustertext. Stattdessen **ein** `re.sub` über alle
+   Textelemente mit einer Ersetzungsfunktion, die die Werte der Reihe nach
+   aus einem Iterator zieht (aufgetreten 2026-08-17 beim Nachtragen der
+   Audiozeilen in Tabelle 9; im XML unauffällig, beim Nachzählen sofort
+   sichtbar).
 
 ## Felder
 - Beschriftungen und Verweise sind Felder (DECISIONS 2026-08-08). Neue

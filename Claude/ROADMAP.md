@@ -67,10 +67,14 @@ verlangt; danach wird er wieder aktiv ausgebaut.
   `01_Uni\Semester_2\Arbeitsdateien\Abgabe_Packliste.txt`
 
 ## Als Nächstes — Abgabe in zwei Ständen
-**Entschieden 2026-08-12:** Es wird zweimal abgegeben. **Stand 1 am
-Sonntag 16.08.** ist vollständig und benotbar — als hätte es keinen
-zweiten Termin. **Stand 2 am Mi/Do 19./20.08.** bringt nur noch
-Kleinigkeiten. Frist ist der 21.08.
+**Entschieden 2026-08-12:** Es wird zweimal abgegeben. Stand 1 ist
+vollständig und benotbar — als hätte es keinen zweiten Termin. Stand 2
+bringt nur noch Kleinigkeiten. Frist ist der 21.08.
+
+**Stand 2026-08-17:** Stand 1 ist hochgeladen (einen Tag später als
+geplant, siehe unten). Offen für Stand 2 sind das Lernziel S3 (Herde über
+den Placer) und zwei TDD-Kleinigkeiten. Danach erneut kopieren, zippen und
+hochladen.
 
 Grund: Ein vollständiger früher Stand nimmt das Risiko aus der Woche.
 Was am Sonntag steht, kann nicht mehr schiefgehen.
@@ -251,17 +255,56 @@ einer Stunde. S3 ist ein benanntes Lernziel der Aufgabenstellung, und die
 Placer-Infrastruktur steht bereits. Läuft es nach einer Stunde nicht,
 abbrechen.
 
-### So 16.08. — Dokumentation und Abgabe (Stand 1)
-Alles am TDD an einem Stück, weil der Text erst dann den fertigen Stand
-beschreibt. Claude legt bis Samstagabend vor (siehe unten), sodass hier
-nur noch eingesetzt und geprüft wird.
-11. [ ] **Deckblatt richtigstellen** (~15 min): steht auf `Semester:
-    März 2025` und `Modulname: Game Development Basics` — beides falsch.
-    Richtig: laufendes Studienjahr und „Structured Game Development"
-    (ASSIGNMENT_TOOL, Modul 4FSC0PD003.1). Vorher gegen Canvas prüfen.
-12. [ ] **Kurze Quellenliste** (~20 min, war mit 2 h angesetzt):
-    Bridson, Amdahl und Perlin werden namentlich genannt. Eine knappe
-    Liste am Dokumentende genügt — Name, Titel, Jahr, Link.
+### Do 17.08. — Abgabe Stand 1 hochgeladen
+Beide Portfolios wurden an einem Stück fertiggestellt, Aufgabe für Aufgabe
+gegen die Original-Aufgabenstellungen geprüft und **am Abend des 17.08.
+vollständig hochgeladen**. Damit liegt ein benotbarer Stand auf dem Server.
+Begründungen in DECISIONS 2026-08-17.
+
+Erledigt in dieser Session:
+- Beide READ_ME fertig geschrieben, alle Platzhalter und Kommentarblöcke
+  raus, Kriterien-Kürzel eingetragen (D004: KI Prototyp K1/K2/K3/S1,
+  Simulation K3/S2/S3)
+- TDD: Deckblatt korrigiert (Isor), Wortanzahl 21366, sieben Audiopakete
+  in Tabelle 9, KI-Kennzeichnung unter Tabelle 1, PDF neu exportiert
+- Beide `release`-Ordner mit dem Build gefüllt, beide `src` nachgezogen
+  (281,8 MB, `Village.unity` 139,7 MB mit 21.354 platzierten Bäumen)
+- Neue Press-Screenshots und Videos für Engine-Tool, KI Prototyp,
+  Simulation und Prozedurale Erweiterung; Zweitkopien mit sprechenden
+  Namen unter `01_Uni\Semester_2\Abbildungen\`
+- `Messreihen_README.md` von 132 auf 33 Zeilen gekürzt, lange Fassung
+  gesichert unter `Arbeitsdateien\Messungen\`
+- ZIPs erzeugt und geprüft: D003 308,4 MB, D004 540,1 MB
+
+**Offen geblieben aus der 16.08.-Liste:**
+- [ ] **Balkendiagramm der sechs Messpunkte** zu Tabelle 8 einsetzen
+  (Punkt 13). Neue Abbildung nur über `Verweise → Beschriftung einfügen`.
+- [ ] **Zwei Sätze im Fazit** zur fehlenden `namespace`-Gliederung
+  (0 von 83 Dateien) als bewusst aufgeschoben (Punkt 14).
+
+### Offen: Lernziel S3 — generierte Bevölkerung
+Beim Prüfen gegen die Aufgabenstellungen gefunden (2026-08-17). **S3 steht
+in Modul 004 sowohl bei Aufgabe 2 als auch bei Aufgabe 3** und ist nicht
+erfüllt: `TerrainConfig_Default.asset` enthält nur zwei Placeables
+(`BirchTree_1`, `GrassSingle_x2`). Die Herde sitzt von Hand als
+`SheepHerdManager_01.prefab` im `Village.prefab`; in `Village.unity` kommt
+„Sheep" kein einziges Mal vor.
+- [ ] Herden-Prefab als drittes Placeable eintragen, im Editor-Tool
+  platzieren, Szene speichern. Kein Code nötig — das Tool erzeugt die
+  Bedienzeile aus der Placeable-Liste.
+  **Falle:** `RuntimePlacementSpawner` spawnt zur Laufzeit nur instanced
+  Typen. GameObject-Typen wie die Herde müssen im Editor platziert und in
+  der Szene gespeichert werden, sonst fehlen sie im Build.
+- [ ] Danach zwingend: Kopierskript erneut, neu zippen, erneut hochladen —
+  der zweite Upload ersetzt den ersten.
+
+### Alte Punkte der 16.08.-Liste (Belege)
+11. [x] **Deckblatt richtiggestellt** (Isor, 2026-08-17): Modulname auf
+    „Structured Game Development", Semester auf März 2026, Modulnummer auf
+    `4FSC0PD003.1`.
+12. **Entfallen** — kurze Quellenliste. Ursprünglich: Bridson, Amdahl und
+    Perlin werden namentlich genannt, eine knappe Liste am Dokumentende
+    genügt.
     **Korrigiert am 2026-08-16 (Isor):** Keine der drei
     Aufgabenstellungen verlangt Quellenangaben, Zitierweise oder ein
     Literaturverzeichnis; die Feedbackelemente fragen nach Codequalität,
@@ -269,38 +312,21 @@ nur noch eingesetzt und geprüft wird.
     Die frühere Forderung stammte aus dem Kontext der S4-Abgabe
     („Arbeiten nach akademischen Standards"), einem eigenen Dokument.
     Das TDD ist ein technisches Dokument, keine Seminararbeit.
-13. [ ] **Balkendiagramm der sechs Messpunkte** zu Tabelle 8 einsetzen.
-    Neue Abbildung nur über `Verweise → Beschriftung einfügen`.
-14. [ ] **Zwei Sätze im Fazit** zur fehlenden `namespace`-Gliederung
-    (0 von 83 Dateien) als bewusst aufgeschoben.
-15. [ ] **Audio-Quellen in Tabelle 9 nachtragen** — knapp, Quelle und
-    Lizenz je Zeile, kein eigenes Unterkapitel.
-16. [ ] **Abschluss** (~40 min): Wortanzahl auf der Titelseite
-    eintragen, Unterschrift auf beiden Erklärungen prüfen, Strg+A / F9,
-    beide PDFs exportieren und die Fassungen in `Abgabe_Final`
-    überschreiben.
-17. [ ] **Beide READ_ME fertig schreiben** (~1 h): Platzhalter ersetzen,
-    Kriterien-Kürzel für KI Prototyp und Simulation aus der
-    Aufgabenstellung nachtragen, Kommentarblöcke entfernen, leer
-    gebliebene Ordner löschen.
-18. [ ] **Projektkopien nachziehen** (~5 min): `powershell -File
-    "C:\IsorBackup\05_Werkzeuge\Abgabe_Projektkopie.ps1"`. Zwingend, bevor
-    gezippt wird — die Kopien in `Abgabe_Final` sind sonst der Stand vom
-    12.08. und enthalten weder Ton noch UI noch die Beleuchtung vom
-    Wochenende. Das Skript spiegelt, also werden auch gelöschte und
-    verschobene Dateien nachgezogen.
-19. [ ] **Zippen und hochladen** (~30 min): eine ZIP je Portfolio. Vorher
-    die Upload-Grenze auf Canvas prüfen — 619 MB gesamt, davon 2 × 198 MB
-    Projektkopie und rund 204 MB Videos. Wenn es klemmt, sind die Videos
-    der Hebel: die Vorgabe verlangt nur *ein* Video je Projektordner.
-
-### Was Claude bis Samstagabend vorlegt (kostet Isor keine Zeit)
-Damit der Sonntag nicht überläuft, liegt vorbereitet bereit:
-- [ ] Balkendiagramm der sechs Messpunkte als fertige Bilddatei
-- [ ] Quellenangaben für Bridson, Amdahl und Perlin, formatiert nach der
-  Belegtechnik des S4-Texts, plus die Einträge fürs Literaturverzeichnis
-- [ ] Formulierungsvorschlag für die zwei Fazit-Sätze
-- [ ] Beide READ_ME so weit gefüllt, wie es ohne den fertigen Stand geht
+13./14. offen — siehe oben unter „Offen geblieben aus der 16.08.-Liste".
+15. [x] **Audio-Quellen in Tabelle 9 nachgetragen** (2026-08-17): sieben
+    Pakete, alle CC0. Die Herkunft wurde über die .meta-GUIDs gegen Szenen
+    und Prefabs geprüft, nicht aus `Audio_Quellen.txt` übernommen — die
+    Notiz war an drei Stellen falsch (siehe TDD_NOTES 2026-08-17).
+16. [x] **Abschluss erledigt** (Isor, 2026-08-17): Wortanzahl 21366,
+    beide Unterschriften als Bild vorhanden, F9 gelaufen, PDF neu
+    exportiert und in `Abgabe_Final` gelegt. Das S4-Dokument hat Isor
+    selbst überarbeitet und ebenfalls neu exportiert.
+17. [x] **Beide READ_ME fertig** (2026-08-17).
+18. [x] **Projektkopien nachgezogen** (2026-08-17, zweimal — zuletzt am
+    Abend nach dem Platzieren der Bäume).
+19. [x] **Gezippt und hochgeladen** (2026-08-17). Die Upload-Grenze war
+    kein Thema. Zippen brachte mehr als erwartet, weil `Village.unity` als
+    YAML-Text stark komprimiert: 1,32 GB Ordner → 848,5 MB in zwei ZIPs.
 
 ### Geprüft am 2026-08-12 — Village-Altlasten
 - `Village.unity` enthält **null Kamera-Komponenten** direkt in der

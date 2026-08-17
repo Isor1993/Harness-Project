@@ -498,3 +498,22 @@ Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
   Einstellungen: überlebt Szenenwechsel und Programmneustart, kennt nur
   `int`, `float`, `string` und keine Verschachtelung. Für Spielstände
   (Weltzustand, Inventar) ungeeignet — dafür braucht es ein eigenes Format.
+- 2026-08-17 — [Lizenzen] Kapitel 12 um die sieben Audiopakete erweitert:
+  Town Theme RPG (cynicmusic), The Wind (Loyalty Freak Music), Wind (IgnasD),
+  Different Steps (TinyWorlds), Wood-Burning on Fireplace (PagDev), Sheep baa
+  (mikewest), RPG Sound Effects (Kenney) — alle CC0, alle über OpenGameArt.
+  Als Zeilen in Tabelle 9 plus ein Absatz nach der Einleitung. Darin der für
+  K4b wichtige Satz, dass ein gesichtetes CC-BY-3.0-Paket bewusst nicht
+  übernommen wurde, damit im ausgelieferten Stand keine Attributionspflicht
+  besteht. Einleitungssatz von fünf auf zwölf Assets geändert.
+- 2026-08-17 — [Lizenzen] KI-Kennzeichnung als Absatz unter Tabelle 1:
+  Rechtschreib- und Grammatikprüfung an Texten und Code-Kommentaren,
+  Erklären von Fachthemen und fremdem Code, Erzeugung der Gras-Farbtextur.
+  Die Pflicht dazu kommt aus der Selbstständigkeitserklärung, nicht aus den
+  Formatierungsvorgaben.
+- 2026-08-17 — [Abgabe] Herkunftsdaten der Audiopakete stimmen NICHT mit der
+  Arbeitsnotiz `Audio_Quellen.txt` überein. Geprüft wurde über die .meta-GUIDs
+  gegen Szenen und Prefabs: ObsydianX ist gar nicht im Projekt (stattdessen
+  Kenney), LoyaltyFreak_TheWind fehlte in der Notiz, und die Musikzuordnung
+  ist vertauscht — TownTheme läuft im Dorf, The Wind im Hauptmenü.
+  Für künftige Belege gilt die GUID-Prüfung, nicht die Notiz.

@@ -1528,3 +1528,56 @@ und ließ den Text umbrechen. Getrennt bleibt der Prompt schmal, und die
 Fackel zeigt gar keine Zustandsanzeige, weil sie einen leeren Text liefert.
 Verworfen: den Zustand an den Prompt-String anhängen (erste Umsetzung am
 selben Tag, wieder zurückgebaut); eine Weltraum-Anzeige über dem Schaf.
+
+## 2026-08-17 — Abgabe in zwei Uploads, erster Stand vollständig
+Was: Am 17.08. wurden beide Portfolios vollständig gepackt und hochgeladen,
+obwohl das Lernziel S3 noch offen ist. Ein zweiter Upload nach dem Polishing
+ersetzt den ersten.
+Warum: Ein vollständiger, benotbarer Stand auf dem Server nimmt das Risiko
+aus den letzten vier Tagen. Was liegt, kann nicht mehr schiefgehen.
+Verworfen: erst nach dem Polishing hochladen; nur eines der beiden Module
+vorab abgeben.
+
+## 2026-08-17 — KI-Kennzeichnung im TDD unter Tabelle 1
+Was: Der Absatz zur KI-Nutzung steht unter der Beschriftung von Tabelle 1
+(Entwicklungsumgebung), nicht auf der Titelseite und nicht als eigenes Kapitel.
+Warum: Dort stehen Claude und ChatGPT ohnehin schon als Werkzeuge in der
+Tabelle — der Leser trifft die Erklärung im Zusammenhang. Ein eigenes Kapitel
+hätte alle Nummern dahinter verschoben.
+Verworfen: Titelseite unter der Rechtevereinbarung (erste Umsetzung, von Isor
+verworfen — wirkt dort deplatziert); eigenes Kapitel 15.
+
+## 2026-08-17 — Keine KI-Kennzeichnung im S4-Dokument
+Was: Die Ausarbeitung „Arbeiten nach akademischen Standards" bekommt keinen
+KI-Hinweis.
+Warum: Isor hat den Text vollständig selbst verfasst. Eine Erklärung über
+Hilfsmittel, die nicht benutzt wurden, wäre schlicht falsch.
+Verworfen: denselben Absatz wie im TDD einsetzen (von Claude vorgeschlagen).
+
+## 2026-08-17 — Audiopakete als Block statt eigener Unterkapitel
+Was: Die sieben Audiopakete stehen als Zeilen in Tabelle 9 plus ein Absatz
+nach der Einleitung von Kapitel 12; sie bekommen keine eigenen Unterkapitel
+wie die fünf Bild-Assets.
+Warum: Alle sieben sind CC0 — dieselbe Antwort auf alle fünf Prüfpunkte.
+Sieben fast gleiche Unterkapitel hätten den Text aufgebläht, ohne etwas zu
+zeigen. Der Absatz steht bewusst vor der Tabelle, damit der Leser vorher
+weiß, warum auf zwölf Assets nur fünf Unterkapitel folgen.
+Verworfen: je Paket ein Unterkapitel; den Absatz unter die Tabelle setzen
+(erste Umsetzung, von Isor verworfen).
+
+## 2026-08-17 — Ältere Videos und TDD-Abbildungen bleiben in der Abgabe
+Was: Die zu kurzen Entwicklungsvideos und die `Abbildung`-Screenshots bleiben
+in den Aufgabenordnern, obwohl sie die Vorgabe für Press-Material verfehlen.
+Das jeweilige Abgabevideo wird stattdessen im READ_ME benannt.
+Warum: Isor will sie als Beleg behalten, falls etwas schiefgeht. Und in
+Aufgabe 2 sind die Shader- und VFX-Graphen sogar die Antwort auf das
+Feedbackelement „Lassen sich die Materialeigenschaften flexibel einstellen?".
+Verworfen: sie ins Archiv verschieben (von Claude vorgeschlagen, zweimal).
+
+## 2026-08-17 — Build vom 16.08. trotz geänderter Szene behalten
+Was: In beiden `release`-Ordnern liegt der Build vom 16.08., obwohl die Szene
+am 17.08. um 18:22 mit 21.354 platzierten Bäumen neu gespeichert wurde.
+Warum: Der Build zeigt eine gültige generierte Welt und läuft; ein Neubau war
+Isor den Aufwand nicht wert (Isor, 17.08.).
+Verworfen: vor dem Zippen neu bauen, damit `src` und `release` denselben Stand
+zeigen (von Claude empfohlen).
