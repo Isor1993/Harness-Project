@@ -517,3 +517,17 @@ Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
   Kenney), LoyaltyFreak_TheWind fehlte in der Notiz, und die Musikzuordnung
   ist vertauscht — TownTheme läuft im Dorf, The Wind im Hauptmenü.
   Für künftige Belege gilt die GUID-Prüfung, nicht die Notiz.
+- 2026-08-19 — [Kapitel 14, Änderungsverlauf] Ladescreen als umgesetztes
+  Dozenten-Feedback. Rückmeldung vom 18.08. (PCG, 14:19): „Ein Ladebildschirm
+  während der Generierung wäre schön." Umgesetzt als Ladescreen beim
+  Szenenwechsel Hauptmenü → Dorf, weil im Build gar nicht generiert wird —
+  der `TerrainToolPresenter` liegt in `Editor/` und wird gestrippt; die
+  Wartezeit ist das Laden von `Village.unity` (139,7 MB). Auf ihrem Rechner
+  rund 90 Sekunden, auf Isors rund 8. Damit ist das Feedbackelement *Person*
+  („Wurde genügend Feedback eingeholt und umgesetzt?") belegt.
+  Technisch nennenswert, falls es in den Text soll: Unity hält einen
+  Ladevorgang mit `allowSceneActivation = false` bei `progress == 0.9` an, die
+  letzten 0,1 sind die Aktivierung; `isDone` wird dabei nie `true`. Der
+  angezeigte Wert wird geglättet, weil der gemeldete Fortschritt sprunghaft
+  kommt, und die Szene wird erst umgeschaltet, wenn der angezeigte Wert 1
+  erreicht hat.

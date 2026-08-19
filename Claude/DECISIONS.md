@@ -1581,3 +1581,52 @@ Warum: Der Build zeigt eine gültige generierte Welt und läuft; ein Neubau war
 Isor den Aufwand nicht wert (Isor, 17.08.).
 Verworfen: vor dem Zippen neu bauen, damit `src` und `release` denselben Stand
 zeigen (von Claude empfohlen).
+
+## 2026-08-19 — Ladescreen als Panel im Hauptmenü statt eigener Szene
+Was: Der Ladescreen ist ein viertes Kind im `MainMenuUI`-Canvas, keine eigene
+`Loading.unity`. Der `LoadingScreenController` sitzt auf dem immer aktiven
+Canvas-Root, nicht auf dem Panel.
+Warum: Der Vorteil einer eigenen Ladeszene ist, dass die alte Szene vor der
+neuen aus dem Speicher fliegt — das Hauptmenü ist aber nur ein Panel und ein
+Hintergrundbild. Dagegen stünden vier zusätzliche Stellen zwei Tage vor der
+Frist: neue Szene, dritter `SceneId`-Wert, `_sceneNames`, und die Ladeszene
+müsste sich das Ziel merken. Der Controller gehört auf das Root, weil ein
+abgeschaltetes Objekt kein `Update()` bekommt und sich nie selbst einschalten
+könnte.
+Verworfen: eigene Ladeszene (Isors erster Vorschlag); Canvas mit
+`DontDestroyOnLoad`, das auch die Zeit nach der Aktivierung abdecken würde —
+das wird erst gebraucht, wenn die Laufzeit-Platzierung kommt.
+
+## 2026-08-19 — Echter Ladefortschritt, nur weich nachgezogen
+Was: Angezeigt wird `operation.progress / 0.9`, geglättet über
+`Mathf.MoveTowards` mit `_fillSpeed` (0,5 Balkenlängen pro Sekunde, also
+mindestens zwei Sekunden von 0 auf voll). Umgeschaltet wird, wenn der
+**angezeigte** Wert 1 erreicht — nicht wenn `progress` 0,9 erreicht.
+Warum: Unity hält einen zurückgehaltenen Ladevorgang von selbst bei 0,9 an;
+die letzten 0,1 sind die Aktivierung. Die von Isor vermutete Wartestelle ist
+also schon eingebaut und muss nicht erfunden werden. Der Fortschritt kommt
+aber ruckartig, deshalb die Glättung. Und weil `isDone` mit angezogener
+Handbremse nie `true` wird, ist der eigene Anzeigewert die einzige brauchbare
+Umschalt-Bedingung — sonst springt das Bild weg, während der Balken noch bei
+60 % steht.
+Verworfen: erfundener Balken bis 80 % plus Fertigmeldung (Isors erster
+Vorschlag — zwei Systeme statt einem und eine erfundene Zahl); `isDone` als
+Bedingung; Coroutine statt `Update` (dasselbe Verhalten mit einem
+Sprachkonstrukt mehr, das im Projekt sonst nirgends vorkommt).
+`Time.unscaledDeltaTime` statt `deltaTime`, damit ein vergessenes
+`timeScale = 0` den Balken nicht einfriert.
+
+## 2026-08-19 — Eigenes weißes Sprite für Fortschrittsbalken
+Was: `Shared/UI/Textures/UI_WhitePixel.png`, 8×8 Pixel reines Weiß, selbst
+erzeugt. Liegt unter dem `BarFill` des Ladebalkens.
+Warum: Bei `Image Type = Filled` behandelt Unity das Sprite wie `Simple` und
+zieht es auf die volle Fläche — 9-Slice-Ränder werden ignoriert. Alle
+Unity-Standardsprites sind abgerundet, und bei 752 × 16 Pixeln wird aus einem
+8-Pixel-Eckenradius eine 188 Pixel lange, 4 Pixel flache Rundung: der Balken
+sieht aus wie eine Linse. Ein weißes Sprite nimmt zudem die Image-Farbe
+unverfälscht an. Selbst erzeugt heißt außerdem keine Zeile in der
+Asset-Tabelle.
+Verworfen: `Background` und `UISprite` (beide rund, gleiches Problem); `Knob`
+(ein Kreis, ergab die erste Linsenform); ganz ohne Source Image — dann
+zeichnet Unity ein volles Rechteck und ignoriert `fillAmount`, und das Feld
+`Image Type` erscheint gar nicht erst.

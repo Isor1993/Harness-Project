@@ -298,6 +298,83 @@ erfüllt: `TerrainConfig_Default.asset` enthält nur zwei Placeables
 - [ ] Danach zwingend: Kopierskript erneut, neu zippen, erneut hochladen —
   der zweite Upload ersetzt den ersten.
 
+### Mi 19.08. — Dozenten-Feedback zu Stand 1 + Polishing
+**Zeitbudget (Isor, 2026-08-18 abends):** ca. 17:00–22:00, im Notfall bis
+0:00. Frist bleibt Fr 21.08., 20:00 — danach also noch ein Tag Puffer.
+
+**Feedback der Fachbetreuung am 18.08. zu Stand 1** (mündlich, mit
+Zeitstempel — schriftliches Feedback steht noch aus):
+- **Engine-Tool, 14:17** — sieht gut aus, besonders der Prefab-Painter
+  bietet viele Möglichkeiten. Isor hat offen gelegt, dass er das Tool
+  entworfen und mit KI-Unterstützung programmiert hat und dass es
+  ursprünglich ein privates Werkzeug war (nicht im TDD erwähnt, siehe
+  DECISIONS 2026-08-07). Die Dozentin: in Ordnung, drinlassen, dafür
+  eher Zusatzpunkte als Abzug.
+- **Threadoptimierung, 14:54** — sie mag grafische Auswertungen, versteht
+  aber, dass reine Messdaten keine grafische Darstellung hergeben.
+  Deckt sich mit dem offenen Punkt 13 (Balkendiagramm) unten — genau der
+  fehlende Beleg.
+- **PCG, 14:19** — sieht wirklich gut aus. Zwei Anmerkungen:
+  1. Ein Ladebildschirm während der Generierung wäre schön.
+  2. Sie fände es schöner, wenn die Einstellungsmöglichkeiten der
+     TerrainConfig auch im Editor-Fenster selbst einstellbar wären, statt
+     nur über das danebenliegende Inspector-Fenster des ScriptableObjects.
+     **Isor-Entscheidung (2026-08-18): nicht umgesetzt** — zu viel Aufwand
+     für die verbleibende Zeit, kein Bewertungskriterium.
+- **Gesamteindruck:** alles sehr schön und gut, keine großen, nur kleinere
+  Kritikpunkte.
+
+**Für Kapitel 14 (Änderungsverlauf) vorbereitet** — deckt das
+Feedbackelement *Person* ab („Wurde genügend Feedback eingeholt und
+umgesetzt?"), steht in beiden Aufgabenstellungen: zwei Zeilen mit was
+zurückkam und was geändert wurde. Isor trägt morgen nach dem Arbeiten ein,
+was tatsächlich umgesetzt wurde.
+
+**Prioritätsliste morgen, absteigend nach Kriteriumsbezug:**
+1. [ ] **Balkendiagramm der sechs Messpunkte** (ROADMAP-Punkt 13 unten) —
+   direkte Antwort auf das Threading-Feedback, kleiner Aufwand.
+2. [ ] **Schafe über den Placer** — deckt das offene Lernziel S3 ab (Block
+   oben). Einziger Punkt mit direktem Bewertungsbezug in dieser Liste.
+3. [x] **Ladescreen beim Szenenwechsel** (2026-08-19) — erledigt. Statt um
+   die Editor-Generierung wurde er um den Szenenwechsel Hauptmenü → Dorf
+   gelegt: Im Build gibt es keine Generierung (der `TerrainToolPresenter`
+   liegt in `Editor/` und wird gestrippt), die 90 Sekunden auf dem Rechner
+   der Dozentin sind das Laden von `Village.unity`. Damit trifft der
+   Ladescreen ihr Feedback genauer als ein Fortschrittsbalken im Tool.
+   Deckt zugleich ROADMAP-Punkt 10 unter „Nach der Uni-Abgabe" ab.
+   Einzelheiten im FEATURE_LOG, Begründungen in DECISIONS 2026-08-19.
+4. [ ] **Collider** — Schafe laufen durch Häuser und Bäume; siehe Abschnitt
+   „Kollision und NavMesh" weiter unten (NavMesh bei Laufzeit-Bäumen).
+5. [ ] **Karten-Begrenzung** — Spieler darf nicht von der Welt fallen
+   können. Einfachste Lösung zuerst: unsichtbare Wände am Rand.
+6. [ ] **Fackel-Licht und -Farbe einstellen**
+7. [ ] **Zeit-Vorspul-Button** — noch offene Design-Frage, siehe unten.
+8. [ ] **Glühwürmchen über den Placer statt von Hand** — kein
+   Kriteriumsbezug, kleinster Punkt der Liste.
+
+**Design-Frage Zeit-Vorspulen:** `IngameTime` hat bereits `TimeScale` als
+laufenden Multiplikator und `SetHour`/`SetTime` als sofortigen Sprung.
+Ein Button, der `SetHour` um einen festen Betrag erhöht (z. B. +1 Stunde),
+ist die einfachere und risikoärmere Umsetzung als `TimeScale` befristet
+hochzusetzen — Letzteres beschleunigt auch Physik, Animationen und alle
+`Update`-Systeme mit, was ungetestete Nebenwirkungen haben kann. Empfehlung:
+fester Sprung über `SetHour`, Entscheidung bei Isor.
+
+**Ordnerstruktur — Dozentin wünscht Umbau, EMPFEHLUNG: nicht vor der
+Abgabe.** Gewünscht: oberste Ebene nach Typ (`Scripts/`, `Animation/`,
+`Texture/`, `Materials/`), darunter Unterordner je Feature/System — das
+Gegenteil der aktuellen, bewusst gewählten Struktur (CODE_GUIDELINES,
+Entscheidung 2026-07-19: Feature zuerst, `Entities/<Name>/Scripts/` usw.).
+Grund für die Empfehlung: Ein Umbau dieser Größenordnung betrifft
+vermutlich alle Scripts im Projekt (83 Dateien laut Fazit-Notiz zu den
+namespaces) und muss im Unity-Editor per Drag&Drop erfolgen, nie im
+Explorer, sonst brechen die .meta-GUIDs und damit alle Referenzen. Das
+ist dasselbe Risiko, das schon den `namespace`-Umbau und
+`ObjectPlacer.PlaceType` von der Abgabe ferngehalten hat (siehe „Bewusst
+nicht mehr vor der Abgabe" weiter unten). Vorschlag: Feedback so im
+Änderungsverlauf vermerken („erkannt, wird nach der Abgabe umgesetzt"),
+tatsächlicher Umbau erst in der Phase „Nach der Uni-Abgabe".
+
 ### Alte Punkte der 16.08.-Liste (Belege)
 11. [x] **Deckblatt richtiggestellt** (Isor, 2026-08-17): Modulname auf
     „Structured Game Development", Semester auf März 2026, Modulnummer auf
@@ -487,7 +564,11 @@ Reihenfolge noch offen, wird in einer eigenen Design-Session festgelegt.
    je Repo aussehen muss, und wie mit der bereits gewachsenen Historie umgegangen
    wird. Betrifft alle drei Repos. Erst nach der vollständigen Uni-Abgabe
    (vorgemerkt 2026-08-06).
-10. [ ] **Ladebildschirm** (Isor, 2026-08-16, für die Woche nach der Abgabe):
+10. [x] **Ladebildschirm** — am 2026-08-19 vorgezogen und gebaut, siehe oben
+   unter „Mi 19.08.". Offen bleibt daraus nur die Zeit **nach** der
+   Aktivierung: Sobald das Dorf aktiv ist, ist das Ladebild weg. Wenn die
+   Laufzeit-Platzierung kommt, braucht es dafür ein Canvas mit
+   `DontDestroyOnLoad`. Ursprünglicher Text:
    Der Szenenwechsel vom Hauptmenü ins Dorf läuft heute ohne Rückmeldung —
    das Bild steht, bis die Szene fertig ist. Gebraucht wird ein Ladebalken
    zwischen den Szenen. Passt zum bereits vorgesehenen Spielablauf

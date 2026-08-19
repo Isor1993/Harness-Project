@@ -422,3 +422,15 @@ Format: `- JJJJ-MM-TT — Feature (1–2 Sätze: was und wo)`
   Interaktions-Prompt sagt, was ein Tastendruck tut, `StatusText` sagt, was das
   Objekt ist. Beim Schaf sind das Leben und Hunger, bei der Fackel bleibt es
   leer. `PlayerInteractor` reicht beides getrennt weiter.
+- 2026-08-19 — Ladescreen beim Szenenwechsel Hauptmenü → Dorf.
+  `SceneLoader` bekam `LoadAsync(SceneId)`, das den Ladevorgang startet, mit
+  `allowSceneActivation = false` zurückhält und die `AsyncOperation`
+  zurückgibt; die doppelte Namensprüfung liegt jetzt in `TryGetSceneName`.
+  Neu ist `LoadingScreenController` (`Systems/GameFlow/Scripts/`): hält die
+  Operation, rechnet `progress / 0.9` auf 0–1 hoch, zieht den angezeigten
+  Wert mit `Mathf.MoveTowards` nach und schaltet die Szene erst um, wenn der
+  **angezeigte** Wert 1 erreicht hat. `MainMenuController.StartGame()` blendet
+  nur noch das Menü-Panel aus und übergibt. Das Ladepanel liegt als viertes
+  Kind in `MainMenuUI.prefab` (Backdrop, BarTrack mit BarFill, ProgressLabel,
+  LoadingTitle) in der Menü-Palette. Dazu ein selbst erzeugtes 8×8-Sprite
+  `Shared/UI/Textures/UI_WhitePixel.png`. Im Editor geprüft.
