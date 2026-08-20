@@ -531,3 +531,26 @@ Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
   angezeigte Wert wird geglättet, weil der gemeldete Fortschritt sprunghaft
   kommt, und die Szene wird erst umgeschaltet, wenn der angezeigte Wert 1
   erreicht hat.
+- 2026-08-20 — [Kapitel 14, Änderungsverlauf] Tageslänge geändert und
+  Vorspulen ergänzt. Falls die alte Zahl irgendwo im TDD steht, muss sie
+  mit: `_realSecondsPerIngameSecond` ging von 1 auf 0,0139, ein Ingame-Tag
+  dauert damit 20 statt 24 Stunden echte Zeit (86.400 Ingame-Sekunden je Tag,
+  Umrechnung 60/60/24). Grund fürs Protokoll: Mit dem alten Wert war der
+  Tag-Nacht-Zyklus im Build nicht wahrnehmbar — Spielstart ist fest 06:00,
+  und in fünf Minuten Spielzeit dreht sich die Sonne um 1,25 Grad. Ein
+  bewertetes System, das niemand zu sehen bekommt, zählt in der Vorführung
+  wie nicht vorhanden.
+- 2026-08-20 — [Kapitel 6.5, Threading] Echter Nebenläufigkeitsfehler in der
+  parallelisierten Platzierung gefunden und behoben. `TerrainConfig` baut die
+  Kurven-Nachschlagetabelle `_heightCurveLookup` nur in `OnEnable` und
+  `OnValidate`; das Feld ist nicht serialisiert. Läuft `OnEnable` eines
+  Szenenobjekts, das den Placer aufruft, vor der `OnEnable` des Config-Assets,
+  ist die Tabelle null — und dann greifen alle Worker-Threads gleichzeitig ins
+  Leere (im Log 18 gleichlautende NullReferenceExceptions in einer
+  AggregateException). Behoben über `EnsureHeightCurveLookup()`, aufgerufen im
+  `ObjectPlacer` als letzter Schritt vor dem `Parallel.For`, also noch auf dem
+  Hauptthread. Verwertbar als Beleg dafür, dass die Parallelisierung nicht nur
+  gemessen, sondern auch auf ihre Fallstricke hin verstanden wurde: Die
+  `CurveLookup`-Klasse trug die Anforderung schon im Kommentar
+  ("Build it on the main thread before any thread reads it"), garantiert war
+  sie aber nicht.

@@ -434,3 +434,64 @@ Format: `- JJJJ-MM-TT — Feature (1–2 Sätze: was und wo)`
   Kind in `MainMenuUI.prefab` (Backdrop, BarTrack mit BarFill, ProgressLabel,
   LoadingTitle) in der Menü-Palette. Dazu ein selbst erzeugtes 8×8-Sprite
   `Shared/UI/Textures/UI_WhitePixel.png`. Im Editor geprüft.
+- 2026-08-19 — Welt-Begrenzung: vier unsichtbare Wände am Kartenrand, gebaut
+  vom Terrain-Tool. `TerrainToolPresenter.BuildWorldBounds` erzeugt unter
+  `Generated World Bounds` vier leere Objekte mit BoxCollider, Maße aus
+  `SizeInMeters` und `HeightMultiplier`: 10 m dick, von Y −50 bis Y 850,
+  Innenkante bündig mit der Weltkante bei 0 und 2048. Wird aus `Generate`
+  mitgerufen und liegt zusätzlich als eigener Knopf „Build World Bounds" im
+  Tool-Fenster, damit eine bereits bepflanzte Welt die Wände ohne
+  Neugenerierung bekommt. Wirkt auf den Spieler, weil `PlayerMotor` über
+  `CharacterController.Move` läuft; die Schafe hält schon die NavMesh-Kante.
+- 2026-08-19 — Bäume sind jetzt fest: `BirchTree_1.prefab` bekam einen
+  `CapsuleCollider` (Radius 0,21, Höhe 5,68, Achse Z wegen der 90°-Drehung
+  des Modells) und einen `NavMeshObstacle` mit `Carve` und
+  `CarveOnlyStationary`. Damit stoppt der Collider den Spieler und der
+  Obstacle die Schafe — zwei Systeme, zwei Lösungen. Von Isor im Spiel
+  geprüft: kein spürbarer Einbruch bei 21.354 Bäumen.
+- 2026-08-19 — Fackeln bekommen Licht und Körper. Beide Prefabs unter
+  `Environment/Torch/Prefab/` tragen jetzt je ein Point Light in warmem
+  Feuerton (RGB rund 147/100/41, Intensität 0,66 bzw. 0,68, Reichweite
+  10,88 m) und je zwei CapsuleCollider (Schaft r 0,19 / h 1,24, Korb
+  r 0,50 / h 2,00). Damit leuchten sie und lassen sich nicht mehr durchlaufen.
+- 2026-08-20 — Zeit-Vorspulen auf gehaltener Taste `T`. Neue Action
+  `FastForward` in `PlayerControls.inputactions`, im `PlayerInputReader` als
+  abgefragte Eigenschaft `IsFastForwarding` (gehaltene Taste ist
+  kontinuierliche Eingabe, kein Event) und in `EnableUI` mit zurückgesetzt.
+  Neu ist `TimeFastForward` (`Systems/DayNightCycle/Scripts/`) auf dem
+  `ClockDisplay`: setzt `IngameTime.TimeScale` auf das 60-fache, solange die
+  Taste hält, und schreibt `[T] Fast Forward` bzw. `Fast Forward x60` in eine
+  Zeile unter der Uhr. Betroffen ist nur die Ingame-Uhr — `IngameTime` hat
+  einen eigenen Multiplikator, Unitys `Time.timeScale` bleibt unberührt, also
+  laufen Physik, Animationen und Schafe normal weiter.
+- 2026-08-20 — Tageslänge von 24 echten Stunden auf 20 Minuten gesenkt
+  (`_realSecondsPerIngameSecond` von 1 auf 0,0139 im `DayNightCycle`-Prefab).
+- 2026-08-20 — Bäume stehen senkrecht: `AlignToGround` am Baum-Placeable aus,
+  Baumgruppe über die Typ-Zeile neu gesetzt. Vorher lagen Bäume an steilen
+  Hängen flach, weil sie auf die Bodennormale gedreht wurden.
+- 2026-08-20 — Glühwürmchen: `VFX_FireFly`-Prefab aus `FireFly.vfx`
+  (`ParticleEffects/FireFly/Prefabs/`) mit neuer `NightVfx`-Komponente
+  (`Systems/DayNightCycle/Scripts/`). Sie meldet sich wie `Torch` beim
+  `DayNightCycleEventManager` an und lässt den Effekt bei Abend und Nacht
+  laufen; bleibt das Manager-Feld leer, sucht sie ihn beim Start selbst —
+  nötig, weil platzierte Kopien keine Szenenreferenz tragen können. Gesetzt
+  wurden die Schwärme als dritter Placeable-Typ über den Terrain-Placer,
+  begrenzt auf das Höhenband knapp über dem Wasserspiegel und flaches Gelände.
+- 2026-08-20 — Schafherden prozedural gesetzt: `SheepHerdManager_01` als
+  vierter Placeable-Typ, 19 Instanzen, Höhenband 0,14–0,30 und Hangneigung
+  bis 8,4° (nur flaches Weideland, damit die NavMeshAgents sauber aufsetzen).
+  Gesetzt wird der Herdenverwalter, nicht das einzelne Schaf — die Herde
+  entsteht daraus. Damit ist die Bevölkerung des Dorfes generiert und nicht
+  von Hand verteilt.
+- 2026-08-20 — Roter Ball als Bedrohungs-Attrappe auf Layer `Enemy`, dazu
+  `RigidbodyPusher` (`Scripts/Player/`): Ein `CharacterController` gibt beim
+  Bewegen keinen Impuls weiter, deshalb schiebt die Komponente leichte
+  Rigidbodies aus `OnControllerColliderHit` von Hand an. Damit lässt sich das
+  Fluchtverhalten der Schafe vorführen, solange es keinen Gegner gibt.
+- 2026-08-20 — Assets von Themen- auf Typsortierung umgestellt: `Scripts/`,
+  `Prefabs/`, `Materials/`, `SO_Settings/`, `Textures/`, `Shader/`, `VFX/`,
+  `FBX/`, `Audio/`, darunter je ein Ordner pro System oder Wesen. Editor-Code
+  getrennt in `Assets/Editor/`, Fremdpakete unverändert in `ThirdParty/`.
+- 2026-08-20 — Build 0.0.3 abgegeben. Beide Portfolio-ZIPs neu gebaut
+  (309,8 MB und 541,5 MB), `release` und `src` in beiden Abgaben auf den
+  heutigen Stand gezogen.

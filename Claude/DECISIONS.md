@@ -1630,3 +1630,161 @@ Verworfen: `Background` und `UISprite` (beide rund, gleiches Problem); `Knob`
 (ein Kreis, ergab die erste Linsenform); ganz ohne Source Image — dann
 zeichnet Unity ein volles Rechteck und ignoriert `fillAmount`, und das Feld
 `Image Type` erscheint gar nicht erst.
+
+## 2026-08-19 — Balkendiagramm kommt nicht ins TDD
+Was: Die Grafik der Messreihe wurde erzeugt, aber nicht in Kapitel 6.5 neben
+Tabelle 8 eingesetzt. Das TDD bleibt unverändert.
+Warum: Isor hält den Aufwand am Dokument für nicht lohnend; die verbleibende
+Zeit geht in den Spielstand. Die Grafik erreicht die Bewertung trotzdem, weil
+sie als `Messreihe_Balkendiagramm.png` im Messungs-Ordner der D003-Abgabe
+liegt und im `Messreihen_README.md` genannt ist — dort, wo auch die sechs
+Rohlogs liegen.
+Verworfen: Einbau über `Verweise → Beschriftung einfügen` samt Querverweis
+und F9-Durchlauf (von Claude empfohlen — die Aufgabenstellung nennt
+visualisierte Performancedaten ausdrücklich, und die Dozentin hat am 18.08.
+grafische Auswertungen gewünscht). Die Textbausteine dafür liegen fertig in
+`Arbeitsdateien\Textbaustein_Abbildung_Messreihe.txt`, falls es doch noch
+gemacht wird.
+
+## 2026-08-19 — Zweiter Upload am Donnerstagabend, nicht heute
+Was: Mi 19.08. und Do 20.08. wird gebaut, hochgeladen wird erst Do abends.
+Warum: Ein zweiter Upload mit nur einem Feature lohnt den Aufwand nicht —
+Build, beide `release`-Ordner, `src` nachziehen, zippen und hochladen kosten
+rund zwei Stunden, unabhängig davon, wie viel drin ist. Der Freitag bis 20:00
+bleibt als Puffer.
+Risiko, bewusst getragen: Bis zum Upload ist Stand 1 vom 17.08. der einzige
+bewertbare Stand. Fällt der Donnerstag aus, zählt nichts von dieser Woche.
+Verworfen: heute Abend hochladen und morgen einen dritten Stand nachschieben.
+
+## 2026-08-19 — Welt-Begrenzung gehört ins Terrain-Tool, nicht in ein Laufzeit-Skript
+Was: Die vier Wände baut der `TerrainToolPresenter` wie den Wasserspiegel,
+als Kinder des Terrain-Roots. Kein `MonoBehaviour`, kein Objekt in der Szene,
+das jemand verdrahten muss, keine Laufzeitkosten. Zusätzlich ein eigener
+Knopf, der nur die Wände neu baut.
+Warum (Isors Vorschlag, 2026-08-19): Die Wände gehören zur generierten Welt,
+also baut sie der Generator — dasselbe Muster wie `BuildWaterPlane`, und die
+Maße kommen aus derselben Config wie das Terrain statt abgetippt zu werden.
+Der eigene Knopf ist nötig, weil `ClearGeneratedChildren` beim `Generate`
+auch `Generated Placement` löscht: Ohne ihn hätte das Nachrüsten der Wände
+die 21.354 platzierten Bäume mitgenommen und einen kompletten Neuaufbau der
+139,7-MB-Szene zwei Tage vor der Frist erzwungen.
+Verworfen: ein `WorldBounds`-MonoBehaviour, das die Wände in `Awake` erzeugt
+(mein erster Vorschlag — mehr Teile, Laufzeitkosten, und ein Objekt mehr, das
+in der Szene hängen muss); vier von Hand gesetzte Würfel (Weltgröße abgetippt).
+Offen geblieben: Der Wasserspiegel hat bewusst keinen Collider, der Spieler
+läuft also in den See und weiter auf dem Grund. Am 19.08. nicht angefasst.
+
+## 2026-08-19 — Bäume mit NavMeshObstacle statt NavMesh-Rebake
+Was: Jeder Baum trägt `NavMeshObstacle` mit `Carve` und
+`CarveOnlyStationary` plus einen `CapsuleCollider`. Kein neuer NavMesh-Bake,
+keine Navigation-Static-Markierung.
+Warum: Isor hat es gebaut und im Spiel gemessen — bei 21.354 Bäumen kein
+spürbarer Einbruch. Der Weg braucht keine Änderung an der Szene und keinen
+Bake-Durchlauf zwei Tage vor der Frist.
+Verworfen: Bäume als Navigation Static markieren und das NavMesh neu backen
+(sauberer, weil dann zur Laufzeit gar nichts mehr passiert — aber ein
+Bake-Durchlauf über 21.354 Objekte am Abgabeabend); `Carve` abschalten und
+nur lokal ausweichen lassen.
+Richtigstellung zum Verständnis: Der NavMesh-Bake und das Carving sind
+getrennte Vorgänge. Der Bake liegt als Daten im Build, das Carving eines
+Obstacle ist dagegen reine Laufzeit und läuft bei **jedem** Spielstart neu.
+Beim Testen am fremden Rechner darauf achten, ob direkt nach dem Ladescreen
+ein Hänger auftritt; Gegenmittel wäre `Carve` aus.
+
+## 2026-08-20 — Vorspulen statt Zeitsprung, und ein Tag dauert 20 Minuten
+Was: Gehaltene Taste `T` setzt `IngameTime.TimeScale` auf das 60-fache. Kein
+Sprung per `SetHour`. Zusätzlich läuft die Uhr grundsätzlich schneller: ein
+Tag dauert 20 Minuten statt 24 Stunden.
+Warum: Beim Nachlesen fiel auf, dass der Tag-Nacht-Zyklus im Build praktisch
+unsichtbar war. Mit `_realSecondsPerIngameSecond: 1` und 60/60/24 dauerte ein
+Tag 86.400 echte Sekunden; das Spiel startet fest um 06:00, in fünf Minuten
+Spielzeit drehte sich die Sonne also um 1,25 Grad. Ein System, das im TDD
+steht, die Schafe steuert und im HUD als Uhr und Tagesphase angezeigt wird,
+war damit nie zu sehen. Vorspulen zeigt den Übergang, ein Sprung überspringt
+ihn — und gezeigt werden soll gerade das, was bewertet wird.
+Richtigstellung meinerseits: Ich hatte gegen die TimeScale-Variante
+eingewandt, sie beschleunige auch Physik und Animationen. Das gilt für Unitys
+`Time.timeScale`; `IngameTime.TimeScale` ist der eigene Multiplikator des
+Systems und rührt nichts davon an. Der Einwand war falsch.
+Verworfen: fester Sprung über `SetHour` (Isors und mein erster Gedanke);
+Grundgeschwindigkeit bei 24 Stunden lassen; anklickbare HUD-Schaltfläche —
+im Spiel ist der Mauszeiger gesperrt (`PlayerLook.cs:58`), eine Schaltfläche
+wäre nur im Pausenmenü erreichbar und dort sieht man den Sonnenlauf nicht.
+Deshalb Taste plus Anzeige statt Schaltfläche.
+
+## 2026-08-20 — Bäume stehen senkrecht statt hangparallel
+Was: `AlignToGround` am Baum-Placeable ausgeschaltet, `MaxSlope` bleibt bei 90.
+Bäume stehen damit überall senkrecht; an Steilhängen steht der Stammfuß frei.
+Warum: Mit `AlignToGround: 1` und `MaxSlope: 90` wurde jeder Baum auf die
+Bodennormale gedreht — an einer fast senkrechten Wand liegt die Normale
+waagerecht, der Baum legte sich also flach hin. Bodenausrichtung ist für Gras
+und Steine richtig, für Bäume nicht: Bäume wachsen senkrecht.
+`MaxSlope` blieb bewusst unangetastet, weil der Placer seine Zufallszahlen pro
+angenommenem Punkt zieht — eine andere Hanggrenze verschiebt die Zufallsfolge
+und hätte am Abgabetag eine komplett neue Waldverteilung ergeben. So blieben
+Positionen, Drehwinkel und Größen identisch, die Bäume stehen nur auf.
+Verworfen für heute, richtig für später (Isors eigene Einschätzung, das sei
+"für ein richtiges Spiel" nicht gut genug): `MaxSlope` auf 25–30 senken, damit
+an Steilhängen gar nichts steht; den Baum hangabhängig einsinken lassen, damit
+der Fuß nicht frei steht; oder per `Quaternion.Slerp` mit etwa 0,2–0,3
+zwischen Senkrechter und Normale mischen, sodass der Baum sich leicht neigt.
+
+## 2026-08-20 — Glühwürmchen über den Placer, nicht von Hand gemalt
+Was: Die Schwärme sind ein dritter Placeable-Typ in `TerrainConfig_Default`,
+begrenzt über Höhenband und Hangneigung, Render Mode GameObjects.
+Warum: Isors Einwand gegen meinen Vorschlag. Ich hatte zum Prefab Painter
+geraten, weil der Placer über die ganzen 2048 × 2048 Meter streut und ein
+Schwarm-Effekt (`capacity: 30`) teurer ist als ein Baum-Mesh. Der Einwand
+zieht aber nicht, weil sich die Menge über `MinSpacing` und die Regeln
+steuern lässt — und der Placer ist zugleich der in der ROADMAP ohnehin
+gewünschte Zielzustand und das prozedurale statt des händischen Verfahrens.
+Merkposten für später: VFX-Instanzen sind teurer als statische Meshes; wenn
+die Bildrate bei Nacht einbricht, ist `MinSpacing` der Regler.
+Verworfen: von Hand mit dem Prefab Painter malen (mein Vorschlag);
+`Instanced` als Render Mode — das zeichnet nur Meshes und führt keine
+VFX-Komponente aus.
+
+## 2026-08-20 — Der Placer setzt Herden, nicht einzelne Schafe
+Was: Vierter Placeable-Typ ist `SheepHerdManager_01`, nicht das Schaf-Prefab.
+19 Instanzen, Hangneigung bis 8,4°, Höhenband 0,14–0,30.
+Warum: Isors Lösung, und sie ist besser als das, was gestern besprochen war.
+Der Placer streut damit Herden statt Einzeltiere — das umgeht die Sorge, dass
+verstreute NavMeshAgents nicht sauber auf dem NavMesh aufsetzen, hält die Zahl
+klein (19 statt hunderter Einzelschafe) und ergibt trotzdem eine belebte Welt.
+Die flache Hanggrenze sorgt dafür, dass die Herden auf begehbarem Weideland
+landen.
+Folge für die Bewertung: Lernziel S3 ("generierte Bevölkerung") gilt damit als
+erfüllt. Es stand am 19.08. noch als geschoben in der ROADMAP.
+Verworfen: einzelne Schafe streuen; von Hand setzen (Isors Plan vom 19.08.).
+
+## 2026-08-20 — Ball als Bedrohungs-Attrappe statt Gegner
+Was: Ein roter Ball auf Layer `Enemy` mit Rigidbody, anschiebbar durch den
+Spieler über die neue `RigidbodyPusher`-Komponente.
+Warum: Das Fluchtverhalten der Schafe ist gebaut und bewertet, aber ohne
+Gegner im Spiel nicht vorführbar. Der Ball löst es aus, ohne dass am
+Abgabetag eine Gegner-KI entstehen muss. Technisch nötig war die Komponente,
+weil ein `CharacterController` beim Bewegen keinen Impuls an Rigidbodies
+weitergibt — Unity macht das absichtlich nicht von selbst.
+Nebenbefund, korrigiert: Isor hatte dem Spieler zusätzlich einen `Rigidbody`
+gegeben. Zusammen mit dem `CharacterController` steuern beide die Position
+und arbeiten gegeneinander; der Rigidbody kam wieder herunter.
+Verworfen: Gegner-KI bauen (kein Zeitrahmen); Spieler auf Rigidbody-Bewegung
+umstellen (Umbau am bewerteten Bewegungssystem).
+
+## 2026-08-20 — Assets nach Typ statt nach Thema
+Was: Der gesamte Assets-Baum wurde von Themenordnern (Entities, Environment,
+Systems, Shared) auf Typordner umgestellt (Scripts, Prefabs, Materials,
+SO_Settings, Textures, Shader, VFX, FBX, Audio), darunter je ein Ordner pro
+System oder Wesen. Editor-Code liegt getrennt in `Assets/Editor/`.
+Warum: Vorgabe der Ordnervorlage des Moduls. Isor hat verschoben, ich habe nur
+die leeren Ordner vorbereitet und hinterher geprüft — Verschieben gehört in
+Unity, sonst reißen die Referenzen.
+Bewusst nicht mitgemacht: `ThirdParty/Suriyun` und `TextMesh Pro` blieben
+unangetastet. Dort liegen alle FBX, alle Animationen und der einzige
+Animator-Controller; die innere Struktur eines gekauften Pakets ist Teil des
+Herkunftsnachweises im TDD.
+Preis, bewusst gezahlt: Die Systemgrenzen, die am 08.08. durch die Trennung in
+vier Systeme sichtbar gemacht wurden, sind im Ordnerbaum nicht mehr zu sehen.
+Nachlauf: Die READ_MEs beider Portfolios nannten an fünf Stellen die alten
+Pfade zum bewerteten Code (K1, K2, K3, S1, S2, S3). Alle korrigiert und gegen
+das Projekt gegengeprüft, bevor neu gezippt wurde.

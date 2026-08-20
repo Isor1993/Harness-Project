@@ -282,7 +282,17 @@ Erledigt in dieser Session:
 - [ ] **Zwei Sätze im Fazit** zur fehlenden `namespace`-Gliederung
   (0 von 83 Dateien) als bewusst aufgeschoben (Punkt 14).
 
-### Offen: Lernziel S3 — generierte Bevölkerung
+### ERLEDIGT (2026-08-20): Lernziel S3 — generierte Bevölkerung
+**Erfüllt mit Build 0.0.3.** `TerrainConfig_Default.asset` enthält jetzt vier
+Placeables: `BirchTree_1`, `GrassSingle_x2`, `VFX_FireFly` und
+`SheepHerdManager_01`. Vom Herdenverwalter stehen 19 Instanzen in
+`Village.unity`, gesetzt über den Placer nach Höhenband 0,14–0,30 und
+Hangneigung bis 8,4°. Gesetzt wird die Herde, nicht das Einzeltier — das hält
+die Zahl klein und die Agenten auf begehbarem Grund. Die unten beschriebene
+Falle mit dem `RuntimePlacementSpawner` traf zu und wurde eingehalten: Der Typ
+ist im Editor platziert und in der Szene gespeichert.
+Ursprüngliche Notiz vom 2026-08-17:
+
 Beim Prüfen gegen die Aufgabenstellungen gefunden (2026-08-17). **S3 steht
 in Modul 004 sowohl bei Aufgabe 2 als auch bei Aufgabe 3** und ist nicht
 erfüllt: `TerrainConfig_Default.asset` enthält nur zwei Placeables
@@ -331,10 +341,24 @@ zurückkam und was geändert wurde. Isor trägt morgen nach dem Arbeiten ein,
 was tatsächlich umgesetzt wurde.
 
 **Prioritätsliste morgen, absteigend nach Kriteriumsbezug:**
-1. [ ] **Balkendiagramm der sechs Messpunkte** (ROADMAP-Punkt 13 unten) —
-   direkte Antwort auf das Threading-Feedback, kleiner Aufwand.
-2. [ ] **Schafe über den Placer** — deckt das offene Lernziel S3 ab (Block
-   oben). Einziger Punkt mit direktem Bewertungsbezug in dieser Liste.
+1. [~] **Balkendiagramm der sechs Messpunkte** (2026-08-19) — Grafik erzeugt:
+   `01_Uni\Semester_2\Abbildungen\Threading_Messreihe.png`, Zweitkopie als
+   `Messreihe_Balkendiagramm.png` im Messungs-Ordner der D003-Abgabe, im
+   `Messreihen_README.md` verlinkt. Textbausteine für Beschriftung und
+   Lauftext in `Arbeitsdateien\Textbaustein_Abbildung_Messreihe.txt`.
+   **Einbau ins TDD entfällt** (Isor, 2026-08-19): Das Dokument bleibt wie
+   es ist. Die Grafik erreicht die Dozentin trotzdem, weil sie im
+   Messungs-Ordner der Abgabe liegt und im `Messreihen_README.md` steht.
+   Die Textbausteine bleiben liegen, falls es doch noch reingehen soll.
+2. [x] **Schafe über den Placer** — **doch noch am 2026-08-20 gemacht.**
+   Gesetzt wurde `SheepHerdManager_01`, nicht das Einzelschaf: 19 Herden
+   über den Placer. Lernziel **S3 ist damit erfüllt**, siehe den Block oben.
+
+**Upload-Termin: Do 20.08. abends** (Isor, 2026-08-19). Bis dahin wird
+gebaut, danach in einem Rutsch: Build, beide `release`-Ordner, `src`
+nachziehen, zippen, hochladen. Der Freitag bis 20:00 ist nur noch Puffer.
+Alles, was bis dahin nicht im ZIP ist, zählt nicht — Stand 1 vom 17.08.
+bleibt sonst der bewertete Stand.
 3. [x] **Ladescreen beim Szenenwechsel** (2026-08-19) — erledigt. Statt um
    die Editor-Generierung wurde er um den Szenenwechsel Hauptmenü → Dorf
    gelegt: Im Build gibt es keine Generierung (der `TerrainToolPresenter`
@@ -343,22 +367,42 @@ was tatsächlich umgesetzt wurde.
    Ladescreen ihr Feedback genauer als ein Fortschrittsbalken im Tool.
    Deckt zugleich ROADMAP-Punkt 10 unter „Nach der Uni-Abgabe" ab.
    Einzelheiten im FEATURE_LOG, Begründungen in DECISIONS 2026-08-19.
-4. [ ] **Collider** — Schafe laufen durch Häuser und Bäume; siehe Abschnitt
-   „Kollision und NavMesh" weiter unten (NavMesh bei Laufzeit-Bäumen).
-5. [ ] **Karten-Begrenzung** — Spieler darf nicht von der Welt fallen
-   können. Einfachste Lösung zuerst: unsichtbare Wände am Rand.
-6. [ ] **Fackel-Licht und -Farbe einstellen**
-7. [ ] **Zeit-Vorspul-Button** — noch offene Design-Frage, siehe unten.
-8. [ ] **Glühwürmchen über den Placer statt von Hand** — kein
-   Kriteriumsbezug, kleinster Punkt der Liste.
+4. [~] **Collider** — **Bäume erledigt** (Isor, 2026-08-19): `CapsuleCollider`
+   gegen den Spieler, `NavMeshObstacle` mit Carve gegen die Schafe, im Spiel
+   geprüft. Einzelheiten im FEATURE_LOG, Begründungen in DECISIONS.
+   **Offen bleiben die Häuser** — dort ist noch nichts geprüft.
+5. [x] **Karten-Begrenzung** (2026-08-19) — vier unsichtbare Wände, gebaut
+   vom Terrain-Tool über `BuildWorldBounds`. Einzelheiten im FEATURE_LOG,
+   Begründungen in DECISIONS 2026-08-19.
+   **Dabei aufgefallen:** Der Wasserspiegel hat keinen Collider — der
+   Spieler läuft in den See hinein und weiter auf dem Grund, mit Kopf unter
+   Wasser und ohne Rückmeldung. Beim Vorführen derselbe Ärger wie das
+   Herunterfallen. Nicht angefasst, Entscheidung offen.
+6. [x] **Fackel-Licht und -Farbe** (Isor, 2026-08-19) — dazu Collider an
+   beiden Fackel-Prefabs. Werte im FEATURE_LOG.
+   **Weiter offen:** die beiden Prefabs heißen immer noch `Torch .prefab`
+   und `Torch.prefab`, Unterschied nur ein Leerzeichen. Vorschlag bleibt
+   `Torch_Calm` und `Torch_Blazing`.
+7. [x] **Zeit-Vorspulen** (2026-08-20) — gehaltene Taste `T`, Anzeige unter
+   der Uhr, dazu Tageslänge auf 20 Minuten. Einzelheiten im FEATURE_LOG,
+   Begründungen in DECISIONS 2026-08-20.
+8. [x] **Glühwürmchen über den Placer** (2026-08-20) — als dritter
+   Placeable-Typ gesetzt, nur bei Abend und Nacht sichtbar über die neue
+   `NightVfx`-Komponente. Einzelheiten im FEATURE_LOG.
 
-**Design-Frage Zeit-Vorspulen:** `IngameTime` hat bereits `TimeScale` als
-laufenden Multiplikator und `SetHour`/`SetTime` als sofortigen Sprung.
-Ein Button, der `SetHour` um einen festen Betrag erhöht (z. B. +1 Stunde),
-ist die einfachere und risikoärmere Umsetzung als `TimeScale` befristet
-hochzusetzen — Letzteres beschleunigt auch Physik, Animationen und alle
-`Update`-Systeme mit, was ungetestete Nebenwirkungen haben kann. Empfehlung:
-fester Sprung über `SetHour`, Entscheidung bei Isor.
+**Nach der Abgabe: Bäume an Steilhängen** (Isor, 2026-08-20). Seit heute
+stehen alle Bäume senkrecht, an steilen Stellen steht der Stammfuß dadurch
+frei in der Luft. Für die Abgabe akzeptiert, für ein echtes Spiel nicht gut
+genug — Isors eigene Einschätzung. Richtig wäre: `MaxSlope` auf 25–30 senken,
+sodass an Steilhängen gar nichts platziert wird, plus ein hangabhängiges
+Einsinken im `ObjectPlacer`. Beides ändert die Waldverteilung, also nur
+zusammen mit einem bewussten Neuaufbau der Szene angehen.
+
+**Erledigt: Wasser bleibt ohne Collider** (Isor, 2026-08-20). Der Spieler
+läuft weiterhin in den See und auf dem Grund weiter. Bewusst so gelassen.
+
+**Erledigt: Häuser-Collider** (Isor, 2026-08-20) — jedes Child trägt bereits
+einen Collider, es war nichts zu tun.
 
 **Ordnerstruktur — Dozentin wünscht Umbau, EMPFEHLUNG: nicht vor der
 Abgabe.** Gewünscht: oberste Ebene nach Typ (`Scripts/`, `Animation/`,
@@ -451,7 +495,14 @@ Sonst keine großen Änderungen mehr. In Frage kommen:
   selbst ist vor der Abgabe trotzdem nicht mehr nötig
 
 ### Kollision und NavMesh (Isor, 2026-08-16)
-- [ ] **Schafe laufen durch Häuser und Bäume.** Es fehlen Collider, und die
+**Erledigt am 2026-08-19/20:** Bäume tragen `CapsuleCollider` und
+`NavMeshObstacle` mit Carve, die Häuser hatten schon auf jedem Child einen
+Collider. Die unten befürchteten Kosten traten nicht ein — Isor hat es im
+Spiel gemessen. Offen bleibt nur die Frage für später, ob Carving bei
+langsameren Rechnern nach dem Ladescreen als Hänger auftritt; Gegenmittel
+wäre `Carve` aus oder ein Bake mit Navigation-Static-Bäumen.
+Ursprüngliche Notiz:
+- [x] **Schafe laufen durch Häuser und Bäume.** Es fehlen Collider, und die
   platzierten Bäume sind für das NavMesh unsichtbar. Zu klären: Collider an
   die betroffenen Prefabs, und wie die zur Laufzeit platzierten Objekte ins
   NavMesh kommen — jeder Baum als `NavMeshObstacle` wäre bei mehreren tausend
@@ -626,3 +677,32 @@ Reihenfolge noch offen, wird in einer eigenen Design-Session festgelegt.
 - Kür fürs Uni-Terrain: echte Flüsse (Spline-Mesh), Insel via
   Falloff-Map, höhen-/steigungsabhängige Texturierung
 - Multiplayer (Koop 4–5) — sehr spät, siehe GDD.md
+
+## Nach der zweiten Abgabe (Stand 2026-08-20, Build 0.0.3 hochgeladen)
+
+Beobachtungspunkte aus dem Abgabetag, keine Aufgaben:
+
+- [ ] **3.023 Glühwürmchen-Instanzen.** `MinSpacing` steht bei diesem Typ auf
+  13 statt der besprochenen 150. Auf Isors Rechner läuft es; jede
+  VFX-Instanz ist aber ein eigener Effekt mit eigener Simulation, und die
+  Dozentin lädt dieselbe Szene in 90 statt 8 Sekunden. Kommt Rückmeldung zu
+  Rucklern bei Nacht, ist `MinSpacing` der erste Regler.
+- [ ] **`SheepSense` fordert je Bild Speicher an.** Vier `Physics.OverlapSphere`
+  pro Schaf und Frame, jeder legt ein neues `Collider[]` an. Bei 19 Herden
+  summiert sich das. Der Fix ist mechanisch: ein wiederverwendeter Puffer und
+  `OverlapSphereNonAlloc`, dazu die Trefferzahl als zweiter Parameter in
+  `TryGetClosest`. Am 2026-08-20 bewusst nicht gemacht (bewertetes System am
+  Abgabetag).
+- [ ] **Ordner-Restliste nach dem Umzug.** `Terrain_Village.asset` liegt lose
+  in `Assets/`; `SO_Settings/SceneLoader/` hält eine einzige Datei, während
+  `SO_Settings/GameFlow/` leer steht; die Input-Dateien liegen in
+  `Scripts/Player/`, `Scripts/Input/` ist leer; `Scripts/Grass/` und
+  `Scripts/Grass/GrassRendering/` liegen ineinander. Dazu leere Ordner und
+  `FolderTemplate/` löschen.
+- [ ] **Lizenzordner anlegen.** `Assets/Licenses/` mit
+  `Quaternius_UltimatePlatformerPack_CC0.txt` (heute besprochen, noch nicht
+  umgesetzt). Pakete mit eigener Lizenz behalten sie.
+- [ ] **`Abgabe_Final` aufräumen:** Dort liegen neben den zwei ZIPs noch die
+  zwei Portfolio-Ordner, byteidentisch mit denen in `Abgabe\`. Nach Isors
+  Ablauf gehört in `Abgabe_Final` nur das ZIP. Ins Archiv verschieben,
+  sobald der Upload durch ist.
