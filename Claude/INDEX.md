@@ -1,34 +1,91 @@
 # INDEX.md — Landkarte
 
-Ownership: Diese Datei besitzt nur die Landkarte — welche Dokumente
-existieren und wofür jedes zuständig ist. Eine Zeile pro Dokument,
-keine Inhalte. Status: ohne Vermerk = existiert, (geplant) = noch nicht gebaut.
+Ownership: Nur die Landkarte — welche Dokumente existieren und wofür
+jedes zuständig ist. Eine Zeile pro Dokument, keine Inhalte. Die
+Zuständigkeit stammt aus der `Ownership:`-Zeile der jeweiligen Datei;
+diese Tabelle wird später daraus erzeugt.
+Format: `| <Pfad> | <Zuständigkeit in einem Satz> |`, gruppiert nach
+Schicht. Ohne Vermerk = existiert, (geplant) = noch nicht gebaut.
+
+Der INDEX bleibt bewusst **oben** und wird nicht in eine Schicht
+einsortiert: Er ist ein Register über alle Schichten, und ein Register
+muss vollständig sein (DOC_RULES, Abschnitt 8).
+
+## Oben — schichtübergreifend
 
 | Dokument | Zuständigkeit |
 |---|---|
-| CLAUDE.md | Verhalten von Claude: Grundregeln + Leseordnung bei Session-Start |
-| INDEX.md | Landkarte aller Dokumente |
-| ROADMAP.md | Nur Baureihenfolge — was als Nächstes gebaut wird |
-| DOC_RULES.md | Alle Regeln für die .md-Dateien des Harness selbst: Zuständigkeit, Aufbau, Verweise, Verfall, Sprache, Schichten |
-| WORKFLOW.md | Session-Disziplin: Grundregeln + vier Session-Typen (Brainstorm/Design im Einsatz, Development im Praxistest, Art minimal, Zeugnis mit eigener Rules-Datei) |
-| FEATURE_LOG.md | Nur fertig Gebautes und Geprüftes — nichts Geplantes |
-| DECISIONS.md | Entscheidungen: was, warum, verworfene Alternativen |
-| GLOSSARY.md | (geplant) Projektbegriffe mit fester Bedeutung — entsteht am Ende aus den fertigen Dateien |
-| VERSIONIERUNG.md | Die drei Nummernsysteme (Commit, Spiel-Reifegrad, Harness-Verträglichkeit): was jede zählt, wie sie gelesen wird, wo sie steht |
-| CODE_GUIDELINES.md | Code-Konventionen: Namen, Architektur, Tests (Rohmaterial) |
-| PREFAB_STATUS.md | Prüfstand jedes Prefabs: welche schon durchgesehen sind und was auffiel — Arbeitsliste zu ROADMAP-Punkt 10 |
-| TDD_NOTES.md | Stoffsammlung fürs Uni-TDD (Technical Design Document) — grobe Einträge, aus denen das Abgabe-TDD generiert wird |
-| GDD.md | Design-Absicht des Spiels — das Game Design Document (Short GDD, wächst mit) |
-| GDD_RULES.md | Aufbau und Pflege eines GDD: Kapitelfolge, offen-Mechanismus, Entwurfs-Abschnitt, Takt, GDD als Abgabetext |
-| KNOWLEDGE_RULES.md | Schreib- und Ablageregeln für das externe Wissensarchiv `C:\Repos Isor\Knowledge\` |
-| ARTIFACT_RULES.md | Typen, Benennung, Aufbau, Symbole und Pflege der Artifact-Seiten (Handy-Fassung) |
-| ARTIFACT_INDEX.md | Bestand der Artifact-Seiten: welche es gibt, welche Skripte sie beschreiben, wer auf sie zeigt |
-| DIAGRAM_RULES.md | Umgang mit den erzeugten `.drawio`-Diagrammen: Ablage, Arbeitsteilung, Bedienregeln, Prüfung |
-| DOCX_RULES.md | Umgang mit den `.docx`-Abgabedateien: Sicherung, Arbeitsteilung, Fallen beim Ersetzen, Felder, Prüfung |
-| ASSESSMENT_RULES.md | Regeln des Session-Typs „Zeugnis" (WORKFLOW.md verweist hierher): Auslöser, Session-Disziplin, Belegpflicht, Aufbau, Notenskala, Artifact-Ausnahme |
-| ASSESSMENT_LOG.md | Die Zeugnisse selbst, neuestes oben — Standortbestimmung zu einem festen Datum |
-| ASSIGNMENT_PCG.md | Originaltext Uni-Aufgabe „Prozedurale Erweiterung der Spielwelt" (Referenz, unverändert lassen) |
-| ASSIGNMENT_TOOL.md | Originaltext Uni-Aufgabe „Engine-Tool-Entwicklung" (Referenz, unverändert lassen) |
-| ASSIGNMENT_THREADING.md | Originaltext Uni-Aufgabe „Threadoptimierung" (Referenz, unverändert lassen) |
-| _HARNESS_REVIEW.md | (temporär) Befunde und Entscheidungen der Harness-Überholung ab 2026-08-21 — wird nach Abschluss archiviert |
-| _HARNESS_UMSETZUNG.md | (temporär) Bauliste der Harness-Überholung in Baureihenfolge — Handgriffe zum Abhaken, wird nach Abschluss archiviert |
+| `CLAUDE.md` | Verhalten von Claude: Grundregeln, Leseordnung bei Session-Start, Harness-Version. Liegt oben, weil der Harness sie automatisch lädt — gehört aber in jede Kern-Auslieferung |
+| `INDEX.md` | Landkarte aller Dokumente |
+| `PLAN.md` | Nur was in den nächsten 1–3 Wochen dran ist, schichtübergreifend; wird nach jedem Zeitraum geleert |
+
+## Kern — generisch, wandert in jedes Projekt mit
+
+| Dokument | Zuständigkeit |
+|---|---|
+| `Kern/DOC_RULES.md` | Alle Regeln für die .md-Dateien des Harness selbst: Zuständigkeit, Aufbau, Verweise, Verfall, Sprache, Schichten |
+| `Kern/WORKFLOW.md` | Session-Disziplin: Session-Typen, Modus und Regler, Doku-Pflicht, Befehle |
+| `Kern/VERSIONIERUNG.md` | Die drei Nummernsysteme (Commit, Spiel-Reifegrad, Harness-Verträglichkeit): was jede zählt, wie sie gelesen wird, wo sie steht |
+| `Kern/CODE_GUIDELINES.md` | Code-Konventionen: Namen, Architektur, Review-Gate, Unity-Ordnerstruktur |
+| `Kern/GDD_RULES.md` | Aufbau und Pflege eines GDD: Kapitelfolge, offen-Mechanismus, Entwurfs-Abschnitt, Takt, GDD als Abgabetext |
+| `Kern/KNOWLEDGE_RULES.md` | Ablage- und Schreibregeln für das externe Wissensarchiv `C:\Repos Isor\Knowledge\` |
+| `Kern/ARTIFACT_RULES.md` | Typen, Benennung, Aufbau, Symbole und Pflege der Artifact-Seiten |
+| `Kern/ARTIFACT_INDEX.md` | Bestand der Artifact-Seiten — über alle Schichten, mit Schicht-Angabe je Eintrag |
+| `Kern/DIAGRAM_RULES.md` | Verfahren für die erzeugten `.drawio`-Diagramme: Arbeitsteilung, Bedienregeln, Prüfung |
+| `Kern/ASSESSMENT_RULES.md` | Regeln des Session-Typs „Zeugnis": Auslöser, Disziplin, Belegpflicht, Aufbau, Notenskala, Artifact-Ausnahme |
+| `Kern/STOERUNGEN.md` | Vorfälle im Betrieb: was schiefging und welche Regel nicht griff — Chronik, kein Archiv |
+| `Kern/Zeugnisse/` | Die Zeugnisse selbst, eine Datei je Termin |
+| `Kern/GLOSSARY.md` | (geplant) Begriffe mit fester Bedeutung — entsteht am Ende aus den fertigen Dateien |
+| `Kern/ROADMAP.md` | (geplant) Baureihenfolge des Harness selbst |
+| `Kern/LOG.md` | (geplant) Chronik des Harness: was wann gebaut wurde |
+| `Kern/DECISIONS.md` | (geplant) Entscheidungen zum Harness |
+| `Kern/_ARCHIV.md` | (geplant) Überholte Kern-Einträge |
+
+## Uni — studienspezifisch, herausnehmbar
+
+| Dokument | Zuständigkeit |
+|---|---|
+| `Uni/DOCX_RULES.md` | Umgang mit den `.docx`-Abgabedateien: Sicherung, Arbeitsteilung, Fallen, Felder, Prüfung |
+| `Uni/Semester_2/ASSIGNMENT_PCG.md` | Originaltext Uni-Aufgabe „Prozedurale Erweiterung der Spielwelt" (Referenz, unverändert lassen) |
+| `Uni/Semester_2/ASSIGNMENT_TOOL.md` | Originaltext Uni-Aufgabe „Engine-Tool-Entwicklung" (Referenz, unverändert lassen) |
+| `Uni/Semester_2/ASSIGNMENT_THREADING.md` | Originaltext Uni-Aufgabe „Threadoptimierung" (Referenz, unverändert lassen) |
+| `Uni/ROADMAP.md` | (geplant) Baureihenfolge der Studienarbeit |
+| `Uni/LOG.md` | (geplant) Chronik der Abgaben |
+| `Uni/_ARCHIV.md` | (geplant) Abgeschlossene Semester und überholte Einträge |
+
+## IsorBackup — Regeln für den externen Datenbaum
+
+| Dokument | Zuständigkeit |
+|---|---|
+| `IsorBackup/RULES.md` | (geplant) Baum, Ablageregeln, Benennung, Asset-Library für `C:\IsorBackup\` |
+| `IsorBackup/ROADMAP.md` | (geplant) Offene Aufräum-Punkte |
+| `IsorBackup/DECISIONS.md` | (geplant) Entscheidungen zur Datenablage |
+
+## Projekte
+
+| Dokument | Zuständigkeit |
+|---|---|
+| `Projekte/Isor_Tower/GDD.md` | Design-Absicht des Spiels — zugleich Markdown-Manuskript der Abgabe |
+| `Projekte/Isor_Tower/TDD_NOTES.md` | Stoffsammlung fürs TDD, nach Themenblöcken, kumulativ über alle Semester |
+| `Projekte/Isor_Tower/PREFAB_STATUS.md` | Prüfstand jedes Prefabs — Arbeitsliste mit Ende, wird erzeugt |
+| `Projekte/Isor_Tower/DECISIONS/` | Entscheidungen je System: Terrain, UI, Welt, Audio, Entities |
+| `Projekte/Isor_Tower/ROADMAP.md` | (geplant) Baureihenfolge des Projekts |
+| `Projekte/Isor_Tower/LOG.md` | (geplant) Chronik: was wann gebaut wurde |
+| `Projekte/Isor_Tower/SYSTEME.md` | (geplant) Was gerade im Projekt steckt — wird erzeugt |
+| `Projekte/Isor_Tower/_ARCHIV.md` | (geplant) Überholte Projekt-Einträge |
+
+## Noch nicht aufgeteilt — werden in Phase 3 zerlegt
+
+| Dokument | Zuständigkeit |
+|---|---|
+| `DECISIONS.md` | Entscheidungen: was, warum, verworfene Alternativen — wird auf neun Dateien verteilt |
+| `ROADMAP.md` | Baureihenfolge — 546 der 708 Zeilen sind Vergangenheit und wandern in LOG und Archive |
+| `FEATURE_LOG.md` | Gebautes — wird zur Chronik `LOG.md` je Schicht |
+| `ASSESSMENT_LOG.md` | Die Zeugnisse — werden zu einer Datei je Termin unter `Kern/Zeugnisse/` |
+
+## Temporär — werden nach der Überholung archiviert
+
+| Dokument | Zuständigkeit |
+|---|---|
+| `_HARNESS_REVIEW.md` | Befunde und Entscheidungen der Harness-Überholung ab 2026-08-21 |
+| `_HARNESS_UMSETZUNG.md` | Bauliste der Überholung in Baureihenfolge — Handgriffe zum Abhaken |

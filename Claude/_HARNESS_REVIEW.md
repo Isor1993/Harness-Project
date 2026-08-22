@@ -1096,6 +1096,17 @@ Tests (E56, bewusst offen).
   versehentliches Massenlöschen oder Verschlüsselungstrojaner — die
   erreichen eine angeschlossene Platte genauso.
 
+### E87 — Rückfrage-Regel (schließt I11, 2026-08-22)
+**Rückfrage an der Weggabelung, Empfehlung im Detail.** Gefragt wird,
+wenn zwei Wege zu **unterschiedlicher Arbeit** führen — dort kostet Raten
+am meisten. Empfohlen wird bei Detailfragen (Name, Ablageort,
+Formulierung), wo ein begründeter Vorschlag schneller ist als eine Wahl;
+das deckt zugleich Isors Blockade beim Benennen ab.
+Ersetzt die alte CLAUDE.md-Zeile „Bei mehreren Lösungen: eine begründete
+Empfehlung statt Optionsliste", die dem Wunsch aus I11 widersprach und
+der gelebten Praxis der letzten zwei Tage ebenfalls.
+Besitzer: `CLAUDE.md`.
+
 ## Nachträge zu DOC_RULES (Durchsprache 2026-08-22)
 
 - **E82 — Stand-Stempel nur, wo etwas ihn kontrolliert.** In erzeugten

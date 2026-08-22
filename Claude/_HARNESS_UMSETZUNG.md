@@ -34,7 +34,15 @@ Vor Phase 3 (erstem Umzug): **Commit des Ist-Standes** — Rückweg sichern.
 - [ ] Erste Auslieferung `Harness_1.0.0` erst **nach Phase 7**, wenn der
       Kern vollständig ist
 
-## Phase 2 — Struktur anlegen (leere Ordner, keine Inhalte)
+## Phase 2 — Struktur anlegen — **erledigt 2026-08-22**
+
+Zusätzlich zur Planung erledigt: 17 Dateien mit geklärter Schicht wurden
+gleich mitverschoben (statt erst in Phase 4), der INDEX wurde nach
+Schichten neu geschrieben, und `_split_check.txt` ist archiviert.
+Oben blieben nur `CLAUDE.md` (Automatik-Ladung, siehe P1), `INDEX.md`
+(Register über alle Schichten), `PLAN.md` sowie die vier Dateien, die in
+Phase 3 **aufgeteilt** statt verschoben werden.
+
 
 - [ ] Ordner `Kern/`, `Uni/Semester_2/`, `IsorBackup/`,
       `Projekte/Isor_Tower/` (E11, E50)
@@ -86,11 +94,18 @@ Vor Phase 3 (erstem Umzug): **Commit des Ist-Standes** — Rückweg sichern.
 
 ## Phase 4 — Einzeldateien nachziehen
 
-**CLAUDE.md**
-- [ ] `Ownership:`-Zeile ergänzen (E19) — fehlt als einziger von 21
-- [ ] Doku-Pflicht durch Verweis auf WORKFLOW ersetzen (E17)
-- [ ] Leseordnung: CLAUDE → INDEX → PLAN → WORKFLOW (E18)
-- [ ] die drei Doku-Regeln nach DOC_RULES verschieben (E20)
+**CLAUDE.md** — **erledigt 2026-08-22, vorgezogen**
+Grund fürs Vorziehen: Nach dem Umzug von Phase 2 zeigte ihre Leseordnung
+auf `WORKFLOW.md`, das nun in `Kern/` liegt. Ein kaputter Einstiegspunkt
+konnte nicht bis Phase 4 warten.
+- [x] `Ownership:`-Zeile ergänzt (E19)
+- [x] Doku-Pflicht durch Verweis auf WORKFLOW ersetzt (E17)
+- [x] Leseordnung: CLAUDE → INDEX → PLAN → Kern/WORKFLOW (E18)
+- [x] die drei Doku-Regeln nach DOC_RULES verschoben (E20)
+- [x] Zeile `Harness-Version: 1.0.0` ergänzt (E79)
+- [x] Rückfrage-Regel aufgenommen, alte Empfehlungs-Zeile ersetzt (E87)
+- [x] Kurzform der Regel „zeigen statt vorstellen lassen" mit Verweis
+      auf WORKFLOW (E69)
 - [ ] **offene Prüfung P1** vorher: welche der drei CLAUDE.md lädt der
       Harness von selbst? Nur in einer frischen Session feststellbar
 
