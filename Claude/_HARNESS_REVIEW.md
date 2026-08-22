@@ -991,6 +991,201 @@ INDEX-Eintrag. Nicht löschen — Isor leert selbst.
 alle 25 Posten.** Offen bleibt **Schritt F** — die Zuständigkeits-Tabelle
 über alle Dateien als Vollständigkeitsprüfung.
 
+## Schritt F — Zuständigkeits-Tabelle (2026-08-22)
+
+Prüfung nach Isors Forderung: eine Zeile je **Art** von Information, eine
+Spalte „Besitzer". Zwei Besitzer = Konflikt, kein Besitzer = Lücke.
+Die vollständige Tabelle geht beim Bauen in `DOC_RULES.md`.
+
+**Bereits im Durchgang bereinigt — neun Fälle mit zwei Besitzern:**
+Doku-Pflicht (E17) · Fertiges (E13/E11) · Artifact-Check, dreifach (E33) ·
+Knowledge-Zeitpunkt (E29) · Zeugnis-Doku-Pflicht (E43) · Statusangaben
+(E26) · Welt-Wahrheit-Frage, dreifach (E58) · Projekt-Typ (E54) ·
+ClaudeSetup (E55).
+
+**Neu durch die Tabelle gefunden:**
+
+- **E68 — „Baustein" ist undefiniert**, obwohl mehrere Regeln daran
+  hängen (WORKFLOW: „Session-Schnitt an der Baustein-Grenze"; E61a: „Ein
+  Baustein gilt erst als fertig, wenn sein Abschnitt geschrieben ist").
+  **Besitzer: WORKFLOW.md** — Definition und Fertig-Kriterium zusammen:
+  Ein Baustein ist eine abgeschlossene Funktionseinheit, die sich in
+  einem Zug entwerfen und bauen lässt; *fertig* heißt gebaut, geprüft
+  **und** dokumentiert.
+- **E69 — Erklärstil: „zeigen statt vorstellen lassen".**
+  *Richtigstellung:* ARTIFACT_RULES sagt bereits beides („Diagramme sind
+  erwünscht — sie sind extern, nicht vorgestellt"); Claude hatte daraus
+  fälschlich „Zahlen statt Bilder" gemacht. Die Grenze verläuft zwischen
+  **außen und innen**, nicht zwischen Bild und Zahl:
+  - Nie: „stell dir vor" — alles, was ein inneres Bild verlangt
+  - Gern: Diagramme, Skizzen, Artifact-Seiten, Screenshots (ansehbar)
+  - Dazu: Zahlen und Tabellen, weil sie unabhängig vom Bild tragen
+  **Besitzer: WORKFLOW.md**, bei Modus und Regler — die Regel gilt in
+  jeder Session. ARTIFACT_RULES behält einen Verweis für den Seitenaufbau.
+  **Untergrenze für den Visualisierungs-Regler (E21):** Auch bei „wenig"
+  oder „keine" wird nie auf inneres Vorstellen ausgewichen; was sonst ein
+  Diagramm gezeigt hätte, wird über Zahlen und Tabellen erklärt — länger,
+  aber nie über „stell dir vor". Der Regler steuert den **Aufwand** der
+  Darstellung, nicht ob Isor sich etwas vorstellen muss.
+- **E70 — Sprachregeln bekommen einen Besitzer:** eine Tabelle in
+  `DOC_RULES.md`, eine Zeile je Erzeugnis (Code englisch · Kommentare
+  einheitlich · Commits englisch · Harness-Dokumente deutsch · Zeugnisse
+  deutsch · Unterhaltung deutsch). Die vier bisherigen Fundstellen
+  (DECISIONS 2026-07-17, CODE_GUIDELINES Block 1, WORKFLOW,
+  ASSESSMENT_RULES) verweisen darauf. Kein Widerspruch bisher — aber
+  niemand besaß „welche Sprache wo".
+- **E71 — Die Markdown-Manuskripte liegen beim Projekt.**
+  `Projekte/Isor_Tower/GDD.md` ist zugleich Design-Absicht **und**
+  Abgabetext — kein zweites Dokument, kein Übertragungsschritt.
+  Daneben `Projekte/Isor_Tower/TDD.md`. Die `.docx`-Abgabefassung
+  entsteht daraus und ist keine eigene Quelle (E61b).
+
+**Verbleibende Lücken ohne Besitzer** (noch zu besprechen):
+IsorBackup (Schicht beschlossen, aber leer — inklusive des
+Backup-Ziels) · Repo- und Git-Regeln samt Build-Versionsschema
+(ROADMAP Punkt 9) · Prefab-Innenaufbau (ROADMAP Punkt 7) ·
+Tests (E56, bewusst offen).
+
+## Schicht IsorBackup (2026-08-22)
+
+**Befunde am `C:\IsorBackup\README.md`**
+- **G-a — Selbstwiderspruch:** Z. 4 kündigt an „`Repos Isor` **wird**
+  `IsorRepos`", Z. 92 sagt „Bewusst verworfen: `Repos Isor` **bleibt so
+  heißen** (2026-08-06)". Der Kopf wurde beim Verwerfen nicht nachgezogen.
+- **G-b — vier Sorten Information in einer Datei:** Regeln (Baum, sieben
+  Ablageregeln, Benennung, Asset-Library) ✔ · „Offene Punkte" = **eine
+  ROADMAP** (8 Aufgaben) · „Bewusst verworfen" = **eine DECISION** ·
+  der Ordnerbaum als Textblock = ein Verzeichnis. Dritter Fall nach
+  ARTIFACT_INDEX (C1-c) und CODE_GUIDELINES (D1-c).
+- **G-c:** Die Aufgabenliste ist veraltet — „Vier der sieben
+  Aufgabenordner sind noch leer", die Abgabe ist seit 2026-08-20 hoch.
+- **G-d:** `C:\IsorBackup` ist **kein Git-Repo** — die Regeln dort haben
+  keine Versionsgeschichte.
+
+**Entscheidungen**
+- **E72 — Die Regeln ziehen in den Harness**, parallel zu E31 (Knowledge):
+  `IsorBackup/RULES.md` (Baum, Ablageregeln, Benennung, Asset-Library) ·
+  `IsorBackup/ROADMAP.md` (die offenen Aufräum-Punkte) ·
+  `IsorBackup/DECISIONS.md` („Repos Isor bleibt so heißen").
+  `C:\IsorBackup\README.md` wird ein kurzer Wegweiser dorthin.
+  Zusatzgrund: Damit bekommt der Text Versionsgeschichte (G-d).
+- **E73 — Aufräumen erst nach dem Harness-Umbau, als erste Aufgabe der
+  Testphase** (Isor, 2026-08-22). Verfahren: Arbeitsliste mit Ende wie
+  PREFAB_STATUS (E49), Entscheidungen in **Viererpaketen** mit Claudes
+  Einschätzung je Posten.
+  *Zusätzliche Begründung:* Das Aufräumen ist die erste echte
+  Belastungsprobe des neuen Harness — es benutzt Schichten, Viererpakete,
+  Archivregel und `/ende`, und es kann dabei nichts kaputtgehen.
+  Akut ist nichts: `00_Eingang` ist bis auf einen Unterordner leer.
+- **E74 — Externes Backup: Spiegeln mit Papierkorb.** `robocopy` gleicht
+  die Platte an, verschiebt aber alles Wegfallende vorher nach
+  `_Geloescht\<Datum>\` statt es zu löschen. Isor leert selbst — die
+  eigene Regel „niemals löschen, nur archivieren", angewandt auf die
+  Platte. Ausdrücklich **kein** `/MIR` ohne Papierkorb: Ein versehentliches
+  Löschen wäre nach dem nächsten Lauf endgültig.
+- **E75 — Umfang: alle drei Ordner** (IsorBackup + die beiden
+  Repo-Ordner), wie im README vorgesehen. Begründung: `C:\IsorBackup` ist
+  der einzige der drei **ohne zweite Kopie** — die Repos liegen auf
+  GitHub. Die lokale Repo-Kopie bringt nach einem Plattendefekt trotzdem
+  in Minuten statt Stunden zurück, samt unversionierter Dateien.
+- **E76 — Auslöser: Erinnerung in der Sonntagsroutine.** Der Pflegetag
+  trägt schon die Artifact-Durchsicht (E34, E47); Backup kommt als Punkt
+  dazu. Isor steckt die Platte an, Claude startet das Skript.
+  *Begründung gegen die Windows-Aufgabenplanung:* Eine dauerhaft
+  angesteckte Platte schützt gegen Defekt, aber nicht gegen
+  versehentliches Massenlöschen oder Verschlüsselungstrojaner — die
+  erreichen eine angeschlossene Platte genauso.
+
+## Nachträge zu DOC_RULES (Durchsprache 2026-08-22)
+
+- **E82 — Stand-Stempel nur, wo etwas ihn kontrolliert.** In erzeugten
+  Dateien setzt ihn das Skript; in handgeschriebenen nur, wenn eine
+  Prüfung ihn abgleicht (Artifact-Seiten: der Sonntagsabgleich, E47).
+  Ohne Prüfung kein Datum.
+  *Beleg:* Von vier vorgefundenen Stempeln waren drei falsch —
+  ARTIFACT_INDEX (10 Tage), PREFAB_STATUS (33 statt 34), TDD_NOTES
+  (Frist 28.07. statt 21.08.). Der vierte, die Stempelpflicht auf
+  Artifact-Seiten, ist gewollt und funktioniert. Ein pauschales
+  „lieber weglassen" hätte genau den getroffen.
+- **E83 — „Harness auf Englisch prüfen" wird eine Bedingung**, kein
+  vager Punkt: erst prüfen, wenn der Harness tatsächlich an jemanden
+  weitergegeben werden soll. Grund: Bei Lese-Rechtschreib-Schwäche kostet
+  Lesen in der Fremdsprache **in jeder Session** etwas, während der
+  Nutzen nur in einem Fall eintritt. Löst zugleich den Widerspruch zur
+  Sprachtabelle (E70), die Harness-Dokumente auf Deutsch festlegt.
+- **E84 — Sprachregel bindet nur Claude.** Claude nennt immer die Schicht
+  („die Uni-Roadmap"); sagt Isor bloß „die Roadmap", erschließt Claude
+  sie aus dem Zusammenhang. Grund: Isor diktiert per Spracheingabe, eine
+  Sprechregel wäre dort Reibung ohne Gewinn.
+- **E85 — Chronik-Einträge dürfen Ablageorte nennen** (schärft E13 nach):
+  Ein Eintrag trägt sein Datum und sagt damit, wo etwas **damals** lag —
+  das ist beim Nachvollziehen oft der Schlüssel. Die Chronik verspricht
+  nur nicht, dass es dort heute noch liegt; der aktuelle Ort kommt aus
+  dem Code bzw. der erzeugten Systemliste.
+- **E86 — `Format:`-Zeile ist Pflicht, wo Einträge einem Muster folgen**
+  (nicht in reinen Regeldateien). Belegt durch FEATURE_LOG: ohne
+  Formatvorgabe wurden daraus 73 Einträge als flache Liste.
+
+**Phase 1 ist damit abgeschlossen:** `DOC_RULES.md`, `GDD_RULES.md`,
+`VERSIONIERUNG.md` gebaut, alle drei im INDEX, DOC_RULES Abschnitt für
+Abschnitt mit Isor durchgesprochen und an fünf Stellen nachgeschärft.
+
+## Versionierung (Isors Einwurf, 2026-08-22)
+
+Ausgangspunkt: Isor wollte den Harness versionieren und einen Ordner für
+„Builds", weil er unsicher war, ob sich über GitHub Desktop ein alter
+Stand zurückholen lässt.
+
+**Klarstellung:** Git kann das — 35 Commits, jeder ein vollständiger
+Stand. Das Problem ist nicht der Speicher, sondern der **Zugang**:
+GitHub Desktop hat keinen offensichtlichen Knopf für „zeig mir die
+Dateien von damals, ohne etwas zu ändern".
+
+**Der eigentliche Bedarf ist ein anderer** — eine *Auslieferung*: Beim
+Kopieren in ein neues Projekt wird nur der **Kern** gebraucht, nie die
+Uni-Schicht, das Projekt oder der Entscheidungs-Altbestand. Das kann Git
+nicht, und dafür verdient der Ordner seine Existenz.
+
+- **E77 — Spiel-Schema wird nach hinten geschlossen.** DECISIONS
+  2026-08-16 (`0.0.x` Prototyp · `0.x.0` Early Access · `1.x.x` fertig)
+  bleibt gültig und wird **ergänzt**: Ab `1.x.x` ist die Reifegrad-Frage
+  beantwortet, also wechselt die Lesart — `Y` = neue Inhalte,
+  `Z` = Fehlerbehebung. Isors Frage war: „Was ist, wenn das Spiel draußen
+  ist und ein Fix kommt?" — dafür sagte das Schema bisher nichts.
+- **E78 — Ein Schema für alles geht nicht**, weil die drei Nummern
+  Verschiedenes zählen: Commit = Sitzungen · Spiel = Reifegrad ·
+  Harness = Verträglichkeit. Was geht und Isors Sorge löst: **eine
+  gemeinsame Schreibweise `X.Y.Z`, drei aufgeschriebene Lesarten.**
+  Die Commit-Nummer ist ausdrücklich **keine Version**, sondern eine
+  laufende Nummer.
+- **E79 — Harness-Version `X.Y.Z` nach Verträglichkeit:** `X` = Struktur,
+  Projekt muss umziehen · `Y` = Regeln, kompatibel · `Z` = Korrekturen.
+  Steht als eine Zeile in **CLAUDE.md** (wird bei jedem Session-Start
+  gelesen). Der jetzige Umbau wird **1.0.0**.
+- **E80 — Kern-Auslieferung je Hauptversion** unter
+  `C:\IsorBackup\05_Werkzeuge\Harness_Auslieferungen\Harness_<X.Y.Z>\`.
+  Inhalt: nur `Kern/`. **Kein Backup** — zum Zurückholen dient Git.
+  Angelegt bei Änderung von `X` oder `Y`, nicht bei `Z`. Eine abgelegte
+  Auslieferung wird nie bearbeitet.
+- **E81 — `Kern/VERSIONIERUNG.md`** besitzt die drei Lesarten. Nach E15
+  berechtigt: „Welche Nummer bedeutet was" beantwortet heute niemand,
+  und Isor hat genau danach gefragt. Besitzt **nicht** die Nummern selbst
+  — die stehen im Commit-Titel, in den Player Settings und in CLAUDE.md.
+
+### E67 — „Session" und „Abschnitt" festgelegt (2026-08-22)
+Anlass: Isor stockte beim Benennen des laufenden Arbeitsraums — ein
+Beleg für die Begriffskollision aus E65.
+- **Session** — ein durchgehender Arbeitsraum von Anfang bis `/clear`.
+  Isors Wort dafür ist „Work Area"; bleibt als Synonym im Glossar.
+- **Abschnitt** — eine Phase innerhalb einer Session mit genau einem Typ.
+  `/wechsel` beendet einen Abschnitt und öffnet den nächsten.
+
+*Widerspruch, den das auflöst:* WORKFLOW.md sagt „Jede **Session** hat
+genau einen Typ" (gemeint ist der Abschnitt) und „Max. 2–4 parallel
+offene **Sessions**" (gemeint ist der Arbeitsraum) — ein Wort für zwei
+Dinge. Neue Fassung: **Jeder Abschnitt hat genau einen Typ. Eine Session
+kann mehrere Abschnitte enthalten, getrennt durch `/wechsel`.**
+
 ### Erste Einträge für `STOERUNGEN.md` (E16), sobald die Datei existiert
 - **2026-08-21** — Claude meldete, ROADMAP.md verletze ihre eigene
   Ownership-Regel („Erledigt"-Block). Tatsächlich war es ein Widerspruch
