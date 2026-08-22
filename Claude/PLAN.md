@@ -33,7 +33,11 @@ Reihenfolge: Regeln → Struktur → Inhalt → Automatik.
       DOCX_RULES, ASSESSMENT_RULES, CODE_GUIDELINES, GDD, PREFAB_STATUS
       nachgezogen · XML-Fallen ins Knowledge ausgelagert · sieben
       READMEs im Knowledge-Repo · alle toten Verweise repariert
-- [ ] **Phase 5 — Skripte:** INDEX, PREFAB_STATUS, Backup
+- [x] **Phase 5 — Skripte gebaut** und in der Schicht abgelegt, deren
+      Dateien sie bearbeiten: `Kern/Werkzeuge/index_bauen.py` ·
+      `Projekte/Isor_Tower/Werkzeuge/prefab_status.py` ·
+      `IsorBackup/Werkzeuge/sichern.ps1`. Alle drei mit Probelauf als
+      Voreinstellung; INDEX und PREFAB_STATUS werden ab jetzt erzeugt.
 - [ ] **Phase 6 — Befehle:** `/sichern`, `/wechsel`, `/ende`;
       Berechtigungen eindampfen
 - [ ] **Phase 7 — Nachlauf:** IsorBackup-Dateien, Glossar einsammeln,

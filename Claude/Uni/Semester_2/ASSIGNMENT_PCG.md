@@ -1,7 +1,7 @@
 # ASSIGNMENT_PCG.md — Uni-Aufgabe „Prozedurale Erweiterung der Spielwelt"
 
 Ownership: Originaltext der Uni-Aufgabe PCG (K3, S2, S3) als Referenz —
-unverändert lassen, eigene Planung gehört in DECISIONS.md / TDD_NOTES.md.
+unverändert lassen, eigene Planung gehört in die DECISIONS der Schicht.
 Quelle: Canvas, Kurs 23112 — Modul 4FSC0PD004.1 „Game Dynamics".
 Formative Abgabe (Richtlinie mit Puffer): Fr 2026-07-24, 20:00, eine
 Datei (zip/rar/7z). Echte Abgabe: Portfolio 2026-08-21. Wird kombiniert

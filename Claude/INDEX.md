@@ -1,88 +1,108 @@
 # INDEX.md — Landkarte
 
-Ownership: Nur die Landkarte — welche Dokumente existieren und wofür
-jedes zuständig ist. Eine Zeile pro Dokument, keine Inhalte. Die
-Zuständigkeit stammt aus der `Ownership:`-Zeile der jeweiligen Datei;
-diese Tabelle wird später daraus erzeugt.
-Format: `| <Pfad> | <Zuständigkeit in einem Satz> |`, gruppiert nach
-Schicht. Ohne Vermerk = existiert, (geplant) = noch nicht gebaut.
+Ownership: Nur die Landkarte — welche Dokumente existieren und wofür jedes
+zuständig ist. Eine Zeile pro Dokument, keine Inhalte.
+
+**Diese Datei wird erzeugt.** Sie kommt aus der `Ownership:`-Zeile jeder
+Datei; von Hand geändert wird sie nicht, sondern über
+`Kern/Werkzeuge/index_bauen.py`. Geplante, noch nicht gebaute Dokumente
+stehen daneben in `index_geplant.txt`.
 
 Der INDEX bleibt bewusst **oben** und wird nicht in eine Schicht
 einsortiert: Er ist ein Register über alle Schichten, und ein Register
-muss vollständig sein (DOC_RULES, Abschnitt 8).
+muss vollständig sein (`Kern/DOC_RULES.md`, Abschnitt 8).
+
+Eine Datei ohne `Ownership:`-Zeile erscheint hier als ⚠ — so setzt sich
+die Regel „keine neue Datei ohne INDEX-Eintrag" von selbst durch, statt
+erinnert werden zu müssen.
 
 ## Oben — schichtübergreifend
 
 | Dokument | Zuständigkeit |
 |---|---|
-| `CLAUDE.md` | Verhalten von Claude: Grundregeln, Leseordnung bei Session-Start, Harness-Version. Liegt oben, weil der Harness sie automatisch lädt — gehört aber in jede Kern-Auslieferung |
-| `INDEX.md` | Landkarte aller Dokumente |
-| `PLAN.md` | Nur was in den nächsten 1–3 Wochen dran ist, schichtübergreifend; wird nach jedem Zeitraum geleert |
+| `CLAUDE.md` | Nur das Verhalten von Claude in diesem Projekt und der Einstieg in eine Session. |
+| `INDEX.md` | Nur die Landkarte — welche Dokumente existieren und wofür jedes zuständig ist. |
+| `PLAN.md` | Nur was in den nächsten ein bis drei Wochen dran ist, schichtübergreifend. |
 
 ## Kern — generisch, wandert in jedes Projekt mit
 
 | Dokument | Zuständigkeit |
 |---|---|
-| `Kern/DOC_RULES.md` | Alle Regeln für die .md-Dateien des Harness selbst: Zuständigkeit, Aufbau, Verweise, Verfall, Sprache, Schichten |
-| `Kern/WORKFLOW.md` | Session-Disziplin: Session-Typen, Modus und Regler, Doku-Pflicht, Befehle |
-| `Kern/VERSIONIERUNG.md` | Die drei Nummernsysteme (Commit, Spiel-Reifegrad, Harness-Verträglichkeit): was jede zählt, wie sie gelesen wird, wo sie steht |
-| `Kern/CODE_GUIDELINES.md` | Code-Konventionen: Namen, Architektur, Review-Gate, Unity-Ordnerstruktur |
-| `Kern/GDD_RULES.md` | Aufbau und Pflege eines GDD: Kapitelfolge, offen-Mechanismus, Entwurfs-Abschnitt, Takt, GDD als Abgabetext |
-| `Kern/KNOWLEDGE_RULES.md` | Ablage- und Schreibregeln für das externe Wissensarchiv `C:\Repos Isor\Knowledge\` |
-| `Kern/ARTIFACT_RULES.md` | Typen, Benennung, Aufbau, Symbole und Pflege der Artifact-Seiten |
-| `Kern/ARTIFACT_INDEX.md` | Bestand der Artifact-Seiten — über alle Schichten, mit Schicht-Angabe je Eintrag |
-| `Kern/DIAGRAM_RULES.md` | Verfahren für die erzeugten `.drawio`-Diagramme: Arbeitsteilung, Bedienregeln, Prüfung |
-| `Kern/ASSESSMENT_RULES.md` | Regeln des Session-Typs „Zeugnis": Auslöser, Disziplin, Belegpflicht, Aufbau, Notenskala, Artifact-Ausnahme |
-| `Kern/STOERUNGEN.md` | Vorfälle im Betrieb: was schiefging und welche Regel nicht griff — Chronik, kein Archiv |
-| `Kern/Zeugnisse/` | Die Zeugnisse selbst, eine Datei je Termin — derzeit `2026-08-11.md` und `2026-08-16.md` |
+| `Kern/ARTIFACT_INDEX.md` | Welche Artifact-Seiten es gibt, woran jede hängt und wer auf sie zeigt. |
+| `Kern/ARTIFACT_RULES.md` | Typen, Benennung, Aufbau, Symbole und Pflege der Artifact-Seiten auf claude.ai. |
+| `Kern/ASSESSMENT_RULES.md` | Der Session-Typ „Zeugnis" vollständig — Auslöser, Ablauf, Belegpflicht, Aufbau, Notenskala, Schreibregeln, Ablage. |
+| `Kern/CODE_GUIDELINES.md` | Code-Konventionen — Namen, Architektur, Ordnerstruktur, das Review-Gate. |
+| `Kern/DECISIONS.md` | Nur Entscheidungen zum Harness — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
+| `Kern/DIAGRAM_RULES.md` | Nur der Umgang mit den skriptgenerierten `.drawio`-Diagrammen — Ablage, Arbeitsteilung, Bedienregeln, Prüfung. |
+| `Kern/DOC_RULES.md` | Alle Regeln, die für die .md-Dateien des Harness selbst gelten — Zuständigkeit, Aufbau, Verweise, Verfall, Sprache. |
+| `Kern/GDD_RULES.md` | Aufbau und Pflege eines GDD — was hineingehört, wie mit offenen Punkten umgegangen wird, wann aus einem Entwurf feste Absicht wird, in welchem Takt es nachgezogen wird. |
 | `Kern/GLOSSARY.md` | (geplant) Begriffe mit fester Bedeutung — entsteht am Ende aus den fertigen Dateien |
-| `Kern/ROADMAP.md` | Baureihenfolge des Harness — nur Offenes, ohne Datum |
-| `Kern/LOG.md` | Chronik des Harness: was wann gebaut wurde — Ereignisse, nie geändert, kein Archiv |
-| `Kern/DECISIONS.md` | Entscheidungen zum Harness und zu den projektübergreifenden Code- und Ordner-Konventionen (27) |
-| `Kern/_ARCHIV.md` | Überholte Kern-Einträge, jeder mit Angabe, wodurch er abgelöst wurde |
+| `Kern/KNOWLEDGE_RULES.md` | Schreib- und Ablageregeln für den externen Knowledge-Ordner. |
+| `Kern/LOG.md` | Nur was wann passiert ist — datierte Ereignisse, älteste oben. |
+| `Kern/ROADMAP.md` | Nur was am Harness als Nächstes gebaut wird. |
+| `Kern/STOERUNGEN.md` | Nur Vorfälle, in denen der Harness nicht so gearbeitet hat wie vorgesehen — was passiert ist und welche Regel nicht gegriffen hat. |
+| `Kern/VERSIONIERUNG.md` | Alle Nummernsysteme des Projekts — welche Nummer was zählt, wie sie gelesen wird und wo sie steht. |
+| `Kern/WORKFLOW.md` | Wie eine Session abläuft — Begriffe, Modus und Regler, Session-Typen, Doku-Pflicht, die Befehle und das Session-Ende. |
+| `Kern/Zeugnisse/2026-08-11.md` | Nur dieses eine Zeugnis — ein datierter Messpunkt. |
+| `Kern/Zeugnisse/2026-08-16.md` | Nur dieses eine Zeugnis — ein datierter Messpunkt. |
+| `Kern/_ARCHIV.md` | Nur überholte Einträge der Kern-Schicht. |
 
 ## Uni — studienspezifisch, herausnehmbar
 
 | Dokument | Zuständigkeit |
 |---|---|
-| `Uni/DOCX_RULES.md` | Umgang mit den `.docx`-Abgabedateien: Sicherung, Arbeitsteilung, Fallen, Felder, Prüfung |
-| `Uni/Semester_2/ASSIGNMENT_PCG.md` | Originaltext Uni-Aufgabe „Prozedurale Erweiterung der Spielwelt" (Referenz, unverändert lassen) |
-| `Uni/Semester_2/ASSIGNMENT_TOOL.md` | Originaltext Uni-Aufgabe „Engine-Tool-Entwicklung" (Referenz, unverändert lassen) |
-| `Uni/Semester_2/ASSIGNMENT_THREADING.md` | Originaltext Uni-Aufgabe „Threadoptimierung" (Referenz, unverändert lassen) |
-| `Uni/ROADMAP.md` | Baureihenfolge der Studienarbeit, semesterübergreifend |
-| `Uni/LOG.md` | Chronik der Studienarbeit: TDD, Abbildungen, Abgaben |
-| `Uni/_ARCHIV.md` | Abgeschlossene Semester und überholte Einträge — enthält den Abgabe-Tagesplan von Semester 2 |
+| `Uni/DECISIONS.md` | Nur Entscheidungen zum Studium — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
+| `Uni/DOCX_RULES.md` | Nur der Umgang mit den `.docx`-Abgabedateien — Sicherung, Arbeitsteilung, bekannte Fallen, Prüfung. |
+| `Uni/LOG.md` | Nur was wann passiert ist — datierte Ereignisse, älteste oben. |
+| `Uni/ROADMAP.md` | Nur was für das Studium als Nächstes zu tun ist, semesterübergreifend. |
+| `Uni/Semester_2/ASSIGNMENT_AKADEMISCH.md` | (geplant) Originaltext der Teilabgabe Arbeiten nach akademischen Standards |
+| `Uni/Semester_2/ASSIGNMENT_KI_PROTOTYP.md` | (geplant) Originaltext der Teilabgabe KI-Prototyp |
+| `Uni/Semester_2/ASSIGNMENT_PCG.md` | Originaltext der Uni-Aufgabe PCG (K3, S2, S3) als Referenz — unverändert lassen, eigene Planung gehört in die DECISIONS der Schicht. |
+| `Uni/Semester_2/ASSIGNMENT_SIMULATION.md` | (geplant) Originaltext der Teilabgabe Simulation der Spieleumgebung |
+| `Uni/Semester_2/ASSIGNMENT_SOFTWAREPLANUNG.md` | (geplant) Originaltext der Teilabgabe Softwareplanung |
+| `Uni/Semester_2/ASSIGNMENT_THREADING.md` | Originaltext der Uni-Aufgabe Threadoptimierung (K2, K3, S3) als Referenz — unverändert lassen; eigene Planung gehört in die DECISIONS der Schicht. |
+| `Uni/Semester_2/ASSIGNMENT_TOOL.md` | Originaltext der Uni-Aufgabe Engine-Tool (K2, S1) als Referenz — unverändert lassen; eigene Planung gehört in die DECISIONS der Schicht. |
+| `Uni/_ARCHIV.md` | Nur überholte Einträge der Uni-Schicht. |
 
 ## IsorBackup — Regeln für den externen Datenbaum
 
 | Dokument | Zuständigkeit |
 |---|---|
-| `IsorBackup/RULES.md` | (geplant) Baum, Ablageregeln, Benennung, Asset-Library für `C:\IsorBackup\` |
-| `IsorBackup/ROADMAP.md` | (geplant) Offene Aufräum-Punkte |
 | `IsorBackup/DECISIONS.md` | (geplant) Entscheidungen zur Datenablage |
+| `IsorBackup/ROADMAP.md` | (geplant) Offene Aufräum-Punkte des Datenbaums |
+| `IsorBackup/RULES.md` | (geplant) Baum, Ablageregeln, Benennung und Asset-Library für `C:\IsorBackup\` |
 
 ## Projekte
 
 | Dokument | Zuständigkeit |
 |---|---|
-| `Projekte/Isor_Tower/GDD.md` | Design-Absicht des Spiels — zugleich Markdown-Manuskript der Abgabe |
-| `Projekte/Isor_Tower/TDD_NOTES.md` | Stoffsammlung fürs TDD — geprüfte Fakten und Zahlen in zehn Themenblöcken, kumulativ über alle Semester |
-| `Projekte/Isor_Tower/PREFAB_STATUS.md` | Prüfstand jedes Prefabs — Arbeitsliste mit Ende, wird erzeugt |
-| `Projekte/Isor_Tower/DECISIONS/Platzierung.md` | Entscheidungen zu Poisson, Dichte, Placer, Exclusion, Kachelung (21) |
-| `Projekte/Isor_Tower/DECISIONS/UI.md` | Entscheidungen zu Menüs, HUD, Optionen, Ladescreen (16) |
-| `Projekte/Isor_Tower/DECISIONS/Terrain_Mesh.md` | Entscheidungen zu Heightmap, Mesh, Chunks, Config, Wasserspiegel (13) |
-| `Projekte/Isor_Tower/DECISIONS/Welt.md` | Entscheidungen zu Szene, Hierarchie, Interaktion, Tag/Nacht (11) |
-| `Projekte/Isor_Tower/DECISIONS/Audio.md` | Entscheidungen zu Mixer, Klangquellen, Audio-Library (9) |
-| `Projekte/Isor_Tower/DECISIONS/Entities.md` | Entscheidungen zu Schafen, Herden, FSM, Health (7) |
-| `Projekte/Isor_Tower/DECISIONS/Gras.md` | Entscheidungen zu Instancing, LOD, Gras-Verteilung (5) |
-| `Projekte/Isor_Tower/ROADMAP.md` | Baureihenfolge des Projekts: Basiszustand, Aufräumen, HUD, Beobachtungspunkte, Politur |
-| `Projekte/Isor_Tower/LOG.md` | Chronik des Projekts: was wann gebaut und geprüft wurde |
+| `Projekte/Isor_Tower/DECISIONS/Audio.md` | Nur Entscheidungen zu Audio — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
+| `Projekte/Isor_Tower/DECISIONS/Entities.md` | Nur Entscheidungen zu Entities und KI — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
+| `Projekte/Isor_Tower/DECISIONS/Gras.md` | Nur Entscheidungen zu Gras und Instancing — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
+| `Projekte/Isor_Tower/DECISIONS/Platzierung.md` | Nur Entscheidungen zu Platzierung — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
+| `Projekte/Isor_Tower/DECISIONS/Terrain_Mesh.md` | Nur Entscheidungen zu Terrain und Mesh — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
+| `Projekte/Isor_Tower/DECISIONS/UI.md` | Nur Entscheidungen zu UI, Menüs und HUD — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
+| `Projekte/Isor_Tower/DECISIONS/Welt.md` | Nur Entscheidungen zu Welt, Szene und Interaktion — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
+| `Projekte/Isor_Tower/GDD.md` | Design-Absicht des Spiels — was es sein soll, nicht wie es gebaut wird. |
+| `Projekte/Isor_Tower/LOG.md` | Nur was wann passiert ist — datierte Ereignisse, älteste oben. |
+| `Projekte/Isor_Tower/PREFAB_STATUS.md` | Nur der Prüfstand jedes Prefabs — welche schon durchgesehen sind und was dabei auffiel. |
+| `Projekte/Isor_Tower/ROADMAP.md` | Nur was am Projekt als Nächstes gebaut wird. |
 | `Projekte/Isor_Tower/SYSTEME.md` | (geplant) Was gerade im Projekt steckt — wird erzeugt |
-| `Projekte/Isor_Tower/_ARCHIV.md` | (geplant) Überholte Projekt-Einträge |
+| `Projekte/Isor_Tower/TDD.md` | (geplant) Markdown-Manuskript des TDD, aus dem die Abgabefassung entsteht |
+| `Projekte/Isor_Tower/TDD_NOTES.md` | Nur Rohmaterial für das Technical Design Document von Isor's Tower — geprüfte Fakten, Zahlen und Formeln aus der Projektarbeit. |
+| `Projekte/Isor_Tower/_ARCHIV.md` | (geplant) Überholte Projekt-Einträge, jeder mit Angabe des Nachfolgers |
 
 ## Temporär — werden nach der Überholung archiviert
 
 | Dokument | Zuständigkeit |
 |---|---|
-| `_HARNESS_REVIEW.md` | Befunde und Entscheidungen der Harness-Überholung ab 2026-08-21 |
-| `_HARNESS_UMSETZUNG.md` | Bauliste der Überholung in Baureihenfolge — Handgriffe zum Abhaken |
+| `_HARNESS_REVIEW.md` | Arbeitsliste der Harness-Überholung vom 2026-08-21 ff. |
+| `_HARNESS_UMSETZUNG.md` | Nur die abzuarbeitenden Handgriffe der Überholung, in Baureihenfolge. |
+
+## Werkzeuge — erzeugen und pflegen die Dateien oben
+
+| Skript | Zweck |
+|---|---|
+| `IsorBackup/Werkzeuge/sichern.ps1` | sichern.ps1 — wöchentliche Sicherung auf die externe Platte. |
+| `Kern/Werkzeuge/index_bauen.py` | Erzeugt INDEX.md aus den Ownership-Zeilen der Harness-Dateien. |
+| `Projekte/Isor_Tower/Werkzeuge/prefab_status.py` | Erzeugt PREFAB_STATUS.md aus den tatsächlich vorhandenen .prefab-Dateien. |

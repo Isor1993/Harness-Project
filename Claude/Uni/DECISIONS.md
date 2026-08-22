@@ -1,6 +1,6 @@
 # DECISIONS.md — Entscheidungen Studium
 
-Ownership: Nur Entscheidungen zu Studium — was entschieden wurde, warum,
+Ownership: Nur Entscheidungen zum Studium — was entschieden wurde, warum,
 und welche Alternativen verworfen wurden. Kein Plan (das ist die
 ROADMAP), kein Ereignis (das ist das LOG), keine ausformulierte Regel
 (die steht in der jeweiligen Regeldatei; hier steht nur, warum sie gilt).

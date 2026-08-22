@@ -1,8 +1,7 @@
 # ASSIGNMENT_THREADING.md — Uni-Aufgabe „Threadoptimierung"
 
 Ownership: Originaltext der Uni-Aufgabe Threadoptimierung (K2, K3, S3) als
-Referenz — unverändert lassen, eigene Planung gehört in DECISIONS.md /
-TDD_NOTES.md. Quelle: Canvas, Kurs 23111 — Modul 4FSC0PD003.1
+Referenz — unverändert lassen; eigene Planung gehört in die DECISIONS der Schicht. Quelle: Canvas, Kurs 23111 — Modul 4FSC0PD003.1
 „Structured Game Development" (Übung „Multithreading"). Formative Abgabe:
 Fr 2026-08-07. Echte Abgabe: Portfolio 2026-08-21. Wird kombiniert mit
 ASSIGNMENT_PCG.md und ASSIGNMENT_TOOL.md.

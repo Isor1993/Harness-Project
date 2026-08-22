@@ -274,7 +274,36 @@ konnte nicht bis Phase 4 warten.
 **Streuner**
 - [ ] `_split_check.txt` nach `99_Archiv\_Zu_Loeschen\` (E66)
 
-## Phase 5 — Erzeugte Dateien und Skripte
+## Phase 5 — Erzeugte Dateien und Skripte — **erledigt 2026-08-22**
+
+**Ablage entschieden:** Ein Werkzeug liegt in der Schicht, deren Dateien
+es bearbeitet — dieselbe Regel wie für Dokumente. Das INDEX-Skript
+wandert damit automatisch mit der Kern-Auslieferung mit. Die
+Diagramm-Skripte bleiben, wo sie sind.
+
+Ergebnisse und Funde:
+- **INDEX** wird erzeugt; 42 Dateien gefunden, **alle mit
+  `Ownership:`-Zeile** — die neue Pflicht greift also schon. Geplante
+  Dokumente stehen von Hand in `index_geplant.txt` (11 Einträge). Der
+  INDEX führt jetzt auch die Werkzeuge selbst auf, sonst fände sie niemand.
+- **PREFAB_STATUS** wird erzeugt; 34 Prefabs in 17 Gruppen.
+  *Befund:* Die vier alten Abschnitte (Shared/UI, Entities, Environment,
+  Systems) gab es nicht mehr — seit der Umstellung „Assets nach Typ"
+  vom 2026-08-20 liegen alle Prefabs unter `Assets/Prefabs/<Thema>/`.
+  `VFX_FireFly` ist wie vorhergesagt von selbst aufgetaucht, dazu drei
+  weitere, die nie in der Liste standen.
+- **Backup** mit drei Sicherungen: Probelauf als Voreinstellung ·
+  Erkennungsdatei `_ISOR_BACKUP.txt` auf der Platte (schützt gegen einen
+  falschen Laufwerksbuchstaben) · Wegfallendes wandert nach
+  `_Geloescht\<Datum>\` statt gelöscht zu werden.
+  *Umfang gemessen:* IsorBackup 15,4 GB / 8.729 Dateien, Repos 0,6 GB /
+  2.127 Dateien — rund **16 GB** auf der Platte.
+  *Korrektur beim Testen:* `.git` war zuerst ausgeschlossen. Ohne
+  Historie wäre die Kopie kein Repo mehr, sondern ein Haufen Dateien —
+  jetzt drin (das sind die 900 Dateien Unterschied).
+  *Windows-Falle:* `.ps1` ohne UTF-8-BOM wird von PowerShell 5.1 als
+  ANSI gelesen; Umlaute und Gedankenstriche zerlegen dann die Syntax.
+
 
 - [ ] INDEX-Skript: liest alle `Ownership:`-Zeilen, meldet Dateien ohne
       als `⚠` (E25)

@@ -1,0 +1,17 @@
+# Geplante, noch nicht gebaute Dokumente.
+# Das INDEX-Skript kann sie nicht finden, weil es sie nicht gibt —
+# deshalb stehen sie hier von Hand. Format: Pfad | Zuständigkeit
+# Wird ein Eintrag gebaut, meldet das Skript ihn als erledigt; dann
+# hier löschen.
+
+Kern/GLOSSARY.md | Begriffe mit fester Bedeutung — entsteht am Ende aus den fertigen Dateien
+IsorBackup/RULES.md | Baum, Ablageregeln, Benennung und Asset-Library für `C:\IsorBackup\`
+IsorBackup/ROADMAP.md | Offene Aufräum-Punkte des Datenbaums
+IsorBackup/DECISIONS.md | Entscheidungen zur Datenablage
+Projekte/Isor_Tower/SYSTEME.md | Was gerade im Projekt steckt — wird erzeugt
+Projekte/Isor_Tower/TDD.md | Markdown-Manuskript des TDD, aus dem die Abgabefassung entsteht
+Projekte/Isor_Tower/_ARCHIV.md | Überholte Projekt-Einträge, jeder mit Angabe des Nachfolgers
+Uni/Semester_2/ASSIGNMENT_SOFTWAREPLANUNG.md | Originaltext der Teilabgabe Softwareplanung
+Uni/Semester_2/ASSIGNMENT_KI_PROTOTYP.md | Originaltext der Teilabgabe KI-Prototyp
+Uni/Semester_2/ASSIGNMENT_SIMULATION.md | Originaltext der Teilabgabe Simulation der Spieleumgebung
+Uni/Semester_2/ASSIGNMENT_AKADEMISCH.md | Originaltext der Teilabgabe Arbeiten nach akademischen Standards

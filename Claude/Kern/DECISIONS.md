@@ -1,6 +1,6 @@
 # DECISIONS.md — Entscheidungen Harness
 
-Ownership: Nur Entscheidungen zu Harness — was entschieden wurde, warum,
+Ownership: Nur Entscheidungen zum Harness — was entschieden wurde, warum,
 und welche Alternativen verworfen wurden. Kein Plan (das ist die
 ROADMAP), kein Ereignis (das ist das LOG), keine ausformulierte Regel
 (die steht in der jeweiligen Regeldatei; hier steht nur, warum sie gilt).

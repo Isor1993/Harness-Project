@@ -1,8 +1,7 @@
 # ASSIGNMENT_TOOL.md — Uni-Aufgabe „Engine-Tool-Entwicklung"
 
 Ownership: Originaltext der Uni-Aufgabe Engine-Tool (K2, S1) als
-Referenz — unverändert lassen, eigene Planung gehört in DECISIONS.md /
-TDD_NOTES.md. Quelle: Canvas, Kurs 23111 — Modul 4FSC0PD003.1
+Referenz — unverändert lassen; eigene Planung gehört in die DECISIONS der Schicht. Quelle: Canvas, Kurs 23111 — Modul 4FSC0PD003.1
 „Structured Game Development". Formative Abgabe (Richtlinie mit Puffer)
 war Fr 2026-07-10, 20:00, eine Datei (zip/rar/7z). Echte Abgabe:
 Portfolio 2026-08-21. Wird kombiniert mit ASSIGNMENT_PCG.md (siehe
