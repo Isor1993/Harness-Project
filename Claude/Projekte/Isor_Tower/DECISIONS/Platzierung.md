@@ -1,4 +1,4 @@
-# DECISIONS.md — Entscheidungen Platzierung
+# Platzierung.md — Entscheidungen Platzierung
 
 Ownership: Nur Entscheidungen zu Platzierung — was entschieden wurde, warum,
 und welche Alternativen verworfen wurden. Kein Plan (das ist die
@@ -9,6 +9,7 @@ je ein bis zwei Zeilen.
 
 Überholte Einträge wandern nach `_ARCHIV.md` der Schicht, mit Angabe,
 wodurch sie abgelöst wurden. Ein neuer Eintrag nennt, welchen er ablöst.
+
 
 ## 2026-07-18 — Platzierungs-Reihenfolge: Formen vor Reagieren
 Was: Schichten-Prinzip — erst was das Gelände formt, dann was darauf
@@ -23,6 +24,7 @@ Bruchteil der Kosten von Fluss-Carving; Straßen sind das Schwerste und
 stehen nicht in den Pflicht-Features.
 Verworfen: Bepflanzung zuerst (alte Empfehlung); Flüsse graben vor der
 Abgabe; Straßen als fester Bestandteil.
+
 ## 2026-07-21 — Platzierungs-Stufe: reine Stufe, zwei Listen, globales Poisson
 Was: ObjectPlacer als reine statische Stufe (Geschwister zu MeshBuilder, liest
 nur, fasst die Szene nicht an). Zwei Listen: Placeable (`[Serializable] class`,
@@ -38,6 +40,7 @@ Inspector. Konkretisiert DECISIONS 2026-07-18 „Formen vor Reagieren".
 Verworfen: per-Chunk-Poisson (Naht-Abstand nur mit Rand-Check, mehr Code);
 Raster+Versatz (kein garantierter Abstand); reiner Zufall (klumpt); prefab per
 Index statt direkt (YAGNI); gespeicherte Placement-Liste als Asset.
+
 ## 2026-07-21 — Höhe/Steigung für die Platzierung: gemeinsame SampleHeight-Funktion
 Was: „Höhe an Weltposition" wird als `SampleHeight(config, x, z)` aus dem
 HeightmapGenerator herausgezogen (Noise → Curve → Plateau an einem Punkt);
@@ -51,6 +54,7 @@ stateless-pure Stil (Generator/MeshBuilder halten keinen Zustand).
 Verworfen: eigenes globales Höhen-Gitter für die Platzierung (Doppelrechnung,
 Veraltungs-Risiko, einziger dauerhafter Zustand — Fremdkörper); Mesh-Faces
 abfragen für die Ausrichtung (Normale gibt es analytisch aus SampleHeight).
+
 ## 2026-07-21 — Platzierung: ein Poisson-Durchgang pro Typ, Reihenfolge=Priorität, Regel-Filter
 Was: ein Poisson-Durchgang je Placeable-Typ (eigener minSpacing-Radius);
 Reihenfolge in Liste 1 = Priorität. Jeder Durchgang nimmt eine Blocker-Liste
@@ -66,6 +70,7 @@ die Uferlinie eine Welt-Eigenschaft ist. Nutzt shoreMargin aus DECISIONS
 2026-07-19 „Wasserspiegel".
 Verworfen: fest verdrahtete Inter-Typ-Ausschlüsse / Ausschluss-Matrix jetzt
 (YAGNI); Wasser-Regel pro Placeable-Zeile.
+
 ## 2026-07-21 — Dichte-Steuerung als austauschbare DensityStrategy (Strategy-Pattern)
 Was: „wo viel/wenig" als Wahrscheinlichkeits-Ausdünnung statt variablem Poisson-
 Radius. Abstrakte `DensityStrategy` (ScriptableObject) mit
@@ -80,6 +85,7 @@ mehrere Masken frei kombinierbar. Erfüllt zugleich das Design-Pattern-Kriterium
 der Tool-Aufgabe (zweites Muster neben MVP).
 Verworfen: variabler-Radius-Poisson; enum + switch (nicht ohne Code
 erweiterbar); Strategie global statt pro Typ.
+
 ## 2026-07-21 — Tool-Panel, Prefabs, placementSeed
 Was: reiches Editor-Panel — „Generate Complete" (alles in Prioritätsordnung),
 Einzel-Stufen (Terrain / Wasser / Place Objects), plus pro-Typ „Place"/„Clear"
@@ -98,6 +104,7 @@ Buttons); getrennter Seed löst die vorgemerkte „inkrementell generieren"-Frag
 Rendering-Tausch hinter dem Presenter hält die Platzierungs-Logik unberührt.
 Verworfen: Tree/Grass fest verdrahtete Buttons; Auto-Platzierung bei jedem
 Terrain-Generate; Platzierung an den Terrain-Seed gekoppelt.
+
 ## 2026-07-23 — SampleHeight komponiert, PlateauModifier bleibt eigener Job
 Was: Die geteilte Höhen-Funktion `SampleHeight` ist ein dünner Komponist
 (Noise+Curve, dann `PlateauModifier.SampleAt`); die Plateau-Logik bleibt in
@@ -109,6 +116,7 @@ erfüllt beide, kein Gott-Objekt. Von Isor selbst als Spannung erkannt.
 Verworfen: Plateau-Rechnung inline in `SampleHeight` (SRP-Verstoß);
 `PlateauModifier` löschen; ihn behalten UND Plateau in `SampleHeight`
 duplizieren (DRY-Verstoß).
+
 ## 2026-07-25 — Dichte-Filter vor der Steigung; Würfel an einer Stelle
 Was: Umsetzung der DensityStrategy (2026-07-21). Der Dichte-Filter läuft im
 ObjectPlacer zwischen Höhenband und Steigung — nicht als letzte Stufe wie im
@@ -127,6 +135,7 @@ DensityStrategy" um.
 Verworfen: Dichte als letzte Stufe (Text-Reihenfolge, teurer); bool `Accepts`
 mit Würfel in der Strategie (Abstufung weg, Zufall im zustandslosen Asset);
 Uniform als Pflicht-Asset (null genügt).
+
 ## 2026-07-26 — Placer-Einstieg pro Typ, eine Hierarchie-Gruppe je Placeable
 Was: `ObjectPlacer.Place(config, placeableIndex)` streut genau einen Typ; die
 Schleife über alle Typen liegt im Presenter, der pro Typ eine eigene Gruppe
@@ -142,6 +151,7 @@ Umsortieren der Placeables ändert die Indizes und damit alle Verteilungen.
 Verworfen: `Place(config)` zusätzlich behalten (toter Code); Typ-Zugehörigkeit
 als Feld im `Placement`-struct (bläht den tausendfachen Wert auf); eine flache
 Wurzel ohne Typ-Gruppen (Einzel-Clear nicht möglich).
+
 ## 2026-07-26 — Platzierung komponiert mit dem Prefab-Transform
 Was: Der Presenter überschreibt Rotation und Scale der Instanz nicht mehr,
 sondern multipliziert sie mit den im Prefab hinterlegten Werten
@@ -157,6 +167,7 @@ Verworfen: Korrektur-Rotation strukturell an ein Kind-Objekt auslagern
 hunderttausenden Objekten); Achsen-Korrektur nur über den Import erzwingen
 (`Bake Axis Conversion` dreht bereits konvertierte Blender-Dateien ein
 zweites Mal und legt sie damit erst um).
+
 ## 2026-07-29 — Globales Poisson: bekannte Grenze, keine Lösung vorentschieden
 Was: Der globale Poisson-Disc-Durchgang (2026-07-21) bleibt bis zur Abgabe
 unverändert. Festgehalten wird nur die Grenze: „global" verlangt, die ganze
@@ -171,6 +182,7 @@ Verfahren bis dahin ändern können. Für die Abgabe hat die Grenze keine
 Auswirkung — die Abgabe-Welt wird ohnehin verkleinert.
 Verworfen: jetzt auf zellen-lokales Poisson festlegen (verfrüht); die
 Grenze nicht dokumentieren (würde später als Überraschung auftauchen).
+
 ## 2026-08-03 — Prefab Painter: Aufbau und Bedienung
 Was: Editor-Tool `Tools > Isor Tower > Prefab Painter` in
 `Assets/Systems/PrefabPainter/Editor/`, MVP wie das Terrain-Tool:
@@ -202,6 +214,7 @@ band das Tool an `TerrainConfig`); Löschen weglassen und auf Undo/Entf setzen;
 eine Pinselform statt drei; Malen im Prefab-Isolationsmodus (dort gibt es kein
 Terrain zum Anpeilen); Determinismus per Seed wie im `ObjectPlacer` (das
 Ergebnis sind gespeicherte Objekte, keine reproduzierbare Generierung).
+
 ## 2026-08-05 — PlacementExclusion: Freiflächen als Komponente am Objekt
 Was: `PlacementExclusion` (Kreis oder Box, Center-Offset, dreht mit dem
 Objekt, Gizmo immer sichtbar) markiert Flächen, in die der Placer nichts
@@ -222,6 +235,7 @@ Laufzeit-Spawn der Schafe als Fix fürs Aufsetzen (Umbau der ganzen
 Herden-Verdrahtung — nach der Abgabe, mit „Pipeline runtime-fähig"); Name
 `GrassExclusion` (galt nach dem Anschluss an SpawnType nicht mehr nur für
 Gras — umbenannt, die eine gesetzte Zone neu verdrahtet).
+
 ## 2026-08-05 — NoiseMask bekommt eine Kontrastkurve
 Was: `NoiseMaskDensity` schickt den Perlin-Wert durch eine AnimationCurve
 (Default: bis 0,42 → 0, ab 0,58 → 1, dazwischen Anstieg); erst das Ergebnis
@@ -235,6 +249,7 @@ und dasselbe Werkzeug wie die HeightCurve (Konsistenz, live tunebar).
 Verworfen: festes Formel-Remap (SmoothStep o. Ä. — unsichtbar und nicht pro
 Asset tunebar); minSpacing vergrößern (dünnt gleichmäßig aus, erzeugt keine
 Flecken).
+
 ## 2026-08-05 — Placement kachelweise statt punktweise parallelisiert
 Was: Die Welt wird für die Platzierung in `PlacementTilesPerAxis`² Kacheln
 geteilt (Default 8×8 = 64, wie das Terrain-Chunk-Gitter); jede Kachel sampelt
@@ -254,6 +269,7 @@ die Aufgabe nennt Threadpools ausdrücklich); Padding an den Kachelrändern nach
 Vorbild der Mesh-Normalen (funktioniert dort, weil die Höhe eine Funktion der
 Position ist — ein Poisson-Punkt ist dagegen ein Verlauf und lässt sich vom
 Nachbarn nicht nachrechnen).
+
 ## 2026-08-05 — Kachelgrenzen-Ungenauigkeit bewusst akzeptiert
 Was: An den Kachelrändern kann der Poisson-Mindestabstand verletzt werden, weil
 Kacheln einander nicht kennen. Bleibt so, dokumentiert als bekannte Grenze.
@@ -264,6 +280,7 @@ Phasen (halbiert die Parallelität). Bei Bäumen, wo einzelne Abstände auffalle
 wäre der Aufräumpass nachzuholen.
 Verworfen: feinere Kachelung (verdoppelt die Nahtlänge je Halbierung und bringt
 bei gleichmäßiger Grasdichte keine bessere Lastverteilung).
+
 ## 2026-08-05 — Laufzeit-Spawner für instanziertes Placement
 Was: `RuntimePlacementSpawner` auf dem Placement-Root erzeugt beim Szenenstart je
 instanziertem Placeable-Typ ein Kind mit `InstancedRenderer`; `Init` nimmt die
@@ -276,6 +293,7 @@ derselben Stufen" für Gras vor.
 Verworfen: die vom Tool erzeugten Objekte in der Szene speichern (macht
 generierten Inhalt zum Szeneninhalt und widerspricht dem Szenen-Vertrag);
 GameObject-Typen gleich mitziehen (eigener Baustein, Millionen Objekte).
+
 ## 2026-08-19 — Bäume mit NavMeshObstacle statt NavMesh-Rebake
 Was: Jeder Baum trägt `NavMeshObstacle` mit `Carve` und
 `CarveOnlyStationary` plus einen `CapsuleCollider`. Kein neuer NavMesh-Bake,
@@ -292,6 +310,7 @@ getrennte Vorgänge. Der Bake liegt als Daten im Build, das Carving eines
 Obstacle ist dagegen reine Laufzeit und läuft bei **jedem** Spielstart neu.
 Beim Testen am fremden Rechner darauf achten, ob direkt nach dem Ladescreen
 ein Hänger auftritt; Gegenmittel wäre `Carve` aus.
+
 ## 2026-08-20 — Bäume stehen senkrecht statt hangparallel
 Was: `AlignToGround` am Baum-Placeable ausgeschaltet, `MaxSlope` bleibt bei 90.
 Bäume stehen damit überall senkrecht; an Steilhängen steht der Stammfuß frei.
@@ -308,6 +327,7 @@ Verworfen für heute, richtig für später (Isors eigene Einschätzung, das sei
 an Steilhängen gar nichts steht; den Baum hangabhängig einsinken lassen, damit
 der Fuß nicht frei steht; oder per `Quaternion.Slerp` mit etwa 0,2–0,3
 zwischen Senkrechter und Normale mischen, sodass der Baum sich leicht neigt.
+
 ## 2026-08-20 — Glühwürmchen über den Placer, nicht von Hand gemalt
 Was: Die Schwärme sind ein dritter Placeable-Typ in `TerrainConfig_Default`,
 begrenzt über Höhenband und Hangneigung, Render Mode GameObjects.
@@ -322,6 +342,7 @@ die Bildrate bei Nacht einbricht, ist `MinSpacing` der Regler.
 Verworfen: von Hand mit dem Prefab Painter malen (mein Vorschlag);
 `Instanced` als Render Mode — das zeichnet nur Meshes und führt keine
 VFX-Komponente aus.
+
 ## 2026-08-20 — Der Placer setzt Herden, nicht einzelne Schafe
 Was: Vierter Placeable-Typ ist `SheepHerdManager_01`, nicht das Schaf-Prefab.
 19 Instanzen, Hangneigung bis 8,4°, Höhenband 0,14–0,30.

@@ -12,19 +12,28 @@ Zweck der Artifacts: die Handy-Fassung. Führende Quelle bleibt immer die
 .md-Datei im Repo; das Artifact ist die lesbare Ansicht davon, unterwegs
 und ohne Editor.
 
-## Die drei Typen
+## Die Typen
 
 | Typ | Beantwortet | Symbol | Führende Quelle |
 |---|---|---|---|
-| Status | Wo steht das Projekt, was kommt als Nächstes? | 📍 | ROADMAP.md |
-| System | Wie funktioniert *mein* System X in diesem Projekt? | ⚙️ | FEATURE_LOG.md, DECISIONS.md |
-| Lernstück | Wie funktioniert Konzept Y — auch außerhalb dieses Projekts? | 💡 | TDD_NOTES.md, Knowledge-Ordner |
-| (veraltet) | — | 🗑 | — |
+| Status | Wo steht das Projekt, was kommt als Nächstes? | 📍 | `PLAN.md` + ROADMAP der Schicht |
+| System | Wie funktioniert *mein* System X? | ⚙️ | LOG und DECISIONS der Schicht |
+| Lernstück | Wie funktioniert Konzept Y — auch außerhalb dieses Projekts? | 💡 | `TDD_NOTES.md`, Knowledge-Ordner |
+
+Der Harness selbst ist ein System im Sinne dieser Tabelle:
+`⚙️ System · Harness`, führende Quelle sind die Kern-Dateien.
+
+`🗑` ist **kein Typ, sondern ein Zustand** — eine Seite kann veraltet
+*sein*, sie ist nicht veraltet *als Sorte*. Siehe Abschnitt Pflege.
 
 **Trennlinie System ↔ Lernstück:** System ist projektspezifisch („so ist
 mein Placement aufgebaut"), Lernstück ist übertragbar („so funktioniert
 Poisson-Disc-Sampling"). Ein Artifact beantwortet genau eine der Fragen —
 beantwortet es zwei, wird es geteilt.
+
+**Wann überhaupt eine Seite entsteht:** auf Zuruf, und bei Wissensseiten
+dann, wenn das Thema visuell ist (`KNOWLEDGE_RULES.md`). Reiner Text
+braucht keine zweite Fassung.
 
 **Beim Teilen behält das Lernstück die URL.** Das Übertragbare veraltet
 nicht, die Projektbeschreibung schon; der gemerkte Link soll am
@@ -74,10 +83,18 @@ Seite auf dem Handy seitwärts.
 - **Bevor man sich auf eine Seite stützt:** die echte Seite aufrufen, nie
   aus der Erinnerung oder aus einer älteren Fassung zitieren. Seiten
   altern zwischen zwei Sessions.
-- **Beim Review-Gate (CODE_GUIDELINES.md), vor dem Coden:** Steht eines
-  der Skripte, die gleich angefasst werden, in einer Skripte-Zeile des
-  ARTIFACT_INDEX? Dann wird die Seite durch die Änderung veraltet und
-  gehört mit nachgezogen. Vorher wissen ist besser als hinterher suchen.
+- **Vor dem Coden:** Der Artifact-Check ist Punkt 5 des Review-Gate in
+  `CODE_GUIDELINES.md`. Dort steht er vollständig — eine Checkliste
+  gehört dem Moment, an dem sie abgearbeitet wird, nicht den Themen ihrer
+  Punkte.
+- **Sonntags, am Pflegetag:** Claude gleicht den ARTIFACT_INDEX gegen die
+  Änderungen der Woche **und** gegen die Liste der tatsächlich
+  veröffentlichten Seiten ab und legt eine Vorschlagsliste vor — welche
+  Seite veraltet ist, was drinsteht, was sich geändert hat. Isor
+  entscheidet, welche nachgezogen werden; Claude ändert nichts von selbst.
+  Der Abgleich gegen die echte Veröffentlichungsliste ist die zweite,
+  unabhängige Quelle: Ein falscher Stand-Stempel blieb sonst zehn Tage
+  unbemerkt.
 - **Inhalt aus einer alten Seite übernehmen:** gegen den Code prüfen,
   nicht abschreiben. Was auf einer Seite steht, war zum Stand-Datum wahr.
 
@@ -105,6 +122,8 @@ Beides trägt dasselbe Symbol wie der Titel. Favicon bei Updates **nie
   vergessen, bleiben Zettel mit Adressen zurück, hinter denen nichts
   mehr steht. Genau so sind am 2026-08-09 fünfzehn tote Links aufgefallen.
 - Fußzeile jeder Seite nennt den Stand (Datum) und die führende .md-Datei.
-- Aphantasie berücksichtigen: erklären über Zahlen und Tabellen, nicht über
-  „stell dir vor". Diagramme sind erwünscht — sie sind extern, nicht
-  vorgestellt.
+  Der Stand-Stempel ist hier ausdrücklich erlaubt, weil ihn der
+  Sonntagsabgleich kontrolliert (`DOC_RULES.md`, Abschnitt 7).
+- **Zeigen statt vorstellen lassen** — die Regel steht in
+  `WORKFLOW.md`. Für Seiten heißt das: Diagramme und Zahlen ja,
+  „stell dir vor" nie.

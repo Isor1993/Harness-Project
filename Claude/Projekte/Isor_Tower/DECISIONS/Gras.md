@@ -1,4 +1,4 @@
-# DECISIONS.md — Entscheidungen Gras und Instancing
+# Gras.md — Entscheidungen Gras und Instancing
 
 Ownership: Nur Entscheidungen zu Gras und Instancing — was entschieden wurde, warum,
 und welche Alternativen verworfen wurden. Kein Plan (das ist die
@@ -9,6 +9,7 @@ je ein bis zwei Zeilen.
 
 Überholte Einträge wandern nach `_ARCHIV.md` der Schicht, mit Angabe,
 wodurch sie abgelöst wurden. Ein neuer Eintrag nennt, welchen er ablöst.
+
 
 ## 2026-07-26 — Gras-Rendering: GPU-Instancing statt GameObjects (Tür B)
 Was: Masse-Deko (Gras, Steine, Blumen) wird nicht per Instantiate als
@@ -32,6 +33,7 @@ GameObjects und damit CPU/RAM/Crash bestehen); ein großes gebackenes Mesh wie
 Minecraft-Chunks (lohnt bei unterschiedlicher Geometrie, nicht bei tausenden
 identischen Halmen); Bäume jetzt auch instancieren (wenige, sollen anklickbar
 bleiben — erst bei echter Masse nötig).
+
 ## 2026-08-04 — Gras-Instancing: nachrechnen, eigenes Gras-Gitter, kein Schatten
 Was: Die Umsetzung von DECISIONS 2026-07-26 wird festgezurrt und aus dem
 Nach-Abgabe-Block vorgezogen. (1) Die Matrizen werden nicht serialisiert, sondern
@@ -62,6 +64,7 @@ Unitys Terrain-Detail-System (setzt Unitys `Terrain`-Komponente voraus, das Terr
 ist selbst gebaut); `BatchRendererGroup` mit Culling je Halm (großes Gerät, bleibt im
 Nach-Abgabe-Block); Entfernungs-Abschneider jetzt schon bauen (bleibt
 Ein-Zeilen-Reserve, falls das Frustum-Culling allein nicht reicht).
+
 ## 2026-08-04 — Gras-Render-Settings am Prefab, LOD-Wahl als eigene Stufe
 Was: Die Rendering-Einstellungen (LowDetailMesh, LodDistance, RenderDistance,
 CellSize) liegen als reine Datenkomponente `GrassRenderProfile` am Gras-Prefab,
@@ -83,6 +86,7 @@ Renderer-Komponenten — beim Instancing existieren keine); Unity-6 Mesh LOD /
 Decimate); reines Distanz-Culling als Kugel um die Kamera (gebaut 04.08.,
 wieder raus — zeichnet auch hinter dem Rücken und löste das eigentliche
 Dreiecks-Problem nicht).
+
 ## 2026-08-04 — Gras-Detailproblem: LOD-Meshpaar von Hand statt Automatik
 Was: Das Detail-Büschel (2.664 Dreiecke, ~110 Halme) bleibt für die Nähe; für
 die Ferne ein handgebautes Low-Büschel (~30 Halme à 7 Dreiecke), aus dem
@@ -100,6 +104,7 @@ verzogen — legt Dreiecke frei zusammen, Form kippt); Grass-Cards mit
 Alpha-Textur (Shader-Bend/Bewegung auf Flächen sichtbar schlechter — bewusste
 Design-Entscheidung für echte 3D-Halme); fertiges Asset-Pack (Stil-Bruch,
 das Paar war schneller selbst abgeleitet).
+
 ## 2026-08-08 — Gras-Verteilung bleibt auf Uniform
 Was: Das Gras-Placeable nutzt `UniformDensity`, nicht die gebaute `NoiseMaskDensity`.
 Warum: Isors Entscheidung beim Tunen — gleichmäßig sieht in der noch leeren Welt

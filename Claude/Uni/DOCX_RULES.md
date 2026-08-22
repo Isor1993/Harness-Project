@@ -2,11 +2,26 @@
 
 Ownership: Nur der Umgang mit den `.docx`-Abgabedateien — Sicherung,
 Arbeitsteilung, bekannte Fallen, Prüfung. Was im TDD steht, gehört in
-ROADMAP.md und FEATURE_LOG.md; warum es so steht, in DECISIONS.md.
+`Uni/ROADMAP.md` und `Uni/LOG.md`; warum es so steht, in
+`Uni/DECISIONS.md`.
 
 Entstanden aus dem Praxisbetrieb 2026-08-07 bis 2026-08-11 am TDD. Claude
 schreibt Änderungen direkt in die Datei (DECISIONS 2026-08-07), und zwar über
 das entpackte `word/document.xml` — nicht über Word.
+
+## Welche Datei
+
+- **Arbeitsdatei ist ausschließlich**
+  `01_Uni\Semester_2\Arbeitsdateien\TDD Softwareplanung.docx`.
+  Nur diese anfassen; Sicherungen unter `Arbeitsdateien\Sicherung\`.
+- **Ab Harness 1.0.0 gilt zusätzlich (E61b):** Der *Text* lebt in
+  `Projekte/Isor_Tower/TDD.md`, die `.docx` ist die Abgabefassung und
+  keine eigene Quelle. Solange das Werkzeug Markdown→`.docx` nicht
+  gebaut ist (steht auf `Kern/ROADMAP.md`), bleibt die `.docx` führend
+  und diese Regeln gelten unverändert.
+- **Was wohin gehört**, steht in der Packliste
+  `Arbeitsdateien\Abgabe_Packliste.txt` — die ROADMAP sagt *wann*, die
+  Packliste sagt *was wohin*.
 
 ## Vor jedem Eingriff
 1. **Sicherung anlegen**, mit Zeitstempel und Zweck im Namen:
@@ -28,35 +43,23 @@ das entpackte `word/document.xml` — nicht über Word.
   Word füllt es bei `Strg+A`, `F9`.
 
 ## Fallen beim Suchen und Ersetzen
-Alle vier sind aufgetreten, drei davon hätten Schaden angerichtet.
 
-1. **Ein Suchbegriff kann mehrfach vorkommen und Verschiedenes bedeuten.**
-   „26.02.2026" stand als Datum der Selbstständigkeitserklärung *und* als
-   echtes Erfassungsdatum in einem Zeitplan. Vor jedem Ersetzen zählen und
-   die Fundstellen ansehen; bei Mehrdeutigkeit über die Lage im Dokument
-   eingrenzen (z. B. „vor der ersten Tabelle").
-2. **`find` liefert das erste Vorkommen.** „Quaternius, 2022" steht im
-   Lizenzkapitel und im Quellenverzeichnis — mit `find` landen neue Einträge
-   an der falschen Stelle. Für das Ende des Dokuments `rfind` nehmen.
-3. **`<w:t[^>]*>` passt auch auf `<w:tc>`.** Das Muster muss
-   `<w:t(?:\s[^>]*)?>` lauten, sonst wird beim Ersetzen der halbe
-   Tabellenzelleninhalt verschluckt.
-4. **Eine Zelle kann mehrere Textelemente enthalten.** Word teilt Text an
-   Rechtschreibmarken. Wer nur das erste ersetzt, bekommt „Moon 002Stylized
-   Nature Pack". Also: erstes Element setzen, alle weiteren leeren.
-5. **Fließtext ist über Runs zerstückelt.** Ein Begriff, den man im Fenster
-   als Wort sieht, existiert im XML oft nicht als zusammenhängende Zeichen-
-   kette. Für Ersetzungen über Run-Grenzen den Absatz als Ganzes einlesen,
-   die Runs zu einem Text zusammensetzen und danach neu aufbauen.
-6. **Beim Klonen einer Tabellenzeile trifft `count=1` immer dieselbe Zelle.**
-   Wer die fünf Zellwerte in einer Schleife nacheinander mit
-   `re.sub(..., count=1)` einsetzt, ersetzt jedes Mal wieder das *erste*
-   Textelement — am Ende steht der letzte Wert in Spalte 1 und die Spalten 2
-   bis 5 tragen noch den Mustertext. Stattdessen **ein** `re.sub` über alle
-   Textelemente mit einer Ersetzungsfunktion, die die Werte der Reihe nach
-   aus einem Iterator zieht (aufgetreten 2026-08-17 beim Nachtragen der
-   Audiozeilen in Tabelle 9; im XML unauffällig, beim Nachzählen sofort
-   sichtbar).
+Die sechs dokumentierten Fallen stehen im Wissensarchiv:
+`C:\Repos Isor\Knowledge\Werkzeuge\word-xml-fallen.md`.
+Sie gelten für jedes Word-Dokument, nicht nur für die Abgabe — deshalb
+liegen sie dort und nicht hier. **Vor jedem größeren Eingriff einmal
+durchlesen.**
+
+## Werkzeuge
+
+- **docx-Skill** (im Harness vorhanden, im August benutzt): `validate.py`
+  prüft ein gepacktes Dokument gründlicher als ein bloßer XML-Parse —
+  **Prüfschritt 1 unten läuft darüber**. `soffice.py` wandelt nach PDF,
+  wenn Word nicht zur Verfügung steht.
+- **Word selbst** bleibt für Feldwerte und Verzeichnisse zuständig
+  (`Strg+A`, `F9`) und für den PDF-Export mit aktualisierten Feldern.
+- **Handarbeit am entpackten XML** bleibt nötig, wo gezielt in
+  bestehenden Text eingegriffen wird — dafür gibt es kein Werkzeug.
 
 ## Felder
 - Beschriftungen und Verweise sind Felder (DECISIONS 2026-08-08). Neue
@@ -71,7 +74,8 @@ Alle vier sind aufgetreten, drei davon hätten Schaden angerichtet.
 
 ## Prüfung
 Nach jedem Eingriff, in dieser Reihenfolge:
-1. XML wohlgeformt (`ET.parse`) — fängt nur grobe Fehler.
+1. `validate.py` aus dem docx-Skill laufen lassen — prüft gründlicher als
+   ein bloßer `ET.parse` und fängt auch Strukturfehler im Paket.
 2. Datei packen und **in Word öffnen, Felder aktualisieren, als PDF
    exportieren**. Öffnet Word die Datei, ist die Struktur in Ordnung.
 3. **Die betroffenen Seiten als Bild ansehen.** Kein Schritt ist fertig, bevor

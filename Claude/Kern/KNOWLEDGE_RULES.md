@@ -8,7 +8,14 @@ Warum extern: Wissen ist projektübergreifend.
 
 ## Struktur
 - Unterordner = Themengruppen, wachsen nach Bedarf.
-  Bestand: `Patterns/`, `Unity/`, `ProcGen/`, `CSharp/`, `Seiten/`.
+- **Jeder Themenordner trägt ein `README.md` mit einer Zeile**, was er
+  enthält. Kein zentrales Verzeichnis der Gruppen: Eine solche Liste war
+  nach acht Stunden falsch, weil sie neben ihrer Quelle herlief. Fehlt
+  ein README, sieht man es im Ordner — fehlt eine Zeile in einer Liste,
+  ist die Liste still unvollständig.
+- Der Root-`README.md` gibt eine kurze Orientierung: was der Ordner ist,
+  wie er gegliedert ist, wo die Regeln dafür liegen. Damit ist das Repo
+  auch allein verständlich.
 - Eine .md-Datei pro Konzept. Dateiname: `klein-mit-bindestrichen.md`.
 - `Seiten/` enthält Offline-Kopien der Artifact-Seiten als eigenständige
   HTML-Dateien: `JJJJ-MM-TT-titel.html`.
@@ -25,9 +32,16 @@ Warum extern: Wissen ist projektübergreifend.
   → zwei Dateien. Verweise zwischen Dateien als relative Markdown-Links.
 
 ## Wann wird geschrieben
-- Pflicht in Brainstorm-Sessions im Uni-Modus (siehe WORKFLOW.md).
-- Zusätzlich fragt Claude bei jedem Session-Ende — egal welcher Typ —
-  ob etwas als Knowledge behalten werden soll.
-- Gesammelt am Session-Ende vor /clear: Claude schlägt die Einträge vor,
-  Isor entscheidet, was gespeichert wird.
-- Bestehende Datei zum selben Konzept: erweitern statt duplizieren.
+
+**Den Zeitpunkt besitzt `WORKFLOW.md`** (Doku-Pflicht): Die
+Knowledge-Frage wird bei **jedem** Session-Ende gestellt, unabhängig vom
+Typ und vom Modus. Claude schlägt Themen vor, Isor wählt aus oder ergänzt.
+„Nein" ist eine gültige Antwort — die Frage darf nie ausfallen.
+
+Hier steht nur, was beim Schreiben gilt:
+- **Bestehende Datei zum selben Konzept: erweitern statt duplizieren.**
+- Ein Konzept, das nicht auf einen Bildschirm passt, sind zwei — dann
+  zwei Dateien mit gegenseitigem Verweis.
+- Eine Seite wird zusätzlich als Artifact gebaut, **wenn sie visuell
+  ist** — Diagramme, Zahlenbeispiele, Vergleiche. Reiner Text liest sich
+  in der .md genauso gut. Form und Pflege der Seite: `ARTIFACT_RULES.md`.

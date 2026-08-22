@@ -28,7 +28,11 @@ Reihenfolge: Regeln → Struktur → Inhalt → Automatik.
       ASSESSMENT_LOG → 2 Zeugnisdateien · FEATURE_LOG → 3 Chroniken ·
       ROADMAP → 3 ROADMAPs + 2 Archive (708 → 204 Zeilen Planung) ·
       TDD_NOTES → 10 Themenblöcke · DECISIONS → 9 Dateien + Archiv
-- [ ] **Phase 4 — Einzeldateien nachziehen** (14 Stück)
+- [x] **Phase 4 — Einzeldateien nachgezogen.** WORKFLOW neu gefasst ·
+      KNOWLEDGE_RULES, ARTIFACT_RULES, ARTIFACT_INDEX, DIAGRAM_RULES,
+      DOCX_RULES, ASSESSMENT_RULES, CODE_GUIDELINES, GDD, PREFAB_STATUS
+      nachgezogen · XML-Fallen ins Knowledge ausgelagert · sieben
+      READMEs im Knowledge-Repo · alle toten Verweise repariert
 - [ ] **Phase 5 — Skripte:** INDEX, PREFAB_STATUS, Backup
 - [ ] **Phase 6 — Befehle:** `/sichern`, `/wechsel`, `/ende`;
       Berechtigungen eindampfen

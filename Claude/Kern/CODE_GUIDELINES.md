@@ -1,13 +1,25 @@
 # CODE_GUIDELINES.md — Code-Konventionen
 
-Ownership: Code-Konventionen: Namen, Architektur, Tests.
-Status: Rohmaterial aus Brainstorm 2026-07-17 — beim ersten
-Development-Einsatz in der Praxis nachschärfen.
+Ownership: Code-Konventionen — Namen, Architektur, Ordnerstruktur, das
+Review-Gate. **Tests sind noch nicht geregelt**; die Lücke steht bewusst
+hier, damit sie sichtbar bleibt, und als offener Punkt in
+`Kern/ROADMAP.md`.
+
+Status: Entstanden als Rohmaterial aus dem Brainstorm vom 2026-07-17,
+seither in einem vollen Uni-Durchgang erprobt und mehrfach nachgeschärft
+(zuletzt die Member-Reihenfolge am 2026-08-16).
 
 ## Priorität
-Projekt-Typ: **Uni** (wird beim Kopieren des Harness pro Projekt einmalig
-gesetzt: Uni oder Privat — keine Abfrage pro Session).
-Bei Uni-Projekten gewinnt Block 1 im Konfliktfall, bei privaten Block 2.
+
+Im Konfliktfall gewinnt **Block 1**, solange das Projekt eine
+Uni-Schicht hat — also solange ein Ordner `Uni/` neben dieser Datei
+liegt. Ohne Uni-Schicht gewinnt **Block 2**.
+
+Das ersetzt die frühere Angabe „Projekt-Typ: Uni/Privat", die von Hand
+gesetzt werden musste. Grund: Beim Kopieren des Harness in ein privates
+Projekt hätte man daran denken müssen umzustellen — vergisst man es,
+gelten dort still die Uni-Regeln. Abgeleitet stellt es sich von selbst
+richtig (`Kern/DECISIONS.md`, 2026-08-22).
 
 ## Block 1 — Stil & Naming (Uni-Pflicht, SAE-Conventions Stand 12/2024)
 1. Code ausschließlich Englisch. Kommentare und Ausgaben Englisch oder
@@ -24,7 +36,7 @@ Bei Uni-Projekten gewinnt Block 1 im Konfliktfall, bei privaten Block 2.
    geflaggte Enums Plural. Callbacks beginnen mit `On`/`Handle`.
    **Bewusste Abweichung (2026-08-03):** Konstanten schreiben wir
    SCREAMING_SNAKE (`MAX_TRIES`, `WALK_STOP_DISTANCE`) statt PascalCase —
-   siehe DECISIONS.md.
+   siehe `Kern/DECISIONS.md`.
 6. Format: eine Anweisung pro Zeile (einzeiliger Scope hinter der
    Bedingung erlaubt). Geschweifte Klammern je eigene Zeile (Allman);
    Properties dürfen einzeilig sein.
@@ -85,7 +97,7 @@ History: pro nennenswerter Änderung eine neue Zeile `<Datum> ER <Was>`.
 ### Inline-Kommentare
 - **Default: kein Kommentar.** Ein Inline-Kommentar rechtfertigt sich nur,
   wenn ein kompetenter C#-Leser ohne ihn in die Irre ginge oder hängen
-  bliebe. Das Warum von Designentscheidungen steht in DECISIONS.md und im
+  bliebe. Das Warum von Designentscheidungen steht in den DECISIONS der Schicht und im
   Datei-Header, nicht inline.
 - Wenn nötig, dann **einzeilig**; mehrzeilige Erklärblöcke im
   Methodenkörper vermeiden. Wiederholt der Kommentar den Code nur auf
@@ -106,6 +118,10 @@ Quelle: Code-Rules des Dozenten (v2.2), gefiltert im Brainstorm 2026-07-17.
 ### Felder & Kapselung
 - Default: `[SerializeField] private` fürs Inspector-Wiring — keine
   public Felder (deckt sich mit Block 1 Regel 7).
+- **`_camelCase` für private Felder — überall**, auch in privaten
+  Projekten. Der Dozent verbietet Underscore-Präfixe; die Uni-Regel
+  gewinnt hier bewusst, weil ein einheitliches Muster über alle Projekte
+  mehr wert ist als die Vorliebe einer einzelnen Vorgabe.
 - Keine Singletons/Statics. Abhängigkeiten über Inspector-Wiring;
   gespawnte Objekte bekommen sie per `Init(...)` injiziert.
 
@@ -251,10 +267,12 @@ prüft mit, wenn er Code zeigt oder reviewt:
    durch die Änderung und wird nach dem Coden nachgezogen.
 
 ## Bewusst nicht übernommen
-- ClaudeSetup (Editor-Script baut und verdrahtet Szenen): zurückgestellt —
-  Isor tippt in der Lernphase selbst, Claude erklärt. Wieder prüfen, wenn
-  Isor sicher programmiert.
-- Dozenten-Verbot von Underscore-Präfixen: Uni-Regel `_camelCase` gilt
-  überall, auch in privaten Projekten.
-- Dozenten-Default „public Felder fürs Inspector-Wiring": verworfen
-  zugunsten Kapselung (siehe DECISIONS.md).
+
+Nur echte Verwerfungen — was geprüft und abgelehnt wurde, damit die
+Überlegung nicht wieder von vorn beginnt. Aufgeschobene Aufgaben stehen
+in der ROADMAP, geltende Regeln in den Blöcken oben.
+
+- **Dozenten-Default „public Felder fürs Inspector-Wiring"** — verworfen
+  zugunsten Kapselung (Begründung in `Kern/DECISIONS.md`).
+- **Semantic Versioning für die Spiel-Version** — verworfen zugunsten
+  eines Schemas nach Reifegrad (`Kern/VERSIONIERUNG.md`).

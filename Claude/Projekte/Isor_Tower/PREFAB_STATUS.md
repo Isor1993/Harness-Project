@@ -1,9 +1,9 @@
 # PREFAB_STATUS.md — Prüfstand der Prefabs
 
 Ownership: Nur der Prüfstand jedes Prefabs — welche schon durchgesehen
-sind und was dabei auffiel. **Keine Aufgabenplanung** (das ist ROADMAP
-Punkt 10), **keine Begründungen** (DECISIONS.md), **kein Fertiges**
-(FEATURE_LOG.md).
+sind und was dabei auffiel. **Keine Aufgabenplanung** (das ist
+`ROADMAP.md` → „Prefab-Struktur prüfen und aufräumen“), **keine
+Begründungen** (`DECISIONS/`), **kein Fertiges** (`LOG.md`).
 
 Zweck: Beim Aufräumen nach der Abgabe soll kein Prefab zweimal angefasst
 werden. Isor entscheidet den Status, Claude trägt Befunde ein.
@@ -37,7 +37,7 @@ Stand: 2026-08-16. 33 Prefabs, ohne den TextMesh-Pro-Ordner.
 | Player | offen | |
 | SheepC | offen | Namensschema `C`/`N` ohne erkennbare Bedeutung — beim Durchgang klären. |
 | SheepN | offen | siehe oben |
-| Goblin | offen | Existiert bereits. Relevant für ROADMAP-Punkt 7 (Gegner über den Placer). |
+| Goblin | offen | Existiert bereits. Relevant für `ROADMAP.md` → „GameObject-/Prefab-Aufbau-Konvention“. |
 
 ## Environment
 

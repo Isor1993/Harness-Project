@@ -1,4 +1,4 @@
-# DECISIONS.md — Entscheidungen Entities und KI
+# Entities.md — Entscheidungen Entities und KI
 
 Ownership: Nur Entscheidungen zu Entities und KI — was entschieden wurde, warum,
 und welche Alternativen verworfen wurden. Kein Plan (das ist die
@@ -9,6 +9,7 @@ je ein bis zwei Zeilen.
 
 Überholte Einträge wandern nach `_ARCHIV.md` der Schicht, mit Angabe,
 wodurch sie abgelöst wurden. Ein neuer Eintrag nennt, welchen er ablöst.
+
 
 ## 2026-08-02 — Herde als platzierbares Prefab: Injektion statt Szenen-Referenzen
 Was: `HerdManager.Awake` injiziert sich selbst und den Graveyard-Marker per
@@ -22,6 +23,7 @@ das Prefab vermeiden soll; die geteilte Variante bräuchte ein
 `RuntimeReference<T>`-SO (Werkzeug-Kriterium „Service über Szenengrenze").
 Verworfen: geteilter Graveyard für alle Herden; Szenen-Verdrahtung von
 HerdManager und Graveyard an jedem einzelnen Schaf.
+
 ## 2026-08-02 — Commander als Herdenführer, RVO-Priorität nach Rolle
 Was: Nur das Zähmen des Commanders löst `SetAllSheepHerdMoving(true)` aus —
 ein gezähmtes Normal-Schaf folgt dem Spieler allein, ohne die Herde in Bewegung
@@ -34,6 +36,7 @@ Ein einzelner Herdenführer macht das Zähmen zur Entscheidung statt zur
 Sammelaktion.
 Verworfen: jedes gezähmte Schaf startet die Herdenbewegung (die Herde wäre nicht
 mehr gezielt steuerbar); gleiche Priorität für alle (Deadlocks zwischen Schafen).
+
 ## 2026-08-02 — Dodge nur im Patrol, Tie-Break per EntityId
 Was: `TryEnterDodge` wird nur noch aus `PatrolState` gerufen (aus Regroup,
 HerdMoving und FollowPlayer entfernt). Treffen zwei Schafe aufeinander, weicht
@@ -48,6 +51,7 @@ generische Rückkehr macht `DodgeState` unabhängig davon, welche States es gibt
 ein neuer Bewegungs-State braucht dort keine Änderung.
 Verworfen: Dodge in allen Bewegungs-States; Typ-Switch in `DodgeState`; elegante
 Crowd-Avoidance jetzt bauen (vorgemerkt für nach der Abgabe).
+
 ## 2026-08-03 — Nur ein gezähmtes Schaf, gemerkt in einem SO-Asset
 Was: Der Spieler kann projektweit nur ein Schaf zugleich führen.
 `TamedSheepReference` (ScriptableObject in `Entities/Sheep/SO_Settings/`) hält den
@@ -69,6 +73,7 @@ Verworfen: Zähler im HerdManager (vier Pflegepfade, bei einem vergessenen still
 falsch); Regel pro Herde (heute identisch, bräche still bei der zweiten Herde);
 `CanInteract` um den Interactor erweitern (änderte den Vertrag für alle
 Implementierer, gegen DECISIONS 2026-08-02 „Interface minimal").
+
 ## 2026-08-06 — Zähmen wirkt sofort, schlafende Schafe sind nicht zähmbar
 Was: `Sheep.ToggleTame()` schaltet das Flag um und erzwingt beim Zähmen den
 Wechsel in `FollowPlayerState`; das Freilassen bleibt ungezwungen.
@@ -92,6 +97,7 @@ jedem State eine eigene Tame-Prüfung geben (verteilt dieselbe Logik auf sechs
 Dateien und muss bei jedem neuen State mitgepflegt werden); zusätzliche
 `IsCurrentState<DeadState>()`-Absicherung (`IsAlive` fängt es bereits zweifach
 ab, in `CanInteract` und in `ToggleTame`).
+
 ## 2026-08-16 — `Health` als Komponente statt Basisklasse
 Was: Neue allgemeine `Health`-Komponente unter `Shared/Health/Scripts/`,
 die an jedes Wesen gehängt wird. `SheepHealth` bleibt unangetastet.
@@ -104,6 +110,7 @@ eigene Klasse (hätte den Namen an den Spieler gebunden).
 Nebenbefund: Der Merker `_hasDied` aus `SheepHealth` wurde weggelassen. Der
 Guard `if (!IsAlive) return;` verhindert bereits, dass ein Toter nochmal
 Schaden nimmt — damit kann `OnDied` nicht doppelt feuern.
+
 ## 2026-08-20 — Ball als Bedrohungs-Attrappe statt Gegner
 Was: Ein roter Ball auf Layer `Enemy` mit Rigidbody, anschiebbar durch den
 Spieler über die neue `RigidbodyPusher`-Komponente.

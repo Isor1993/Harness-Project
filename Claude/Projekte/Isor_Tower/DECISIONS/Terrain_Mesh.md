@@ -1,4 +1,4 @@
-# DECISIONS.md — Entscheidungen Terrain und Mesh
+# Terrain_Mesh.md — Entscheidungen Terrain und Mesh
 
 Ownership: Nur Entscheidungen zu Terrain und Mesh — was entschieden wurde, warum,
 und welche Alternativen verworfen wurden. Kein Plan (das ist die
@@ -10,6 +10,7 @@ je ein bis zwei Zeilen.
 Überholte Einträge wandern nach `_ARCHIV.md` der Schicht, mit Angabe,
 wodurch sie abgelöst wurden. Ein neuer Eintrag nennt, welchen er ablöst.
 
+
 ## 2026-07-18 — Terrain-Mesh komplett im Code
 Was: Kein Unity-Terrain und kein vormodelliertes Mesh-Asset — MeshBuilder
 erzeugt das Mesh vollständig aus der Heightmap.
@@ -17,6 +18,7 @@ Warum: Höhen ändern sich pro Seed, Größe/Auflösung kommen aus der Config �
 ein Asset müsste trotzdem per Code verformt werden; MeshCollider braucht
 passende Geometrie; Mesh-Generierung ist Kern der Uni-Aufgabe.
 Verworfen: Unity-Terrain; unterteilte Plane als Basis-Asset.
+
 ## 2026-07-18 — Heightmap-Konvention: [x, z], quadratisch, ein int
 Was: Erster Index = x, zweiter = z — projektweit für alle Heightmap-Zugriffe;
 Auflösung als einzelner int statt Vector2Int.
@@ -24,6 +26,7 @@ Warum: Rampen-Test zeigte 90°-gedrehtes Terrain, weil Schreiber [z, x] und
 Leser [x, z] benutzten; MeshBuilder setzt Quadrate voraus — ungültige
 Rechteck-Auflösungen sollen gar nicht erst einstellbar sein.
 Verworfen: freie Index-Reihenfolge pro Klasse; Vector2Int-Resolution.
+
 ## 2026-07-18 — TerrainConfig flach, nur lesbar, Guard beim Aufrufer
 Was: TerrainConfig als ein flaches SO ([Header]-Gruppen, kein Nesting),
 Zugriff nur über Get-only-Properties (`=> _feld`); die Null-Prüfung der
@@ -35,6 +38,7 @@ nach dem ersten Zugriff zu spät und ein Ersatz-Array würde den Fehler
 verstecken — beim Aufrufer sitzt die vergessbare Inspector-Verdrahtung.
 Verworfen: verschachtelte [Serializable]-Unterklassen (Skizze vom
 16.07.), public Felder/Setter, Guard mit 1×1-Fallback im Generator.
+
 ## 2026-07-18 — Editor-Tool vor Platzierungs-Stufe
 Was: Reihenfolge bis Ende Juli: 1. minimales Editor-Tool, 2. Platzierung
 (Bäume/Gras → Village → Partikel), 3. Texturierung (erster
@@ -44,6 +48,7 @@ Warum: Das Tool beschleunigt jede spätere Iteration (Generieren im Edit
 Mode statt Play Mode), die Tool-Aufgabe ist formativ schon überfällig
 (Feedback einholbar), und es wächst mit jeder Stufe mit.
 Verworfen: erst Platzierung fertig bauen, dann das Tool drumherum.
+
 ## 2026-07-18 — Terrain-Tool als MVP mit EditorWindow (IMGUI)
 Was: View `TerrainToolWindow` (EditorWindow, OnGUI/IMGUI), Presenter
 `TerrainToolPresenter` (einzige Tool-Logik: prüfen, Pipeline rufen,
@@ -55,6 +60,7 @@ Abhängigkeit hält das Model testbar; IMGUI ist für ein kleines Fenster
 der einfachste Weg.
 Verworfen: UI Toolkit (mehr Boilerplate ohne Nutzen bei dieser Größe);
 Logik direkt im Fenster (Pattern wäre nur Etikett).
+
 ## 2026-07-18 — Terrain-Material wohnt in der Config
 Was: TerrainConfig hält das Terrain-Material (leer = Default der aktiven
 Render-Pipeline); der Presenter weist es bei jedem Generate zu, nicht
@@ -67,6 +73,7 @@ Verworfen: Material-Feld im Tool-Fenster (zweite Quelle neben der
 Config); hartes Default-Diffuse; Auto-Regenerieren bei Config-Änderung
 (geparkt als spätere Checkbox — Performance beim Slider-Ziehen,
 Absichtsprinzip).
+
 ## 2026-07-19 — Pipeline-Klassen loggen nicht
 Was: Reine Pipeline-Funktionen (Generator, Modifier, MeshBuilder)
 bleiben still — kein Debug.Log, keine Warnings; Nutzer-Feedback ist
@@ -75,6 +82,7 @@ Warum: Radius 0 ist gewollter Aus-Schalter, kein Fehler; Logs in
 Zellen-Schleifen wären Spam; was nie geloggt wird, muss für die
 Uni-Abgabe nie entfernt werden.
 Verworfen: Warning bei Radius 0; Debug.Logs mit späterem Ausbau.
+
 ## 2026-07-19 — Chunk-Terrain: 2048 m, Start 2 m/Quad, 8×8 à 129
 Was: Terrain wird in Chunks gebaut; Config bekommt chunksPerEdge +
 chunkResolution statt heightmapResolution. Welt 2048 m Kante, Start-
@@ -91,6 +99,7 @@ abgefragt.
 Verworfen: Einzelmesh mit 32-Bit-Indizes (kein Culling, alles-oder-
 nichts-Regenerierung); 1 m/Quad sofort (4× Kosten bei jedem Tuning-
 Klick ohne sichtbaren Mehrwert); Threading jetzt (Messdaten fehlten).
+
 ## 2026-07-19 — Wasserspiegel: Einheit, Schalter, Darstellung
 Was: waterLevel normalisiert 0–1 (verglichen nach der HeightCurve),
 _waterEnabled als explizites Bool, Darstellung als eine Plane auf
@@ -107,6 +116,7 @@ Verworfen: Meter-Wert (Seen schrumpfen beim Hochskalieren); 0-als-Aus-
 Konvention wie beim Plateau (Wert ginge beim Ausschalten verloren);
 gekaufte Fluss-Assets für die Abgabe (bewertet wird eigener Code;
 Flüsse sind eine eigene Pipeline-Stufe → Kür nach dem Portfolio).
+
 ## 2026-07-19 — HeightCurve clampen, Octave-Offsets begrenzen
 Was: Generator wickelt Evaluate in Mathf.Clamp01; Octave-Offsets laufen nur
 noch ±10000 (benannte Konstante MaxOctaveOffset) statt ±100000.
@@ -116,6 +126,7 @@ Eingabe", 2026-07-18), daher Laufzeit-Clamp. Große Offsets sampeln Perlin bei
 ~100000, wo float gröber auflöst als der 2-m-Vertexschritt → identische
 Nachbarwerte → Terrassen bei Auflösung 129 (nicht bei 40).
 Verworfen: Kurve ungeclampt lassen; Offsets bei ±100000 (Terracing).
+
 ## 2026-07-19 — Nahtlose Normalen über Padding-Ring statt RecalculateNormals
 Was: HeightmapGenerator gibt die Heightmap um 1 Vertex gepaddet zurück (Ring =
 Nachbarhöhen, nicht im Mesh); MeshBuilder baut nur das Innere und rechnet
@@ -131,6 +142,7 @@ auch die Beleuchtung).
 Verworfen: Rand-Normalen nachträglich über alle Meshes mitteln (Cross-Chunk-
 Pass, Float-Positionsabgleich, fehleranfällig); Einzelmesh mit 32-Bit-Indizes
 (kein Culling).
+
 ## 2026-07-29 — Welt-Wahrheit (Seed oder Szene): vertagt, Befund festgehalten
 Was: **Keine Entscheidung.** Festgehalten wird nur die Herleitung, damit sie
 nicht verloren geht: Aus dem Koop-Modell (GDD — Gast joint in die Welt des
@@ -147,6 +159,7 @@ zustandslose Pipeline) halten die Tür ohnehin offen, ohne Mehrarbeit.
 Verworfen: jetzt auf „Seed ist die Wahrheit" festlegen (nicht
 entscheidungsreif); den Befund gar nicht festhalten (Herleitung ginge
 verloren und müsste neu erarbeitet werden).
+
 ## 2026-08-19 — Welt-Begrenzung gehört ins Terrain-Tool, nicht in ein Laufzeit-Skript
 Was: Die vier Wände baut der `TerrainToolPresenter` wie den Wasserspiegel,
 als Kinder des Terrain-Roots. Kein `MonoBehaviour`, kein Objekt in der Szene,

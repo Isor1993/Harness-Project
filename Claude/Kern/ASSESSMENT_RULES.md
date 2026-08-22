@@ -2,7 +2,13 @@
 
 Ownership: Der Session-Typ „Zeugnis" vollständig — Auslöser, Ablauf,
 Belegpflicht, Aufbau, Notenskala, Schreibregeln, Ablage. Die Zeugnisse
-selbst stehen in ASSESSMENT_LOG.md.
+selbst liegen in `Kern/Zeugnisse/`, eine Datei je Termin.
+
+**Der Maßstab kommt aus der aktiven Schicht.** Das Verfahren hier ist
+allgemein — bewertet wird gegen die Kriterien der Schicht, die gerade
+gilt. Solange die Uni-Schicht besteht, sind das die `ASSIGNMENT_*`-Texte
+und die UK-Notenskala unten. Fällt sie weg, bleibt das Ritual heil und
+braucht nur einen neuen Maßstab.
 
 Warum eigene Datei: „Zeugnis" ist ein Modus, keine Ausgabeform. WORKFLOW.md
 führt ihn als vierten Session-Typ und verweist hierher — dieselbe Trennung
@@ -24,11 +30,15 @@ Die Session **liest und bewertet, sie baut nicht.**
 - Kein Code wird geändert, keine Abgabedatei angefasst, keine
   Entscheidung getroffen. Was auffällt, wird Befund — nicht Umbau.
 - Fremde Dateien bleiben unberührt. Geschrieben wird ausschließlich in
-  ASSESSMENT_LOG.md und ARTIFACT_INDEX.md; die ROADMAP wird um die
-  Befunde als Aufgaben ergänzt, sonst nichts.
-- FEATURE_LOG, DECISIONS, TDD_NOTES und der Knowledge-Ordner bleiben
-  leer ausgehend von dieser Session: Es wurde nichts gebaut, nichts
-  entschieden und nichts gelernt, das dorthin gehört.
+  `Kern/Zeugnisse/<Datum>.md` und `Kern/ARTIFACT_INDEX.md`; die ROADMAP
+  der betroffenen Schicht wird um die Befunde als Aufgaben ergänzt,
+  sonst nichts.
+- LOG, DECISIONS und TDD_NOTES bleiben unberührt: Es wurde nichts gebaut
+  und nichts entschieden.
+- **Die Knowledge-Frage wird trotzdem gestellt** (WORKFLOW.md,
+  Doku-Pflicht). Die Antwort ist bei einem Zeugnis in aller Regel „nein" —
+  fällt beim Bewerten aber etwas Übertragbares auf, darf es festgehalten
+  werden. Die Frage fällt nie aus, die Antwort darf leer sein.
 - Reine Lese-Session heißt auch: Zwischenstände (etwa aus `.docx`
   gezogener Text) gehören in den Scratchpad, nie ins Projekt.
 - Am Ende steht ein Commit-Vorschlag wie bei jeder Session (WORKFLOW.md,
@@ -37,14 +47,21 @@ Die Session **liest und bewertet, sie baut nicht.**
 ## Belegpflicht — vor dem Schreiben zu lesen
 Ein Zeugnis wird nie aus der Erinnerung oder aus alten Zeugnissen
 geschrieben. Vor jedem Zeugnis werden gelesen:
-1. `ROADMAP.md`, `FEATURE_LOG.md`, `DECISIONS.md` — Stand und Begründungen
-2. Alle `ASSIGNMENT_*.md` — die Bewertungskriterien im Originaltext
+1. ROADMAP, LOG und DECISIONS der bewerteten Schicht — Stand und
+   Begründungen
+2. **Die Aufgabentexte, abgeglichen gegen die Teilabgaben.** Nicht „alle
+   vorhandenen", sondern: Jede Teilabgabe des Portfolios braucht einen
+   hinterlegten `ASSIGNMENT_*`-Text. Fehlt einer, wird das im Zeugnis
+   ausdrücklich vermerkt, statt still zu schätzen.
+   *Grund:* Die alte Fassung las, was da war — beide Zeugnisse von 2026
+   haben sieben Teilabgaben bewertet und hatten die Kriterien für drei.
+   Ein Verzeichnis merkt nicht, dass etwas fehlt.
 3. Die aktuellen Abgabedokumente selbst (`.docx` unter
    `C:\IsorBackup\01_Uni\Semester_<n>\Arbeitsdateien\`), nicht nur die Notizen
 4. Mindestens fünf repräsentative `.cs`-Dateien im Original, darunter
    eine neue, eine alte und eine als problematisch vermerkte
 5. `git log` des betroffenen Repos
-6. Das letzte Zeugnis in `ASSESSMENT_LOG.md` — für den Vergleich
+6. Das jüngste Zeugnis in `Kern/Zeugnisse/` — für den Vergleich
 
 ## Aufbau eines Eintrags
 Feste Reihenfolge, damit zwei Zeugnisse nebeneinander lesbar sind:
@@ -57,7 +74,12 @@ Feste Reihenfolge, damit zwei Zeugnisse nebeneinander lesbar sind:
 5. **Profil Person** — Arbeitsweise, Muster, Risiken
 6. **Profil Coding** — Stand gegen Semester, was sitzt, was fehlt
 7. **Nächster Schritt** — konkrete Reihenfolge bis zum nächsten Termin
-8. **Prüfanker fürs nächste Mal** — was beim nächsten Zeugnis
+8. **Prüfanker des letzten Zeugnisses — beantwortet.** Pflicht, sobald es
+   einen Vorgänger gibt: Jeder dort gesetzte Anker wird durchgegangen und
+   beantwortet. Dieser Abschnitt macht aus zwei Momentaufnahmen eine
+   Messreihe — ohne ihn sind es zwei unverbundene Bewertungen.
+   Beim allerersten Zeugnis entfällt er.
+9. **Prüfanker fürs nächste Mal** — was beim nächsten Zeugnis
    nachgesehen wird, damit der Vergleich messbar ist
 
 ## Notenskala

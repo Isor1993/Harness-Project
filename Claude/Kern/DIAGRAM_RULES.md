@@ -3,10 +3,21 @@
 Ownership: Nur der Umgang mit den skriptgenerierten `.drawio`-Diagrammen —
 Ablage, Arbeitsteilung, Bedienregeln, Prüfung. Die Begründung, warum
 Diagramme erzeugt statt gezeichnet werden, steht in DECISIONS 2026-08-06;
-was gebaut wurde, im FEATURE_LOG.
+was gebaut wurde, im LOG der jeweiligen Schicht.
 
 ## Ablage
-- Quellen: `C:\IsorBackup\01_Uni\Semester_2\Diagramme_Quellen\`
+
+**Der Ablageort folgt der Schicht, nicht dieser Datei.** Ein Diagramm,
+das ein Projektsystem beschreibt, liegt beim Projekt; eines, das nur für
+eine Abgabe entstand, bei der Uni. Hier steht das Verfahren, nicht der
+Pfad — sonst wäre die Datei nach einem Semesterwechsel falsch und beim
+Kopieren in ein anderes Projekt unbrauchbar.
+
+Der jeweils geltende Ort steht in der ROADMAP bzw. den DECISIONS der
+Schicht. Stand 2026-08-22 liegen die neun vorhandenen Quellen noch unter
+`01_Uni\Semester_2\Diagramme_Quellen\`; der Umzug in die Projekt-Ablage
+steht auf der Projekt-ROADMAP.
+
 - Skripte: `C:\IsorBackup\05_Werkzeuge\Vorlagen\`
   - `uml_drawio.py` — Kästen, Sinnbilder, Linienarten, Erhalt der Handarbeit
   - `pruefer.py` — vergleicht ein Diagramm gegen den Quellcode
@@ -87,6 +98,20 @@ Nicht erhalten wird ein Ende ohne Verbindung (siehe Regel 1).
 - Vereinfachungen gegenüber dem Code (zusammengefasste Schleifen, doppelte
   Prüfungen nur einmal gezeigt) gehören in den Skriptkopf. Sonst lässt sich im
   Prüfungsgespräch nicht sagen, ob eine Abweichung Absicht oder Fehler ist.
+
+## Zustandsdiagramme (dritter Diagrammtyp)
+- Skript-Muster `zustand_<name>.py`, Quelle `Zustand_<Name>.drawio`.
+  Bisher genau eines: die Sheep-FSM (2026-08-11).
+- Bedienung, Ablage und Erhalt der Handarbeit wie bei den Ablaufplänen.
+- **Kein Prüferlauf.** Der Prüfer vergleicht Membernamen in
+  Klassenkästen; ein Zustandsdiagramm enthält Zustandsnamen und
+  Übergangsbedingungen. Gegenprüfung von Hand gegen die FSM-Klassen, die
+  Quellenangabe im Skriptkopf ist die einzige Absicherung.
+- Die Zuordnung läuft über die **Id** des Kastens, nicht über den Text —
+  Zustandsnamen können sich wiederholen. Bedienregel 3 (nicht zwischen
+  zwei Dateien kopieren) greift hier deshalb doppelt.
+- An diesem Typ ist Bedienregel 5 aufgefallen (fünf Kanten betroffen):
+  Ein bewusst frei gelassenes Linienende muss auch im Skript frei sein.
 
 ## Feste Darstellungsvorgaben
 Zentral in `uml_drawio.py`, damit alle Diagramme gleich aussehen. Beim nächsten

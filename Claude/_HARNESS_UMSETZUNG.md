@@ -158,7 +158,22 @@ Fakten, keine Aufgaben** — sie gehören daher nicht in eine ROADMAP:
       gelöschte Sammeldatei)
 - Trennskript liegt im Scratchpad und wird für DECISIONS wiederverwendet
 
-## Phase 4 — Einzeldateien nachziehen
+## Phase 4 — Einzeldateien nachziehen — **erledigt 2026-08-22**
+
+Zusätzlich zur Planung erledigt: eine **Gesamtprüfung auf tote Verweise**
+über alle Dateien. Gefunden und repariert wurden Verweise auf
+`FEATURE_LOG.md` und `ASSESSMENT_LOG.md` in fünf aktiven Regeldateien,
+nackte `DECISIONS.md`-Verweise in CODE_GUIDELINES und GDD, zwei falsche
+ROADMAP-Nummernverweise, und ein Fehler von Claude: Die sieben neuen
+Projekt-Entscheidungsdateien trugen alle den Titel `# DECISIONS.md`
+statt ihres eigenen Namens. Außerdem fehlte zwischen den Einträgen die
+Leerzeile — das Trennskript hatte zu streng getrimmt.
+
+Zwei Einträge in `Kern/DECISIONS.md` benutzen weiter die alte
+Modus-Sprache. Sie wurden **nicht** archiviert, weil ihre Begründung
+weiter gilt — sie haben stattdessen eine Zeile „Fortgeführt am
+2026-08-22" mit Zeiger auf die geltende Fassung bekommen (E9).
+
 
 **CLAUDE.md** — **erledigt 2026-08-22, vorgezogen**
 Grund fürs Vorziehen: Nach dem Umzug von Phase 2 zeigte ihre Leseordnung

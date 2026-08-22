@@ -1,11 +1,18 @@
 # GDD.md — Design-Absicht Isor's Tower
 
 Ownership: Design-Absicht des Spiels — was es sein soll, nicht wie es
-gebaut wird. Technische Umsetzung gehört in DECISIONS.md / TDD_NOTES.md.
+gebaut wird. Technische Umsetzung gehört in `DECISIONS/` und `TDD_NOTES.md`;
+Aufbau und Pflege dieser Datei regelt `Kern/GDD_RULES.md`.
 
-Status: Short GDD, Stand 2026-07-29. Gebaut ist davon noch nichts —
-alles hier ist Absicht. Wächst mit; „offen" ist ein gültiger Eintrag und
-markiert die Stellen, an denen die Architektur eine Tür offen halten muss.
+Short GDD, wächst mit. **`offen` ist ein gültiger Eintrag** und markiert
+die Stellen, an denen die Architektur eine Tür offen halten muss — wer
+sie verschweigt, baut die Tür zu. Kein Stand-Stempel: Es gibt keine
+Prüfung, die ihn kontrollieren würde (`Kern/DOC_RULES.md`, Abschnitt 7).
+
+Vom eigentlichen Design ist bisher nichts gebaut — Bauen mit Grid,
+kaufbare Häuser, Turm, Portale, Handwerk, Quests stehen alle noch aus.
+Was existiert (Village-Szene, Terrain, Gras, Schafe, Menüs), ist die
+technische Grundlage darunter.
 
 ## Pitch
 Ein RPG mit zwei Hälften: ein bleibendes Zuhause im Dorf, das der Spieler
@@ -84,10 +91,19 @@ Floor sind nie gleichzeitig aktiv.
 Isor's Tower ist das durchgehende Studienprojekt: Jedes Semester zahlt auf
 dasselbe Spiel ein statt auf getrennte Übungen. Ziel ist ein
 veröffentlichungsfähiges Ergebnis, mindestens eine Demo.
-Priorität: Erst das laufende Semester abschließen (Portfolio 2026-08-21),
-danach das Bestehende am GDD ausrichten.
+Priorität: Das Portfolio von Semester 2 ist am 2026-08-20 hochgeladen.
+**Seit dem 2026-08-22 läuft die zweite Phase** — das Bestehende wird am
+GDD ausgerichtet. Reihenfolge in `ROADMAP.md`, Abschnitt „Basiszustand
+nach der Abgabe".
 
 ## Offene Design-Fragen
+
+**Dieses Dokument besitzt die offenen Design-Fragen.** Die ROADMAP darf
+sie als Aufgabe aufnehmen, aber nur über einen Verweis — nie durch
+Abschreiben. Beantwortet wird eine Frage in den DECISIONS; erst danach
+wird sie hier gestrichen und die Absicht als feste Aussage ins Kapitel
+geschrieben. Sonst stünde dieselbe Frage an zwei Orten.
+
 1. Endgültige Größe des Village — bleibt es bei ~2 km oder wächst es um ein
    Vielfaches? (Entscheidet, ob die Welt streamen muss.)
 2. Ein hoher Turm oder mehrere Türme mit eigenen Floor-Spannen?
@@ -96,3 +112,19 @@ danach das Bestehende am GDD ausrichten.
 4. Größenraster der Floors (klein / mittel / groß in Metern).
 5. Wird das Village-Terrain handgebaut, mit einem eigenen Tool erweitert,
    oder einmalig generiert und dann eingefroren?
+
+## Entwurf — noch nicht einsortiert
+
+Ergebnisse aus Brainstorm- und Design-Abschnitten landen hier sofort, roh
+und unsortiert. Ein Eintrag hier ist **noch keine Absicht** — er bindet
+nichts, und Claude darf sich nicht darauf berufen, als wäre er
+entschieden. Einsortiert wird, wenn das zugehörige Kapitel das nächste
+Mal angefasst wird; aus Entwurf wird feste Absicht, sobald Isor sie
+bestätigt und sie in ihr Kapitel wandert.
+
+Jeder Eintrag trägt sein Datum. Steht einer nach drei Monaten noch hier,
+ist er entweder Absicht oder überholt — dann wird geklärt, welches.
+
+Regeln dazu: `Kern/GDD_RULES.md`.
+
+*(zurzeit leer)*

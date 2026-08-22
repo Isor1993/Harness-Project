@@ -1,4 +1,4 @@
-# DECISIONS.md — Entscheidungen UI, Menüs und HUD
+# UI.md — Entscheidungen UI, Menüs und HUD
 
 Ownership: Nur Entscheidungen zu UI, Menüs und HUD — was entschieden wurde, warum,
 und welche Alternativen verworfen wurden. Kein Plan (das ist die
@@ -9,6 +9,7 @@ je ein bis zwei Zeilen.
 
 Überholte Einträge wandern nach `_ARCHIV.md` der Schicht, mit Angabe,
 wodurch sie abgelöst wurden. Ein neuer Eintrag nennt, welchen er ablöst.
+
 
 ## 2026-08-02 — Pause-Menü-Navigation: Hover setzt Selection, Startauswahl im Controller
 Was: Maus-Hover setzt die EventSystem-Selection (`SelectOnHover`, `Shared/UI/`),
@@ -23,6 +24,7 @@ eigenes Shared-UI-Script, weil Hover-Verhalten pro Element in Unity auf dem Elem
 wohnt (kein Smell).
 Verworfen: klebrige Re-Selection im GameController-Update als Hauptlösung
 (Hover-Sync ist sauberer); Voll-Moduswechsel jetzt (Aufwand → Polish).
+
 ## 2026-08-14 — Einstellungen über PlayerPrefs statt Singleton
 Was: `GameSettings` liegt in jeder Szene einmal auf einem aktiven Objekt und
 liest beim Start aus `PlayerPrefs`. Kein `DontDestroyOnLoad`.
@@ -32,6 +34,7 @@ existiert über beide Szenen hinweg; ihm muss je Szene nur einmal gesagt
 werden, was gilt. Deckt sich mit dem Singleton-Verbot in CODE_GUIDELINES.
 Verworfen: Singleton mit DontDestroyOnLoad; Einstellungen als
 ScriptableObject halten (überlebt den Programmstart nicht).
+
 ## 2026-08-14 — Gespeichert wird die Empfindlichkeit, nicht die Reglerstellung
 Was: Unter `MouseSensitivity` liegt der fertige Wert (0,02 bis 0,18), nicht
 die Sliderposition 0–1. Die Reglerstellung wird beim Öffnen per
@@ -40,6 +43,7 @@ Warum: `PlayerLook` soll den Wert benutzen können, ohne den Slider und
 dessen Wertebereich zu kennen. Andersherum müsste jede Klasse, die die
 Empfindlichkeit liest, die Umrechnung mitschleppen.
 Verworfen: Sliderwert speichern und überall umrechnen.
+
 ## 2026-08-14 — Umschalt-Container tragen keine Layout Group
 Was: Ein Panel, das nur zwischen Ansichten umschaltet (`MainMenuUI`,
 `PauseMenuRoot`), bekommt keine Layout Group. Die sitzt jeweils auf dem
@@ -49,6 +53,7 @@ Warum: Eine Layout Group ordnet **alle** Kinder an — auch ein Vollbild-
 Hintergrund wird dann in die Reihe gestellt und verschiebt alles. Genau
 daran ist die Ausrichtung des Options-Fensters zunächst gescheitert.
 Verworfen: Layout Group aufs Vollbild-Panel legen.
+
 ## 2026-08-14 — Options-Panel als geteiltes Prefab trotz szenenspezifischer Verweise
 Was: Ein `OptionsPanel`-Prefab für Hauptmenü und Pausenmenü. Die vier
 Slider-Verbindungen zum lokalen `GameSettings` und die beiden
@@ -59,6 +64,7 @@ Großteil der Pflege. Ohne Prefab müsste jede Layout-Änderung doppelt
 gemacht werden, und genau daran war die Ausrichtung vorher gescheitert.
 Szenenspezifische Verweise gehören ohnehin in die Szene.
 Verworfen: zwei getrennte Options-Fenster.
+
 ## 2026-08-15 — Beschädigtes Prefab ersetzen statt reparieren
 Was: Das nicht reagierende Options-Panel im Dorf wurde durch eine frische
 Kopie aus dem Hauptmenü ersetzt, nicht analysiert und geflickt.
@@ -69,6 +75,7 @@ umgehängt wurde, kann intern Referenzen verlieren, die von außen nicht
 sichtbar sind. Der Austausch dauerte fünf Minuten.
 Verworfen: weitersuchen bis zur Ursache. Merksatz für künftige Fälle: Bei
 unerklärlichem UI-Verhalten früh eine frische Kopie gegentesten.
+
 ## 2026-08-15 — Menüzustand beim Öffnen zurücksetzen
 Was: `GameController.Pause()` schaltet die Button-Seite ein und das
 Options-Panel aus, bei jedem Öffnen.
@@ -77,6 +84,7 @@ bekam beim nächsten Öffnen wieder die Optionen — ohne sichtbaren Weg
 zurück. Der Zustand muss beim Öffnen definiert sein, nicht beim Schließen.
 Verworfen: beim Schließen aufräumen (greift nicht, wenn über ESC statt
 über den Zurück-Knopf geschlossen wird).
+
 ## 2026-08-16 — Eine Tafel für alle drei Menüs
 Was: Hauptmenü, Pausenmenü und Options bekommen dieselbe zentrierte
 Tafel — 760 breit, `17130F` bei Alpha 224, `UISprite` sliced mit Pixels
@@ -88,6 +96,7 @@ zusammengewürfelt (Isors Vorgabe vom 14.08.).
 Verworfen: „Randmenü" ohne Kasten, Titel und Einträge linksbündig aufs
 Bild gesetzt. Sieht im Hauptmenü besser aus, hätte aber neben der
 Pause-Tafel eine zweite Formensprache ergeben.
+
 ## 2026-08-16 — Dorf-Screenshot als Menühintergrund
 Was: Das blaue `BackgroundPanel` wird durch ein Standbild aus dem Dorf
 ersetzt (Abenddämmerung, zwei Fackeln als Rahmen, Mitte frei), über die
@@ -98,6 +107,7 @@ Warum: Der Screenshot wird ohnehin für die Abgabe gebraucht
 Seitenverhältnis, ohne zu verzerren; beschnitten wird am Rand, deshalb
 bleibt die Bildmitte für die Tafel frei.
 Verworfen: das Farbfeld nur abdunkeln; `Preserve Aspect` (ergäbe Balken).
+
 ## 2026-08-16 — Oswald Bold als Titel- und Button-Schrift
 Was: `Oswald Bold SDF` für Titel und Buttons, `LiberationSans SDF` bleibt
 für Labels und Zahlenwerte. Beide Assets von `TextMesh Pro/Examples &
@@ -108,6 +118,7 @@ Rollen genügen. Der Umzug ist nötig, weil der Examples-Ordner zum
 Löschen gedacht ist — wäre er weg, blieben alle Texte leer.
 Verworfen: eine externe Schrift herunterladen (Lizenzfrage und
 Zeitaufwand vor der Abgabe).
+
 ## 2026-08-16 — Ein Schleier je Ebene
 Was: Genau ein abdunkelndes Vollbild-Image pro blockierender Ebene. Im
 Dorf ist das `PauseMenuRoot` (Alpha 120), die Options-Instanz dort steht
@@ -120,6 +131,7 @@ dem, was blockiert, nicht an jedes Panel.
 Verworfen: das Options-Panel generell schwächer machen (nimmt dem
 Hauptmenü die Trennung); die Abweichung im Dorf ins Prefab applizieren
 (schaltete den Schleier auch im Hauptmenü ab).
+
 ## 2026-08-16 — HUD mit echten Daten statt gemalter Anzeigen
 Was: Das In-Game-HUD bekommt bewusst Anzeigen, für die es noch wenig
 Spielinhalt gibt (Spielername, Lebensleiste, Tag und Uhrzeit,
@@ -135,6 +147,7 @@ sichtbar und zahlt damit auf Lernziel S3 ein.
 Verworfen: Zustandsbalken frei über jedem Schaf (Weltraum-Anzeige,
 Nachführen, Kamera-Ausrichtung, Distanz-Ausblendung — zu teuer); die
 Anzeigen ganz weglassen, weil noch wenig dahintersteht.
+
 ## 2026-08-16 — Ein Schalter fürs ganze HUD, nur auf dem Root
 Was: Alle HUD-Teile liegen unter `HudRoot`. Der `GameController` schaltet
 beim Pausieren ausschließlich dieses Objekt, nie die einzelnen Anzeigen.
@@ -146,6 +159,7 @@ der Spieler bewusst ausgeschaltet hat (Isor).
 Verworfen: jedes Element einzeln schalten; den Root-Schalter im Skript auf
 dasselbe Objekt legen, auf dem das Skript sitzt (schaltet sich selbst ab
 und wacht nie wieder auf — Fehler, der beim `TamedSheepDisplay` auftrat).
+
 ## 2026-08-19 — Ladescreen als Panel im Hauptmenü statt eigener Szene
 Was: Der Ladescreen ist ein viertes Kind im `MainMenuUI`-Canvas, keine eigene
 `Loading.unity`. Der `LoadingScreenController` sitzt auf dem immer aktiven
@@ -160,6 +174,7 @@ könnte.
 Verworfen: eigene Ladeszene (Isors erster Vorschlag); Canvas mit
 `DontDestroyOnLoad`, das auch die Zeit nach der Aktivierung abdecken würde —
 das wird erst gebraucht, wenn die Laufzeit-Platzierung kommt.
+
 ## 2026-08-19 — Echter Ladefortschritt, nur weich nachgezogen
 Was: Angezeigt wird `operation.progress / 0.9`, geglättet über
 `Mathf.MoveTowards` mit `_fillSpeed` (0,5 Balkenlängen pro Sekunde, also
@@ -178,6 +193,7 @@ Bedingung; Coroutine statt `Update` (dasselbe Verhalten mit einem
 Sprachkonstrukt mehr, das im Projekt sonst nirgends vorkommt).
 `Time.unscaledDeltaTime` statt `deltaTime`, damit ein vergessenes
 `timeScale = 0` den Balken nicht einfriert.
+
 ## 2026-08-19 — Eigenes weißes Sprite für Fortschrittsbalken
 Was: `Shared/UI/Textures/UI_WhitePixel.png`, 8×8 Pixel reines Weiß, selbst
 erzeugt. Liegt unter dem `BarFill` des Ladebalkens.
