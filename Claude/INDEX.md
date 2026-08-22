@@ -38,7 +38,7 @@ muss vollständig sein (DOC_RULES, Abschnitt 8).
 | `Kern/GLOSSARY.md` | (geplant) Begriffe mit fester Bedeutung — entsteht am Ende aus den fertigen Dateien |
 | `Kern/ROADMAP.md` | Baureihenfolge des Harness — nur Offenes, ohne Datum |
 | `Kern/LOG.md` | Chronik des Harness: was wann gebaut wurde — Ereignisse, nie geändert, kein Archiv |
-| `Kern/DECISIONS.md` | (geplant) Entscheidungen zum Harness |
+| `Kern/DECISIONS.md` | Entscheidungen zum Harness und zu den projektübergreifenden Code- und Ordner-Konventionen (27) |
 | `Kern/_ARCHIV.md` | Überholte Kern-Einträge, jeder mit Angabe, wodurch er abgelöst wurde |
 
 ## Uni — studienspezifisch, herausnehmbar
@@ -68,17 +68,17 @@ muss vollständig sein (DOC_RULES, Abschnitt 8).
 | `Projekte/Isor_Tower/GDD.md` | Design-Absicht des Spiels — zugleich Markdown-Manuskript der Abgabe |
 | `Projekte/Isor_Tower/TDD_NOTES.md` | Stoffsammlung fürs TDD — geprüfte Fakten und Zahlen in zehn Themenblöcken, kumulativ über alle Semester |
 | `Projekte/Isor_Tower/PREFAB_STATUS.md` | Prüfstand jedes Prefabs — Arbeitsliste mit Ende, wird erzeugt |
-| `Projekte/Isor_Tower/DECISIONS/` | Entscheidungen je System: Terrain, UI, Welt, Audio, Entities |
+| `Projekte/Isor_Tower/DECISIONS/Platzierung.md` | Entscheidungen zu Poisson, Dichte, Placer, Exclusion, Kachelung (21) |
+| `Projekte/Isor_Tower/DECISIONS/UI.md` | Entscheidungen zu Menüs, HUD, Optionen, Ladescreen (16) |
+| `Projekte/Isor_Tower/DECISIONS/Terrain_Mesh.md` | Entscheidungen zu Heightmap, Mesh, Chunks, Config, Wasserspiegel (13) |
+| `Projekte/Isor_Tower/DECISIONS/Welt.md` | Entscheidungen zu Szene, Hierarchie, Interaktion, Tag/Nacht (11) |
+| `Projekte/Isor_Tower/DECISIONS/Audio.md` | Entscheidungen zu Mixer, Klangquellen, Audio-Library (9) |
+| `Projekte/Isor_Tower/DECISIONS/Entities.md` | Entscheidungen zu Schafen, Herden, FSM, Health (7) |
+| `Projekte/Isor_Tower/DECISIONS/Gras.md` | Entscheidungen zu Instancing, LOD, Gras-Verteilung (5) |
 | `Projekte/Isor_Tower/ROADMAP.md` | Baureihenfolge des Projekts: Basiszustand, Aufräumen, HUD, Beobachtungspunkte, Politur |
 | `Projekte/Isor_Tower/LOG.md` | Chronik des Projekts: was wann gebaut und geprüft wurde |
 | `Projekte/Isor_Tower/SYSTEME.md` | (geplant) Was gerade im Projekt steckt — wird erzeugt |
 | `Projekte/Isor_Tower/_ARCHIV.md` | (geplant) Überholte Projekt-Einträge |
-
-## Noch nicht aufgeteilt — werden in Phase 3 zerlegt
-
-| Dokument | Zuständigkeit |
-|---|---|
-| `DECISIONS.md` | Entscheidungen: was, warum, verworfene Alternativen — wird auf neun Dateien verteilt |
 
 ## Temporär — werden nach der Überholung archiviert
 

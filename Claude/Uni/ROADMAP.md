@@ -20,6 +20,11 @@ Format: `- [ ] **Titel** — ein bis drei Sätze, was zu tun ist und warum.`
   wurde erst am Schluss einsortiert; das nächste Mal steht der Baum von
   Anfang an.
 
+- [ ] **`Abgabe_Final` aufräumen.** Dort liegen neben den zwei ZIPs noch
+  die zwei Portfolio-Ordner, byteidentisch mit denen in `Abgabe\`. Nach
+  Isors Ablauf gehört in `Abgabe_Final` nur das ZIP — der Rest ins
+  Archiv, sobald der Upload bestätigt ist.
+
 ## Semester 3 (beginnt in rund zwei Wochen, Stand 2026-08-22)
 - [ ] **Ordner `Uni/Semester_3/` anlegen**, sobald die Aufgaben da sind,
   und die Aufgabentexte gleich zu Beginn ablegen.

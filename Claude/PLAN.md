@@ -24,9 +24,10 @@ Reihenfolge: Regeln → Struktur → Inhalt → Automatik.
 - [x] **Phase 2 — Struktur:** Schicht-Ordner angelegt, PLAN.md und
       Kern/STOERUNGEN.md gebaut, 17 Dateien in ihre Schicht verschoben,
       INDEX nach Schichten neu geschrieben, `_split_check.txt` archiviert
-- [ ] **Phase 3 — Umzüge**, kleinste zuerst: ASSESSMENT_LOG (2) →
-      FEATURE_LOG (73) → ROADMAP (546 Zeilen Vergangenheit) →
-      TDD_NOTES (85) → DECISIONS (133). Commit nach jedem Schritt.
+- [x] **Phase 3 — Umzüge**, alle fünf durch und jeder einzeln geprüft:
+      ASSESSMENT_LOG → 2 Zeugnisdateien · FEATURE_LOG → 3 Chroniken ·
+      ROADMAP → 3 ROADMAPs + 2 Archive (708 → 204 Zeilen Planung) ·
+      TDD_NOTES → 10 Themenblöcke · DECISIONS → 9 Dateien + Archiv
 - [ ] **Phase 4 — Einzeldateien nachziehen** (14 Stück)
 - [ ] **Phase 5 — Skripte:** INDEX, PREFAB_STATUS, Backup
 - [ ] **Phase 6 — Befehle:** `/sichern`, `/wechsel`, `/ende`;

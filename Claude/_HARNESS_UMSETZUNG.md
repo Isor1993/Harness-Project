@@ -53,17 +53,26 @@ Phase 3 **aufgeteilt** statt verschoben werden.
 
 ## Phase 3 — Große Bestände umziehen (skriptgestützt)
 
-**DECISIONS (1.790 Zeilen, 133 Einträge)**
-- [ ] Zuordnungsliste erstellen: 133 Zeilen „Titel → Zieldatei"
-- [ ] die ~13 Konventions-Einträge einzeln entscheiden, in Viererpaketen (E8)
-- [ ] die geschätzt 8–10 weiteren Grenzfälle einzeln
-- [ ] Skript trennt an `## `-Überschriften, kein Copy-Paste (E10)
-- [ ] Nachzählung 133 rein / 133 raus — bei Differenz wird nichts
-      geschrieben (E10)
-- [ ] alte `DECISIONS.md` nach `99_Archiv\_Zu_Loeschen\` (E10)
-- [ ] Ziel: `Kern/DECISIONS.md` (~25) · `Kern/Konventionen` (~10) ·
-      `Uni/Abgabe` (~23) · `Projekte/Isor_Tower/DECISIONS/` Terrain (~31),
-      UI (~17), Welt (~14), Audio (~10), Entities (~7)
+**DECISIONS (1.790 Zeilen, 133 Einträge)** — **erledigt 2026-08-22**
+- [x] Zuordnung von Hand festgelegt, Eintrag für Eintrag — keine
+      Schlagwort-Automatik
+- [x] die 15 Konventions-Einträge offengelegt, die vier strittigen
+      einzeln entschieden (E8): „Pipeline-Klassen loggen nicht" → Terrain
+      (meint konkret die Terrain-Pipeline) · „Unity-Ordner folgen den
+      Uni-Systemgrenzen" → Kern mit Herkunftsvermerk · „Assets nach Typ" →
+      Kern · zwei abgelöste Einträge (Sprache, Versionsschema) → Archiv
+- [x] Terrain feiner geschnitten als geplant: statt einer Datei mit 38
+      Einträgen drei — Platzierung 21, Terrain_Mesh 13, Gras 5
+- [x] Skript trennt an `## `-Überschriften (E10)
+- [x] **Dreifach geprüft:** 133 rein / 133 raus · 1.651 nicht-leere
+      Rumpfzeilen identisch · unabhängig gegen die committete Fassung
+      geprüft, alle 133 Überschriften vorhanden
+- [x] Endstand: `Kern/DECISIONS.md` 27 · `Uni/DECISIONS.md` 22 ·
+      Platzierung 21 · UI 16 · Terrain_Mesh 13 · Welt 11 · Audio 9 ·
+      Entities 7 · Gras 5 · Kern-Archiv 2
+- [x] Original nach `99_Archiv\_Zu_Loeschen\2026-08-22_Harness_Umbau\`
+
+**Phase 3 ist damit abgeschlossen — alle fünf Umzüge durch.**
 
 **Aus „Arbeitsregeln, die weiter gelten" — in Phase 4 einsortieren**
 Sechs Punkte aus dem archivierten Abgabe-Block. Es sind **Regeln und
