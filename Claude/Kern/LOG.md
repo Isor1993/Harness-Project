@@ -50,3 +50,13 @@ damals, nicht den von heute.
 - 2026-08-11 — Session-Typ „Zeugnis" gebaut: vierter Typ in WORKFLOW.md,
   eigene Regeln in ASSESSMENT_RULES.md, Auslöser `/zeugnis`. Erstes
   Zeugnis am selben Tag geschrieben.
+- 2026-08-22 — Harness auf die Schichten-Struktur umgebaut (Phasen 1–5 der
+  Überholung). Neu: DOC_RULES, GDD_RULES, VERSIONIERUNG, PLAN, STOERUNGEN.
+  Vier Schicht-Ordner angelegt, 17 Dateien einsortiert. Fünf Bestände
+  aufgeteilt und jeder vor dem Archivieren geprüft: Zeugnisse (2 Dateien),
+  FEATURE_LOG (3 Chroniken), ROADMAP (708 → 204 Zeilen Planung + 521
+  Archiv), TDD_NOTES (10 Themenblöcke), DECISIONS (133 Einträge → 9
+  Dateien). Vierzehn Regeldateien nachgezogen, alle toten Verweise
+  repariert. Drei Skripte gebaut: INDEX und PREFAB_STATUS werden ab jetzt
+  erzeugt, dazu die Sicherung auf die externe Platte.
+  Leseordnung je Session-Start damit von 847 auf rund 250 Zeilen.

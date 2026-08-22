@@ -339,3 +339,16 @@ vier Systeme sichtbar gemacht wurden, sind im Ordnerbaum nicht mehr zu sehen.
 Nachlauf: Die READ_MEs beider Portfolios nannten an fünf Stellen die alten
 Pfade zum bewerteten Code (K1, K2, K3, S1, S2, S3). Alle korrigiert und gegen
 das Projekt gegengeprüft, bevor neu gezippt wurde.
+
+## 2026-08-22 — Werkzeuge liegen in der Schicht, deren Dateien sie bearbeiten
+Was: `Kern/Werkzeuge/index_bauen.py`, `IsorBackup/Werkzeuge/sichern.ps1`,
+`Projekte/Isor_Tower/Werkzeuge/prefab_status.py` — dieselbe Regel wie für
+Dokumente. Die Diagramm-Skripte bleiben in `05_Werkzeuge\Vorlagen\`.
+Warum: Das INDEX-Skript bearbeitet die Harness-Dateien selbst und muss
+deshalb mit der Kern-Auslieferung mitwandern; läge es außerhalb, bekäme ein
+neues Projekt den Harness ohne sein wichtigstes Werkzeug.
+Verworfen: alle Skripte an einem Ort (`05_Werkzeuge\Vorlagen\`) — einfacher
+zu finden, aber das INDEX-Skript wäre nicht mitkopierbar. Ebenso verworfen,
+die elf funktionierenden Diagramm-Skripte mit umzuziehen: Ihre Pfade stehen
+in DIAGRAM_RULES und in den Skripten selbst, und sie bearbeiten Dateien
+außerhalb des Harness.

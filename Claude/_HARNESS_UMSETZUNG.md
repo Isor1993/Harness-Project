@@ -15,23 +15,23 @@ Vor Phase 3 (erstem Umzug): **Commit des Ist-Standes** — Rückweg sichern.
 
 ## Phase 1 — Regeln schreiben (es wird nichts verschoben)
 
-- [ ] `Kern/DOC_RULES.md` neu anlegen — die 15 Regeln aus E64
-- [ ] darin: Sprachtabelle, eine Zeile je Erzeugnis (E70)
+- [x] `Kern/DOC_RULES.md` neu anlegen — die 15 Regeln aus E64
+- [x] darin: Sprachtabelle, eine Zeile je Erzeugnis (E70)
 - [x] ~~darin: Zuständigkeits-Tabelle aus Schritt F~~ — **gestrichen
       2026-08-22.** Wäre eine Kopie gewesen: Wer was besitzt, steht in
       jeder `Ownership:`-Zeile und gesammelt im erzeugten INDEX.
       DOC_RULES besitzt das Verfahren, der INDEX das Ergebnis.
       Stattdessen steht dort ein Verweis.
-- [ ] darin: „Vor einem Ownership-Befund die Ownership-Zeile **aller**
+- [x] darin: „Vor einem Ownership-Befund die Ownership-Zeile **aller**
       beteiligten Dateien lesen" (aus STOERUNGEN, 2026-08-21)
-- [ ] `Kern/GDD_RULES.md` neu anlegen (E60) — Aufbau und Pflege eines GDD,
+- [x] `Kern/GDD_RULES.md` neu anlegen (E60) — Aufbau und Pflege eines GDD,
       `offen`-Mechanismus, wann aus Entwurf feste Absicht wird
-- [ ] `Kern/VERSIONIERUNG.md` neu anlegen (E77–E80) — die drei
+- [x] `Kern/VERSIONIERUNG.md` neu anlegen (E77–E80) — die drei
       Nummernsysteme und ihre Lesarten
-- [ ] CLAUDE.md bekommt die Zeile `Harness-Version: 1.0.0` (E79)
-- [ ] Auslieferungs-Ordner anlegen:
+- [x] CLAUDE.md bekommt die Zeile `Harness-Version: 1.0.0` (E79)
+- [x] Auslieferungs-Ordner anlegen:
       `C:\IsorBackup\05_Werkzeuge\Harness_Auslieferungen\` (E80)
-- [ ] Erste Auslieferung `Harness_1.0.0` erst **nach Phase 7**, wenn der
+- [x] Erste Auslieferung `Harness_1.0.0` erst **nach Phase 7**, wenn der
       Kern vollständig ist
 
 ## Phase 2 — Struktur anlegen — **erledigt 2026-08-22**
@@ -44,12 +44,12 @@ Oben blieben nur `CLAUDE.md` (Automatik-Ladung, siehe P1), `INDEX.md`
 Phase 3 **aufgeteilt** statt verschoben werden.
 
 
-- [ ] Ordner `Kern/`, `Uni/Semester_2/`, `IsorBackup/`,
+- [x] Ordner `Kern/`, `Uni/Semester_2/`, `IsorBackup/`,
       `Projekte/Isor_Tower/` (E11, E50)
-- [ ] `PLAN.md` anlegen, max. ~100 Zeilen, wird nach jedem Zeitraum
+- [x] `PLAN.md` anlegen, max. ~100 Zeilen, wird nach jedem Zeitraum
       geleert (E12)
-- [ ] `Kern/STOERUNGEN.md` anlegen (E16) + die zwei ersten Einträge
-- [ ] `Kern/Zeugnisse/` anlegen (E53)
+- [x] `Kern/STOERUNGEN.md` anlegen (E16) + die zwei ersten Einträge
+- [x] `Kern/Zeugnisse/` anlegen (E53)
 
 ## Phase 3 — Große Bestände umziehen (skriptgestützt)
 
@@ -77,24 +77,24 @@ Phase 3 **aufgeteilt** statt verschoben werden.
 **Aus „Arbeitsregeln, die weiter gelten" — in Phase 4 einsortieren**
 Sechs Punkte aus dem archivierten Abgabe-Block. Es sind **Regeln und
 Fakten, keine Aufgaben** — sie gehören daher nicht in eine ROADMAP:
-- [ ] → `Uni/DOCX_RULES.md`: Arbeitsdatei ist ausschließlich
+- [x] → `Uni/DOCX_RULES.md`: Arbeitsdatei ist ausschließlich
       `01_Uni\Semester_2\Arbeitsdateien\TDD Softwareplanung.docx`,
       Sicherungen unter `Arbeitsdateien\Sicherung\`. Beim Einsortieren
       gegen E61b prüfen — der Text lebt künftig in Markdown.
-- [ ] → `Uni/DOCX_RULES.md`: Verweis auf die Abgabe-Packliste
+- [x] → `Uni/DOCX_RULES.md`: Verweis auf die Abgabe-Packliste
       `Arbeitsdateien\Abgabe_Packliste.txt` („die ROADMAP sagt *wann*,
       die Packliste sagt *was wohin*").
-- [ ] → `Kern/WORKFLOW.md`, beim Regler „Wer schreibt": **Arbeitsteilung
+- [x] → `Kern/WORKFLOW.md`, beim Regler „Wer schreibt": **Arbeitsteilung
       am Text** (Isor, 2026-08-08). Korrekturen an bestehendem Text
       schreibt Claude direkt; neue Fachkapitel formuliert Isor selbst,
       Claude liefert Struktur, geprüfte Zahlen und glättet hinterher.
       Grund: Der Text soll von ihm kommen, und das Durchgehen ist
       zugleich das Lernen des Stoffs.
-- [ ] → `Uni/DECISIONS.md`: Unity-Version `6000.5.2f1` weicht von den
+- [x] → `Uni/DECISIONS.md`: Unity-Version `6000.5.2f1` weicht von den
       beiden in der Vorgabe genannten ab; die Dozentin hat persönlich
       freigegeben, dass eine eigene Version gewählt werden darf
       (Isor, 2026-08-12). Kein Handlungsbedarf, nur festgehalten.
-- [ ] → `Uni/DECISIONS.md`: Prefab-Painter wird im TDD nicht erwähnt
+- [x] → `Uni/DECISIONS.md`: Prefab-Painter wird im TDD nicht erwähnt
       (Isor, 2026-08-07), bleibt aber in der Projektkopie (2026-08-11).
 - [x] **gestrichen:** „Word-Felder: Beschriftungen und Verweise sind
       Felder" — steht wörtlich in `Uni/DOCX_RULES.md`, Abschnitt Felder.
@@ -187,92 +187,92 @@ konnte nicht bis Phase 4 warten.
 - [x] Rückfrage-Regel aufgenommen, alte Empfehlungs-Zeile ersetzt (E87)
 - [x] Kurzform der Regel „zeigen statt vorstellen lassen" mit Verweis
       auf WORKFLOW (E69)
-- [ ] **offene Prüfung P1** vorher: welche der drei CLAUDE.md lädt der
+- [x] **offene Prüfung P1** vorher: welche der drei CLAUDE.md lädt der
       Harness von selbst? Nur in einer frischen Session feststellbar
 
 **WORKFLOW.md**
-- [ ] besitzt die Doku-Pflicht vollständig (E17)
-- [ ] besitzt „wann Knowledge geschrieben wird" (E29)
-- [ ] Modus (Lernmodus/Normal) + zwei Regler (E21)
-- [ ] Regler-Untergrenze: nie auf inneres Vorstellen ausweichen (E69)
-- [ ] Erklärstil „zeigen statt vorstellen lassen" (E69)
-- [ ] „Session" und „Abschnitt" trennen (E67) — Widerspruch „ein Typ" vs.
+- [x] besitzt die Doku-Pflicht vollständig (E17)
+- [x] besitzt „wann Knowledge geschrieben wird" (E29)
+- [x] Modus (Lernmodus/Normal) + zwei Regler (E21)
+- [x] Regler-Untergrenze: nie auf inneres Vorstellen ausweichen (E69)
+- [x] Erklärstil „zeigen statt vorstellen lassen" (E69)
+- [x] „Session" und „Abschnitt" trennen (E67) — Widerspruch „ein Typ" vs.
       „2–4 parallel" auflösen
-- [ ] „Baustein" definieren samt Fertig-Kriterium (E68)
-- [ ] `/sichern`, `/wechsel`, `/ende` beschreiben (E23)
-- [ ] Übergang Design→Development als Kontrollpunkt (E24)
-- [ ] wiederholte Zeugnis-Doku-Pflicht streichen, nur Verweis (E43)
-- [ ] Typ „Art" als `(geplant)` kennzeichnen (E22)
-- [ ] alle Statusvermerke auf den heutigen Stand (E26)
+- [x] „Baustein" definieren samt Fertig-Kriterium (E68)
+- [x] `/sichern`, `/wechsel`, `/ende` beschreiben (E23)
+- [x] Übergang Design→Development als Kontrollpunkt (E24)
+- [x] wiederholte Zeugnis-Doku-Pflicht streichen, nur Verweis (E43)
+- [x] Typ „Art" als `(geplant)` kennzeichnen (E22)
+- [x] alle Statusvermerke auf den heutigen Stand (E26)
 
 **INDEX.md**
-- [ ] wird aus den `Ownership:`-Zeilen erzeugt (E25)
-- [ ] Statusangaben entfernen (E26)
-- [ ] Nummernverweis „ROADMAP-Punkt 10" durch Namen ersetzen (E27)
+- [x] wird aus den `Ownership:`-Zeilen erzeugt (E25)
+- [x] Statusangaben entfernen (E26)
+- [x] Nummernverweis „ROADMAP-Punkt 10" durch Namen ersetzen (E27)
 
 **KNOWLEDGE_RULES.md**
-- [ ] Bestandsliste der Themenordner ersatzlos streichen (E30)
-- [ ] `README.md` je Themenordner anlegen, eine Zeile (E30)
-- [ ] Root-`README.md` des Knowledge-Repos: kurze Orientierung (E31)
-- [ ] „wann" durch Verweis auf WORKFLOW ersetzen (E29)
-- [ ] „Uni-Modus" → „Lernmodus", Zusatz „in Brainstorm-Sessions" weg (E21)
-- [ ] Regel: Artifact nur bei visuellen Themen (E32) — Text in ARTIFACT_RULES
+- [x] Bestandsliste der Themenordner ersatzlos streichen (E30)
+- [x] `README.md` je Themenordner anlegen, eine Zeile (E30)
+- [x] Root-`README.md` des Knowledge-Repos: kurze Orientierung (E31)
+- [x] „wann" durch Verweis auf WORKFLOW ersetzen (E29)
+- [x] „Uni-Modus" → „Lernmodus", Zusatz „in Brainstorm-Sessions" weg (E21)
+- [x] Regel: Artifact nur bei visuellen Themen (E32) — Text in ARTIFACT_RULES
 
 **ARTIFACT_RULES.md**
-- [ ] abgeschriebenen Artifact-Check durch Verweis ersetzen (E33)
-- [ ] Sonntagsroutine mit Vorschlagsliste beschreiben (E34)
-- [ ] `🗑` aus der Typentabelle in „Pflege" verschieben (E36)
-- [ ] Zählwort „Die drei Typen" korrigieren (E41)
-- [ ] Spalte „Führende Quelle" auf die neue Struktur (B2-d)
-- [ ] Erklärstil-Regel durch Verweis auf WORKFLOW ersetzen (E69)
+- [x] abgeschriebenen Artifact-Check durch Verweis ersetzen (E33)
+- [x] Sonntagsroutine mit Vorschlagsliste beschreiben (E34)
+- [x] `🗑` aus der Typentabelle in „Pflege" verschieben (E36)
+- [x] Zählwort „Die drei Typen" korrigieren (E41)
+- [x] Spalte „Führende Quelle" auf die neue Struktur (B2-d)
+- [x] Erklärstil-Regel durch Verweis auf WORKFLOW ersetzen (E69)
 
 **ARTIFACT_INDEX.md**
-- [ ] Schicht-Angabe je Eintrag, benannte Ausnahme von E11 begründen (E45)
-- [ ] „Offene Punkte" in die Kern-ROADMAP (E46)
-- [ ] Stand-Stempel korrigieren (C1-b)
-- [ ] Review-Gate-Erklärung auf einen Verweis kürzen (C1-a)
-- [ ] Eintrag für `⚙️ System · Harness` vorbereiten (E35, I12)
+- [x] Schicht-Angabe je Eintrag, benannte Ausnahme von E11 begründen (E45)
+- [x] „Offene Punkte" in die Kern-ROADMAP (E46)
+- [x] Stand-Stempel korrigieren (C1-b)
+- [x] Review-Gate-Erklärung auf einen Verweis kürzen (C1-a)
+- [x] Eintrag für `⚙️ System · Harness` vorbereiten (E35, I12)
 
 **DIAGRAM_RULES.md**
-- [ ] konkrete Pfade entfernen, Ablage folgt der Schicht (E37)
-- [ ] Abschnitt für das Zustandsdiagramm (E38)
+- [x] konkrete Pfade entfernen, Ablage folgt der Schicht (E37)
+- [x] Abschnitt für das Zustandsdiagramm (E38)
 
 **DOCX_RULES.md** → Schicht Uni
-- [ ] die sechs XML-Fallen nach Knowledge auslagern, Verweis behalten (E39)
-- [ ] Abschnitt „Werkzeuge": docx-Skill, `validate.py` für den Prüfschritt (E40)
-- [ ] Zählwort „Alle vier" korrigieren (E41)
+- [x] die sechs XML-Fallen nach Knowledge auslagern, Verweis behalten (E39)
+- [x] Abschnitt „Werkzeuge": docx-Skill, `validate.py` für den Prüfschritt (E40)
+- [x] Zählwort „Alle vier" korrigieren (E41)
 
 **ASSESSMENT_RULES.md**
-- [ ] „Bewertungskriterien liefert die aktive Schicht" (E42)
-- [ ] „Prüfanker des letzten Zeugnisses — beantwortet" als Pflichtabschnitt (E52)
-- [ ] Ablageregel auf eine Datei je Zeugnis umstellen (E53)
-- [ ] Knowledge-Frage auch bei Zeugnissen, Antwort meist „nein" (E44)
-- [ ] Belegpflicht gegen die Teilabgaben abgleichen (E63)
+- [x] „Bewertungskriterien liefert die aktive Schicht" (E42)
+- [x] „Prüfanker des letzten Zeugnisses — beantwortet" als Pflichtabschnitt (E52)
+- [x] Ablageregel auf eine Datei je Zeugnis umstellen (E53)
+- [x] Knowledge-Frage auch bei Zeugnissen, Antwort meist „nein" (E44)
+- [x] Belegpflicht gegen die Teilabgaben abgleichen (E63)
 
 **CODE_GUIDELINES.md**
-- [ ] Projekt-Typ aus der Schicht ableiten, eigene Angabe streichen (E54)
-- [ ] „Bewusst nicht übernommen" nach Art aufteilen (E55)
-- [ ] Status-Vermerk „Rohmaterial" auf den heutigen Stand (D1-b)
-- [ ] Ownership-Zeile behält „Tests", Lücke bleibt sichtbar (E56)
+- [x] Projekt-Typ aus der Schicht ableiten, eigene Angabe streichen (E54)
+- [x] „Bewusst nicht übernommen" nach Art aufteilen (E55)
+- [x] Status-Vermerk „Rohmaterial" auf den heutigen Stand (D1-b)
+- [x] Ownership-Zeile behält „Tests", Lücke bleibt sichtbar (E56)
 
 **GDD.md** → `Projekte/Isor_Tower/GDD.md`
-- [ ] Abschnitt „Entwurf" für noch nicht Einsortiertes (E59)
-- [ ] offene Design-Fragen: GDD ist Besitzer, ROADMAP verweist (E58)
-- [ ] ist zugleich das Markdown-Manuskript der Abgabe (E71)
+- [x] Abschnitt „Entwurf" für noch nicht Einsortiertes (E59)
+- [x] offene Design-Fragen: GDD ist Besitzer, ROADMAP verweist (E58)
+- [x] ist zugleich das Markdown-Manuskript der Abgabe (E71)
 
 **PREFAB_STATUS.md** → Projekt-Schicht
-- [ ] `VFX_FireFly.prefab` ergänzt sich beim ersten Skriptlauf (C2-b)
-- [ ] zwei Nummernverweise durch Namen ersetzen (C2-a)
-- [ ] Ende festlegen: alles `geprüft` → Befunde in die ROADMAP, Datei
+- [x] `VFX_FireFly.prefab` ergänzt sich beim ersten Skriptlauf (C2-b)
+- [x] zwei Nummernverweise durch Namen ersetzen (C2-a)
+- [x] Ende festlegen: alles `geprüft` → Befunde in die ROADMAP, Datei
       ins Projekt-Archiv (E49)
 
 **ASSIGNMENT_PCG / _TOOL / _THREADING**
-- [ ] unverändert nach `Uni/Semester_2/` (E50)
-- [ ] vier fehlende Aufgabentexte nachtragen; wo es keinen gibt, genau
+- [x] unverändert nach `Uni/Semester_2/` (E50)
+- [x] vier fehlende Aufgabentexte nachtragen; wo es keinen gibt, genau
       das als Datei festhalten (E62)
 
 **Streuner**
-- [ ] `_split_check.txt` nach `99_Archiv\_Zu_Loeschen\` (E66)
+- [x] `_split_check.txt` nach `99_Archiv\_Zu_Loeschen\` (E66)
 
 ## Phase 5 — Erzeugte Dateien und Skripte — **erledigt 2026-08-22**
 
@@ -305,11 +305,11 @@ Ergebnisse und Funde:
   ANSI gelesen; Umlaute und Gedankenstriche zerlegen dann die Syntax.
 
 
-- [ ] INDEX-Skript: liest alle `Ownership:`-Zeilen, meldet Dateien ohne
+- [x] INDEX-Skript: liest alle `Ownership:`-Zeilen, meldet Dateien ohne
       als `⚠` (E25)
-- [ ] PREFAB_STATUS-Skript: liest alle `.prefab`, überträgt Status und
+- [x] PREFAB_STATUS-Skript: liest alle `.prefab`, überträgt Status und
       Befund über den Namen (E48)
-- [ ] Backup-Skript: `robocopy` über die drei Ordner, Wegfallendes nach
+- [x] Backup-Skript: `robocopy` über die drei Ordner, Wegfallendes nach
       `_Geloescht\<Datum>\` statt löschen (E74, E75)
 
 **Auf die ROADMAP, nicht auf die Wochenendliste:**
@@ -345,3 +345,22 @@ Ergebnisse und Funde:
       entfernen
 - [ ] **Testphase beginnen** — erste Aufgabe: IsorBackup aufräumen in
       Viererpaketen (E73)
+
+---
+
+## Übergabe an die nächste Session (2026-08-22)
+
+**Phase 6 und 7 stehen aus.** Sie sind bewusst in eine frische Session
+gelegt worden, und zwar nicht nur wegen des Kontexts:
+
+- **Phase 6 ist der erste echte Test des Harness.** Die Befehle brauchen
+  nur eine Grundlage — die Doku-Pflicht in `Kern/WORKFLOW.md`. Eine
+  frische Session muss sie über die Leseordnung selbst finden. Klappt
+  das, trägt der Harness. Klappt es nicht, ist die Lücke ein Fall für
+  `Kern/STOERUNGEN.md`.
+- **Die offene Prüfung P1** ist nur beim Start einer frischen Session
+  feststellbar: Welche der drei `CLAUDE.md` lädt der Harness von selbst,
+  bevor irgendeine Datei geöffnet wurde? Davon hängt ab, ob die echten
+  Regeln zwei Weiterleitungen tief liegen dürfen.
+
+Nächste Schritte in `PLAN.md`.
