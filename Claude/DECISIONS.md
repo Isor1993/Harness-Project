@@ -3,6 +3,12 @@
 Ownership: Entscheidungen: was, warum, verworfene Alternativen.
 Format: `## JJJJ-MM-TT — Titel` mit Was / Warum / Verworfen, je 1–2 Zeilen.
 
+> **Ausnahme seit 2026-08-21:** Die Entscheidungen der laufenden
+> Harness-Überholung stehen vorübergehend in `_HARNESS_REVIEW.md`, nicht
+> hier. Grund: Diese Datei wird gerade selbst umgebaut; die Einträge
+> würden sonst zweimal wandern. Sie ziehen beim Umzug nach
+> `Kern/DECISIONS.md`.
+
 ## 2026-07-16 — Brainstorm-Modus normal/uni
 Was: Jede Brainstorm-Session startet mit der Modus-Abfrage normal oder uni.
 Warum: Uni-Modus braucht eigene Regeln — erklären statt bauen, visuell,

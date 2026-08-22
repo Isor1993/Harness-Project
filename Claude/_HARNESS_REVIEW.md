@@ -417,6 +417,590 @@ alle Schichten).
 
 **Gruppe A ist damit abgeschlossen (3 von 3).**
 
+## Datei-Durchgang · Gruppe B
+
+### B1 — KNOWLEDGE_RULES.md (33 Zeilen) — durch
+
+**Frage, die sie besitzt:** *Wo und wie wird projektübergreifendes Wissen
+abgelegt?* Berechtigt. **Schicht:** Kern — ein Wissensarchiv ist Teil des
+Harness und ausdrücklich projektübergreifend. Eine eigene Schicht
+„Knowledge" wäre nach E15 nicht gerechtfertigt (anders als IsorBackup,
+das gezielt herausnehmbar sein soll).
+
+**Befunde**
+- **B1-a — Selbstwiderspruch:** Z. 15 sagt „Kein eigener Index: Der
+  Ordnerbaum ist der Index", Z. 11 führt vier Zeilen darüber einen
+  („Bestand: Patterns/, Unity/, ProcGen/, CSharp/, Seiten/"). Diese Liste
+  war **nach acht Stunden falsch** — `Dokumentation/` wurde am 2026-08-22
+  angelegt und fehlt. Kürzester belegter Verfall im ganzen Durchgang.
+- **B1-b — Kreisverweis:** WORKFLOW Z. 9 verweist für die
+  Knowledge-Abfrage auf KNOWLEDGE_RULES, KNOWLEDGE_RULES Z. 28 verweist
+  zurück auf WORKFLOW. Kein inhaltlicher Widerspruch, aber die
+  Zuständigkeit ist unbesetzt — gleicher Typ wie C7.
+- **B1-c:** Bestand am 2026-08-22: 66 Dateien in sechs Gruppen — Unity 27,
+  ProcGen 14, Patterns 11, Seiten 6, CSharp 4, Dokumentation 4.
+- **B1-d:** Der Root-`README.md` des Knowledge-Repos enthält nur die Zeile
+  `# Knowledge`. Wer das Repo allein öffnet, hat keine Orientierung — die
+  Regeln liegen in einem anderen Repo.
+
+**Entscheidungen**
+- **E29 — WORKFLOW.md besitzt das „wann"**, KNOWLEDGE_RULES das „wohin
+  und wie" (Ablageort, Ordnerstruktur, Dateiformat, Namensschema).
+  Konsequent zu E17.
+- **E30 — Bestandsliste ersatzlos streichen. Statt dessen ein
+  `README.md` je Themenordner** mit einer Zeile, was die Gruppe enthält.
+  Begründung: Die Liste enthielt nur Ordnernamen — sie zu *erzeugen* wäre
+  ein Skript, das `ls` nachbaut, ohne Informationsgewinn. Was fehlt, ist
+  die **Bedeutung** je Gruppe (`Seiten/` = Offline-Kopien der
+  Artifact-Seiten rät niemand; `Dokumentation/` ist mit der
+  Uni-Dokumentation verwechselbar). Die Beschreibung gehört dorthin, wo
+  sie beschrieben wird, und entsteht mit dem Ordner.
+  *Grundsatz:* **Erst Ownership klären, dann automatisieren.** Ein Skript,
+  das eine überflüssige Kopie pflegt, macht die Kopie nicht richtig, nur
+  pünktlich. Fehlt ein README, sieht man es im Ordner — fehlt eine Zeile
+  in einer Liste, ist die Liste still unvollständig (B1-a).
+  Eine erzeugte Übersichtsseite bleibt später möglich, dann aus den
+  READMEs — dort verdient das Erzeugen sein Geld, weil die Quelle
+  woanders liegt.
+- **E31 — Root-`README.md` bekommt eine kurze Orientierung** (5–10
+  Zeilen): was der Ordner ist, wie er organisiert ist, wo die Regeln dazu
+  liegen (Verweis in den Harness). Damit ist das Repo auch allein
+  verständlich.
+- **E32 — Wissensseiten werden nur bei visuellen Themen zusätzlich als
+  Artifact gebaut** (Diagramme, Zahlenbeispiele, Vergleiche). Reiner Text
+  liest sich in der .md genauso gut. Die Regel selbst gehört in
+  ARTIFACT_RULES.md (B2), nicht hierher.
+- **Folgeänderung aus E21:** In Z. 28 wird „Uni-Modus" zu „Lernmodus",
+  und der Zusatz „in Brainstorm-Sessions" entfällt — der Modus gilt
+  künftig für alle Session-Typen.
+
+### B2 — ARTIFACT_RULES.md (110 Zeilen) — durch
+
+**Frage, die sie besitzt:** *Wie sind Artifact-Seiten aufgebaut, benannt
+und gepflegt?* Berechtigt. Die Datei grenzt sich selbst sauber ab (Z. 8:
+„Diese Datei besitzt die Regeln, der Index den Bestand") und begründet
+ihre Existenz. Ownership deckt sich. **Schicht:** Kern.
+
+**Befunde**
+- **B2-a — Kopie, die schon auseinanderläuft:** Der Artifact-Check steht
+  in CODE_GUIDELINES Z. 249 (Review-Gate, Punkt 5) und in ARTIFACT_RULES
+  Z. 77–80 fast wörtlich doppelt. Unterschied bereits vorhanden:
+  „wird **nach dem Coden** nachgezogen" gegen „gehört **mit**
+  nachgezogen". WORKFLOW.md macht es dagegen richtig — dort steht nur ein
+  Verweis.
+- **B2-b — Lücke hinter I4:** Die Datei regelt genau, *wann man auf eine
+  Seite schaut* (Z. 72–82), aber nicht, *wann eine Seite entsteht* und
+  wann der Bestand als Ganzes durchgesehen wird.
+- **B2-c:** Die Tabelle heißt „Die drei Typen" und hat vier Zeilen. Die
+  vierte (`🗑 veraltet`) ist ein **Zustand**, kein Typ.
+- **B2-d:** Die Spalte „Führende Quelle" nennt ROADMAP, FEATURE_LOG,
+  DECISIONS, TDD_NOTES — alle vier werden gerade umgebaut. Nach dem Umzug
+  nachziehen (Status-Seite: künftig PLAN.md + ROADMAP der Schicht).
+
+**Entscheidungen**
+- **E33 — Der Artifact-Check bleibt vollständig im Review-Gate**
+  (CODE_GUIDELINES, Punkt 5). ARTIFACT_RULES streicht die vier
+  abgeschriebenen Zeilen und behält einen Verweis.
+  *Grundsatz:* **Eine Checkliste gehört dem Moment, nicht den Themen.**
+  Eine Liste, deren fünf Punkte auf fünf Dateien zeigen, ist keine
+  Checkliste mehr. Themendateien verweisen auf das Gate, nicht umgekehrt.
+  Ergänzt E29: **WORKFLOW besitzt den Zeitpunkt, die Fachdatei den
+  Inhalt** — WORKFLOW verweist bereits korrekt aufs Gate.
+- **E34 — Sonntags-Pflegetag konkretisiert (schließt I4):** Claude
+  gleicht ARTIFACT_INDEX gegen die Änderungen der Woche ab und legt eine
+  **Vorschlagsliste** vor — welche Seite veraltet ist, was drinsteht, was
+  sich geändert hat. Isor entscheidet, welche nachgezogen werden.
+  Nicht selbsttätig ändern.
+- **E35 — Die Harness-Seite (I12) wird `⚙️ System · Harness`.** Kein
+  vierter Typ: Der Harness ist ein System, das Isor gebaut hat, und die
+  Frage „wie funktioniert mein System X" passt. Führende Quelle sind die
+  Kern-Dateien.
+- **E36 — `🗑` verlässt die Typentabelle** und wird im Abschnitt „Pflege"
+  erklärt, wo es ohnehin vorkommt. Dann stimmt die Überschrift wieder.
+
+**Vormerkung für Gruppe C:** `ARTIFACT_INDEX.md` führt Seiten über
+Isor-Tower-Systeme, übertragbare Lernstücke **und** Zeugnisse — der
+Bestand läuft quer über drei Schichten und kollidiert mit E11. Muss beim
+Index gelöst werden, nicht in den Regeln.
+
+### B3 — DIAGRAM_RULES.md (108 Zeilen) — durch
+
+**Frage, die sie besitzt:** *Wie gehe ich mit den erzeugten
+`.drawio`-Diagrammen um?* Berechtigt. Ownership vorbildlich: verweist für
+die Begründung auf DECISIONS 2026-08-06 und für Gebautes aufs
+FEATURE_LOG, statt abzuschreiben. Die Bedienregeln stammen erkennbar aus
+echten Fehlern. **Schicht:** Kern (Verfahren), siehe B3-a.
+
+**Befunde**
+- **B3-a — Kern-Regeln mit Uni-Pfaden:** Quellen liegen unter
+  `01_Uni\Semester_2\Diagramme_Quellen\`. Das Verfahren ist generisch,
+  der Ablageort hängt am zweiten Semester. Inhaltlich passt es außerdem
+  nicht: Die neun Diagramme beschreiben **Isor's Tower** (Terrain,
+  Sheep-FSM, Gras) — die Uni hat sie nur benutzt. Spiegelbild von C6.
+- **B3-b — dritter Diagrammtyp ungeregelt:** Neben `diagramm_<name>.py`
+  und `ablauf_<name>.py` existiert `zustand_sheep_fsm.py` →
+  `Zustand_Sheep_FSM.drawio`, also ein **Zustandsdiagramm** mit eigenem
+  Muster `zustand_<name>.py`. In den Regeln kommt es nur beiläufig in
+  Bedienregel 5 als Fehlerbeispiel vor; kein eigener Abschnitt, keine
+  Aussage zum Prüferlauf.
+- **B3-c — bewusste Ausnahme von E30:** Die Skriptliste (Z. 11–15) ist
+  dieselbe Bauform wie die gestrichene Knowledge-Liste, **hält aber seit
+  zwei Wochen** (alle drei genannten Dateien geprüft, 2026-08-22). Sie
+  bleibt, weil sie erklärt, *was* jedes Skript tut (Kriterium aus E30),
+  und weil Werkzeuge sich selten ändern.
+  *Grundsatz:* **Dieselbe Bauform ist nicht überall gleich riskant** —
+  eine Liste verfällt so schnell, wie ihr Gegenstand sich ändert.
+  Themenordner wachsen ständig (8 Stunden), Werkzeuge kaum.
+
+**Entscheidungen**
+- **E37 — Konkrete Pfade raus, Ablage folgt der Schicht.**
+  DIAGRAM_RULES beschreibt nur noch das Verfahren; wo die Quellen liegen,
+  bestimmt die Schicht (Projekt-Diagramme beim Projekt, Uni-Diagramme bei
+  der Uni). Damit wird die Datei semester- und projektunabhängig und ist
+  beim Kopieren des Harness sofort brauchbar.
+  *Offen für die Bau-Session:* ob die neun bestehenden `.drawio`-Quellen
+  physisch aus `01_Uni\Semester_2\` herauswandern — das ist ein
+  Dateiumzug, kein Regelthema.
+- **E38 — Das Zustandsdiagramm bekommt einen eigenen Abschnitt**, nach
+  dem Muster der Ablaufpläne: Namensschema `zustand_<name>.py`, was ein
+  Lauf erhält, ob ein Prüferlauf gilt.
+
+### B4 — DOCX_RULES.md (91 Zeilen) — durch
+
+**Frage, die sie besitzt:** *Wie arbeite ich sicher an den
+`.docx`-Abgabedateien?* Berechtigt. Entstanden aus echtem Schaden.
+**Schicht: Uni** — die erste Datei im Durchgang, die eindeutig dorthin
+gehört.
+
+**Befunde**
+- **B4-a — Zählwort veraltet:** Z. 31 sagt „**Alle vier** sind
+  aufgetreten", darunter stehen **sechs** Punkte (Nr. 6 datiert
+  2026-08-17). Gleicher Mechanismus wie B2-c („Die drei Typen" mit vier
+  Zeilen). Zweimal derselbe Fehler in zwei Dateien = Muster.
+- **B4-b — zwei Sorten Wissen in einer Datei:** Sicherung, Arbeitsteilung
+  und Prüfablauf gelten dem TDD-Workflow; die Formatvorgaben den
+  SAE-Abgaben; **die sechs XML-Fallen aber jedem Word-Dokument überall**
+  (`<w:t[^>]*>` trifft auch `<w:tc>`; Fließtext über Runs zerstückelt;
+  `count=1` trifft beim Zeilenklonen immer dieselbe Zelle). Beim
+  Ausmustern der Uni-Schicht ginge dieses Wissen verloren.
+- **B4-c — Werkzeuglücke:** Im Harness liegt ein **docx-Skill** mit
+  Hilfsskripten, den Isor im August benutzt hat (`validate.py`,
+  `soffice.py`). In DOCX_RULES steht davon kein Wort; die Regeln
+  beschreiben durchweg Handarbeit am entpackten XML.
+
+**Entscheidungen**
+- **E39 — Die XML-Fallen wandern ins Knowledge-Archiv** (eigene Seite),
+  DOCX_RULES behält einen Verweis. Begründung: teuer bezahltes,
+  übertragbares Werkzeugwissen überlebt so die Uni-Schicht — genau der
+  Zweck des Archivs („Wissen ist projektübergreifend").
+- **E40 — Der docx-Skill wird als Abschnitt „Werkzeuge" aufgenommen:**
+  was er kann, wofür er benutzt wird (Prüfen, PDF-Export), und wo
+  weiterhin Handarbeit am XML nötig ist. Der Prüfschritt „XML
+  wohlgeformt" wird auf `validate.py` umgestellt.
+- **E41 — Allgemeine Regel für DOC_RULES:** *Keine Anzahl in Überschrift
+  oder Einleitung, wenn die Liste wachsen kann.* Betroffen heute:
+  DOCX_RULES Z. 31 und ARTIFACT_RULES „Die drei Typen".
+
+### B5 — ASSESSMENT_RULES.md (115 Zeilen) — durch
+
+**Frage, die sie besitzt:** *Wie läuft ein Zeugnis ab?* Berechtigt.
+**Vorbild für alle anderen Regeldateien:** begründet ihre Existenz (Z. 7),
+verweist auf WORKFLOW statt abzuschreiben (Z. 34) und **benennt ihre
+eigene Ausnahme ausdrücklich** samt Begründung (Z. 91–104: „eine benannte
+Ausnahme, die diese Datei besitzt" — pro Zeugnis eine eigene URL, weil
+der alte Stand hier der halbe Zweck ist). Eine Ausnahme mit Besitzer und
+Begründung ist keine Unordnung.
+
+**Befunde**
+- **B5-a:** WORKFLOW.md Z. 80–83 wiederholt die abweichende Doku-Pflicht
+  wörtlich, obwohl im selben Absatz „Eigene Regeln in
+  ASSESSMENT_RULES.md" steht.
+- **B5-b — Konflikt mit E2:** Diese Datei verbietet Knowledge-Einträge
+  aus Zeugnis-Sessions; E2 verlangt die Frage bei jedem Session-Ende.
+- **B5-c — wichtige Folge für den Bau von `/ende`:**
+  **Die Doku-Pflicht ist keine einzige Liste — sie hängt am Session-Typ.**
+  Eine Zeugnis-Session schreibt in andere Dateien als eine
+  Development-Session. Weiß `/ende` das nicht, macht er zu viel oder zu
+  wenig. Muss in den Entwurf der Befehle (E23) einfließen.
+- **B5-d:** Uni-Anteile in einer sonst generischen Datei — UK-Notenskala
+  (Z. 63–69), `ASSIGNMENT_*`, Pfad `01_Uni\Semester_<n>\Arbeitsdateien\`.
+  Rund 15 von 115 Zeilen.
+
+**Entscheidungen**
+- **E42 — ASSESSMENT_RULES bleibt ganz im Kern.** Die Datei sagt künftig:
+  *Die Bewertungskriterien liefert die aktive Schicht* — die Uni liefert
+  UK-Skala und ASSIGNMENT-Dateien. Kein Zerschneiden für 15 Zeilen. Nimmt
+  man die Uni heraus, bleibt das Ritual heil und braucht nur einen neuen
+  Maßstab.
+- **E43 — WORKFLOW streicht die wiederholte Zeugnis-Doku-Pflicht** und
+  behält nur Typname, Anlass und den Zeiger hierher. Konsequent zu E17,
+  E29 und E33.
+- **E44 — Die Knowledge-Frage wird auch bei Zeugnissen gestellt**,
+  Antwort ist in der Regel „nein". Fällt beim Bewerten doch etwas
+  Übertragbares auf, darf es festgehalten werden. E2 bleibt damit
+  ausnahmslos: Die **Frage** fällt nie aus, die **Antwort** darf leer sein.
+
+**Gruppe B ist abgeschlossen (5 von 5).**
+
+## Datei-Durchgang · Gruppe C
+
+### C1 — ARTIFACT_INDEX.md (210 Zeilen, 12 Seiten) — durch
+
+**Frage, die sie besitzt:** *Welche Artifact-Seiten gibt es, woran hängt
+jede?* Berechtigt, sauber gegen ARTIFACT_RULES abgegrenzt.
+Bestand: 1 Status · 2 Zeugnisse · 3 System · 6 Lernstücke.
+
+**Befunde**
+- **C1-a:** Der Review-Gate-Zweck steht hier zum **dritten** Mal (Z. 6–10)
+  — nach CODE_GUIDELINES (Besitzer) und ARTIFACT_RULES (B2-a).
+- **C1-b:** Stand-Stempel falsch. Z. 210 sagt „Stand dieses Index:
+  2026-08-12", Z. 48 führt aber das Zeugnis vom **16.08.** Gepflegt
+  wurde, der Stempel nicht. Gleicher Mechanismus wie E41.
+- **C1-c:** Der Abschnitt „Offene Punkte" (Z. 201–208) enthält **Aufgaben**
+  in einer Bestandsdatei.
+- **C1-d:** Der Bestand läuft über drei Schichten — Status und System
+  (4) = Projekt, Zeugnisse (2) = Uni, Lernstücke (6) = Kern.
+
+**Entscheidungen**
+- **E45 — Eine Datei im Kern, Schicht als Angabe je Eintrag.**
+  **Benannte Ausnahme von E11**, nach dem Vorbild von ASSESSMENT_RULES:
+  Die Ausnahme steht mit Begründung in der Datei selbst.
+  *Grundsatz:* **Ein Register muss vollständig sein, sonst erfüllt es
+  seinen Zweck nicht.** Die Hauptzusage des Index (Z. 12: „Nie eine
+  zweite Seite zum selben Thema anlegen") kann nur eine vollständige
+  Liste geben; drei Teillisten heißen dreimal nachsehen. Schichten ordnen
+  *Inhalt* — ein Verzeichnis fremder Adressen ist kein Inhalt.
+  Zweitgrund: Wird die Uni-Schicht ausgemustert, verschwinden die
+  Zeugnis-**Seiten** nicht (sie liegen auf claude.ai). Eine gelöschte
+  Indexzeile erzeugte genau das, was die Tabelle „Gelöschte Seiten"
+  verhindern soll — eine URL ohne Erklärung.
+- **E46 — Die „Offenen Punkte" wandern in die Kern-ROADMAP.** Der Index
+  behält reinen Bestand.
+- **E47 — E34 wird um einen maschinellen Abgleich erweitert:** Am
+  Sonntag holt Claude die Liste der **tatsächlich veröffentlichten**
+  Seiten (Titel, URL, letzte Änderung) und vergleicht sie mit dem Index —
+  Seite ohne Eintrag, Eintrag ohne Seite, Seite neuer als ihr
+  Stand-Stempel. Zweite unabhängige Quelle statt Gedächtnis; C1-b wäre so
+  am ersten Sonntag aufgefallen.
+
+### C2 — PREFAB_STATUS.md (67 Zeilen, 30 Einträge) — durch
+
+**Frage, die sie besitzt:** *Welche Prefabs sind durchgesehen, was fiel
+auf?* Berechtigt. **Ownership-Zeile ist die strengste im Harness** —
+schließt Aufgabenplanung, Begründungen und Fertiges ausdrücklich aus.
+**Schicht:** Projekte/Isor_Tower.
+
+**Befunde**
+- **C2-a — zwei kaputte Nummernverweise, beide still falsch:**
+  Z. 4 „das ist ROADMAP **Punkt 10**" → Punkt 10 ist der Ladebildschirm,
+  richtig wäre 13. Z. 40 „Relevant für ROADMAP-**Punkt 7** (Gegner über
+  den Placer)" → Punkt 7 ist die GameObject-/Prefab-Aufbau-Konvention.
+  Dritter Fall nach A3-b; **E27 ist damit gut belegt.**
+- **C2-b — Bestand nachweislich veraltet:** Kopfzeile sagt „Stand:
+  2026-08-16. 33 Prefabs", auf der Platte liegen am 2026-08-22 **34**.
+  Es fehlt `VFX_FireFly.prefab` (angelegt 2026-08-20, Glühwürmchen). In
+  keiner der vier Tabellen.
+  *Grundsatz:* **Ein Verzeichnis merkt nicht, dass etwas Neues
+  existiert** — es zeigt nur, was jemand hineingeschrieben hat.
+
+**Entscheidungen**
+- **E48 — PREFAB_STATUS wird erzeugt, nach dem E14-Muster.** Das Skript
+  liest alle `.prefab`-Dateien und baut die Tabelle; Status- und
+  Befundspalte werden über den Prefab-Namen aus der alten Fassung
+  übernommen. Neue erscheinen als `offen`, verschwundene als `⚠ nicht
+  mehr vorhanden`. Damit wäre C2-b am 20.08. von selbst aufgefallen.
+- **E49 — Die Datei ist eine Arbeitsliste mit Ende.** Sind alle Prefabs
+  `geprüft`, wandern offene Befunde als Aufgaben in die Projekt-ROADMAP
+  und die Datei ins `_ARCHIV.md` der Projekt-Schicht — wie
+  `_HARNESS_REVIEW.md`. Danach keine Pflegepflicht mehr.
+
+### C3 — TDD_NOTES.md (556 Zeilen, 85 Einträge) — durch
+
+**Frage, die sie besitzt:** *Welches Rohmaterial gibt es fürs TDD?*
+**Schicht: Projekte/Isor_Tower — nicht Uni** (Isors Beobachtung,
+2026-08-22, siehe E51).
+
+**Befunde**
+- **C3-a:** Kopfzeile nennt „Abgabe ca. **2026-07-28**" — die Frist war
+  der 21.08. Nie nachgezogen.
+- **C3-b:** Flache chronologische Liste ohne Gliederung, obwohl das
+  Format bereits `[Themenblock]`-Marken vorsieht. Beim Schreiben eines
+  Kapitels liest man 556 Zeilen statt der 20 zum Thema; zwei Einträge zum
+  selben Gegenstand liegen 300 Zeilen auseinander, Widersprüche fallen
+  nicht auf.
+
+**Entscheidungen**
+- **E50 — Die Uni-Schicht wird nach Semestern gegliedert:**
+  `Uni/Semester_2/`, künftig `Semester_3/`, dazu `Uni/ROADMAP.md` und
+  `Uni/LOG.md` für das Semesterübergreifende. Spiegelt den bewährten
+  Datenbaum unter `C:\IsorBackup\01_Uni\`.
+- **E51 — TDD_NOTES wird eine Projekt-Datei, nach Themenblöcken
+  gegliedert.** Begründung (Ein-Ort-Test): Einträge wie die
+  MeshBuilder-Formeln sind keine Semester-Tatsachen — der `MeshBuilder`
+  läuft weiter, und im nächsten TDD braucht man dieselbe Zeile. Je
+  Semester abgelegt müsste sie kopiert (Verstoß) oder rückverwiesen
+  werden. Kumulativ über alle Semester; überholte Einträge nach E9 ins
+  `_ARCHIV.md` der Projekt-Schicht, mit Angabe, wodurch sie abgelöst
+  wurden. Nichts geht verloren, es steht nur nicht mehr im Weg.
+  *Aufwand:* einmalig ca. 1 h Sortierarbeit für die 85 Einträge.
+  Die Chronologie bleibt erhalten — jeder Eintrag trägt sein Datum.
+
+### C4 — ASSESSMENT_LOG.md (782 Zeilen, 2 Zeugnisse) — durch
+
+**Frage, die sie besitzt:** *Wie stand es zu Datum X?* Berechtigt.
+**Chronik** im Sinne von E13 — kann nie falsch werden, kein Archiv, keine
+Pflege. **Schicht: Kern, und zwar ganz** — die Notenbilder sind Uni, aber
+„Profil Person" und „Profil Coding" überleben jedes Semester, und der
+Zweck ist der **Vergleich**. Eine Messreihe, die man nach Schichten
+zerschneidet, ist keine Messreihe mehr (gleiches Argument wie E45).
+
+**Befunde**
+- **C4-a — Regel hinkt der Praxis hinterher:** ASSESSMENT_RULES
+  beschreibt acht Abschnitte, endend bei „Prüfanker fürs nächste Mal".
+  Das Zeugnis vom 16.08. hat neun — zusätzlich `### 7. Prüfanker vom
+  11.08. — beantwortet`. Genau dieser Abschnitt macht aus zwei
+  Momentaufnahmen eine Messreihe, steht aber in keiner Regel und kann
+  beim dritten Zeugnis stillschweigend ausfallen (Fehlertyp wie I3).
+- **C4-b:** 782 Zeilen für 350 gebrauchte. Beim nächsten Zeugnis wird die
+  ganze Datei gelesen, um an das jüngste Zeugnis zu kommen; nach acht
+  Zeugnissen wären es ~2.800 Zeilen.
+
+**Entscheidungen**
+- **E52 — „Prüfanker des letzten Zeugnisses — beantwortet" wird
+  Pflichtabschnitt** in ASSESSMENT_RULES.
+- **E53 — Eine Datei je Zeugnis**, z. B. `Kern/Zeugnisse/2026-08-16.md`.
+  Der Ordner ist der Index (wie im Knowledge-Archiv). Beim nächsten
+  Zeugnis wird eine Datei mit ~350 Zeilen gelesen statt 782, und der
+  Vorteil wächst mit jedem weiteren. Ersetzt die Regel „Neuestes Zeugnis
+  oben in ASSESSMENT_LOG.md" in ASSESSMENT_RULES.
+
+**Gruppe C ist abgeschlossen (4 von 4).** Stand: 12 von 25 Posten.
+
+## Datei-Durchgang · Gruppe D
+
+### D1 — CODE_GUIDELINES.md (260 Zeilen) — durch
+
+**Frage, die sie besitzt:** *Welche Code-Konventionen gelten?* Berechtigt.
+**Schicht: Kern** — Block 1 ist Uni-Pflicht (24 von 260 Zeilen), der Rest
+eigene Wahl. Ganz im Kern, Block 1 als Vorgabe der Uni-Schicht
+gekennzeichnet (wie E42).
+
+**Befunde**
+- **D1-a:** Ownership nennt „Namen, Architektur, **Tests**" — es gibt
+  keinen Test-Abschnitt.
+- **D1-b:** Status-Vermerk „Rohmaterial aus Brainstorm 2026-07-17 — beim
+  ersten Development-Einsatz nachschärfen" ist überholt: Die Datei war
+  einen ganzen Uni-Durchgang im Einsatz und enthält selbst einen
+  Abschnitt „Member-Reihenfolge (Isor, **2026-08-16**)".
+- **D1-c:** „Bewusst nicht übernommen" mischt drei Sorten — eine
+  **aufgeschobene Aufgabe** (ClaudeSetup, steht wortgleich auch in
+  ROADMAP „Später" = Doppelung), eine **geltende Regel**
+  (`_camelCase` gilt überall — keine Ablehnung), und eine **echte
+  Verwerfung** mit korrektem DECISIONS-Verweis. Der dritte Eintrag zeigt,
+  wie die anderen zwei aussehen müssten.
+- **D1-d:** „Projekt-Typ: Uni/Privat" (Z. 8) nimmt die Schichten von
+  gestern vorweg — zwei Schalter für dieselbe Sache.
+
+**Entscheidungen**
+- **E54 — Projekt-Typ wird aus der Schicht abgeleitet.** `Uni/`-Ordner
+  vorhanden → Block 1 gewinnt im Konflikt; kein `Uni/` → Block 2. Stellt
+  sich beim Kopieren des Harness von selbst richtig; die eigene
+  Typ-Angabe entfällt. Heute müsste man daran denken umzustellen —
+  vergisst man es, gelten in einem privaten Projekt still die Uni-Regeln.
+- **E55 — „Bewusst nicht übernommen" wird nach Art aufgeteilt:**
+  ClaudeSetup nur noch in der ROADMAP · `_camelCase` wandert zu den
+  Naming-Regeln · die Verwerfung bleibt mit DECISIONS-Verweis. Danach
+  enthält der Abschnitt nur noch echte Verwerfungen.
+- **E56 — Tests: Lücke bleibt sichtbar, Abschnitt wird später
+  nachgeholt** (Isor, 2026-08-22). Gemeint sind **automatische** Tests
+  (Unity Test Framework); Isor testet heute von Hand über `TestMode`-
+  Schalter (siehe FEATURE_LOG, MeshBuilder: „Flach-, Random-, Rampen-
+  Test"). Ob automatische Tests überhaupt gewollt sind, ist eine eigene
+  Entscheidung mit echtem Aufwand — als offener Punkt in die
+  Kern-ROADMAP, Ownership-Zeile bleibt unverändert, damit die Lücke nicht
+  unsichtbar wird.
+- **D1-b wird beim Bauen mit erledigt:** Status-Vermerk auf den
+  tatsächlichen Stand bringen.
+
+### E57 — Umsetzungsliste vor dem Bauen (Isors Sorge, 2026-08-22)
+Isor: Gefahr, dass beim Entwerfen-erst-dann-Bauen etwas verloren geht.
+Gegenmaßnahmen, verbindlich:
+1. Befunde, Entscheidungen und Belege werden **sofort nach jeder Datei**
+   hier eingetragen — nichts bleibt nur im Kontext. Die Datei liegt im
+   Git-Repo; bricht eine Session ab, wird hier weitergearbeitet.
+2. Nach dem Durchgang werden die Entscheidungen in eine
+   **Checkliste konkreter Handgriffe je Datei** übersetzt („CLAUDE.md:
+   Ownership-Zeile ergänzen · Doku-Pflicht durch Verweis ersetzen ·
+   Leseordnung auf PLAN.md umstellen"). Beim Bauen wird abgehakt, nicht
+   erinnert.
+3. **Schritt F** (Zuständigkeits-Tabelle) ist zugleich die
+   Vollständigkeitsprüfung: Jede Art von Information braucht genau einen
+   Besitzer; Übersehenes fällt als „kein Besitzer" auf.
+4. Iterationen sind eingeplant, nicht Versagen — dafür gibt es
+   `STOERUNGEN.md` (E16) und die Testphase. Der Unterschied zu vorher:
+   Fehler sind dann belegt statt erinnert.
+
+### D2 — GDD.md (98 Zeilen) — durch
+
+**Frage, die sie besitzt:** *Was soll das Spiel sein?* Berechtigt.
+Ownership ungewöhnlich klar („was es sein soll, nicht wie es gebaut
+wird") und erklärt `offen` ausdrücklich zum gültigen Eintrag.
+**Schicht:** Projekte/Isor_Tower.
+
+**Befunde**
+- **D2-a:** Z. 87 kündigt an: „Erst das laufende Semester abschließen
+  (Portfolio 2026-08-21), danach das Bestehende am GDD ausrichten."
+  **Diese Phase hat am 2026-08-22 begonnen.**
+- **D2-b — eine offene Frage an drei Orten:** GDD-Frage 5 (Village-
+  Terrain handgebaut / Tool / eingefroren) steht zugleich als DECISIONS
+  2026-07-29 („Welt-Wahrheit: vertagt") und als ROADMAP Punkt 1
+  („Welt-Wahrheit als Seed statt Szene"). Wird sie beantwortet, sind drei
+  Stellen nachzuziehen.
+- **D2-c:** Das „später ins GDD" aus WORKFLOW.md hat keinen Besitzer —
+  es gibt keinen Ort für Design-Absicht, bis sie einsortiert ist. Das GDD
+  wurde seit dem 2026-07-29 nicht mehr angefasst.
+
+**Entscheidungen**
+- **E58 — Eine offene Frage hat genau einen Besitzer.** Design-Fragen
+  gehören dem GDD, technische der Projekt-DECISIONS. Die ROADMAP verweist
+  nur als Aufgabe (nach E27 über den Namen). **DECISIONS bekommt einen
+  Eintrag erst, wenn die Frage beantwortet ist** — dann streicht der
+  Besitzer sie aus seiner Offen-Liste.
+- **E59 — Abschnitt „Entwurf" im GDD** für noch nicht Einsortiertes.
+  Kein eigenes `GDD_NOTES`: Die Begründungen, die Isor dort vermutet
+  hatte, gehören nach DECISIONS („was, warum, verworfene Alternativen").
+  Was fehlt, ist nur ein sichtbarer Ort für das „später".
+- **E60 — `Kern/GDD_RULES.md` wird gebaut.** Besitzt Aufbau und Pflege
+  eines GDD: was hineingehört, der `offen`-Mechanismus, wann aus Entwurf
+  feste Absicht wird, wann ein Eintrag geschlossen wird. Gilt für jedes
+  künftige Projekt; das GDD selbst bleibt beim Projekt (Trennung wie
+  ARTIFACT_RULES ↔ ARTIFACT_INDEX).
+
+### E61 — Abgabedokumente: Markdown ist der Master (Isor, 2026-08-22)
+
+Klarstellung durch Isor: **Das GDD wird wie das TDD am Ende ein
+Word-Dokument.** Beide sind Living Documents und sollen laufend
+nachgezogen werden, statt am Ende in einem Durchgang zu entstehen
+(das TDD entstand 07.–11.08. mit 149.948 Zeichen in fünf Tagen).
+
+- **E61a — Takt: an der Baustein-Grenze, nicht nach Kalender.** Ein
+  Baustein gilt erst als fertig, wenn sein Abschnitt geschrieben ist.
+  Grund: Der Inhalt ändert sich an Feature-Grenzen, nicht sonntags; über
+  ein halbfertiges System schreibt man zweimal. Bester Teil des TDD war
+  der Threading-Abschnitt, direkt nach der Messreihe geschrieben.
+- **E61b — Text lebt in Markdown, `.docx` ist die Abgabefassung.
+  Beide Dokumente**, also auch das TDD (Isors Entscheidung, entgegen
+  meiner Empfehlung, das TDD unangetastet zu lassen).
+  Begründung dafür: Word-Eingriffe sind teuer — DOCX_RULES dokumentiert
+  **sechs** Fallen, jeder Eingriff braucht Sicherung, Prüfung und
+  Renderkontrolle. Markdown kostet nichts und liegt im Git-Diff.
+  *Wichtig, senkt den Preis:* Das vorhandene TDD-Layout wird **nicht
+  weggeworfen, sondern zur Formatvorlage** — Formatvorlagen, Kopfzeilen,
+  Seiteneinrichtung, Verzeichnisgerüst bleiben; nur der Text kommt aus
+  Markdown. Isor hat dieses Verfahren bereits angewandt (DECISIONS
+  2026-08-11: „S4-Abgabe aus dem TDD als Formatvorlagen-Spender gebaut").
+  *Aufwand, ehrlich:* Das ist ein **Werkzeug**, kein Regelwechsel —
+  Markdown lesen, in die Vorlage füllen, Überschriftenebenen und
+  Formatvorlagen zuordnen. Realistisch ein voller Arbeitstag, die ersten
+  Läufe sitzen nicht auf Anhieb. **Gehört auf die ROADMAP, nicht auf die
+  Wochenendliste.**
+- **E61c — Bilder zuletzt, Texttabellen früh.** Belegt durch die eigenen
+  DOCX_RULES: „Ein neu eingefügtes Bild verschiebt **alle** Nummern
+  danach … Nummern sind positionsabhängig." Zwanzig über das Semester
+  verteilte Bilder heißen zwanzigmal Felder aktualisieren und prüfen.
+  Tabellen aus Text sind billig und können sofort hinein.
+
+### D3–D5 — ASSIGNMENT_PCG / _TOOL / _THREADING (206 Zeilen) — durch
+
+**Frage, die sie besitzen:** *Was verlangt die Uni-Aufgabe im
+Originaltext?* Berechtigt — die Zeugnis-Belegpflicht hängt daran.
+**Alle drei sauber:** Ownership klar, Quelle genannt (Canvas, Kursnummer,
+Modul), „unverändert lassen", eigene Planung nach DECISIONS/TDD_NOTES
+verwiesen, und sie verweisen **über Dateinamen** aufeinander — genau
+was E27 verlangt. Keine inhaltlichen Befunde.
+**Schicht:** `Uni/Semester_2/`.
+
+**Befund D-a — vier von sieben Aufgabentexten fehlen**
+Das Portfolio hat sieben Teilabgaben (geprüft am 2026-08-22 gegen
+`Abgabe_Final`):
+4FSC0PD003.1 — 1_Softwareplanung · 2_Engine-Tool ✔ · 3_Threadoptimierung ✔
+4FSC0PD004.1 — 1_KI Prototyp · 2_Simulation der Spieleumgebung ·
+3_Prozedurale Erweiterung ✔ · 4_Arbeiten nach akademischen Standards
+Hinterlegt sind nur drei Aufgabentexte.
+
+Folge: ASSESSMENT_RULES verlangt „Alle `ASSIGNMENT_*.md` — die
+Bewertungskriterien im Originaltext" und „begründet gegen die
+Feedbackelemente der jeweiligen `ASSIGNMENT_*.md`, nicht gegen ein
+Bauchgefühl". **Beide bisherigen Zeugnisse haben sieben Abgaben bewertet,
+aber nur für drei die Kriterien im Original gehabt.** Die Belegpflicht
+konnte das nicht bemerken, weil sie „alle vorhandenen" prüft statt „alle
+nötigen" — derselbe Satz wie bei den Prefabs: *Ein Verzeichnis merkt
+nicht, dass etwas fehlt.*
+
+**Entscheidungen**
+- **E62 — Fehlende Aufgabentexte nachtragen.** Isor holt die vorhandenen
+  aus Canvas, Claude legt sie nach demselben Muster an. Gibt es für eine
+  Teilabgabe keinen eigenen Text, wird **genau das** als Datei
+  festgehalten — damit die Lücke belegt ist statt unsichtbar.
+- **E63 — Belegpflicht wird gegen die Teilabgaben abgeglichen:** Jede
+  Teilabgabe des Portfolios braucht einen hinterlegten Aufgabentext;
+  fehlt einer, wird das im Zeugnis ausdrücklich vermerkt statt still
+  geschätzt.
+
+**Gruppe D ist abgeschlossen (5 von 5).** Stand: 17 von 25 Posten.
+
+## Datei-Durchgang · Gruppe E — geplante Dateien und Streuner
+
+### E64 — Inhalt von `Kern/DOC_RULES.md` (steht fest, ~120 Zeilen)
+Fünfzehn Regeln aus dem Durchgang, die heute **keinen Besitzer** haben:
+1. Ownership-Definition und die drei Prüfungen
+2. Jede Datei beginnt mit `Ownership:` (20 von 21 tun es — nie verlangt)
+3. `Format:`-Zeile, wo Einträge einem Muster folgen (3 von 21)
+4. Maßstab: eine Frage, die sonst niemand beantwortet (E15)
+5. Kosten = Größe × Lesehäufigkeit
+6. Chronik gegen Verzeichnis — was Pflege braucht (E13)
+7. Erzeugen statt pflegen: wann ja, wann nein (E30 gegen B3-c)
+8. Verweise über Namen, Pfad **und** Überschrift (E27)
+9. Gleiche Dateinamen je Schicht, nie ohne Schicht sprechen (E28)
+10. Keine Zählwörter in Überschriften wachsender Listen (E41)
+11. Archiv: Nachfolger und Vorgänger benennen (E9)
+12. Eine Checkliste gehört dem Moment, nicht den Themen (E33)
+13. Ein Register muss vollständig sein (E45)
+14. Eine offene Frage hat genau einen Besitzer (E58)
+15. Eine Ausnahme muss sich selbst benennen und begründen
+    (Vorbild ASSESSMENT_RULES)
+
+### E65 — `GLOSSARY.md` wird **nicht** als eigene Aufgabe gebaut
+Isor kannte den Begriff nicht und sah den Bedarf nicht — die Begriffe
+werden ohnehin gerade in DOC_RULES, WORKFLOW und GDD_RULES definiert.
+Das Glossar **fällt am Ende als Nebenprodukt ab**: je Begriff eine
+Kurzform plus Verweis auf die Stelle, wo er herkommt („erzeugen statt
+pflegen"). Zeigt sich dann kein Bedarf, entsteht es nicht.
+*Beleg, dass das Problem real ist:* drei Begriffskollisionen in zwei
+Tagen — „Work Area" gegen „Session", „Uni-Modus" gegen „Lern-Modus",
+„Modus" gegen „Regler".
+Kandidaten fürs Einsammeln: Ownership · Schicht · Work Area · Baustein ·
+Lernmodus · Regler · Chronik · Verzeichnis · Register · Archiv · Befund.
+
+### E66 — `_split_check.txt` wandert nach `99_Archiv\_Zu_Loeschen\`
+Acht Zeilen, mitten im Satz abbrechend, Bruchstück des Zeugnisses vom
+2026-08-11, das vollständig im ASSESSMENT_LOG steht. In keinem
+INDEX-Eintrag. Nicht löschen — Isor leert selbst.
+
+**Gruppe E ist abgeschlossen. Der Datei-Durchgang ist damit vollständig:
+alle 25 Posten.** Offen bleibt **Schritt F** — die Zuständigkeits-Tabelle
+über alle Dateien als Vollständigkeitsprüfung.
+
+### Erste Einträge für `STOERUNGEN.md` (E16), sobald die Datei existiert
+- **2026-08-21** — Claude meldete, ROADMAP.md verletze ihre eigene
+  Ownership-Regel („Erledigt"-Block). Tatsächlich war es ein Widerspruch
+  **zwischen** ROADMAP und FEATURE_LOG (C7). Ursache: nur eine der beiden
+  Ownership-Zeilen gelesen, bevor geurteilt wurde.
+  *Regel, die gefehlt hat:* Vor einem Ownership-Befund immer die
+  Ownership-Zeile **aller** beteiligten Dateien lesen. Gehört in DOC_RULES.
+- **2026-08-21** — Claude kündigte einen Fragenblock an, stellte ihn aber
+  nicht (Isor musste nachfragen). Reiner Ausführungsfehler.
+
 ### Vorabnotiz für Gruppe B — KNOWLEDGE_RULES.md
 Beim Anwenden am Session-Ende aufgefallen: Die Regel aus **E2** steht dort
 **bereits** (Z. 29–32: „Claude fragt bei jedem Session-Ende — egal welcher

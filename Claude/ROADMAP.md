@@ -593,6 +593,10 @@ Reihenfolge noch offen, wird in einer eigenen Design-Session festgelegt.
      zwischen Dateien finden, überholte Einträge kürzen, Ownership-Grenzen
      prüfen. DECISIONS.md ist auf über 650 Zeilen gewachsen (vorgemerkt
      2026-08-03).
+   - **Läuft seit 2026-08-21.** Befunde, Entscheidungen und Zielstruktur
+     stehen in `_HARNESS_REVIEW.md` — dort auch der Arbeitsplan des
+     Datei-für-Datei-Durchgangs. Erst wird vollständig entworfen, dann
+     gebaut.
 6. [ ] **Spiel-Features aufbauen:** Kampf, Loot, Inventar, Crafting,
    Quests — jeweils eigene Design-Sessions.
 7. [ ] **GameObject-/Prefab-Aufbau-Konvention (eigene Design-Session):**
