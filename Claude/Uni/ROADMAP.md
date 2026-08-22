@@ -14,6 +14,13 @@ Format: `- [ ] **Titel** — ein bis drei Sätze, was zu tun ist und warum.`
   haben sieben Abgaben bewertet und hatten die Kriterien für drei.
   Wo es keinen eigenen Text gibt, wird **genau das** als Datei
   festgehalten, damit die Lücke belegt ist statt unsichtbar.
+- [ ] **Akademische Texte gegen den Harvard-Leitfaden prüfen.** Maßstab
+  ist `01_Uni\_Regelwerk\Leitfaden_Harvard_Zitation.md`. Konkret:
+  Kurzbelege und Quellenverzeichnis im TDD gegenlesen und die noch
+  fehlende Quelle ergänzen. Gehört zur Teilabgabe „Arbeiten nach
+  akademischen Standards" (4FSC0PD004.1). Übernommen aus
+  `C:\IsorBackup\README.md` (2026-08-22) — eine Studiums-Aufgabe, die
+  dort nur lag, weil der Leitfaden im Datenbaum liegt.
 - [ ] **Abgabe-Struktur beim Semesterstart kopieren, nicht am Ende
   sortieren.** Die Vorlage liegt unter
   `05_Werkzeuge\Vorlagen\SAE_Abgabe_Struktur\`. Im zweiten Semester

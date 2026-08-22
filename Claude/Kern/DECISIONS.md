@@ -352,3 +352,52 @@ zu finden, aber das INDEX-Skript wäre nicht mitkopierbar. Ebenso verworfen,
 die elf funktionierenden Diagramm-Skripte mit umzuziehen: Ihre Pfade stehen
 in DIAGRAM_RULES und in den Skripten selbst, und sie bearbeiten Dateien
 außerhalb des Harness.
+
+## 2026-08-22 — Notkern in der obersten CLAUDE.md (Ergebnis von P1)
+Was: `Harness Project\CLAUDE.md` behält die Weiterleitung und trägt
+zusätzlich vier Regeln als benannte Kopie: Isor entscheidet · nichts in
+fremde Dateien · Rückfrage an der Weggabelung · zeigen statt vorstellen
+lassen. Dazu Sprache und „Claude committet nicht".
+Warum: Prüfung P1, gemessen in einer frischen Session vor dem ersten
+Werkzeugaufruf — von den drei `CLAUDE.md` lädt nur die oberste von
+selbst. Die im Unity-Root lädt erst beim Zugriff auf eine Datei darunter,
+die mit den echten Regeln nie. Ohne Notkern hängt jede Regel daran, dass
+dem Verweis gefolgt wird; bei knappem Kontext oder in einem Subagenten
+gilt dann gar nichts.
+Verworfen: alles so lassen (die Kette hielt im Test, aber aus Gehorsam,
+nicht aus Automatik) · die Regeln ganz nach oben ziehen (dann ist
+`Claude\` nicht mehr als Ganzes herausnehmbar, gegen die Schichten-Idee).
+
+## 2026-08-22 — Befehle sind Auslöser, ihr Ablauf steht in WORKFLOW
+Was: Alle eigenen Befehle liegen in `.claude\commands\harness\` und
+heißen dadurch `/harness:sichern`, `:wechsel`, `:ende`, `:sonntag`,
+`:zeugnis`. Jede Datei enthält acht Zeilen und zeigt auf
+`Kern/WORKFLOW.md` bzw. `Kern/ASSESSMENT_RULES.md`. Der globale Skill
+`~\.claude\skills\zeugnis` ist archiviert — er ließe sich nicht in die
+Kategorie einordnen.
+Warum: Der Projektstamm ist `Harness Project`, das Git-Repo aber
+`My Harness Development` — was in `.claude\` liegt, ist nicht versioniert
+und ginge nicht mit der Auslieferung mit. So steht alles Inhaltliche im
+Repo, und ein verlorener Auslöser ist aus WORKFLOW neu geschrieben. Die
+Erkennungsregel, weil das `/`-Menü eingebaute, mitgelieferte und eigene
+Einträge ununterscheidbar mischt.
+Verworfen: voller Ablauftext in den Befehlsdateien (unversioniert und
+eine zweite Fassung der Doku-Pflicht) · das Arbeitsverzeichnis auf
+`My Harness Development` umziehen (saubere Trennung, ändert aber den
+Start-Ordner und die Pfade in allen Skripten).
+Preis, bewusst gezahlt: Die Befehle gibt es nur, wenn `Harness Project`
+der geöffnete Ordner ist. Sie schreiben ohnehin alle in dieses Repo.
+
+## 2026-08-22 — Berechtigungen: generische Muster mit ask und deny
+Was: `.claude\settings.local.json` von 314 Allow-Einträgen auf 51
+generische Muster, dazu 8 `ask` (Löschen, Prozesse beenden, robocopy) und
+4 `deny` (`git commit`, `git push`).
+Warum: Die alten Einträge waren fast alle Einweg-Kommandos mit
+Session-GUIDs im Pfad und trafen nie wieder. `ask` und `deny` setzen
+zugleich zwei Hausregeln dort durch, wo sie wirken: „niemals löschen, nur
+archivieren" und „Claude committet und pusht nicht".
+Verworfen: nur `allow` pflegen — dann steht die Commit-Regel weiter
+allein im Dokument. Bewusst drin gelassen: `python:*`, faktisch beliebiger
+Code, aber ohne sie fragt jeder Werkzeuglauf nach.
+Bekannte Lücke: `deny` greift über den Befehlsanfang; `git -C <Pfad>
+commit` liefe daran vorbei.

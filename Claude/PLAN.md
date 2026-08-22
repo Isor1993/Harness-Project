@@ -38,10 +38,20 @@ Reihenfolge: Regeln → Struktur → Inhalt → Automatik.
       `Projekte/Isor_Tower/Werkzeuge/prefab_status.py` ·
       `IsorBackup/Werkzeuge/sichern.ps1`. Alle drei mit Probelauf als
       Voreinstellung; INDEX und PREFAB_STATUS werden ab jetzt erzeugt.
-- [ ] **Phase 6 — Befehle:** `/sichern`, `/wechsel`, `/ende`;
-      Berechtigungen eindampfen
-- [ ] **Phase 7 — Nachlauf:** IsorBackup-Dateien, Glossar einsammeln,
-      Auslieferung `Harness_1.0.0`
+- [x] **Phase 6 — Befehle:** `/sichern`, `/wechsel`, `/ende` und als
+      vierter `/sonntag` gebaut — Ablauf in `Kern/WORKFLOW.md`, die
+      Dateien unter `.claude\commands\` sind nur Auslöser.
+      Berechtigungen 314 → 51 Allow + 8 Ask + 4 Deny. P1 gemessen:
+      nur die oberste `CLAUDE.md` lädt von selbst.
+- [x] **Phase 7 — Nachlauf:** IsorBackup-Schicht gebaut (RULES, ROADMAP,
+      DECISIONS), `C:\IsorBackup\README.md` auf einen Wegweiser gekürzt,
+      `Kern/GLOSSARY.md` mit 26 Begriffen eingesammelt. Drei Punkte in
+      ihre Schicht umgesetzt, eine verlorengehende Diagramm-Regel
+      gerettet. Das Archivieren der Review-Dateien wandert ans Ende von
+      Phase 8 — bis dahin wird die Befundliste gebraucht.
+- [ ] **Phase 8 — Abnahme:** Schlussdurchgang über alle Dateien,
+      Haken gegenprüfen, Empfehlungen einholen, Artifact-Seite
+      `⚙️ System · Harness` bauen, dann Auslieferung `Harness_1.0.0`
 
 ### Danach
 

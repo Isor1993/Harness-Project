@@ -194,6 +194,26 @@ Seite ←  Patterns/mvp-model-view-presenter.md,
 
 ---
 
+## ⚙️ System  — Schicht: Kern (der Harness selbst)
+
+### ⚙️ System · Harness
+```
+URL      noch nicht veröffentlicht — vorbereitet, nicht gebaut
+Stand    —
+Quelle   Kern/CLAUDE.md, WORKFLOW, DOC_RULES, VERSIONIERUNG, DECISIONS
+Skripte  keine Unity-Skripte; die Seite beschreibt die Harness-Dateien
+         und die Befehle unter .claude\commands\harness\
+Seite →  offen
+Seite ←  offen
+```
+Die Seite beschreibt den Harness in seinem **aktuellen** Zustand und wird
+**bei jeder neuen Harness-Version nachgezogen** — sie ist damit die
+einzige Seite, deren Stand an der Versionsnummer hängt statt am
+Sonntagsabgleich (`Kern/VERSIONIERUNG.md`). Gebaut wird sie erst, wenn
+der Kern nach der Abnahme steht; vorher beschriebe sie eine Baustelle.
+
+---
+
 ## Gelöschte Seiten
 
 Damit nachvollziehbar bleibt, warum eine ID ins Leere zeigt.

@@ -29,6 +29,19 @@ steht auf der Projekt-ROADMAP.
   Skript beim nächsten Lauf die alte Datei — die Anordnung ist dann nicht
   weg, aber die Arbeit war vergeblich.
 
+## Export aus draw.io
+
+**Beim Export „Include a copy of my diagram" angehakt lassen.** Ein
+`.drawio.png` trägt das XML dann eingebettet mit sich, und aus einem
+scheinbar reinen Bild lässt sich die bearbeitbare Quelle wieder
+herauslösen.
+
+Der Beleg ist ein Beinahe-Verlust: Am 2026-08-06 existierten fünf
+Diagramme nur noch als `.drawio.png`-Export. Sie waren nur deshalb zu
+retten, weil diese Option angehakt war — das XML wurde herausgelöst und
+liegt seither als eigene Quelle vor. Seitdem wird mit den `.drawio`-
+Dateien gearbeitet, nicht mit der Browser-Fassung (Bedienregel 2).
+
 ## Arbeitsteilung
 - **Claude** schreibt und pflegt die Skripte und führt sie aus. Inhalt,
   Vollständigkeit und Korrektheit der Member sind Maschinensache.

@@ -60,3 +60,23 @@ damals, nicht den von heute.
   repariert. Drei Skripte gebaut: INDEX und PREFAB_STATUS werden ab jetzt
   erzeugt, dazu die Sicherung auf die externe Platte.
   Leseordnung je Session-Start damit von 847 auf rund 250 Zeilen.
+- 2026-08-22 — Phase 6 der Überholung: die Befehle gebaut. `/harness:sichern`,
+  `:wechsel`, `:ende`, `:sonntag` und `:zeugnis` liegen als Auslöser in
+  `.claude\commands\harness\`, ihr Ablauf in `Kern/WORKFLOW.md`; der
+  Unterordner erzeugt den Namensraum, an dem die eigenen Befehle im
+  `/`-Menü erkennbar sind. Der globale Skill `~\.claude\skills\zeugnis`
+  ist damit archiviert. Berechtigungen von 314 Allow-Einträgen auf 51
+  Muster plus 8 `ask` und 4 `deny`; die alte Fassung liegt im Archiv.
+  Prüfung P1 gemessen: Von drei `CLAUDE.md` lädt nur die im Projektstamm
+  von selbst, weshalb sie jetzt einen benannten Notkern trägt.
+  Geprüft: `/harness:sichern` im selben Zug erstmals gelaufen — die
+  Leseordnung führte ohne Zuruf zur Doku-Pflicht.
+- 2026-08-22 — Phase 7 der Überholung: der Kern ist vollständig. Die Schicht
+  `IsorBackup/` gebaut (RULES, ROADMAP, DECISIONS) und `C:\IsorBackup\README.md`
+  von 93 auf 30 Zeilen als Wegweiser gekürzt; der Regeltext hat damit
+  Versionsgeschichte. `Kern/GLOSSARY.md` mit 26 Begriffen eingesammelt, jeder
+  mit Zeiger auf seinen Besitzer. Beim Aufteilen der acht „Offenen Punkte"
+  gehörten drei in andere Schichten, einer war überholt, und einer war gar
+  keine Aufgabe, sondern die Regel „beim draw.io-Export *Include a copy of my
+  diagram* angehakt lassen" — sie steht jetzt in `Kern/DIAGRAM_RULES.md`.
+  Geprüft: INDEX neu erzeugt, 46 Dateien, alle mit Ownership-Zeile.

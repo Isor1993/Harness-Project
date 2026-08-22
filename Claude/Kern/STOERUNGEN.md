@@ -56,3 +56,57 @@ nicht bedacht.
 `Knowledge/Werkzeuge/was-eine-sicherung-wertlos-macht.md`: Wer etwas
 ausschließt, prüft, ob das Ziel danach seinen Zweck noch erfüllt.
 **Behoben:** 2026-08-22, vor dem ersten echten Lauf.
+
+### 2026-08-22 — Haken gesetzt, Arbeit nicht getan
+**Was:** In `_HARNESS_UMSETZUNG.md` war unter Phase 4 abgehakt: „Eintrag
+für `⚙️ System · Harness` vorbereiten (E35, I12)". In `ARTIFACT_INDEX.md`
+kommt das Wort „Harness" nicht ein einziges Mal vor. Der Haken war falsch.
+**Ursache:** Die Bauliste prüft sich selbst nicht. Ein Haken belegt, dass
+jemand ihn gesetzt hat — nicht, dass die Datei sich geändert hat. Bei 60
+Handgriffen an einem Tag fällt eine Auslassung niemandem auf.
+**Regel:** Fehlte. Kandidat für den Schlussdurchgang: Wer eine Bauliste
+abhakt, nennt beim Abhaken die geänderte Datei — dann ist der Haken
+nachprüfbar statt nur behauptet.
+**Behoben:** offen. Der Eintrag wird im Zuge der Harness-Seite gebaut.
+
+### 2026-08-22 — Berechtigungsliste wächst aus sich selbst nach
+**Was:** Unmittelbar nach dem Eindampfen von 314 auf 51 Einträge standen
+zwei neue drin — der volle Wortlaut zweier `mv`- und `mkdir`-Aufrufe mit
+Archivpfad, die nie wieder vorkommen.
+**Ursache:** „Dauerhaft erlauben" hängt den kompletten Befehlstext an die
+Liste, nicht ein Muster. So sind die 314 entstanden.
+**Regel:** Fehlte. Bei einmaligen Befehlen „nur diesmal" wählen; dauerhaft
+nur, wenn der Befehl als Muster taugt. Sonst wächst die Liste in Wochen
+wieder auf ihren alten Stand.
+**Behoben:** Die zwei Einträge sind entfernt. Die Ursache bleibt — sie
+liegt in der Bedienung, nicht in der Datei.
+
+### 2026-08-22 — Typ des Abschnitts nie erfragt
+**Was:** Beim ersten Lauf von `/harness:sichern` war der Typ des
+laufenden Abschnitts unbekannt. Die ganze Session über war nie gesagt
+worden, ob gerade Design oder Development läuft — und der Typ entscheidet,
+welche Dateien geschrieben werden.
+**Ursache:** WORKFLOW verlangt am Session-Anfang nur die **Modus**-Frage.
+Der Typ wird ausschließlich beim `/harness:wechsel` abgefragt. Wer eine
+Session ohne Wechsel durchzieht, wird nie danach gefragt.
+**Regel:** Fehlte. Neu in `WORKFLOW.md`, Abschnitt „Typ, Modus und
+Regler": Die Startfrage lautet „Typ und Modus", nicht nur „Modus" —
+beide hängen am Abschnitt und werden ohnehin gemeinsam gebraucht.
+**Behoben:** 2026-08-22, in derselben Session, in der es auffiel.
+
+### 2026-08-22 — Regel überlebte nur zufällig in einer Erledigt-Liste
+**Was:** Die Regel „beim draw.io-Export *Include a copy of my diagram*
+angehakt lassen" stand als Zusatz an einem **abgehakten** Punkt in
+`C:\IsorBackup\README.md`. Beim Kürzen des README auf einen Wegweiser
+wäre sie ersatzlos verschwunden. Genau diese Option hatte am 2026-08-06
+fünf Diagramme gerettet.
+**Ursache:** Beim Abhaken schreibt man gern dazu, was man gelernt hat —
+„erledigt, ab jetzt immer X". Das „ab jetzt" ist eine Regel und stand
+damit im denkbar falschesten Dokument: einer Liste, die nach dem Abhaken
+niemand mehr liest.
+**Regel:** Fehlte. Neu als Wissensseite
+`Knowledge/Dokumentation/regeln-versauern-in-erledigt-listen.md`: Steht
+in der Erledigt-Notiz ein „ab jetzt", „immer" oder „nie wieder", ist es
+eine Regel und gehört in die Regeldatei ihres Themas.
+**Behoben:** 2026-08-22, die Regel steht in `Kern/DIAGRAM_RULES.md`.
+Ob daraus zusätzlich eine Harness-Regel wird, entscheidet die Abnahme.

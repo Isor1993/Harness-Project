@@ -320,29 +320,110 @@ Ergebnisse und Funde:
 - [ ] Repo-/Git-Regeln samt Build-Versionsschema (ROADMAP Punkt 9)
 - [ ] Prefab-Innenaufbau (ROADMAP Punkt 7)
 
-## Phase 6 — Befehle und Berechtigungen
+## Phase 6 — Befehle und Berechtigungen — **erledigt 2026-08-22**
 
-- [ ] `/sichern` — Doku-Pflicht abarbeiten, Session läuft weiter (E23)
-- [ ] `/wechsel <Typ>` — sichern + Typ umstellen + Modus/Regler neu fragen
-- [ ] `/ende` — sichern + Commit-Vorschlag mit V-Nummer + Schluss
-- [ ] **Doku-Pflicht ist typabhängig** — eine Zeugnis-Session schreibt in
-      andere Dateien als eine Development-Session (B5-c)
-- [ ] Knowledge-Frage in `/ende`: Claude schlägt Themen vor, Isor wählt (E2)
-- [ ] Störungs-Frage in `/ende` (E16)
-- [ ] Sonntagsroutine: Artifact-Durchsicht (E34) + Abgleich gegen die
-      veröffentlichten Seiten (E47) + Backup-Erinnerung (E76)
-- [ ] `.claude/settings.local.json`: 280 Einträge auf generische Muster
-      eindampfen (C5, I5)
+**Ergebnis von P1 (gemessen in dieser Session, vor dem ersten Werkzeug):**
+Von den drei `CLAUDE.md` lädt der Harness **nur die oberste** von selbst
+(`Harness Project\CLAUDE.md`). Die im Unity-Root lädt erst, wenn eine
+Datei unterhalb ihres Ordners angefasst wird; die mit den echten Regeln
+(`…\Claude\CLAUDE.md`) lädt **nie** von selbst. Die Regeln greifen also
+nur, weil die oberste Datei ausdrücklich dorthin schickt und Claude dem
+folgt — Gehorsam, keine Automatik. Konsequenz siehe `Kern/DECISIONS.md`.
 
-## Phase 7 — Nachlauf
+**Fund an der Repo-Grenze:** Der Projektstamm ist `Harness Project`, das
+Git-Repo aber `My Harness Development`. Was in `.claude\` liegt, wird
+also **nicht** mitversioniert. Deshalb tragen die Befehlsdateien keinen
+Ablauf, sondern zeigen auf `Kern/WORKFLOW.md`.
 
-- [ ] `IsorBackup/RULES.md`, `ROADMAP.md`, `DECISIONS.md` aus dem
+- [x] `/sichern` — Doku-Pflicht abarbeiten, Session läuft weiter (E23)
+- [x] `/wechsel <Typ>` — sichern + Typ umstellen + Modus/Regler neu fragen
+- [x] `/ende` — sichern + Commit-Vorschlag mit V-Nummer + Schluss
+- [x] **Doku-Pflicht ist typabhängig** — stand bereits in WORKFLOW (B5-c);
+      die Befehle rufen sie jetzt auf, statt sie abzuschreiben
+- [x] Knowledge-Frage in `/ende`: Claude schlägt Themen vor, Isor wählt (E2)
+- [x] Störungs-Frage in `/ende` (E16)
+- [x] Sonntagsroutine als vierter Befehl `/sonntag`: Artifact-Durchsicht
+      (E34) + Abgleich gegen die veröffentlichten Seiten (E47) +
+      Backup-Erinnerung (E76). Ein Wochentakt passt in keinen der drei
+      Session-Befehle.
+- [x] Erkennungsregel für eigene Befehle: deutscher Name, Beschreibung
+      beginnt mit `Harness ·`. Grund: Das `/`-Menü mischt eingebaute,
+      mitgelieferte und eigene Einträge ununterscheidbar.
+- [x] Zwei tote Verweise im globalen `zeugnis`-Skill repariert
+      (`ASSESSMENT_RULES` nach `Kern/`, `ASSESSMENT_LOG` gibt es nicht
+      mehr). Die Phase-4-Prüfung lief nur über das Repo, nicht über
+      `~\.claude\skills\`.
+- [x] `.claude/settings.local.json`: **314 → 51** Allow-Einträge, dazu
+      8 `ask` und 4 `deny`. Alte Fassung nach
+      `99_Archiv\_Zu_Loeschen\2026-08-22_Harness_Umbau\`.
+      *Vorbehalt:* `deny` greift über den Anfang des Befehls — ein
+      `git -C <Pfad> commit` liefe daran vorbei.
+
+## Phase 7 — Nachlauf — **erledigt 2026-08-22**
+
+Beim Aufteilen des README fiel auf, dass drei der acht „Offenen Punkte"
+gar nicht dieser Schicht gehörten und einer **keine Aufgabe, sondern
+eine Regel** war — die einzige Stelle, an der stand, dass beim
+draw.io-Export „Include a copy of my diagram" angehakt bleiben muss.
+Genau diese Option hatte am 2026-08-06 fünf Diagramme gerettet. Sie
+wäre beim Kürzen ersatzlos verschwunden.
+
+- [x] `IsorBackup/RULES.md`, `ROADMAP.md`, `DECISIONS.md` aus dem
       bisherigen README aufbauen; Selbstwiderspruch zu `IsorRepos`
-      beheben (E72, G-a)
-- [ ] `C:\IsorBackup\README.md` auf einen Wegweiser kürzen (E72)
-- [ ] `GLOSSARY.md` aus den fertigen Dateien einsammeln (E65)
-- [ ] `_HARNESS_REVIEW.md` und diese Datei archivieren, INDEX-Einträge
-      entfernen
+      beheben (E72, G-a) — der verworfene Umbenennungsplan steht jetzt
+      als Entscheidung mit Datum da, statt im Kopf der Datei zu
+      widersprechen
+- [x] Drei Punkte in ihre Schicht umgesetzt: Unity-Ordnerstruktur →
+      Projekt-ROADMAP · Harvard-Zitation → Uni-ROADMAP · „Abgabeordner
+      finalisieren" **nicht übernommen**, seit dem 2026-08-20 überholt
+      (Abgabe ist hoch, Uni-LOG)
+- [x] Export-Regel nach `Kern/DIAGRAM_RULES.md` gerettet, Abschnitt
+      „Export aus draw.io"
+- [x] `C:\IsorBackup\README.md` auf einen Wegweiser gekürzt (E72),
+      alte Fassung im Archiv
+- [x] `GLOSSARY.md` aus den fertigen Dateien eingesammelt (E65) —
+      26 Begriffe mit Zeiger auf ihren Besitzer, dazu **ein Begriff ohne
+      Besitzer**: „Befund" ist nirgends definiert und von „Störung" nicht
+      sauber abgegrenzt. Fall für die Abnahme.
+- [x] INDEX neu erzeugt: 46 Dateien, alle mit Ownership-Zeile; die vier
+      erledigten Einträge aus `index_geplant.txt` gestrichen (11 → 7)
+
+## Phase 8 — Abnahme (Isor, 2026-08-22)
+
+Ausdrücklich **vor** der Testphase: einmal vollständig über den fertigen
+Harness gehen, bevor er auf IsorBackup losgelassen wird. Grund: Ab dann
+wird er benutzt statt gebaut, und Fehler im Fundament kosten später mehr.
+
+- [ ] **Schlussdurchgang über alle Dateien** — was ist falsch, was ist
+      doppelt, was widerspricht sich, was fehlt. Ergebnis ist eine
+      Befundliste wie `_HARNESS_REVIEW.md`, nicht sofortiges Ändern.
+- [ ] **Jeden Haken der Baulisten stichprobenartig gegenprüfen.** Anlass:
+      der falsche Haken vom 2026-08-22 (`Kern/STOERUNGEN.md`) — die
+      Artifact-Zeile war abgehakt, ohne dass die Datei sich geändert hat.
+- [ ] **Empfehlungen einholen:** Was sollte man am Harness noch tun,
+      bevor die Arbeit am Projekt weitergeht? Getrennt nach „muss",
+      „lohnt sich" und „nur bei Bedarf".
+- [ ] **Artifact-Seite `⚙️ System · Harness` bauen** (E35, I12) —
+      ausführlich, aktueller Zustand, Eintrag steht in `ARTIFACT_INDEX.md`
+      vorbereitet. Wird bei jeder neuen Harness-Version nachgezogen.
+- [ ] **Offene Störungen abarbeiten** (`Kern/STOERUNGEN.md`): offen ist
+      noch die Regel „wer eine Bauliste abhakt, nennt beim Abhaken die
+      geänderte Datei". Die Typ-Frage ist am 2026-08-22 behoben worden.
+- [ ] **INDEX-Blindstelle entscheiden:** Das INDEX-Skript sucht nur
+      unterhalb von `Claude\`. Die fünf Befehlsdateien in
+      `.claude\commands\harness\` erscheinen deshalb nirgends im
+      Register. Entweder Skript erweitern oder die Ausnahme benennen.
+- [ ] **Begriff „Befund" klären** — er wird durchgehend benutzt, ist
+      nirgends definiert und von „Störung" nicht abgegrenzt
+      (`Kern/GLOSSARY.md`, Abschnitt „Ohne Besitzer").
+- [ ] **Auslieferung `Harness_1.0.0`** erst danach — sie soll den
+      abgenommenen Stand enthalten, nicht den zuletzt gebauten.
+- [ ] **Zum Schluss:** `_HARNESS_REVIEW.md` und diese Datei archivieren,
+      Einträge aus dem INDEX entfernen. Bewusst **nach** der Abnahme —
+      die Befundliste wird bis dahin noch gebraucht.
+
+## Danach — Testphase
+
 - [ ] **Testphase beginnen** — erste Aufgabe: IsorBackup aufräumen in
       Viererpaketen (E73)
 

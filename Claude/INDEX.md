@@ -36,13 +36,13 @@ erinnert werden zu müssen.
 | `Kern/DIAGRAM_RULES.md` | Nur der Umgang mit den skriptgenerierten `.drawio`-Diagrammen — Ablage, Arbeitsteilung, Bedienregeln, Prüfung. |
 | `Kern/DOC_RULES.md` | Alle Regeln, die für die .md-Dateien des Harness selbst gelten — Zuständigkeit, Aufbau, Verweise, Verfall, Sprache. |
 | `Kern/GDD_RULES.md` | Aufbau und Pflege eines GDD — was hineingehört, wie mit offenen Punkten umgegangen wird, wann aus einem Entwurf feste Absicht wird, in welchem Takt es nachgezogen wird. |
-| `Kern/GLOSSARY.md` | (geplant) Begriffe mit fester Bedeutung — entsteht am Ende aus den fertigen Dateien |
+| `Kern/GLOSSARY.md` | Nur die **Kurzform** jedes Begriffs und der Zeiger auf seinen Besitzer. |
 | `Kern/KNOWLEDGE_RULES.md` | Schreib- und Ablageregeln für den externen Knowledge-Ordner. |
 | `Kern/LOG.md` | Nur was wann passiert ist — datierte Ereignisse, älteste oben. |
 | `Kern/ROADMAP.md` | Nur was am Harness als Nächstes gebaut wird. |
 | `Kern/STOERUNGEN.md` | Nur Vorfälle, in denen der Harness nicht so gearbeitet hat wie vorgesehen — was passiert ist und welche Regel nicht gegriffen hat. |
 | `Kern/VERSIONIERUNG.md` | Alle Nummernsysteme des Projekts — welche Nummer was zählt, wie sie gelesen wird und wo sie steht. |
-| `Kern/WORKFLOW.md` | Wie eine Session abläuft — Begriffe, Modus und Regler, Session-Typen, Doku-Pflicht, die Befehle und das Session-Ende. |
+| `Kern/WORKFLOW.md` | Wie eine Session abläuft — Begriffe, Typ und Modus samt Reglern, Session-Typen, Doku-Pflicht, die Befehle, der Pflegetag und das Session-Ende. |
 | `Kern/Zeugnisse/2026-08-11.md` | Nur dieses eine Zeugnis — ein datierter Messpunkt. |
 | `Kern/Zeugnisse/2026-08-16.md` | Nur dieses eine Zeugnis — ein datierter Messpunkt. |
 | `Kern/_ARCHIV.md` | Nur überholte Einträge der Kern-Schicht. |
@@ -68,9 +68,9 @@ erinnert werden zu müssen.
 
 | Dokument | Zuständigkeit |
 |---|---|
-| `IsorBackup/DECISIONS.md` | (geplant) Entscheidungen zur Datenablage |
-| `IsorBackup/ROADMAP.md` | (geplant) Offene Aufräum-Punkte des Datenbaums |
-| `IsorBackup/RULES.md` | (geplant) Baum, Ablageregeln, Benennung und Asset-Library für `C:\IsorBackup\` |
+| `IsorBackup/DECISIONS.md` | Nur Entscheidungen zum Datenbaum `C:\IsorBackup\` — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
+| `IsorBackup/ROADMAP.md` | Nur die offenen Aufräum-Punkte des Datenbaums `C:\IsorBackup\`. |
+| `IsorBackup/RULES.md` | Baum, Ablageregeln, Benennung und Asset-Library für `C:\IsorBackup\`. |
 
 ## Projekte
 

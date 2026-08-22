@@ -1,7 +1,8 @@
 # WORKFLOW.md — Session-Disziplin
 
-Ownership: Wie eine Session abläuft — Begriffe, Modus und Regler,
-Session-Typen, Doku-Pflicht, die Befehle und das Session-Ende.
+Ownership: Wie eine Session abläuft — Begriffe, Typ und Modus samt
+Reglern, Session-Typen, Doku-Pflicht, die Befehle, der Pflegetag und das
+Session-Ende.
 Regeln über Dokumente stehen in `DOC_RULES.md`, Code-Regeln in
 `CODE_GUIDELINES.md`, Nummernsysteme in `VERSIONIERUNG.md`.
 
@@ -10,7 +11,7 @@ Regeln über Dokumente stehen in `DOC_RULES.md`, Code-Regeln in
 - **Session** — ein durchgehender Arbeitsraum von Anfang bis `/clear`.
   Isors Wort dafür ist „Work Area".
 - **Abschnitt** — eine Phase innerhalb einer Session mit genau **einem**
-  Typ. `/wechsel` beendet einen Abschnitt und öffnet den nächsten.
+  Typ. `/harness:wechsel` beendet einen Abschnitt und öffnet den nächsten.
 - **Baustein** — eine abgeschlossene Funktionseinheit, die sich in einem
   Zug entwerfen und bauen lässt. **Fertig heißt gebaut, geprüft *und*
   dokumentiert** — solange der zugehörige Abschnitt im Abgabetext fehlt,
@@ -19,10 +20,17 @@ Regeln über Dokumente stehen in `DOC_RULES.md`, Code-Regeln in
 Jeder **Abschnitt** hat genau einen Typ und einen Fokus. Eine **Session**
 kann mehrere Abschnitte enthalten. Höchstens 2–4 Sessions parallel offen.
 
-## Modus und Regler
+## Typ, Modus und Regler
 
-**Am Anfang jeder Session fragt Claude nach dem Modus** — bei jedem Typ,
-nicht nur beim Entwerfen.
+**Am Anfang jeder Session fragt Claude nach Typ und Modus** — bei jedem
+Typ, nicht nur beim Entwerfen. Beide gehören zusammen und hängen am
+Abschnitt, nicht an der Session: Der **Typ** entscheidet, welche Dateien
+die Doku-Pflicht am Ende schreibt, der **Modus**, wie dazwischen
+gearbeitet wird. Die Typen stehen unten unter „Session-Typen".
+
+Wird der Typ nicht gefragt, fällt es erst bei `/harness:sichern` auf —
+dann steht die Doku-Pflicht ohne ihren Maßstab da.
+*(Regel aus einem echten Aussetzer, 2026-08-22.)*
 
 | Modus | bedeutet |
 |---|---|
@@ -85,7 +93,7 @@ Vor dem Coden: **Review-Gate** aus `CODE_GUIDELINES.md` durchgehen.
 
 ### Zeugnis
 Standortbestimmung zu einem festen Datum. Wird bewusst wiederholt — der
-Vergleich zweier Stände ist der Zweck. Auslöser `/zeugnis` oder Zuruf.
+Vergleich zweier Stände ist der Zweck. Auslöser `/harness:zeugnis` oder Zuruf.
 Vollständige Regeln in `ASSESSMENT_RULES.md`; dieser Eintrag ist nur der
 Zeiger. Die Session **liest und bewertet, sie baut nicht.**
 
@@ -104,18 +112,93 @@ im Kopf stand.
 Er ist aber ein **Kontrollpunkt**: Die Entscheidungen werden **vor** dem
 Wechsel festgeschrieben, nicht am Session-Ende. Sonst ist die Begründung
 weg, bevor sie geschrieben wurde, falls der Kontext im Bauen aufgeht.
-Umgesetzt durch `/wechsel`.
+Umgesetzt durch `/harness:wechsel`.
 
-## Die drei Befehle
+## Die Befehle
 
-Alle drei benutzen denselben Kern — die Doku-Pflicht steht **einmal** hier
+Alle benutzen denselben Kern — die Doku-Pflicht steht **einmal** hier
 und wird nicht in die Befehle abgeschrieben.
 
 | Befehl | tut | danach |
 |---|---|---|
-| `/sichern` | Doku-Pflicht abarbeiten | Session läuft weiter |
-| `/wechsel <Typ>` | `/sichern` + Typ umstellen + Modus und Regler neu fragen | weiterarbeiten ohne Neu-Einlesen |
-| `/ende` | `/sichern` + Commit-Vorschlag | Session ist zu, `/clear` folgt |
+| `/harness:sichern` | Doku-Pflicht abarbeiten | Session läuft weiter |
+| `/harness:wechsel <Typ>` | sichern + Typ umstellen + Modus und Regler neu fragen | weiterarbeiten ohne Neu-Einlesen |
+| `/harness:ende` | sichern + Commit-Vorschlag | Session ist zu, `/clear` folgt |
+| `/harness:sonntag` | Pflegetag, siehe unten | unabhängig vom Session-Typ |
+| `/harness:zeugnis` | Session-Typ „Zeugnis" starten | Regeln in `ASSESSMENT_RULES.md` |
+
+**Die Dateien unter `.claude\commands\` sind nur Auslöser.** Sie zeigen
+hierher und tragen keinen Ablauf. Grund: Der Projektstamm ist
+`Harness Project`, das Repo aber `My Harness Development` — was in
+`.claude\` liegt, ist nicht versioniert. Alles Inhaltliche steht deshalb
+hier, und ein verlorener Auslöser ist aus diesem Abschnitt in zwei
+Minuten neu geschrieben. Weicht ein Auslöser von hier ab, gilt dieser
+Abschnitt, und die Abweichung wird gemeldet.
+
+### Alle eigenen Befehle in einer Kategorie
+Das `/`-Menü mischt drei Quellen: die eingebauten Befehle von Claude
+Code, die mitgelieferten Skills und Plugins, und die eigenen. Es sortiert
+sie nicht sichtbar auseinander. Deshalb liegen **alle** eigenen Befehle
+im Unterordner `.claude\commands\harness\` und erscheinen dadurch als
+`/harness:<Name>`. Tippt man `/harness`, steht die vollständige Liste da
+und sonst nichts.
+
+**Ein neuer eigener Befehl kommt ausnahmslos in diesen Ordner** — auch
+wenn er thematisch woanders hingehört. Der Namensraum ist die einzige
+Stelle, an der die eigenen Befehle von den fremden zu unterscheiden sind.
+Kein globaler Skill unter `~\.claude\skills\` mehr: Der ließe sich nicht
+in die Kategorie einordnen. Preis dafür — die Befehle gibt es nur, wenn
+`Harness Project` der geöffnete Ordner ist. Das ist gewollt, denn sie
+schreiben ohnehin alle in dieses Repo.
+
+### Ablauf von `/harness:sichern`
+1. Diesen Abschnitt und „Doku-Pflicht" lesen, falls in dieser Session
+   noch nicht geschehen.
+2. **Typ des laufenden Abschnitts** feststellen. Ist er nie genannt
+   worden, wird gefragt statt geraten — er entscheidet, welche Dateien
+   geschrieben werden.
+3. Doku-Pflicht abarbeiten: erst die Punkte, die immer gelten, dann die
+   Zeile der Typ-Tabelle.
+4. **Nur Belegtes.** Geschrieben wird, was in dieser Session tatsächlich
+   passiert ist. Keine Zahl, die nicht gemessen wurde; keine
+   Entscheidung, die nicht gefallen ist.
+5. **Ergebnis melden:** eine Zeile je Eintrag mit Zieldatei. „Nichts zu
+   schreiben" ist ein gültiges Ergebnis und wird ebenso gemeldet — sonst
+   ist nicht unterscheidbar, ob nichts anfiel oder etwas vergessen wurde.
+
+### Ablauf von `/harness:wechsel <Typ>`
+Der Wechsel ist ein **Kontrollpunkt**, siehe „Wechsel des Abschnitts".
+1. `/harness:sichern` vollständig — **vor** dem Wechsel, nicht am Session-Ende.
+2. Bei Design → Development zusätzlich: Steht jede getroffene
+   Entscheidung in der DECISIONS der Schicht? Was fehlt, wird jetzt
+   geschrieben, solange die Begründung noch da ist.
+3. Neuen Typ benennen und den alten Abschnitt für beendet erklären.
+4. **Modus und die zwei Regler neu fragen.** Sie hängen am Abschnitt,
+   nicht an der Session.
+
+### Ablauf von `/harness:ende`
+1. `/harness:sichern`.
+2. **Baustein-Frage:** Ist der Baustein fertig — gebaut, geprüft *und*
+   dokumentiert? Wenn nein: benennen, was fehlt, und in die ROADMAP der
+   Schicht, damit die nächste Session nicht bei null sucht.
+3. Commit-Vorschlag nach Abschnitt „Session-Ende" — je berührtem Repo
+   einer, jedes zählt seine eigene Nummer.
+4. Danach ist die Session zu. Claude fängt nichts Neues mehr an.
+
+## Pflegetag (`/harness:sonntag`)
+
+Wochentakt, unabhängig von Session und Typ. **Dieser Abschnitt besitzt
+den Zeitpunkt und die Liste, die Fachdatei je Punkt den Inhalt** —
+dieselbe Arbeitsteilung wie beim Review-Gate.
+
+1. **Artifact-Durchsicht** samt Abgleich gegen die tatsächlich
+   veröffentlichten Seiten — Verfahren in `ARTIFACT_RULES.md`,
+   Abschnitt „Wann geschaut wird". Claude legt eine Vorschlagsliste vor
+   und ändert nichts von selbst.
+2. **Backup.** Isor steckt die Platte an, Claude startet
+   `IsorBackup/Werkzeuge/sichern.ps1` — Probelauf zuerst. Ist keine
+   Platte angesteckt, wird das gemeldet und der Punkt bleibt offen; er
+   gilt nicht als erledigt.
 
 ## Doku-Pflicht
 
