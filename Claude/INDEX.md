@@ -66,7 +66,7 @@ muss vollständig sein (DOC_RULES, Abschnitt 8).
 | Dokument | Zuständigkeit |
 |---|---|
 | `Projekte/Isor_Tower/GDD.md` | Design-Absicht des Spiels — zugleich Markdown-Manuskript der Abgabe |
-| `Projekte/Isor_Tower/TDD_NOTES.md` | Stoffsammlung fürs TDD, nach Themenblöcken, kumulativ über alle Semester |
+| `Projekte/Isor_Tower/TDD_NOTES.md` | Stoffsammlung fürs TDD — geprüfte Fakten und Zahlen in zehn Themenblöcken, kumulativ über alle Semester |
 | `Projekte/Isor_Tower/PREFAB_STATUS.md` | Prüfstand jedes Prefabs — Arbeitsliste mit Ende, wird erzeugt |
 | `Projekte/Isor_Tower/DECISIONS/` | Entscheidungen je System: Terrain, UI, Welt, Audio, Entities |
 | `Projekte/Isor_Tower/ROADMAP.md` | Baureihenfolge des Projekts: Basiszustand, Aufräumen, HUD, Beobachtungspunkte, Politur |

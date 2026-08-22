@@ -121,10 +121,24 @@ Fakten, keine Aufgaben** — sie gehören daher nicht in eine ROADMAP:
       Zeile „Harness-Bauten stehen in ROADMAP" ist mit der Datei weg
 - [x] Original nach `99_Archiv\_Zu_Loeschen\2026-08-22_Harness_Umbau\`
 
-**TDD_NOTES (556 Zeilen, 85 Einträge)**
-- [ ] nach `Projekte/Isor_Tower/` (E51) — nicht Uni
-- [ ] nach Themenblöcken gliedern statt chronologisch (~1 h Arbeit)
-- [ ] veraltetes „Abgabe ca. 2026-07-28" im Kopf korrigieren (C3-a)
+**TDD_NOTES (556 Zeilen, 85 Einträge)** — **erledigt 2026-08-22**
+- [x] nach `Projekte/Isor_Tower/` verschoben (E51, in Phase 2)
+- [x] nach **zehn Themenblöcken** gegliedert: Terrain & Mesh 19 ·
+      Platzierung 15 · Architektur & Muster 10 · Performance & Threading 9 ·
+      Werkzeuge 9 · Interaktion & UI 9 · Audio 7 · Welt & Persistenz 3 ·
+      Rendering 2 · Lizenzen & Quellen 2
+- [x] Zeitfolge innerhalb jedes Blocks erhalten, Marken im Text
+      unverändert gelassen — sie tragen teils Kapitelhinweise
+      (`[Kapitel 14, Änderungsverlauf]`), die sonst verloren gingen
+- [x] Kopf neu: Ownership, Format, Begründung für die Projekt-Schicht;
+      veraltetes „Abgabe ca. 2026-07-28" entfernt (C3-a)
+- [x] **Doppelte Prüfung bestanden:** Skript meldet 545 = 545 nicht-leere
+      Rumpfzeilen identisch; unabhängig davon gegen die committete Fassung
+      geprüft — alle 85 Eintragszeilen Zeichen für Zeichen gleich
+- Befund am Rande: Fünf Marken benannten ein TDD-Kapitel statt ein Thema
+  (`[Kapitel 14]`, `[Kapitel 6.5]`, `[Abgabe]`, `[Formate]`, `[Planung]`).
+  Inhaltlich sind alle fünf Projekt-Stoff — sie wurden thematisch
+  einsortiert, der Kapitelhinweis bleibt im Text stehen.
 
 **ASSESSMENT_LOG (782 Zeilen, 2 Zeugnisse)** — **erledigt 2026-08-22**
 - [x] aufgetrennt in `Kern/Zeugnisse/2026-08-11.md` und `2026-08-16.md` (E53)

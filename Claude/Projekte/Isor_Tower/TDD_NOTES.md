@@ -1,14 +1,19 @@
-# TDD_NOTES.md — Stoffsammlung fürs Technical Design Document
+# TDD_NOTES.md — Stoffsammlung fürs TDD
 
-Ownership: Grobe Einträge für das Uni-TDD (Terrain-/Mesh-Generation,
-Abgabe ca. 2026-07-28). Kein fertiger Text — nur Rohmaterial, aus dem
-das TDD am Ende generiert wird. Nur echte Arbeit am Uni-Projekt —
-Harness-Entwicklung gehört nicht hierher.
-Format: `- JJJJ-MM-TT — [Themenblock] Stichpunkt (1–3 Zeilen)`.
-Themenblöcke frei wählen (z. B. Architektur, Terrain, Mesh, Input,
-Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
+Ownership: Nur Rohmaterial für das Technical Design Document von Isor's
+Tower — geprüfte Fakten, Zahlen und Formeln aus der Projektarbeit.
+Kein fertiger Text (der steht in `TDD.md`), keine Begründungen (die in
+`DECISIONS/`), keine Ereignisse (die im `LOG.md`).
+Format: `- JJJJ-MM-TT — [Marke] Stichpunkt (1–3 Zeilen)`, einsortiert
+unter den passenden Block. Innerhalb eines Blocks steht die Zeitfolge.
 
-## Einträge
+**Kumulativ über alle Semester.** Ein Eintrag wie eine Mesh-Formel gilt
+weiter, wenn das nächste TDD geschrieben wird — deshalb liegt diese Datei
+beim Projekt, nicht bei der Uni. Überholte Einträge wandern nach
+`_ARCHIV.md`, mit Angabe, wodurch sie abgelöst wurden.
+
+## Terrain & Mesh
+
 - 2026-07-18 — [Mesh] MeshBuilder als statischer Übersetzer Heightmap→Mesh.
   Kernformeln: res² Vertices, (res−1)²·6 Triangle-Indizes, i = z·res + x;
   zwei Dreiecke pro Gitterquadrat, Winding im Uhrzeigersinn (von oben).
@@ -19,8 +24,6 @@ Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
 - 2026-07-18 — [Mesh] Praxisgrenzen: 16-Bit-Indexpuffer max. 65.535
   Vertices (res ≤ 255 oder IndexFormat.UInt32); SerializeField-Typwechsel
   resettet den Inspector-Wert.
-- 2026-07-18 — [Architektur] Mesh komplett im Code statt Unity-Terrain
-  oder Mesh-Asset (Begründung in DECISIONS 2026-07-18).
 - 2026-07-18 — [Terrain] HeightmapGenerator: statisch, oktavierter Perlin
   Noise. Kernformeln: Amplitude = persistence^o, Frequenz = lacunarity^o
   (per `*=` in der Schleife), Summe / Amplitudensumme → Ergebnis bleibt
@@ -34,43 +37,11 @@ Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
   Division durch null), lacunarity ≥ 1 (sonst kehren sich Oktaven um).
   Oktaven über ~6 bringen keinen sichtbaren Mehrwert (0.5⁹ ≈ 0,2 %),
   kosten aber linear Rechenzeit.
-- 2026-07-18 — [Architektur] TerrainConfig als ScriptableObject-Parameter-
-  Object: alle Pipeline-Einstellwerte in einem Asset, Konsumenten lesen
-  dieselbe Quelle (Get-only-Properties); mehrere Assets = tauschbare
-  Presets ohne Code-Change. Generator-Signatur: Generate(TerrainConfig).
 - 2026-07-18 — [Terrain] heightCurve (AnimationCurve): remappt das
   normalisierte 0–1-Profil per Evaluate — nach der Oktaven-Normalisierung,
   vor der Meter-Skalierung im MeshBuilder. x²-Intuition: jeder Wert „mal
   sich selbst" → Täler sacken ab (0,2→0,04), Gipfel bleiben (0,9→0,81),
   Terrain wird dramatischer. Verifiziert per Kurven-Biege-Test.
-- 2026-07-18 — [Planung] Ziel-Bild des kombinierten Tools (PCG + Engine-
-  Tool, siehe DECISIONS 2026-07-18): Terrain mit Bergen und Tälern,
-  später evtl. Straßen/Wege; Start-Village mit Haus-Asset am Spawnpunkt;
-  Bäume und Gras platzieren, an Flüssen passender Shader/Material;
-  vorhandene Partikeleffekte (Glühwürmchen, Fackeln) an ausgewählten
-  Stellen. Abgabe braucht zusätzlich: Tool-Beschreibung im TDD, UML-
-  Klassendiagramm, Ablaufdiagramm, mind. ein Design Pattern, Fehlbedienung
-  ausgeschlossen oder mit Nutzer-Feedback.
-- 2026-07-18 — [Tools] Terrain-Editor-Tool als MVP: View TerrainToolWindow
-  (EditorWindow, IMGUI), Presenter TerrainToolPresenter (prüft Config,
-  ruft Pipeline, besitzt „Generated Terrain"-Objekt), Model = bestehende
-  Pipeline unverändert. Fehlbedienung: Button-DisabledScope + HelpBox;
-  Edit-Mode-Fallen: sharedMesh statt mesh, DestroyImmediate,
-  [SerializeField] am Config-Feld (Serialisierungs-Bewertungspunkt).
-  Liefert fürs TDD: Tool-Beschreibung + Stoff für UML-/Ablaufdiagramm.
-- 2026-07-18 — [Tools] Tool fertig und getestet (6-Punkte-Plan inkl.
-  Editor-Neustart). IMGUI-Kernmuster fürs TDD: Felder geben ihren neuen
-  Wert zurück (`_config = ObjectField(...)`), Buttons feuern nur im
-  Klick-Frame, DisabledScope sperrt per using-Klammer garantiert nur
-  seinen Bereich. typeof als Typ-Filter des ObjectFields.
-- 2026-07-18 — [Tools] URP-Lektion: Magenta = Shader inkompatibel mit
-  aktiver Pipeline; Built-in-Materials (Default-Diffuse) funktionieren
-  unter URP nicht → GraphicsSettings.currentRenderPipeline.defaultMaterial
-  als Fallback, eigentliches Material kommt aus der Config.
-- 2026-07-18 — [Tools] Bewusste Grenzen v1 (TDD-Kapitel „Erweiterungen"):
-  kein Undo für Generate/Clear; GameObject.Find sieht nur aktive Objekte;
-  Auto-Regenerate als Checkbox geparkt (Performance/Absichtsprinzip —
-  siehe DECISIONS 2026-07-18).
 - 2026-07-19 — [Terrain/Shader] Bekannte Grenze Wasser-Shader (TDD-Kapitel
   „Erweiterungen"): aktueller Shader läuft auf einer flachen Ebene in
   eine Richtung — passend für den geplanten globalen Wasserspiegel
@@ -85,13 +56,6 @@ Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
   innen → Zielhöhe, Ring → Lerp(PlateauHeight, original, t) mit
   t = (dist − radius)/blend, außen → unangetastet. Lerp-Richtung: t=0 an
   der Plateau-Kante = volle Plateauhöhe.
-- 2026-07-19 — [Architektur] Nicht-destruktive Pipeline: Modifier
-  schreiben vor dem Mesh-Build, danach ist die Heightmap read-only —
-  das Mesh ist ein Schnappschuss, keine Live-Verbindung (zwei
-  Wahrheitsquellen vermeiden). Änderungen gehen in die Quelldaten
-  (Config/Modifier), dann läuft die Pipeline komplett neu; Determinismus
-  (Seed) macht das Original jederzeit reproduzierbar — Löschen eines
-  Modifiers = Eintrag streichen + neu generieren.
 - 2026-07-19 — [Terrain] Plateau-Guards: radius Min(0) mit 0 als
   gewolltem Aus-Schalter (kein Extra-Bool); blend Min(0.001) sichert die
   Division in t ab — statt sich auf die Zweig-Reihenfolge zu verlassen
@@ -148,6 +112,9 @@ Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
   HeightCurve mit flacher Basis + spätem Anstieg, Seed durchprobieren.
   Verhältnis Höhe:Breite ~25 % (wie das Referenz-Terrain); Seed steuert die
   Lage der Massive, gezielte Platzierung bräuchte einen Mask-Modifier (Kür).
+
+## Platzierung
+
 - 2026-07-21 — [Platzierung] Design der Platzierungs-Stufe: ObjectPlacer reine
   statische Stufe (Geschwister zu MeshBuilder), zwei Datentypen — Placeable
   (class, Config-Array: prefab, min/maxHeight, maxSlope, minSpacing,
@@ -164,16 +131,6 @@ Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
   leer). Regel-Filter je Kandidat billig→teuer: Wasser-Untergrenze (global,
   height ≥ waterLevel + shoreMargin, nur bei isWaterEnabled) → Höhenband
   (max(Wasser, minHeight)…maxHeight) → Steigung (≤ maxSlope).
-- 2026-07-21 — [Pattern] Zweites Design-Pattern fürs TDD: Strategy —
-  DensityStrategy (ScriptableObject, AcceptanceProbability(x,z)→0–1) mit
-  Uniform/NoiseMask/Probability. Dichte-Variation als Wahrscheinlichkeits-
-  Ausdünnung statt variablem Poisson-Radius; offen/geschlossen: neue Art = neues
-  Asset, Placer unberührt.
-- 2026-07-21 — [Tools] Panel-Ausbau: Generate Complete + Einzel-Stufen (Terrain/
-  Wasser/Place) + pro-Typ Place/Clear aus Liste 1 erzeugt (datengetrieben, nicht
-  fest verdrahtet); „Place Objects" ohne Terrain-Rebuild (inkrementelles
-  Generieren), eigene „Generated Placement"-Wurzel; eigener placementSeed
-  getrennt vom Terrain-Seed → Verteilung neu würfeln ohne Rebuild.
 - 2026-07-23 — [Platzierung/Architektur] SampleHeight umgesetzt: aus dem
   HeightmapGenerator herausgezogen als geteilte reine Funktion
   SampleHeight(config, offsets, worldX, worldZ) → Höhe an beliebiger Welt-
@@ -182,11 +139,6 @@ Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
   als auch der Placer (freie Weltkoordinaten) dieselbe Funktion rufen. Offsets
   einmal gebaut (seed-abhängig, für alle Punkte gleich), als Parameter gereicht;
   kein Klassen-Zustand (thread-tauglich, pure).
-- 2026-07-23 — [Architektur/Pattern] DRY vs. SRP aufgelöst per Komposition:
-  SampleHeight ist ein dünner Dirigent (Noise+Curve, dann PlateauModifier.
-  SampleAt); die Plateau-Rechnung bleibt in PlateauModifier (von Array-Stufe
-  Apply zu Punkt-Funktion SampleAt umgebaut). Trennung nach Job (SRP) + Teilen
-  über einen Einstiegspunkt (DRY) — kein Gott-Objekt, keine Doppel-Logik.
 - 2026-07-23 — [Platzierung] Datentypen gebaut: Placeable (class, [Serializable],
   Array in TerrainConfig, [SerializeField]+Tooltip+[Range]/[Min], Get-only-
   Properties) als Rezept; Placement (struct, unveränderlich per Konstruktor +
@@ -213,122 +165,12 @@ Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
   optional FromToRotation(up, normal) * Euler(yaw) — Tilt links, Yaw rechts, denn
   Quaternion-Multiplikation ist nicht vertauschbar (falsche Reihenfolge schwenkt die
   Achse von der Normale weg). Scale = Lerp(min, max, rand).
-- 2026-07-25 — [Pattern] Strategy umgesetzt: DensityStrategy (abstract SO,
-  AcceptanceProbability(x,z)→0–1) + UniformDensity/ProbabilityDensity/
-  NoiseMaskDensity. Der Placer ruft nur die Basis, kennt die Konkreten nicht →
-  neue Dichte-Art = neues Asset, ObjectPlacer unberührt (Open/Closed; zweites
-  Muster fürs TDD neben MVP). float statt bool: die Gewichtung braucht die
-  Abstufung, der Würfel sitzt an einer Stelle im Placer (Determinismus über
-  einen Seed-Strom, feste Ziehungsreihenfolge). NoiseMask: Perlin liefert von
-  Haus aus ~0–1 = fertige Wahrscheinlichkeit; Seed→Offset (wie
-  BuildOctaveOffsets, ±10000 gegen Float-Terracing), Scale zoomt die Wolken;
-  Offset in OnEnable/OnValidate gecacht — abgeleiteter Cache, kein
-  veränderlicher Zustand. Dichte-Stufe billig→teuer vor der Steigung.
-- 2026-07-26 — [Tools] Panel fertig: MVP bleibt tragend — die View zeichnet nur
-  und kennt keine Objektnamen, der Presenter besitzt die Szenen-Objekte. Vier
-  Absichts-Methoden als Überladungspaare (PlaceObjects/ClearObjects je alle bzw.
-  ein Typ) statt eines öffentlichen `Clear(string)`: der Aufrufer nennt die
-  Absicht, nie den Namen — der Tippfehler kann gar nicht entstehen. Pro-Typ-
-  Zeilen werden aus dem `Placeables`-Array erzeugt (datengetrieben: neuer Typ =
-  neue Zeile ohne Code-Change). Fürs UML: TerrainToolWindow → TerrainToolPresenter
-  → {HeightmapGenerator, MeshBuilder, ObjectPlacer}; Einbahnstraße, das Model
-  kennt weder View noch Presenter.
-- 2026-07-26 — [Tools] Hierarchie als Aufräum-Mechanismus: „Generated Placement"
-  ist Kind des Terrain-Roots, darunter eine Gruppe je Typ. Terrain-Regenerieren
-  zerstört den Root und nimmt die veraltete Platzierung automatisch mit — kein
-  eigener Invalidierungs-Code. Einzel-Typ-Place leert nur seine Gruppe (kein
-  Clear der Wurzel), damit Tunen eines Typs die anderen stehen lässt.
-  `transform.Find` statt `GameObject.Find` für Kinder: sucht nur im Teilbaum,
-  immun gegen gleichnamige Objekte anderswo.
 - 2026-07-26 — [Platzierung] Prefab-Transform komponieren statt ersetzen:
   Instanz-Rotation = placement.Rotation * prefabRotation, Scale = prefabScale *
   placement.Scale. Quaternion-Reihenfolge ist nicht vertauschbar — rechts steht,
   was zuerst wirkt (Achsen-Korrektur aufrichten), links das Nachträgliche (Yaw,
   Boden-Neigung). Umgekehrt kippt die Korrektur die bereits zufällig gedrehte
   Achse. Gleiche Lektion wie bei FromToRotation × Euler(yaw) vom 23.07.
-- 2026-07-26 — [Assets] Blender→Unity Achsen-Falle (TDD-Kapitel „Erweiterungen"/
-  Lessons Learned): Blender ist Z-up, Unity Y-up. Blenders FBX-Exporter
-  konvertiert bereits; Unitys Import-Option „Bake Axis Conversion" ist für
-  *nicht* konvertierte Dateien gedacht und dreht eine korrekte Datei ein zweites
-  Mal um −90° → Modell liegt. Zweite Falle: eine Korrektur-Rotation am Prefab-
-  Root wird von jedem prozeduralen Placer überschrieben, der Rotation absolut
-  setzt. Prüfreihenfolge: Modell in Blender bei Rotation 0 aufrecht (Stamm
-  entlang +Z, Ursprung am Fuß) → Import-Optionen → erst dann den Code verdächtigen.
-- 2026-07-26 — [Performance] Baseline für die Threading-Abgabe: 211.000
-  Gras-GameObjects bei minSpacing 2,7 auf 2048 m machen den Editor zäh. Anzahl
-  wächst quadratisch zum Abstand (~Fläche/(1,3·r²)): 2,7 m ≈ 211.000, 8 m
-  ≈ 25.000, 12 m ≈ 11.000. Kostentreiber ist nicht primär das Rendering, sondern
-  die Objektanzahl selbst (Hierarchie-Fenster, Transforms, Undo, Serialisierung)
-  — GPU Instancing adressiert nur die Draw Calls und greift unter URP oft gar
-  nicht, weil der SRP Batcher Vorrang hat. Struktureller Weg: die Placement-Liste
-  direkt instanziert zeichnen, ohne GameObjects; hinter dem Presenter kapselbar.
-- 2026-07-30 — [Interaktion] Aufbau des Systems (TDD-Kapitel Architektur):
-  `IInteractable` (Prompt / CanInteract / Interact) ist die einzige Berührungs-
-  linie zwischen Spieler- und Objektseite — der Spieler kennt keine Schafe, die
-  UI kennt nur einen string. Vier Teile: Vertrag (Interface), Sucher
-  (`PlayerInteractor`, Raycast aus der Kamera, Reichweite + LayerMask), Anzeige
-  (`InteractionPromptView`, Event-Abonnent), Adapter (`SheepInteractable`,
-  delegiert an `Sheep`). Alternative Bauform Trigger-Collider beantwortet „was ist
-  nah", der Strahl „was schaue ich an" — für First Person mit Fadenkreuz richtig.
-- 2026-07-30 — [Interaktion] Drei Fallen mit Beleg im eigenen Code:
-  (1) `GetComponentInParent` sucht nur **aufwärts** — der Collider darf tiefer
-  sitzen als das Script, nie höher; sonst kein Treffer, keine Fehlermeldung.
-  (2) Unitys `==`-Überschreibung für zerstörte Objekte sitzt auf
-  `UnityEngine.Object`, nicht auf dem Interface → Cast vor dem Null-Check.
-  (3) Event-Abonnent muss den Startwert selbst nachziehen, weil Events erst bei
-  der nächsten Änderung feuern; jedes `+=` braucht sein `-=` im Gegenstück.
-- 2026-07-30 — [Interaktion] Prompt-Aktualisierung: `ReferenceEquals(target,
-  _currentTarget)` als Abbruchbedingung reicht nur, solange ein Objekt seinen
-  Prompt nie ändert. Fackel an/aus ändert ihn bei gleichbleibendem Ziel → Text
-  friert ein. Fix: Ziel **und** Prompt vergleichen (ein String-Vergleich/Frame).
-  Lektion fürs TDD: „Quelle unverändert" ist nicht dasselbe wie „Ergebnis
-  unverändert" — dieselbe Cache-Invalidierungs-Frage wie beim Höhen-Cache.
-- 2026-07-30 — [Tools/Navigation] NavMesh gegen generierte Welt (TDD-Kapitel
-  Erweiterungen/Lessons Learned): Der `NavMeshSurface` lag auf „Generated
-  Terrain" — dem Objekt, das der Presenter bei jedem Generate per
-  `DestroyImmediate` ersetzt. Folge: Bake-Asset bleibt auf der Platte, ist aber
-  an nichts mehr angeschlossen; Agents verlieren den Boden ohne Konsolenfehler.
-  Bake-Kosten skalieren quadratisch mit der Kantenlänge (Voxel 0,1667 m:
-  2048 m ≈ 151 Mio Spalten, 1024 m ≈ 38 Mio, 512 m ≈ 9,4 Mio). Daraus die
-  Reihenfolge Weltgröße final → backen → NPCs. Tool-Kandidaten, die echte
-  Handarbeit sparen (Bewertungspunkt der Tool-Aufgabe): „Bake NavMesh" und
-  „Village aufs Plateau setzen".
-- 2026-07-30 — [Architektur] Szenen-Vertrag: generierter Ast (Tool-Eigentum,
-  wegwerfbar) gegen handgebauten Ast (Village-Prefab, Navigation, Player, Game).
-  Nebenregel mit Konsequenz fürs Design: Ein Prefab darf keine Referenz in die
-  Szene halten (nur Szene → Prefab). Alles, was aus dem Village-Prefab heraus auf
-  Spieler oder GameController zeigen müsste, braucht ein ScriptableObject als
-  Treffpunkt oder eine Laufzeit-Suche.
-- 2026-08-04 — [Rendering] Gras ohne GameObjects: `Graphics.RenderMeshInstanced`
-  (Unity 6; `DrawMeshInstanced` überholt) zeichnet max. 1023 Instanzen je
-  Aufruf → Schleife in 1023er-Fenstern über das Matrix-Array (start/count als
-  Parameter, Array bleibt ganz). Material braucht „Enable GPU Instancing",
-  sonst `InvalidOperationException`. Aufruf gilt nur einen Frame → `Update` +
-  `[ExecuteAlways]` für den Editor.
-- 2026-08-04 — [Rendering] Culling je Zelle statt je Instanz:
-  `RenderParams.worldBounds` ist die Einheit, die Unity prüft. Eigenes
-  Zellgitter, nicht das Chunk-Gitter (1023er-Batchgrenze vs.
-  65.535-Vertexgrenze — zwei Zwänge, zwei Gitter; optimale Kante =
-  √(1023 / Dichte je m²)). Bounds aus den Fußpunkten wachsen lassen
-  (Encapsulate) + Halmhöhe als Padding (`mesh.bounds.size.y ×
-  prefabScale.y × ScaleMax`), sonst cullt die Box Halmspitzen weg.
-  Zellgröße als Regler: kleiner = präziseres Culling (auch hinter der
-  Kamera), mehr Draw Calls.
-- 2026-08-04 — [Performance] Dreiecks-Budget schlägt Draw Calls: Instancing
-  senkte die Aufrufe (138 Draw Calls für 27k Instanzen vs. 770 für 770
-  GameObjects), aber 190k Büschel × 2.664 Tris = 507 Mio Dreiecke → 4,5 FPS,
-  GPU-limitiert. Fix: LOD-Meshpaar (Halm 20/7 Tris, Referenzsysteme nutzen
-  1–9) + Distanzwahl je Zelle → ~12 Mio Tris, 87+ FPS. Lektion: zwei Regler
-  multiplizieren sich (Halme je Büschel × Büschelzahl); Editor-Stats waren
-  der Beweis, Profiler-Zahlen im Editor dagegen von EditorLoop/Deep Profile
-  dominiert — echte Messung nur im Development Build.
-- 2026-08-04 — [Architektur] Rendering-Zerlegung wie die Platzierung:
-  Settings als Datenkomponente am Prefab (`GrassRenderProfile`), Entscheidung
-  als eigene statische Stufe (`GrassLodSelector`: Zelle+Kamera+Profil →
-  None/High/Low), Renderer zeichnet nur. Unitys LODGroup unbrauchbar ohne
-  Renderer-Komponenten; Mesh LOD (forceMeshLod) verworfen wegen
-  Auto-Vereinfachung. Gleicher Schnitt wie GPU Instancer (LODGroup als
-  Datenquelle, eigene Umschaltung).
 - 2026-08-05 — [Platzierung] PlacementExclusion als Filterstufe zwischen
   Placer und Konsumenten: Komponente am Objekt bringt die Freifläche mit
   (Kreis/Box; `Contains` in der Komponente — neue Form ändert den Filter
@@ -348,6 +190,112 @@ Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
   ersetzen" (nach FromToRotation×Yaw und SpawnType); Konsequenz: abgeleitete
   Größen (Halmhöhe fürs Bounds-Padding, Exclusion-Rand) müssen die
   Prefab-Scale mitrechnen.
+- 2026-08-05 — [Platzierung/Algorithmus] Poisson kachelweise statt global: Die
+  Welt wird in 8×8 Kacheln geteilt (`PlacementTilesPerAxis`, 1 = altes
+  Verhalten), jede Kachel sampelt und filtert für sich, `Parallel.For` läuft über
+  die Kacheln. Zwei Effekte: das Poisson-Beschleunigungsgitter schrumpft von
+  ~134 MB (5793²) auf ~2,1 MB je Kachel (725²) und passt in den Prozessor-Cache
+  (korrigiert 2026-08-08 — die vorher notierten 94 MB/1,5 MB gehörten zu einem
+  MinSpacing von ~0,594; die gesamte Messreihe lief bereits mit 0,5, belegt
+  durch identische Halmzahlen in allen sechs Rohlogs);
+  und der bis dahin unantastbar sequenzielle Teil wird parallelisierbar, weil
+  Kacheln einander nicht lesen. Preis: an Kachelgrenzen kann der Mindestabstand
+  verletzt werden (~28 km Nahtlänge bei 8×8, bei 7,4 Mio Halmen unsichtbar);
+  Lösung wäre ein Aufräumpass nur über die Randstreifen. Kachelzahl 64 begründet
+  über drei Größen: Lastverteilung (4 Pakete je Thread reichen), Cache-Größe,
+  Nahtlänge (verdoppelt sich mit jeder Halbierung der Kachelgröße).
+- 2026-08-08 — [Platzierung] MinSpacing 0,5 hat eine Vorgeschichte, die ins
+  Kapitel gehört: Vorher stand er bei ~2 m, weil das Gras durch einen
+  Darstellungsfehler 3,3-fach zu groß gezeichnet wurde (fehlende Prefab-Root-Scale
+  in der Instancing-Matrix). Nach der Korrektur deckte ein Büschel viel weniger
+  Boden, der Abstand musste herunter. Lehre: Ein Darstellungsfehler kann sich als
+  passender Parameterwert tarnen — erst die Korrektur zeigt, dass der Wert nie
+  gestimmt hat.
+
+## Architektur & Muster
+
+- 2026-07-18 — [Architektur] Mesh komplett im Code statt Unity-Terrain
+  oder Mesh-Asset (Begründung in DECISIONS 2026-07-18).
+- 2026-07-18 — [Architektur] TerrainConfig als ScriptableObject-Parameter-
+  Object: alle Pipeline-Einstellwerte in einem Asset, Konsumenten lesen
+  dieselbe Quelle (Get-only-Properties); mehrere Assets = tauschbare
+  Presets ohne Code-Change. Generator-Signatur: Generate(TerrainConfig).
+- 2026-07-19 — [Architektur] Nicht-destruktive Pipeline: Modifier
+  schreiben vor dem Mesh-Build, danach ist die Heightmap read-only —
+  das Mesh ist ein Schnappschuss, keine Live-Verbindung (zwei
+  Wahrheitsquellen vermeiden). Änderungen gehen in die Quelldaten
+  (Config/Modifier), dann läuft die Pipeline komplett neu; Determinismus
+  (Seed) macht das Original jederzeit reproduzierbar — Löschen eines
+  Modifiers = Eintrag streichen + neu generieren.
+- 2026-07-21 — [Pattern] Zweites Design-Pattern fürs TDD: Strategy —
+  DensityStrategy (ScriptableObject, AcceptanceProbability(x,z)→0–1) mit
+  Uniform/NoiseMask/Probability. Dichte-Variation als Wahrscheinlichkeits-
+  Ausdünnung statt variablem Poisson-Radius; offen/geschlossen: neue Art = neues
+  Asset, Placer unberührt.
+- 2026-07-23 — [Architektur/Pattern] DRY vs. SRP aufgelöst per Komposition:
+  SampleHeight ist ein dünner Dirigent (Noise+Curve, dann PlateauModifier.
+  SampleAt); die Plateau-Rechnung bleibt in PlateauModifier (von Array-Stufe
+  Apply zu Punkt-Funktion SampleAt umgebaut). Trennung nach Job (SRP) + Teilen
+  über einen Einstiegspunkt (DRY) — kein Gott-Objekt, keine Doppel-Logik.
+- 2026-07-25 — [Pattern] Strategy umgesetzt: DensityStrategy (abstract SO,
+  AcceptanceProbability(x,z)→0–1) + UniformDensity/ProbabilityDensity/
+  NoiseMaskDensity. Der Placer ruft nur die Basis, kennt die Konkreten nicht →
+  neue Dichte-Art = neues Asset, ObjectPlacer unberührt (Open/Closed; zweites
+  Muster fürs TDD neben MVP). float statt bool: die Gewichtung braucht die
+  Abstufung, der Würfel sitzt an einer Stelle im Placer (Determinismus über
+  einen Seed-Strom, feste Ziehungsreihenfolge). NoiseMask: Perlin liefert von
+  Haus aus ~0–1 = fertige Wahrscheinlichkeit; Seed→Offset (wie
+  BuildOctaveOffsets, ±10000 gegen Float-Terracing), Scale zoomt die Wolken;
+  Offset in OnEnable/OnValidate gecacht — abgeleiteter Cache, kein
+  veränderlicher Zustand. Dichte-Stufe billig→teuer vor der Steigung.
+- 2026-07-30 — [Architektur] Szenen-Vertrag: generierter Ast (Tool-Eigentum,
+  wegwerfbar) gegen handgebauten Ast (Village-Prefab, Navigation, Player, Game).
+  Nebenregel mit Konsequenz fürs Design: Ein Prefab darf keine Referenz in die
+  Szene halten (nur Szene → Prefab). Alles, was aus dem Village-Prefab heraus auf
+  Spieler oder GameController zeigen müsste, braucht ein ScriptableObject als
+  Treffpunkt oder eine Laufzeit-Suche.
+- 2026-08-04 — [Architektur] Rendering-Zerlegung wie die Platzierung:
+  Settings als Datenkomponente am Prefab (`GrassRenderProfile`), Entscheidung
+  als eigene statische Stufe (`GrassLodSelector`: Zelle+Kamera+Profil →
+  None/High/Low), Renderer zeichnet nur. Unitys LODGroup unbrauchbar ohne
+  Renderer-Komponenten; Mesh LOD (forceMeshLod) verworfen wegen
+  Auto-Vereinfachung. Gleicher Schnitt wie GPU Instancer (LODGroup als
+  Datenquelle, eigene Umschaltung).
+- 2026-08-06 — [Architektur/FSM] Ziehende Zustandsmaschine und die eine Stelle, an
+  der sie drücken muss: Die Sheep-FSM prüft ihre Bedingungen zustandsseitig — jeder
+  State fragt selbst ab, ob er wechseln will. Für Weltereignisse trägt das, für
+  Spieler-Eingaben nicht: Von zehn States prüften nur `PatrolState` und
+  `OnAlertState` das Tame-Flag, ein fressendes Schaf reagierte also erst beim
+  Sattwerden. Lösung ist kein Umbau, sondern ein gezielter Bruch — der Auslöser
+  stößt den Wechsel an (Push), und zwar nur in eine Richtung. Das Freilassen bleibt
+  ziehend, weil `FollowPlayerState` seine Abbruchbedingung ohnehin je Frame prüft.
+  Ergebnis: eine Zeile Push gegen sechs States mit eigener Prüfung.
+- 2026-08-08 — [Architektur] Systemgrenzen im Projekt sichtbar gemacht: Der eine
+  Ordner `TerrainGenerator` wurde in vier Systeme getrennt (WorldGeneration,
+  ObjectPlacement, GrassRendering, TerrainTool). Fürs TDD verwertbar ist vor allem
+  die Begründung, dass der Umzug nichts kostete — ohne `namespace` und ohne
+  Assembly Definition hängt in Unity keine Referenz am Pfad, sondern an der GUID
+  der `.meta`-Datei. Threading bekam bewusst keinen eigenen Ordner: Es sitzt in
+  `ObjectPlacer` und `GrassCellBuilder`, also quer über zwei Systeme.
+
+## Performance & Threading
+
+- 2026-07-26 — [Performance] Baseline für die Threading-Abgabe: 211.000
+  Gras-GameObjects bei minSpacing 2,7 auf 2048 m machen den Editor zäh. Anzahl
+  wächst quadratisch zum Abstand (~Fläche/(1,3·r²)): 2,7 m ≈ 211.000, 8 m
+  ≈ 25.000, 12 m ≈ 11.000. Kostentreiber ist nicht primär das Rendering, sondern
+  die Objektanzahl selbst (Hierarchie-Fenster, Transforms, Undo, Serialisierung)
+  — GPU Instancing adressiert nur die Draw Calls und greift unter URP oft gar
+  nicht, weil der SRP Batcher Vorrang hat. Struktureller Weg: die Placement-Liste
+  direkt instanziert zeichnen, ohne GameObjects; hinter dem Presenter kapselbar.
+- 2026-08-04 — [Performance] Dreiecks-Budget schlägt Draw Calls: Instancing
+  senkte die Aufrufe (138 Draw Calls für 27k Instanzen vs. 770 für 770
+  GameObjects), aber 190k Büschel × 2.664 Tris = 507 Mio Dreiecke → 4,5 FPS,
+  GPU-limitiert. Fix: LOD-Meshpaar (Halm 20/7 Tris, Referenzsysteme nutzen
+  1–9) + Distanzwahl je Zelle → ~12 Mio Tris, 87+ FPS. Lektion: zwei Regler
+  multiplizieren sich (Halme je Büschel × Büschelzahl); Editor-Stats waren
+  der Beweis, Profiler-Zahlen im Editor dagegen von EditorLoop/Deep Profile
+  dominiert — echte Messung nur im Development Build.
 - 2026-08-05 — [Performance] Messmethodik der Threading-Abgabe: Messobjekt ist
   der Gras-Rebuild beim Szenenstart (`InstancedRenderer.Rebuild`), Stoppuhren je
   Stufe, Ausgabe per `Debug.Log` in `#if UNITY_EDITOR || DEVELOPMENT_BUILD`
@@ -370,20 +318,6 @@ Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
   hielt — der maximal mögliche Gewinn lag damit bei 16,6 %, gemessen wurden
   3,7 %. Konsequenz: nicht die parallelisierbare Stelle suchen, sondern die
   teure Stelle parallelisierbar *machen*.
-- 2026-08-05 — [Platzierung/Algorithmus] Poisson kachelweise statt global: Die
-  Welt wird in 8×8 Kacheln geteilt (`PlacementTilesPerAxis`, 1 = altes
-  Verhalten), jede Kachel sampelt und filtert für sich, `Parallel.For` läuft über
-  die Kacheln. Zwei Effekte: das Poisson-Beschleunigungsgitter schrumpft von
-  ~134 MB (5793²) auf ~2,1 MB je Kachel (725²) und passt in den Prozessor-Cache
-  (korrigiert 2026-08-08 — die vorher notierten 94 MB/1,5 MB gehörten zu einem
-  MinSpacing von ~0,594; die gesamte Messreihe lief bereits mit 0,5, belegt
-  durch identische Halmzahlen in allen sechs Rohlogs);
-  und der bis dahin unantastbar sequenzielle Teil wird parallelisierbar, weil
-  Kacheln einander nicht lesen. Preis: an Kachelgrenzen kann der Mindestabstand
-  verletzt werden (~28 km Nahtlänge bei 8×8, bei 7,4 Mio Halmen unsichtbar);
-  Lösung wäre ein Aufräumpass nur über die Randstreifen. Kachelzahl 64 begründet
-  über drei Größen: Lastverteilung (4 Pakete je Thread reichen), Cache-Größe,
-  Nahtlänge (verdoppelt sich mit jeder Halbierung der Kachelgröße).
 - 2026-08-05 — [Performance/Threading] Vier Fallen, alle im eigenen Code belegt:
   (1) `AnimationCurve.Evaluate` cacht intern den zuletzt getroffenen Keyframe →
   zwei Threads liefern sich falsche Werte, ohne Fehlermeldung. Lösung
@@ -403,15 +337,113 @@ Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
   gefüllt, nicht per einzelnem `Add`; `AddRange` kennt die Elementzahl vorher und
   wächst in einem Schritt. Änderung zurückgenommen. Beim Exclusion-Filter griff
   dasselbe Argument dagegen, weil dort einzeln angehängt wird.
-- 2026-08-06 — [Architektur/FSM] Ziehende Zustandsmaschine und die eine Stelle, an
-  der sie drücken muss: Die Sheep-FSM prüft ihre Bedingungen zustandsseitig — jeder
-  State fragt selbst ab, ob er wechseln will. Für Weltereignisse trägt das, für
-  Spieler-Eingaben nicht: Von zehn States prüften nur `PatrolState` und
-  `OnAlertState` das Tame-Flag, ein fressendes Schaf reagierte also erst beim
-  Sattwerden. Lösung ist kein Umbau, sondern ein gezielter Bruch — der Auslöser
-  stößt den Wechsel an (Push), und zwar nur in eine Richtung. Das Freilassen bleibt
-  ziehend, weil `FollowPlayerState` seine Abbruchbedingung ohnehin je Frame prüft.
-  Ergebnis: eine Zeile Push gegen sechs States mit eigener Prüfung.
+- 2026-08-08 — [Messung] Belegprüfung der Threading-Messreihe an den Rohlogs:
+  Alle sechs Builds nachgerechnet (Mittel aus Lauf 2–4), jeder dokumentierte Wert
+  bestätigt — 122,7 / 118,1 / 98,9 / 16,5 / 12,4 / 12,2 s. Zusätzlich belegt:
+  Kacheldurchgang 9,19× schneller (92,6 s → 10,1 s) und der sequenzielle
+  Poisson-Anteil der Baseline 84,3 % (103,4 s von 122,7 s) — das ist die
+  Zahlengrundlage der Amdahl-Argumentation. Lehre: Rohlogs aufheben, nicht nur
+  die Zusammenfassung; nur so lässt sich eine Notiz später widerlegen.
+- 2026-08-20 — [Kapitel 6.5, Threading] Echter Nebenläufigkeitsfehler in der
+  parallelisierten Platzierung gefunden und behoben. `TerrainConfig` baut die
+  Kurven-Nachschlagetabelle `_heightCurveLookup` nur in `OnEnable` und
+  `OnValidate`; das Feld ist nicht serialisiert. Läuft `OnEnable` eines
+  Szenenobjekts, das den Placer aufruft, vor der `OnEnable` des Config-Assets,
+  ist die Tabelle null — und dann greifen alle Worker-Threads gleichzeitig ins
+  Leere (im Log 18 gleichlautende NullReferenceExceptions in einer
+  AggregateException). Behoben über `EnsureHeightCurveLookup()`, aufgerufen im
+  `ObjectPlacer` als letzter Schritt vor dem `Parallel.For`, also noch auf dem
+  Hauptthread. Verwertbar als Beleg dafür, dass die Parallelisierung nicht nur
+  gemessen, sondern auch auf ihre Fallstricke hin verstanden wurde: Die
+  `CurveLookup`-Klasse trug die Anforderung schon im Kommentar
+  ("Build it on the main thread before any thread reads it"), garantiert war
+  sie aber nicht.
+
+## Werkzeuge
+
+- 2026-07-18 — [Planung] Ziel-Bild des kombinierten Tools (PCG + Engine-
+  Tool, siehe DECISIONS 2026-07-18): Terrain mit Bergen und Tälern,
+  später evtl. Straßen/Wege; Start-Village mit Haus-Asset am Spawnpunkt;
+  Bäume und Gras platzieren, an Flüssen passender Shader/Material;
+  vorhandene Partikeleffekte (Glühwürmchen, Fackeln) an ausgewählten
+  Stellen. Abgabe braucht zusätzlich: Tool-Beschreibung im TDD, UML-
+  Klassendiagramm, Ablaufdiagramm, mind. ein Design Pattern, Fehlbedienung
+  ausgeschlossen oder mit Nutzer-Feedback.
+- 2026-07-18 — [Tools] Terrain-Editor-Tool als MVP: View TerrainToolWindow
+  (EditorWindow, IMGUI), Presenter TerrainToolPresenter (prüft Config,
+  ruft Pipeline, besitzt „Generated Terrain"-Objekt), Model = bestehende
+  Pipeline unverändert. Fehlbedienung: Button-DisabledScope + HelpBox;
+  Edit-Mode-Fallen: sharedMesh statt mesh, DestroyImmediate,
+  [SerializeField] am Config-Feld (Serialisierungs-Bewertungspunkt).
+  Liefert fürs TDD: Tool-Beschreibung + Stoff für UML-/Ablaufdiagramm.
+- 2026-07-18 — [Tools] Tool fertig und getestet (6-Punkte-Plan inkl.
+  Editor-Neustart). IMGUI-Kernmuster fürs TDD: Felder geben ihren neuen
+  Wert zurück (`_config = ObjectField(...)`), Buttons feuern nur im
+  Klick-Frame, DisabledScope sperrt per using-Klammer garantiert nur
+  seinen Bereich. typeof als Typ-Filter des ObjectFields.
+- 2026-07-18 — [Tools] URP-Lektion: Magenta = Shader inkompatibel mit
+  aktiver Pipeline; Built-in-Materials (Default-Diffuse) funktionieren
+  unter URP nicht → GraphicsSettings.currentRenderPipeline.defaultMaterial
+  als Fallback, eigentliches Material kommt aus der Config.
+- 2026-07-18 — [Tools] Bewusste Grenzen v1 (TDD-Kapitel „Erweiterungen"):
+  kein Undo für Generate/Clear; GameObject.Find sieht nur aktive Objekte;
+  Auto-Regenerate als Checkbox geparkt (Performance/Absichtsprinzip —
+  siehe DECISIONS 2026-07-18).
+- 2026-07-21 — [Tools] Panel-Ausbau: Generate Complete + Einzel-Stufen (Terrain/
+  Wasser/Place) + pro-Typ Place/Clear aus Liste 1 erzeugt (datengetrieben, nicht
+  fest verdrahtet); „Place Objects" ohne Terrain-Rebuild (inkrementelles
+  Generieren), eigene „Generated Placement"-Wurzel; eigener placementSeed
+  getrennt vom Terrain-Seed → Verteilung neu würfeln ohne Rebuild.
+- 2026-07-26 — [Tools] Panel fertig: MVP bleibt tragend — die View zeichnet nur
+  und kennt keine Objektnamen, der Presenter besitzt die Szenen-Objekte. Vier
+  Absichts-Methoden als Überladungspaare (PlaceObjects/ClearObjects je alle bzw.
+  ein Typ) statt eines öffentlichen `Clear(string)`: der Aufrufer nennt die
+  Absicht, nie den Namen — der Tippfehler kann gar nicht entstehen. Pro-Typ-
+  Zeilen werden aus dem `Placeables`-Array erzeugt (datengetrieben: neuer Typ =
+  neue Zeile ohne Code-Change). Fürs UML: TerrainToolWindow → TerrainToolPresenter
+  → {HeightmapGenerator, MeshBuilder, ObjectPlacer}; Einbahnstraße, das Model
+  kennt weder View noch Presenter.
+- 2026-07-26 — [Tools] Hierarchie als Aufräum-Mechanismus: „Generated Placement"
+  ist Kind des Terrain-Roots, darunter eine Gruppe je Typ. Terrain-Regenerieren
+  zerstört den Root und nimmt die veraltete Platzierung automatisch mit — kein
+  eigener Invalidierungs-Code. Einzel-Typ-Place leert nur seine Gruppe (kein
+  Clear der Wurzel), damit Tunen eines Typs die anderen stehen lässt.
+  `transform.Find` statt `GameObject.Find` für Kinder: sucht nur im Teilbaum,
+  immun gegen gleichnamige Objekte anderswo.
+- 2026-07-30 — [Tools/Navigation] NavMesh gegen generierte Welt (TDD-Kapitel
+  Erweiterungen/Lessons Learned): Der `NavMeshSurface` lag auf „Generated
+  Terrain" — dem Objekt, das der Presenter bei jedem Generate per
+  `DestroyImmediate` ersetzt. Folge: Bake-Asset bleibt auf der Platte, ist aber
+  an nichts mehr angeschlossen; Agents verlieren den Boden ohne Konsolenfehler.
+  Bake-Kosten skalieren quadratisch mit der Kantenlänge (Voxel 0,1667 m:
+  2048 m ≈ 151 Mio Spalten, 1024 m ≈ 38 Mio, 512 m ≈ 9,4 Mio). Daraus die
+  Reihenfolge Weltgröße final → backen → NPCs. Tool-Kandidaten, die echte
+  Handarbeit sparen (Bewertungspunkt der Tool-Aufgabe): „Bake NavMesh" und
+  „Village aufs Plateau setzen".
+
+## Interaktion & UI
+
+- 2026-07-30 — [Interaktion] Aufbau des Systems (TDD-Kapitel Architektur):
+  `IInteractable` (Prompt / CanInteract / Interact) ist die einzige Berührungs-
+  linie zwischen Spieler- und Objektseite — der Spieler kennt keine Schafe, die
+  UI kennt nur einen string. Vier Teile: Vertrag (Interface), Sucher
+  (`PlayerInteractor`, Raycast aus der Kamera, Reichweite + LayerMask), Anzeige
+  (`InteractionPromptView`, Event-Abonnent), Adapter (`SheepInteractable`,
+  delegiert an `Sheep`). Alternative Bauform Trigger-Collider beantwortet „was ist
+  nah", der Strahl „was schaue ich an" — für First Person mit Fadenkreuz richtig.
+- 2026-07-30 — [Interaktion] Drei Fallen mit Beleg im eigenen Code:
+  (1) `GetComponentInParent` sucht nur **aufwärts** — der Collider darf tiefer
+  sitzen als das Script, nie höher; sonst kein Treffer, keine Fehlermeldung.
+  (2) Unitys `==`-Überschreibung für zerstörte Objekte sitzt auf
+  `UnityEngine.Object`, nicht auf dem Interface → Cast vor dem Null-Check.
+  (3) Event-Abonnent muss den Startwert selbst nachziehen, weil Events erst bei
+  der nächsten Änderung feuern; jedes `+=` braucht sein `-=` im Gegenstück.
+- 2026-07-30 — [Interaktion] Prompt-Aktualisierung: `ReferenceEquals(target,
+  _currentTarget)` als Abbruchbedingung reicht nur, solange ein Objekt seinen
+  Prompt nie ändert. Fackel an/aus ändert ihn bei gleichbleibendem Ziel → Text
+  friert ein. Fix: Ziel **und** Prompt vergleichen (ein String-Vergleich/Frame).
+  Lektion fürs TDD: „Quelle unverändert" ist nicht dasselbe wie „Ergebnis
+  unverändert" — dieselbe Cache-Invalidierungs-Frage wie beim Höhen-Cache.
 - 2026-08-06 — [Interaktion] Reihenfolge von Wächtern ist Logik, nicht Kosmetik:
   In `SheepInteractable.CanInteract` muss die Schlafprüfung hinter „gezähmt darf
   immer" stehen. Das Schlaf-Flag folgt der Tageszeit, nicht dem Zustand des Schafs
@@ -426,27 +458,37 @@ Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
   der Fall samt Prompt ohne eine Zeile UI-Code. Das Interface trägt hier mehr als
   eine Bedienbarkeits-Abfrage: Es ist die Stelle, an der Sonderfälle billig
   ausgeschlossen werden können.
-- 2026-08-08 — [Architektur] Systemgrenzen im Projekt sichtbar gemacht: Der eine
-  Ordner `TerrainGenerator` wurde in vier Systeme getrennt (WorldGeneration,
-  ObjectPlacement, GrassRendering, TerrainTool). Fürs TDD verwertbar ist vor allem
-  die Begründung, dass der Umzug nichts kostete — ohne `namespace` und ohne
-  Assembly Definition hängt in Unity keine Referenz am Pfad, sondern an der GUID
-  der `.meta`-Datei. Threading bekam bewusst keinen eigenen Ordner: Es sitzt in
-  `ObjectPlacer` und `GrassCellBuilder`, also quer über zwei Systeme.
-- 2026-08-08 — [Messung] Belegprüfung der Threading-Messreihe an den Rohlogs:
-  Alle sechs Builds nachgerechnet (Mittel aus Lauf 2–4), jeder dokumentierte Wert
-  bestätigt — 122,7 / 118,1 / 98,9 / 16,5 / 12,4 / 12,2 s. Zusätzlich belegt:
-  Kacheldurchgang 9,19× schneller (92,6 s → 10,1 s) und der sequenzielle
-  Poisson-Anteil der Baseline 84,3 % (103,4 s von 122,7 s) — das ist die
-  Zahlengrundlage der Amdahl-Argumentation. Lehre: Rohlogs aufheben, nicht nur
-  die Zusammenfassung; nur so lässt sich eine Notiz später widerlegen.
-- 2026-08-08 — [Platzierung] MinSpacing 0,5 hat eine Vorgeschichte, die ins
-  Kapitel gehört: Vorher stand er bei ~2 m, weil das Gras durch einen
-  Darstellungsfehler 3,3-fach zu groß gezeichnet wurde (fehlende Prefab-Root-Scale
-  in der Instancing-Matrix). Nach der Korrektur deckte ein Büschel viel weniger
-  Boden, der Abstand musste herunter. Lehre: Ein Darstellungsfehler kann sich als
-  passender Parameterwert tarnen — erst die Korrektur zeigt, dass der Wert nie
-  gestimmt hat.
+- 2026-08-14 — [UI] Lautstärke wird logarithmisch wahrgenommen, ein Slider
+  läuft linear. Umrechnung `dB = Log10(wert) * 20`: 1 → 0 dB, 0,5 → −6 dB,
+  0,1 → −20 dB. `Log10(0)` ist minus unendlich, deshalb wird der Wert vor
+  der Umrechnung auf 0,0001 geklemmt — das ergibt exakt −80 dB, das
+  Minimum des Mixers.
+- 2026-08-14 — [UI] Unity-Layout-Gruppen ordnen **alle** Kinder an, auch
+  einen Vollbild-Hintergrund. Trennung nötig: Hintergrund neben den
+  Layout-Container, nicht hinein. Die Anordnung folgt der Reihenfolge in
+  der Hierarchie, nicht den eingetragenen Positionen — ein falsch
+  einsortierter Knopf steht deshalb oben statt unten.
+- 2026-08-14 — [UI] Ein `Content Size Fitter` (Vertical Fit =
+  Preferred Size) neben der Layout Group lässt den Container auf die Höhe
+  seines Inhalts schrumpfen; ohne ihn behält er die Vollbildgröße und die
+  Gruppe sitzt nicht mittig.
+- 2026-08-19 — [Kapitel 14, Änderungsverlauf] Ladescreen als umgesetztes
+  Dozenten-Feedback. Rückmeldung vom 18.08. (PCG, 14:19): „Ein Ladebildschirm
+  während der Generierung wäre schön." Umgesetzt als Ladescreen beim
+  Szenenwechsel Hauptmenü → Dorf, weil im Build gar nicht generiert wird —
+  der `TerrainToolPresenter` liegt in `Editor/` und wird gestrippt; die
+  Wartezeit ist das Laden von `Village.unity` (139,7 MB). Auf ihrem Rechner
+  rund 90 Sekunden, auf Isors rund 8. Damit ist das Feedbackelement *Person*
+  („Wurde genügend Feedback eingeholt und umgesetzt?") belegt.
+  Technisch nennenswert, falls es in den Text soll: Unity hält einen
+  Ladevorgang mit `allowSceneActivation = false` bei `progress == 0.9` an, die
+  letzten 0,1 sind die Aktivierung; `isDone` wird dabei nie `true`. Der
+  angezeigte Wert wird geglättet, weil der gemeldete Fortschritt sprunghaft
+  kommt, und die Szene wird erst umgeschaltet, wenn der angezeigte Wert 1
+  erreicht hat.
+
+## Audio
+
 - 2026-08-14 — [Audio] Unity spielt nur begrenzt viele Quellen wirklich ab:
   `Max Real Voices` steht voreingestellt auf 32, darüber wird virtualisiert
   (Quelle läuft weiter, ist aber stumm). Ausgewählt wird nach Lautstärke und
@@ -480,24 +522,57 @@ Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
   MIDI. Betraf drei geladene Pakete; ein komplettes Ambience-Paket
   (Blender Foundation, CC BY 3.0) war dadurch ohne Umwandlung unbrauchbar
   und wurde zugunsten eines CC0-Pakets zurückgestellt.
-- 2026-08-14 — [UI] Lautstärke wird logarithmisch wahrgenommen, ein Slider
-  läuft linear. Umrechnung `dB = Log10(wert) * 20`: 1 → 0 dB, 0,5 → −6 dB,
-  0,1 → −20 dB. `Log10(0)` ist minus unendlich, deshalb wird der Wert vor
-  der Umrechnung auf 0,0001 geklemmt — das ergibt exakt −80 dB, das
-  Minimum des Mixers.
-- 2026-08-14 — [UI] Unity-Layout-Gruppen ordnen **alle** Kinder an, auch
-  einen Vollbild-Hintergrund. Trennung nötig: Hintergrund neben den
-  Layout-Container, nicht hinein. Die Anordnung folgt der Reihenfolge in
-  der Hierarchie, nicht den eingetragenen Positionen — ein falsch
-  einsortierter Knopf steht deshalb oben statt unten.
-- 2026-08-14 — [UI] Ein `Content Size Fitter` (Vertical Fit =
-  Preferred Size) neben der Layout Group lässt den Container auf die Höhe
-  seines Inhalts schrumpfen; ohne ihn behält er die Vollbildgröße und die
-  Gruppe sitzt nicht mittig.
+- 2026-08-17 — [Abgabe] Herkunftsdaten der Audiopakete stimmen NICHT mit der
+  Arbeitsnotiz `Audio_Quellen.txt` überein. Geprüft wurde über die .meta-GUIDs
+  gegen Szenen und Prefabs: ObsydianX ist gar nicht im Projekt (stattdessen
+  Kenney), LoyaltyFreak_TheWind fehlte in der Notiz, und die Musikzuordnung
+  ist vertauscht — TownTheme läuft im Dorf, The Wind im Hauptmenü.
+  Für künftige Belege gilt die GUID-Prüfung, nicht die Notiz.
+
+## Welt & Persistenz
+
+- 2026-07-26 — [Assets] Blender→Unity Achsen-Falle (TDD-Kapitel „Erweiterungen"/
+  Lessons Learned): Blender ist Z-up, Unity Y-up. Blenders FBX-Exporter
+  konvertiert bereits; Unitys Import-Option „Bake Axis Conversion" ist für
+  *nicht* konvertierte Dateien gedacht und dreht eine korrekte Datei ein zweites
+  Mal um −90° → Modell liegt. Zweite Falle: eine Korrektur-Rotation am Prefab-
+  Root wird von jedem prozeduralen Placer überschrieben, der Rotation absolut
+  setzt. Prüfreihenfolge: Modell in Blender bei Rotation 0 aufrecht (Stamm
+  entlang +Z, Ursprung am Fuß) → Import-Optionen → erst dann den Code verdächtigen.
 - 2026-08-14 — [Persistenz] `PlayerPrefs` als Schlüssel-Wert-Speicher für
   Einstellungen: überlebt Szenenwechsel und Programmneustart, kennt nur
   `int`, `float`, `string` und keine Verschachtelung. Für Spielstände
   (Weltzustand, Inventar) ungeeignet — dafür braucht es ein eigenes Format.
+- 2026-08-20 — [Kapitel 14, Änderungsverlauf] Tageslänge geändert und
+  Vorspulen ergänzt. Falls die alte Zahl irgendwo im TDD steht, muss sie
+  mit: `_realSecondsPerIngameSecond` ging von 1 auf 0,0139, ein Ingame-Tag
+  dauert damit 20 statt 24 Stunden echte Zeit (86.400 Ingame-Sekunden je Tag,
+  Umrechnung 60/60/24). Grund fürs Protokoll: Mit dem alten Wert war der
+  Tag-Nacht-Zyklus im Build nicht wahrnehmbar — Spielstart ist fest 06:00,
+  und in fünf Minuten Spielzeit dreht sich die Sonne um 1,25 Grad. Ein
+  bewertetes System, das niemand zu sehen bekommt, zählt in der Vorführung
+  wie nicht vorhanden.
+
+## Rendering
+
+- 2026-08-04 — [Rendering] Gras ohne GameObjects: `Graphics.RenderMeshInstanced`
+  (Unity 6; `DrawMeshInstanced` überholt) zeichnet max. 1023 Instanzen je
+  Aufruf → Schleife in 1023er-Fenstern über das Matrix-Array (start/count als
+  Parameter, Array bleibt ganz). Material braucht „Enable GPU Instancing",
+  sonst `InvalidOperationException`. Aufruf gilt nur einen Frame → `Update` +
+  `[ExecuteAlways]` für den Editor.
+- 2026-08-04 — [Rendering] Culling je Zelle statt je Instanz:
+  `RenderParams.worldBounds` ist die Einheit, die Unity prüft. Eigenes
+  Zellgitter, nicht das Chunk-Gitter (1023er-Batchgrenze vs.
+  65.535-Vertexgrenze — zwei Zwänge, zwei Gitter; optimale Kante =
+  √(1023 / Dichte je m²)). Bounds aus den Fußpunkten wachsen lassen
+  (Encapsulate) + Halmhöhe als Padding (`mesh.bounds.size.y ×
+  prefabScale.y × ScaleMax`), sonst cullt die Box Halmspitzen weg.
+  Zellgröße als Regler: kleiner = präziseres Culling (auch hinter der
+  Kamera), mehr Draw Calls.
+
+## Lizenzen & Quellen
+
 - 2026-08-17 — [Lizenzen] Kapitel 12 um die sieben Audiopakete erweitert:
   Town Theme RPG (cynicmusic), The Wind (Loyalty Freak Music), Wind (IgnasD),
   Different Steps (TinyWorlds), Wood-Burning on Fireplace (PagDev), Sheep baa
@@ -511,46 +586,3 @@ Tools); neue Einträge einfach anhängen — sortiert wird beim Generieren.
   Erklären von Fachthemen und fremdem Code, Erzeugung der Gras-Farbtextur.
   Die Pflicht dazu kommt aus der Selbstständigkeitserklärung, nicht aus den
   Formatierungsvorgaben.
-- 2026-08-17 — [Abgabe] Herkunftsdaten der Audiopakete stimmen NICHT mit der
-  Arbeitsnotiz `Audio_Quellen.txt` überein. Geprüft wurde über die .meta-GUIDs
-  gegen Szenen und Prefabs: ObsydianX ist gar nicht im Projekt (stattdessen
-  Kenney), LoyaltyFreak_TheWind fehlte in der Notiz, und die Musikzuordnung
-  ist vertauscht — TownTheme läuft im Dorf, The Wind im Hauptmenü.
-  Für künftige Belege gilt die GUID-Prüfung, nicht die Notiz.
-- 2026-08-19 — [Kapitel 14, Änderungsverlauf] Ladescreen als umgesetztes
-  Dozenten-Feedback. Rückmeldung vom 18.08. (PCG, 14:19): „Ein Ladebildschirm
-  während der Generierung wäre schön." Umgesetzt als Ladescreen beim
-  Szenenwechsel Hauptmenü → Dorf, weil im Build gar nicht generiert wird —
-  der `TerrainToolPresenter` liegt in `Editor/` und wird gestrippt; die
-  Wartezeit ist das Laden von `Village.unity` (139,7 MB). Auf ihrem Rechner
-  rund 90 Sekunden, auf Isors rund 8. Damit ist das Feedbackelement *Person*
-  („Wurde genügend Feedback eingeholt und umgesetzt?") belegt.
-  Technisch nennenswert, falls es in den Text soll: Unity hält einen
-  Ladevorgang mit `allowSceneActivation = false` bei `progress == 0.9` an, die
-  letzten 0,1 sind die Aktivierung; `isDone` wird dabei nie `true`. Der
-  angezeigte Wert wird geglättet, weil der gemeldete Fortschritt sprunghaft
-  kommt, und die Szene wird erst umgeschaltet, wenn der angezeigte Wert 1
-  erreicht hat.
-- 2026-08-20 — [Kapitel 14, Änderungsverlauf] Tageslänge geändert und
-  Vorspulen ergänzt. Falls die alte Zahl irgendwo im TDD steht, muss sie
-  mit: `_realSecondsPerIngameSecond` ging von 1 auf 0,0139, ein Ingame-Tag
-  dauert damit 20 statt 24 Stunden echte Zeit (86.400 Ingame-Sekunden je Tag,
-  Umrechnung 60/60/24). Grund fürs Protokoll: Mit dem alten Wert war der
-  Tag-Nacht-Zyklus im Build nicht wahrnehmbar — Spielstart ist fest 06:00,
-  und in fünf Minuten Spielzeit dreht sich die Sonne um 1,25 Grad. Ein
-  bewertetes System, das niemand zu sehen bekommt, zählt in der Vorführung
-  wie nicht vorhanden.
-- 2026-08-20 — [Kapitel 6.5, Threading] Echter Nebenläufigkeitsfehler in der
-  parallelisierten Platzierung gefunden und behoben. `TerrainConfig` baut die
-  Kurven-Nachschlagetabelle `_heightCurveLookup` nur in `OnEnable` und
-  `OnValidate`; das Feld ist nicht serialisiert. Läuft `OnEnable` eines
-  Szenenobjekts, das den Placer aufruft, vor der `OnEnable` des Config-Assets,
-  ist die Tabelle null — und dann greifen alle Worker-Threads gleichzeitig ins
-  Leere (im Log 18 gleichlautende NullReferenceExceptions in einer
-  AggregateException). Behoben über `EnsureHeightCurveLookup()`, aufgerufen im
-  `ObjectPlacer` als letzter Schritt vor dem `Parallel.For`, also noch auf dem
-  Hauptthread. Verwertbar als Beleg dafür, dass die Parallelisierung nicht nur
-  gemessen, sondern auch auf ihre Fallstricke hin verstanden wurde: Die
-  `CurveLookup`-Klasse trug die Anforderung schon im Kommentar
-  ("Build it on the main thread before any thread reads it"), garantiert war
-  sie aber nicht.
