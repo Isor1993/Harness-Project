@@ -91,27 +91,30 @@ Floor sind nie gleichzeitig aktiv.
 Isor's Tower ist das durchgehende Studienprojekt: Jedes Semester zahlt auf
 dasselbe Spiel ein statt auf getrennte Übungen. Ziel ist ein
 veröffentlichungsfähiges Ergebnis, mindestens eine Demo.
-Priorität: Das Portfolio von Semester 2 ist am 2026-08-20 hochgeladen.
-**Seit dem 2026-08-22 läuft die zweite Phase** — das Bestehende wird am
-GDD ausgerichtet. Reihenfolge in `ROADMAP.md`, Abschnitt „Basiszustand
-nach der Abgabe".
+Priorität: Nach der Portfolio-Abgabe wird das Bestehende am GDD
+ausgerichtet — Reihenfolge in `Projekte/Isor_Tower/ROADMAP.md`,
+Abschnitt „Basiszustand nach der Abgabe", die Daten dazu im
+`LOG.md` derselben Schicht.
 
 ## Offene Design-Fragen
 
-**Dieses Dokument besitzt die offenen Design-Fragen.** Die ROADMAP darf
-sie als Aufgabe aufnehmen, aber nur über einen Verweis — nie durch
-Abschreiben. Beantwortet wird eine Frage in den DECISIONS; erst danach
+**Dieses Dokument besitzt die offenen Design-Fragen.** Jede trägt eine
+fettgedruckte Stichzeile als Namen, keine Nummer — beantwortete Fragen
+werden gestrichen, und Nummern würden dabei rutschen. Die ROADMAP darf
+sie als Aufgabe aufnehmen, aber nur über einen Verweis auf die
+Stichzeile — nie durch Abschreiben. Beantwortet wird eine Frage in den DECISIONS; erst danach
 wird sie hier gestrichen und die Absicht als feste Aussage ins Kapitel
 geschrieben. Sonst stünde dieselbe Frage an zwei Orten.
 
-1. Endgültige Größe des Village — bleibt es bei ~2 km oder wächst es um ein
-   Vielfaches? (Entscheidet, ob die Welt streamen muss.)
-2. Ein hoher Turm oder mehrere Türme mit eigenen Floor-Spannen?
-3. Wie viel eines Floors ist frei generiert, wie viel aus festen Bausteinen
-   kombiniert?
-4. Größenraster der Floors (klein / mittel / groß in Metern).
-5. Wird das Village-Terrain handgebaut, mit einem eigenen Tool erweitert,
-   oder einmalig generiert und dann eingefroren?
+- **Village-Größe:** bleibt es bei ~2 km oder wächst es um ein Vielfaches?
+  (Entscheidet, ob die Welt streamen muss.)
+- **Turmzahl:** ein hoher Turm oder mehrere Türme mit eigenen
+  Floor-Spannen?
+- **Generierungsanteil:** Wie viel eines Floors ist frei generiert, wie
+  viel aus festen Bausteinen kombiniert?
+- **Floor-Größenraster:** klein / mittel / groß in Metern.
+- **Village-Terrain:** handgebaut, mit einem eigenen Tool erweitert, oder
+  einmalig generiert und dann eingefroren?
 
 ## Entwurf — noch nicht einsortiert
 

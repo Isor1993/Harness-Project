@@ -142,6 +142,9 @@ damals, nicht den von heute.
   Damit überleben Achsen-Korrekturen aus dem DCC-Tool die Platzierung.
   Verifiziert mit dem Birken-FBX (Prefab-Root X = 90): Bäume stehen aufrecht
   und drehen sich zufällig um die eigene Achse.
+- 2026-07-29 — `GDD.md` als Short GDD angelegt: Design-Absicht von Isor's
+  Tower und Maßstab für die Zeit nach der Abgabe. Wächst mit; „offen" ist
+  ein gültiger Eintrag.
 - 2026-08-02 — Interaktionssystem in Betrieb + Fackel: Layer `Interactable`,
   `PlayerInteractor` (Raycast aus der Kamera) + `InteractionPromptView` samt
   Prompt-UI im HUD verdrahtet (Code existierte seit 27.07., war nirgends
@@ -441,6 +444,3 @@ damals, nicht den von heute.
   `Prefabs/`, `Materials/`, `SO_Settings/`, `Textures/`, `Shader/`, `VFX/`,
   `FBX/`, `Audio/`, darunter je ein Ordner pro System oder Wesen. Editor-Code
   getrennt in `Assets/Editor/`, Fremdpakete unverändert in `ThirdParty/`.
-- 2026-07-29 — `GDD.md` als Short GDD angelegt: Design-Absicht von Isor's
-  Tower und Maßstab für die Zeit nach der Abgabe. Wächst mit; „offen" ist
-  ein gültiger Eintrag.

@@ -4,11 +4,19 @@ Ownership: Nur Entscheidungen zu Entities und KI — was entschieden wurde, waru
 und welche Alternativen verworfen wurden. Kein Plan (das ist die
 ROADMAP), kein Ereignis (das ist das LOG), keine ausformulierte Regel
 (die steht in der jeweiligen Regeldatei; hier steht nur, warum sie gilt).
+Nicht hier: wo Entities in der Welt landen (`Platzierung.md`), ihre
+Anzeige im HUD (`UI.md`) und ihre Klänge (`Audio.md`).
 Format: `## JJJJ-MM-TT — Titel` mit **Was** / **Warum** / **Verworfen**,
-je ein bis zwei Zeilen.
+je ein bis zwei Zeilen. **Älteste oben**, wie in einer Chronik.
 
 Überholte Einträge wandern nach `_ARCHIV.md` der Schicht, mit Angabe,
 wodurch sie abgelöst wurden. Ein neuer Eintrag nennt, welchen er ablöst.
+
+Gilt eine Begründung weiter und ist nur ihre Ausführung überholt, bleibt
+der Eintrag stehen und bekommt eine Zeile **Fortgeführt am `<Datum>`**
+mit Zeiger auf die geltende Fassung — dann geht die Herleitung nicht ins
+Archiv verloren.
+
 
 
 ## 2026-08-02 — Herde als platzierbares Prefab: Injektion statt Szenen-Referenzen

@@ -83,7 +83,7 @@ Seite auf dem Handy seitwärts.
 - **Bevor man sich auf eine Seite stützt:** die echte Seite aufrufen, nie
   aus der Erinnerung oder aus einer älteren Fassung zitieren. Seiten
   altern zwischen zwei Sessions.
-- **Vor dem Coden:** Der Artifact-Check ist Punkt 5 des Review-Gate in
+- **Vor dem Coden:** Der Artifact-Check ist ein Punkt des Review-Gate in
   `CODE_GUIDELINES.md`. Dort steht er vollständig — eine Checkliste
   gehört dem Moment, an dem sie abgearbeitet wird, nicht den Themen ihrer
   Punkte.

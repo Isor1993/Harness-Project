@@ -23,6 +23,15 @@ HIER = os.path.dirname(os.path.abspath(__file__))
 BASE = os.path.abspath(os.path.join(HIER, "..", ".."))   # ...\Claude
 ZIEL = os.path.join(BASE, "INDEX.md")
 GEPLANT = os.path.join(HIER, "index_geplant.txt")
+BEFEHLE = os.path.join(BASE, "Kern", "Befehle")
+
+# Wegweiser ausserhalb von Claude\ — sie laden den Harness ueberhaupt erst.
+# Relativ zu BASE gesucht und einzeln uebersprungen, wenn es sie nicht gibt:
+# in einem anderen Projekt liegen sie anders (Kern/DOC_RULES.md, Abschnitt 8).
+WEGWEISER = [
+    ("..", "CLAUDE.md", "Unity-Root"),
+    (os.path.join("..", ".."), "CLAUDE.md", u"Projektstamm, lädt automatisch"),
+]
 
 SCHICHTEN = [
     ("Oben", "Oben — schichtübergreifend"),
@@ -50,6 +59,13 @@ muss vollständig sein (`Kern/DOC_RULES.md`, Abschnitt 8).
 Eine Datei ohne `Ownership:`-Zeile erscheint hier als ⚠ — so setzt sich
 die Regel „keine neue Datei ohne INDEX-Eintrag" von selbst durch, statt
 erinnert werden zu müssen.
+
+Zwei Gruppen führt der Index abweichend, jeweils unten mit eigener
+Tabelle: die **Befehle** (Auslöser ohne Ownership-Zeile, ihre
+`description` ist die Zuständigkeit) und die **Wegweiser** (die beiden
+`CLAUDE.md` außerhalb von `Claude\\`). Sie stehen hier, weil ein
+Register vollständig sein muss — gerade die oberste `CLAUDE.md` trägt
+den Notkern und ist die einzige Datei, die von selbst lädt.
 """
 
 
@@ -98,10 +114,46 @@ def werkzeuge():
     return treffer
 
 
+def befehle():
+    """Ausloeser in Kern/Befehle/, mit ihrer description aus dem Frontmatter.
+
+    Sie tragen keine Ownership-Zeile, weil sie keine Dokumente sind, sondern
+    acht Zeilen Zeiger auf ihre Regeldatei (Kern/WORKFLOW.md, Die Befehle).
+    Die description ist zugleich der Text, den das /-Menue anzeigt.
+    """
+    if not os.path.isdir(BEFEHLE):
+        return []
+    treffer = []
+    for d in sorted(os.listdir(BEFEHLE)):
+        if not d.endswith(".md"):
+            continue
+        with io.open(os.path.join(BEFEHLE, d), encoding="utf-8") as fh:
+            text = fh.read()
+        m = re.search(r"^description:\s*(.+?)$", text, re.M)
+        satz = m.group(1).strip() if m else u"⚠ **keine `description:`** — bitte ergänzen"
+        treffer.append((u"/harness:" + d[:-3], satz))
+    return treffer
+
+
+def wegweiser():
+    """Die CLAUDE.md ausserhalb von Claude\\, mit ihrer Ownership-Zeile."""
+    treffer = []
+    for rel_ordner, name, wo in WEGWEISER:
+        voll = os.path.abspath(os.path.join(BASE, rel_ordner, name))
+        if not os.path.exists(voll):
+            continue
+        satz = ownership_satz(voll)
+        if satz is None:
+            satz = u"⚠ **keine `Ownership:`-Zeile** — bitte ergänzen"
+        treffer.append((wo, satz))
+    return treffer
+
+
 def sammeln():
     gefunden = {}
     for wurzel, ordner, dateien in os.walk(BASE):
-        ordner[:] = [o for o in ordner if o not in ("Werkzeuge", "__pycache__")]
+        ordner[:] = [o for o in ordner
+                     if o not in ("Werkzeuge", "Befehle", "__pycache__")]
         for d in sorted(dateien):
             if not d.endswith(".md"):
                 continue
@@ -168,8 +220,26 @@ def main():
         for rel, satz in sorted(wz):
             zeilen.append(u"| `%s` | %s |\n" % (rel, satz))
 
-    print("Dateien gefunden: %d, geplante Eintraege: %d, Werkzeuge: %d, Zeilen gesamt: %d"
-          % (len(gefunden), len(plan), len(wz), gesamt))
+    bf = befehle()
+    if bf:
+        zeilen.append(u"\n## Befehle — Auslöser, Ablauf in `Kern/WORKFLOW.md`\n\n")
+        zeilen.append(u"Original in `Kern/Befehle/`, Arbeitskopie in "
+                      u"`.claude\\commands\\harness\\` — geändert wird das "
+                      u"Original, dann kopiert.\n\n")
+        zeilen.append(u"| Befehl | Tut |\n|---|---|\n")
+        for name, satz in sorted(bf):
+            zeilen.append(u"| `%s` | %s |\n" % (name, satz))
+
+    ww = wegweiser()
+    if ww:
+        zeilen.append(u"\n## Wegweiser — außerhalb von `Claude\\`, "
+                      u"nicht Teil der Auslieferung\n\n")
+        zeilen.append(u"| Datei | Zuständigkeit |\n|---|---|\n")
+        for wo, satz in ww:
+            zeilen.append(u"| `CLAUDE.md` (%s) | %s |\n" % (wo, satz))
+
+    print("Dateien: %d, geplant: %d, Werkzeuge: %d, Befehle: %d, Wegweiser: %d, Zeilen: %d"
+          % (len(gefunden), len(plan), len(wz), len(bf), len(ww), gesamt))
     if warnungen:
         print("OHNE Ownership-Zeile (%d):" % len(warnungen))
         for w in warnungen:

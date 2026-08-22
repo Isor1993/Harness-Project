@@ -7,7 +7,8 @@ hier, damit sie sichtbar bleibt, und als offener Punkt in
 
 Status: Entstanden als Rohmaterial aus dem Brainstorm vom 2026-07-17,
 seither in einem vollen Uni-Durchgang erprobt und mehrfach nachgeschärft
-(zuletzt die Member-Reihenfolge am 2026-08-16).
+(zuletzt der Abschnitt „Ordnerstruktur" am 2026-08-22, gelesen gegen den
+tatsächlichen Assets-Baum).
 
 ## Priorität
 
@@ -235,23 +236,44 @@ als verbindliche Folge hinterlegen, statt sie je Datei neu zu erraten.
 - Unity-6-APIs (`rb.linearVelocity`, nicht `rb.velocity`). 4 Spaces,
   keine Tabs.
 
-### Ordnerstruktur (Praxis-Stand 2026-07-19)
-- Jeder Baustein bekommt einen eigenen Ordner unter seiner Kategorie:
-  `Entities/<Name>/` (Spielfiguren), `Environment/<Name>/`
-  (Umgebungs-Assets), `Systems/<Name>/` (Code-Systeme, z.B.
-  `Systems/TerrainGenerator/`).
-- Unterordner nach `FolderTemplate/`: Animation, FBX, Materials,
-  Prefabs, Scripts, Shader, SO_Settings, Textures, VFX — aber nur
-  anlegen, was der Baustein wirklich braucht, keine leeren Ordner.
-- `Shared/` nur für echte Querschnitts-Utilities mit mehreren
-  Abnehmern (BaseScripts, Interfaces, Timer). Ein System mit einem
-  Abnehmer bleibt zusammen in seinem Systems-Ordner.
-- Editor-Code in einem Ordner, der wörtlich `Editor` heißt (Unity
-  kompiliert ihn editor-only und strippt ihn aus Builds); er darf
-  im System-Ordner liegen (z.B. `Systems/TerrainGenerator/Editor/`).
+### Ordnerstruktur — Assets nach Typ
+Grundentscheidung: `Kern/DECISIONS.md`, 2026-08-20. Die folgende Fassung
+ist am 2026-08-22 gegen den tatsächlichen Assets-Baum gelesen worden,
+nicht aus den Notizen abgeschrieben.
+
+- **Oberste Ebene ist der Typ, darunter je ein Ordner pro System oder
+  Wesen.** Vorhanden sind `Scripts/`, `Prefabs/`, `Materials/`,
+  `Textures/`, `SO_Settings/`, `Shader/`, `VFX/`, `FBX/`, `Audio/`,
+  `Animation/`, `Fonts/`, `Scenes/`, `Settings/`, `License/`.
+  Beispiele: `Scripts/WorldGeneration/`, `Prefabs/Sheep/`.
+  Nur anlegen, was gebraucht wird — keine leeren Ordner.
+- **Editor-Code zentral in `Assets/Editor/`** (Isor, 2026-08-22). Der
+  Ordner muss wörtlich `Editor` heißen; Unity kompiliert ihn editor-only
+  und strippt ihn aus Builds. Das löst die frühere Angabe ab, Editor-Code
+  dürfe auch im System-Ordner liegen.
+- **Kein `Shared/` mehr.** Querschnitts-Utilities bekommen einen eigenen
+  Scripts-Ordner nach ihrer Sache — im Projekt sind das
+  `Scripts/Interfaces/`, `Scripts/Timer/`, `Scripts/Health/` und
+  `Scripts/Diagnostic/`.
+- **Fremdpakete bleiben unangetastet:** `ThirdParty/` und `TextMesh Pro/`
+  behalten ihre innere Struktur — sie ist Teil des Herkunftsnachweises
+  im TDD.
 - Ordnernamen Englisch, PascalCase. Umbenennen/Verschieben immer im
   Unity-Editor, nie im Explorer — sonst brechen die .meta-GUIDs und
   damit alle Referenzen.
+- **Preis der Umstellung, bewusst gezahlt:** Die Systemgrenzen, die am
+  2026-08-08 durch die Trennung in vier Systeme sichtbar geworden waren,
+  sind im Ordnerbaum nicht mehr zu erkennen.
+
+**Offen (2026-08-22, beim Lesen des Baums aufgefallen):**
+- `FolderTemplate/` liegt weiter im Projekt und enthält die alte
+  Baustein-Vorlage (Animation, FBX, Materials, Prefabs, SO_Settings,
+  Scripts, Shader, Textures, VFX). Im Typ-Schema hat sie keine Aufgabe
+  mehr. Zu klären: löschen, umbauen oder als Vorlage für neue Projekte
+  behalten.
+- `Sandbox/` kommt in keiner Regel und keiner Entscheidung vor.
+Beides gehört zur Aufgabe `Projekte/Isor_Tower/ROADMAP.md` →
+„Ordnerstruktur im Unity-Projekt gegen die Vorlage prüfen".
 
 ### Review-Gate (vor dem Coden)
 Vor jeder Implementierung den Plan gegen diese Datei prüfen — Claude

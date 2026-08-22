@@ -34,7 +34,7 @@ andere Art besitzt:
 | Wie heißen die Felder? | Regel | CODE_GUIDELINES |
 | Was soll sich anfühlen? | Absicht | GDD |
 
-### Die drei Prüfungen
+### Die Prüfungen
 1. **Ein-Ort-Test** — Ändert sich die Tatsache: an wie vielen Stellen
    muss ich sie ändern? Die Antwort muss „an einer" sein.
 2. **Widerspruchs-Test** — Können zwei Dateien darüber Verschiedenes
@@ -49,11 +49,31 @@ gesammelt im erzeugten INDEX.md. Diese Datei besitzt das *Verfahren*, der
 INDEX das *Ergebnis*. Eine Tabelle beider Zuordnungen hier wäre genau die
 Kopie, die Regel 1 verbietet.
 
-### Vor einem Ownership-Befund
-Immer die `Ownership:`-Zeile **aller beteiligten Dateien** lesen, bevor
-geurteilt wird. Ein Widerspruch liegt zwischen zwei Dateien; wer nur eine
-liest, hält ihn für einen Verstoß dieser einen.
-*(Regel aus einem echten Fehlurteil, 2026-08-21.)*
+### Wenn mehrere Dateien dieselbe Art besitzen
+Die Tabelle oben trennt nach Art. Sobald eine Art auf mehrere Dateien
+aufgeteilt wird — sieben `DECISIONS/`-Dateien eines Projekts —, ist das
+Thema wieder die Grenze, und damit Geschmackssache. Gehört der
+Wasserspiegel zu „Terrain" oder zu „Welt"?
+
+> **Eine Entscheidung gehört der Datei, deren Code sie ändert** — nicht
+> der, über deren Thema sie redet.
+
+Das ist prüfbar statt strittig: Der Wasserspiegel wird vom Terrain-Tool
+gebaut, also Terrain. Zusätzlich trägt **jede** Geschwisterdatei eine
+Zeile `Nicht hier:` mit dem Nachbarn, der den Grenzfall bekommt — sonst
+lebt die Zuordnung nur im Kopf dessen, der sie einmal getroffen hat.
+
+### Vor einem Befund
+Immer **alle beteiligten Dateien** lesen, bevor geurteilt wird — bei
+einem Ownership-Befund mindestens die `Ownership:`-Zeile jeder von ihnen.
+Ein Widerspruch liegt zwischen zwei Dateien; wer nur eine liest, hält ihn
+für einen Verstoß dieser einen.
+
+**Das gilt für jede Art von Befund, nicht nur für Ownership**, und
+ausdrücklich über Schichtgrenzen hinweg. *(Zwei echte Fehlurteile:
+2026-08-21 zwischen ROADMAP und FEATURE_LOG, und 2026-08-22 — eine
+Bauliste behauptete etwas als erledigt, was die ROADMAP einer anderen
+Schicht als offen führte. Beide in `STOERUNGEN.md`.)*
 
 ---
 
@@ -91,8 +111,14 @@ Ein **Archiv** wird selten gelesen; seine Größe ist fast folgenlos.
 
 ### Chronik gegen Verzeichnis
 - Eine **Chronik** beantwortet „was ist wann passiert". Sie wird nur
-  hinten ergänzt und **kann nie falsch werden**. Kein Archiv, keine
-  Pflege.
+  ergänzt, nie geändert, und **kann nie falsch werden**. Kein Archiv,
+  keine Pflege.
+  **Ergänzt wird nach Datum, nicht hinten angehängt.** Für das Heutige
+  ist beides dasselbe; für einen **nachgetragenen** Eintrag nicht — etwa
+  beim Auflösen einer Erledigt-Liste. Wird er ans Ende gehängt,
+  behauptet die Chronik eine Zeitfolge, die sie nicht hat, und der
+  falsche Eintrag steht ausgerechnet an der Stelle, die am seltensten
+  gegengelesen wird. *(Regel aus drei echten Fällen, 2026-08-22.)*
   Ein Eintrag darf durchaus einen Ablageort nennen — er trägt sein Datum
   und sagt damit, wo etwas **damals** lag; das ist beim Nachvollziehen
   oft der Schlüssel. Die Chronik verspricht nur nicht, dass es dort
@@ -150,6 +176,13 @@ etwas anderes — und nichts meldet sich.
 
 > **Sichtbar kaputt ist besser als still falsch.**
 
+**Eine Ausnahme:** Steht die Nummer in der **Überschrift** des Ziels
+(`## 8. Grenzfälle, in denen Ownership anders ausgeht`), ist sie Teil des
+Namens und darf zitiert werden — sie wird dann nie neu vergeben.
+Nummerierte Listen **ohne** Überschrift bekommen stattdessen Kurznamen,
+und verwiesen wird auf den Namen: nicht „Bedienregel 5", sondern
+„Bedienregel *Freies Ende bleibt frei*".
+
 **Format:** Pfad **und** Überschrift —
 `Projekte/Isor_Tower/ROADMAP.md → „Prefab-Struktur prüfen"`.
 
@@ -170,6 +203,9 @@ Spracheingabe; eine Sprechregel wäre dort Reibung ohne Gewinn.
 
 - **Keine Anzahl in Überschrift oder Einleitung**, wenn die Liste wachsen
   kann. Nicht „Die drei Typen", sondern „Die Typen".
+  **Erlaubt ist eine Anzahl nur, wenn die Aufzählung abgeschlossen ist**
+  und der Text sagt, warum nichts dazukommen kann. Dann trägt die Zahl
+  Information statt eines Verfallsdatums.
 - **Stand-Stempel nur, wo etwas ihn kontrolliert.**
   - In **erzeugten** Dateien setzt ihn das Skript — er kann nicht falsch
     werden.
@@ -227,15 +263,20 @@ Diese Tabelle ist der Besitzer. Wo die Sprache anderswo erwähnt wird
 
 ## 10. Schichten
 
-Der Harness ist in vier Schichten geteilt, jede ein eigener Ordner, damit
-sie sich als Ganzes herausnehmen lässt:
+Der Harness ist in Schichten geteilt, jede ein eigener Ordner, damit sie
+sich als Ganzes herausnehmen lässt:
 
 | Schicht | Inhalt |
 |---|---|
 | `Kern/` | generisch, wandert in jedes Projekt mit |
 | `Uni/` | studienspezifisch, nach Semestern gegliedert |
 | `IsorBackup/` | Regeln für den externen Datenbaum |
-| `Projekte/<Name>/` | ein Ordner je Projekt |
+| `Projekte/<Name>/` | **eine Schicht je Projekt** |
+
+**`Projekte/` ist keine Schicht, sondern ein Sammelordner.** Schicht ist
+jeweils `Projekte/<Name>/`. Alles, was für eine Schicht gilt — eigene
+ROADMAP, LOG, DECISIONS, `_ARCHIV`, herausnehmbar als Ganzes —, gilt dort
+**je Projekt**. Bei zwei Projekten sind es also fünf Ordner, nicht vier.
 
 **Schicht = Thema. Dokumentart = Art der Information.** Das Kreuz aus
 beidem ergibt das Fach, in dem eine Information genau einmal liegt.

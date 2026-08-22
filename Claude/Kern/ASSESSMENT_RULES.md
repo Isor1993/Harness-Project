@@ -22,7 +22,7 @@ Es wird bewusst wiederholt, damit sich Stände vergleichen lassen — nicht
 als einmaliges Feedback.
 
 ## Auslöser
-Auf Zuruf („Zeugnis", `/zeugnis`). Sinnvolle Anlässe: vor dem Polishing,
+Auf Zuruf („Zeugnis", `/harness:zeugnis`). Sinnvolle Anlässe: vor dem Polishing,
 nach einer Abgabe, am Semesterende, vor einer Bewerbungsrunde.
 
 ## Session-Disziplin
@@ -33,6 +33,10 @@ Die Session **liest und bewertet, sie baut nicht.**
   `Kern/Zeugnisse/<Datum>.md` und `Kern/ARTIFACT_INDEX.md`; die ROADMAP
   der betroffenen Schicht wird um die Befunde als Aufgaben ergänzt,
   sonst nichts.
+  **Ausgenommen der erzeugte `INDEX.md`:** Jedes Zeugnis legt eine neue
+  Datei an, und die Doku-Pflicht verlangt das Register nachzuziehen
+  (`WORKFLOW.md`). Der INDEX wird dabei nicht geschrieben, sondern neu
+  erzeugt — er zählt deshalb nicht als fremde Datei.
 - LOG, DECISIONS und TDD_NOTES bleiben unberührt: Es wurde nichts gebaut
   und nichts entschieden.
 - **Die Knowledge-Frage wird trotzdem gestellt** (WORKFLOW.md,
@@ -76,9 +80,9 @@ Feste Reihenfolge, damit zwei Zeugnisse nebeneinander lesbar sind:
 7. **Nächster Schritt** — konkrete Reihenfolge bis zum nächsten Termin
 8. **Prüfanker des letzten Zeugnisses — beantwortet.** Pflicht, sobald es
    einen Vorgänger gibt: Jeder dort gesetzte Anker wird durchgegangen und
-   beantwortet. Dieser Abschnitt macht aus zwei Momentaufnahmen eine
-   Messreihe — ohne ihn sind es zwei unverbundene Bewertungen.
-   Beim allerersten Zeugnis entfällt er.
+   beantwortet, **die heutige Zahl neben der alten**. Dieser Abschnitt
+   macht aus zwei Momentaufnahmen eine Messreihe — ohne ihn sind es zwei
+   unverbundene Bewertungen. Beim allerersten Zeugnis entfällt er.
 9. **Prüfanker fürs nächste Mal** — was beim nächsten Zeugnis
    nachgesehen wird, damit der Vergleich messbar ist
 
@@ -103,6 +107,11 @@ Schätzung wird immer gegen die Feedbackelemente der jeweiligen
 - Was Isor selbst schon gefunden hat (steht in ROADMAP/DECISIONS), wird
   als gefunden gekennzeichnet, nicht als neue Erkenntnis verkauft.
 - Deutsch. Ausnahme: Dateinamen, Code und Zitate aus dem Code.
+- **Die Antwort im Chat trägt das Ergebnis**, nicht nur den Dateipfad:
+  Kernaussage, Notenbild und die drei wichtigsten Punkte. Die
+  ausführliche Fassung liegt in `Kern/Zeugnisse/<Datum>.md` und im
+  Artifact — ein Zeugnis, das im Chat nur als Link auftaucht, wird nicht
+  gelesen.
 
 ## Ablage
 - **Eine Datei je Zeugnis** unter `Kern/Zeugnisse/<JJJJ-MM-TT>.md`.

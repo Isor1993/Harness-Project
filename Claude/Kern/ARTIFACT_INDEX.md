@@ -5,7 +5,7 @@ sie zeigt. Regeln zu Typen, Benennung und Aufbau stehen in
 ARTIFACT_RULES.md — hier steht nur der Bestand.
 
 Wofür der Index gut ist: Er wird beim Review-Gate abgefragt
-(`CODE_GUIDELINES.md`, Punkt 5) und beim Sonntagsabgleich
+(`CODE_GUIDELINES.md` → „Artifact-Check") und beim Sonntagsabgleich
 (`ARTIFACT_RULES.md`).
 
 **Benannte Ausnahme von der Schichten-Regel:** Dieser Index bleibt **eine
@@ -18,7 +18,9 @@ Die Schicht steht je Abschnitt dabei.
 
 Zeilen je Eintrag:
 - **URL** — die Seite selbst. Nie eine zweite Seite zum selben Thema anlegen.
-- **Stand** — Datum, gegen das die Seite zuletzt geprüft wurde.
+- **Stand** — Datum, gegen das die Seite zuletzt geprüft wurde. Bei
+  Zeugnis-Seiten heißt die Zeile **Datum**: Dort ist kein Prüfstand
+  gemeint, sondern der Inhalt selbst (`ASSESSMENT_RULES.md`).
 - **Quelle** — die führende .md-Datei im Repo.
 - **Skripte** — bei System-Seiten: was die Seite beschreibt. Ändert sich
   eines davon, ist die Seite veraltet. Bei Lernstücken heißt die Zeile

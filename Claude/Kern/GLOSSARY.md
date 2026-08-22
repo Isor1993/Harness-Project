@@ -18,7 +18,7 @@ Leseordnung.
 | Begriff | Kurzform | Besitzer |
 |---|---|---|
 | **Ownership** | Für jede Information gibt es genau ein Dokument, das sie besitzt; alle anderen verweisen. | `DOC_RULES.md`, Abschnitt 1 |
-| **Schicht** | Einer der vier Ordner (`Kern`, `Uni`, `IsorBackup`, `Projekte/<Name>`), jeder als Ganzes herausnehmbar. Schicht = Thema, Dokumentart = Art der Information. | `DOC_RULES.md`, Abschnitt 10 |
+| **Schicht** | Ein als Ganzes herausnehmbarer Ordner: `Kern`, `Uni`, `IsorBackup` — und **je Projekt** ein `Projekte/<Name>`. `Projekte/` selbst ist nur der Sammelordner. Schicht = Thema, Dokumentart = Art der Information. | `DOC_RULES.md`, Abschnitt 10 |
 | **Chronik** | Beantwortet „was ist wann passiert". Wird nur hinten ergänzt, kann nie falsch werden, braucht kein Archiv. | `DOC_RULES.md`, Abschnitt 4 |
 | **Verzeichnis** | Beantwortet „was existiert jetzt und wo". Muss laufend abgeglichen werden, sonst führt es in die Irre. | `DOC_RULES.md`, Abschnitt 4 |
 | **Register** | Verzeichnis fremder Adressen, das vollständig sein muss und deshalb **nicht** nach Schichten geteilt wird. | `DOC_RULES.md`, Abschnitt 8 |
@@ -39,7 +39,8 @@ Leseordnung.
 | **Pflegetag** | Wochentakt, unabhängig vom Session-Typ: Artifacts durchsehen, Backup. Ausgelöst durch `/harness:sonntag`. | `WORKFLOW.md`, Pflegetag |
 | **Auslöser** | Eine Befehlsdatei unter `.claude\commands\harness\`. Trägt keinen Ablauf, nur den Zeiger auf die Regeldatei. | `WORKFLOW.md`, Die Befehle |
 | **Review-Gate** | Checkliste, die vor dem Coden durchgegangen wird. | `CODE_GUIDELINES.md` |
-| **Störung** | Vorfall, in dem der Harness nicht so gearbeitet hat wie vorgesehen. Nicht dasselbe wie ein Fehler im Code. | `STOERUNGEN.md` |
+| **Befund** | Ergebnis einer Prüfung: eine Stelle, an der etwas falsch, doppelt, widersprüchlich ist oder fehlt. Wird notiert, nicht sofort geändert. Ein **Zustand**. | `WORKFLOW.md`, Begriffe |
+| **Störung** | Vorfall, in dem der Harness nicht so gearbeitet hat wie vorgesehen. Ein **Ereignis** — nicht dasselbe wie ein Befund und nicht dasselbe wie ein Fehler im Code. | `STOERUNGEN.md` |
 
 ## Über Nummern und Ausgaben
 
@@ -50,8 +51,5 @@ Leseordnung.
 | **Auslieferung** | Kopie des Kerns unter `05_Werkzeuge\Harness_Auslieferungen\`, benannt nach der Harness-Version. | `VERSIONIERUNG.md` |
 | **Notkern** | Die wenigen Regeln, die als benannte Kopie in der obersten `CLAUDE.md` stehen, weil nur sie automatisch lädt. Untergrenze, nicht Ersatz. | `CLAUDE.md` (oberste) |
 
-## Ohne Besitzer — offen
-
-| Begriff | wie er benutzt wird | Problem |
-|---|---|---|
-| **Befund** | Ergebnis einer Prüfung: etwas ist falsch, doppelt oder fehlt. Durchgehend in `_HARNESS_REVIEW.md` und in Prüfberichten. | Nirgends definiert. Grenze zur **Störung** ist unscharf: Ein Befund kann eine Störung sein, muss aber nicht. Zu klären bei der Abnahme. |
+Alle Begriffe haben einen Besitzer. Der letzte ohne — „Befund" — hat am
+2026-08-22 einen bekommen; die Abnahme hatte ihn zu klären.

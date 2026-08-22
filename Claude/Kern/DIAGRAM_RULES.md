@@ -40,7 +40,8 @@ Der Beleg ist ein Beinahe-Verlust: Am 2026-08-06 existierten fünf
 Diagramme nur noch als `.drawio.png`-Export. Sie waren nur deshalb zu
 retten, weil diese Option angehakt war — das XML wurde herausgelöst und
 liegt seither als eigene Quelle vor. Seitdem wird mit den `.drawio`-
-Dateien gearbeitet, nicht mit der Browser-Fassung (Bedienregel 2).
+Dateien gearbeitet, nicht mit der Browser-Fassung (Bedienregel
+*In die Datei speichern*).
 
 ## Arbeitsteilung
 - **Claude** schreibt und pflegt die Skripte und führt sie aus. Inhalt,
@@ -50,25 +51,30 @@ Dateien gearbeitet, nicht mit der Browser-Fassung (Bedienregel 2).
 - Ein Lauf des Skripts übernimmt die Anordnung. Das gilt aber nur unter
   den Bedienregeln unten.
 
-## Bedienregeln (aus dem Praxisbetrieb 2026-08-08)
-1. **Beim Ziehen eines Linienendes muss der Zielkasten aufleuchten.**
+## Bedienregeln (aus dem Praxisbetrieb)
+Jede trägt einen Kurznamen; verwiesen wird auf den Namen, nicht auf die
+Nummer (`DOC_RULES.md`, Abschnitt 6).
+
+1. **Zielkasten leuchtet.** Beim Ziehen eines Linienendes muss der
+   Zielkasten aufleuchten.
    Grün = fester Punkt, Blau = schwebend am Kasten — beides ist richtig.
    Leuchtet nichts, hängt das Ende an einer freien Koordinate. Eine solche
    Linie sieht verbunden aus, wandert aber nicht mit dem Kasten mit, und
    sie lässt sich keiner Klasse zuordnen: Ihre Führung geht beim nächsten
    Lauf verloren.
-2. **Direkt in die Datei speichern, nicht in den Browser-Speicher.**
+2. **In die Datei speichern**, nicht in den Browser-Speicher.
    Entweder draw.io Desktop, oder im Browser über *Open Existing Diagram →
    Device*. Per Drag & Drop geöffnete Dateien darf der Browser nicht
    zurückschreiben.
-3. **Nicht zwischen zwei Dateien kopieren.** draw.io vergibt dabei neue
-   Ids. Die Zuordnung läuft zwar über den Klassennamen und hält das aus,
-   aber die Ids sind danach unlesbar.
-4. **Datei schließen, bevor Claude ein Skript darauf laufen lässt.** Ein
+3. **Nicht kopieren** — nicht zwischen zwei Dateien. draw.io vergibt
+   dabei neue Ids. Die Zuordnung läuft zwar über den Klassennamen und
+   hält das aus, aber die Ids sind danach unlesbar.
+4. **Datei schließen**, bevor Claude ein Skript darauf laufen lässt. Ein
    offenes Fenster arbeitet auf seinem eigenen Stand und schreibt beim
    Speichern darüber.
 
-5. **Ein bewusst frei gelassenes Linienende muss auch im Skript frei sein.**
+5. **Freies Ende bleibt frei** (seit 2026-08-11): Ein bewusst frei
+   gelassenes Linienende muss auch im Skript frei sein.
    Lässt du ein Ende schwebend am Kasten (blau, ohne festen Punkt), steht dazu
    nichts in der Datei — und dann greift beim nächsten Lauf die Vorgabe aus dem
    Skript und verschiebt das Ende. Claude erkennt den Fall daran, dass
@@ -80,7 +86,8 @@ Dateien gearbeitet, nicht mit der Browser-Fassung (Bedienregel 2).
 Kastenpositionen, Linien-Wegpunkte, Andockpunkte und die Lage der
 Multiplizitäts-Beschriftungen. Andockpunkte an einer Member-Zeile werden
 auf den Kasten umgerechnet — optisch dieselbe Stelle, technisch stabil.
-Nicht erhalten wird ein Ende ohne Verbindung (siehe Regel 1).
+Nicht erhalten wird ein Ende ohne Verbindung (siehe Bedienregel
+*Zielkasten leuchtet*).
 
 ## Prüfung
 - Jedes Skript ruft am Ende `pruefen`. **Der Abschnitt FEHLER muss leer
@@ -103,8 +110,8 @@ Nicht erhalten wird ein Ende ohne Verbindung (siehe Regel 1).
   Ablaufplan enthält Fließtext. Was er zeigt, ist von Hand gegen den Code zu
   lesen — die einzige Absicherung ist die Quellenangabe im Skriptkopf.
 - Die Zuordnung läuft über die **Id** des Sinnbilds, nicht über seinen Text:
-  „Ende" kommt in einem Plan mehrfach vor. Deshalb greift hier Bedienregel 3
-  (nicht zwischen zwei Dateien kopieren) doppelt — mit neuen Ids ist die
+  „Ende" kommt in einem Plan mehrfach vor. Deshalb greift hier die
+  Bedienregel *Nicht kopieren* doppelt — mit neuen Ids ist die
   Anordnung weg.
 - Erhalten wird zusätzlich die **Größe** eines Kastens. Ein von Hand
   verbreitetes Sinnbild schnurrt also nicht wieder auf die Vorgabe zusammen.
@@ -121,10 +128,10 @@ Nicht erhalten wird ein Ende ohne Verbindung (siehe Regel 1).
   Übergangsbedingungen. Gegenprüfung von Hand gegen die FSM-Klassen, die
   Quellenangabe im Skriptkopf ist die einzige Absicherung.
 - Die Zuordnung läuft über die **Id** des Kastens, nicht über den Text —
-  Zustandsnamen können sich wiederholen. Bedienregel 3 (nicht zwischen
-  zwei Dateien kopieren) greift hier deshalb doppelt.
-- An diesem Typ ist Bedienregel 5 aufgefallen (fünf Kanten betroffen):
-  Ein bewusst frei gelassenes Linienende muss auch im Skript frei sein.
+  Zustandsnamen können sich wiederholen. Die Bedienregel *Nicht kopieren*
+  greift hier deshalb doppelt.
+- An diesem Typ ist die Bedienregel *Freies Ende bleibt frei*
+  aufgefallen, fünf Kanten waren betroffen.
 
 ## Feste Darstellungsvorgaben
 Zentral in `uml_drawio.py`, damit alle Diagramme gleich aussehen. Beim nächsten

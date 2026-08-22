@@ -9,7 +9,7 @@ Warum eigene Datei: Es gibt drei Nummern nebeneinander, die
 Verschiedenes zählen. Ohne eine Stelle, an der die Lesarten stehen, hält
 man sie früher oder später für dasselbe.
 
-## Die drei Nummern auf einen Blick
+## Die Nummern auf einen Blick
 
 | Nummer | Zählt | Beantwortet | Steht in |
 |---|---|---|---|
@@ -90,7 +90,12 @@ Deshalb wird je Hauptversion eine Auslieferung abgelegt:
 `C:\IsorBackup\05_Werkzeuge\Harness_Auslieferungen\Harness_1.0.0\`
 
 - Inhalt: nur `Kern/` plus die Datei mit der Leseordnung. Keine Uni, kein
-  Projekt, keine Altbestände.
+  Projekt, keine Altbestände. `Kern/` enthält damit auch `Werkzeuge/` und
+  `Befehle/` — beides gehört zum Harness und wäre ohne die Auslieferung
+  nicht mitzunehmen.
+- **Ein Handgriff beim Einrichten:** `Kern/Befehle/*.md` nach
+  `.claude\commands\harness\` kopieren, sonst gibt es die Befehle im
+  neuen Projekt nicht (`WORKFLOW.md` → „Wo die Auslöser liegen").
 - **Das ist kein Backup.** Zum Zurückholen alter Stände dient Git; die
   Auslieferung ist eine fertige Ausgabe zum Kopieren.
 - Angelegt wird sie bei jeder Änderung von `X` oder `Y`, nicht bei `Z`.

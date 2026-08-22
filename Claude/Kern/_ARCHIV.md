@@ -42,14 +42,19 @@ Zielbeschreibung ist keine Baureihenfolge.
 Ausrichtung am GDD) → überholt. Die Abgabe ist am 2026-08-20 hochgeladen;
 die zweite Phase läuft seit dem 2026-08-22 und steht in `PLAN.md`.
 
-## 2026-08-22 — Zwei abgelöste Konventions-Einträge
+## 2026-08-22 — Abgelöster Konventions-Eintrag: Sprache
 
-Beide standen bis heute in `DECISIONS.md` und sind dort nicht mehr
-die gültige Fassung. Die Begründungen von damals bleiben hier
-nachlesbar.
+Stand bis heute in `DECISIONS.md` und ist dort nicht mehr die gültige
+Fassung. Die Begründung von damals bleibt hier nachlesbar.
 
-**Abgelöst durch `Kern/DOC_RULES.md`, Abschnitt 9 (Sprachtabelle)
-bzw. `Kern/VERSIONIERUNG.md`:**
+**Abgelöst durch `Kern/DOC_RULES.md`, Abschnitt 9 (Sprachtabelle).**
+
+*Hier stand bis zum 2026-08-22 auch der Eintrag „Versionsschema nach
+Reifegrad" (2026-08-16). Er war fälschlich als abgelöst einsortiert:
+`Kern/VERSIONIERUNG.md` nennt ihn seine Grundentscheidung und ergänzt
+ihn ausdrücklich, ohne ihn umzustoßen. Er steht deshalb wieder in
+`Kern/DECISIONS.md`, mit einer „Fortgeführt am"-Zeile (Befund A30 der
+Abnahme).*
 
 ### 2026-07-17 — Sprache: Code englisch, Unterhaltung deutsch
 Was: Code, Kommentare, Debug-Ausgaben und Commit-Messages ausnahmslos
@@ -59,24 +64,4 @@ mit der Unity-/C#-Welt; Deutsch hilft beim Lernen.
 Verworfen: Sprachwahl je Situation; sofortige Englisch-Umstellung des
 Harness (geparkt in ROADMAP „Später").
 
-### 2026-08-16 — Versionsschema nach Reifegrad
-Was: Die Build-Version (`Player Settings > Version`) folgt dem Reifegrad des
-Spiels, nicht dem üblichen Semantic Versioning:
-
-| Form | Bedeutung |
-|---|---|
-| `0.0.x` | Prototyp — x zählt die Stände hoch |
-| `0.x.0` | Early Access |
-| `1.x.x` | fertiges Spiel |
-
-Solange die vordere Stelle `0` ist, ist das Spiel nicht fertig; solange die
-mittlere `0` ist, ist es nicht einmal Early Access. Stand 2026-08-16: `0.0.2`.
-Warum: Isor will an der Versionsnummer den Reifegrad ablesen, nicht die Art
-der letzten Änderung. Bei Semantic Versioning stünde die mittlere Stelle für
-neue Funktionen und die hintere für Fehlerbehebungen — das sagt nichts
-darüber, wie weit das Spiel ist, und genau das ist hier die interessante
-Information.
-Verworfen: Semantic Versioning (MAJOR.MINOR.PATCH). Aufgefallen war die
-Vermischung an `0.1.1`, das nach Isors eigenem Schema bereits Early Access
-behauptet hätte.
 

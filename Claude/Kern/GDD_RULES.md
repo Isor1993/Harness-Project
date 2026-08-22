@@ -31,7 +31,8 @@ Feste Reihenfolge, damit zwei Fassungen vergleichbar bleiben:
 4. **Spieler** — Perspektive, Fortschritt, Größenordnungen
 5. **Persistenz** — was gespeichert wird und was nicht
 6. Weitere Kapitel nach Bedarf
-7. **Offene Design-Fragen** — nummeriert, siehe unten
+7. **Offene Design-Fragen** — je Frage eine fettgedruckte Stichzeile,
+   siehe unten
 8. **Entwurf** — noch nicht Einsortiertes, siehe unten
 
 ## Der `offen`-Mechanismus
@@ -43,9 +44,13 @@ verschweigt, baut die Tür zu.
 - Ein offener Punkt steht **im Kapitel**, zu dem er gehört, fett als
   `**Offen:**` — und zusätzlich als Zeile im Abschnitt „Offene
   Design-Fragen".
+- **Jede Frage trägt dort eine fettgedruckte Stichzeile als Namen**
+  (`**Village-Größe:** bleibt es bei ~2 km …`), keine Nummer. Nur so
+  lässt sich auf sie verweisen: Beantwortete Fragen werden gestrichen,
+  und Nummern rutschen dabei garantiert (`DOC_RULES.md`, Abschnitt 6).
 - **Das GDD ist der Besitzer offener Design-Fragen.** Die ROADMAP darf
   sie als Aufgabe aufnehmen, aber nur über einen Verweis
-  (Pfad + Überschrift), nie durch Abschreiben.
+  (Pfad + Stichzeile), nie durch Abschreiben.
 - **Geschlossen wird so:** Die Entscheidung wandert nach DECISIONS (was,
   warum, verworfene Alternativen). Danach — und erst danach — streicht
   das GDD die Frage und schreibt die Absicht als feste Aussage ins

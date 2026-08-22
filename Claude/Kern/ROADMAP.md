@@ -12,6 +12,22 @@ Kein Datum, keine Tagesplanung — das ist Sache von `PLAN.md`.
   `_HARNESS_UMSETZUNG.md`.
 
 ## Als Nächstes
+- [ ] **Abnahme abschließen.** 30 der 33 Befunde sind am 2026-08-22
+  behoben; offen sind nur noch drei, und alle drei hängen an einem
+  Zeitpunkt statt an Arbeit: **A10** und **A25** kurz vor dem Archivieren
+  der Review-Dateien, **A12** am ersten Pflegetag. Danach die
+  Artifact-Seite `⚙️ System · Harness`, dann die Auslieferung
+  `Harness_1.0.0`. Einzelheiten in `_HARNESS_ABNAHME.md`, Abschnitt
+  „Stand der Umsetzung".
+- [ ] **Prüfskripte in den Kern übernehmen** als
+  `Kern/Werkzeuge/pruefen.py`, Aufruf am Pflegetag. Zwei Prüfungen:
+  alle Datei-Verweise gegen den tatsächlichen Bestand, und die
+  Formatzusagen der Chroniken und Entscheidungsdateien
+  (Datumsreihenfolge, Pflichtfelder). Grund: In der Abnahme vom
+  2026-08-22 haben genau diese zwei Prüfungen 6 der 33 Befunde allein
+  gefunden — tote Verweise, verdrehte Reihenfolge und nicht gedeckte
+  Haken rutschen beim Lesen durch. Wegwerf-Fassungen lagen im
+  Scratchpad; für den Dauerbetrieb zusammenfassen und aufräumen.
 - [ ] **Systemliste je Projekt erzeugen** (E14). Skript liest
   `Assets/Systems`, `Entities`, `Shared` und schreibt Name, Anzahl
   Skripte, letzte Änderung; die Kurzbeschreibung je System kommt von

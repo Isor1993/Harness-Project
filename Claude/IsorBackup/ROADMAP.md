@@ -30,8 +30,10 @@ Format: `- [ ] **Titel** — ein bis drei Sätze, was zu tun ist und warum.`
   Blender-Dateien. Ohne Quelle lässt sich das Mesh nicht mehr ändern, nur
   ersetzen.
 
-## Erledigt, hier nur als Zeiger
+## Nach der Aufräumphase
 
-Die beiden `.drawio`-Punkte vom 2026-08-06 sind durch. Die **Regel**, die
-dabei entstand, steht jetzt dort, wo sie hingehört:
-`Kern/DIAGRAM_RULES.md`, Abschnitt „Export aus draw.io".
+- [ ] **`LOG.md` dieser Schicht anlegen**, sobald der erste
+  Aufräum-Durchgang läuft. Die Schicht ist bisher die einzige ohne
+  Chronik — deshalb stand hier bis zum 2026-08-22 ein „Erledigt"-Block,
+  obwohl diese Datei nur offene Punkte besitzt. Ereignisse gehören ins
+  LOG, nicht in die ROADMAP.

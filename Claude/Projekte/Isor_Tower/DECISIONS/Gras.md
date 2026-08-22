@@ -4,11 +4,19 @@ Ownership: Nur Entscheidungen zu Gras und Instancing — was entschieden wurde, 
 und welche Alternativen verworfen wurden. Kein Plan (das ist die
 ROADMAP), kein Ereignis (das ist das LOG), keine ausformulierte Regel
 (die steht in der jeweiligen Regeldatei; hier steht nur, warum sie gilt).
+Nicht hier: die Placer-Mechanik, die Grasbüschel verteilt — die gehört
+`Platzierung.md`. Hier steht nur, was das Gras-Rendering daraus macht.
 Format: `## JJJJ-MM-TT — Titel` mit **Was** / **Warum** / **Verworfen**,
-je ein bis zwei Zeilen.
+je ein bis zwei Zeilen. **Älteste oben**, wie in einer Chronik.
 
 Überholte Einträge wandern nach `_ARCHIV.md` der Schicht, mit Angabe,
 wodurch sie abgelöst wurden. Ein neuer Eintrag nennt, welchen er ablöst.
+
+Gilt eine Begründung weiter und ist nur ihre Ausführung überholt, bleibt
+der Eintrag stehen und bekommt eine Zeile **Fortgeführt am `<Datum>`**
+mit Zeiger auf die geltende Fassung — dann geht die Herleitung nicht ins
+Archiv verloren.
+
 
 
 ## 2026-07-26 — Gras-Rendering: GPU-Instancing statt GameObjects (Tür B)

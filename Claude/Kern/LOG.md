@@ -5,7 +5,9 @@ Eine **Chronik**: Einträge werden nie geändert oder gekürzt, nur ergänzt.
 Sie kann daher nicht falsch werden und braucht kein Archiv.
 Was als Nächstes kommt, steht in `ROADMAP.md`; warum es so entschieden
 wurde, in den DECISIONS dieser Schicht.
-Format: `- JJJJ-MM-TT — Ereignis (1–3 Sätze: was, und woran es geprüft wurde)`.
+Format: `- JJJJ-MM-TT — Ereignis (1–3 Sätze: was, und woran es geprüft
+wurde)`. Bei einem Umbau, der viele Dateien auf einmal betrifft, darf
+ein Eintrag bis zu einem Absatz lang werden.
 Ein Eintrag darf einen Ablageort nennen — er beschreibt den Stand von
 damals, nicht den von heute.
 
@@ -80,3 +82,25 @@ damals, nicht den von heute.
   keine Aufgabe, sondern die Regel „beim draw.io-Export *Include a copy of my
   diagram* angehakt lassen" — sie steht jetzt in `Kern/DIAGRAM_RULES.md`.
   Geprüft: INDEX neu erzeugt, 46 Dateien, alle mit Ownership-Zeile.
+- 2026-08-22 — Phase 8 der Überholung: die Abnahme. Schlussdurchgang über
+  50 Dateien und rund 9.400 Zeilen in sechs Durchgängen, Ergebnis **33
+  Befunde** in `_HARNESS_ABNAHME.md` (15 muss · 14 lohnt sich · 4 bei
+  Bedarf). Nach Ursache sortiert liegt die größte Gruppe nicht bei den
+  Regeln und nicht beim Altbestand, sondern mit 14 Befunden an den
+  **Nahtstellen des Umbaus** vom 21./22.08. Drei Haken der Baulisten
+  waren nicht gedeckt (Auslieferungs-Ordner, vier Aufgabentexte,
+  ARTIFACT_INDEX-Eintrag). **30 der 33 Befunde im selben Zug behoben**;
+  die drei übrigen hängen am Archivieren bzw. am ersten Pflegetag.
+  Die Befehle haben ein Zuhause im Repo bekommen (`Kern/Befehle/`,
+  Arbeitskopie in `.claude\`), das INDEX-Skript führt sie und die beiden
+  Wegweiser-`CLAUDE.md` in eigenen Abschnitten. `CODE_GUIDELINES.md`
+  beschrieb noch die Ordnerstruktur vor dem 2026-08-20 — neu geschrieben
+  gegen den tatsächlichen Assets-Baum. Fünf Regeln geschärft, der Begriff
+  „Befund" hat einen Besitzer.
+  Geprüft mit zwei eigens gebauten Skripten: alle Datei-Verweise gegen
+  den Bestand, Datumsreihenfolge und Pflichtfelder von drei Chroniken und
+  zehn Entscheidungsdateien — am Ende null Beanstandungen. Sie fanden 6
+  der 33 Befunde allein und stehen deshalb als Aufgabe in
+  `Kern/ROADMAP.md`. Nebenbei einen aktiven Datenverlust abgewendet:
+  `prefab_status.py` las 34 Prefabs als 33 Einträge, weil `Torch` und
+  `Torch ` auf denselben Schlüssel fielen.

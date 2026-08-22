@@ -5,10 +5,14 @@ und welche Alternativen verworfen wurden. Kein Plan (das ist die
 ROADMAP), kein Ereignis (das ist das LOG), keine ausformulierte Regel
 (die steht in der jeweiligen Regeldatei; hier steht nur, warum sie gilt).
 Format: `## JJJJ-MM-TT — Titel` mit **Was** / **Warum** / **Verworfen**,
-je ein bis zwei Zeilen.
+je ein bis zwei Zeilen. **Älteste oben**, wie in einer Chronik.
 
 Überholte Einträge wandern nach `_ARCHIV.md` der Schicht, mit Angabe,
 wodurch sie abgelöst wurden. Ein neuer Eintrag nennt, welchen er ablöst.
+Gilt eine Begründung weiter und ist nur ihre Ausführung überholt, bleibt
+der Eintrag stehen und bekommt eine Zeile **Fortgeführt am `<Datum>`**
+mit Zeiger auf die geltende Fassung — dann geht die Herleitung nicht ins
+Archiv verloren.
 
 
 ## 2026-07-16 — Brainstorm-Modus normal/uni
@@ -36,6 +40,10 @@ Warum: Uni-Regeln sind Pflicht, sollen aber nach dem Studium sauber
 entfernbar sein; Projekt-Typ ändert sich nie mitten im Projekt.
 Verworfen: Session-Abfrage des Typs durch den Harness; ein gemischter
 Regelblock ohne Herkunfts-Markierung.
+**Fortgeführt am 2026-08-22:** Die Zwei-Block-Struktur gilt unverändert.
+Abgelöst ist nur die Kopfzeile `Projekt-Typ:` — der Konfliktfall
+entscheidet sich heute daran, ob ein Ordner `Uni/` vorhanden ist
+(Eintrag „Projekt-Typ wird aus der Schicht abgeleitet", unten).
 
 ## 2026-07-17 — Felder: [SerializeField] private statt public
 Was: Default `[SerializeField] private`, `_camelCase` überall; public nur
@@ -67,6 +75,15 @@ Verworfen: Knowledge-Abfrage nur im Uni-Modus; Commits durch Claude.
 Abschnitts und wird von den Befehlen `/sichern`, `/wechsel` und `/ende`
 ausgeführt. Geltende Fassung: `Kern/WORKFLOW.md`.
 
+## 2026-07-17 — Minimalistisch zur Einsatzreife
+Was: Alle vier Session-Typen nur minimal definiert; ausgearbeitet wird
+erst, wenn der Praxisbetrieb es verlangt. Regel-Dateien beschreiben nur
+den Ist-Zustand, Begründungen gehören hierher.
+Warum: Uni-Projekt startet 2026-07-18 — funktionstüchtig schlägt
+vollständig.
+Verworfen: volle Ausarbeitung aller Dokumente vor Praxisstart
+(alte Roadmap-Reihenfolge).
+
 ## 2026-07-18 — Reine statische Utilities erlaubt
 Was: MeshBuilder und HeightmapGenerator sind statische Klassen — die
 Regel „Keine Singletons/Statics" meint zustandsbehaftete Statics.
@@ -94,6 +111,10 @@ Etikett; Isors Template-System existierte schon und funktioniert.
 Verworfen: alte Guideline-Zeile `Assets/Scripts/{System}/`; MeshBuilder
 in Shared lassen (nur ein Abnehmer — Zusammenhalten schlägt
 spekulatives Teilen).
+**Überholt seit 2026-08-20** („Assets nach Typ statt nach Thema", unten).
+Weder `Entities/`, `Environment/`, `Systems/` noch `Shared/` existieren
+noch. Geltende Fassung: `Kern/CODE_GUIDELINES.md`, Abschnitt
+„Ordnerstruktur — Assets nach Typ".
 
 ## 2026-07-19 — Session-Typen: Brainstorm+Design ein Typ, 1:1-Regel
 Was: „Brainstorm/Design" ersetzt die zwei getrennten Typen; pro Baustein
@@ -104,15 +125,6 @@ Warum: Design ohne Brainstorm-Anteil kam in der Praxis nie vor; die feste
 Reihenfolge gibt Isor einen klaren Schnitt zwischen Entscheiden und Bauen.
 Verworfen: vier getrennte Typen; freies Mischen von Design und Umsetzung
 in einer Session.
-
-## 2026-07-17 — Minimalistisch zur Einsatzreife
-Was: Alle vier Session-Typen nur minimal definiert; ausgearbeitet wird
-erst, wenn der Praxisbetrieb es verlangt. Regel-Dateien beschreiben nur
-den Ist-Zustand, Begründungen gehören hierher.
-Warum: Uni-Projekt startet 2026-07-18 — funktionstüchtig schlägt
-vollständig.
-Verworfen: volle Ausarbeitung aller Dokumente vor Praxisstart
-(alte Roadmap-Reihenfolge).
 
 ## 2026-07-23 — Kommentar-Konventionen geschärft
 Was: XML-Docs mehrzeilig (IDE-Standard, auch Properties); Inline-Kommentare
@@ -232,6 +244,10 @@ war zudem kostenlos: Keine der Dateien hat einen `namespace`, es gibt kein `.asm
 Verworfen: Threading als eigener Ordner (die Parallelisierung sitzt in `ObjectPlacer`
 und `GrassCellBuilder`, also quer über zwei Systeme — ein eigener Ordner hätte sie
 auseinandergerissen); Umbau erst nach der Abgabe.
+**Fortgeführt am 2026-08-22:** Die vier Systeme gibt es weiter — als
+`Scripts/WorldGeneration/`, `Scripts/ObjectPlacement/`, `Scripts/Grass/`
+und `Assets/Editor/`. Überholt ist nur die Verschachtelung unter
+`Systems/TerrainGenerator/`, seit der Umstellung vom 2026-08-20.
 
 ## 2026-08-08 — Diagramm-Werkzeug hält die Handarbeit über Neuerzeugungen
 Was: `positionen_lesen` ordnet über den **Klassennamen** zu statt über die Id; neu
@@ -303,12 +319,51 @@ einen aktuellen Stand, sondern ein datierter Messpunkt.
 Verworfen: eine sammelnde Zeugnis-Seite mit allen Ständen (wäre auf dem Handy
 unlesbar geworden und hätte den direkten Vergleich zweier Termine erschwert).
 
+**Fortgeführt am 2026-08-22:** Zwei Angaben des Eintrags oben sind
+überholt — die Zeugnisse liegen nicht mehr in einer Sammeldatei, sondern
+je Termin in `Kern/Zeugnisse/<Datum>.md`, und der Auslöser ist kein
+globaler Skill mehr, sondern `/harness:zeugnis` unter
+`.claude\commands\harness\`. Die Entscheidung selbst — eigener
+Session-Typ mit eigener Rules-Datei statt vierter Artifact-Typ — gilt
+unverändert. Geltende Fassung: `Kern/ASSESSMENT_RULES.md`.
+
 ## 2026-08-14 — FolderTemplate um `Audio` ergänzt
 Was: `Audio\` ist ein regulärer Baustein-Unterordner neben Scripts,
 Prefabs, Textures.
 Warum: Klänge gehören zum Baustein (Fackelfeuer zur Fackel, Blöken zum
 Schaf); nur Querschnitts-Material liegt in `Shared/Audio/`.
 Verworfen: alle Klänge zentral unter `Shared/Audio/`.
+**Überholt seit 2026-08-20:** `Audio/` ist heute ein Typordner auf
+oberster Ebene, `Shared/Audio/` gibt es nicht mehr. Die Entscheidung
+kehrte sich damit um — Klänge liegen jetzt zentral nach Typ, darunter je
+ein Ordner pro Wesen. Geltende Fassung: `Kern/CODE_GUIDELINES.md`,
+Abschnitt „Ordnerstruktur — Assets nach Typ".
+
+## 2026-08-16 — Versionsschema nach Reifegrad
+Was: Die Build-Version (`Player Settings > Version`) folgt dem Reifegrad des
+Spiels, nicht dem üblichen Semantic Versioning:
+
+| Form | Bedeutung |
+|---|---|
+| `0.0.x` | Prototyp — x zählt die Stände hoch |
+| `0.x.0` | Early Access |
+| `1.x.x` | fertiges Spiel |
+
+Solange die vordere Stelle `0` ist, ist das Spiel nicht fertig; solange die
+mittlere `0` ist, ist es nicht einmal Early Access. Stand 2026-08-16: `0.0.2`.
+Warum: Isor will an der Versionsnummer den Reifegrad ablesen, nicht die Art
+der letzten Änderung. Bei Semantic Versioning stünde die mittlere Stelle für
+neue Funktionen und die hintere für Fehlerbehebungen — das sagt nichts
+darüber, wie weit das Spiel ist, und genau das ist hier die interessante
+Information.
+Verworfen: Semantic Versioning (MAJOR.MINOR.PATCH). Aufgefallen war die
+Vermischung an `0.1.1`, das nach Isors eigenem Schema bereits Early Access
+behauptet hätte.
+**Fortgeführt am 2026-08-22:** Die Regel gilt unverändert und steht
+ausformuliert in `Kern/VERSIONIERUNG.md`, das sie um die Zeit **nach**
+dem Release ergänzt. Der Eintrag war am 2026-08-22 versehentlich als
+abgelöst archiviert und ist zurückgeholt worden (Befund A30) — die
+Begründung gehört hierher, die Regel dorthin.
 
 ## 2026-08-16 — Prompt und Zielzustand getrennt
 Was: `IInteractable` bekam neben `InteractionPrompt` eine zweite
@@ -323,6 +378,9 @@ Verworfen: den Zustand an den Prompt-String anhängen (erste Umsetzung am
 selben Tag, wieder zurückgebaut); eine Weltraum-Anzeige über dem Schaf.
 
 ## 2026-08-20 — Assets nach Typ statt nach Thema
+**Löst ab:** „Asset-Ordner: Kategorie + FolderTemplate" (2026-07-19) und
+„FolderTemplate um `Audio` ergänzt" (2026-08-14); präzisiert
+„Unity-Ordner folgen den Uni-Systemgrenzen" (2026-08-08).
 Was: Der gesamte Assets-Baum wurde von Themenordnern (Entities, Environment,
 Systems, Shared) auf Typordner umgestellt (Scripts, Prefabs, Materials,
 SO_Settings, Textures, Shader, VFX, FBX, Audio), darunter je ein Ordner pro
@@ -339,6 +397,60 @@ vier Systeme sichtbar gemacht wurden, sind im Ordnerbaum nicht mehr zu sehen.
 Nachlauf: Die READ_MEs beider Portfolios nannten an fünf Stellen die alten
 Pfade zum bewerteten Code (K1, K2, K3, S1, S2, S3). Alle korrigiert und gegen
 das Projekt gegengeprüft, bevor neu gezippt wurde.
+
+## 2026-08-22 — Editor-Code liegt zentral in `Assets/Editor/`
+**Präzisiert:** „Assets nach Typ statt nach Thema" (2026-08-20), das den
+Ordner nur nebenbei nennt.
+Was: Editor-Skripte liegen ausschließlich in `Assets/Editor/`, nicht
+verstreut in den Systemordnern.
+Warum (Isor, 2026-08-22): So ist es seit der Umstellung tatsächlich, und
+`CODE_GUIDELINES.md` behauptete zwei Tage lang das Gegenteil („darf im
+System-Ordner liegen"). Ein Ordner reicht, weil Unity ohnehin jeden
+Ordner namens `Editor` editor-only kompiliert — die Verteilung auf
+mehrere brächte nichts als Suchaufwand.
+Verworfen: `Editor/` je System (die frühere Guideline-Zeile); beides
+erlauben — dann steht in der Regeldatei wieder keine Entscheidung.
+
+## 2026-08-22 — Regeln, die aus der Abnahme kamen
+Was: Fünf Schärfungen an bestehenden Regeln, alle aus belegten Befunden
+des Schlussdurchgangs (`_HARNESS_ABNAHME.md`).
+(1) Eine **Anzahl** in Überschriften ist nur erlaubt, wenn die Aufzählung
+abgeschlossen ist und der Text sagt, warum (A4).
+(2) Eine **Nummer** darf zitiert werden, wenn sie in der Überschrift des
+Ziels steht; nummerierte Listen ohne Überschrift bekommen Kurznamen (A22).
+(3) In eine **Chronik** wird nach Datum einsortiert, nicht hinten
+angehängt — der Unterschied fällt nur beim Nachtragen auf (A28).
+(4) Besitzen mehrere Dateien dieselbe **Art** von Information, gehört ein
+Eintrag der Datei, **deren Code er ändert**, und jede trägt eine Zeile
+`Nicht hier:` (A29).
+(5) `STOERUNGEN.md` führt statt **Behoben** das Feld **Stand** mit `offen`
+oder `behoben <Datum>` (A3).
+Warum: Jede der fünf hat sich in der Abnahme selbst gezeigt — die
+Anzahl-Regel brach sich in der eigenen Überschrift, die Verweisregel
+hatte fünf Verstöße in `DIAGRAM_RULES.md`, drei Chroniken waren nach dem
+Umzug verdreht, die sieben Projekt-Entscheidungsdateien grenzten sich nur
+gegen ROADMAP und LOG ab, und die Zahl der offenen Störungen wurde
+dreimal verschieden gezählt.
+Verworfen: die Fundstellen einzeln reparieren, ohne die Regel zu ändern —
+dann entsteht derselbe Fehler beim nächsten Mal wieder.
+
+## 2026-08-22 — Projekt-Typ wird aus der Schicht abgeleitet
+**Löst ab:** den Zusatz „`Projekt-Typ: Uni/Privat` im Dateikopf" aus
+„CODE_GUIDELINES: Zwei Blöcke + Projekt-Typ" (2026-07-17). Die
+Zwei-Block-Struktur selbst gilt unverändert.
+Was: Im Konfliktfall gewinnt Block 1 (Uni-Pflicht), **solange ein Ordner
+`Uni/` neben `CODE_GUIDELINES.md` liegt** — sonst Block 2. Die Kopfzeile
+`Projekt-Typ:` entfällt ersatzlos.
+Warum: Der Typ musste von Hand gesetzt werden. Beim Kopieren des Harness
+in ein privates Projekt hätte man daran denken müssen umzustellen;
+vergisst man es, gelten dort still die Uni-Regeln — und still falsch ist
+der teuerste Fehler. Abgeleitet stellt es sich von selbst richtig, und
+die Schicht ist ohnehin die Stelle, an der der Unterschied sitzt: Ohne
+Uni-Schicht gibt es keine Uni-Pflicht.
+Verworfen: die `Projekt-Typ:`-Zeile beibehalten. Ihre Begründung von
+2026-07-17 („ändert sich nie mitten im Projekt") war schon am 2026-07-29
+widerlegt — Isor's Tower ist der Uni-Prototyp, der nach dem Studium als
+privates Projekt weiterläuft, wechselt den Typ also genau einmal.
 
 ## 2026-08-22 — Werkzeuge liegen in der Schicht, deren Dateien sie bearbeiten
 Was: `Kern/Werkzeuge/index_bauen.py`, `IsorBackup/Werkzeuge/sichern.ps1`,
@@ -387,6 +499,17 @@ eine zweite Fassung der Doku-Pflicht) · das Arbeitsverzeichnis auf
 Start-Ordner und die Pfade in allen Skripten).
 Preis, bewusst gezahlt: Die Befehle gibt es nur, wenn `Harness Project`
 der geöffnete Ordner ist. Sie schreiben ohnehin alle in dieses Repo.
+**Fortgeführt am 2026-08-22:** Der Preis war höher als gedacht. Die
+Auslöser standen dadurch weder im Repo noch im INDEX noch in der
+Auslieferung — ein neues Projekt hätte den Harness ohne seine
+Bedienoberfläche bekommen, ohne dass das irgendwo aufgefallen wäre
+(Befunde A6 und A19 der Abnahme). Deshalb liegt das **Original** jetzt
+in `Kern/Befehle/`, `.claude\commands\harness\` ist die Arbeitskopie,
+und das INDEX-Skript führt beide Gruppen samt der zwei Wegweiser-
+`CLAUDE.md` in eigenen Abschnitten. Verworfen: die Ausnahme nur zu
+benennen — das hätte ausgerechnet die `CLAUDE.md` mit dem Notkern
+außerhalb des Registers gelassen. Geltende Fassung: `Kern/WORKFLOW.md`
+→ „Wo die Auslöser liegen".
 
 ## 2026-08-22 — Berechtigungen: generische Muster mit ask und deny
 Was: `.claude\settings.local.json` von 314 Allow-Einträgen auf 51

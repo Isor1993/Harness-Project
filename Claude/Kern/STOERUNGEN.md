@@ -5,7 +5,10 @@ vorgesehen — was passiert ist und welche Regel nicht gegriffen hat.
 Das LOG besitzt „was ist passiert", diese Datei „was ist schiefgegangen".
 Keine Aufgaben (das ist die ROADMAP), keine Begründungen (DECISIONS).
 Format: `### JJJJ-MM-TT — Kurztitel` mit den Zeilen **Was**, **Ursache**,
-**Regel** und, sobald behoben, **Behoben**.
+**Regel** und **Stand**. Der Stand ist entweder `offen` oder
+`behoben <Datum>` samt der Stelle, an der die Behebung steht. So ist die
+Liste der offenen Vorfälle ein Suchlauf nach `Stand: offen` statt eine
+Zählarbeit — bei der am 2026-08-22 dreimal verschieden gezählt wurde.
 
 Warum die Datei existiert: Die Überholung von 2026-08-21/22 war nur
 möglich, weil elf konkrete Befunde vorlagen. Ohne Belege wird die nächste
@@ -14,7 +17,7 @@ Beleg, dass die Änderung nötig war. Diese Datei ist eine Chronik und
 braucht daher kein Archiv.
 
 Wer einträgt: Claude, sobald Isor einen Aussetzer meldet — zusätzlich
-fragt die `/ende`-Routine danach, damit es nicht ausfällt.
+fragt `/harness:ende` danach, damit es nicht ausfällt.
 
 ---
 
@@ -27,14 +30,14 @@ Claude hatte nur eine der beiden Ownership-Zeilen gelesen, bevor er
 urteilte.
 **Regel:** Fehlte. Neu in DOC_RULES: Vor einem Ownership-Befund die
 `Ownership:`-Zeile **aller beteiligten Dateien** lesen.
-**Behoben:** 2026-08-22 mit DOC_RULES Abschnitt 1.
+**Stand:** behoben 2026-08-22 mit DOC_RULES Abschnitt 1.
 
 ### 2026-08-21 — Angekündigte Fragen nicht gestellt
 **Was:** Claude kündigte einen Fragenblock an und beendete den Zug, ohne
 ihn zu stellen. Isor musste nachfragen.
 **Ursache:** Reiner Ausführungsfehler, keine fehlende Regel.
 **Regel:** —
-**Behoben:** offen. Beobachten, ob es sich wiederholt.
+**Stand:** offen. Beobachten, ob es sich wiederholt.
 
 ### 2026-08-22 — Kopfvorlage im Trennskript nicht je Datei angepasst
 **Was:** Die sieben neuen Projekt-Entscheidungsdateien trugen alle den Titel
@@ -43,7 +46,7 @@ ihn zu stellen. Isor musste nachfragen.
 Beschreibungstext wurde je Datei eingesetzt, die Titelzeile nicht.
 **Regel:** Fehlte. Aufgefallen erst bei der Gesamtprüfung auf tote Verweise —
 also durch eine Prüfung, die nicht nach diesem Fehler suchte.
-**Behoben:** 2026-08-22, im selben Durchgang.
+**Stand:** behoben 2026-08-22, im selben Durchgang.
 
 ### 2026-08-22 — Sicherung schloss zunächst `.git` aus
 **Was:** Das Backup-Skript hätte die Repos ohne Versionsgeschichte gesichert
@@ -55,7 +58,7 @@ nicht bedacht.
 **Regel:** Neu, jetzt im Skript vermerkt und als Wissensseite
 `Knowledge/Werkzeuge/was-eine-sicherung-wertlos-macht.md`: Wer etwas
 ausschließt, prüft, ob das Ziel danach seinen Zweck noch erfüllt.
-**Behoben:** 2026-08-22, vor dem ersten echten Lauf.
+**Stand:** behoben 2026-08-22, vor dem ersten echten Lauf.
 
 ### 2026-08-22 — Haken gesetzt, Arbeit nicht getan
 **Was:** In `_HARNESS_UMSETZUNG.md` war unter Phase 4 abgehakt: „Eintrag
@@ -67,7 +70,9 @@ Handgriffen an einem Tag fällt eine Auslassung niemandem auf.
 **Regel:** Fehlte. Kandidat für den Schlussdurchgang: Wer eine Bauliste
 abhakt, nennt beim Abhaken die geänderte Datei — dann ist der Haken
 nachprüfbar statt nur behauptet.
-**Behoben:** offen. Der Eintrag wird im Zuge der Harness-Seite gebaut.
+**Stand:** behoben 2026-08-22 — der Eintrag steht in `Kern/ARTIFACT_INDEX.md`,
+Abschnitt „⚙️ System — Schicht: Kern (der Harness selbst)". Die Seite
+selbst wird nach der Abnahme gebaut.
 
 ### 2026-08-22 — Berechtigungsliste wächst aus sich selbst nach
 **Was:** Unmittelbar nach dem Eindampfen von 314 auf 51 Einträge standen
@@ -78,8 +83,8 @@ Liste, nicht ein Muster. So sind die 314 entstanden.
 **Regel:** Fehlte. Bei einmaligen Befehlen „nur diesmal" wählen; dauerhaft
 nur, wenn der Befehl als Muster taugt. Sonst wächst die Liste in Wochen
 wieder auf ihren alten Stand.
-**Behoben:** Die zwei Einträge sind entfernt. Die Ursache bleibt — sie
-liegt in der Bedienung, nicht in der Datei.
+**Stand:** offen — die zwei Einträge sind am 2026-08-22 entfernt, die
+Ursache bleibt: Sie liegt in der Bedienung, nicht in der Datei.
 
 ### 2026-08-22 — Typ des Abschnitts nie erfragt
 **Was:** Beim ersten Lauf von `/harness:sichern` war der Typ des
@@ -92,7 +97,7 @@ Session ohne Wechsel durchzieht, wird nie danach gefragt.
 **Regel:** Fehlte. Neu in `WORKFLOW.md`, Abschnitt „Typ, Modus und
 Regler": Die Startfrage lautet „Typ und Modus", nicht nur „Modus" —
 beide hängen am Abschnitt und werden ohnehin gemeinsam gebraucht.
-**Behoben:** 2026-08-22, in derselben Session, in der es auffiel.
+**Stand:** behoben 2026-08-22, in derselben Session, in der es auffiel.
 
 ### 2026-08-22 — Regel überlebte nur zufällig in einer Erledigt-Liste
 **Was:** Die Regel „beim draw.io-Export *Include a copy of my diagram*
@@ -108,5 +113,41 @@ niemand mehr liest.
 `Knowledge/Dokumentation/regeln-versauern-in-erledigt-listen.md`: Steht
 in der Erledigt-Notiz ein „ab jetzt", „immer" oder „nie wieder", ist es
 eine Regel und gehört in die Regeldatei ihres Themas.
-**Behoben:** 2026-08-22, die Regel steht in `Kern/DIAGRAM_RULES.md`.
+**Stand:** behoben 2026-08-22, die Regel steht in `Kern/DIAGRAM_RULES.md`.
 Ob daraus zusätzlich eine Harness-Regel wird, entscheidet die Abnahme.
+
+### 2026-08-22 — Befund geurteilt, bevor die beteiligte Datei gelesen war
+**Was:** Die Abnahme hielt in Befund A21 fest, der Haken „vier fehlende
+Aufgabentexte nachtragen" sei falsch **und** die Arbeit damit verloren.
+Der Haken ist tatsächlich falsch — die Tragweite nicht: `Uni/ROADMAP.md`
+führt den Punkt ausführlich und begründet als offen. Aufgefallen erst im
+sechsten Durchgang, als die Uni-Schicht gelesen wurde; im selben Zug
+korrigiert.
+**Ursache:** Geurteilt wurde allein aus der Bauliste heraus, ohne die
+ROADMAP der betroffenen Schicht zu prüfen. `DOC_RULES.md` Abschnitt 1
+verlangt genau das — aber dem Wortlaut nach nur „vor einem
+**Ownership**-Befund". Ein Befund über eine nicht getane Arbeit fällt
+nicht darunter, obwohl derselbe Fehler droht.
+**Regel:** Vorhanden, aber zu eng gefasst. Vorschlag: die Regel „vor
+einem Befund die beteiligten Dateien **aller** Schichten lesen" von
+Ownership-Befunden auf alle Befunde ausweiten.
+**Stand:** behoben 2026-08-22 — `DOC_RULES.md` Abschnitt 1 sagt jetzt
+„vor einem Befund", nicht mehr nur „vor einem Ownership-Befund".
+
+### 2026-08-22 — Auswahl vorgelegt, wo ein Vorschlag hingehört
+**Was:** Beim letzten offenen Befund der Abnahme (A29, Abgrenzung der
+sieben Entscheidungsdateien) legte Claude drei Grenzfälle als Frage vor,
+statt sie zu entscheiden. Isor musste mit „Was soll ich jetzt machen?"
+nachfragen.
+**Ursache:** Die Regel steht in `CLAUDE.md` und im Notkern —
+„Rückfrage an der Weggabelung, Empfehlung im Detail". Wohin eine
+Entscheidung abgelegt wird, ist ein Detail: Es führt nicht zu
+unterschiedlicher Arbeit, nur zu einem anderen Dateinamen. Claude hat die
+Grenze zwischen beiden falsch gezogen, weil es um Projektwissen ging —
+aber ein begründeter Vorschlag wäre auch dort möglich gewesen, und er kam
+danach in einem Satz.
+**Regel:** Vorhanden und ausreichend. Der Fehler lag in der Anwendung,
+nicht in der Formulierung. Merkmal für den Wiederholungsfall: Wenn beide
+Antworten dieselbe Arbeit nach sich ziehen, ist es ein Detail.
+**Stand:** offen. Beobachten, ob es sich wiederholt — wie beim Eintrag
+vom 2026-08-21 oben.

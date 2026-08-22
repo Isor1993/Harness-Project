@@ -16,6 +16,16 @@ Regeln über Dokumente stehen in `DOC_RULES.md`, Code-Regeln in
   Zug entwerfen und bauen lässt. **Fertig heißt gebaut, geprüft *und*
   dokumentiert** — solange der zugehörige Abschnitt im Abgabetext fehlt,
   ist der Baustein nicht fertig.
+- **Befund** — Ergebnis einer Prüfung: eine Stelle, an der etwas falsch,
+  doppelt, widersprüchlich ist oder fehlt. Entsteht beim gezielten
+  Hinsehen (Abnahme, Review-Gate, Prüfstand, Sonntagsabgleich) und wird
+  **notiert, nicht sofort geändert**.
+
+**Befund gegen Störung:** Ein **Befund ist ein Zustand**, eine
+**Störung ein Ereignis** (`STOERUNGEN.md`). Ein Befund kann eine Störung
+nach sich ziehen — dann nämlich, wenn er zeigt, dass eine Regel nicht
+gegriffen hat —, aber die meisten tun das nicht. Ein fehlender Ordner
+ist ein Befund; dass niemand das Fehlen bemerkt hat, wäre die Störung.
 
 Jeder **Abschnitt** hat genau einen Typ und einen Fokus. Eine **Session**
 kann mehrere Abschnitte enthalten. Höchstens 2–4 Sessions parallel offen.
@@ -127,13 +137,30 @@ und wird nicht in die Befehle abgeschrieben.
 | `/harness:sonntag` | Pflegetag, siehe unten | unabhängig vom Session-Typ |
 | `/harness:zeugnis` | Session-Typ „Zeugnis" starten | Regeln in `ASSESSMENT_RULES.md` |
 
-**Die Dateien unter `.claude\commands\` sind nur Auslöser.** Sie zeigen
-hierher und tragen keinen Ablauf. Grund: Der Projektstamm ist
-`Harness Project`, das Repo aber `My Harness Development` — was in
-`.claude\` liegt, ist nicht versioniert. Alles Inhaltliche steht deshalb
-hier, und ein verlorener Auslöser ist aus diesem Abschnitt in zwei
-Minuten neu geschrieben. Weicht ein Auslöser von hier ab, gilt dieser
+**Die Befehlsdateien sind nur Auslöser.** Sie zeigen hierher und tragen
+keinen Ablauf. Grund: Alles Inhaltliche gehört an eine Stelle, und das
+ist dieser Abschnitt. Weicht ein Auslöser von hier ab, gilt dieser
 Abschnitt, und die Abweichung wird gemeldet.
+
+### Wo die Auslöser liegen
+Sie liegen an **zwei** Orten, und das ist eine benannte Ausnahme von der
+Ownership-Regel (`DOC_RULES.md`, Abschnitt 8):
+
+| Ort | Rolle |
+|---|---|
+| `Kern/Befehle/` | **Original.** Versioniert, im INDEX geführt, wandert mit der Auslieferung mit. |
+| `.claude\commands\harness\` | **Arbeitskopie.** Nur von hier aus findet Claude Code die Befehle. |
+
+**Geändert wird das Original, danach wird kopiert** — nie umgekehrt.
+Grund für die Doppelung: Der Projektstamm ist `Harness Project`, das Repo
+aber `My Harness Development`. Was in `.claude\` liegt, ist damit nicht
+versioniert; läge der Auslöser nur dort, ginge er weder in die
+Auslieferung noch in die Versionsgeschichte ein und stünde in keinem
+Register (Befunde A6 und A19 der Abnahme, 2026-08-22).
+
+Beim Einrichten eines neuen Projekts wird `Kern/Befehle/*.md` nach
+`.claude\commands\harness\` kopiert. Das ist der einzige Handgriff, den
+die Auslieferung über das Entpacken hinaus verlangt.
 
 ### Alle eigenen Befehle in einer Kategorie
 Das `/`-Menü mischt drei Quellen: die eingebauten Befehle von Claude

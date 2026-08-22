@@ -60,6 +60,12 @@ durchlesen.**
   (`Strg+A`, `F9`) und für den PDF-Export mit aktualisierten Feldern.
 - **Handarbeit am entpackten XML** bleibt nötig, wo gezielt in
   bestehenden Text eingegriffen wird — dafür gibt es kein Werkzeug.
+- **Nur lesen, nichts ändern:** Ein `.docx` lässt sich per Python in
+  reinen Text wandeln — `zipfile` auf `word/document.xml`, Absatz-Tags
+  durch Zeilenumbruch ersetzen, den Rest strippen. Gebraucht wird das
+  beim Zeugnis, das die Abgabedokumente liest, ohne sie anzufassen
+  (`Kern/ASSESSMENT_RULES.md`, Belegpflicht). **Das Ergebnis gehört in
+  den Scratchpad, nie ins Projekt.**
 
 ## Felder
 - Beschriftungen und Verweise sind Felder (DECISIONS 2026-08-08). Neue

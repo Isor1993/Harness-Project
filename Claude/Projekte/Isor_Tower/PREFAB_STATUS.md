@@ -2,8 +2,9 @@
 
 Ownership: Nur der Prüfstand jedes Prefabs — welche schon durchgesehen
 sind und was dabei auffiel. **Keine Aufgabenplanung** (das ist
-`ROADMAP.md` → „Prefab-Struktur prüfen und aufräumen"), **keine
-Begründungen** (`DECISIONS/`), **kein Fertiges** (`LOG.md`).
+`Projekte/Isor_Tower/ROADMAP.md` → „Prefab-Struktur prüfen und
+aufräumen"), **keine Begründungen** (`Projekte/Isor_Tower/DECISIONS/`),
+**kein Fertiges** (`Projekte/Isor_Tower/LOG.md`).
 
 **Diese Datei wird erzeugt** — die Liste kommt aus dem Projekt, Status
 und Befund kommen von Hand und werden bei jedem Lauf übernommen.
@@ -19,6 +20,9 @@ Status-Werte:
 - `geprüft` — Aufbau und Ablage angesehen, Befund notiert, nichts offen
 - `Befund` — angesehen, etwas stimmt nicht (steht in der Spalte)
 
+Ein `␣` im Namen steht für ein Leerzeichen am Rand des Dateinamens —
+`Torch␣` ist die Datei `Torch .prefab`, nicht `Torch.prefab`.
+
 ## Prefabs/DayNightCycle
 
 | Prefab | Status | Befund |
@@ -30,7 +34,7 @@ Status-Werte:
 
 | Prefab | Status | Befund |
 |---|---|---|
-| Goblin | offen | Existiert bereits. Relevant für `ROADMAP.md` → „GameObject-/Prefab-Aufbau-Konvention“. |
+| Goblin | offen | Existiert bereits. Relevant für `Projekte/Isor_Tower/ROADMAP.md` → „GameObject-/Prefab-Aufbau-Konvention“. |
 
 ## Prefabs/FireFly
 
@@ -96,7 +100,7 @@ Status-Werte:
 | Prefab | Status | Befund |
 |---|---|---|
 | Torch | Befund | Zwei Dateien, Unterschied nur ein Leerzeichen: `Torch .prefab` und `Torch.prefab`. Absicht laut Isor (2026-08-12) — eine ruhig, eine mit mehr Funken. Umbenennen steht in der ROADMAP. |
-| Torch  | offen |  |
+| Torch␣ | offen |  |
 
 ## Prefabs/Trees
 

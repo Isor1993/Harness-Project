@@ -28,8 +28,8 @@ Warum extern: Wissen ist projektübergreifend.
 4. Optional ein Visual bei komplexen Konzepten: Mermaid-Block direkt im
    Markdown; zusätzlich Link auf die Artifact-Seite und/oder Offline-Kopie.
 5. Abschlusszeile `Quelle:` mit Session-Datum und Links.
-- Härtegrenze: Passt es nicht auf einen Bildschirm, sind es zwei Konzepte
-  → zwei Dateien. Verweise zwischen Dateien als relative Markdown-Links.
+- Verweise zwischen Dateien als relative Markdown-Links. Die
+  Bildschirm-Härtegrenze steht unten unter „Wann wird geschrieben".
 
 ## Wann wird geschrieben
 

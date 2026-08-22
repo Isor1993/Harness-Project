@@ -38,6 +38,11 @@ geschieht in einer eigenen Design-Session.
 
 ## Aufräumen und Konventionen
 
+- [ ] **Wasserspiegel bekommt keinen Collider — entscheiden, ob das so
+  bleibt.** Der Spieler läuft heute in den See und weiter auf dem Grund.
+  Offene Frage aus `DECISIONS/Terrain_Mesh.md` → „Welt-Begrenzung gehört
+  ins Terrain-Tool" (2026-08-19); dort steht die Begründung, hier nur die
+  Aufgabe.
 - [ ] **Ordnerstruktur im Unity-Projekt gegen die Vorlage prüfen.**
   Maßstab ist `05_Werkzeuge\Vorlagen\Unity_Ordnerstruktur`. Zwischendurch
   mitziehen, nicht erst ganz am Schluss — sonst wird daraus ein eigener

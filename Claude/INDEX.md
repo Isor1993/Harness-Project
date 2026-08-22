@@ -16,6 +16,13 @@ Eine Datei ohne `Ownership:`-Zeile erscheint hier als ⚠ — so setzt sich
 die Regel „keine neue Datei ohne INDEX-Eintrag" von selbst durch, statt
 erinnert werden zu müssen.
 
+Zwei Gruppen führt der Index abweichend, jeweils unten mit eigener
+Tabelle: die **Befehle** (Auslöser ohne Ownership-Zeile, ihre
+`description` ist die Zuständigkeit) und die **Wegweiser** (die beiden
+`CLAUDE.md` außerhalb von `Claude\`). Sie stehen hier, weil ein
+Register vollständig sein muss — gerade die oberste `CLAUDE.md` trägt
+den Notkern und ist die einzige Datei, die von selbst lädt.
+
 ## Oben — schichtübergreifend
 
 | Dokument | Zuständigkeit |
@@ -69,8 +76,10 @@ erinnert werden zu müssen.
 | Dokument | Zuständigkeit |
 |---|---|
 | `IsorBackup/DECISIONS.md` | Nur Entscheidungen zum Datenbaum `C:\IsorBackup\` — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
+| `IsorBackup/LOG.md` | (geplant) Chronik des Datenbaums — fällig, sobald der erste Aufräum-Durchgang läuft |
 | `IsorBackup/ROADMAP.md` | Nur die offenen Aufräum-Punkte des Datenbaums `C:\IsorBackup\`. |
 | `IsorBackup/RULES.md` | Baum, Ablageregeln, Benennung und Asset-Library für `C:\IsorBackup\`. |
+| `IsorBackup/_ARCHIV.md` | (geplant) Überholte Einträge der IsorBackup-Schicht — DECISIONS.md verweist bereits darauf |
 
 ## Projekte
 
@@ -96,6 +105,7 @@ erinnert werden zu müssen.
 
 | Dokument | Zuständigkeit |
 |---|---|
+| `_HARNESS_ABNAHME.md` | Nur die Befunde des Schlussdurchgangs vom 2026-08-22 ff. — was falsch, doppelt, widersprüchlich ist oder fehlt. |
 | `_HARNESS_REVIEW.md` | Arbeitsliste der Harness-Überholung vom 2026-08-21 ff. |
 | `_HARNESS_UMSETZUNG.md` | Nur die abzuarbeitenden Handgriffe der Überholung, in Baureihenfolge. |
 
@@ -106,3 +116,22 @@ erinnert werden zu müssen.
 | `IsorBackup/Werkzeuge/sichern.ps1` | sichern.ps1 — wöchentliche Sicherung auf die externe Platte. |
 | `Kern/Werkzeuge/index_bauen.py` | Erzeugt INDEX.md aus den Ownership-Zeilen der Harness-Dateien. |
 | `Projekte/Isor_Tower/Werkzeuge/prefab_status.py` | Erzeugt PREFAB_STATUS.md aus den tatsächlich vorhandenen .prefab-Dateien. |
+
+## Befehle — Auslöser, Ablauf in `Kern/WORKFLOW.md`
+
+Original in `Kern/Befehle/`, Arbeitskopie in `.claude\commands\harness\` — geändert wird das Original, dann kopiert.
+
+| Befehl | Tut |
+|---|---|
+| `/harness:ende` | Session abschließen — sichern, Baustein prüfen, Commit-Vorschlag |
+| `/harness:sichern` | Doku-Pflicht des laufenden Abschnitts abarbeiten, Session läuft weiter |
+| `/harness:sonntag` | Pflegetag — Artifact-Durchsicht und Backup, unabhängig vom Session-Typ |
+| `/harness:wechsel` | Abschnitt beenden und auf einen anderen Session-Typ umstellen |
+| `/harness:zeugnis` | Standortbestimmung zu einem festen Datum — Session-Typ „Zeugnis" |
+
+## Wegweiser — außerhalb von `Claude\`, nicht Teil der Auslieferung
+
+| Datei | Zuständigkeit |
+|---|---|
+| `CLAUDE.md` (Unity-Root) | Nur die Weiterleitung vom Unity-Root in den Ordner `Claude/` und die Liste der Unity-Ordner, die nie durchsucht werden. |
+| `CLAUDE.md` (Projektstamm, lädt automatisch) | Nur die Weiterleitung auf das Projektgedächtnis und den Notkern unten — die wenigen Regeln, die auch dann gelten, wenn der Weiterleitung niemand folgt. |

@@ -268,8 +268,11 @@ konnte nicht bis Phase 4 warten.
 
 **ASSIGNMENT_PCG / _TOOL / _THREADING**
 - [x] unverändert nach `Uni/Semester_2/` (E50)
-- [x] vier fehlende Aufgabentexte nachtragen; wo es keinen gibt, genau
-      das als Datei festhalten (E62)
+- [ ] ~~vier fehlende Aufgabentexte nachtragen~~ — **Haken am 2026-08-22
+      zurückgenommen (A21).** Die vier `ASSIGNMENT_*`-Dateien existieren
+      nicht; der Punkt lebt vollständig und begründet weiter in
+      `Uni/ROADMAP.md` → „Fehlende Aufgabentexte nachtragen". Von dort
+      wird er abgearbeitet, nicht von hier (E62)
 
 **Streuner**
 - [x] `_split_check.txt` nach `99_Archiv\_Zu_Loeschen\` (E66)
@@ -394,33 +397,68 @@ Ausdrücklich **vor** der Testphase: einmal vollständig über den fertigen
 Harness gehen, bevor er auf IsorBackup losgelassen wird. Grund: Ab dann
 wird er benutzt statt gebaut, und Fehler im Fundament kosten später mehr.
 
-- [ ] **Schlussdurchgang über alle Dateien** — was ist falsch, was ist
-      doppelt, was widerspricht sich, was fehlt. Ergebnis ist eine
-      Befundliste wie `_HARNESS_REVIEW.md`, nicht sofortiges Ändern.
-- [ ] **Jeden Haken der Baulisten stichprobenartig gegenprüfen.** Anlass:
-      der falsche Haken vom 2026-08-22 (`Kern/STOERUNGEN.md`) — die
-      Artifact-Zeile war abgehakt, ohne dass die Datei sich geändert hat.
-- [ ] **Empfehlungen einholen:** Was sollte man am Harness noch tun,
-      bevor die Arbeit am Projekt weitergeht? Getrennt nach „muss",
-      „lohnt sich" und „nur bei Bedarf".
+- [x] **Schlussdurchgang über alle Dateien** — 50 Dateien, rund 9.400
+      Zeilen, sechs Durchgänge. **33 Befunde** (15 muss · 14 lohnt sich ·
+      4 bei Bedarf). → angelegt: `_HARNESS_ABNAHME.md`
+- [x] **Jeden Haken der Baulisten stichprobenartig gegenprüfen.** Drei
+      falsche von rund sechzig gefunden: Auslieferungs-Ordner (Phase 1,
+      nie angelegt) · vier Aufgabentexte (Phase 4, Dateien fehlen) ·
+      ARTIFACT_INDEX-Eintrag (Phase 4, inzwischen erledigt, Störung steht
+      noch auf offen). → `_HARNESS_ABNAHME.md`, Abschnitt „Haken
+      gegenprüfen"; A20, A21, A7
+- [x] **Empfehlungen einholen**, getrennt nach muss / lohnt sich / nur
+      bei Bedarf. Stärkste über die Befunde hinaus: die zwei
+      Prüfskripte der Abnahme dauerhaft in den Kern übernehmen (→ steht
+      als Punkt in `Kern/ROADMAP.md`). → `_HARNESS_ABNAHME.md`,
+      Abschnitt „Empfehlungen"
 - [ ] **Artifact-Seite `⚙️ System · Harness` bauen** (E35, I12) —
       ausführlich, aktueller Zustand, Eintrag steht in `ARTIFACT_INDEX.md`
       vorbereitet. Wird bei jeder neuen Harness-Version nachgezogen.
-- [ ] **Offene Störungen abarbeiten** (`Kern/STOERUNGEN.md`): offen ist
-      noch die Regel „wer eine Bauliste abhakt, nennt beim Abhaken die
-      geänderte Datei". Die Typ-Frage ist am 2026-08-22 behoben worden.
-- [ ] **INDEX-Blindstelle entscheiden:** Das INDEX-Skript sucht nur
-      unterhalb von `Claude\`. Die fünf Befehlsdateien in
-      `.claude\commands\harness\` erscheinen deshalb nirgends im
-      Register. Entweder Skript erweitern oder die Ausnahme benennen.
-- [ ] **Begriff „Befund" klären** — er wird durchgehend benutzt, ist
-      nirgends definiert und von „Störung" nicht abgegrenzt
-      (`Kern/GLOSSARY.md`, Abschnitt „Ohne Besitzer").
+- [ ] **Offene Störungen abarbeiten** (`Kern/STOERUNGEN.md`). Gezählt am
+      2026-08-22: **drei** offen, nicht eine — *Angekündigte Fragen nicht
+      gestellt* (beobachten) · *Berechtigungsliste wächst nach* (Ursache
+      liegt in der Bedienung) · *Regel überlebte in einer Erledigt-Liste*
+      (Frage an die Abnahme: ja, wird Harness-Regel — der Mechanismus
+      trat in der Abnahme zweimal erneut auf, A10 und A29). Dazu neu der
+      Eintrag *Befund geurteilt, bevor die beteiligte Datei gelesen war*.
+      Nicht mehr offen: *Haken gesetzt, Arbeit nicht getan* — erledigt,
+      steht nur falsch da (A7).
+      **Stand 2026-08-22:** Alle Statuszeilen richtiggestellt, das Feld
+      heißt jetzt `Stand` statt `Behoben` (A3). Der dritte Punkt ist
+      entschieden — die Erledigt-Listen-Regel **wird** Harness-Regel und
+      steht in `DOC_RULES.md`, Abschnitt 1 („Vor einem Befund", jetzt für
+      jede Art von Befund und über Schichtgrenzen hinweg). Offen bleiben
+      zwei Beobachtungsfälle, die keine Regel lösen kann.
+      → geändert: `Kern/STOERUNGEN.md`, `Kern/DOC_RULES.md`
+- [x] **INDEX-Blindstelle entschieden und gebaut** (2026-08-22): Skript
+      erweitern statt Ausnahme benennen, zusammen mit A19. Die fünf
+      Auslöser liegen als Original in `Kern/Befehle/`,
+      `.claude\commands\harness\` ist die Arbeitskopie; das Skript führt
+      Befehle und die beiden Wegweiser-`CLAUDE.md` in eigenen
+      INDEX-Abschnitten. → geändert: `Kern/Werkzeuge/index_bauen.py`,
+      `Kern/WORKFLOW.md`, `Kern/VERSIONIERUNG.md`, `Kern/DECISIONS.md`,
+      beide `CLAUDE.md`; neu: `Kern/Befehle/` mit fünf Dateien
+- [x] **Begriff „Befund" geklärt** (2026-08-22): *Ein Befund ist ein
+      Zustand, eine Störung ein Ereignis.* → `Kern/WORKFLOW.md`,
+      Abschnitt „Begriffe"; `Kern/GLOSSARY.md` hat die Kurzform und
+      keinen Abschnitt „Ohne Besitzer" mehr
+- [ ] **Vor dem Archivieren: die Review-Dateien auf Regeln durchsuchen,
+      die nur dort leben.** Neu aufgenommen am 2026-08-22. Drei Fälle
+      sind schon belegt: die Ablage-Ausnahme der Diagramm-Skripte
+      (Phase 5, A10), der offene Punkt der Aufgabentexte (Phase 4, A21)
+      und die Zuordnungsregel der sieben Entscheidungsdateien (Phase 3,
+      A29). Kandidaten sind alle Phasen-Vorbemerkungen. Grund: derselbe
+      Mechanismus wie im Störungseintrag *Regel überlebte nur zufällig in
+      einer Erledigt-Liste*.
 - [ ] **Auslieferung `Harness_1.0.0`** erst danach — sie soll den
-      abgenommenen Stand enthalten, nicht den zuletzt gebauten.
-- [ ] **Zum Schluss:** `_HARNESS_REVIEW.md` und diese Datei archivieren,
-      Einträge aus dem INDEX entfernen. Bewusst **nach** der Abnahme —
-      die Befundliste wird bis dahin noch gebraucht.
+      abgenommenen Stand enthalten, nicht den zuletzt gebauten. Zuerst
+      den Ordner tatsächlich anlegen (A20) und die Befehle mitnehmen
+      (A19).
+- [ ] **Zum Schluss:** `_HARNESS_REVIEW.md`, `_HARNESS_ABNAHME.md` und
+      diese Datei archivieren, Einträge aus dem INDEX entfernen. Bewusst
+      **nach** der Abnahme — die Befundlisten werden bis dahin gebraucht.
+      Dabei `Kern/ROADMAP.md` → „Läuft gerade" mitziehen, sonst zeigt der
+      Punkt ins Leere (A25).
 
 ## Danach — Testphase
 
@@ -429,19 +467,27 @@ wird er benutzt statt gebaut, und Fehler im Fundament kosten später mehr.
 
 ---
 
-## Übergabe an die nächste Session (2026-08-22)
+## Übergabe an die nächste Session (2026-08-22, abends)
 
-**Phase 6 und 7 stehen aus.** Sie sind bewusst in eine frische Session
-gelegt worden, und zwar nicht nur wegen des Kontexts:
+**Phasen 1 bis 7 sind durch. Offen ist Phase 8 — die Abnahme.** Sie ist
+bewusst in eine frische Session gelegt: Sie ist Lesearbeit über 46
+Dateien und soll nicht am Ende eines langen Kontexts laufen.
 
-- **Phase 6 ist der erste echte Test des Harness.** Die Befehle brauchen
-  nur eine Grundlage — die Doku-Pflicht in `Kern/WORKFLOW.md`. Eine
-  frische Session muss sie über die Leseordnung selbst finden. Klappt
-  das, trägt der Harness. Klappt es nicht, ist die Lücke ein Fall für
-  `Kern/STOERUNGEN.md`.
-- **Die offene Prüfung P1** ist nur beim Start einer frischen Session
-  feststellbar: Welche der drei `CLAUDE.md` lädt der Harness von selbst,
-  bevor irgendeine Datei geöffnet wurde? Davon hängt ab, ob die echten
-  Regeln zwei Weiterleitungen tief liegen dürfen.
+Der erste Test des Harness ist bestanden: Eine frische Session fand die
+Doku-Pflicht heute allein über die Leseordnung, ohne Zuruf. Prüfung P1
+ist gemessen (Ergebnis oben bei Phase 6), der Notkern steht.
+
+**Womit die Abnahme anfängt:**
+
+1. Die Punktliste in Phase 8 oben ist die Arbeitsgrundlage — sieben
+   Punkte, drei davon erst am 2026-08-22 dazugekommen.
+2. Die vier **offenen** Einträge in `Kern/STOERUNGEN.md` durchgehen;
+   jeder ist ein belegter Befund und nennt bereits einen Regelvorschlag.
+3. Ergebnis ist eine **Befundliste**, nicht sofortiges Ändern — dieselbe
+   Form wie `_HARNESS_REVIEW.md`. Erst danach wird gebaut.
+
+**Was dabei nicht vergessen werden darf:** Diese Datei und
+`_HARNESS_REVIEW.md` werden erst **nach** der Abnahme archiviert. Bis
+dahin sind sie die Belegsammlung.
 
 Nächste Schritte in `PLAN.md`.

@@ -5,10 +5,16 @@ und welche Alternativen verworfen wurden. Kein Plan (das ist die
 ROADMAP), kein Ereignis (das ist das LOG), keine ausformulierte Regel
 (die steht in der jeweiligen Regeldatei; hier steht nur, warum sie gilt).
 Format: `## JJJJ-MM-TT — Titel` mit **Was** / **Warum** / **Verworfen**,
-je ein bis zwei Zeilen.
+je ein bis zwei Zeilen. **Älteste oben**, wie in einer Chronik.
 
 Überholte Einträge wandern nach `_ARCHIV.md` der Schicht, mit Angabe,
 wodurch sie abgelöst wurden. Ein neuer Eintrag nennt, welchen er ablöst.
+
+Gilt eine Begründung weiter und ist nur ihre Ausführung überholt, bleibt
+der Eintrag stehen und bekommt eine Zeile **Fortgeführt am `<Datum>`**
+mit Zeiger auf die geltende Fassung — dann geht die Herleitung nicht ins
+Archiv verloren.
+
 
 
 ## 2026-07-18 — PCG- und Engine-Tool-Aufgabe kombiniert
@@ -72,6 +78,13 @@ Verworfen: Stunden nachträglich auf Einzelaufgaben verteilen; die Schätzspalte
 mit nachgereichten Werten füllen; die Gras-Stunden ins PCG-Kapitel umbuchen
 (hätte die Messung frisiert).
 
+## 2026-08-07 — Prefab-Painter wird im TDD nicht erwähnt
+Was: Das Prefab-Painter-Werkzeug bleibt im Projekt und in der Projektkopie
+der Abgabe (2026-08-11), wird im TDD aber nicht beschrieben.
+Warum: Es gehört zu keinem der bewerteten Lernziele und hätte den
+Textumfang ohne Gegenwert erhöht.
+Verworfen: ein eigener TDD-Abschnitt dazu; ebenso, es aus der
+Projektkopie zu entfernen.
 ## 2026-08-08 — Beschriftungen und Verweise im TDD sind Word-Felder
 Was: Alle 48 Beschriftungen wurden auf Zählfelder (`SEQ`) umgestellt und mit
 einer Textmarke umschlossen; alle 39 Verweise im Fließtext („siehe Abbildung
@@ -211,6 +224,15 @@ Text doppeln.
 Verworfen: Feature-Beschreibungen als Fließtext; Audio-Lizenzen als eigenes
 Kapitel wie die Texturquellen in 12.1 bis 12.3.
 
+## 2026-08-12 — Eigene Unity-Version trotz abweichender Vorgabe
+Was: Das Projekt läuft auf `6000.5.2f1` und weicht damit von den beiden in
+der Aufgabenstellung genannten Versionen ab.
+Warum: Die Dozentin hat persönlich freigegeben, dass eine eigene Version
+gewählt werden darf (Isor, 2026-08-12). Kein Handlungsbedarf — hier
+festgehalten, falls die Abweichung später jemandem auffällt.
+Verworfen: Rückbau auf eine der Vorgabe-Versionen.
+
+
 ## 2026-08-17 — Abgabe in zwei Uploads, erster Stand vollständig
 Was: Am 17.08. wurden beide Portfolios vollständig gepackt und hochgeladen,
 obwohl das Lernziel S3 noch offen ist. Ein zweiter Upload nach dem Polishing
@@ -290,19 +312,3 @@ bewertbare Stand. Fällt der Donnerstag aus, zählt nichts von dieser Woche.
 Verworfen: heute Abend hochladen und morgen einen dritten Stand nachschieben.
 
 
-## 2026-08-12 — Eigene Unity-Version trotz abweichender Vorgabe
-Was: Das Projekt läuft auf `6000.5.2f1` und weicht damit von den beiden in
-der Aufgabenstellung genannten Versionen ab.
-Warum: Die Dozentin hat persönlich freigegeben, dass eine eigene Version
-gewählt werden darf (Isor, 2026-08-12). Kein Handlungsbedarf — hier
-festgehalten, falls die Abweichung später jemandem auffällt.
-Verworfen: Rückbau auf eine der Vorgabe-Versionen.
-
-
-## 2026-08-07 — Prefab-Painter wird im TDD nicht erwähnt
-Was: Das Prefab-Painter-Werkzeug bleibt im Projekt und in der Projektkopie
-der Abgabe (2026-08-11), wird im TDD aber nicht beschrieben.
-Warum: Es gehört zu keinem der bewerteten Lernziele und hätte den
-Textumfang ohne Gegenwert erhöht.
-Verworfen: ein eigener TDD-Abschnitt dazu; ebenso, es aus der
-Projektkopie zu entfernen.

@@ -5,8 +5,8 @@ Einstieg in eine Session. Regeln über Dokumente stehen in
 `Kern/DOC_RULES.md`, Session-Ablauf und Doku-Pflicht in
 `Kern/WORKFLOW.md`, Nummernsysteme in `Kern/VERSIONIERUNG.md`.
 
-**Harness-Version: 1.0.0** — im Aufbau (Überholung seit 2026-08-21,
-Phase 2 von 7). Lesart der Nummer: `Kern/VERSIONIERUNG.md`.
+**Harness-Version: 1.0.0** — im Aufbau. Lesart der Nummer:
+`Kern/VERSIONIERUNG.md`, Stand der Überholung: `PLAN.md`.
 
 Dieses Projekt entwickelt einen generischen Harness für Game-Dev- und
 Lern-Sessions. Der Harness wird mit seinen eigenen Mitteln gebaut: Diese

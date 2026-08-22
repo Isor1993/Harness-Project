@@ -10,6 +10,12 @@ Arbeitsteilung (Kern/DOC_RULES.md, Abschnitt 5):
   `⚠ nicht mehr vorhanden` — sie werden nicht stillschweigend entfernt,
   weil ein Befund zu einem gelöschten Prefab noch etwas erklären kann.
 
+  Endet ein Prefabname auf ein Leerzeichen (`Torch .prefab`), wird es in
+  der Tabelle als `␣` geschrieben. Sonst sind zwei Zeilen optisch
+  identisch, und beim Rücklesen fällt die eine auf die andere: Am
+  2026-08-22 wären so 34 Prefabs zu 33 Einträgen geworden und ein von
+  Hand geschriebener Befund verloren gegangen (Befund A32 der Abnahme).
+
 Aufruf:
     python prefab_status.py            Probelauf
     python prefab_status.py --write    schreibt PREFAB_STATUS.md
@@ -23,12 +29,15 @@ HIER = os.path.dirname(os.path.abspath(__file__))
 ZIEL = os.path.join(os.path.dirname(HIER), "PREFAB_STATUS.md")
 ASSETS = r"C:\Repos Isor\Isor-Tower-ProtoTyp-2026\Assets"
 
+SICHTBAR = u"␣"   # ␣ — Leerzeichen am Namensrand, sonst unsichtbar
+
 KOPF = u"""# PREFAB_STATUS.md — Prüfstand der Prefabs
 
 Ownership: Nur der Prüfstand jedes Prefabs — welche schon durchgesehen
 sind und was dabei auffiel. **Keine Aufgabenplanung** (das ist
-`ROADMAP.md` → „Prefab-Struktur prüfen und aufräumen"), **keine
-Begründungen** (`DECISIONS/`), **kein Fertiges** (`LOG.md`).
+`Projekte/Isor_Tower/ROADMAP.md` → „Prefab-Struktur prüfen und
+aufräumen"), **keine Begründungen** (`Projekte/Isor_Tower/DECISIONS/`),
+**kein Fertiges** (`Projekte/Isor_Tower/LOG.md`).
 
 **Diese Datei wird erzeugt** — die Liste kommt aus dem Projekt, Status
 und Befund kommen von Hand und werden bei jedem Lauf übernommen.
@@ -44,7 +53,20 @@ Status-Werte:
 - `geprüft` — Aufbau und Ablage angesehen, Befund notiert, nichts offen
 - `Befund` — angesehen, etwas stimmt nicht (steht in der Spalte)
 
+Ein `␣` im Namen steht für ein Leerzeichen am Rand des Dateinamens —
+`Torch␣` ist die Datei `Torch .prefab`, nicht `Torch.prefab`.
+
 """
+
+
+def anzeigen(name):
+    """Leerzeichen am Rand sichtbar machen — innere bleiben, wie sie sind."""
+    gezeigt = name
+    if gezeigt.startswith(" "):
+        gezeigt = SICHTBAR + gezeigt.lstrip(" ")
+    if gezeigt.endswith(" "):
+        gezeigt = gezeigt.rstrip(" ") + SICHTBAR
+    return gezeigt
 
 
 def alte_eintraege():
@@ -60,6 +82,11 @@ def alte_eintraege():
             name = m.group(1)
             if name in ("Prefab", "---"):
                 continue
+            if name in alt:
+                # Darf nicht vorkommen: Ein Schluessel steht fuer genau ein
+                # Prefab. Frueher fielen `Torch` und `Torch ` hier zusammen.
+                print("  ! doppelter Schluessel, Befund wuerde verloren gehen:",
+                      repr(name))
             alt[name] = (m.group(2), m.group(3))
     return alt
 
@@ -82,14 +109,14 @@ def gefundene():
 def main():
     alt = alte_eintraege()
     neu = gefundene()
-    namen_neu = set(n for _, n in neu)
+    namen_neu = set(anzeigen(n) for _, n in neu)
 
     gruppen = {}
     for gruppe, name in neu:
         gruppen.setdefault(gruppe, []).append(name)
 
     verschwunden = [n for n in alt if n not in namen_neu]
-    dazu = [n for _, n in neu if n not in alt]
+    dazu = [anzeigen(n) for _, n in neu if anzeigen(n) not in alt]
 
     print("Prefabs im Projekt: %d in %d Gruppen" % (len(neu), len(gruppen)))
     print("Eintraege in der alten Fassung: %d" % len(alt))
@@ -109,8 +136,9 @@ def main():
         zeilen.append(u"## %s\n\n" % gruppe)
         zeilen.append(u"| Prefab | Status | Befund |\n|---|---|---|\n")
         for name in sorted(gruppen[gruppe]):
-            status, befund = alt.get(name, (u"offen", u""))
-            zeilen.append(u"| %s | %s | %s |\n" % (name, status, befund))
+            gezeigt = anzeigen(name)
+            status, befund = alt.get(gezeigt, (u"offen", u""))
+            zeilen.append(u"| %s | %s | %s |\n" % (gezeigt, status, befund))
         zeilen.append(u"\n")
 
     if verschwunden:

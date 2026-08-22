@@ -5,10 +5,16 @@ entschieden wurde, warum, und welche Alternativen verworfen wurden. Kein
 Plan (das ist `ROADMAP.md` dieser Schicht), keine ausformulierte Regel
 (die steht in `RULES.md`; hier steht nur, warum sie gilt).
 Format: `## JJJJ-MM-TT — Titel` mit **Was** / **Warum** / **Verworfen**,
-je ein bis zwei Zeilen.
+je ein bis zwei Zeilen. **Älteste oben**, wie in einer Chronik.
 
 Überholte Einträge wandern nach `_ARCHIV.md` der Schicht, mit Angabe,
 wodurch sie abgelöst wurden.
+
+Gilt eine Begründung weiter und ist nur ihre Ausführung überholt, bleibt
+der Eintrag stehen und bekommt eine Zeile **Fortgeführt am `<Datum>`**
+mit Zeiger auf die geltende Fassung — dann geht die Herleitung nicht ins
+Archiv verloren.
+
 
 ## 2026-08-06 — Datenbaum direkt auf `C:\`, nicht unter `C:\Users\`
 Was: `C:\IsorBackup\` liegt auf der Laufwerkswurzel.

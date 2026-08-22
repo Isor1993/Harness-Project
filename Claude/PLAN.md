@@ -49,9 +49,16 @@ Reihenfolge: Regeln → Struktur → Inhalt → Automatik.
       ihre Schicht umgesetzt, eine verlorengehende Diagramm-Regel
       gerettet. Das Archivieren der Review-Dateien wandert ans Ende von
       Phase 8 — bis dahin wird die Befundliste gebraucht.
-- [ ] **Phase 8 — Abnahme:** Schlussdurchgang über alle Dateien,
-      Haken gegenprüfen, Empfehlungen einholen, Artifact-Seite
-      `⚙️ System · Harness` bauen, dann Auslieferung `Harness_1.0.0`
+- [ ] **Phase 8 — Abnahme.** Am 2026-08-22 durchgeführt und zu großen
+      Teilen abgearbeitet: 50 Dateien in sechs Durchgängen, **33 Befunde**
+      in `_HARNESS_ABNAHME.md`, davon **30 im selben Zug behoben**. Drei
+      Haken der Baulisten waren nicht gedeckt. Die drei Fragen der Phase
+      (offene Störungen, INDEX-Blindstelle, Begriff „Befund") sind
+      beantwortet und umgesetzt.
+      **Offen — alles zeitgebunden, nicht liegengeblieben:** A10 und A25
+      kurz vor dem Archivieren der Review-Dateien · A12 am ersten
+      Pflegetag · danach Artifact-Seite `⚙️ System · Harness` ·
+      Auslieferung `Harness_1.0.0` · zuletzt archivieren.
 
 ### Danach
 

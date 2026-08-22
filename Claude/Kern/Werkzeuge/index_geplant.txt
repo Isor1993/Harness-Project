@@ -7,6 +7,8 @@
 Projekte/Isor_Tower/SYSTEME.md | Was gerade im Projekt steckt — wird erzeugt
 Projekte/Isor_Tower/TDD.md | Markdown-Manuskript des TDD, aus dem die Abgabefassung entsteht
 Projekte/Isor_Tower/_ARCHIV.md | Überholte Projekt-Einträge, jeder mit Angabe des Nachfolgers
+IsorBackup/_ARCHIV.md | Überholte Einträge der IsorBackup-Schicht — DECISIONS.md verweist bereits darauf
+IsorBackup/LOG.md | Chronik des Datenbaums — fällig, sobald der erste Aufräum-Durchgang läuft
 Uni/Semester_2/ASSIGNMENT_SOFTWAREPLANUNG.md | Originaltext der Teilabgabe Softwareplanung
 Uni/Semester_2/ASSIGNMENT_KI_PROTOTYP.md | Originaltext der Teilabgabe KI-Prototyp
 Uni/Semester_2/ASSIGNMENT_SIMULATION.md | Originaltext der Teilabgabe Simulation der Spieleumgebung
