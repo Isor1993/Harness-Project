@@ -1,9 +1,13 @@
-# FEATURE_LOG.md — Gebautes
+# LOG.md — Chronik Isor's Tower
 
-Ownership: Nur fertig Gebautes und Geprüftes — nichts Geplantes.
-Nur Projekt-/Spiel-Features; Harness-Bauten stehen in ROADMAP.md
-unter Erledigt.
-Format: `- JJJJ-MM-TT — Feature (1–2 Sätze: was und wo)`
+Ownership: Nur was wann passiert ist — datierte Ereignisse, älteste oben.
+Eine **Chronik**: Einträge werden nie geändert oder gekürzt, nur ergänzt.
+Sie kann daher nicht falsch werden und braucht kein Archiv.
+Was als Nächstes kommt, steht in `ROADMAP.md`; warum es so entschieden
+wurde, in den DECISIONS dieser Schicht.
+Format: `- JJJJ-MM-TT — Ereignis (1–3 Sätze: was, und woran es geprüft wurde)`.
+Ein Eintrag darf einen Ablageort nennen — er beschreibt den Stand von
+damals, nicht den von heute.
 
 - 2026-07-18 — MeshBuilder: statische Klasse im Uni-Repo
   (`Assets/Shared/MeshBuilder/`), baut aus quadratischer float[,]-Heightmap
@@ -227,12 +231,6 @@ Format: `- JJJJ-MM-TT — Feature (1–2 Sätze: was und wo)`
   `GrassCellBuilder` komponiert jetzt Prefab-Root-Scale und -Rotation in die
   Matrix (`prefabScale * placement.Scale`) wie der GameObject-Weg — vorher
   wurde Gras bei Root-Scale 0,3 um Faktor 3,3 zu groß gezeichnet.
-- 2026-08-05 — Messinfrastruktur für die Threading-Abgabe
-  (`Systems/TerrainGenerator/Scripts/`): `PlacementMetrics` (struct) trägt die
-  Stufenzeiten aus dem Placer heraus, `InstancedRenderer` misst Exclusion,
-  Zellenbau und Gesamtzeit und loggt sie in `#if UNITY_EDITOR ||
-  DEVELOPMENT_BUILD`; Feld `Measurement Runs` wiederholt den Rebuild für
-  Messreihen. Geprüft im Development Build, 4 Läufe je Version.
 - 2026-08-05 — `RuntimePlacementSpawner` (`Systems/TerrainGenerator/Scripts/`):
   erzeugt beim Szenenstart je instanziertem Typ eine Gruppe mit
   `InstancedRenderer`, sodass Gras auch ohne Editor-Tool im Build entsteht.
@@ -272,59 +270,10 @@ Format: `- JJJJ-MM-TT — Feature (1–2 Sätze: was und wo)`
   (Window, Presenter). 26 Skripte plus 6 Assets, keine Code-Änderung nötig —
   die Dateien haben weder `namespace` noch `.asmdef`. Zieht ROADMAP-Punkt 8
   (Gras herauslösen) mit vor.
-- 2026-08-08 — Vier UML-Klassendiagramme für den Terrain-Ast erzeugt
-  (`01_Uni\Semester_2\Diagramme_Quellen\`): Terrain-Pipeline (5 Klassen),
-  Platzierung inkl. Strategy-Muster (14), Gras-Rendering (8) und Editor-Tool
-  mit sichtbarem MVP-Aufbau (8). Je ein Skript unter `05_Werkzeuge\Vorlagen\`,
-  Prüfer meldet bei allen null Abweichungen gegen den Code.
 - 2026-08-08 — DayNightSystem (5 Klassen) und Sheep-FSM (14 Klassen) als
   erzeugte Diagramme neu gebaut; die handgezeichneten Vorgänger sind archiviert.
   `Sheep_System_UML` braucht keinen Ersatz — `Sheep_Komponenten` deckt es
   vollständig ab und enthält sechs Klassen mehr.
-- 2026-08-08 — Diagramm-Werkzeug hält jetzt die gesamte Handarbeit über
-  Neuerzeugungen hinweg: Kastenpositionen (über den Klassennamen statt der Id),
-  Linien-Wegpunkte, Andockpunkte und die Lage der Multiplizitäts-Beschriftungen.
-  Andockpunkte an Member-Zeilen werden auf den Kasten umgerechnet (pixelgleich).
-  Neu `linienstaerke_setzen.py` für handgezeichnete Diagramme. Geprüft: zweiter
-  Lauf erzeugt alle sieben Dateien byte-identisch.
-- 2026-08-09 — Ablaufplan-Formen im Diagramm-Werkzeug (`uml_drawio.py`, +95
-  Zeilen): sechs Sinnbilder nach DIN 66001 (`start`, `ende`, `prozess`,
-  `entscheidung`, `unterprogramm`, `ein_aus`) über `knoten()`, Ablauflinien mit
-  Zweigbeschriftung über `pfeil()`, `ablauf_lesen()` liest Lage **und** Größe
-  zurück. Sinnbilder laufen über ihre Id statt über den Text — „Ende" kommt
-  mehrfach vor. Klassendiagramme bleiben unberührt (nachgewiesen: kein
-  Klassendiagramm hat einen Nicht-Swimlane-Kasten auf oberster Ebene, alle
-  sieben Dateien nach dem Umbau byte-identisch).
-- 2026-08-11 — TDD Kapitel 12 vervollständigt: Die drei Texturquellen (3dtextures.me
-  „Moon 002", ambientCG „Ground082S", freestylized „Grass 05") als eigene Unterkapitel
-  nach dem bestehenden Schema ergänzt, Tabelle 9 von zwei auf fünf Zeilen, vier
-  Einträge im Quellenverzeichnis, Vergleichsabsatz und Kennzeichnung der
-  KI-erzeugten Grastextur; in Tabelle 1 eine Zeile für ChatGPT. Alle drei
-  Lizenzseiten selbst aufgerufen: zweimal CC0, bei freestylized eine Royalty Free
-  License, deren Weitergabe-Einschränkung nur auf der About-Seite steht.
-  Geprüft am gerenderten PDF (84 Seiten).
-- 2026-08-11 — Zustandsdiagramm der Sheep-FSM
-  (`Diagramme_Quellen\Zustand_Sheep_FSM.drawio`, Skript `zustand_sheep_fsm.py`):
-  elf Zustände, Anfangsknoten, Sammelknoten „aus jedem Zustand" für die vier
-  Push-Wechsel, 31 Übergänge. Neu dafür die Sinnbilder `zustand` und `anfang`.
-  Jede Kante ist im Skriptkopf mit Klasse und Zeilennummer belegt. Ergänzt
-  `Sheep_FSM` (dort die Klassen, hier die Übergänge). Von Isor angeordnet.
-- 2026-08-11 — Zwei Fehler im Diagramm-Werkzeug behoben, beide fielen erst an
-  einem von Hand angeordneten Diagramm auf: (1) `knoten()` schrieb die Geometrie
-  als Ganzzahl und verschob Kästen, die auf halben Pixeln sitzen — jetzt `%g`
-  über `_zahl()`. (2) Ein bewusst frei gelassenes Linienende wurde von der
-  Skript-Vorgabe überschrieben; Gegenmittel ist, die Vorgabe für diese Kante zu
-  entfernen (jetzt Bedienregel 5 in DIAGRAM_RULES). Neu außerdem `SPRUNG =
-  jumpStyle=arc` als zentrale Vorgabe: Bogensprung an jeder Kreuzung.
-  Geprüft: 13 Kästen und 31 Kanten der Handanordnung unverändert, zweiter Lauf
-  byte-identisch.
-- 2026-08-09 — Messreihen-Tabelle in TDD-Kapitel 6.5 eingesetzt (Tabelle 8):
-  sechs Messpunkte × vier Zeitspalten plus Verbesserung, Werte neu aus den
-  sechs Rohlogs gerechnet (Mittel der Läufe 2–4) und mit den Zahlen im
-  Fließtext abgeglichen. Aufbau wie die bestehenden Tabellen (9062 dxa,
-  Kopfzeile 0070C0), Beschriftung als SEQ-Feld; Schrift 10 pt. Geprüft am
-  gerenderten PDF: kein Umbruch mitten im Wort, Abschnitt passt auf eine Seite,
-  Feldaktualisierung ergibt Tabelle 8 (neu) und Tabelle 9 (Assets).
 - 2026-08-09 — Programmablaufplan „Generate Complete" erzeugt
   (`Diagramme_Quellen\Ablauf_Generate_Complete.drawio`, Skript
   `05_Werkzeuge\Vorlagen\ablauf_generate_complete.py`): 29 Sinnbilder, 32
@@ -492,6 +441,6 @@ Format: `- JJJJ-MM-TT — Feature (1–2 Sätze: was und wo)`
   `Prefabs/`, `Materials/`, `SO_Settings/`, `Textures/`, `Shader/`, `VFX/`,
   `FBX/`, `Audio/`, darunter je ein Ordner pro System oder Wesen. Editor-Code
   getrennt in `Assets/Editor/`, Fremdpakete unverändert in `ThirdParty/`.
-- 2026-08-20 — Build 0.0.3 abgegeben. Beide Portfolio-ZIPs neu gebaut
-  (309,8 MB und 541,5 MB), `release` und `src` in beiden Abgaben auf den
-  heutigen Stand gezogen.
+- 2026-07-29 — `GDD.md` als Short GDD angelegt: Design-Absicht von Isor's
+  Tower und Maßstab für die Zeit nach der Abgabe. Wächst mit; „offen" ist
+  ein gültiger Eintrag.

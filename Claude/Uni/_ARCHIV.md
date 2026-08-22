@@ -1,70 +1,24 @@
-# ROADMAP.md — Baureihenfolge
+# _ARCHIV.md — Uni, überholte Einträge
 
-Ownership: Nur Baureihenfolge. Was fertig ist, steht im FEATURE_LOG.md,
-Begründungen in DECISIONS.md, Design-Absicht in GDD.md — nie hier.
+Ownership: Nur überholte Einträge der Uni-Schicht. Jeder nennt, wodurch
+er abgelöst wurde. Wird nie aufgeräumt — ein Archiv wird selten gelesen,
+seine Größe kostet nichts (`Kern/DOC_RULES.md`, Abschnitt 4).
 
-## Grobziel
-Generischer Harness für Game-Dev-Projekte und Brainstorm-/Learn-Sessions:
-.md-Dateien als Gedächtnis, Sessions als Wegwerf-Arbeitsräume. Wird hier
-entwickelt und getestet, später pro Projekt (Isor's Tower) kopiert und
-spezialisiert.
+---
 
-## Nahziel (Stand 2026-08-12)
-Zwei Phasen, klar getrennt:
-1. **Bis zur Uni-Abgabe (Frist 2026-08-21):** Das Uni-Projekt zu Ende
-   bringen — abgabefähig und benotbar. Keine Umbauten Richtung GDD.
-2. **Nach der Abgabe:** Das Bestehende am GDD.md ausrichten und den
-   Basiszustand herstellen, auf dem die kommenden Semester aufbauen.
-Am Harness wird bis zur Abgabe nur ausgearbeitet, was der Betrieb
-verlangt; danach wird er wieder aktiv ausgebaut.
+## 2026-08-22 — Abgabe-Block der alten ROADMAP
 
-## Erledigt
-- [x] Kern: INDEX.md, ROADMAP.md, CLAUDE.md (minimal), Übergabetest
-  (2026-07-14)
-- [x] WORKFLOW.md: Grundregeln + alle vier Session-Typen (2026-07-17)
-- [x] Knowledge-System: externer Ordner `C:\Repos Isor\Knowledge\` +
-  KNOWLEDGE_RULES.md (2026-07-17)
-- [x] FEATURE_LOG.md + DECISIONS.md angelegt (2026-07-17)
-- [x] CODE_GUIDELINES.md als Rohmaterial: Uni-Conventions + gefilterte
-  Dozenten-Rules, Zwei-Block-Struktur (2026-07-17)
-- [x] Uni-Terrain-Pipeline bis einschließlich Platzierungs-Stufe
-  (2026-07-18 bis 2026-07-26) — Einzelheiten im FEATURE_LOG.md
-- [x] GDD.md als Short GDD: Design-Absicht Isor's Tower, Maßstab für die
-  Phase nach der Abgabe (2026-07-29)
-- [x] Gras-Instancing + LOD + PlacementExclusion + Prefab-Painter
-  (2026-08-03 bis 2026-08-05) — Einzelheiten im FEATURE_LOG.md
-- [x] Threadoptimierung inkl. Messreihe und Laufzeit-Placement
-  (2026-08-05) — Gras-Rebuild 122,7 s → 12,4 s (−89,9 %). Einzelheiten im
-  FEATURE_LOG.md, Stoff fürs TDD in TDD_NOTES.md
-- [x] Gras-Rendering und Verteilung finalisiert (2026-08-04/05):
-  GPU-Instancing, Gras-LOD (507 Mio → ~12 Mio Dreiecke, 4,5 → ~87 FPS),
-  Weltgröße bleibt 2048 m bei HeightMultiplier 700, Kontrastkurve in
-  `NoiseMaskDensity`, Blocker über `PlacementExclusion`
-- [x] Neun Diagramme erzeugt und angeordnet (2026-08-08 bis 2026-08-11) —
-  Terrain-Pipeline, Platzierung, Gras-Rendering, Editor-Tool,
-  DayNightSystem, Sheep-FSM, Sheep-Komponenten, Ablauf Generate Complete,
-  Zustand Sheep-FSM. Skripte unter `05_Werkzeuge\Vorlagen\`, Quellen unter
-  `01_Uni\Semester_2\Diagramme_Quellen\`. Regeln in DIAGRAM_RULES.md
-- [x] Session-Typ „Zeugnis" gebaut (2026-08-11): vierter Typ in
-  WORKFLOW.md, Regeln in ASSESSMENT_RULES.md, Zeugnisse in
-  ASSESSMENT_LOG.md, Auslöser `/zeugnis`; erstes Zeugnis am selben Tag.
-  Begründungen in DECISIONS 2026-08-11
-- [x] Artifact-Seiten nach den drei Typen sortiert (2026-08-05 bis
-  2026-08-08): zehn Seiten mit Symbol, Kind-Badge und Favicon. Regeln in
-  ARTIFACT_RULES.md
-- [x] **TDD inhaltlich fertig** (2026-08-11): Kapitel 1 bis 8, 12, 13, 14
-  durch, 149.948 Zeichen, alle Zahlen gegen Code und Rohlogs geprüft.
-  Verlauf und Einzelheiten im FEATURE_LOG.md, Begründungen in DECISIONS.
-  S4-Abgabe („Arbeiten nach akademischen Standards") neu erstellt.
-- [x] **TDD-Layout** (Isor, 2026-08-11): Abschnittsumbruch und
-  Seitennummerierung, Seitenumbrüche, Zeilenabstände, Verzeichnisse
-  erzeugt, Strg+A / F9 durchgelaufen
-- [x] **Abgabe-Ordnerstruktur gebaut und befüllt** (2026-08-12):
-  `01_Uni\Semester_2\Abgabe_Final\` nach SAE-Vorgabe, Vorlage für kommende
-  Semester unter `05_Werkzeuge\Vorlagen\SAE_Abgabe_Struktur\`, Kopierskript
-  `05_Werkzeuge\Abgabe_Projektkopie.ps1`. Beide Projektkopien, alle
-  Diagramme, Videos, Bilder, Logs und PDFs liegen drin. Restliste in
-  `01_Uni\Semester_2\Arbeitsdateien\Abgabe_Packliste.txt`
+**Abgelöst durch:** `PLAN.md` für kurzfristige Arbeitspläne (E12) und die
+LOGs für das, was tatsächlich passiert ist.
+**Warum hier:** Dies war ein Tagesplan für die Portfolio-Abgabe vom
+2026-08-21 — 498 der 708 ROADMAP-Zeilen für eine Woche, die vorbei ist.
+Genau daran ist die ROADMAP vollgelaufen: kurzfristiger Plan und
+Langfrist-Planung standen in derselben Datei.
+**Nicht mit archiviert:** Die Unterabschnitte „Arbeitsregeln, die weiter
+gelten" und „Restliste Politur" — sie gelten weiter und wurden einzeln
+einsortiert.
+
+Originaltext, unverändert:
 
 ## Als Nächstes — Abgabe in zwei Ständen
 **Entschieden 2026-08-12:** Es wird zweimal abgegeben. Stand 1 ist
@@ -522,191 +476,3 @@ Der Build lief mit **null Fehlern** durch (77 s). Offen blieben Warnungen:
   Ablauflogik — beim nächsten Anfassen der Klasse sauber lösen, etwa indem
   der Zeichenzustand aus dem Agent abgeleitet statt mitgeführt wird.
   Die anderen sieben Gizmo-Felder wurden am 16.08. gekapselt.
-
-### Restliste Politur (nur wenn Zeit bleibt)
-Aus der Interaktions-Session (2026-08-02): TMP-Font-Schärfe (Texte
-pixelig); Fadenkreuz aufwerten + kontextsensitiv; Prompt-UI-Stil
-(Box/Fade, Tastensymbol); HUD beim Pausieren ausblenden; Menü-Sortierung
-(Pause über HUD) + Maus/Tastatur-Moduswechsel; Sun Source explizit
-setzen; Kamera-Far-Plane an die finale Weltgröße koppeln (Mond-Culling);
-Raycast-Target-Hygiene bei UI-Bildern.
-Aus den Gras-Sessions (2026-08-04/05): Lichtblitz/Specular-Highlight auf
-dem Terrain (Material-Smoothness bzw. Bloom prüfen); `SheepSense.Update`
-auf `OverlapSphereNonAlloc` (2 KB GC je Frame); Herden-Placeable tunen
-(Höhenband, MaxSlope, ShoreMargin); Lightmap-Warnung des generierten
-Terrains (Mesh hat keine UVs — Contribute GI ausschalten).
-Beim TDD-Schreiben gefunden (Isor, 2026-08-08): Magic Numbers im
-`MeshBuilder` benennen — `INDICES_PER_QUAD = 6`, `PADDING_RING = 1`,
-`NEIGHBOUR_SPAN = 2f`. Rein mechanisch. Isors Maßstab: keine Zahl im
-Code, deren Bedeutung er im Prüfungsgespräch erst herleiten muss.
-Fehlender Ton und fehlendes Menü sind der größte sichtbare Mangel
-(Zeugnis 2026-08-11) — aber vor der Abgabe nicht mehr realistisch.
-
-### Arbeitsregeln, die weiter gelten
-- **Arbeitsdatei TDD:** `01_Uni\Semester_2\Arbeitsdateien\TDD
-  Softwareplanung.docx` — nur diese anfassen. Sicherungen unter
-  `Arbeitsdateien\Sicherung\`. Regeln in DOCX_RULES.md.
-- **Arbeitsteilung am Text** (Isor, 2026-08-08): Korrekturen an
-  bestehendem Text schreibt Claude direkt in die Datei. Neue Fachkapitel
-  formuliert Isor selbst, Claude liefert Struktur, geprüfte Fakten und
-  Zahlen und glättet hinterher. Grund: Der Text soll von ihm kommen, und
-  das Durchgehen ist zugleich das Lernen des Stoffs.
-- **Word-Felder:** Beschriftungen und Verweise sind Felder — neue
-  Abbildungen nur über `Verweise → Beschriftung einfügen`.
-- **Prefab-Painter** wird im TDD nicht erwähnt (Isor, 2026-08-07), bleibt
-  aber in der Projektkopie (2026-08-11).
-- **Unity-Version:** Das Projekt läuft auf `6000.5.2f1` und weicht damit
-  von den beiden in der Vorgabe genannten Versionen ab. Die Dozentin hat
-  persönlich freigegeben, dass eine eigene Version gewählt werden darf
-  (Isor, 2026-08-12). Kein Handlungsbedarf — hier notiert, falls die
-  Abweichung später jemandem auffällt.
-- **Abgabe-Restliste:** `01_Uni\Semester_2\Arbeitsdateien\
-  Abgabe_Packliste.txt` — dort steht, was in welchem Ordner liegt und was
-  noch fehlt. Diese ROADMAP sagt *wann*, die Packliste sagt *was wohin*.
-
-## Nach der Uni-Abgabe — Basiszustand für Isor's Tower
-Reihenfolge noch offen, wird in einer eigenen Design-Session festgelegt.
-1. [ ] **Ausrichtung am GDD:** Pipeline runtime-fähig machen (Editor-Tool
-   und Laufzeit als zwei Aufrufer derselben Stufen); Welt-Wahrheit als
-   Seed statt Szene festziehen; Village als festes Grundmesh mit
-   Placement-Befüllung darauf; Zellen-Struktur, damit ein wachsendes
-   Village später streamen kann.
-2. [ ] **Platzierungs-Algorithmen neu bewerten:** zellen-lokales Poisson
-   ist mit der Kachelung erledigt (2026-08-05); offen bleibt, ob Bridson
-   für Gras überhaupt das richtige Verfahren ist (Jitter-Grid wäre ein
-   Bruchteil der Arbeit, zeigt aber Raster — für Bäume ungeeignet).
-   Ebenfalls offen aus der Threading-Session: Bucketing des Zellenbaus in
-   die Kachelschleife ziehen (die Punkte liegen dort schon nach Kachel
-   sortiert), Exclusion als Broad Phase je Kachel statt über alle Punkte,
-   und der Aufräumpass für die Kachelränder.
-3. [ ] **Massen-Bepflanzung als eigenes System:** LOD, Culling und
-   Instancing zusammen — welche Objekte überhaupt gezeichnet werden.
-   Großprojekt, eigene Design-Session. Das Instancing selbst ist
-   vorgezogen; hier bleiben LOD, Entfernungs-Ausblendung und Culling je
-   Halm via `BatchRendererGroup`.
-4. [ ] **Save-System:** Weltzustand als Änderungsliste gegenüber dem
-   Ausgangszustand (deckt zugleich den späteren Multiplayer-Sync ab).
-5. [ ] **Harness wieder ausbauen:** Review der Regeln nach dem
-   Praxisbetrieb, DOC_RULES.md, GDD_RULES.md, GLOSSARY.md, CLAUDE.md
-   voll ausarbeiten.
-   - Dabei **alle .md-Dateien einmal komplett durchgehen**: Doppelungen
-     zwischen Dateien finden, überholte Einträge kürzen, Ownership-Grenzen
-     prüfen. DECISIONS.md ist auf über 650 Zeilen gewachsen (vorgemerkt
-     2026-08-03).
-   - **Läuft seit 2026-08-21.** Befunde, Entscheidungen und Zielstruktur
-     stehen in `_HARNESS_REVIEW.md` — dort auch der Arbeitsplan des
-     Datei-für-Datei-Durchgangs. Erst wird vollständig entworfen, dann
-     gebaut.
-6. [ ] **Spiel-Features aufbauen:** Kampf, Loot, Inventar, Crafting,
-   Quests — jeweils eigene Design-Sessions.
-7. [ ] **GameObject-/Prefab-Aufbau-Konvention (eigene Design-Session):**
-   einheitliches Schema, wie ein Objekt *innen* aufgebaut ist — Root,
-   Visual/Mesh-Kind, VFX-Kind, Collider, Logik-Komponenten. Aktuell
-   durchgewürfelt (z. B. Torch: Root → Kind „Torch" (Mesh) + Kind „Torch Fire"
-   (VFX)); ein festes Muster für alle Objekte fehlt. Ergänzt die
-   Ordnerstruktur-Regeln in CODE_GUIDELINES um die Innen-Struktur der Prefabs.
-8. [ ] **Gras-Rendering aus `Systems/TerrainGenerator/` herauslösen:**
-   eigener System-Ordner (Umzug im Unity-Editor, macht Isor manuell —
-   .meta-GUIDs); dabei LOD-Fade zwischen den Stufen und Laufzeit-Spawn
-   der Herden (statt Prefab-Verdrahtung; löst auch das Aufsetzen aufs
-   Gelände) mitdenken.
-9. [ ] **Repo- und GitHub-System neu ordnen (eigene Design-Session):** Die Repos
-   wachsen stark, weil Texturen und andere Binärdateien mitversioniert werden —
-   Git legt jede Fassung vollständig ab, Binärdateien lassen sich nicht
-   deltakomprimieren, und gelöschte Dateien bleiben in der Historie. Zu klären:
-   was gehört überhaupt ins Repo und was in die Asset-Library unter
-   `C:\IsorBackup\03_AssetLibrary\`, ob Git LFS eingesetzt wird, wie `.gitignore`
-   je Repo aussehen muss, und wie mit der bereits gewachsenen Historie umgegangen
-   wird. Betrifft alle drei Repos. Erst nach der vollständigen Uni-Abgabe
-   (vorgemerkt 2026-08-06).
-10. [x] **Ladebildschirm** — am 2026-08-19 vorgezogen und gebaut, siehe oben
-   unter „Mi 19.08.". Offen bleibt daraus nur die Zeit **nach** der
-   Aktivierung: Sobald das Dorf aktiv ist, ist das Ladebild weg. Wenn die
-   Laufzeit-Platzierung kommt, braucht es dafür ein Canvas mit
-   `DontDestroyOnLoad`. Ursprünglicher Text:
-   Der Szenenwechsel vom Hauptmenü ins Dorf läuft heute ohne Rückmeldung —
-   das Bild steht, bis die Szene fertig ist. Gebraucht wird ein Ladebalken
-   zwischen den Szenen. Passt zum bereits vorgesehenen Spielablauf
-   (Terrain im Editor, alles Placement zur Laufzeit hinter einem Ladebalken)
-   und wird spätestens gebraucht, wenn die Laufzeit-Platzierung des Dorfes
-   den Start spürbar verlängert. Betrifft `SceneLoader`.
-11. [ ] **`SheepHealth` auf die `Health`-Komponente umstellen** (Isor,
-   2026-08-16): Am 16.08. wurde `Assets/Shared/Health/Health.cs` als
-   allgemeine Komponente angelegt — jedes Wesen, das Leben hat, bekommt sie
-   angehängt (Spieler, später Goblin und Mobs). `SheepHealth` blieb dabei
-   unberührt und macht dasselbe ein zweites Mal.
-   Zu tun: prüfen, was in `SheepHealth` wirklich schaf-spezifisch ist
-   (`SheepSettings`, der Testschalter, `Die()` mit Graveyard und FSM), den
-   Rest durch die `Health`-Komponente ersetzen und die Aufrufer nachziehen.
-   Nicht vor der Abgabe gemacht, weil **`SheepHealth` im TDD beschrieben ist**
-   (Isor, 2026-08-16) — ein Umbau hätte den Text falsch gemacht, und das
-   Nachziehen kostet mehr als der Umbau selbst. Dazu hängt die Klasse an FSM,
-   Hungersystem und Graveyard.
-   Entscheidung für Komposition statt Vererbung: Isor, 2026-08-16.
-12. [ ] **`HudController` und HUD-Einstellungen** (vorgemerkt 2026-08-16):
-   Ein Skript auf dem `InGameUI`-Objekt, das die einzelnen HUD-Teile nach
-   gespeicherten Spielereinstellungen ein- und ausblendet (FPS-Anzeige,
-   Fadenkreuz, Uhr, Zähmzähler) — dazu die passenden Schalter im
-   Options-Fenster, nach dem Muster von `GameSettings`.
-   Abgrenzung, die dafür schon gilt (Isor, 2026-08-16): Der
-   `GameController` fasst beim Pausieren **nur das Root-Objekt** an, nie
-   die einzelnen Teile. Sonst würde er beim Fortsetzen Anzeigen wieder
-   einschalten, die der Spieler bewusst ausgeschaltet hat. Damit ist der
-   Controller später ein Aufsatz und kein Umbau.
-13. [ ] **Prefab-Struktur prüfen und aufräumen** (vorgemerkt 2026-08-16):
-   Beim UI-Umbau kam heraus, dass die Menü-Prefabs **verschachtelt** sind —
-   `MainMenuPanel` und `OptionsPanel` liegen *innerhalb* von `MainMenuUI`.
-   Folge: `Apply All` an der Szenen-Instanz schreibt alles ins äußere
-   Prefab (`MainMenuUI.prefab` wuchs von 595 auf 1924 Zeilen), die inneren
-   Vorlagen bleiben leer, und das Dorf zeigt weiter den alten Stand. An die
-   inneren kommt man nur über den Prefab-Modus des äußeren.
-   Zu klären: welche Prefabs überhaupt verschachtelt sein sollen, wo
-   Instanzen umbenannt wurden (`OptionsPanel2` im Dorf ist dieselbe
-   Vorlage wie `OptionsPanel`), und ob angesammelte Overrides zurück in
-   die Vorlagen gehören. Betrifft alle Prefabs, nicht nur die UI —
-   Isor will jedes einzelne einmal durchgehen und prüfen, ob es sinnvoll
-   geschnitten ist. Gehört thematisch zu Punkt 7 (Aufbau-Konvention).
-14. [ ] **Studien-Aufbau der Abgabe wiederverwenden:** Die Vorlage unter
-   `05_Werkzeuge\Vorlagen\SAE_Abgabe_Struktur\` beim nächsten Semester
-   gleich zu Beginn kopieren, statt am Ende zu sortieren.
-
-## Später (nur bei Bedarf)
-- Knowledge-Archivierung automatisieren
-- ClaudeSetup-artiges Editor-Setup-Script — erst wenn Isor sicher
-  programmiert (Lernphase: Isor tippt selbst)
-- Harness-Dokumente auf Englisch umstellen — prüfen, ob das in der
-  Praxis besser funktioniert (Unterhaltung darf deutsch bleiben)
-- Development-Session „automatisierter Modus" (Claude baut, Isor
-  reviewt) — erst nach der Lernphase
-- Kür fürs Uni-Terrain: echte Flüsse (Spline-Mesh), Insel via
-  Falloff-Map, höhen-/steigungsabhängige Texturierung
-- Multiplayer (Koop 4–5) — sehr spät, siehe GDD.md
-
-## Nach der zweiten Abgabe (Stand 2026-08-20, Build 0.0.3 hochgeladen)
-
-Beobachtungspunkte aus dem Abgabetag, keine Aufgaben:
-
-- [ ] **3.023 Glühwürmchen-Instanzen.** `MinSpacing` steht bei diesem Typ auf
-  13 statt der besprochenen 150. Auf Isors Rechner läuft es; jede
-  VFX-Instanz ist aber ein eigener Effekt mit eigener Simulation, und die
-  Dozentin lädt dieselbe Szene in 90 statt 8 Sekunden. Kommt Rückmeldung zu
-  Rucklern bei Nacht, ist `MinSpacing` der erste Regler.
-- [ ] **`SheepSense` fordert je Bild Speicher an.** Vier `Physics.OverlapSphere`
-  pro Schaf und Frame, jeder legt ein neues `Collider[]` an. Bei 19 Herden
-  summiert sich das. Der Fix ist mechanisch: ein wiederverwendeter Puffer und
-  `OverlapSphereNonAlloc`, dazu die Trefferzahl als zweiter Parameter in
-  `TryGetClosest`. Am 2026-08-20 bewusst nicht gemacht (bewertetes System am
-  Abgabetag).
-- [ ] **Ordner-Restliste nach dem Umzug.** `Terrain_Village.asset` liegt lose
-  in `Assets/`; `SO_Settings/SceneLoader/` hält eine einzige Datei, während
-  `SO_Settings/GameFlow/` leer steht; die Input-Dateien liegen in
-  `Scripts/Player/`, `Scripts/Input/` ist leer; `Scripts/Grass/` und
-  `Scripts/Grass/GrassRendering/` liegen ineinander. Dazu leere Ordner und
-  `FolderTemplate/` löschen.
-- [ ] **Lizenzordner anlegen.** `Assets/Licenses/` mit
-  `Quaternius_UltimatePlatformerPack_CC0.txt` (heute besprochen, noch nicht
-  umgesetzt). Pakete mit eigener Lizenz behalten sie.
-- [ ] **`Abgabe_Final` aufräumen:** Dort liegen neben den zwei ZIPs noch die
-  zwei Portfolio-Ordner, byteidentisch mit denen in `Abgabe\`. Nach Isors
-  Ablauf gehört in `Abgabe_Final` nur das ZIP. Ins Archiv verschieben,
-  sobald der Upload durch ist.

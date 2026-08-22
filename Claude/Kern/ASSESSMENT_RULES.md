@@ -83,10 +83,15 @@ Schätzung wird immer gegen die Feedbackelemente der jeweiligen
 - Deutsch. Ausnahme: Dateinamen, Code und Zitate aus dem Code.
 
 ## Ablage
-- Neuestes Zeugnis oben in `ASSESSMENT_LOG.md`, Überschrift
-  `## <JJJJ-MM-TT> — <Anlass>`.
+- **Eine Datei je Zeugnis** unter `Kern/Zeugnisse/<JJJJ-MM-TT>.md`.
+  Der Ordner ist das Verzeichnis, es gibt keine Sammeldatei.
+  Titelzeile: `# Zeugnis <JJJJ-MM-TT> — <Anlass>`.
+- Grund: Beim Schreiben eines Zeugnisses wird nur das **letzte** gelesen
+  (siehe Belegpflicht). Eine Sammeldatei zwingt dazu, alle zu laden —
+  bei zwei Zeugnissen 782 Zeilen für 350 gebrauchte, und der Abstand
+  wächst mit jedem weiteren.
 - Alte Zeugnisse werden nie überschrieben oder gekürzt — der Vergleich
-  ist der Zweck der Datei.
+  ist der Zweck.
 
 ## Die Handy-Fassung — Ausnahme von ARTIFACT_RULES
 Jedes Zeugnis wird zusätzlich als Artifact veröffentlicht. Dafür gelten

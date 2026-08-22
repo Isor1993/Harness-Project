@@ -34,12 +34,12 @@ muss vollständig sein (DOC_RULES, Abschnitt 8).
 | `Kern/DIAGRAM_RULES.md` | Verfahren für die erzeugten `.drawio`-Diagramme: Arbeitsteilung, Bedienregeln, Prüfung |
 | `Kern/ASSESSMENT_RULES.md` | Regeln des Session-Typs „Zeugnis": Auslöser, Disziplin, Belegpflicht, Aufbau, Notenskala, Artifact-Ausnahme |
 | `Kern/STOERUNGEN.md` | Vorfälle im Betrieb: was schiefging und welche Regel nicht griff — Chronik, kein Archiv |
-| `Kern/Zeugnisse/` | Die Zeugnisse selbst, eine Datei je Termin |
+| `Kern/Zeugnisse/` | Die Zeugnisse selbst, eine Datei je Termin — derzeit `2026-08-11.md` und `2026-08-16.md` |
 | `Kern/GLOSSARY.md` | (geplant) Begriffe mit fester Bedeutung — entsteht am Ende aus den fertigen Dateien |
-| `Kern/ROADMAP.md` | (geplant) Baureihenfolge des Harness selbst |
-| `Kern/LOG.md` | (geplant) Chronik des Harness: was wann gebaut wurde |
+| `Kern/ROADMAP.md` | Baureihenfolge des Harness — nur Offenes, ohne Datum |
+| `Kern/LOG.md` | Chronik des Harness: was wann gebaut wurde — Ereignisse, nie geändert, kein Archiv |
 | `Kern/DECISIONS.md` | (geplant) Entscheidungen zum Harness |
-| `Kern/_ARCHIV.md` | (geplant) Überholte Kern-Einträge |
+| `Kern/_ARCHIV.md` | Überholte Kern-Einträge, jeder mit Angabe, wodurch er abgelöst wurde |
 
 ## Uni — studienspezifisch, herausnehmbar
 
@@ -49,9 +49,9 @@ muss vollständig sein (DOC_RULES, Abschnitt 8).
 | `Uni/Semester_2/ASSIGNMENT_PCG.md` | Originaltext Uni-Aufgabe „Prozedurale Erweiterung der Spielwelt" (Referenz, unverändert lassen) |
 | `Uni/Semester_2/ASSIGNMENT_TOOL.md` | Originaltext Uni-Aufgabe „Engine-Tool-Entwicklung" (Referenz, unverändert lassen) |
 | `Uni/Semester_2/ASSIGNMENT_THREADING.md` | Originaltext Uni-Aufgabe „Threadoptimierung" (Referenz, unverändert lassen) |
-| `Uni/ROADMAP.md` | (geplant) Baureihenfolge der Studienarbeit |
-| `Uni/LOG.md` | (geplant) Chronik der Abgaben |
-| `Uni/_ARCHIV.md` | (geplant) Abgeschlossene Semester und überholte Einträge |
+| `Uni/ROADMAP.md` | Baureihenfolge der Studienarbeit, semesterübergreifend |
+| `Uni/LOG.md` | Chronik der Studienarbeit: TDD, Abbildungen, Abgaben |
+| `Uni/_ARCHIV.md` | Abgeschlossene Semester und überholte Einträge — enthält den Abgabe-Tagesplan von Semester 2 |
 
 ## IsorBackup — Regeln für den externen Datenbaum
 
@@ -69,8 +69,8 @@ muss vollständig sein (DOC_RULES, Abschnitt 8).
 | `Projekte/Isor_Tower/TDD_NOTES.md` | Stoffsammlung fürs TDD, nach Themenblöcken, kumulativ über alle Semester |
 | `Projekte/Isor_Tower/PREFAB_STATUS.md` | Prüfstand jedes Prefabs — Arbeitsliste mit Ende, wird erzeugt |
 | `Projekte/Isor_Tower/DECISIONS/` | Entscheidungen je System: Terrain, UI, Welt, Audio, Entities |
-| `Projekte/Isor_Tower/ROADMAP.md` | (geplant) Baureihenfolge des Projekts |
-| `Projekte/Isor_Tower/LOG.md` | (geplant) Chronik: was wann gebaut wurde |
+| `Projekte/Isor_Tower/ROADMAP.md` | Baureihenfolge des Projekts: Basiszustand, Aufräumen, HUD, Beobachtungspunkte, Politur |
+| `Projekte/Isor_Tower/LOG.md` | Chronik des Projekts: was wann gebaut und geprüft wurde |
 | `Projekte/Isor_Tower/SYSTEME.md` | (geplant) Was gerade im Projekt steckt — wird erzeugt |
 | `Projekte/Isor_Tower/_ARCHIV.md` | (geplant) Überholte Projekt-Einträge |
 
@@ -79,9 +79,6 @@ muss vollständig sein (DOC_RULES, Abschnitt 8).
 | Dokument | Zuständigkeit |
 |---|---|
 | `DECISIONS.md` | Entscheidungen: was, warum, verworfene Alternativen — wird auf neun Dateien verteilt |
-| `ROADMAP.md` | Baureihenfolge — 546 der 708 Zeilen sind Vergangenheit und wandern in LOG und Archive |
-| `FEATURE_LOG.md` | Gebautes — wird zur Chronik `LOG.md` je Schicht |
-| `ASSESSMENT_LOG.md` | Die Zeugnisse — werden zu einer Datei je Termin unter `Kern/Zeugnisse/` |
 
 ## Temporär — werden nach der Überholung archiviert
 

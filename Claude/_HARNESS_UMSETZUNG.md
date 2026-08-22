@@ -65,32 +65,75 @@ Phase 3 **aufgeteilt** statt verschoben werden.
       `Uni/Abgabe` (~23) · `Projekte/Isor_Tower/DECISIONS/` Terrain (~31),
       UI (~17), Welt (~14), Audio (~10), Entities (~7)
 
-**ROADMAP (708 Zeilen, davon 546 Vergangenheit — C8)**
-- [ ] „Erledigt"-Block (48 Z.) ins LOG der jeweiligen Schicht
-- [ ] Abgabe-Block (498 Z.) ins `_ARCHIV.md` der Uni-Schicht
-- [ ] **Achtung, einzeln prüfen:** „Arbeitsregeln, die weiter gelten" und
-      „Restliste Politur" gelten weiter — nicht mitarchivieren
-- [ ] Rest (~162 Z.) auf die Schicht-ROADMAPs verteilen
-- [ ] die zwei „Offenen Punkte" aus ARTIFACT_INDEX aufnehmen (E46)
-- [ ] Tests-Lücke als offenen Punkt aufnehmen (E56)
-- [ ] ClaudeSetup steht nur noch hier, nicht mehr in CODE_GUIDELINES (E55)
-- [ ] „Harness-Dokumente auf Englisch umstellen" zur **Bedingung**
-      umformulieren: erst prüfen, wenn der Harness tatsächlich
-      weitergegeben werden soll (E83)
+**Aus „Arbeitsregeln, die weiter gelten" — in Phase 4 einsortieren**
+Sechs Punkte aus dem archivierten Abgabe-Block. Es sind **Regeln und
+Fakten, keine Aufgaben** — sie gehören daher nicht in eine ROADMAP:
+- [ ] → `Uni/DOCX_RULES.md`: Arbeitsdatei ist ausschließlich
+      `01_Uni\Semester_2\Arbeitsdateien\TDD Softwareplanung.docx`,
+      Sicherungen unter `Arbeitsdateien\Sicherung\`. Beim Einsortieren
+      gegen E61b prüfen — der Text lebt künftig in Markdown.
+- [ ] → `Uni/DOCX_RULES.md`: Verweis auf die Abgabe-Packliste
+      `Arbeitsdateien\Abgabe_Packliste.txt` („die ROADMAP sagt *wann*,
+      die Packliste sagt *was wohin*").
+- [ ] → `Kern/WORKFLOW.md`, beim Regler „Wer schreibt": **Arbeitsteilung
+      am Text** (Isor, 2026-08-08). Korrekturen an bestehendem Text
+      schreibt Claude direkt; neue Fachkapitel formuliert Isor selbst,
+      Claude liefert Struktur, geprüfte Zahlen und glättet hinterher.
+      Grund: Der Text soll von ihm kommen, und das Durchgehen ist
+      zugleich das Lernen des Stoffs.
+- [ ] → `Uni/DECISIONS.md`: Unity-Version `6000.5.2f1` weicht von den
+      beiden in der Vorgabe genannten ab; die Dozentin hat persönlich
+      freigegeben, dass eine eigene Version gewählt werden darf
+      (Isor, 2026-08-12). Kein Handlungsbedarf, nur festgehalten.
+- [ ] → `Uni/DECISIONS.md`: Prefab-Painter wird im TDD nicht erwähnt
+      (Isor, 2026-08-07), bleibt aber in der Projektkopie (2026-08-11).
+- [x] **gestrichen:** „Word-Felder: Beschriftungen und Verweise sind
+      Felder" — steht wörtlich in `Uni/DOCX_RULES.md`, Abschnitt Felder.
+      Reine Dublette.
 
-**FEATURE_LOG (497 Zeilen, 73 Einträge)**
-- [ ] wird Chronik `LOG.md` je Schicht (E13) — kein Archiv, keine Pflege
-- [ ] Kopfregel ändern: Einträge beschreiben das **Ereignis**, nicht den
-      Ablageort (E13)
-- [ ] widersprüchliche Zeile „Harness-Bauten stehen in ROADMAP" streichen (C7)
+**ROADMAP (708 Zeilen, davon 546 Vergangenheit — C8)** — **erledigt 2026-08-22**
+- [x] „Erledigt"-Block aufgelöst: 7 Harness-Bauten → `Kern/LOG.md`,
+      GDD-Anlage → Projekt-LOG, Abgabe-Ordnerstruktur → Uni-LOG, der Rest
+      als Dublette der LOGs nicht übernommen (begründet in `Kern/_ARCHIV.md`)
+- [x] Abgabe-Block (498 Z.) → `Uni/_ARCHIV.md`; Prüfung: 457 archiviert +
+      41 zurückbehalten = 498, keine Zeile verloren
+- [x] „Arbeitsregeln, die weiter gelten" zurückbehalten — sind Regeln und
+      Fakten, keine Aufgaben; Einsortierung siehe Abschnitt oben
+- [x] „Restliste Politur" → Projekt-ROADMAP, bereinigt um Ton und Menü
+      (gebaut am 14./16.08.) und um die `SheepSense`-Dublette
+- [x] Rest verteilt: `Kern/ROADMAP.md` 50 Z. · `Uni/ROADMAP.md` 25 Z. ·
+      `Projekte/Isor_Tower/ROADMAP.md` 129 Z. — aus 708 Zeilen wurden
+      204 Zeilen Baureihenfolge und 521 Zeilen Archiv
+- [x] die zwei „Offenen Punkte" aus ARTIFACT_INDEX aufgenommen (E46)
+- [x] Tests-Lücke aufgenommen (E56)
+- [x] ClaudeSetup steht nur noch in `Kern/ROADMAP.md` (E55)
+- [x] „Harness auf Englisch" als Bedingung formuliert (E83)
+- [x] Grobziel gestrichen (steht in CLAUDE.md), Nahziel archiviert
+- [x] Original nach `99_Archiv\_Zu_Loeschen\2026-08-22_Harness_Umbau\`
+
+**FEATURE_LOG (497 Zeilen, 73 Einträge)** — **erledigt 2026-08-22**
+- [x] verteilt auf drei Chroniken nach der Regel „ein Ereignis gehört der
+      Schicht, für die es gemacht wurde": Projekt 64 · Uni 6 · Kern 3
+- [x] Prüfung bestanden: 490 nicht-leere Rumpfzeilen, Inhalt identisch
+- [x] Kopf jeder Chronik nach E13 und E85: nie geändert, kein Archiv;
+      Ablageorte erlaubt als Stand von damals
+- [x] Widerspruch C7 aufgelöst — es gibt jetzt `Kern/LOG.md`, die alte
+      Zeile „Harness-Bauten stehen in ROADMAP" ist mit der Datei weg
+- [x] Original nach `99_Archiv\_Zu_Loeschen\2026-08-22_Harness_Umbau\`
 
 **TDD_NOTES (556 Zeilen, 85 Einträge)**
 - [ ] nach `Projekte/Isor_Tower/` (E51) — nicht Uni
 - [ ] nach Themenblöcken gliedern statt chronologisch (~1 h Arbeit)
 - [ ] veraltetes „Abgabe ca. 2026-07-28" im Kopf korrigieren (C3-a)
 
-**ASSESSMENT_LOG (782 Zeilen, 2 Zeugnisse)**
-- [ ] auftrennen in `Kern/Zeugnisse/2026-08-11.md` und `2026-08-16.md` (E53)
+**ASSESSMENT_LOG (782 Zeilen, 2 Zeugnisse)** — **erledigt 2026-08-22**
+- [x] aufgetrennt in `Kern/Zeugnisse/2026-08-11.md` und `2026-08-16.md` (E53)
+- [x] Prüfung bestanden: 17 von 17 `###`-Abschnitten angekommen,
+      650 nicht-leere Rumpfzeilen **Zeile für Zeile identisch**
+- [x] Original nach `99_Archiv\_Zu_Loeschen\2026-08-22_Harness_Umbau\`
+- [x] Ablage-Regel in ASSESSMENT_RULES nachgezogen (sie nannte die
+      gelöschte Sammeldatei)
+- Trennskript liegt im Scratchpad und wird für DECISIONS wiederverwendet
 
 ## Phase 4 — Einzeldateien nachziehen
 
