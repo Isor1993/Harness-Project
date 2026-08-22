@@ -29,3 +29,4 @@ keine Inhalte. Status: ohne Vermerk = existiert, (geplant) = noch nicht gebaut.
 | ASSIGNMENT_PCG.md | Originaltext Uni-Aufgabe „Prozedurale Erweiterung der Spielwelt" (Referenz, unverändert lassen) |
 | ASSIGNMENT_TOOL.md | Originaltext Uni-Aufgabe „Engine-Tool-Entwicklung" (Referenz, unverändert lassen) |
 | ASSIGNMENT_THREADING.md | Originaltext Uni-Aufgabe „Threadoptimierung" (Referenz, unverändert lassen) |
+| _HARNESS_REVIEW.md | (temporär) Befundliste der Harness-Überholung ab 2026-08-21 — Arbeitsliste, wird nach Abschluss archiviert |
