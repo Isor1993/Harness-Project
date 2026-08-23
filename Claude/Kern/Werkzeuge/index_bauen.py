@@ -39,7 +39,7 @@ SCHICHTEN = [
     ("Uni", "Uni — studienspezifisch, herausnehmbar"),
     ("IsorBackup", "IsorBackup — Regeln für den externen Datenbaum"),
     ("Projekte", "Projekte"),
-    ("Temporär", "Temporär — werden nach der Überholung archiviert"),
+    ("Temporär", "Temporär — eine Datei je Durchgang, danach ins Archiv"),
 ]
 
 KOPF = u"""# INDEX.md — Landkarte

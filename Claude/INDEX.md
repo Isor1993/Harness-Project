@@ -36,7 +36,7 @@ den Notkern und ist die einzige Datei, die von selbst lädt.
 | Dokument | Zuständigkeit |
 |---|---|
 | `Kern/ARTIFACT_INDEX.md` | Welche Artifact-Seiten es gibt, woran jede hängt und wer auf sie zeigt. |
-| `Kern/ARTIFACT_RULES.md` | Typen, Benennung, Aufbau, Gestaltung, Symbole und Pflege der Artifact-Seiten auf claude.ai — samt Farbwelt und Schriftrollen. |
+| `Kern/ARTIFACT_RULES.md` | Typen, Benennung, Aufbau, Gestaltung, Symbole und Pflege der Artifact-Seiten auf claude.ai. |
 | `Kern/ASSESSMENT_RULES.md` | Der Session-Typ „Zeugnis" vollständig — Auslöser, Ablauf, Belegpflicht, Aufbau, Notenskala, Schreibregeln, Ablage. |
 | `Kern/CODE_GUIDELINES.md` | Code-Konventionen — Namen, Architektur, Ordnerstruktur, das Review-Gate. |
 | `Kern/DECISIONS.md` | Nur Entscheidungen zum Harness — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
@@ -101,12 +101,21 @@ den Notkern und ist die einzige Datei, die von selbst lädt.
 | `Projekte/Isor_Tower/TDD_NOTES.md` | Nur Rohmaterial für das Technical Design Document von Isor's Tower — geprüfte Fakten, Zahlen und Formeln aus der Projektarbeit. |
 | `Projekte/Isor_Tower/_ARCHIV.md` | (geplant) Überholte Projekt-Einträge, jeder mit Angabe des Nachfolgers |
 
+## Temporär — eine Datei je Durchgang, danach ins Archiv
+
+| Dokument | Zuständigkeit |
+|---|---|
+| `_HARNESS_ARTIFACTS_1_0_0.md` | Nur die Befunde **dieses einen Durchgangs** durch die acht Altbestand-Seiten, geprüft am 2026-08-23 gegen die veröffentlichten Seiten und den Code von Isor's Tower. |
+| `_HARNESS_PRUEFUNG_1_0_0.md` | Nur die Befunde **dieses einen Prüfdurchgangs** — der rund zwanzig Dateien, die am 2026-08-23 beim Bau der Version 1.0.0 geschrieben und nicht gegengelesen wurden. |
+| `_HARNESS_UMBAU_STRUKTUR.md` | Nur die Handgriffe **dieser einen Umbau-Folge** — der Harness wird sein eigenes Repo, danach werden die Skript-Prüfungen als Hooks erzwungen. |
+
 ## Werkzeuge — erzeugen und pflegen die Dateien oben
 
 | Skript | Zweck |
 |---|---|
 | `IsorBackup/Werkzeuge/sichern.ps1` | sichern.ps1 — wöchentliche Sicherung auf die externe Platte. |
 | `Kern/Werkzeuge/index_bauen.py` | Erzeugt INDEX.md aus den Ownership-Zeilen der Harness-Dateien. |
+| `Kern/Werkzeuge/pruefen.py` | Prüft die Harness-Dateien gegen die Regeln, die sich mechanisch prüfen lassen. |
 | `Projekte/Isor_Tower/Werkzeuge/prefab_status.py` | Erzeugt PREFAB_STATUS.md aus den tatsächlich vorhandenen .prefab-Dateien. |
 
 ## Befehle — Auslöser, Ablauf in `Kern/WORKFLOW.md`

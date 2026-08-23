@@ -22,7 +22,7 @@ Deshalb nie „Version" sagen, ohne dazuzusagen, welche.
 
 ---
 
-## 1. Commit-Nummer — `Update V 0.0035`
+## 1. Commit-Nummer, im Gespräch „V-Nummer" — `Update V 0.0035`
 
 **Keine Version.** Eine laufende Nummer, die Sitzungen zählt, vierstellig
 hochgezählt. Sie sagt nichts über Inhalt oder Reifegrad.

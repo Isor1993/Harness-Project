@@ -22,32 +22,34 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(geschrieben 2026-08-23)*
+*(geschrieben 2026-08-23, abends)*
 
-**Typ: Prüfung — Gegenstand: der Harness. Lesen und bewerten, nicht
-bauen.** Am 2026-08-23 wurde in 22 Dateien geschrieben, und **nichts
-davon ist gegengelesen** — die bauende Session darf das nach eigener
-Regel nicht selbst tun (`WORKFLOW.md` → Typ Prüfung).
-
-Zu prüfen sind die vier neuen Regeln auf Sinn und Widerspruch:
-Session-Typ **Prüfung** und der Schritt **Plan nachziehen** in
-`WORKFLOW.md` · die **Übergabe** (dieser Abschnitt hier — greift er?) ·
-der Abschnitt **Gestaltung** in `ARTIFACT_RULES.md` · **Abschnitt 11**
-und die zwei Nachträge in `DOC_RULES.md`. Dazu: Sind die sieben aus den
-Arbeitsdateien geretteten Regeln an der richtigen Stelle gelandet?
-
-Ergebnis ist eine Befundliste als eigene Datei, danach die ROADMAP der
-Schicht. **Nicht beheben** — das kommt in einem eigenen Abschnitt danach.
-Einzelheiten im `Kern/LOG.md`, Eintrag 2026-08-23.
+**Typ: Development — Gegenstand: die Struktur begradigen.** Der Harness
+wird sein eigenes Repo: Unity-Ballast raus, alles eine Ebene hoch, eine
+einzige `CLAUDE.md`. Vollständiger Bauplan mit acht Handgriffen, allen
+betroffenen Zeigern und den Messwerten in
+**`_HARNESS_UMBAU_STRUKTUR.md`, Baustein 1** — dort steht alles, hier
+steht nichts doppelt. Nach den Umzugsregeln arbeiten (`DOC_RULES.md`,
+Abschnitt 11): **erst committen, dann schneiden.** Zu entscheiden hat
+Isor nur eines: die neue Versionsnummer. Danach Baustein 2, die Hooks.
 
 ---
 
-### Testphase — beginnt nach der Prüfung
+### Testphase — erst auf Isors Zuruf
+
+Sie beginnt **nicht** nach der Prüfung und nicht nach Kalender, sondern
+wenn Isor den Harness für so weit erklärt. Bis dahin wird am Harness
+selbst gearbeitet: prüfen, was noch nicht trägt, und es verbessern.
+Claude meldet die Testphase nicht als fällig. *(Isor, 2026-08-23;
+Begründung in `Kern/DECISIONS.md`.)*
 
 - [ ] `C:\IsorBackup` aufräumen, in Viererpaketen — Punkte in
       `IsorBackup/ROADMAP.md`. Zugleich die erste Belastungsprobe des
       Harness im Betrieb; was nicht trägt, kommt in `STOERUNGEN.md`.
 - [ ] Danach zurück ins Projekt Isor's Tower, Basiszustand nach der
       Abgabe (`Projekte/Isor_Tower/ROADMAP.md`).
+
+### Unabhängig vom Zuruf
+
 - [ ] Semesterbeginn in rund zwei Wochen (Stand 2026-08-23) — die vier
       Uni-Punkte in `Uni/ROADMAP.md` sollten vorher stehen.

@@ -1,7 +1,7 @@
 # ARTIFACT_RULES.md — Regeln für die Artifact-Seiten
 
 Ownership: Typen, Benennung, Aufbau, Gestaltung, Symbole und Pflege der
-Artifact-Seiten auf claude.ai — samt Farbwelt und Schriftrollen. Warum eigene Datei: Artifacts sind eine
+Artifact-Seiten auf claude.ai. Warum eigene Datei: Artifacts sind eine
 Ausgabeform wie das Knowledge-Archiv, keine Harness-Dokumente — dieselbe
 Trennung wie bei KNOWLEDGE_RULES.md.
 
@@ -105,7 +105,7 @@ bleibt.
 | Text schwach | `#756758` | Tafelnummern, Spaltenköpfe |
 | **Ember** | `#D9762B`, hell `#F2A64B` | der eine Akzent — Marken, Hervorhebung |
 
-Dazu **vier Kategorie-Farben**. Sie sind nicht Dekoration, sondern
+Dazu die **Kategorie-Farben**. Sie sind nicht Dekoration, sondern
 tragen Bedeutung: Wer eine Seite mit Kategorien baut (Schichten, Typen,
 Zustände), gibt jeder eine davon und benutzt sie durchgehend — im
 Diagramm, in der Tabelle, im Abschnittsstrich.
@@ -117,7 +117,7 @@ Diagramm, in der Tabelle, im Abschnittsstrich.
 | Blau | `#8FA1D8` |
 | Ton | `#DE7A63` |
 
-### Schrift — drei Rollen
+### Schrift — die Rollen
 
 | Rolle | Familie | wofür |
 |---|---|---|
@@ -164,7 +164,7 @@ Der Inhalt entscheidet, nicht die Regel. Als Anhalt:
 Die Untergrenze aus `WORKFLOW.md` gilt auch hier: nie auf inneres
 Vorstellen ausweichen. Was kein Bild bekommt, bekommt Zahlen.
 
-### Zwei Seiten als Muster
+### Seiten als Muster
 
 - `⚙️ System · Harness` — der Bauplan dieser Regeln, mit vier Tafeln.
 - `Isor's Tower Menü-Politur` — die Seite, aus der die Farbwelt stammt;
@@ -175,11 +175,21 @@ Beide stehen mit URL im `ARTIFACT_INDEX.md`.
 
 ### Der Altbestand
 
-Die älteren Seiten stehen in einer kühlen hellen Fassung (Stand
-2026-08-06/08). Sie werden **nicht eigens nachgezogen**, sondern beim
-nächsten inhaltlichen Anfassen mitgenommen — sie sind ohnehin überholt,
-und wer sie aktualisiert, baut sie gleich neu. Bis dahin ist die
-Sammlung zweigeteilt, und das ist bekannt.
+Sieben der acht älteren Seiten stehen in einer kühlen hellen Fassung
+(Stand 2026-08-06/08). Sie werden **nicht eigens nachgezogen**, sondern
+beim nächsten inhaltlichen Anfassen mitgenommen — sie sind ohnehin
+überholt, und wer sie aktualisiert, baut sie gleich neu. Bis dahin ist
+die Sammlung zweigeteilt, und das ist bekannt.
+
+**Die Ausnahme ist `💡 Lernstück · Terrain-Fallen`:** Sie ist bereits
+dunkel gebaut und trägt im Quelltext den Kommentar „Fest dunkles Theme —
+bewusste Entscheidung, keine Light-Variante". Sie hat die Regel
+vorweggenommen, nur in eigener Palette (Grün `#5fae88`). Für sie ist der
+Umbau ein **Palettentausch statt Neubau** — die billigste Seite des
+Bestands und deshalb der sinnvolle Testlauf für die Hausfarbwelt.
+*(Nachgetragen am 2026-08-23: Die ursprüngliche Fassung sagte pauschal
+„die älteren Seiten", ohne dass jemand die Seiten dafür abgerufen
+hatte.)*
 
 ## Wann geschaut wird
 
@@ -201,7 +211,7 @@ Sammlung zweigeteilt, und das ist bekannt.
 - **Inhalt aus einer alten Seite übernehmen:** gegen den Code prüfen,
   nicht abschreiben. Was auf einer Seite steht, war zum Stand-Datum wahr.
 
-## Symbole an zwei Stellen
+## Wo das Symbol steht
 
 - **Favicon** beim Publish — erscheint im Browser-Tab und auf der
   Galerie-Karte.

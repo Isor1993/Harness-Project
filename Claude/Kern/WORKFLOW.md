@@ -42,6 +42,56 @@ Wird der Typ nicht gefragt, fällt es erst bei `/harness:sichern` auf —
 dann steht die Doku-Pflicht ohne ihren Maßstab da.
 *(Regel aus einem echten Aussetzer, 2026-08-22.)*
 
+### Der Typ steht im Session-Titel
+
+Damit sichtbar ist, worin man gerade steckt, trägt der Session-Titel den
+laufenden Abschnitt — im Schema `<Thema> (<Typ>)`:
+
+    Harness 1.0.0 (Prüfung)
+    Harness 1.0.0 (Development · Normal)
+    Isor's Tower · Platzierung (Design)
+
+**Der Modus steht nur dann dabei, wenn er vom Lernmodus abweicht.** Der
+Normalfall schweigt; so sagt die Klammer etwas, wenn sie etwas sagt.
+
+**Arbeitsteilung:** Das **Thema gehört Isor** — er benennt die Session,
+und Claude ändert daran kein Wort. Die **Klammer gehört Claude**: Er
+setzt sie beim ersten Typ und schreibt sie bei jedem Wechsel um. Fehlt
+eine Klammer, hängt er sie an, ohne den Rest anzufassen.
+
+**Der Titel ist Anzeige, kein Beleg.** Er lebt in der App, nicht im Repo,
+und trägt immer nur den *letzten* Abschnitt — was eine Session
+tatsächlich getan hat, steht im LOG der Schicht. Aus einem Titel wird
+kein Befund abgeleitet. *(Genau das ist am 2026-08-23 passiert:
+`STOERUNGEN.md` → „Aus dem Session-Titel auf den Typ geschlossen".)*
+
+#### Was in der Klammer stehen kann
+
+Drei Sorten, mehr nicht — die Aufzählung ist abgeschlossen, weil die
+Klammer nur einen von drei Lebenszuständen anzeigt:
+
+| Klammer | heißt |
+|---|---|
+| ein **Typ** | hier wird gerade gearbeitet |
+| **zu** | mit `/harness:ende` abgeschlossen, `/clear` folgt |
+| **aufgehoben** | absichtlich offen gelassen, damit etwas darin erhalten bleibt — nicht vergessen, nicht in Arbeit |
+
+Gesetzt wird an drei Punkten: **am Anfang**, sobald Typ und Fokus
+feststehen (nicht früher — vorher weiß niemand, was in die Klammer
+gehört) · **bei jedem `/harness:wechsel`** · **bei `/harness:ende`** auf
+`zu`. `aufgehoben` setzt Claude nur auf Zuruf.
+
+**Bekannte Grenze:** Bei `/clear` kann Claude nichts mehr setzen — der
+Befehl leert den Kontext, ohne ihn noch einmal aufzurufen. Deshalb sitzt
+der Handgriff bei `/harness:ende`, dem letzten Moment davor. Wer `/clear`
+ohne `/harness:ende` tippt, lässt einen Titel stehen, der Arbeit
+behauptet. Das ist nicht abzufangen und deshalb hier benannt.
+
+Das Umbenennen ist **Schritt des Wechsels**, keine Regel zum Erinnern —
+siehe „Ablauf von `/harness:wechsel`". Grund: Ein falscher Titel ist
+schlimmer als gar keiner, weil er so verbindlich aussieht wie ein
+richtiger.
+
 | Modus | bedeutet |
 |---|---|
 | **Lernmodus** | ausführlich erklären, visuell arbeiten, Verständnis prüfen, Erkenntnisse ins Knowledge. Isors Normalfall. |
@@ -131,7 +181,18 @@ Anlass benannt, danach ins Archiv. Was überlebt, ist der Punkt in der
 ROADMAP, nicht die Liste (`DOC_RULES.md`, Abschnitt 8: eine Checkliste
 gehört dem Moment).
 
-**Prüfbogen, für jede Datei gleich** — fünf Fragen, in dieser Folge:
+Sie heißt `_HARNESS_<Anlass>.md` und liegt oben in `Claude\`. Das Präfix
+ist keine Zierde: `Kern/Werkzeuge/index_bauen.py` erkennt daran, dass die
+Datei temporär ist, und führt sie im INDEX in einem eigenen Abschnitt
+statt in einer Schicht.
+
+**Geschrieben wird laufend, nicht am Ende.** Jeder Befund geht sofort in
+die Liste, samt Beleg — nichts bleibt nur im Kontext. Bricht die Session
+ab, wird an der Datei weitergearbeitet. *(Isors Gegenmaßnahme vom
+2026-08-22; sie stand bis zum 2026-08-23 nur in einer Arbeitsdatei und
+wäre mit ihr fast ins Archiv gegangen.)*
+
+**Prüfbogen, für jede Datei gleich** — diese Fragen, in dieser Folge:
 1. Welche Frage beantwortet sie, und beantwortet die sonst niemand?
 2. Deckt sich die `Ownership:`-Zeile mit dem tatsächlichen Inhalt?
 3. Widerspricht sie einer anderen Datei?
@@ -241,9 +302,17 @@ schreiben ohnehin alle in dieses Repo.
 4. **Nur Belegtes.** Geschrieben wird, was in dieser Session tatsächlich
    passiert ist. Keine Zahl, die nicht gemessen wurde; keine
    Entscheidung, die nicht gefallen ist.
-5. **Ergebnis melden:** eine Zeile je Eintrag mit Zieldatei. „Nichts zu
+5. **`Kern/Werkzeuge/pruefen.py` laufen lassen** — nach dem Schreiben,
+   denn das Schreiben erzeugt die Fehler, die es findet. Fünf Prüfungen:
+   tote Verweise · Datumsfolge und Pflichtfelder der Chroniken · Befehle
+   gegen ihre Arbeitskopie · Zahlwörter in Überschriften · Glossar gegen
+   die Besitzerdateien. Das Skript **meldet nur**; jeder Fund ist ein
+   Befund, kein Auftrag. Was es nicht sieht, ist, ob eine Aussage stimmt
+   — dafür braucht es weiterhin einen Abschnitt vom Typ Prüfung.
+6. **Ergebnis melden:** eine Zeile je Eintrag mit Zieldatei. „Nichts zu
    schreiben" ist ein gültiges Ergebnis und wird ebenso gemeldet — sonst
    ist nicht unterscheidbar, ob nichts anfiel oder etwas vergessen wurde.
+   Die Funde des Skripts kommen dazu, auch wenn es null waren.
 
 ### Ablauf von `/harness:wechsel <Typ>`
 Der Wechsel ist ein **Kontrollpunkt**, siehe „Wechsel des Abschnitts".
@@ -253,7 +322,9 @@ Der Wechsel ist ein **Kontrollpunkt**, siehe „Wechsel des Abschnitts".
    geschrieben, solange die Begründung noch da ist.
 3. Neuen Typ benennen und den alten Abschnitt für beendet erklären. Beim
    Typ **Prüfung** gehört der Gegenstand dazu („Prüfung — Gegenstand:
-   der Harness").
+   der Harness"). Im selben Zug den **Session-Titel** umschreiben: nur
+   die Klammer, das Thema bleibt (siehe „Der Typ steht im
+   Session-Titel").
 4. **Modus und die zwei Regler neu fragen.** Sie hängen am Abschnitt,
    nicht an der Session.
 
@@ -264,8 +335,17 @@ Der Wechsel ist ein **Kontrollpunkt**, siehe „Wechsel des Abschnitts".
    Schicht, damit die nächste Session nicht bei null sucht.
 3. Commit-Vorschlag nach Abschnitt „Session-Ende" — je berührtem Repo
    einer, jedes zählt seine eigene Nummer.
-4. **Plan nachziehen** (`PLAN.md`), drei Handgriffe:
+4. **Plan nachziehen** (`PLAN.md`):
    - erledigte Punkte **abhaken** — nicht löschen;
+   - die **stehen gebliebenen Punkte einmal gegen den heutigen Stand
+     halten**. Nicht neu schreiben — nur bestätigen oder melden, was
+     überholt ist. Grund: Überschrieben wird sonst allein die Übergabe,
+     und ein alter Abschnitt sieht danach genauso verbindlich aus wie ein
+     frisch geschriebener. Belegt am 2026-08-23: Eine frische Session las
+     „Testphase — beginnt nach der Prüfung" als gültigen Auftrag vor,
+     obwohl Isor längst anders entschieden hatte (`STOERUNGEN.md`);
+     `PLAN.md` ist mit ~100 Zeilen klein genug, dass der Blick nichts
+     kostet;
    - Abschnitt **„Für die nächste Session" überschreiben**. Immer, nicht
      nur wenn etwas offen ist: „gerade nichts offen" ist ein gültiger
      Inhalt. Grund: Nur so findet die nächste Session ihren Auftrag —
@@ -276,7 +356,9 @@ Der Wechsel ist ein **Kontrollpunkt**, siehe „Wechsel des Abschnitts".
      das von Isor; melden ist Pflicht. Der Schnitt selbst steht im Kopf
      von `PLAN.md`: Ereignis ins LOG, Punkte in der ROADMAP abhaken,
      Datei leeren.
-5. Danach ist die Session zu. Claude fängt nichts Neues mehr an.
+5. **Session-Titel auf `(zu)` setzen.** Letzter Moment, in dem das geht —
+   `/clear` ruft Claude nicht mehr auf.
+6. Danach ist die Session zu. Claude fängt nichts Neues mehr an.
 
 ## Pflegetag (`/harness:sonntag`)
 
@@ -289,8 +371,13 @@ dieselbe Arbeitsteilung wie beim Review-Gate.
    Abschnitt „Wann geschaut wird". Claude legt eine Vorschlagsliste vor
    und ändert nichts von selbst.
 
-Mehr Punkte hat der Pflegetag derzeit nicht. Ein zweiter ist vorgesehen,
-sobald `Kern/Werkzeuge/pruefen.py` gebaut ist (`Kern/ROADMAP.md`).
+Mehr Punkte hat der Pflegetag derzeit nicht — und `pruefen.py` wird
+bewusst **keiner**. Das Skript läuft in Sekunden und bei jedem
+`/harness:sichern`; die Fehler, die es findet, entstehen beim Schreiben
+und sollen nicht bis Sonntag warten. Der Pflegetag ist für Arbeit, die
+Aufwand kostet und deshalb einen Termin braucht — das Abrufen und
+Gegenlesen der Artifact-Seiten. *(Entschieden 2026-08-23, nachdem die
+Trennung beim Bau des Skripts auffiel.)*
 
 **Nicht Teil des Pflegetags: das Backup** (Isor, 2026-08-23). Das Skript
 `IsorBackup/Werkzeuge/sichern.ps1` ist gebaut und bleibt liegen; Isor
@@ -299,6 +386,32 @@ Claude erinnert nicht daran und meldet den Punkt auch nicht als offen.
 Wieder aufgenommen wird er erst, wenn die Testphase durch ist und der
 Harness sich im laufenden Betrieb bewährt hat — nicht nach Kalender.
 Begründung in `Kern/DECISIONS.md`, 2026-08-23.
+
+## Die Prüfebenen
+
+Der Harness prüft an mehreren Stellen, und ohne Übersicht verliert man
+sie aus dem Blick *(Isor, 2026-08-23: „so viele Prüfebenen, dass ich
+nicht mehr den Überblick habe")*. Dieser Abschnitt besitzt die
+**Übersicht**, jede Zeile verweist auf ihren Besitzer.
+
+| Ebene | prüft | wann | wer urteilt |
+|---|---|---|---|
+| `Kern/Werkzeuge/pruefen.py` | Verweise · Chronik-Format · Befehle gegen Arbeitskopie · Zahlwörter · Glossar | Session-Start und jedes `/harness:sichern` | Skript |
+| `Kern/Werkzeuge/index_bauen.py` | fehlt eine `Ownership:`-Zeile? | wenn Dateien dazukommen oder wegfallen | Skript |
+| `Projekte/<Name>/Werkzeuge/prefab_status.py` | welche Prefabs es gibt und was auffiel | bei Projektarbeit | Skript und Mensch |
+| **Review-Gate** (`CODE_GUIDELINES.md`) | Fattening · Enum-Sicherheit · Werkzeugwahl · Naming · Artifact-Bezug | vor dem Coden | Mensch und Claude |
+| **Doku-Pflicht** (unten) | Knowledge- · Störungs- · INDEX- · Glossar-Frage | jedes `/harness:sichern` | Claude fragt, Isor entscheidet |
+| **Pflegetag** (`/harness:sonntag`) | stimmen die Artifact-Seiten noch? | wöchentlich | Mensch und Claude |
+| **Typ Prüfung** (oben) | stimmt der Inhalt? | auf Zuruf | Mensch und Claude |
+
+**Die Trennlinie verläuft zwischen Skript und Urteil: Skripte prüfen
+Form und Bestand, Menschen prüfen Aussagen.** Sie ersetzen einander
+nicht. Kein Skript hätte gefunden, dass eine Artifact-Seite ein Skript
+beschreibt, das es nie gab; kein Mensch geht zuverlässig 46 Dateien nach
+Zahlwörtern durch. *(Beides am 2026-08-23 gemessen: die Artifact-Prüfung
+fand rund dreißig inhaltliche Fehler, die kein Werkzeug sieht;
+`pruefen.py` fand eine Begriffskollision, die drei Leserunden übersehen
+hatten.)*
 
 ## Doku-Pflicht
 
@@ -313,6 +426,13 @@ Immer, bei jedem Typ:
 2. **Störungs-Frage.** Gab es einen Aussetzer? Wenn ja, eine Zeile in
    `STOERUNGEN.md`.
 3. **INDEX** nachziehen, falls Dateien dazukamen oder wegfielen.
+4. **Glossar-Frage.** Ist ein Begriff dazugekommen, oder hat sich eine
+   Definition geändert? Dann `GLOSSARY.md` nachziehen. Der INDEX wird
+   erzeugt und kann nicht veralten — das Glossar wird von Hand gepflegt
+   und ist nach `DOC_RULES.md` Abschnitt 4 ein **Verzeichnis**, das
+   laufend abgeglichen werden muss. Ohne diesen Punkt sammelte es
+   zwischen dem 2026-08-22 und dem 2026-08-23 drei falsche Zeilen
+   (Befunde P10 bis P13).
 
 Nach Typ zusätzlich:
 

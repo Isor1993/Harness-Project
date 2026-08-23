@@ -128,3 +128,44 @@ damals, nicht den von heute.
   Archivieren zeigt kein lebender Verweis mehr auf die drei
   Arbeitsdateien. Nicht geprüft: die rund zwanzig Dateien, die an diesem
   Tag geschrieben wurden — das gehört einer frischen Session.
+- 2026-08-23 — **Prüfung der Version 1.0.0**, Gegenstand Harness, in
+  frischer Session: die vier neuen Regeln, die geretteten Regeln gegen
+  die drei archivierten Arbeitsdateien und ein Durchgang quer über den
+  Bestand ergaben **vierzehn Befunde** in `_HARNESS_PRUEFUNG_1_0_0.md`
+  (acht muss · vier lohnt sich · einer bei Bedarf · einer ein Beleg ohne
+  Auftrag), behoben wurde nichts. Der Beleg ist die Übergabe selbst: Die Session fand
+  ihren Auftrag allein über die Leseordnung, ohne Zuruf — der Fall aus
+  Befund A34 tritt nicht mehr auf. Die dichteste Stelle war das
+  `GLOSSARY.md` mit drei falschen Zeilen aus zwei Bautagen; es ist ein
+  von Hand gepflegtes Verzeichnis und steht in keiner Doku-Pflicht.
+- 2026-08-23 — **Die vierzehn Befunde behoben und `pruefen.py` gebaut.**
+  Alle Befunde der Prüfung sind erledigt; beim Beheben kamen zwei
+  weitere Anzahl-Verstöße ans Licht, aus sechs gemeldeten Stellen wurden
+  acht behobene. Das neue Werkzeug `Kern/Werkzeuge/pruefen.py` prüft
+  Verweise, Chronik-Format, Befehle gegen ihre Arbeitskopie, Zahlwörter
+  und das Glossar; es läuft bei jedem `/harness:sichern` und beim
+  Session-Start, **meldet nur und ändert nichts**. Der erste Lauf ergab
+  **45 Funde, davon rund 40 Fehlalarme** — geplante Dateien, Verweise auf
+  fremde Bäume, ein Gegenbeispiel im Regeltext, Zeitangaben statt
+  Listenanzahlen. Nach zwei Runden Schärfung: 4 Funde, davon einer echt
+  — das Glossar führte „V-Nummer", `VERSIONIERUNG.md` nannte dieselbe
+  Sache „Commit-Nummer". Daraus die Bauregel für jeden weiteren Prüfer:
+  Ein Fund, den niemand nachprüfen kann, ist Rauschen, und Rauschen macht
+  den Prüfer wertlos.
+  Dazu aus Isors Einwürfen: Der **Session-Titel trägt jetzt den laufenden
+  Abschnitt** in der Klammer, samt der Ruhezustände `zu` und
+  `aufgehoben`; `WORKFLOW.md` hat einen Abschnitt **Die Prüfebenen**
+  bekommen, weil sieben Stellen ohne Übersicht nicht mehr zu behalten
+  waren. Die **Bestandsaufnahme der acht Altbestand-Artifacts** aus einer
+  Parallel-Session wurde aus deren Scratchpad ins Repo gerettet — 540
+  Zeilen, die an einem Temp-Ordner hingen. Drei Störungen festgehalten,
+  darunter zwei eigene Fehlurteile.
+  Zum Schluss die Ordnerstruktur zum ersten Mal ganz durchgesehen:
+  `Assets\` des Harness-Repos enthält **14 Dateien, alle aus der
+  Unity-Vorlage**. Daraus der Bauplan `_HARNESS_UMBAU_STRUKTUR.md` —
+  der Harness wird sein eigenes Repo, null Weiterleitungen, der Notkern
+  entfällt. Alle betroffenen Zeiger sind darin gesucht und aufgelistet,
+  zwei davon liegen in **anderen Repos**.
+  Geprüft: `pruefen.py` über 47 Dateien, 0 Funde · INDEX neu erzeugt,
+  alle mit Ownership-Zeile · die ROADMAP von 224 auf 132 Zeilen zurück
+  auf ihr eigenes Format gebracht.

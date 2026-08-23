@@ -18,6 +18,13 @@ Lern-Sessions. Der Harness wird mit seinen eigenen Mitteln gebaut: Diese
    steht der Auftrag, falls die vorige Session einen hinterlassen hat.
    Danach der Rest — was in den nächsten Wochen dran ist.
 4. `Kern/WORKFLOW.md` — Session-Typen, Modus und Regler, Doku-Pflicht
+5. `python Kern/Werkzeuge/pruefen.py` laufen lassen und das Ergebnis
+   melden — auch „0 Funde". Grund: Zwischen zwei Sessions ändert jemand
+   anders etwas (eine Parallelsession, Isor von Hand, ein `git pull`);
+   der letzte Lauf beim Sichern deckt das nicht ab. Ein Fund ist ein
+   Befund, kein Auftrag — er wird gemeldet, nicht sofort behoben. Der
+   Lauf kostet rund 1 % dessen, was die Punkte 1 bis 4 ohnehin kosten
+   (gemessen 2026-08-23).
 
 Die ROADMAP einer Schicht wird erst gelesen, wenn an ihr gearbeitet wird
 — nicht bei jedem Start.

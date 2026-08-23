@@ -15,27 +15,73 @@ Kein Datum, keine Tagesplanung — das ist Sache von `PLAN.md`.
   steht in den Regeldateien. Ereignis im `LOG.md`.
 
 ## Als Nächstes
-- [ ] **Testphase beginnen.** Der Harness wird benutzt statt gebaut.
-  Erste Aufgabe: `C:\IsorBackup` aufräumen, in Viererpaketen
-  (`IsorBackup/ROADMAP.md`). Zugleich die erste Belastungsprobe — was
-  dabei nicht trägt, kommt in `STOERUNGEN.md`.
-- [ ] **Nachlese zum Bau vom 2026-08-23.** An diesem Tag wurde in rund
-  zwanzig Dateien geschrieben — zwei neue Session-Regeln, die Übergabe,
-  der Gestaltungsabschnitt, die Auslieferungsregel —, und **nichts davon
-  ist gegengelesen**. Nach der eigenen Regel darf das nicht dieselbe
-  Session tun. Gehört als Erstes in eine frische Prüf-Session.
-- [ ] **Prüfskripte in den Kern übernehmen** als
-  `Kern/Werkzeuge/pruefen.py`, Aufruf am Pflegetag. Zwei Prüfungen:
-  alle Datei-Verweise gegen den tatsächlichen Bestand, und die
-  Formatzusagen der Chroniken und Entscheidungsdateien
-  (Datumsreihenfolge, Pflichtfelder). Grund: In der Abnahme vom
-  2026-08-22 haben genau diese zwei Prüfungen 6 der 33 Befunde allein
-  gefunden — tote Verweise, verdrehte Reihenfolge und nicht gedeckte
-  Haken rutschen beim Lesen durch. Wegwerf-Fassungen lagen im
-  Scratchpad; für den Dauerbetrieb zusammenfassen und aufräumen. Als
-  dritte Prüfung dazu: Original und Arbeitskopie der Befehle vergleichen
-  (**A39**) — `Kern/Befehle/` gegen `.claude\commands\harness\`, heute
-  identisch, aber durch nichts abgesichert.
+- [x] **Nachlese zum Bau vom 2026-08-23** — gelaufen am 2026-08-23 als
+  Prüfung in frischer Session. Ergebnis: vierzehn Befunde in
+  `_HARNESS_PRUEFUNG_1_0_0.md`, acht davon `muss`. Behoben ist nichts.
+- [x] **Die Befunde der Prüfung 1.0.0 beheben** — am 2026-08-23 in einem
+  eigenen Abschnitt erledigt, alle vierzehn. Wo jede Änderung steht,
+  zeigt die Tabelle „Behebung" in `_HARNESS_PRUEFUNG_1_0_0.md`. Offen
+  bleibt allein die Automatisierung zu P4 und P13; sie steht als Punkt
+  beim Prüfskript unten. Betroffen waren:
+  **P2 — „Plan nachziehen" prüft nur den Übergabe-Abschnitt** (ein
+  vierter Handgriff fehlt) · **P3 — diese ROADMAP widerspricht
+  `PLAN.md`** (Testphase ohne Zuruf-Vorbehalt, Reihenfolge verdreht) ·
+  **P4 — die Anzahl-Regel ist an sechs Stellen gebrochen** ·
+  **P7 — die Regel „Befunde sofort eintragen" wurde beim Archivieren
+  übersehen** · **P10 bis P12 — drei falsche Zeilen im `GLOSSARY.md`**
+  (der fünfte Session-Typ fehlt, „Chronik" sagt das Gegenteil der Regel,
+  „Auslieferung" heißt dort Kopie statt Vorlage) · **P13 — das Glossar
+  steht in keiner Doku-Pflicht**, was die drei erklärt. Danach ist die
+  Befundliste archivierbar.
+- [x] **Prüfskripte in den Kern übernehmen** — gebaut am 2026-08-23 als
+  `Kern/Werkzeuge/pruefen.py`, fünf Prüfungen, Aufruf bei jedem
+  `/harness:sichern` statt am Pflegetag (die Fehler entstehen beim
+  Schreiben). Erster scharfer Lauf: ein echter Fund, drei Sammelhinweise;
+  der Weg von 45 auf 4 Funde steht im `Kern/LOG.md`. Offen bleibt nichts.
+Die ersten beiden Punkte hängen voneinander ab und stehen vor allem
+anderen: Solange die Pfade sich noch ändern, erzeugt jede weitere
+Arbeit Zeiger, die hinterher noch einmal angefasst werden müssen.
+
+- [ ] **Struktur begradigen: der Harness wird sein eigenes Repo.** Bis zu
+  den Regeln führen heute zwei Weiterleitungen über drei `CLAUDE.md`, und
+  die mittlere Ebene ist ein Unity-Projekt, dessen `Assets\` nur aus der
+  Unity-Vorlage besteht. Ziel ist ein Repo, dessen Wurzel der Harness
+  selbst ist — null Weiterleitungen, und der Notkern entfällt ersatzlos.
+  Handgriffe, Messwerte und die offenen Entscheidungen im Bauplan
+  `_HARNESS_UMBAU_STRUKTUR.md`, Baustein 1.
+- [ ] **Hooks: erzwingen statt erinnern.** Von den sieben Prüfebenen
+  hängen die drei Skript-Ebenen unnötig an Claudes Erinnerung; ein Hook
+  führt sie aus, ohne dass jemand daran denken muss. Erster Kandidat:
+  Session-Start ruft `pruefen.py`. **Erst nach dem Umbau oben** — Hooks
+  leben in `.claude\settings.json`, und solange die außerhalb des Repos
+  liegt, wäre jeder Hook unversioniert. Einzelheiten im Bauplan
+  `_HARNESS_UMBAU_STRUKTUR.md`, Baustein 2.
+- [ ] **Den Artifact-Altbestand nachziehen.** Grundlage ist
+  `_HARNESS_ARTIFACTS_1_0_0.md` — acht Seiten, geprüft gegen Code und
+  veröffentlichte Fassung, mit Aufwandsschätzung und einer begründeten
+  Reihenfolge (billigste zuerst: Terrain-Fallen, dann Multithreading,
+  Input-Reader, Schaf, Poisson, GPU, Terrain & Gras, Grundgerüst).
+  Vier Punkte braucht Isor vorab, sie stehen dort in Abschnitt 4 —
+  darunter: Wird „Grundgerüst" geteilt (sie beantwortet heute drei
+  Fragen statt einer), und welche Gras-Zellgröße gilt (32 m, ~36 m oder
+  128 m — zwei Seiten widersprechen sich). **GPU-Instancing und
+  Terrain & Gras gehören zusammen angefasst**, sonst wird der
+  Widerspruch schlimmer. Die Index-Nachträge sind dort gesammelt und
+  noch nicht in `ARTIFACT_INDEX.md` eingetragen.
+- [ ] **Der Pflegetag prüft eine Seite inhaltlich, statt alle
+  oberflächlich.** Belegt am 2026-08-23: Er meldete drei Funde, eine
+  gründliche Durchsicht derselben acht Seiten fand rund dreißig
+  (`STOERUNGEN.md`). Der Abgleich sieht heute nur Metadaten — Index
+  gegen Änderungen und gegen die Veröffentlichungsliste. Zu entscheiden:
+  eine Seite je Woche im Turnus, gegen den Code gehalten. Hängt daran,
+  dass `ARTIFACT_RULES.md` den Stand-Stempel nur erlaubt, **weil** der
+  Pflegetag ihn kontrolliert.
+- [ ] **Regel für parallele Sessions.** `WORKFLOW.md` sagt „höchstens 2–4
+  Sessions parallel offen", aber nichts darüber, wer schreiben darf. Am
+  2026-08-23 hat sich eine Parallel-Session selbst eine Regel gegeben und
+  vorsichtshalber gar nichts ins Repo geschrieben — richtig gehandelt,
+  aber geraten. Zu klären: Wer hält den Stift, wenn zwei Sessions
+  dieselbe Datei berühren könnten, und wie übergibt man ihn.
 - [ ] **Systemliste je Projekt erzeugen** (E14). Skript liest
   `Assets/Systems`, `Entities`, `Shared` und schreibt Name, Anzahl
   Skripte, letzte Änderung; die Kurzbeschreibung je System kommt von
@@ -55,10 +101,22 @@ Kein Datum, keine Tagesplanung — das ist Sache von `PLAN.md`.
   eingesetzt wird, wie `.gitignore` je Repo aussehen muss, wie mit der
   gewachsenen Historie umgegangen wird. Betrifft alle drei Repos.
   Dazu gehört auch das Build-Versionsschema (`Kern/VERSIONIERUNG.md`).
+  **Überschneidung beachten:** Für das Harness-Repo nimmt „Struktur
+  begradigen" oben einen Teil davon vorweg — `.gitignore` und die Frage,
+  was dort überhaupt hineingehört. Dieser Punkt behandelt danach nur noch
+  die zwei anderen Repos und die übergreifenden Fragen.
 - [ ] **Zwei Reste aus dem ARTIFACT_INDEX** (E46): Die Zeile „Seite →"
   ist erst bei drei Seiten gefüllt — wird nachgetragen, wenn die
   jeweilige Seite das nächste Mal angefasst wird. Und für die tote ID
   `0dd96ec7-…` ist nicht entschieden, welche heutige Seite sie beerbt.
+
+- [ ] **Testphase beginnen — erst auf Isors Zuruf.** Der Harness wird
+  benutzt statt gebaut. Steht bewusst am Ende dieser Liste: Der Beginn
+  hängt an keiner Bedingung, die Claude feststellen könnte, sondern an
+  Isors Ansage (`Kern/DECISIONS.md`, 2026-08-23). Erste Aufgabe dann:
+  `C:\IsorBackup` aufräumen, in Viererpaketen (`IsorBackup/ROADMAP.md`).
+  Zugleich die erste Belastungsprobe — was dabei nicht trägt, kommt in
+  `STOERUNGEN.md`.
 
 ## Später, nur bei Bedarf
 - [ ] **Knowledge-Archivierung automatisieren.**

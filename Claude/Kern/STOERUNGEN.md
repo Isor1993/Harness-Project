@@ -17,7 +17,9 @@ Beleg, dass die Änderung nötig war. Diese Datei ist eine Chronik und
 braucht daher kein Archiv.
 
 Wer einträgt: Claude, sobald Isor einen Aussetzer meldet — zusätzlich
-fragt `/harness:ende` danach, damit es nicht ausfällt.
+fragt die Doku-Pflicht danach, damit es nicht ausfällt. Wann das ist,
+besitzt `WORKFLOW.md`: bei jedem Typ, also auch beim Wechsel und beim
+Sichern mitten in der Session, nicht erst am Ende.
 
 ---
 
@@ -151,3 +153,75 @@ nicht in der Formulierung. Merkmal für den Wiederholungsfall: Wenn beide
 Antworten dieselbe Arbeit nach sich ziehen, ist es ein Detail.
 **Stand:** offen. Beobachten, ob es sich wiederholt — wie beim Eintrag
 vom 2026-08-21 oben.
+
+### 2026-08-23 — Überholten Planabschnitt als gültig vorgelesen
+**Was:** Beim Session-Start gab Claude den Stand aus `PLAN.md` wieder und
+nannte darin die Testphase („danach `C:\IsorBackup` aufräumen") als
+Nächstes. Isor musste widersprechen: Er hatte längst entschieden, dass
+zuerst der Harness fertig wird und die Testphase erst auf seinen Zuruf
+beginnt.
+**Ursache:** Der Abschnitt stand unverändert in `PLAN.md`, weil
+`/harness:ende` nur den Übergabe-Abschnitt überschreibt. Die drei
+Handgriffe unter „Plan nachziehen" prüfen die **stehen gebliebenen**
+Punkte nicht — ein alter Abschnitt sieht danach genauso verbindlich aus
+wie ein frisch geschriebener. Claude hat ihn nicht gegen den Stand
+gehalten, sondern vorgelesen.
+**Regel:** Lücke. Vorschlag: ein vierter Handgriff in `WORKFLOW.md` →
+„Ablauf von `/harness:ende`", der die stehenden Punkte einmal bestätigt
+oder meldet. Ausführlich als Befund **P2** in
+`_HARNESS_PRUEFUNG_1_0_0.md`.
+**Stand:** offen. `PLAN.md` und `Kern/DECISIONS.md` sind am selben Tag
+richtiggestellt; die Regel selbst ist unverändert.
+
+### 2026-08-23 — Befundliste lag außerhalb des Repos
+**Was:** Eine Parallel-Session prüfte die acht Altbestand-Artifacts gegen
+Code und veröffentlichte Seiten und schrieb 540 Zeilen Befunde in ihren
+**Scratchpad** — sessiongebunden, nicht versioniert, in keinem Register.
+Die Arbeit hing an einem Temp-Ordner.
+**Ursache:** Regel-Lücke. `WORKFLOW.md` sagte zur Befundliste nur „nach
+dem Anlass benannt" und nannte keinen Ablageort. Die Session hielt ihre
+Liste folgerichtig für eine private Arbeitsunterlage. Dieselbe Lücke
+wurde am selben Tag unabhängig in der Harness-Prüfung gefunden (Befunde
+P5 und P7) — zwei Sessions, die voneinander nichts wussten, stolperten
+über denselben Stein.
+**Regel:** Fehlte, steht jetzt: Befundlisten heißen `_HARNESS_<Anlass>.md`
+und liegen im Repo; geschrieben wird laufend, nichts bleibt nur im
+Kontext (`WORKFLOW.md` → „Prüfung").
+**Stand:** behoben 2026-08-23 — Regel ergänzt, die Datei unverändert nach
+`Claude\_HARNESS_ARTIFACTS_1_0_0.md` übernommen und im INDEX geführt.
+
+### 2026-08-23 — Der Pflegetag fand drei von rund dreißig
+**Was:** Der erste Pflegetag meldete **drei** Artifact-Funde. Eine
+Parallel-Session fand am selben Tag auf denselben acht Seiten rund
+**dreißig**, darunter ein Skript, das es nie gab (`PauseMenuController`),
+sämtliche Dateipfade einer Seite und ein Widerspruch zweier Seiten über
+die Zellgröße um den Faktor vier.
+**Ursache:** Der Sonntagsabgleich prüft den `ARTIFACT_INDEX` gegen die
+Änderungen der Woche und gegen die Veröffentlichungsliste — also
+**Metadaten**. Ob die Aussagen einer Seite noch stimmen, sieht er nicht;
+dazu müsste die Seite abgerufen und gegen den Code gehalten werden. Der
+Harness verlässt sich aber auf ihn: `ARTIFACT_RULES.md` erlaubt den
+Stand-Stempel auf Seiten ausdrücklich deshalb, weil „der
+Sonntagsabgleich ihn kontrolliert".
+**Regel:** Vorhanden, aber zu schwach für das, was auf ihr aufbaut.
+Vorschlag: Der Pflegetag nimmt sich **eine** Seite je Woche inhaltlich
+vor, statt alle oberflächlich. Aufgabe steht in `Kern/ROADMAP.md`.
+**Stand:** offen.
+
+### 2026-08-23 — Aus dem Session-Titel auf den Typ geschlossen
+**Was:** Claude meldete als Störung, eine Parallel-Session sei unter dem
+falschen Typ gelaufen. Einziger Beleg war ihr Titel „Design", während
+inhaltlich eine Prüfung stattfand. Isor widersprach: Die Titel vergibt
+**er**, sie sind frei gewählt und tragen keine Typ-Information. Der
+Eintrag war nicht gedeckt und wurde durch diesen ersetzt.
+**Ursache:** Aus einem Etikett geurteilt, statt die Quelle zu lesen. Vom
+Transkript lagen nur die letzten Nachrichten vor, der Session-Anfang mit
+der Typ-Frage war nicht darunter — beurteilt wurde trotzdem.
+`DOC_RULES.md` Abschnitt 1 verlangt seit dem 2026-08-22 ausdrücklich das
+Gegenteil, und zwar für **jede** Art von Befund.
+**Regel:** Vorhanden und ausreichend, der Fehler lag in der Anwendung.
+Zweiter Fall derselben Sorte an einem Tag — der erste war der
+vorgelesene Planabschnitt oben.
+**Stand:** offen. Der eigentliche Fund dahinter ist kein Fehlverhalten,
+sondern eine Lücke: **Typ und Modus sind nirgends sichtbar** — weder
+während der Session noch hinterher. Als Aufgabe in `Kern/ROADMAP.md`.

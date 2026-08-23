@@ -105,6 +105,14 @@ Problemen als Erstes zu prüfen sind.
   Der Fix ist mechanisch: wiederverwendeter Puffer,
   `OverlapSphereNonAlloc`, Trefferzahl als zweiter Parameter in
   `TryGetClosest`. Am Abgabetag bewusst nicht gemacht.
+- [ ] **Wasserspiegel steht 0,01 unter der Plateauhöhe.** Im
+  `TerrainConfig_Default.asset` ist die Plateauhöhe `0,15`, der
+  Wasserspiegel `0,14`. `TerrainConfig.OnValidate` warnt, sobald das
+  Wasser **auf oder über** der Plateauhöhe liegt („das Dorf würde
+  absaufen") — die Warnung greift also gerade eben nicht. Ob der geringe
+  Abstand Absicht ist oder aus dem Tuning stammt, entscheidet Isor; beim
+  nächsten Anfassen der Terrain-Werte mit ansehen. *(Aufgefallen am
+  2026-08-23 bei der Artifact-Bestandsaufnahme, nicht beim Spielen.)*
 
 ## Politur (nur wenn Zeit bleibt)
 

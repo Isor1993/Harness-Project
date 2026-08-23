@@ -639,3 +639,75 @@ zu teuer erkauft); ein Zeugnis als Muster behalten (eine Bewertung von
 Isors Person geht ein fremdes Projekt nichts an). `LOG.md`,
 `DECISIONS.md` und `_ARCHIV.md` bleiben bewusst drin: Sie erklären, warum
 die Regeln so aussehen.
+
+## 2026-08-23 — Die Testphase beginnt auf Zuruf, nicht nach der Prüfung
+Was: Wann der Harness in anderen Räumen (`C:\IsorBackup`, Isor's Tower)
+in Betrieb genommen wird, entscheidet **Isor durch Ansage**. Kein Datum,
+keine Bedingung, die Claude selbst feststellen könnte. Bis dahin wird am
+Harness gearbeitet: prüfen, was nicht trägt, und es verbessern. Claude
+meldet die Testphase nicht als fällig. Festgehalten in `PLAN.md`.
+Warum: „Nach der Prüfung" klingt nach einem Termin, ist aber keiner — ob
+der Harness so weit ist, kann nur Isor beurteilen, und niemand sonst
+sieht, wie viel Arbeit er noch will. Aufgefallen am 2026-08-23: Claude
+las den alten Plansatz vor, als wäre er noch gültig, obwohl Isor längst
+anders entschieden hatte. Gleiche Bauart wie beim Backup (Eintrag oben):
+Eine Bedingung, die Claude nicht messen kann, wird zur Ansage.
+Verworfen: die Testphase an das Ende der Befund-Behebung hängen (Befunde
+werden nachwachsen, solange geprüft wird — das Ende wäre willkürlich);
+ein Datum setzen (dasselbe Problem, nur früher sichtbar).
+
+## 2026-08-23 — Der laufende Typ steht in der Klammer des Session-Titels
+Was: Der Session-Titel folgt dem Schema `<Thema> (<Typ>)`; der Modus
+kommt nur dazu, wenn er vom Lernmodus abweicht. **Das Thema gehört Isor,
+die Klammer gehört Claude**, der sie bei jedem `/harness:wechsel`
+umschreibt. Der Titel ist **Anzeige, kein Beleg** — er lebt in der App,
+nicht im Repo. Ausformuliert in `Kern/WORKFLOW.md`.
+Warum (Isor, 2026-08-23): Der Typ entscheidet, was die Doku-Pflicht
+schreibt — und stand bis heute an **keiner** Stelle. Weder während der
+Session noch hinterher war zu sehen, worin man steckt; wer es wissen
+wollte, musste zurückscrollen. Isors Fassung hält den Thementeil stabil
+und bewegt nur die Klammer, sodass die Session über den Tag
+wiedererkennbar bleibt. Dass Claude den Titel selbst setzen kann, ist
+der Grund, warum es trägt: Es hängt nicht an Isors Disziplin, und
+Verhaltensregeln, die am Erinnern hängen, sind am selben Tag mehrfach
+gerissen.
+Verworfen: den Typ in eine Kopfzeile von `PLAN.md` schreiben (die Datei
+wird nach jedem Zeitraum geleert, und man müsste sie öffnen, statt zu
+sehen); den Titel bei jedem Wechsel komplett neu bauen (dann springt der
+Name, und die Session ist in der Liste nicht wiederzuerkennen); den
+Modus immer mitschreiben (er wechselt seltener als der Typ und stünde
+meist nur im Weg). Hingenommen: Der Titel trägt immer nur den letzten
+Abschnitt — die Abfolge steht im LOG.
+**Ergänzt am selben Tag (Isor):** Die Klammer trägt außerdem die zwei
+Ruhezustände — `zu` nach `/harness:ende` und `aufgehoben` für eine
+absichtlich offen gelassene Session. Grund: Eine beendete Session zeigte
+sonst weiter einen Typ und behauptete Arbeit, die niemand mehr tut; und
+eine geparkte Session (Isor hält eine offen, um Inhalte darin zu
+behalten) wäre beim Aufräumen entweder als tot oder als laufend gelesen
+worden. Bekannte Grenze: Bei `/clear` kann Claude nichts mehr setzen —
+der Handgriff sitzt deshalb in `/harness:ende`, dem letzten Moment davor.
+
+## 2026-08-23 — `pruefen.py` läuft beim Sichern, nicht am Pflegetag
+Was: Das Prüfskript wird bei jedem `/harness:sichern` aufgerufen — also
+auch bei `/wechsel` und `/ende` — und **meldet nur**, es ändert nichts.
+Der Pflegetag bekommt es ausdrücklich **nicht** als zweiten Punkt; dort
+bleibt allein die Artifact-Durchsicht.
+Warum: Die beiden Sorten Arbeit haben verschiedene Preise. Ein Lauf über
+46 Dateien dauert Sekunden, das Abrufen und Gegenlesen der
+Artifact-Seiten eine halbe Session. Nur das Teure braucht einen Termin.
+Dazu entstehen die Fehler, die das Skript findet — tote Verweise,
+Zahlwörter, abweichende Glossar-Zeilen — genau **beim Schreiben**;
+wöchentlich zu prüfen hieße, sie bis zu sechs Tage stehen zu lassen. Die
+drei falschen Glossar-Zeilen sind in zwei Tagen entstanden.
+Verworfen: nur sonntags (Befunde stünden tagelang, und am Sonntag fehlt
+der Anlass im Kopf); beides parallel (zwei Betriebsarten, die
+auseinanderlaufen); das Skript Triviales selbst reparieren lassen (es
+schriebe unbeaufsichtigt in Regeldateien — gegen „Isor baut und
+entscheidet").
+Gemessen beim Bau: Der erste Lauf meldete **45 Funde, davon rund 40
+Fehlalarme** — geplante Dateien, Verweise auf fremde Bäume, ein
+Gegenbeispiel im Regeltext, Zeitangaben statt Listenanzahlen. Nach zwei
+Runden Schärfung: 4 Funde, davon einer echt. Daraus die Bauregel für
+jeden weiteren Prüfer: **Ein Fund, den niemand prüfen kann, ist Rauschen,
+und Rauschen macht den Prüfer wertlos** — dieselbe Mechanik, aus der das
+Backup aus dem Pflegetag geflogen ist.

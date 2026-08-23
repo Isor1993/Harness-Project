@@ -315,7 +315,7 @@ im Kern und benennt, dass der Maßstab aus der aktiven Schicht kommt.
 
 ## 11. Wenn Inhalt umzieht
 
-Beim Aufteilen oder Verschieben großer Bestände gelten vier Handgriffe.
+Beim Aufteilen oder Verschieben großer Bestände gelten diese Handgriffe.
 Sie stammen aus dem Umzug von 2026-08-22 — 1.790 Zeilen DECISIONS,
 708 Zeilen ROADMAP, 782 Zeilen Zeugnisse — und haben dort gehalten:
 
@@ -328,6 +328,13 @@ Sie stammen aus dem Umzug von 2026-08-22 — 1.790 Zeilen DECISIONS,
 4. **Das Original wird nicht gelöscht**, sondern nach
    `99_Archiv\_Zu_Loeschen\<Datum>_<Anlass>\` verschoben. Geleert wird
    von Hand, und zwar von Isor.
+5. **Eine Arbeitsdatei wird geschlossen, bevor sie geht.** Letzte Haken
+   setzen oder den Rest ausdrücklich als „nicht gemacht" markieren. Ein
+   Archiv wird nie wieder aufgeräumt — ein offener Haken über erledigte
+   Arbeit steht dort dauerhaft und behauptet das Gegenteil der Wahrheit.
+   *(Belegt am 2026-08-23: In `_HARNESS_UMSETZUNG.md` gingen drei Punkte
+   offen ins Archiv, darunter ausgerechnet „vor dem Archivieren die
+   Review-Dateien auf Regeln durchsuchen" — getan war er.)*
 
 Der Preis ist gering, der Nutzen belegt: Der Umzug vom 2026-08-22 hat
 133 von 133 Einträgen und 1.651 von 1.651 Rumpfzeilen unverändert
