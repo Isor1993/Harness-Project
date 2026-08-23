@@ -307,6 +307,13 @@ statt neu anlegen" stillschweigend gebrochen); alles in WORKFLOW.md unterbringen
 (hätte die Datei aufgebläht und die Belegpflicht unauffindbar gemacht); die Regeln
 im Skill selbst halten (der Skill liegt außerhalb des Repos und wäre nicht
 mitversioniert).
+**Fortgeführt am 2026-08-22:** Zwei Angaben des Eintrags sind überholt —
+die Zeugnisse liegen nicht mehr in einer Sammeldatei, sondern je Termin
+in `Kern/Zeugnisse/<Datum>.md`, und der Auslöser ist kein globaler Skill
+mehr, sondern `/harness:zeugnis` unter `.claude\commands\harness\`. Die
+Entscheidung selbst — eigener Session-Typ mit eigener Rules-Datei statt
+vierter Artifact-Typ — gilt unverändert. Geltende Fassung:
+`Kern/ASSESSMENT_RULES.md`.
 
 ## 2026-08-11 — Zeugnis-Artifacts behalten je eine eigene URL
 Was: Benannte Ausnahme von der Pflegeregel in ARTIFACT_RULES: Ein Zeugnis wird nie
@@ -318,14 +325,6 @@ existiert — beim Zeugnis ist er der halbe Zweck. Ein Zeugnis ist keine Ansicht
 einen aktuellen Stand, sondern ein datierter Messpunkt.
 Verworfen: eine sammelnde Zeugnis-Seite mit allen Ständen (wäre auf dem Handy
 unlesbar geworden und hätte den direkten Vergleich zweier Termine erschwert).
-
-**Fortgeführt am 2026-08-22:** Zwei Angaben des Eintrags oben sind
-überholt — die Zeugnisse liegen nicht mehr in einer Sammeldatei, sondern
-je Termin in `Kern/Zeugnisse/<Datum>.md`, und der Auslöser ist kein
-globaler Skill mehr, sondern `/harness:zeugnis` unter
-`.claude\commands\harness\`. Die Entscheidung selbst — eigener
-Session-Typ mit eigener Rules-Datei statt vierter Artifact-Typ — gilt
-unverändert. Geltende Fassung: `Kern/ASSESSMENT_RULES.md`.
 
 ## 2026-08-14 — FolderTemplate um `Audio` ergänzt
 Was: `Audio\` ist ein regulärer Baustein-Unterordner neben Scripts,
@@ -397,6 +396,22 @@ vier Systeme sichtbar gemacht wurden, sind im Ordnerbaum nicht mehr zu sehen.
 Nachlauf: Die READ_MEs beider Portfolios nannten an fünf Stellen die alten
 Pfade zum bewerteten Code (K1, K2, K3, S1, S2, S3). Alle korrigiert und gegen
 das Projekt gegengeprüft, bevor neu gezippt wurde.
+
+## 2026-08-21 — Maßstab für den Harness: fünf Grenzen
+Was: Der Harness wird auf eine neue Fassung gebracht — besser bedienbar,
+stärker automatisiert, weniger Fehler, mehr Möglichkeiten. Zeit ist
+**nicht** die Grenze, Gründlichkeit geht vor Tempo. Fünf Grenzen sind
+dabei einzuhalten (Isor): nichts kaputtmachen · Zuständigkeiten dürfen
+sich nicht überlappen · es darf nicht unübersichtlich werden · es dürfen
+nicht zu viele laufende Kosten entstehen · alles, was sinnvoll geht, wird
+automatisiert.
+Warum: Sie sind der Maßstab, an dem jede spätere Erweiterung gemessen
+wird — ohne sie wächst der Harness einfach weiter. Die dritte und die
+vierte begrenzen dabei die erste und die fünfte: Struktur und Automatik
+haben einen Preis, und der Preis ist Übersicht und Pflegeaufwand.
+Verworfen: keine Alternative — es ist die Zielsetzung selbst.
+*Nachgetragen am 2026-08-23 aus `_HARNESS_REVIEW.md`, bevor die Datei
+archiviert wird (Befund A10). Der Text stand nur dort.*
 
 ## 2026-08-22 — Editor-Code liegt zentral in `Assets/Editor/`
 **Präzisiert:** „Assets nach Typ statt nach Thema" (2026-08-20), das den
@@ -524,3 +539,103 @@ allein im Dokument. Bewusst drin gelassen: `python:*`, faktisch beliebiger
 Code, aber ohne sie fragt jeder Werkzeuglauf nach.
 Bekannte Lücke: `deny` greift über den Befehlsanfang; `git -C <Pfad>
 commit` liefe daran vorbei.
+
+## 2026-08-23 — Die Übergabe an die nächste Session lebt in PLAN.md
+Was: Der Auftrag für die nächste Session steht in `PLAN.md`, Abschnitt
+„Für die nächste Session", **ganz oben**. Er wird bei jedem
+`/harness:ende` **überschrieben**, nie ergänzt — „gerade nichts offen"
+ist ein gültiger Inhalt. Die Leseordnung in `CLAUDE.md` nennt ihn
+ausdrücklich, und `/harness:ende` bekommt dafür den Schritt „Plan
+nachziehen".
+Warum: Eine Übergabe muss drei Dinge zugleich können — gelesen werden,
+vergehen, und das Archivieren der Baulisten überleben. `PLAN.md` bringt
+zwei davon mit: Es steht in der Leseordnung, und es wird nach jedem
+Zeitraum ohnehin geleert. Der Anlass ist gemessen: Am 2026-08-23 stand
+die Übergabe am Ende von `_HARNESS_UMSETZUNG.md` und wurde von einer
+frischen Session nicht gefunden — die Leseordnung endet bei WORKFLOW,
+und `PLAN.md` zeigte nicht dorthin (Befund A34).
+Verworfen: eine eigene `UEBERGABE.md` — sauberer in der Zuständigkeit,
+aber ein fünfter Punkt in der Leseordnung für fünf Zeilen Inhalt, die
+meistens „nichts offen" lauten; und das Vergehen hätte neu geregelt
+werden müssen. Ebenfalls verworfen: die ROADMAP — sie ist dauerhaft und
+wird erst gelesen, wenn an ihrer Schicht gearbeitet wird.
+Hingenommen: `PLAN.md` führt damit zwei Zeitmaßstäbe, eine Session und
+ein bis drei Wochen. Der Abschnitt steht deshalb abgesetzt oben.
+
+## 2026-08-23 — Fünfter Session-Typ „Prüfung"
+Was: Ein Abschnitt, der **liest und bewertet, aber nicht baut**. Ergebnis
+ist eine Befundliste. Der **Gegenstand wird beim Wechsel mitgenannt**
+(„Prüfung — Gegenstand: der Harness"), der Typname bleibt generisch.
+Doku-Pflicht: Befundliste · ROADMAP der geprüften Schicht · `LOG` der
+Schicht mit einem Satz · `STOERUNGEN.md`. Kein eigener Auslöser, der
+Wechsel genügt. Eine Befundliste ist **immer temporär**, eine Datei je
+Durchgang; was überlebt, ist der ROADMAP-Punkt.
+Warum: Die vier bisherigen Typen decken den Fall nicht ab. Gemessen am
+2026-08-23: Für den Prüfauftrag aus der Übergabe schlug Claude
+„Development" vor, Isor widersprach — es wird nichts gebaut —, und es gab
+keine passende Antwort. Auch die Abnahme (Phase 8) lief ohne Typ. Der
+Fall wiederholt sich absehbar: Testphase auf `C:\IsorBackup`,
+Prefab-Prüfstand, Sonntagsabgleich (Befund A40).
+Verworfen: der Name „Harness-Prüfung" — der Kern wandert in jedes Projekt
+mit, und drei der nächsten Prüfungen haben einen anderen Gegenstand als
+den Harness. Ebenfalls verworfen: eine dauerhafte `BEFUNDE.md` je Schicht
+(würde zum Friedhof, gegen die Kostenformel in `DOC_RULES.md`); kein
+LOG-Eintrag nach Zeugnis-Vorbild (ein Prüfdurchgang **ist** ein Ereignis,
+die Abnahme hat zu Recht einen bekommen).
+Offen: Woran der Takt einer Prüfung hängt — Pflegetag, Meilenstein oder
+beides. Steht als Punkt in `Kern/ROADMAP.md`; der Typ funktioniert
+solange auf Zuruf.
+
+## 2026-08-23 — Artifact-Seiten teilen eine Farbwelt
+Was: Alle Seiten benutzen dieselbe warme dunkle Palette (Grund `#17130F`,
+Pergament `#EFE4D2`, Ember `#D9762B`) und erscheinen **nur in einer
+Fassung**, ohne Hell-Modus. Fest sind Palette, Schriftrollen und der
+Aufbau; wie viel visualisiert wird, entscheidet der Inhalt. Der
+Altbestand wird beim nächsten inhaltlichen Anfassen mitgezogen, nicht
+eigens. Ausformuliert in `Kern/ARTIFACT_RULES.md`, Abschnitt „Gestaltung".
+Warum: Die Sammlung hatte zwei Looks — eine kühle helle Sorte (System und
+Lernstücke, 06./08.08.) und eine warme dunkle, die für die
+UI-Mockup-Seite entstand. Isor erkannte die zweite als deutlich
+lebendiger; ohne festgeschriebene Werte wäre sie bei jeder neuen Seite
+neu zu erfinden. Eine Familie entsteht über die Palette, nicht über
+Einzelentscheidungen.
+Verworfen: die kühle helle Fassung als Standard (acht Seiten sähen schon
+so aus, gefällt aber weniger); zwei Looks je nach Typ (die Sammlung
+bliebe zweigeteilt, und jede neue Seite bräuchte wieder eine
+Entscheidung); alle elf Seiten in einem Durchgang nachziehen (ein
+Arbeitstag für Optik, während die Inhalte ohnehin überholt sind).
+
+## 2026-08-23 — Das Backup fällt aus dem Pflegetag heraus
+Was: Die Sicherung auf die externe Platte ist **kein Punkt des
+Pflegetags** mehr. Das Skript `IsorBackup/Werkzeuge/sichern.ps1` bleibt
+gebaut und unangetastet; Isor fährt die Sicherung von Hand. Claude
+erinnert nicht daran und meldet sie nicht als offenen Punkt. Bedingung
+fürs Wiederaufnehmen: Die Testphase ist durch und der Harness hat sich
+im laufenden Betrieb bewährt — kein Datum.
+Warum: Am Harness steht noch viel Arbeit an, die erst im Betrieb
+auffallen wird; die Sicherung trägt zur Funktion des Harness nichts bei
+und lässt sich ohne ihn erledigen. Ein Punkt, der bei jedem Pflegetag
+„offen" meldet, ohne dass ihn jemand angehen will, wird nach dem dritten
+Mal überlesen — und dann fällt auch der Punkt daneben durch. Belegt am
+ersten Pflegetag (2026-08-23): Er lief, und genau dieser Punkt blieb als
+einziger offen stehen.
+Verworfen: als Erinnerung im Pflegetag belassen und einfach nicht
+ausführen (erzeugt eine Liste, in der ein Eintrag dauerhaft rot steht);
+das Skript löschen (es ist fertig und geprüft, Löschen wäre Verlust —
+`niemals löschen, nur archivieren`).
+
+## 2026-08-23 — Eine Auslieferung ist eine Vorlage, keine Kopie
+Was: Beim Packen einer Kern-Auslieferung wird entfernt, was unter `Kern/`
+liegt, aber nur Isor betrifft — die Zeugnisse, die Einträge im
+`ARTIFACT_INDEX.md` und die Zeilen in `index_geplant.txt`. Regel steht in
+`Kern/VERSIONIERUNG.md`.
+Warum: Aufgefallen beim Packen von `Harness_1.0.0`: Nach dem Buchstaben
+der Regel („nur `Kern/`") wären zwei Zeugnisse über Isors Leistungsstand
+und seine Artifact-URLs mitgegangen — 1.020 von 3.995 Zeilen, in einem
+fremden Projekt wertlos. Dem Sinn nach sagte die Regel schon „keine Uni,
+kein Projekt"; sie war nur nicht scharf genug.
+Verworfen: alles mitliefern (die gefüllten Dateien als Formatbeispiel —
+zu teuer erkauft); ein Zeugnis als Muster behalten (eine Bewertung von
+Isors Person geht ein fremdes Projekt nichts an). `LOG.md`,
+`DECISIONS.md` und `_ARCHIV.md` bleiben bewusst drin: Sie erklären, warum
+die Regeln so aussehen.

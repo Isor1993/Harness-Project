@@ -5,8 +5,7 @@ Einstieg in eine Session. Regeln über Dokumente stehen in
 `Kern/DOC_RULES.md`, Session-Ablauf und Doku-Pflicht in
 `Kern/WORKFLOW.md`, Nummernsysteme in `Kern/VERSIONIERUNG.md`.
 
-**Harness-Version: 1.0.0** — im Aufbau. Lesart der Nummer:
-`Kern/VERSIONIERUNG.md`, Stand der Überholung: `PLAN.md`.
+**Harness-Version: 1.0.0.** Lesart der Nummer: `Kern/VERSIONIERUNG.md`.
 
 Dieses Projekt entwickelt einen generischen Harness für Game-Dev- und
 Lern-Sessions. Der Harness wird mit seinen eigenen Mitteln gebaut: Diese
@@ -15,16 +14,20 @@ Lern-Sessions. Der Harness wird mit seinen eigenen Mitteln gebaut: Diese
 ## Leseordnung bei Session-Start
 1. Diese Datei
 2. `INDEX.md` — welche Dokumente existieren, was besitzt jedes
-3. `PLAN.md` — was in den nächsten Wochen dran ist
+3. `PLAN.md` — **zuerst der Abschnitt „Für die nächste Session"**: Dort
+   steht der Auftrag, falls die vorige Session einen hinterlassen hat.
+   Danach der Rest — was in den nächsten Wochen dran ist.
 4. `Kern/WORKFLOW.md` — Session-Typen, Modus und Regler, Doku-Pflicht
 
 Die ROADMAP einer Schicht wird erst gelesen, wenn an ihr gearbeitet wird
 — nicht bei jedem Start.
 
 ## Aufbau des Ordners
-Vier Schichten, jede ein eigener Ordner, damit sie sich als Ganzes
-herausnehmen lässt: `Kern/` (generisch) · `Uni/` (studienspezifisch) ·
-`IsorBackup/` (Regeln für den externen Datenbaum) · `Projekte/<Name>/`.
+Der Harness ist in Schichten geteilt, jede ein eigener Ordner, damit sie
+sich als Ganzes herausnehmen lässt: `Kern/` (generisch) · `Uni/`
+(studienspezifisch) · `IsorBackup/` (Regeln für den externen Datenbaum) ·
+`Projekte/<Name>/` — **je Projekt eine**, `Projekte/` selbst ist nur der
+Sammelordner (`Kern/DOC_RULES.md`, Abschnitt 10).
 Oben liegen nur diese Datei, `INDEX.md` und `PLAN.md`.
 
 ## Regeln

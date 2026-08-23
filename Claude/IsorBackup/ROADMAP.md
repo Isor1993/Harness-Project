@@ -9,7 +9,8 @@ Format: `- [ ] **Titel** — ein bis drei Sätze, was zu tun ist und warum.`
 ## Als Nächstes
 
 - [ ] **`99_Archiv\_Zu_Loeschen\` durchsehen und leeren.** Nur Isor —
-  „weg" heißt nach Regel 7 zunächst nur „dorthin verschoben", und geleert
+  „weg" heißt nach der Regel *Gelöscht wird nur von Isor* (`RULES.md`)
+  zunächst nur „dorthin verschoben", und geleert
   wird von Hand. Inzwischen liegen dort auch die Bestände der
   Harness-Überholung vom 2026-08-22.
 
@@ -29,6 +30,17 @@ Format: `- [ ] **Titel** — ein bis drei Sätze, was zu tun ist und warum.`
   `Grass_Clump_Cross.fbx` und `Grass_Clump_Star.fbx` fehlen die
   Blender-Dateien. Ohne Quelle lässt sich das Mesh nicht mehr ändern, nur
   ersetzen.
+
+## Vertagt — der Harness fasst es nicht an
+
+- [ ] **Backup auf die externe Platte.** Das Skript
+  `Werkzeuge/sichern.ps1` ist gebaut, geprüft und einsatzbereit
+  (Probelauf als Voreinstellung, Papierkorb statt Löschen, rund 16 GB
+  über drei Ordner). **Isor fährt die Sicherung bis auf Weiteres von
+  Hand**; sie ist kein Punkt des Pflegetags mehr und wird nicht als offen
+  gemeldet. Wieder aufgenommen, wenn die Testphase durch ist und der
+  Harness sich im Betrieb bewährt hat — kein Datum
+  (`Kern/DECISIONS.md`, 2026-08-23).
 
 ## Nach der Aufräumphase
 

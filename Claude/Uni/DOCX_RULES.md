@@ -77,6 +77,10 @@ durchlesen.**
   rückt nach.
 - Überschriften von Verzeichnissen brauchen `numId 0` und `outlineLvl 9`,
   sonst zählen sie als Kapitel und stehen im eigenen Inhaltsverzeichnis.
+- **Bilder zuletzt, Texttabellen früh** (Isor, 2026-08-22). Folgt aus den
+  drei Punkten darüber: Zwanzig über ein Semester verteilte Bilder heißen
+  zwanzigmal Felder aktualisieren und prüfen. Tabellen aus Text kosten
+  nichts und können sofort hinein.
 
 ## Prüfung
 Nach jedem Eingriff, in dieser Reihenfolge:

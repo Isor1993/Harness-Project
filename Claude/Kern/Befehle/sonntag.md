@@ -1,5 +1,5 @@
 ---
-description: Pflegetag — Artifact-Durchsicht und Backup, unabhängig vom Session-Typ
+description: Pflegetag — Artifact-Durchsicht, unabhängig vom Session-Typ
 ---
 
 Nur Auslöser — die Liste gehört `Kern/WORKFLOW.md`.

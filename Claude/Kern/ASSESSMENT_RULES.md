@@ -126,9 +126,9 @@ Schätzung wird immer gegen die Feedbackelemente der jeweiligen
 
 ## Die Handy-Fassung — Ausnahme von ARTIFACT_RULES
 Jedes Zeugnis wird zusätzlich als Artifact veröffentlicht. Dafür gelten
-die Regeln aus ARTIFACT_RULES.md (Aufbau, beide Farbwelten, Scroll-Bereich
-für breite Tabellen, Aphantasie über Zahlen statt Bilder) — mit **einer
-benannten Ausnahme**, die diese Datei besitzt:
+die Regeln aus ARTIFACT_RULES.md (Aufbau, Gestaltung samt Farbwelt,
+Scroll-Bereich für breite Tabellen, Aphantasie über Zahlen statt Bilder)
+— mit **einer benannten Ausnahme**, die diese Datei besitzt:
 
 > **Pro Zeugnis eine eigene, neue URL.** Ein Zeugnis wird nie
 > aktualisiert und nie ersetzt.

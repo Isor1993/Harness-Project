@@ -29,14 +29,14 @@ den Notkern und ist die einzige Datei, die von selbst lädt.
 |---|---|
 | `CLAUDE.md` | Nur das Verhalten von Claude in diesem Projekt und der Einstieg in eine Session. |
 | `INDEX.md` | Nur die Landkarte — welche Dokumente existieren und wofür jedes zuständig ist. |
-| `PLAN.md` | Nur was in den nächsten ein bis drei Wochen dran ist, schichtübergreifend. |
+| `PLAN.md` | Was in den nächsten ein bis drei Wochen dran ist, schichtübergreifend — und der Auftrag an die nächste Session. |
 
 ## Kern — generisch, wandert in jedes Projekt mit
 
 | Dokument | Zuständigkeit |
 |---|---|
 | `Kern/ARTIFACT_INDEX.md` | Welche Artifact-Seiten es gibt, woran jede hängt und wer auf sie zeigt. |
-| `Kern/ARTIFACT_RULES.md` | Typen, Benennung, Aufbau, Symbole und Pflege der Artifact-Seiten auf claude.ai. |
+| `Kern/ARTIFACT_RULES.md` | Typen, Benennung, Aufbau, Gestaltung, Symbole und Pflege der Artifact-Seiten auf claude.ai — samt Farbwelt und Schriftrollen. |
 | `Kern/ASSESSMENT_RULES.md` | Der Session-Typ „Zeugnis" vollständig — Auslöser, Ablauf, Belegpflicht, Aufbau, Notenskala, Schreibregeln, Ablage. |
 | `Kern/CODE_GUIDELINES.md` | Code-Konventionen — Namen, Architektur, Ordnerstruktur, das Review-Gate. |
 | `Kern/DECISIONS.md` | Nur Entscheidungen zum Harness — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
@@ -101,14 +101,6 @@ den Notkern und ist die einzige Datei, die von selbst lädt.
 | `Projekte/Isor_Tower/TDD_NOTES.md` | Nur Rohmaterial für das Technical Design Document von Isor's Tower — geprüfte Fakten, Zahlen und Formeln aus der Projektarbeit. |
 | `Projekte/Isor_Tower/_ARCHIV.md` | (geplant) Überholte Projekt-Einträge, jeder mit Angabe des Nachfolgers |
 
-## Temporär — werden nach der Überholung archiviert
-
-| Dokument | Zuständigkeit |
-|---|---|
-| `_HARNESS_ABNAHME.md` | Nur die Befunde des Schlussdurchgangs vom 2026-08-22 ff. — was falsch, doppelt, widersprüchlich ist oder fehlt. |
-| `_HARNESS_REVIEW.md` | Arbeitsliste der Harness-Überholung vom 2026-08-21 ff. |
-| `_HARNESS_UMSETZUNG.md` | Nur die abzuarbeitenden Handgriffe der Überholung, in Baureihenfolge. |
-
 ## Werkzeuge — erzeugen und pflegen die Dateien oben
 
 | Skript | Zweck |
@@ -125,7 +117,7 @@ Original in `Kern/Befehle/`, Arbeitskopie in `.claude\commands\harness\` — ge�
 |---|---|
 | `/harness:ende` | Session abschließen — sichern, Baustein prüfen, Commit-Vorschlag |
 | `/harness:sichern` | Doku-Pflicht des laufenden Abschnitts abarbeiten, Session läuft weiter |
-| `/harness:sonntag` | Pflegetag — Artifact-Durchsicht und Backup, unabhängig vom Session-Typ |
+| `/harness:sonntag` | Pflegetag — Artifact-Durchsicht, unabhängig vom Session-Typ |
 | `/harness:wechsel` | Abschnitt beenden und auf einen anderen Session-Typ umstellen |
 | `/harness:zeugnis` | Standortbestimmung zu einem festen Datum — Session-Typ „Zeugnis" |
 

@@ -36,7 +36,7 @@ Leseordnung.
 | **Modus** | Wie gearbeitet wird: **Lernmodus** (ausführlich, visuell, Verständnis prüfen) oder **Normal** (kurz). Setzt nur die Voreinstellung der Regler. | `WORKFLOW.md`, Typ, Modus und Regler |
 | **Regler** | Einzeln verstellbare Einstellung innerhalb eines Modus — Visualisierung und „Wer schreibt". Nicht dasselbe wie der Modus. | `WORKFLOW.md`, Typ, Modus und Regler |
 | **Doku-Pflicht** | Was am Ende eines Abschnitts geschrieben wird. Drei feste Punkte plus eine Zeile je Typ. | `WORKFLOW.md`, Doku-Pflicht |
-| **Pflegetag** | Wochentakt, unabhängig vom Session-Typ: Artifacts durchsehen, Backup. Ausgelöst durch `/harness:sonntag`. | `WORKFLOW.md`, Pflegetag |
+| **Pflegetag** | Wochentakt, unabhängig vom Session-Typ: Artifacts durchsehen und gegen die veröffentlichten Seiten abgleichen. Ausgelöst durch `/harness:sonntag`. | `WORKFLOW.md`, Pflegetag |
 | **Auslöser** | Eine Befehlsdatei unter `.claude\commands\harness\`. Trägt keinen Ablauf, nur den Zeiger auf die Regeldatei. | `WORKFLOW.md`, Die Befehle |
 | **Review-Gate** | Checkliste, die vor dem Coden durchgegangen wird. | `CODE_GUIDELINES.md` |
 | **Befund** | Ergebnis einer Prüfung: eine Stelle, an der etwas falsch, doppelt, widersprüchlich ist oder fehlt. Wird notiert, nicht sofort geändert. Ein **Zustand**. | `WORKFLOW.md`, Begriffe |

@@ -1,7 +1,7 @@
 # ARTIFACT_RULES.md — Regeln für die Artifact-Seiten
 
-Ownership: Typen, Benennung, Aufbau, Symbole und Pflege der
-Artifact-Seiten auf claude.ai. Warum eigene Datei: Artifacts sind eine
+Ownership: Typen, Benennung, Aufbau, Gestaltung, Symbole und Pflege der
+Artifact-Seiten auf claude.ai — samt Farbwelt und Schriftrollen. Warum eigene Datei: Artifacts sind eine
 Ausgabeform wie das Knowledge-Archiv, keine Harness-Dokumente — dieselbe
 Trennung wie bei KNOWLEDGE_RULES.md.
 
@@ -74,9 +74,112 @@ und man beim Überfliegen weiß, wo was steht.
    (Ablauf, Stufen). Sonst ohne Nummern.
 5. **Fußzeile**: Stand, führende .md-Datei, Links auf verwandte Seiten.
 
-Beide Farbwelten bedienen (hell und dunkel), breite Tabellen und
-Diagramme in einen eigenen Scroll-Bereich — sonst schiebt sich die ganze
-Seite auf dem Handy seitwärts.
+Breite Tabellen und Diagramme kommen in einen eigenen Scroll-Bereich —
+sonst schiebt sich die ganze Seite auf dem Handy seitwärts.
+
+## Gestaltung
+
+**Alle Seiten teilen eine Farbwelt.** Sie ist warm und dunkel, und es
+gibt sie **nur in einer Fassung** — kein Hell-Modus, keine zweite
+Farbtabelle. Grund: Eine Seite mit Stimmung soll nicht in zwei Versionen
+zerfallen, gelesen wird auf dem Handy, und die zweite Fassung wird
+ohnehin nie ernsthaft geprüft. Jede Farbe wird ausgeschrieben, damit die
+Seite auf jedem Grund gleich aussieht.
+
+**Fest sind Palette, Schriftrollen und der Aufbau oben. Alles andere
+entscheidet der Inhalt** (Isor, 2026-08-23) — wie viel visualisiert wird,
+welche Diagrammform passt, wie dicht die Seite ist. Abweichen ist
+erlaubt und erwünscht, solange die Seite als Teil der Familie erkennbar
+bleibt.
+
+### Palette
+
+| Rolle | Wert | wofür |
+|---|---|---|
+| Grund | `#17130F` | Seitenhintergrund |
+| Grund tief | `#120F0C` | abgesetzte Abschnitte |
+| Fläche | `rgba(43,35,28,0.62)` | Tafeln, Karten, Tabellen — **durchscheinend** |
+| Linie | `rgba(239,228,210,0.13)` | Kanten, Trenner |
+| Text | `#EFE4D2` | Pergament, der Grundton |
+| Text gedämpft | `#A2947F` | Beschreibungen, Bildunterschriften |
+| Text schwach | `#756758` | Tafelnummern, Spaltenköpfe |
+| **Ember** | `#D9762B`, hell `#F2A64B` | der eine Akzent — Marken, Hervorhebung |
+
+Dazu **vier Kategorie-Farben**. Sie sind nicht Dekoration, sondern
+tragen Bedeutung: Wer eine Seite mit Kategorien baut (Schichten, Typen,
+Zustände), gibt jeder eine davon und benutzt sie durchgehend — im
+Diagramm, in der Tabelle, im Abschnittsstrich.
+
+| Name | Wert |
+|---|---|
+| Verdigris | `#7FBBA6` |
+| Amber | `#E9A44C` |
+| Blau | `#8FA1D8` |
+| Ton | `#DE7A63` |
+
+### Schrift — drei Rollen
+
+| Rolle | Familie | wofür |
+|---|---|---|
+| Anzeige | eine Serif mit Charakter (`Newsreader`, ersatzweise Palatino) | Titel, Überschriften, Merksätze |
+| Text | eine humanistische Sans (`IBM Plex Sans`) | Fließtext — Lesbarkeit vor Charakter |
+| Technik | eine Mono (`IBM Plex Mono`) | Pfade, Zahlen, Marken, Tafelnummern |
+
+Nur Google Fonts oder Systemschriften — andere Quellen lädt die
+Artifact-Umgebung nicht, und die Seite fällt dann still auf Arial zurück.
+
+### Bauteile
+
+- **Rundungen überall**: 18 px an Tafeln und Merksätzen, 11 px an
+  Karten, Pillenform an Marken und Sprungmarken. Nichts wird hart
+  abgeschnitten.
+- **Lichtschein statt Flächen**: Jeder Abschnitt trägt oben links einen
+  weichen Farbverlauf in seiner Kategorie-Farbe. Das ist der Unterschied
+  zwischen „lebendig" und „flach" — ohne ihn sehen alle Abschnitte gleich
+  aus, egal wie viele Farben sonst vorkommen.
+- **Wechselnder Grund**: Abschnitte laufen über die volle Breite und
+  wechseln zwischen `Grund` und `Grund tief`. Beim Scrollen soll etwas
+  passieren.
+- **Tafeln** für Diagramme: eigene Fläche, Nummer und Kurztitel oben
+  (`Tafel 3 — Ownership an einem Beispiel`), Bildunterschrift darunter.
+  So lässt sich im Text darauf verweisen.
+- **Diagramme hochkant** bauen, Breite höchstens 460 px. Ein
+  querformatiges Diagramm schrumpft auf dem Handy so weit, dass die
+  Beschriftung unlesbar wird.
+- **Kennzahlen groß**: Eine Zahl, die etwas belegt, gehört in eine eigene
+  Kachel mit Anzeigeschrift, nicht in den Fließtext.
+
+### Wie viel visualisiert wird
+
+Der Inhalt entscheidet, nicht die Regel. Als Anhalt:
+
+| Die Seite erklärt … | dann braucht sie … |
+|---|---|
+| einen Ablauf oder Kreislauf | ein Flussdiagramm, hochkant |
+| eine Aufteilung oder Rangfolge | ein Schichtbild oder eine Verzweigung |
+| ein Verhältnis oder eine Größe | einen Balken plus die Zahl daneben |
+| Werte und Grenzen | eine Tabelle — kein Bild |
+| eine Regel | einen Merksatz, groß gesetzt |
+
+Die Untergrenze aus `WORKFLOW.md` gilt auch hier: nie auf inneres
+Vorstellen ausweichen. Was kein Bild bekommt, bekommt Zahlen.
+
+### Zwei Seiten als Muster
+
+- `⚙️ System · Harness` — der Bauplan dieser Regeln, mit vier Tafeln.
+- `Isor's Tower Menü-Politur` — die Seite, aus der die Farbwelt stammt;
+  dort auch, wie man eine Bühne mit Verlauf, Schleier und
+  durchscheinender Tafel baut.
+
+Beide stehen mit URL im `ARTIFACT_INDEX.md`.
+
+### Der Altbestand
+
+Die älteren Seiten stehen in einer kühlen hellen Fassung (Stand
+2026-08-06/08). Sie werden **nicht eigens nachgezogen**, sondern beim
+nächsten inhaltlichen Anfassen mitgenommen — sie sind ohnehin überholt,
+und wer sie aktualisiert, baut sie gleich neu. Bis dahin ist die
+Sammlung zweigeteilt, und das ist bekannt.
 
 ## Wann geschaut wird
 

@@ -93,9 +93,28 @@ Deshalb wird je Hauptversion eine Auslieferung abgelegt:
   Projekt, keine Altbestände. `Kern/` enthält damit auch `Werkzeuge/` und
   `Befehle/` — beides gehört zum Harness und wäre ohne die Auslieferung
   nicht mitzunehmen.
-- **Ein Handgriff beim Einrichten:** `Kern/Befehle/*.md` nach
-  `.claude\commands\harness\` kopieren, sonst gibt es die Befehle im
-  neuen Projekt nicht (`WORKFLOW.md` → „Wo die Auslöser liegen").
+- **Eine Auslieferung ist eine Vorlage, keine Kopie** (Isor, 2026-08-23).
+  Was unter `Kern/` liegt, aber nur Isor betrifft, wird beim Packen
+  entfernt: die Zeugnisse, die Einträge im `ARTIFACT_INDEX.md` (Kopf und
+  Feldliste bleiben als Muster) und die Zeilen in `index_geplant.txt`.
+  Wer den Harness in ein neues Projekt kopiert, bekommt ein leeres Regal
+  statt fremder Sachen darin. `LOG.md`, `DECISIONS.md` und `_ARCHIV.md`
+  bleiben dagegen drin — sie erklären, **warum** die Regeln so aussehen,
+  und ohne sie steht der Kern ohne Begründung da.
+- **Drei Handgriffe beim Einrichten** — mehr verlangt die Auslieferung
+  über das Entpacken hinaus nicht:
+  1. `Kern/Befehle/*.md` nach `.claude\commands\harness\` kopieren, sonst
+     gibt es die Befehle im neuen Projekt nicht (`WORKFLOW.md` → „Wo die
+     Auslöser liegen").
+  2. `PLAN.md` neben `CLAUDE.md` anlegen — leer, nur mit Kopf und dem
+     Abschnitt „Für die nächste Session". Die Leseordnung nennt die
+     Datei; ohne sie zeigt sie ins Leere.
+  3. `python Kern/Werkzeuge/index_bauen.py --write` laufen lassen. Der
+     `INDEX.md` wird erzeugt, nicht mitgeliefert — eine mitgelieferte
+     Fassung wäre ab dem ersten neuen Dokument falsch.
+  *(Punkte 2 und 3 kamen beim Packen von 1.0.0 dazu: Der Probelauf in
+  der fertigen Auslieferung zeigte, dass die Leseordnung auf zwei
+  Dateien zeigte, die es dort nicht gibt.)*
 - **Das ist kein Backup.** Zum Zurückholen alter Stände dient Git; die
   Auslieferung ist eine fertige Ausgabe zum Kopieren.
 - Angelegt wird sie bei jeder Änderung von `X` oder `Y`, nicht bei `Z`.

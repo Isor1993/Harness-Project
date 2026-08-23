@@ -7,18 +7,23 @@ Format: `- [ ] **Titel** — ein bis drei Sätze, was zu tun ist und warum.`
 Kein Datum, keine Tagesplanung — das ist Sache von `PLAN.md`.
 
 ## Läuft gerade
-- [ ] **Überholung auf Version 1.0.0.** Stand und Reihenfolge in
-  `PLAN.md`, Befunde in `_HARNESS_REVIEW.md`, Handgriffe in
-  `_HARNESS_UMSETZUNG.md`.
+- [x] **Überholung auf Version 1.0.0** — abgeschlossen am 2026-08-23.
+  Acht Phasen, die achte war die Abnahme, danach ein Gegenlese-Durchgang
+  aus eigener Session. Ausgeliefert nach
+  `C:\IsorBackup\05_Werkzeuge\Harness_Auslieferungen\Harness_1.0.0\`;
+  die drei Arbeitsdateien sind archiviert, was aus ihnen dauerhaft gilt,
+  steht in den Regeldateien. Ereignis im `LOG.md`.
 
 ## Als Nächstes
-- [ ] **Abnahme abschließen.** 30 der 33 Befunde sind am 2026-08-22
-  behoben; offen sind nur noch drei, und alle drei hängen an einem
-  Zeitpunkt statt an Arbeit: **A10** und **A25** kurz vor dem Archivieren
-  der Review-Dateien, **A12** am ersten Pflegetag. Danach die
-  Artifact-Seite `⚙️ System · Harness`, dann die Auslieferung
-  `Harness_1.0.0`. Einzelheiten in `_HARNESS_ABNAHME.md`, Abschnitt
-  „Stand der Umsetzung".
+- [ ] **Testphase beginnen.** Der Harness wird benutzt statt gebaut.
+  Erste Aufgabe: `C:\IsorBackup` aufräumen, in Viererpaketen
+  (`IsorBackup/ROADMAP.md`). Zugleich die erste Belastungsprobe — was
+  dabei nicht trägt, kommt in `STOERUNGEN.md`.
+- [ ] **Nachlese zum Bau vom 2026-08-23.** An diesem Tag wurde in rund
+  zwanzig Dateien geschrieben — zwei neue Session-Regeln, die Übergabe,
+  der Gestaltungsabschnitt, die Auslieferungsregel —, und **nichts davon
+  ist gegengelesen**. Nach der eigenen Regel darf das nicht dieselbe
+  Session tun. Gehört als Erstes in eine frische Prüf-Session.
 - [ ] **Prüfskripte in den Kern übernehmen** als
   `Kern/Werkzeuge/pruefen.py`, Aufruf am Pflegetag. Zwei Prüfungen:
   alle Datei-Verweise gegen den tatsächlichen Bestand, und die
@@ -27,7 +32,10 @@ Kein Datum, keine Tagesplanung — das ist Sache von `PLAN.md`.
   2026-08-22 haben genau diese zwei Prüfungen 6 der 33 Befunde allein
   gefunden — tote Verweise, verdrehte Reihenfolge und nicht gedeckte
   Haken rutschen beim Lesen durch. Wegwerf-Fassungen lagen im
-  Scratchpad; für den Dauerbetrieb zusammenfassen und aufräumen.
+  Scratchpad; für den Dauerbetrieb zusammenfassen und aufräumen. Als
+  dritte Prüfung dazu: Original und Arbeitskopie der Befehle vergleichen
+  (**A39**) — `Kern/Befehle/` gegen `.claude\commands\harness\`, heute
+  identisch, aber durch nichts abgesichert.
 - [ ] **Systemliste je Projekt erzeugen** (E14). Skript liest
   `Assets/Systems`, `Entities`, `Shared` und schreibt Name, Anzahl
   Skripte, letzte Änderung; die Kurzbeschreibung je System kommt von
@@ -64,3 +72,11 @@ Kein Datum, keine Tagesplanung — das ist Sache von `PLAN.md`.
   Harness tatsächlich an jemanden weitergegeben werden soll** (E83).
   Solange das nicht ansteht, gilt die Sprachtabelle in `DOC_RULES.md`:
   Harness-Dokumente sind deutsch.
+- [ ] **Artifact-Seite für die Weitergabe** (Isor, 2026-08-23) — eine
+  zweite Harness-Seite, die **nur** das Verfahren erklärt: Schichten,
+  Ownership, Session-Ablauf, Befehle. Ohne Isors Projektstand, ohne
+  Befundzahlen, ohne Beispiele aus Isor's Tower. Grund: Die bestehende
+  Seite `⚙️ System · Harness` beschreibt den Harness **in Benutzung** und
+  ist als Erklärung für Fremde ungeeignet. Hängt an derselben Bedingung
+  wie der Punkt darüber — gebaut wird sie, wenn eine Weitergabe ansteht,
+  nicht vorher.

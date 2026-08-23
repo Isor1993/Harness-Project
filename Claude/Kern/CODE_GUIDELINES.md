@@ -48,9 +48,9 @@ richtig (`Kern/DECISIONS.md`, 2026-08-22).
 
 ## Kommentare & Datei-Header (Isors Standard)
 Gilt überall, Uni wie privat. Code, Kommentare und Ausgaben: **immer
-Englisch** — keine Ausnahme; erfüllt damit die SAE-Kommentar-Regeln
-(Block 1, Regel 1–2). Deutsch bleibt nur der Unterhaltung mit Claude
-vorbehalten.
+Englisch** — keine Ausnahme; erfüllt damit die SAE-Regeln „Code
+ausschließlich Englisch" und „Kommentare erklären das Warum" aus Block 1.
+Deutsch bleibt nur der Unterhaltung mit Claude vorbehalten.
 
 Arbeitsteilung: Isor tippt Code ohne Kommentare; Header, Summaries und
 Kommentare ergänzt Claude automatisch beim Review bzw. wenn Code
@@ -118,7 +118,8 @@ Quelle: Code-Rules des Dozenten (v2.2), gefiltert im Brainstorm 2026-07-17.
 
 ### Felder & Kapselung
 - Default: `[SerializeField] private` fürs Inspector-Wiring — keine
-  public Felder (deckt sich mit Block 1 Regel 7).
+  public Felder (deckt sich mit der Block-1-Regel „Member-Variablen
+  private oder protected").
 - **`_camelCase` für private Felder — überall**, auch in privaten
   Projekten. Der Dozent verbietet Underscore-Präfixe; die Uni-Regel
   gewinnt hier bewusst, weil ein einheitliches Muster über alle Projekte
@@ -145,8 +146,8 @@ Laufzeit — Suchen entfällt.
 Innerhalb der `[SerializeField]`-Gruppe stehen Szenen-Objekte und Assets
 getrennt beieinander, nicht gemischt.
 
-**Offen (Isor, 2026-08-16):** Die Liste unter Punkt 4 deckt nur die
-Methoden ab, die bisher vorkommen. Unity dokumentiert die vollständige
+**Offen (Isor, 2026-08-16):** Die Liste der Unity-Event-Methoden deckt
+nur die ab, die bisher vorkommen. Unity dokumentiert die vollständige
 Aufrufreihenfolge („Order of Execution for Event Functions") mit deutlich
 mehr Einträgen — `OnValidate`, `OnTriggerEnter`, `OnCollisionEnter`,
 `OnApplicationQuit` und weitere. Beim Harness-Ausbau übernehmen und hier

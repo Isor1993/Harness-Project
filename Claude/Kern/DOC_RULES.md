@@ -69,6 +69,15 @@ einem Ownership-Befund mindestens die `Ownership:`-Zeile jeder von ihnen.
 Ein Widerspruch liegt zwischen zwei Dateien; wer nur eine liest, hält ihn
 für einen Verstoß dieser einen.
 
+**Fehlt die Regel, oder wurde sie nur nicht befolgt?** Diese Frage
+gehört zu jedem Befund, bevor eine neue Regel geschrieben wird. Ein Teil
+der Befunde sind **Ausführungsfehler, keine Regelfehler** — die Regel
+stand längst da und wurde übergangen. *(Belegt am 2026-08-22: Die
+Knowledge-Frage galt als fehlend und stand wörtlich in
+`KNOWLEDGE_RULES.md`.)* Ein Ausführungsfehler gehört **automatisiert
+oder ins Format eingebaut**, nicht neu geregelt: Eine Formatvorgabe wird
+befolgt, eine Verhaltensregel vergessen.
+
 **Das gilt für jede Art von Befund, nicht nur für Ownership**, und
 ausdrücklich über Schichtgrenzen hinweg. *(Zwei echte Fehlurteile:
 2026-08-21 zwischen ROADMAP und FEATURE_LOG, und 2026-08-22 — eine
@@ -186,6 +195,23 @@ und verwiesen wird auf den Namen: nicht „Bedienregel 5", sondern
 **Format:** Pfad **und** Überschrift —
 `Projekte/Isor_Tower/ROADMAP.md → „Prefab-Struktur prüfen"`.
 
+**Was schon geschrieben ist, bleibt stehen.** In Chroniken, Archiven,
+Zeugnissen und in datierten DECISIONS-Einträgen wird ein
+Positionsverweis **nicht** nachgezogen: Diese Texte werden nie geändert,
+und der Verweis beschreibt den Stand von damals — dieselbe Begründung
+wie beim genannten Ablageort in Abschnitt 4. Ein solcher Fund ist dort
+kein Befund. Die Regel gilt für alles, was heute noch geschrieben oder
+geändert wird.
+
+**Nicht die nackte Nummer.** Eine erlaubte Nummer wird beim ersten
+Nennen zusammen mit ihrem Titel geschrieben — `A10 — Die Ausnahme für
+die Diagramm-Skripte…`, nicht bloß `A10`. Danach genügt die Nummer.
+Grund: Eine Nummer allein ist ein Griff für Listen, kein Name; steht sie
+allein in einem Satz, ist der Satz für den, der die Liste nicht offen
+hat, unlesbar — und nach dem Archivieren der Liste für alle. Das gilt
+auch für die Aufgaben in einer ROADMAP, die auf eine temporäre
+Befundliste zeigen.
+
 **Gleiche Dateinamen je Schicht sind gewollt.** Es gibt mehrere
 `ROADMAP.md`, `LOG.md` und `_ARCHIV.md` — der Ordner unterscheidet sie.
 Kein Umbenennen zu `ROADMAP_Uni.md`: Eine Schicht soll ein kopierbarer
@@ -284,3 +310,25 @@ beidem ergibt das Fach, in dem eine Information genau einmal liegt.
 Liegt eine Datei überwiegend im Kern, aber mit wenigen
 schichtspezifischen Teilen, wird sie **nicht zerschnitten**: Sie bleibt
 im Kern und benennt, dass der Maßstab aus der aktiven Schicht kommt.
+
+---
+
+## 11. Wenn Inhalt umzieht
+
+Beim Aufteilen oder Verschieben großer Bestände gelten vier Handgriffe.
+Sie stammen aus dem Umzug von 2026-08-22 — 1.790 Zeilen DECISIONS,
+708 Zeilen ROADMAP, 782 Zeilen Zeugnisse — und haben dort gehalten:
+
+1. **Commit des Ist-Standes vorher.** Der Rückweg muss stehen, bevor der
+   erste Schnitt fällt.
+2. **Getrennt wird per Skript an den Überschriften, nicht von Hand.**
+   Copy-Paste verliert lautlos Zeilen und fällt erst Wochen später auf.
+3. **Nachgezählt wird vorher und nachher** — Einträge und nicht-leere
+   Rumpfzeilen. Stimmt die Zahl nicht, wird **nichts geschrieben**.
+4. **Das Original wird nicht gelöscht**, sondern nach
+   `99_Archiv\_Zu_Loeschen\<Datum>_<Anlass>\` verschoben. Geleert wird
+   von Hand, und zwar von Isor.
+
+Der Preis ist gering, der Nutzen belegt: Der Umzug vom 2026-08-22 hat
+133 von 133 Einträgen und 1.651 von 1.651 Rumpfzeilen unverändert
+angeliefert, dreifach geprüft.

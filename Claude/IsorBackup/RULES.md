@@ -76,5 +76,5 @@ Smoothness = 1 − Roughness.
 
 `IsorBackup/Werkzeuge/sichern.ps1` spiegelt den Baum auf die externe
 Platte. Probelauf ist die Voreinstellung; Wegfallendes wandert nach
-`_Geloescht\<Datum>\` statt gelöscht zu werden (Regel 7, angewandt auf
-die Platte). Ausgelöst wird es am Pflegetag, siehe `Kern/WORKFLOW.md`.
+`_Geloescht\<Datum>\` statt gelöscht zu werden (Regel *Gelöscht wird nur
+von Isor*, angewandt auf die Platte). Ausgelöst wird es am Pflegetag, siehe `Kern/WORKFLOW.md`.

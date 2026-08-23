@@ -18,6 +18,15 @@ Schicht. Stand 2026-08-22 liegen die neun vorhandenen Quellen noch unter
 `01_Uni\Semester_2\Diagramme_Quellen\`; der Umzug in die Projekt-Ablage
 steht auf der Projekt-ROADMAP.
 
+**Benannte Ausnahme: Die Skripte bleiben, wo sie sind.** Sie liegen unter
+`C:\IsorBackup\05_Werkzeuge\Vorlagen\` und ziehen **nicht** in die
+Schicht um, obwohl die Regel „ein Werkzeug liegt in der Schicht, deren
+Dateien es bearbeitet" (`Kern/DECISIONS.md`, 2026-08-22) das nahelegt.
+Grund: Sie bearbeiten keine Harness-Dateien, sondern Diagramme, die
+außerhalb des Repos liegen, und sie werden von mehreren Schichten
+benutzt. Deshalb stehen hier feste Pfade, obwohl der Abschnitt sonst
+keine nennt.
+
 - Skripte: `C:\IsorBackup\05_Werkzeuge\Vorlagen\`
   - `uml_drawio.py` — Kästen, Sinnbilder, Linienarten, Erhalt der Handarbeit
   - `pruefer.py` — vergleicht ein Diagramm gegen den Quellcode

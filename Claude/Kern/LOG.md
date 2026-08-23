@@ -104,3 +104,27 @@ damals, nicht den von heute.
   `Kern/ROADMAP.md`. Nebenbei einen aktiven Datenverlust abgewendet:
   `prefab_status.py` las 34 Prefabs als 33 Einträge, weil `Torch` und
   `Torch ` auf denselben Schlüssel fielen.
+- 2026-08-23 — **Version 1.0.0 steht.** Der Tag begann mit einem
+  Gegenlese-Durchgang aus eigener Session: Von den 30 als erledigt
+  geführten Befunden der Abnahme waren **28 gedeckt, zwei nicht** — bei
+  einem hing die Korrektur am falschen DECISIONS-Eintrag, beim anderen
+  war nur die Regel geändert, nicht das, was sie vorschrieb. Dazu fünf
+  neue Befunde (A34–A40), darunter der Auftrag an die nächste Session,
+  der in keiner Leseordnung stand. Alle acht wurden im selben Zug
+  entschieden und gebaut: **fünfter Session-Typ „Prüfung"**, die
+  **Übergabe in `PLAN.md`** samt Schritt „Plan nachziehen" in `/ende`,
+  die Chronik-Ausnahme zur Verweisregel und die Umzugsregeln als
+  Abschnitt 11 der `DOC_RULES.md`. Vor dem Archivieren wurden sieben
+  Regeln aus den Arbeitsdateien gerettet, die nur dort lebten — darunter
+  der Prüfbogen und Isors fünf Grenzen für den Harness. Der erste
+  Pflegetag lief (drei Artifact-Funde), die Seiten `⚙️ System · Harness`
+  und `📍 Status` wurden gebaut bzw. neu gebaut, und die Artifact-Seiten
+  haben eine verbindliche Farbwelt bekommen. Das Backup fällt auf Isors
+  Wunsch aus dem Pflegetag heraus. Ausgeliefert nach
+  `C:\IsorBackup\05_Werkzeuge\Harness_Auslieferungen\Harness_1.0.0\`,
+  als **Vorlage statt Kopie** — 24 Dateien, 3.028 Zeilen.
+  Geprüft: INDEX neu erzeugt (44 Dateien, alle mit Ownership-Zeile) ·
+  das INDEX-Skript läuft in der Auslieferung eigenständig · nach dem
+  Archivieren zeigt kein lebender Verweis mehr auf die drei
+  Arbeitsdateien. Nicht geprüft: die rund zwanzig Dateien, die an diesem
+  Tag geschrieben wurden — das gehört einer frischen Session.

@@ -36,10 +36,12 @@ Zeilen je Eintrag:
 ### 📍 Status · Wo das Projekt steht
 ```
 URL      https://claude.ai/code/artifact/d5e30d97-fafd-4f9e-be83-e727df4d0405
-Stand    2026-08-12
-Quelle   PLAN.md + ROADMAP der Schicht
+Stand    2026-08-23 — nach dem Umbau neu gebaut, erste Seite im neuen
+         Hausstil (ARTIFACT_RULES → „Gestaltung")
+Quelle   PLAN.md, Kern/ROADMAP.md, Projekte/Isor_Tower/ROADMAP.md,
+         Uni/ROADMAP.md, Projekte/Isor_Tower/GDD.md
 Skripte  keine — die Seite beschreibt den Projektstand, nicht Code
-Seite →  System · Terrain & Gras; Lernstück Multithreading
+Seite →  System · Harness
 Seite ←  keine
 ```
 
@@ -54,7 +56,7 @@ Bestand: Jedes Zeugnis behält seine eigene URL und wird **nie
 nachgezogen** — der alte Stand ist der halbe Zweck. Beim Review-Gate
 sind diese Seiten deshalb zu überspringen.
 
-### 🎓 Zeugnis · 2026-08-16, nach dem Politur-Wochenende
+### 🎓 Zeugnis · 2026-08-16, Politur-Wochenende
 ```
 URL      https://claude.ai/code/artifact/dfb56399-a0ac-467c-8efb-feb88940678e
 Datum    2026-08-16 — Zeugnis-Datum, kein Prüfstand; wird nicht nachgezogen
@@ -64,10 +66,14 @@ Seite →  keine
 Seite ←  keine
 ```
 
-### 🎓 Zeugnis · 2026-08-11, vor dem Polishing
+### 🎓 Zwischenzeugnis 11.08.2026
 ```
 URL      https://claude.ai/code/artifact/b9f54327-8f46-4d25-b667-ff66852adc6f
 Datum    2026-08-11 — Zeugnis-Datum, kein Prüfstand; wird nicht nachgezogen
+Titel    weicht vom Namensschema ab und bleibt so: Die Seite entstand vor
+         dem Schema, und ein Zeugnis wird nie neu veröffentlicht
+         (ASSESSMENT_RULES). Hier steht der Titel, der tatsächlich
+         draußen steht — Abgleich am Pflegetag 2026-08-23.
 Quelle   Kern/Zeugnisse/<Datum>.md, Kern/ASSESSMENT_RULES.md
 Skripte  keine — die Seite bewertet den Projektstand, nicht Code
 Seite →  keine
@@ -100,7 +106,10 @@ Seite ←  keine direkt; terrain-pipeline.md und prozedurales-mesh-grundlagen.md
 ### ⚙️ System · Grundgerüst
 ```
 URL      https://claude.ai/code/artifact/761467e7-ed2e-48a9-a237-e208526fae48
-Stand    2026-08-06
+Stand    2026-08-06 — **die Seite wurde am 2026-08-07 noch einmal
+         veröffentlicht, also nach ihrer letzten Prüfung.** Beim nächsten
+         Anfassen gegen den Code prüfen und den Stempel nachziehen
+         (Fund des Pflegetags 2026-08-23).
 Quelle   Projekte/Isor_Tower/LOG.md und .../DECISIONS/
 Skripte  SceneLoader, GameController, MainMenuController, PauseMenuController,
          Player, PlayerMotor, PlayerLook, PlayerInteractor,
@@ -200,19 +209,39 @@ Seite ←  Patterns/mvp-model-view-presenter.md,
 
 ### ⚙️ System · Harness
 ```
-URL      noch nicht veröffentlicht — vorbereitet, nicht gebaut
-Stand    —
-Quelle   Kern/CLAUDE.md, WORKFLOW, DOC_RULES, VERSIONIERUNG, DECISIONS
+URL      https://claude.ai/code/artifact/42f2b4ac-aacb-45eb-8911-55eb7769c459
+Stand    2026-08-23 — gebaut zur Version 1.0.0
+Quelle   CLAUDE.md, Kern/WORKFLOW.md, DOC_RULES.md, VERSIONIERUNG.md,
+         DECISIONS.md
 Skripte  keine Unity-Skripte; die Seite beschreibt die Harness-Dateien
-         und die Befehle unter .claude\commands\harness\
-Seite →  offen
-Seite ←  offen
+         und die Befehle unter Kern/Befehle/
+Seite →  keine
+Seite ←  keine
 ```
 Die Seite beschreibt den Harness in seinem **aktuellen** Zustand und wird
 **bei jeder neuen Harness-Version nachgezogen** — sie ist damit die
 einzige Seite, deren Stand an der Versionsnummer hängt statt am
 Sonntagsabgleich (`Kern/VERSIONIERUNG.md`). Gebaut wird sie erst, wenn
 der Kern nach der Abnahme steht; vorher beschriebe sie eine Baustelle.
+
+---
+
+## 🎨 Muster  — Schicht: Kern
+
+Keine eigene Gattung, sondern eine Seite, die zufällig als Beleg dient:
+`ARTIFACT_RULES.md` → „Gestaltung" verweist auf sie als Herkunft der
+Farbwelt. Sie wird deshalb **nicht** nachgezogen und bleibt als Stand vom
+2026-08-16 stehen.
+
+### Isor's Tower Menü-Politur
+```
+URL      https://claude.ai/code/artifact/5d644461-e354-41e5-be11-9bfbed6c6f7d
+Stand    2026-08-16 — Entwurfsstand, wird nicht nachgezogen
+Quelle   Projekte/Isor_Tower/DECISIONS/UI.md, .../LOG.md
+Skripte  MainMenuController, PauseMenuController, GameSettings, HudRoot
+Seite →  keine
+Seite ←  Kern/ARTIFACT_RULES.md, Abschnitt „Gestaltung"
+```
 
 ---
 

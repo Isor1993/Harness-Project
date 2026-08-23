@@ -69,6 +69,14 @@ Diagramm gezeigt hätte, wird über Zahlen und Tabellen erklärt — länger,
 aber nie über „stell dir vor". Der Regler steuert den **Aufwand** der
 Darstellung, nicht ob Isor sich etwas vorstellen muss.
 
+### Entscheidungen in Viererpaketen
+Beim Sichten und Sortieren — Dateien einordnen, Listen durchgehen,
+Altbestand bewerten — werden **höchstens vier Posten pro Runde**
+vorgelegt, jeder mit Claudes Einschätzung und einem Zielvorschlag. Dann
+Isors Entscheidung abwarten, ausführen, nächstes Paket. Nie zwei Pakete
+auf einmal. Grund: Längere Listen werden abgenickt statt geprüft, und
+geprüft werden sollen sie.
+
 ### Arbeitsteilung am Text (Isor, 2026-08-08)
 Korrekturen an bestehendem Text schreibt Claude direkt. **Neue
 Fachkapitel formuliert Isor selbst**; Claude liefert Struktur, geprüfte
@@ -106,6 +114,50 @@ Standortbestimmung zu einem festen Datum. Wird bewusst wiederholt — der
 Vergleich zweier Stände ist der Zweck. Auslöser `/harness:zeugnis` oder Zuruf.
 Vollständige Regeln in `ASSESSMENT_RULES.md`; dieser Eintrag ist nur der
 Zeiger. Die Session **liest und bewertet, sie baut nicht.**
+
+### Prüfung
+**Liest und bewertet, baut nicht.** Ergebnis ist eine Befundliste, kein
+Umbau — behoben wird danach, in einem eigenen Abschnitt. Zuschnitt:
+Haken gegenlesen, Regeln mit frischem Blick prüfen, Bestände gegen die
+Wirklichkeit abgleichen.
+
+**Der Gegenstand wird beim Wechsel mitgenannt**, weil der Typ auf
+Verschiedenes zeigt: *„Prüfung — Gegenstand: der Harness"* ·
+*„… die Prefabs von Isor's Tower"* · *„… der Datenbaum IsorBackup"*.
+Ohne den Zusatz ist unklar, was geprüft wird.
+
+**Die Befundliste ist temporär** — eine Datei je Durchgang, nach dem
+Anlass benannt, danach ins Archiv. Was überlebt, ist der Punkt in der
+ROADMAP, nicht die Liste (`DOC_RULES.md`, Abschnitt 8: eine Checkliste
+gehört dem Moment).
+
+**Prüfbogen, für jede Datei gleich** — fünf Fragen, in dieser Folge:
+1. Welche Frage beantwortet sie, und beantwortet die sonst niemand?
+2. Deckt sich die `Ownership:`-Zeile mit dem tatsächlichen Inhalt?
+3. Widerspricht sie einer anderen Datei?
+4. In welche Schicht gehört sie?
+5. Verfällt ihr Inhalt? → Archiv oder Erzeugung nötig, oder pflegefrei?
+
+Ergebnis je Datei: Soll-Zustand plus konkreter Auftrag für die Session,
+die es umsetzt.
+
+**Widersprüche sind ein eigener Durchgang.** Sie liegen *zwischen* zwei
+Dateien und sind beim Lesen einer einzelnen nicht sichtbar — wer Datei
+für Datei prüft, findet sie nie. Deshalb am Ende ein Durchgang quer über
+den Bestand: eine Zeile je Art von Information, eine Spalte „Besitzer".
+Zwei Besitzer = Konflikt, kein Besitzer = Lücke.
+
+**Prüfer und Ausführender sollen nicht dieselbe Session sein.** Wer
+gerade dreißig Befunde behoben hat, liest seine eigenen Haken nicht mehr
+unbefangen. Belegt am 2026-08-23: Ein Gegenlese-Durchgang fand zwei von
+dreißig Haken nicht gedeckt — einmal war die Korrektur geschrieben, aber
+am falschen Eintrag abgelegt, einmal war nur die Regel geändert und nicht
+das, was sie vorschrieb. Beide hätten jede Suche innerhalb derselben
+Session überstanden.
+
+Abgrenzung zum **Zeugnis**: Beide lesen und bewerten. Ein Zeugnis
+bewertet **Isor** und trägt deshalb eine Notenskala und eine Messreihe;
+eine Prüfung bewertet **das Gebaute** und trägt eine Befundliste.
 
 ### Art *(geplant, nie benutzt)*
 Prompts für Bildgenerierung und Concept-Art. Am 2026-07-17 angelegt,
@@ -199,7 +251,9 @@ Der Wechsel ist ein **Kontrollpunkt**, siehe „Wechsel des Abschnitts".
 2. Bei Design → Development zusätzlich: Steht jede getroffene
    Entscheidung in der DECISIONS der Schicht? Was fehlt, wird jetzt
    geschrieben, solange die Begründung noch da ist.
-3. Neuen Typ benennen und den alten Abschnitt für beendet erklären.
+3. Neuen Typ benennen und den alten Abschnitt für beendet erklären. Beim
+   Typ **Prüfung** gehört der Gegenstand dazu („Prüfung — Gegenstand:
+   der Harness").
 4. **Modus und die zwei Regler neu fragen.** Sie hängen am Abschnitt,
    nicht an der Session.
 
@@ -210,7 +264,19 @@ Der Wechsel ist ein **Kontrollpunkt**, siehe „Wechsel des Abschnitts".
    Schicht, damit die nächste Session nicht bei null sucht.
 3. Commit-Vorschlag nach Abschnitt „Session-Ende" — je berührtem Repo
    einer, jedes zählt seine eigene Nummer.
-4. Danach ist die Session zu. Claude fängt nichts Neues mehr an.
+4. **Plan nachziehen** (`PLAN.md`), drei Handgriffe:
+   - erledigte Punkte **abhaken** — nicht löschen;
+   - Abschnitt **„Für die nächste Session" überschreiben**. Immer, nicht
+     nur wenn etwas offen ist: „gerade nichts offen" ist ein gültiger
+     Inhalt. Grund: Nur so findet die nächste Session ihren Auftrag —
+     er lag zuletzt am Ende einer Bauliste und wurde übersehen
+     (`Kern/DECISIONS.md`, 2026-08-23).
+   - Sind dabei **alle** Punkte eines Zeitraums abgehakt, meldet Claude
+     das und fragt, ob der Zeitraum geschnitten wird. Entschieden wird
+     das von Isor; melden ist Pflicht. Der Schnitt selbst steht im Kopf
+     von `PLAN.md`: Ereignis ins LOG, Punkte in der ROADMAP abhaken,
+     Datei leeren.
+5. Danach ist die Session zu. Claude fängt nichts Neues mehr an.
 
 ## Pflegetag (`/harness:sonntag`)
 
@@ -222,10 +288,17 @@ dieselbe Arbeitsteilung wie beim Review-Gate.
    veröffentlichten Seiten — Verfahren in `ARTIFACT_RULES.md`,
    Abschnitt „Wann geschaut wird". Claude legt eine Vorschlagsliste vor
    und ändert nichts von selbst.
-2. **Backup.** Isor steckt die Platte an, Claude startet
-   `IsorBackup/Werkzeuge/sichern.ps1` — Probelauf zuerst. Ist keine
-   Platte angesteckt, wird das gemeldet und der Punkt bleibt offen; er
-   gilt nicht als erledigt.
+
+Mehr Punkte hat der Pflegetag derzeit nicht. Ein zweiter ist vorgesehen,
+sobald `Kern/Werkzeuge/pruefen.py` gebaut ist (`Kern/ROADMAP.md`).
+
+**Nicht Teil des Pflegetags: das Backup** (Isor, 2026-08-23). Das Skript
+`IsorBackup/Werkzeuge/sichern.ps1` ist gebaut und bleibt liegen; Isor
+fährt die Sicherung bis auf Weiteres **von Hand**, ohne den Harness.
+Claude erinnert nicht daran und meldet den Punkt auch nicht als offen.
+Wieder aufgenommen wird er erst, wenn die Testphase durch ist und der
+Harness sich im laufenden Betrieb bewährt hat — nicht nach Kalender.
+Begründung in `Kern/DECISIONS.md`, 2026-08-23.
 
 ## Doku-Pflicht
 
@@ -248,6 +321,7 @@ Nach Typ zusätzlich:
 | Brainstorm/Design | DECISIONS der Schicht · GDD (Entwurf) · ROADMAP, wenn Aufgaben entstanden |
 | Development | LOG der Schicht · DECISIONS · ROADMAP abhaken · TDD_NOTES bei echter Projektarbeit · Abgabe-Abschnitt, wenn ein Baustein fertig wurde |
 | Zeugnis | `Kern/Zeugnisse/<Datum>.md` · ARTIFACT_INDEX · ROADMAP nur um die Befunde. **Sonst nichts** — es wurde nichts gebaut und nichts entschieden. |
+| Prüfung | Befundliste (temporär, je Durchgang) · ROADMAP der geprüften Schicht um die Befunde · LOG der Schicht, **ein Satz**: was geprüft, wie viele Befunde, woran geprüft. Keine DECISIONS — es wurde nichts entschieden. |
 
 ## Session-Ende
 
