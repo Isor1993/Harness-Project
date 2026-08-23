@@ -5,23 +5,27 @@ Wird bei jedem `/harness:sichern` aufgerufen (Kern/WORKFLOW.md). Das Skript
 **meldet nur** — es ändert nichts. Was behoben wird, entscheiden Isor und
 Claude; ein Fund ist ein Befund, kein Auftrag.
 
-Die fünf Prüfungen, jede aus einem belegten Fehler entstanden:
+Die Prüfungen, jede aus einem belegten Fehler oder einer benannten Lücke:
   1 Verweise      tote Pfade in Backticks            (Abnahme 2026-08-22)
   2 Chroniken     Datumsfolge und Pflichtfelder      (Abnahme 2026-08-22, A28)
   3 Befehle       Original gegen Arbeitskopie        (A39)
   4 Zahlwörter    Anzahl in Überschrift oder Fettung (P4, 2026-08-23)
   5 Glossar       Kurzform gegen ihre Besitzerdatei  (P13, 2026-08-23)
+  6 Hooks         Vorlage gegen .claude/settings.json (2026-08-23)
 
 Aufruf:
     python pruefen.py               alle Prüfungen
     python pruefen.py 1 4           nur die genannten
     python pruefen.py --glossar-ok  Kurzformen sind gegengelesen, Hinweis weg
+    python pruefen.py --hook        setzt das Herkunftszeichen an den Anfang;
+                                    diesen Schalter benutzt nur der Hook
 
 Was das Skript NICHT sieht: ob eine Aussage stimmt. Es prüft Form und
 Bestand, nicht Inhalt — dafür braucht es weiterhin eine Prüf-Session
 (Kern/WORKFLOW.md, Typ „Prüfung").
 """
 import io
+import json
 import os
 import re
 import sys
@@ -40,6 +44,8 @@ BASE = os.path.abspath(os.path.join(HIER, "..", ".."))          # Repo-Wurzel
 BEFEHLE = os.path.join(BASE, "Kern", "Befehle")
 ARBEITSKOPIE = os.path.abspath(
     os.path.join(BASE, ".claude", "commands", "harness"))
+EINSTELLUNGEN = os.path.join(BASE, ".claude", "settings.json")
+VORLAGE_EINSTELLUNGEN = os.path.join(BASE, "Kern", "Vorlagen", "settings.json")
 
 # Chroniken werden nie geändert; ein Verweis darin beschreibt den Stand von
 # damals und ist kein Fund (Kern/DOC_RULES.md, Abschnitte 4 und 6). Dasselbe
@@ -357,6 +363,63 @@ def finde(name):
     return treffer
 
 
+# ---------------------------------------------------------------- Prüfung 6
+
+def pruefe_hooks(_dateien):
+    """Jeder Hook der Vorlage muss unverändert in der Arbeitskopie stehen.
+
+    Dieselbe Bauart wie Prüfung 3, nur für `Kern/Vorlagen/settings.json`
+    statt für die Befehle. Sie ist nötig, weil der Hook das einzige Stück
+    des Harness ist, das seinen eigenen Ausfall nicht melden kann: Fällt er
+    aus `.claude\\settings.json` heraus, läuft dieses Skript beim
+    Session-Start schlicht nicht mehr — und niemand sagt etwas.
+
+    Verglichen wird **je Eintrag, nicht die ganze Datei.** Eigene Hooks
+    dürfen dazukommen, ohne einen Fund auszulösen; fehlen oder abweichen
+    darf keiner aus der Vorlage. Die Berechtigungen bleiben außen vor, sie
+    sind rechner- und personenabhängig.
+    """
+    if not os.path.exists(VORLAGE_EINSTELLUNGEN):
+        return [(u"Kern/Vorlagen/settings.json", 0,
+                 u"Vorlage fehlt")], u"nicht vergleichbar"
+    if not os.path.exists(EINSTELLUNGEN):
+        return [(u".claude/settings.json", 0,
+                 u"fehlt — kein Hook eingetragen")], u"nicht vergleichbar"
+
+    gelesen = {}
+    for name, pfad in ((u"Kern/Vorlagen/settings.json", VORLAGE_EINSTELLUNGEN),
+                       (u".claude/settings.json", EINSTELLUNGEN)):
+        try:
+            with io.open(pfad, encoding="utf-8") as fh:
+                gelesen[name] = json.load(fh)
+        except ValueError as fehler:
+            # Eine unlesbare settings.json nimmt alle Hooks mit. Das ist der
+            # Fall, den CLAUDE.md Punkt 5 als Rueckfallebene benennt.
+            return [(name, 0, u"kein gültiges JSON: %s" % fehler)], u""
+
+    soll = gelesen[u"Kern/Vorlagen/settings.json"].get("hooks", {})
+    ist = gelesen[u".claude/settings.json"].get("hooks", {})
+
+    funde = []
+    verglichen = 0
+    for ereignis in sorted(soll):
+        vorhanden = [_fest(e) for e in ist.get(ereignis, [])]
+        for eintrag in soll[ereignis]:
+            verglichen += 1
+            if _fest(eintrag) not in vorhanden:
+                funde.append((u".claude/settings.json", 0,
+                              u"Hook `%s` fehlt oder weicht ab — Vorlage gilt "
+                              u"(Matcher `%s`)"
+                              % (ereignis, eintrag.get("matcher", u"*"))))
+    return funde, u"%d Hook-%s verglichen" % (
+        verglichen, u"Eintrag" if verglichen == 1 else u"Einträge")
+
+
+def _fest(objekt):
+    """Vergleichbare Schreibweise: Reihenfolge der Schlüssel egal."""
+    return json.dumps(objekt, sort_keys=True, ensure_ascii=False)
+
+
 # ------------------------------------------------------------------- Ablauf
 
 PRUEFUNGEN = [
@@ -365,6 +428,7 @@ PRUEFUNGEN = [
     (u"Befehle", pruefe_befehle),
     (u"Zahlwörter", pruefe_zahlwoerter),
     (u"Glossar", pruefe_glossar),
+    (u"Hooks", pruefe_hooks),
 ]
 
 
@@ -385,6 +449,24 @@ def main():
     if "--glossar-ok" in sys.argv:
         glossar_abgeglichen()
         return
+    # Nur der Hook uebergibt --hook. Ohne dieses Zeichen ist an der Ausgabe
+    # nicht zu erkennen, wer das Skript gestartet hat — der Harness selbst
+    # oder Claude von Hand. Genau darin liegt aber der Unterschied zwischen
+    # Automatik und Erinnerung, und die Automatik war der Zweck der Uebung.
+    # Zweiter Dienst derselben Zeile: Sie sagt der Session, dass der Lauf
+    # zum Einstieg bereits stattgefunden hat, damit niemand ihn wiederholt.
+    # Die Zeile gilt AUSDRUECKLICH nur fuer den Einstieg. Jedes
+    # /harness:sichern prueft weiterhin selbst, und zwar nach dem Schreiben
+    # — dort entstehen die Fehler, die das Skript findet. Eine pauschale
+    # Formulierung haette genau diese Ebene stillgelegt (Isor, 2026-08-23).
+    if "--hook" in sys.argv:
+        print(u"[SessionStart-Hook] Dieser Lauf kam vom Harness, nicht von "
+              u"Claude.")
+        print(u"Ergebnis melden, auch „0 Funde\". Erledigt ist damit nur der "
+              u"Einstieg —")
+        print(u"jedes /harness:sichern prüft weiterhin selbst, nach dem "
+              u"Schreiben.\n")
+
     gewuenscht = [int(a) for a in sys.argv[1:] if a.isdigit()]
     dateien = md_dateien()
     print(u"pruefen.py — %d Dateien im Bestand\n" % len(dateien))

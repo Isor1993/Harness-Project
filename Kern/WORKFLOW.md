@@ -315,10 +315,10 @@ schreiben ohnehin alle in dieses Repo.
    passiert ist. Keine Zahl, die nicht gemessen wurde; keine
    Entscheidung, die nicht gefallen ist.
 5. **`Kern/Werkzeuge/pruefen.py` laufen lassen** — nach dem Schreiben,
-   denn das Schreiben erzeugt die Fehler, die es findet. Fünf Prüfungen:
+   denn das Schreiben erzeugt die Fehler, die es findet. Die Prüfungen:
    tote Verweise · Datumsfolge und Pflichtfelder der Chroniken · Befehle
    gegen ihre Arbeitskopie · Zahlwörter in Überschriften · Glossar gegen
-   die Besitzerdateien. Das Skript **meldet nur**; jeder Fund ist ein
+   die Besitzerdateien · Hooks gegen ihre Vorlage. Das Skript **meldet nur**; jeder Fund ist ein
    Befund, kein Auftrag. Was es nicht sieht, ist, ob eine Aussage stimmt
    — dafür braucht es weiterhin einen Abschnitt vom Typ Prüfung.
 6. **Ergebnis melden:** eine Zeile je Eintrag mit Zieldatei. „Nichts zu
@@ -408,7 +408,7 @@ nicht mehr den Überblick habe")*. Dieser Abschnitt besitzt die
 
 | Ebene | prüft | wann | wer urteilt |
 |---|---|---|---|
-| `Kern/Werkzeuge/pruefen.py` | Verweise · Chronik-Format · Befehle gegen Arbeitskopie · Zahlwörter · Glossar | Session-Start und jedes `/harness:sichern` | Skript |
+| `Kern/Werkzeuge/pruefen.py` | Verweise · Chronik-Format · Befehle gegen Arbeitskopie · Zahlwörter · Glossar · Hooks gegen Vorlage | Session-Start (**per Hook erzwungen**) und jedes `/harness:sichern` | Skript |
 | `Kern/Werkzeuge/index_bauen.py` | fehlt eine `Ownership:`-Zeile? | wenn Dateien dazukommen oder wegfallen | Skript |
 | `Projekte/<Name>/Werkzeuge/prefab_status.py` | welche Prefabs es gibt und was auffiel | bei Projektarbeit | Skript und Mensch |
 | **Review-Gate** (`CODE_GUIDELINES.md`) | Fattening · Enum-Sicherheit · Werkzeugwahl · Naming · Artifact-Bezug | vor dem Coden | Mensch und Claude |

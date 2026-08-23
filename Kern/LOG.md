@@ -196,3 +196,39 @@ damals, nicht den von heute.
   Ownership-Zeile · die zehn Befehlsdateien von Hand gegengelesen, weil
   ihre absoluten Pfade außerhalb des Baums liegen und Prüfung 1 sie
   nicht sieht.
+- 2026-08-23 — **Baustein 2: der erste Hook. Erzwingen statt erinnern.**
+  `.claude\settings.json` trägt jetzt einen `SessionStart`-Hook, der
+  `Kern/Werkzeuge/pruefen.py` beim Session-Start ausführt — Auslöser
+  `startup|resume|clear|compact`. Damit hängt die erste der drei
+  Skript-Prüfebenen nicht mehr an Claudes Erinnerung. Vor dem Bauen
+  wurden die vier offenen Fragen des Bauplans gegen die Hook-Referenz
+  geklärt: `SessionStart` kann eine Session **nicht** blockieren (Exit-Code
+  und Fehler werden dort ignoriert), einfacher stdout wird **von selbst**
+  als Kontext eingelesen, ein Fehlschlag kostet nur eine Meldung, und die
+  Auslieferung erfasste den Hook bisher gar nicht.
+  Daraus vier Dinge gebaut: die Vorlage `Kern/Vorlagen/settings.json` samt
+  `README.md` und viertem Einrichtungs-Handgriff in `VERSIONIERUNG.md` ·
+  **Prüfung 6** in `pruefen.py`, die Vorlage gegen Arbeitskopie hält ·
+  der Schalter `--hook`, der die Herkunft der Ausgabe kennzeichnet ·
+  `Kern/Bilder/` als Ort für Erklärskizzen, mit der ersten darin.
+  Nachgezogen: `CLAUDE.md` Punkt 5 (melden statt ausführen, mit
+  Rückfallebene), `WORKFLOW.md` an zwei Stellen, `GLOSSARY.md` um **Hook**
+  und **Vorlage**.
+  Zwei eigene Fehler beim Bauen gefunden und behoben: Die erste Fassung
+  benutzte `$CLAUDE_PROJECT_DIR` in der Kommandozeile, was Git Bash
+  voraussetzt — ohne Git Bash weicht Claude Code auf PowerShell aus, und
+  der Hook wäre stumm kaputt gewesen; jetzt steht `${CLAUDE_PROJECT_DIR}`
+  in der `args`-Form, die Claude Code selbst ersetzt. Und die Marker-Zeile
+  sagte pauschal „ein zweiter Lauf ist unnötig", was die Läufe bei
+  `/harness:sichern` stillgelegt hätte (Isors Einwand).
+  Geprüft: `pruefen.py` 0 Funde in allen sechs Prüfungen · Prüfung 6 gegen
+  vier nachgestellte Schäden gehalten und jedes Mal angeschlagen (Vorlage
+  fehlt, `hooks`-Block entfernt, Matcher gekürzt, `settings.json` kein
+  gültiges JSON) · INDEX neu erzeugt, 49 Dateien, alle mit
+  Ownership-Zeile · die Kommandozeile in Git Bash gelaufen, Exit 0.
+  **Nicht geprüft: ob der Hook wirklich feuert.** Das zeigt erst der
+  nächste Session-Start; Erkennungszeichen ist die Zeile
+  `[SessionStart-Hook]` **ohne** sichtbaren Werkzeugaufruf.
+  Ins Knowledge gingen zwei Seiten: die Hook-Mechanik samt Matcher-Falle
+  und Shell-Falle (`Werkzeuge/`) und das Prinzip dahinter,
+  „Stille ist mehrdeutig" (`Patterns/`) — eigenes Repo, eigener Commit.

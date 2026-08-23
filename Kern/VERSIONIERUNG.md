@@ -101,7 +101,7 @@ Deshalb wird je Hauptversion eine Auslieferung abgelegt:
   statt fremder Sachen darin. `LOG.md`, `DECISIONS.md` und `_ARCHIV.md`
   bleiben dagegen drin — sie erklären, **warum** die Regeln so aussehen,
   und ohne sie steht der Kern ohne Begründung da.
-- **Drei Handgriffe beim Einrichten** — mehr verlangt die Auslieferung
+- **Die Handgriffe beim Einrichten** — mehr verlangt die Auslieferung
   über das Entpacken hinaus nicht:
   1. `Kern/Befehle/*.md` nach `.claude\commands\harness\` kopieren, sonst
      gibt es die Befehle im neuen Projekt nicht (`WORKFLOW.md` → „Wo die
@@ -112,9 +112,16 @@ Deshalb wird je Hauptversion eine Auslieferung abgelegt:
   3. `python Kern/Werkzeuge/index_bauen.py --write` laufen lassen. Der
      `INDEX.md` wird erzeugt, nicht mitgeliefert — eine mitgelieferte
      Fassung wäre ab dem ersten neuen Dokument falsch.
+  4. `Kern/Vorlagen/settings.json` nach `.claude\settings.json` kopieren.
+     Gibt es die Datei dort schon, wird nur ihr `hooks`-Block
+     hineinübernommen — der Rest ist rechner- und personenabhängig.
+     Ohne diesen Handgriff läuft `Kern/Werkzeuge/pruefen.py` beim
+     Session-Start nicht von selbst, und die Leseordnung fällt auf ihre
+     Rückfallebene zurück (`CLAUDE.md`, Punkt 5).
   *(Punkte 2 und 3 kamen beim Packen von 1.0.0 dazu: Der Probelauf in
   der fertigen Auslieferung zeigte, dass die Leseordnung auf zwei
-  Dateien zeigte, die es dort nicht gibt.)*
+  Dateien zeigte, die es dort nicht gibt. Punkt 4 kam am 2026-08-23 mit
+  dem `SessionStart`-Hook dazu.)*
 - **Das ist kein Backup.** Zum Zurückholen alter Stände dient Git; die
   Auslieferung ist eine fertige Ausgabe zum Kopieren.
 - Angelegt wird sie bei jeder Änderung von `X` oder `Y`, nicht bei `Z`.

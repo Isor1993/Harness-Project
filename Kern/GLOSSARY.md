@@ -41,6 +41,7 @@ Leseordnung.
 | **Auslöser** | Eine Befehlsdatei unter `.claude\commands\harness\`. Trägt keinen Ablauf, nur den Zeiger auf die Regeldatei. | `WORKFLOW.md`, Die Befehle |
 | **Review-Gate** | Checkliste, die vor dem Coden durchgegangen wird. | `CODE_GUIDELINES.md` |
 | **Prüfebene** | Eine der Stellen, an denen der Harness prüft — drei davon sind Skripte (Form und Bestand), vier verlangen ein Urteil (Aussagen). | `WORKFLOW.md`, Die Prüfebenen |
+| **Hook** | Kommando, das der Harness bei einem Ereignis selbst ausführt, eingetragen in `.claude\settings.json`. Erzwingt eine Skript-Prüfebene, statt an sie zu erinnern — beurteilt aber nichts. | `WORKFLOW.md`, Die Prüfebenen |
 | **Befund** | Ergebnis einer Prüfung: eine Stelle, an der etwas falsch, doppelt, widersprüchlich ist oder fehlt. Wird notiert, nicht sofort geändert. Ein **Zustand**. | `WORKFLOW.md`, Begriffe |
 | **Störung** | Vorfall, in dem der Harness nicht so gearbeitet hat wie vorgesehen. Ein **Ereignis** — nicht dasselbe wie ein Befund und nicht dasselbe wie ein Fehler im Code. | `STOERUNGEN.md` |
 
@@ -51,6 +52,7 @@ Leseordnung.
 | **Harness-Version** | Reifegrad des Harness selbst, steht in `CLAUDE.md`. | `VERSIONIERUNG.md` |
 | **V-Nummer** | Vierstellige Commit-Nummer im Titel `Update V 0.0043`. Jedes Repo zählt eigenständig. | `VERSIONIERUNG.md` |
 | **Auslieferung** | **Vorlage** des Kerns unter `05_Werkzeuge\Harness_Auslieferungen\`, benannt nach der Harness-Version — keine Kopie: Was nur Isor betrifft, wird beim Packen entfernt. | `VERSIONIERUNG.md` |
+| **Vorlage** | Zwei Verwendungen, beide meinen „Original zum Kopieren": die Auslieferung als Ganzes (Zeile darüber) und einzeln die Dateien unter `Kern/Vorlagen/`, deren Arbeitskopie in `.claude\` liegt. | `Kern/Vorlagen/README.md` |
 
 Jeder hier geführte Begriff nennt seinen Besitzer. Ob die Liste
 **vollständig** ist, kann diese Datei nicht selbst sagen — sie wird von

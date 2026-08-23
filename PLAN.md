@@ -22,16 +22,16 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(geschrieben 2026-08-23, abends — Baustein 1 ist erledigt)*
+*(geschrieben 2026-08-23, abends — Baustein 2 ist gebaut, aber ungetestet)*
 
-**Typ: Development — Gegenstand: Hooks, erzwingen statt erinnern.**
-Baustein 1 ist durch, der Harness ist sein eigenes Repo (2.0.0) — damit
-liegt `.claude\settings.json` im Repo und ein Hook überlebt einen
-Rechnerwechsel. Das war die Bedingung. Kandidaten, die offenen Fragen
-und was **nicht** zu erwarten ist: `_HARNESS_UMBAU_STRUKTUR.md`,
-Baustein 2. Danach ist die Datei archivierbar. Zwei Nachzügler aus dem
-Umbau stehen in `Kern/ROADMAP.md`: Auslieferung `Harness_2.0.0` und das
-Umbenennen des GitHub-Repos.
+**Erster Handgriff, noch vor allem anderen: den Hook belegen.** Steht zu
+Beginn dieser Session die Zeile `[SessionStart-Hook]` da, **ohne** dass
+ein Werkzeugaufruf sichtbar war, hat er gefeuert — dann den Haken in
+`Kern/ROADMAP.md` setzen und `_HARNESS_UMBAU_STRUKTUR.md` archivieren.
+Fehlt sie, ist das der erste Befund. **Danach: Typ Development —
+Gegenstand: Artifact-Seite `⚙️ System · Harness` auf 2.0.0 nachziehen**
+(`Kern/ROADMAP.md`, mit der Skizze aus `Kern/Bilder/`). Offen bleiben
+die Auslieferung `Harness_2.0.0` und das Umbenennen des GitHub-Repos.
 
 ---
 

@@ -36,6 +36,7 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 | `Kern/ARTIFACT_INDEX.md` | Welche Artifact-Seiten es gibt, woran jede hängt und wer auf sie zeigt. |
 | `Kern/ARTIFACT_RULES.md` | Typen, Benennung, Aufbau, Gestaltung, Symbole und Pflege der Artifact-Seiten auf claude.ai. |
 | `Kern/ASSESSMENT_RULES.md` | Der Session-Typ „Zeugnis" vollständig — Auslöser, Ablauf, Belegpflicht, Aufbau, Notenskala, Schreibregeln, Ablage. |
+| `Kern/Bilder/README.md` | Nur die von Hand gebauten Erklärskizzen des Kerns — was hier liegt, wozu es gehört und woran es hängt. |
 | `Kern/CODE_GUIDELINES.md` | Code-Konventionen — Namen, Architektur, Ordnerstruktur, das Review-Gate. |
 | `Kern/DECISIONS.md` | Nur Entscheidungen zum Harness — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
 | `Kern/DIAGRAM_RULES.md` | Nur der Umgang mit den skriptgenerierten `.drawio`-Diagrammen — Ablage, Arbeitsteilung, Bedienregeln, Prüfung. |
@@ -47,6 +48,7 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 | `Kern/ROADMAP.md` | Nur was am Harness als Nächstes gebaut wird. |
 | `Kern/STOERUNGEN.md` | Nur Vorfälle, in denen der Harness nicht so gearbeitet hat wie vorgesehen — was passiert ist und welche Regel nicht gegriffen hat. |
 | `Kern/VERSIONIERUNG.md` | Alle Nummernsysteme des Projekts — welche Nummer was zählt, wie sie gelesen wird und wo sie steht. |
+| `Kern/Vorlagen/README.md` | Nur die Originale, die beim Einrichten eines neuen Projekts nach `.claude\` kopiert werden. |
 | `Kern/WORKFLOW.md` | Wie eine Session abläuft — Begriffe, Typ und Modus samt Reglern, Session-Typen, Doku-Pflicht, die Befehle, der Pflegetag und das Session-Ende. |
 | `Kern/Zeugnisse/2026-08-11.md` | Nur dieses eine Zeugnis — ein datierter Messpunkt. |
 | `Kern/Zeugnisse/2026-08-16.md` | Nur dieses eine Zeugnis — ein datierter Messpunkt. |

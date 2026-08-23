@@ -742,3 +742,75 @@ Stimmt für den Inhalt, verfehlt aber die Frage, die diese Nummer
 beantwortet — sie misst Verträglichkeit, nicht Umfang.
 Folge, noch offen: Nach `VERSIONIERUNG.md` wird bei jeder Änderung von
 `X` eine Auslieferung abgelegt. `Harness_2.0.0` steht in der ROADMAP.
+
+## 2026-08-23 — Der Hook feuert auch bei `clear`, nicht nur bei `startup`
+Was: Der `SessionStart`-Hook trägt die Auslöser
+`startup|resume|clear|compact`. `fork` bleibt draußen.
+Warum: Isors Ablauf endet mit `/harness:ende` und dann `/clear`. Das
+erzeugt den Auslöser `clear`; `startup` feuert nur beim frischen Öffnen
+von Claude Code. Ein Hook allein auf `startup` hätte im tatsächlichen
+Arbeitsrhythmus fast nie gegriffen — also genau dort nicht, wofür er
+gebaut wurde. `compact` ist dabei, weil beim Zusammenfassen das
+Prüfergebnis aus dem Kontext fallen kann.
+Verworfen: `fork`. Eine abgezweigte Session erbt den Kontext, das
+Ergebnis steht dort schon; ein zweiter Lauf wäre reine Wiederholung.
+Verworfen außerdem: ein zweiter Hook auf `.md`-Änderungen (Kandidat 2 des
+Bauplans). Bei einem `/harness:sichern` werden fünf bis acht Dateien
+nacheinander geschrieben, und die Zwischenstände sind zu Recht
+unvollständig — ein Verweis auf eine Datei, die zwei Schritte später
+entsteht, wäre ein Fund, der keiner ist. Die Begründung steht schon im
+Skript selbst: Rauschen killt den Prüfer.
+
+## 2026-08-23 — Die Hook-Vorlage liegt im Kern, nicht nur im Text
+Was: `Kern/Vorlagen/settings.json` ist das Original, `.claude\settings.json`
+die Arbeitskopie. Die Auslieferung bekommt einen vierten
+Einrichtungs-Handgriff, der kopiert. `pruefen.py` gleicht beide als
+**Prüfung 6** ab — je Hook-Eintrag, nicht als ganze Datei.
+Warum: Dieselbe Bauart wie bei `Kern/Befehle/`. Ohne Original im Kern
+wäre der Hook in einem ausgelieferten Harness weg, denn die Auslieferung
+packt `Kern/` und `.claude\` ist Konfiguration des Programms. Und ohne
+Prüfung 6 wäre der Hook das einzige Stück des Harness, das seinen eigenen
+Ausfall nicht melden kann: Verschwindet er aus der Arbeitskopie, läuft
+nichts mehr, und niemand sagt etwas.
+Warum je Eintrag statt ganzer Datei: Die Arbeitskopie trägt zusätzlich
+`permissions.additionalDirectories` mit einem rechnerabhängigen Pfad. Ein
+Gleichheitsvergleich wie bei den Befehlen hätte dauerhaft angeschlagen.
+Verworfen: nur ein Handgriff im Text von `VERSIONIERUNG.md`, ohne Datei —
+dann wäre der Hook-Block abzutippen, könnte abweichen, und niemand
+prüfte es. Verworfen außerdem: gar keine Auslieferung des Hooks — das
+hätte die ausgelieferte Fassung dauerhaft schwächer gemacht als das
+Original.
+
+## 2026-08-23 — Das Prüfskript kennzeichnet seine Herkunft
+Was: `pruefen.py --hook` stellt der Ausgabe die Zeile
+`[SessionStart-Hook]` voran. Nur der Hook übergibt diesen Schalter.
+Warum: Die Ausgabe sieht identisch aus, gleich ob der Harness sie erzeugt
+hat oder Claude das Skript von Hand gestartet hat (Isor, 2026-08-23).
+Ohne Kennzeichen ist der Unterschied zwischen Automatik und Erinnerung
+nicht nachprüfbar — und dieser Unterschied war der ganze Zweck. Zweiter
+Dienst derselben Zeile: Sie sagt der Session, dass der Einstiegslauf
+schon stattgefunden hat, damit er nicht wiederholt wird.
+Ausdrücklich begrenzt auf den Einstieg: Die Läufe bei `/harness:sichern`
+bleiben unberührt. Eine pauschale Formulierung hätte die wichtigere
+Prüfebene stillgelegt — die nämlich, die findet, was das Schreiben selbst
+kaputt gemacht hat. (Isors Einwand, noch vor der ersten Veröffentlichung
+der Zeile.)
+Verworfen: Herkunft an einer Umgebungsvariablen erkennen. Ob Claude Code
+`CLAUDE_PROJECT_DIR` auch außerhalb von Hooks setzt, ist ungeprüft; ein
+eigener Schalter ist eindeutig.
+
+## 2026-08-23 — Erklärskizzen bekommen einen Ort: `Kern/Bilder/`
+Was: Von Hand gebaute `.svg`-Skizzen zu Harness-Mechanismen liegen unter
+`Kern/Bilder/`, mit einer `README.md`, die den Ordner in den INDEX trägt.
+Warum: `DIAGRAM_RULES.md` gilt ausdrücklich nur für die skriptgenerierten
+`.drawio`-Dateien, und ein Artifact ist eine Ausgabeform, keine Ablage.
+Die erste solche Skizze — das Hook-Bild — lag im Sitzungs-Zwischenspeicher
+und wäre mit der Session verschwunden.
+Warum eine `README.md` dazu: `index_bauen.py` sammelt nur `.md`-Dateien.
+Eine `.svg` oder `.json` erscheint im INDEX weder als Eintrag noch als
+Warnung — sie wäre eine Datei außerhalb des Registers, gegen
+`DOC_RULES.md` Abschnitt 8. Dieselbe Lösung trägt `Kern/Vorlagen/`.
+Verworfen: `index_bauen.py` um eine Nicht-`.md`-Gattung erweitern. Das
+Skript bekäme eine zweite Sammellogik samt der Frage, woher die
+Beschreibung einer Datei ohne Ownership-Zeile kommen soll; eine
+`README.md` je Ordner beantwortet das ohne Code.

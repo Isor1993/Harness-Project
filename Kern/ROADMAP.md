@@ -63,13 +63,23 @@ Arbeit Zeiger, die hinterher noch einmal angefasst werden müssen.
   Namen laufen auseinander, seit der Unity-Anteil weg ist. Isor benennt
   um, GitHub leitet den alten Namen weiter. Erst nach dem Umbau-Commit,
   damit nicht zwei Umstellungen zugleich laufen.
-- [ ] **Hooks: erzwingen statt erinnern.** Von den sieben Prüfebenen
-  hängen die drei Skript-Ebenen unnötig an Claudes Erinnerung; ein Hook
-  führt sie aus, ohne dass jemand daran denken muss. Erster Kandidat:
-  Session-Start ruft `pruefen.py`. **Erst nach dem Umbau oben** — Hooks
-  leben in `.claude\settings.json`, und solange die außerhalb des Repos
-  liegt, wäre jeder Hook unversioniert. Einzelheiten im Bauplan
-  `_HARNESS_UMBAU_STRUKTUR.md`, Baustein 2.
+- [ ] **Hooks: erzwingen statt erinnern.** Gebaut am 2026-08-23 —
+  `SessionStart` ruft `pruefen.py`, dazu Vorlage, Prüfung 6, der Schalter
+  `--hook` und die nachgezogenen Regeldateien (Einzelheiten im
+  `Kern/LOG.md`). **Offen ist nur der scharfe Test:** ob der Hook beim
+  nächsten Session-Start wirklich feuert. Erkennungszeichen ist die Zeile
+  `[SessionStart-Hook]` **ohne** sichtbaren Werkzeugaufruf; damit ist
+  zugleich belegt, dass Claude Code den Platzhalter
+  `${CLAUDE_PROJECT_DIR}` ersetzt. Schlägt er fehl, ist der erste
+  Verdacht, dass `python` im Hook-Prozess nicht auf dem PATH liegt.
+  Danach ist `_HARNESS_UMBAU_STRUKTUR.md` archivierbar.
+- [ ] **Artifact-Seite `⚙️ System · Harness` auf 2.0.0 nachziehen.** Sie
+  steht auf „gebaut zur Version 1.0.0" und beschreibt damit den Notkern
+  und die alte Ordnerstruktur, die es beide nicht mehr gibt.
+  `ARTIFACT_INDEX.md` verlangt das Nachziehen bei jeder neuen
+  Harness-Version — die Seite ist seit dem Umbau überfällig. Beim
+  Nachziehen kommen die Skizze aus `Kern/Bilder/` und das Ergebnis des
+  Hook-Tests mit hinein, statt die Seite zweimal anzufassen.
 - [ ] **Den Artifact-Altbestand nachziehen.** Grundlage ist
   `_HARNESS_ARTIFACTS_1_0_0.md` — acht Seiten, geprüft gegen Code und
   veröffentlichte Fassung, mit Aufwandsschätzung und einer begründeten

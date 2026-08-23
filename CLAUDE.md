@@ -18,8 +18,24 @@ Lern-Sessions. Der Harness wird mit seinen eigenen Mitteln gebaut: Diese
    steht der Auftrag, falls die vorige Session einen hinterlassen hat.
    Danach der Rest — was in den nächsten Wochen dran ist.
 4. `Kern/WORKFLOW.md` — Session-Typen, Modus und Regler, Doku-Pflicht
-5. `python Kern/Werkzeuge/pruefen.py` laufen lassen und das Ergebnis
-   melden — auch „0 Funde". Grund: Zwischen zwei Sessions ändert jemand
+5. Das Ergebnis von `Kern/Werkzeuge/pruefen.py` **melden — auch
+   „0 Funde"**. Ausgeführt wird das Skript seit 2.0.0 nicht mehr auf
+   Zuruf, sondern von einem Hook beim Session-Start; seine Ausgabe steht
+   beim Lesen dieser Datei also schon im Kontext (`.claude\settings.json`,
+   Ereignis `SessionStart` — Original in `Kern/Vorlagen/`). **Erkennbar
+   ist sie an der ersten Zeile `[SessionStart-Hook]`** — nur der Hook
+   erzeugt sie. Steht sie da, ist das Skript gelaufen und wird **für den
+   Einstieg** nicht noch einmal gestartet. Die Läufe bei
+   `/harness:sichern` bleiben davon unberührt — die gehören **nach** das
+   Schreiben, weil das Schreiben die Fehler erzeugt, die das Skript
+   findet (`Kern/WORKFLOW.md`, Ablauf von `/harness:sichern`).
+   **Rückfallebene:** Fehlt die Zeile, wird das Skript von Hand
+   gestartet. Das ist der Normalfall in einem frisch ausgelieferten
+   Harness, auf einem anderen Rechner oder nach einer beschädigten
+   Einstellungsdatei.
+   Warum gemeldet wird: Stille ist mehrdeutig — ohne Meldung ist „nichts
+   gefunden" nicht davon zu unterscheiden, dass gar nichts gelaufen ist.
+   Warum überhaupt geprüft wird: Zwischen zwei Sessions ändert jemand
    anders etwas (eine Parallelsession, Isor von Hand, ein `git pull`);
    der letzte Lauf beim Sichern deckt das nicht ab. Ein Fund ist ein
    Befund, kein Auftrag — er wird gemeldet, nicht sofort behoben. Der
