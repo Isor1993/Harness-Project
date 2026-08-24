@@ -1,7 +1,7 @@
 # ROADMAP.md — Baureihenfolge Datenablage
 
 Ownership: Nur die offenen Aufräum-Punkte des Datenbaums
-`C:\IsorBackup\`. Die Regeln stehen in `RULES.md` dieser Schicht,
+(`Kern/PFADE.md` → `DATENBAUM`). Die Regeln stehen in `RULES.md` dieser Schicht,
 Begründungen in `DECISIONS.md`. Aufgaben am Unity-Projekt stehen in
 `Projekte/Isor_Tower/ROADMAP.md`, Studiums-Aufgaben in `Uni/ROADMAP.md`.
 Format: `- [ ] **Titel** — ein bis drei Sätze, was zu tun ist und warum.`

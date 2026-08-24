@@ -12,6 +12,7 @@ Die Prüfungen, jede aus einem belegten Fehler oder einer benannten Lücke:
   4 Zahlwörter    Anzahl in Überschrift oder Fettung (P4, 2026-08-23)
   5 Glossar       Kurzform gegen ihre Besitzerdatei  (P13, 2026-08-23)
   6 Hooks         Vorlage gegen .claude/settings.json (2026-08-23)
+  7 Pfade         absoluter Pfad außerhalb PFADE.md  (Auslieferung 2.0.0)
 
 Aufruf:
     python pruefen.py               alle Prüfungen
@@ -420,6 +421,43 @@ def _fest(objekt):
     return json.dumps(objekt, sort_keys=True, ensure_ascii=False)
 
 
+# ---------------------------------------------------------------- Prüfung 7
+
+def pruefe_pfade(dateien):
+    """Kein absoluter Pfad außerhalb von PFADE.md und den Chroniken.
+
+    Ein absoluter Pfad in einer Regeldatei zeigt auf Isors Rechner und
+    wandert mit der Auslieferung in jedes neue Projekt. Der laute Fall
+    (Ordner fehlt) fällt auf; der stille nicht: Liegen zwei Harness-Bäume
+    auf demselben Rechner, findet der Pfad eine Datei — die falsche.
+    Seit 2.0.0 besitzt `Kern/PFADE.md` alle absoluten Pfade; Regeldateien
+    nennen die Marke (gefunden beim Packen der Auslieferung 2.0.0,
+    2026-08-24).
+
+    Chroniken bleiben außen vor — ein Pfad dort ist ein Tatsachenbericht
+    von damals, keine Anweisung. Ebenso die temporären Befundlisten: Sie
+    beschreiben einen Durchgang und gehen ins Archiv.
+    """
+    funde = []
+    uebersprungen = 0
+    muster = re.compile(r"[A-Za-z]:\\[^\s`'\"|)]*")
+    for rel in dateien:
+        if rel == "Kern/PFADE.md":
+            continue
+        if ist_chronik(rel):
+            uebersprungen += 1
+            continue
+        if any(m in os.path.basename(rel) for m in ZAHLWORT_FREI):
+            continue
+        for nr, zeile in enumerate(zeilen_von(lies(rel)), 1):
+            treffer = muster.search(zeile)
+            if treffer:
+                funde.append((rel, nr,
+                              u"absoluter Pfad `%s` — gehört als Marke in "
+                              u"`Kern/PFADE.md`" % treffer.group(0)))
+    return funde, u"%d Chronik-Dateien übersprungen" % uebersprungen
+
+
 # ------------------------------------------------------------------- Ablauf
 
 PRUEFUNGEN = [
@@ -429,6 +467,7 @@ PRUEFUNGEN = [
     (u"Zahlwörter", pruefe_zahlwoerter),
     (u"Glossar", pruefe_glossar),
     (u"Hooks", pruefe_hooks),
+    (u"Pfade", pruefe_pfade),
 ]
 
 

@@ -814,3 +814,109 @@ Verworfen: `index_bauen.py` um eine Nicht-`.md`-Gattung erweitern. Das
 Skript bekäme eine zweite Sammellogik samt der Frage, woher die
 Beschreibung einer Datei ohne Ownership-Zeile kommen soll; eine
 `README.md` je Ordner beantwortet das ohne Code.
+
+## 2026-08-23 — Skizzen wandern nachgezeichnet in Artifact-Seiten, nicht eingebettet
+Was: Wandert eine Skizze aus `Kern/Bilder/` in eine Artifact-Seite, wird
+sie dort in der Hausfarbwelt und hochkant **neu gezeichnet**. Die Datei
+bleibt das Original, die Tafel ist eine zweite Darstellung derselben
+Sache. Der Eintrag im `ARTIFACT_INDEX.md` nennt beide.
+Warum: Die zwei Formen haben verschiedene Maße, und keine kann beide
+bedienen. Eine Artifact-Seite ist die Handy-Fassung — `ARTIFACT_RULES.md`
+verlangt hochkant, höchstens 460 px breit und die dunkle Palette. Die
+Skizze `hook_sessionstart.svg` ist quer, hell und 980 px breit, weil sie
+im Repo, im Browser und in Abgaben gelesen wird. Eingebettet schrumpft
+sie auf dem Handy unter die Lesbarkeit ihrer Beschriftung.
+Verworfen: **1:1 einbetten** — spart die Doppelung, kostet aber genau
+das, wofür die Seite da ist. **Die Skizze selbst hochkant und dunkel
+umbauen** — dann passt sie in die Seite und nirgends sonst mehr; ein
+helles Querformat ist für Repo und Abgabe die richtige Form.
+Preis, offen benannt: zwei Stellen zum Pflegen. Die Richtung dagegen
+steht fest und ist dieselbe wie bei `Kern/Befehle/` und `Kern/Vorlagen/` —
+geändert wird das Original, danach wird die Seite nachgezogen.
+
+## 2026-08-24 — Pfade bekommen einen Besitzer: `Kern/PFADE.md`
+Was: Absolute Pfade stehen nur noch in `Kern/PFADE.md`, als Tabelle mit
+Marken (`DATENBAUM`, `KNOWLEDGE`, `PROJEKT`). Regeldateien nennen die
+Marke und verweisen dorthin; Chroniken bleiben ausgenommen. Erzwungen
+durch Prüfung 7 in `pruefen.py`.
+Warum: Beim Packen der Auslieferung 2.0.0 fanden sich absolute Pfade an
+sieben Stellen im Kern — jede davon wandert in fremde Projekte mit. Der
+laute Fehlerfall (Ordner fehlt) ist harmlos; der stille nicht: Liegen
+zwei Harness-Bäume auf demselben Rechner, findet der Pfad eine Datei,
+nur die falsche. Das ist der Ownership-Kernsatz, angewandt auf Pfade —
+sie waren die letzte Informationsart ohne Besitzer. Idee von Isor
+(2026-08-24), als die Alternative war, die Befehlsdateien einzeln zu
+flicken.
+Verworfen: **Platzhalter in den .md-Dateien** (`{{DATENBAUM}}`) — Markdown
+hat keine Variablen; ich müsste beim Lesen an die Ersetzung denken, das
+wäre wieder eine Bitte statt einer Tatsache. **Pfade beim Einrichten fest
+in die Dateien schreiben** — Massen-Ersetzen ist fehleranfällig (Beleg:
+die BOM-Störung vom 2026-08-23), und ein Umzug hieße nochmal ersetzen
+statt eine Zeile ändern.
+
+## 2026-08-24 — Einrichten wird ein Befehl, keine Handgriff-Liste
+Was: `/harness:einrichten` ersetzt die vier Einrichtungs-Handgriffe aus
+`VERSIONIERUNG.md`. Er fragt die Pfade für `Kern/PFADE.md` einzeln ab
+und führt dann aus: Befehle in die Arbeitskopie, `PLAN.md` anlegen, Hook
+eintragen, INDEX erzeugen, Prüflauf samt `--glossar-ok`. Ablauf in
+`WORKFLOW.md`, Auslöser in `Kern/Befehle/`.
+Warum: Die Handgriff-Liste ist dreimal gewachsen (zwei Punkte nach dem
+Probelauf von 1.0.0, einer mit dem Hook) — eine Liste zum Abarbeiten
+wird mit jeder Version länger und unvollständiger. Ein Befehl führt aus
+statt zu erinnern; dieselbe Richtung wie beim SessionStart-Hook. Idee
+von Isor (2026-08-24).
+Verworfen: die Liste behalten und nur um die Pfad-Abfrage ergänzen —
+fünf Handgriffe von Hand sind nicht besser als vier.
+
+## 2026-08-24 — Die Packliste steht in VERSIONIERUNG.md, nicht im Ermessen
+Was: Welche Datei beim Packen einer Auslieferung vollständig bleibt,
+geleert wird oder wegfällt, steht als Tabelle in `VERSIONIERUNG.md` →
+„Die Packliste". Eine neue Kern-Datei wird beim Anlegen einer der drei
+Zeilen zugeordnet.
+Warum: Die Frage stellte sich beim Packen von 2.0.0 zum zweiten Mal
+(ROADMAP voll mitgeben oder leeren?), und zweimal verschieden zu
+antworten wäre schlimmer als jede der Antworten. Isors Einwand
+(2026-08-24): Das darf nicht jedes Mal neu gefragt werden. Entschieden:
+ROADMAP bleibt vollständig — sie zeigt an echten Einträgen, wie eine
+geführt wird; `PFADE.md` wird auf `(nicht eingerichtet)` geleert.
+Verworfen: je Auslieferung neu entscheiden (genau der Zustand, der die
+Regel nötig machte) · eine Muster-ROADMAP mit erfundenem Beispieleintrag
+(erfundene Einträge altern schlechter als echte).
+
+## 2026-08-24 — Die Seite „Grundgerüst" wird in zwei geteilt
+Was: Beim Nachziehen des Altbestands entsteht aus `⚙️ System ·
+Grundgerüst` ein Paar: „Grundgerüst" behält Spielablauf, Szenen, Input
+und Interaktion; neu dazu kommt eine Seite „Welt & Überleben" mit
+Tag-Nacht-System, Herde/FSM und Kampf/Gesundheit. Die neue Seite bekommt
+eine neue URL und einen eigenen Indexeintrag.
+Warum: `ARTIFACT_RULES.md` verlangt eine Frage je Seite; die geprüfte
+Fassung beantwortet mindestens drei (Befundliste vom 2026-08-23). Zwei
+Seiten statt drei, weil jede weitere URL dauerhaft Pflege am
+Sonntagsabgleich kostet — Isors Grenze „keine zu hohen laufenden
+Kosten".
+Verworfen: Teilen in drei (sauberster Schnitt, aber dreifache Pflege) ·
+eine Seite lassen (bräuchte eine benannte Ausnahme von der eigenen
+Regel).
+
+## 2026-08-24 — Gras-Zellgröße: 32 m ist der geltende Wert für die Seiten
+Was: Die Seiten übernehmen beim Nachziehen 32 m als Zellgröße. Das
+GPU-Lernstück rechnet seine Herleitung mit der heutigen Dichte neu,
+statt die alte 128-m-Empfehlung fortzuschreiben; die Terrain-Seite nennt
+den gemessenen Wert statt „≈ 36 m".
+Warum: 32 m ist der gebaute Stand — am 2026-08-24 am echten Prefab
+gemessen (`GrassSingle_x2.prefab`, `_cellSize: 32`), deckungsgleich mit
+dem Skript-Default. Der Widerspruch zur 128-m-Herleitung löst sich, weil
+sich das **Optimierungsziel** verschoben hat, nicht nur die Dichte: Die
+128er-Rechnung optimierte Batch-Füllung, als Draw Calls der Engpass
+waren. Am 04.08. zeigte die Messung, dass Dreiecke der Engpass sind
+(190.000 Büschel × 2.664 Tris = 507 Mio → 4,5 FPS; `TDD_NOTES.md`), der
+Fix war ein LOD-Meshpaar mit **Distanzwahl je Zelle** — seither ist die
+Zelle die Cull- und LOD-Einheit und muss klein gegen die LOD-Distanz
+(60 m) sein. Der Tooltip am Feld trägt die Abwägung wörtlich: „Smaller
+cells cull more precisely but cost more draw calls." *(Präzisiert noch
+am selben Tag: Die erste Fassung dieses Eintrags erklärte den
+Unterschied allein über die Dichte-Faustregel — zu kurz gegriffen, die
+TDD_NOTES belegen den Zielwechsel.)*
+Verworfen: 128 m in den Code umsetzen (wäre ein Projekt-Eingriff samt
+Messlauf und gehört nicht in die Seitenpflege) · offen lassen (der
+veröffentlichte Widerspruch bliebe stehen und sperrte zwei Seiten).

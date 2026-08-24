@@ -44,8 +44,8 @@ das entpackte `word/document.xml` — nicht über Word.
 
 ## Fallen beim Suchen und Ersetzen
 
-Die sechs dokumentierten Fallen stehen im Wissensarchiv:
-`C:\Repos Isor\Knowledge\Werkzeuge\word-xml-fallen.md`.
+Die sechs dokumentierten Fallen stehen im Wissensarchiv unter
+`Werkzeuge\word-xml-fallen.md` (`Kern/PFADE.md` → `KNOWLEDGE`).
 Sie gelten für jedes Word-Dokument, nicht nur für die Abgabe — deshalb
 liegen sie dort und nicht hier. **Vor jedem größeren Eingriff einmal
 durchlesen.**
@@ -95,8 +95,9 @@ Nach jedem Eingriff, in dieser Reihenfolge:
    erwarteten Stand prüfen.
 
 ## Formatvorgaben
-Verbindlich ist `C:\IsorBackup\01_Uni\_Regelwerk\Allgemeine_Formatierungs-
-vorgaben.pdf`. Zwei Punkte, die man leicht übersieht:
+Verbindlich ist `01_Uni\_Regelwerk\Allgemeine_Formatierungsvorgaben.pdf`
+im Datenbaum (`Kern/PFADE.md` → `DATENBAUM`). Zwei Punkte, die man
+leicht übersieht:
 - **Seitennummerierung:** entweder durchgehend arabisch, oder römisch bis zum
   Ende der Verzeichnisse und ab Kapitel 1 neu mit 1 arabisch. Eine dritte
   Variante gibt es nicht.

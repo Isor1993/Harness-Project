@@ -4,7 +4,9 @@ Ownership: Schreib- und Ablageregeln für den externen Knowledge-Ordner.
 Warum extern: Wissen ist projektübergreifend.
 
 ## Ablageort
-`C:\Repos Isor\Knowledge\` — außerhalb des Harness, für alle Projekte.
+Der Ort steht als Marke `KNOWLEDGE` in `Kern/PFADE.md` — außerhalb des
+Harness, für alle Projekte. Extern deshalb, weil Wissen das Projekt
+überlebt; ein eigenes Repo deshalb, weil es eine eigene Geschichte hat.
 
 ## Struktur
 - Unterordner = Themengruppen, wachsen nach Bedarf.

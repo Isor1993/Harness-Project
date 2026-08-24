@@ -87,14 +87,21 @@ Seite ←  keine
 ### ⚙️ System · Terrain & Gras
 ```
 URL      https://claude.ai/code/artifact/14256389-ed13-4e83-9fe1-e590b96b56d4
-Stand    2026-08-06, Werkzeug-Abschnitt 2026-08-08
+Stand    2026-08-24 — nachgezogen, im Paar mit GPU-Instancing:
+         Hausfarbwelt (Neubau aus der blaugrauen Fassung), die
+         OnEnable-Aussage durch EnsureHeightCurveLookup ersetzt,
+         Gras-Zellen-Zeile auf 32 m / LOD-Einheit korrigiert,
+         GrassInteraction und GrassLodLevel ergänzt, Ladebalken als
+         gebaut markiert, ShoreMargin-0-Hinweis, 190.000 als Messstand
+         datiert und gegen die 211.000-Baseline abgegrenzt.
 Quelle   Projekte/Isor_Tower/LOG.md und .../DECISIONS/
 Skripte  TerrainConfig, HeightmapGenerator, PlateauModifier, MeshBuilder,
          CurveLookup, Placeable, ObjectPlacer, Placement, PlacementMetrics,
          DensityStrategy, PlacementExclusion, ExclusionArea,
          PlacementExclusionFilter, PlaceableRenderMode,
          RuntimePlacementSpawner, GrassCellBuilder, GrassCell,
-         GrassRenderProfile, GrassLodSelector, InstancedRenderer,
+         GrassRenderProfile, GrassLodSelector, GrassLodLevel,
+         GrassInteraction, InstancedRenderer,
          FpsDisplay, TerrainToolWindow, TerrainToolPresenter
 Seite →  Lernstück Multithreading, Poisson-Disc-Sampling, GPU-Instancing,
          EditorWindow & MVP
@@ -106,28 +113,61 @@ Seite ←  keine direkt; terrain-pipeline.md und prozedurales-mesh-grundlagen.md
 ### ⚙️ System · Grundgerüst
 ```
 URL      https://claude.ai/code/artifact/761467e7-ed2e-48a9-a237-e208526fae48
-Stand    2026-08-06 — **die Seite wurde am 2026-08-07 noch einmal
-         veröffentlicht, also nach ihrer letzten Prüfung.** Beim nächsten
-         Anfassen gegen den Code prüfen und den Stempel nachziehen
-         (Fund des Pflegetags 2026-08-23).
+Stand    2026-08-24 — Neubau nach der Teilung: behält Spielablauf,
+         Szenen, Input und Interaktion; Tag-Nacht, Herde und Kampf
+         wohnen jetzt auf „Welt & Überleben". Alle Pfade und Klassen
+         gegen den Code gebaut; Player.cs ist ehrlich als leere Hülle
+         ausgewiesen, der Audio-Plan (AudioManager/SceneMusic) ist
+         raus — gebaut wurde Audio anders (FootstepPlayer u.a.).
 Quelle   Projekte/Isor_Tower/LOG.md und .../DECISIONS/
-Skripte  SceneLoader, GameController, MainMenuController, PauseMenuController,
-         Player, PlayerMotor, PlayerLook, PlayerInteractor,
-         PlayerControls (.inputactions), PlayerInputReader,
-         IInteractable, SheepInteractable, TorchInteractable;
-         geplant, noch nicht gebaut: AudioManager, SceneMusic
-Seite →  System · Terrain & Gras; nennt das Lernstück „Der Input-Reader"
-         im Text (noch ohne Link)
+Skripte  SceneLoader, LoadingScreenController, GameController,
+         MainMenuController, Player, PlayerMotor, PlayerLook,
+         PlayerInteractor, PlayerControls (.inputactions),
+         PlayerInputReader, FootstepPlayer, RigidbodyPusher,
+         IInteractable, SheepInteractable, TorchInteractable, Torch,
+         GameSettings, SelectOnHover, InteractionPromptView,
+         TargetStatusDisplay
+Seite →  System · Welt & Überleben, System · Nur ein Schaf zähmbar,
+         System · Terrain & Gras, Lernstück Input-Reader
+Seite ←  keine
+```
+
+### ⚙️ System · Welt & Überleben
+```
+URL      https://claude.ai/code/artifact/2efff1de-8063-4824-9a96-4589e2e82899
+Stand    2026-08-24 — neu, abgespalten aus „Grundgerüst" (Entscheidung
+         Kern/DECISIONS.md, 2026-08-24). Ehrlich ausgewiesen: Goblin
+         ist Platzhalter, das Schadenssystem hat Verträge, aber noch
+         keinen Angreifer; Verhungern ist der einzige laufende
+         Schadensweg.
+Quelle   Projekte/Isor_Tower/LOG.md und .../DECISIONS/
+         (Entities.md, Welt.md)
+Skripte  IngameTime, DayNightCycle, DayNightCycleEventManager,
+         SkyController, TimeFastForward, NightVfx, IDayNightListener,
+         Sheep, SheepSense, SheepHunger, SheepHealth,
+         SheepMoveBehaviour, SheepDodgeBehaviour, DodgeBehaviourBase,
+         SheepFSM, SheepStateBase, SheepStateSettings,
+         SheepAnimatorParameters, die elf Zustands-Klassen unter
+         SheepFSM/States, HerdManager, Health, IDamageable, DamageType,
+         HealthBarDisplay, Goblin, Timer, IResumeTargetState,
+         RandomIntervalSound, DayTimeDisplay, TamedSheepDisplay,
+         FpsDisplay, Torch
+Seite →  System · Grundgerüst, System · Nur ein Schaf zähmbar
 Seite ←  keine
 ```
 
 ### ⚙️ System · Nur ein Schaf zähmbar
 ```
 URL      https://claude.ai/code/artifact/12ef2f34-c7f5-4e79-9798-a60edab85c02
-Stand    2026-08-07
+Stand    2026-08-24 — nachgezogen: Hausfarbwelt (Neubau aus der
+         moosgrünen Fassung), vierte Frage (IsAsleep) in Flow, Code und
+         Durchspiel-Tabelle samt der Nacht-Zeile, die belegt, warum die
+         Reihenfolge trägt; FSM-Lesestellen auf vier korrigiert;
+         neu StatusText/Zähm-Laut und der Commander als Herdenanker
+         (HerdManager); Fußzeilen-Pfade auf die echten Orte.
 Quelle   Projekte/Isor_Tower/LOG.md und .../DECISIONS/
 Skripte  TamedSheepReference (SO), SheepInteractable, Sheep, PlayerInteractor,
-         IInteractable, FollowPlayerState
+         IInteractable, FollowPlayerState, HerdManager
 Seite →  (noch nicht erfasst)
 Seite ←  Patterns/validierung-beim-lesen.md
 ```
@@ -139,7 +179,12 @@ Seite ←  Patterns/validierung-beim-lesen.md
 ### 💡 Lernstück · Multithreading in Unity
 ```
 URL      https://claude.ai/code/artifact/f9d2635f-431b-4f60-90fc-dca3151cd51f
-Stand    2026-08-05
+Stand    2026-08-24 — nachgezogen: Hausfarbwelt (Neubau aus der hellen
+         Fassung, jetzt eine Fassung ohne Hell-Modus), fünfte Falle
+         (SO-OnEnable-Reihenfolge, gegen TerrainConfig.cs und
+         ObjectPlacer.cs verifiziert) samt geschärftem Merksatz,
+         Anzahl aus der Fallen-Überschrift entfernt, Fußzeile nennt
+         LOG.md statt FEATURE_LOG und die führende Quelle.
 Quelle   Projekte/Isor_Tower/TDD_NOTES.md, Knowledge-Ordner
 Beispiel ObjectPlacer, CurveLookup, ExclusionArea, PlacementExclusionFilter,
          GrassCellBuilder
@@ -150,7 +195,12 @@ Seite ←  keine
 ### 💡 Lernstück · Poisson-Disc-Sampling
 ```
 URL      https://claude.ai/code/artifact/2a5340fb-b4de-4326-be1a-c330767d8fdb
-Stand    2026-08-06
+Stand    2026-08-24 — nachgezogen: Hausfarbwelt (die drei SVG-Diagramme
+         wanderten über ihre CSS-Variablen mit), der Radius-Wechsel
+         5 m → 0,6 m ist jetzt angesagt statt stillschweigend, neuer
+         Projekt-Kasten belegt die Beispiel-Zeile (SamplePoissonDisc,
+         MAX_SAMPLE_ATTEMPTS, cellOffset = 2), Fußzeile mit führender
+         Quelle. Alle Zahlen unverändert — sie hielten der Prüfung stand.
 Quelle   Projekte/Isor_Tower/TDD_NOTES.md, Knowledge-Ordner
 Beispiel ObjectPlacer
 Seite →  (noch nicht erfasst)
@@ -161,7 +211,15 @@ Seite ←  ProcGen/poisson-disc-verteilung.md
 ### 💡 Lernstück · GPU-Instancing
 ```
 URL      https://claude.ai/code/artifact/0183966d-3132-4804-af82-83591ffe5f09
-Stand    2026-08-06
+Stand    2026-08-24 — nachgezogen, im Paar mit Terrain & Gras: beide
+         Widersprüche aufgelöst. Die 143-m-Herleitung bleibt als
+         datierte Rechnung stehen, ein neuer Kasten erklärt die
+         gebauten 32 m über den Engpass-Wechsel zu Dreiecken
+         (TDD_NOTES 04.08.) und die Zelle als LOD-Einheit; 211.000 und
+         190.000 sind als verschiedene Messstände ausgewiesen. LOD- und
+         Render-Distanz stehen jetzt auf der Seite. Hausfarbwelt, die
+         vier Diagramme über Klassen-Variablen mitgefärbt; Quellenzeile
+         ergänzt.
 Quelle   Projekte/Isor_Tower/TDD_NOTES.md, Knowledge-Ordner
 Beispiel InstancedRenderer, GrassCellBuilder, GrassCell, GrassRenderProfile,
          GrassLodSelector, PlaceableRenderMode
@@ -174,7 +232,11 @@ Seite ←  ProcGen/seed-statt-serialisieren.md,
 ### 💡 Lernstück · Terrain-Fallen
 ```
 URL      https://claude.ai/code/artifact/6241c560-1893-45ab-9f4f-aa71dbc01da6
-Stand    2026-08-06
+Stand    2026-08-24 — nachgezogen: Hausfarbwelt (Palettentausch, SVGs
+         über CSS-Variablen mitgefärbt), Regel-Kopf mit Stand-Stempel,
+         Überholt-Kasten trägt die heutigen Asset-Werte samt der
+         Wasser-Absicht (DECISIONS/Terrain_Mesh.md), Fußzeile nennt die
+         führende Quelle. Erste Altbestand-Seite im Hausstil.
 Quelle   Projekte/Isor_Tower/TDD_NOTES.md, Knowledge-Ordner
 Beispiel MeshBuilder, HeightmapGenerator
 Seite →  (noch nicht erfasst)
@@ -184,7 +246,11 @@ Seite ←  ProcGen/chunk-nahtlose-normalen.md
 ### 💡 Lernstück · Input-Reader
 ```
 URL      https://claude.ai/code/artifact/20be8fc5-f9bf-4d49-8af5-bab3247bb6e3
-Stand    2026-08-06
+Stand    2026-08-24 — nachgezogen: Hausfarbwelt (Neubau aus der hellen
+         Fassung), die canceled-Aussage umgedreht und als Korrektur-
+         Kasten mit dem echten EnableUI-Code belegt, Kette zeigt beide
+         Maps, neu die gehaltene Taste (ReadValueAsButton) und der
+         Beleg des normalized-Beispiels in PlayerMotor.Move().
 Quelle   Projekte/Isor_Tower/TDD_NOTES.md, Knowledge-Ordner
 Beispiel PlayerInputReader, PlayerControls (.inputactions), GameController
 Seite →  (noch nicht erfasst)
@@ -210,11 +276,14 @@ Seite ←  Patterns/mvp-model-view-presenter.md,
 ### ⚙️ System · Harness
 ```
 URL      https://claude.ai/code/artifact/42f2b4ac-aacb-45eb-8911-55eb7769c459
-Stand    2026-08-23 — gebaut zur Version 1.0.0
+Stand    2026-08-23 — nachgezogen auf Version 2.0.0
 Quelle   CLAUDE.md, Kern/WORKFLOW.md, DOC_RULES.md, VERSIONIERUNG.md,
          DECISIONS.md
-Skripte  keine Unity-Skripte; die Seite beschreibt die Harness-Dateien
-         und die Befehle unter Kern/Befehle/
+Skripte  keine Unity-Skripte; die Seite beschreibt die Harness-Dateien,
+         die Befehle unter Kern/Befehle/ und Kern/Werkzeuge/pruefen.py
+Bilder   Tafel 5 gibt Kern/Bilder/hook_sessionstart.svg wieder —
+         hochkant und in der Hausfarbwelt neu gezeichnet, weil die
+         Originalskizze quer und hell ist. Original bleibt die Datei.
 Seite →  keine
 Seite ←  keine
 ```

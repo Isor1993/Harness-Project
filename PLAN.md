@@ -22,16 +22,17 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(geschrieben 2026-08-23, abends — Baustein 2 ist gebaut, aber ungetestet)*
+*(geschrieben 2026-08-24, abends — 2.0.0 ist komplett bis auf einen
+Handgriff von Isor)*
 
-**Erster Handgriff, noch vor allem anderen: den Hook belegen.** Steht zu
-Beginn dieser Session die Zeile `[SessionStart-Hook]` da, **ohne** dass
-ein Werkzeugaufruf sichtbar war, hat er gefeuert — dann den Haken in
-`Kern/ROADMAP.md` setzen und `_HARNESS_UMBAU_STRUKTUR.md` archivieren.
-Fehlt sie, ist das der erste Befund. **Danach: Typ Development —
-Gegenstand: Artifact-Seite `⚙️ System · Harness` auf 2.0.0 nachziehen**
-(`Kern/ROADMAP.md`, mit der Skizze aus `Kern/Bilder/`). Offen bleiben
-die Auslieferung `Harness_2.0.0` und das Umbenennen des GitHub-Repos.
+**Für Isor selbst, ohne Session:** die **Sichtprüfung der neun
+Artifact-Seiten** im Browser — alle wurden am 23./24.08. neu
+veröffentlicht, keine ist von einem Menschen gesehen; und das
+**GitHub-Repo umbenennen** (GitHub Desktop, `Kern/ROADMAP.md`).
+**Vorschlag für die nächste Session** (kein Beschluss): die vier
+Uni-Punkte in `Uni/ROADMAP.md` — der Semesterbeginn ist die einzige
+echte Frist (~2 Wochen ab 23.08.). Typ und Modus fragt die Session
+selbst.
 
 ---
 
@@ -43,7 +44,7 @@ selbst gearbeitet: prüfen, was noch nicht trägt, und es verbessern.
 Claude meldet die Testphase nicht als fällig. *(Isor, 2026-08-23;
 Begründung in `Kern/DECISIONS.md`.)*
 
-- [ ] `C:\IsorBackup` aufräumen, in Viererpaketen — Punkte in
+- [ ] Den Datenbaum aufräumen, in Viererpaketen — Punkte in
       `IsorBackup/ROADMAP.md`. Zugleich die erste Belastungsprobe des
       Harness im Betrieb; was nicht trägt, kommt in `STOERUNGEN.md`.
 - [ ] Danach zurück ins Projekt Isor's Tower, Basiszustand nach der

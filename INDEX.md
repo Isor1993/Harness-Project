@@ -45,6 +45,7 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 | `Kern/GLOSSARY.md` | Nur die **Kurzform** jedes Begriffs und der Zeiger auf seinen Besitzer. |
 | `Kern/KNOWLEDGE_RULES.md` | Schreib- und Ablageregeln für den externen Knowledge-Ordner. |
 | `Kern/LOG.md` | Nur was wann passiert ist — datierte Ereignisse, älteste oben. |
+| `Kern/PFADE.md` | Nur die Pfade zu Orten außerhalb dieses Repos — welche Marke wofür steht und wo der Ort auf diesem Rechner liegt. |
 | `Kern/ROADMAP.md` | Nur was am Harness als Nächstes gebaut wird. |
 | `Kern/STOERUNGEN.md` | Nur Vorfälle, in denen der Harness nicht so gearbeitet hat wie vorgesehen — was passiert ist und welche Regel nicht gegriffen hat. |
 | `Kern/VERSIONIERUNG.md` | Alle Nummernsysteme des Projekts — welche Nummer was zählt, wie sie gelesen wird und wo sie steht. |
@@ -75,10 +76,10 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 
 | Dokument | Zuständigkeit |
 |---|---|
-| `IsorBackup/DECISIONS.md` | Nur Entscheidungen zum Datenbaum `C:\IsorBackup\` — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
+| `IsorBackup/DECISIONS.md` | Nur Entscheidungen zum Datenbaum (`Kern/PFADE.md` → `DATENBAUM`) — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
 | `IsorBackup/LOG.md` | (geplant) Chronik des Datenbaums — fällig, sobald der erste Aufräum-Durchgang läuft |
-| `IsorBackup/ROADMAP.md` | Nur die offenen Aufräum-Punkte des Datenbaums `C:\IsorBackup\`. |
-| `IsorBackup/RULES.md` | Baum, Ablageregeln, Benennung und Asset-Library für `C:\IsorBackup\`. |
+| `IsorBackup/ROADMAP.md` | Nur die offenen Aufräum-Punkte des Datenbaums (`Kern/PFADE.md` → `DATENBAUM`). |
+| `IsorBackup/RULES.md` | Baum, Ablageregeln, Benennung und Asset-Library für den Datenbaum (`Kern/PFADE.md` → `DATENBAUM`). |
 | `IsorBackup/_ARCHIV.md` | (geplant) Überholte Einträge der IsorBackup-Schicht — DECISIONS.md verweist bereits darauf |
 
 ## Projekte
@@ -105,9 +106,7 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 
 | Dokument | Zuständigkeit |
 |---|---|
-| `_HARNESS_ARTIFACTS_1_0_0.md` | Nur die Befunde **dieses einen Durchgangs** durch die acht Altbestand-Seiten, geprüft am 2026-08-23 gegen die veröffentlichten Seiten und den Code von Isor's Tower. |
 | `_HARNESS_PRUEFUNG_1_0_0.md` | Nur die Befunde **dieses einen Prüfdurchgangs** — der rund zwanzig Dateien, die am 2026-08-23 beim Bau der Version 1.0.0 geschrieben und nicht gegengelesen wurden. |
-| `_HARNESS_UMBAU_STRUKTUR.md` | Nur die Handgriffe **dieser einen Umbau-Folge** — der Harness wird sein eigenes Repo, danach werden die Skript-Prüfungen als Hooks erzwungen. |
 
 ## Werkzeuge — erzeugen und pflegen die Dateien oben
 
@@ -124,6 +123,7 @@ Original in `Kern/Befehle/`, Arbeitskopie in `.claude\commands\harness\` — ge�
 
 | Befehl | Tut |
 |---|---|
+| `/harness:einrichten` | Harness in einem neuen Projekt einrichten — Pfade abfragen, Arbeitskopien anlegen |
 | `/harness:ende` | Session abschließen — sichern, Baustein prüfen, Commit-Vorschlag |
 | `/harness:sichern` | Doku-Pflicht des laufenden Abschnitts abarbeiten, Session läuft weiter |
 | `/harness:sonntag` | Pflegetag — Artifact-Durchsicht, unabhängig vom Session-Typ |

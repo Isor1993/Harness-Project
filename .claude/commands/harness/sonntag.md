@@ -4,7 +4,7 @@ description: Pflegetag — Artifact-Durchsicht, unabhängig vom Session-Typ
 
 Nur Auslöser — die Liste gehört `Kern/WORKFLOW.md`.
 
-1. Lies `C:\Repos Isor\Harness Project\Kern\WORKFLOW.md`,
+1. Lies `Kern\WORKFLOW.md`,
    Abschnitt „Pflegetag (`/harness:sonntag`)", und die dort genannten Fachdateien.
 2. Arbeite die Punkte der Reihe nach ab und melde je Punkt: erledigt,
    offen oder nichts zu tun.

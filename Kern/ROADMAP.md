@@ -10,7 +10,7 @@ Kein Datum, keine Tagesplanung — das ist Sache von `PLAN.md`.
 - [x] **Überholung auf Version 1.0.0** — abgeschlossen am 2026-08-23.
   Acht Phasen, die achte war die Abnahme, danach ein Gegenlese-Durchgang
   aus eigener Session. Ausgeliefert nach
-  `C:\IsorBackup\05_Werkzeuge\Harness_Auslieferungen\Harness_1.0.0\`;
+  `05_Werkzeuge\Harness_Auslieferungen\Harness_1.0.0\` im Datenbaum;
   die drei Arbeitsdateien sind archiviert, was aus ihnen dauerhaft gilt,
   steht in den Regeldateien. Ereignis im `LOG.md`.
 
@@ -43,55 +43,68 @@ anderen: Solange die Pfade sich noch ändern, erzeugt jede weitere
 Arbeit Zeiger, die hinterher noch einmal angefasst werden müssen.
 
 - [x] **Struktur begradigen: der Harness wird sein eigenes Repo** —
-  erledigt am 2026-08-23 als Harness 2.0.0. Wurzel ist
-  `C:\Repos Isor\Harness Project\`, null Weiterleitungen, eine einzige
+  erledigt am 2026-08-23 als Harness 2.0.0. Wurzel ist das Repo selbst,
+  null Weiterleitungen, eine einzige
   `CLAUDE.md`; Notkern und die INDEX-Kategorie Wegweiser sind entfallen.
   Getrackt statt 123 nur noch 58 Dateien. Was beim Ausführen vom Plan
   abwich, steht in `_HARNESS_UMBAU_STRUKTUR.md`, Baustein 1; das
   Ereignis im `Kern/LOG.md`, die Entscheidungen in `Kern/DECISIONS.md`.
 
-- [ ] **Auslieferung `Harness_2.0.0` ablegen.** Nach
-  `VERSIONIERUNG.md` fällig, sobald sich `X` ändert — das ist mit dem
-  Struktur-Umbau geschehen. Nach `C:\IsorBackup\05_Werkzeuge\Harness_Auslieferungen\`,
-  nur `Kern/` plus `CLAUDE.md`, als Vorlage gepackt (Zeugnisse,
-  ARTIFACT_INDEX-Einträge und `index_geplant.txt` raus). Die drei
-  Einrichtungs-Handgriffe stehen dort; der Pfad zur Arbeitskopie hat
-  sich geändert und gehört beim Packen gegengelesen.
+- [x] **Auslieferung `Harness_2.0.0` abgelegt** — am 2026-08-24, nach der
+  neuen Packliste in `VERSIONIERUNG.md`, mit Probelauf des
+  Einrichten-Ablaufs vor dem Ablegen. 31 Dateien, 269.233 Bytes, Quelle
+  wie Ziel. Neu gegenüber 1.0.0 im Paket: `PFADE.md` (geleert),
+  `Vorlagen/`, `Bilder/`, `pruefen.py`, der sechste Befehl
+  `einrichten.md`.
 
 - [ ] **GitHub-Repo umbenennen.** Der Remote heißt
   `Isor1993/My-Harness-Development`, der Ordner `Harness Project` — die
   Namen laufen auseinander, seit der Unity-Anteil weg ist. Isor benennt
   um, GitHub leitet den alten Namen weiter. Erst nach dem Umbau-Commit,
   damit nicht zwei Umstellungen zugleich laufen.
-- [ ] **Hooks: erzwingen statt erinnern.** Gebaut am 2026-08-23 —
-  `SessionStart` ruft `pruefen.py`, dazu Vorlage, Prüfung 6, der Schalter
-  `--hook` und die nachgezogenen Regeldateien (Einzelheiten im
-  `Kern/LOG.md`). **Offen ist nur der scharfe Test:** ob der Hook beim
-  nächsten Session-Start wirklich feuert. Erkennungszeichen ist die Zeile
-  `[SessionStart-Hook]` **ohne** sichtbaren Werkzeugaufruf; damit ist
-  zugleich belegt, dass Claude Code den Platzhalter
-  `${CLAUDE_PROJECT_DIR}` ersetzt. Schlägt er fehl, ist der erste
-  Verdacht, dass `python` im Hook-Prozess nicht auf dem PATH liegt.
-  Danach ist `_HARNESS_UMBAU_STRUKTUR.md` archivierbar.
-- [ ] **Artifact-Seite `⚙️ System · Harness` auf 2.0.0 nachziehen.** Sie
-  steht auf „gebaut zur Version 1.0.0" und beschreibt damit den Notkern
-  und die alte Ordnerstruktur, die es beide nicht mehr gibt.
-  `ARTIFACT_INDEX.md` verlangt das Nachziehen bei jeder neuen
-  Harness-Version — die Seite ist seit dem Umbau überfällig. Beim
-  Nachziehen kommen die Skizze aus `Kern/Bilder/` und das Ergebnis des
-  Hook-Tests mit hinein, statt die Seite zweimal anzufassen.
-- [ ] **Den Artifact-Altbestand nachziehen.** Grundlage ist
-  `_HARNESS_ARTIFACTS_1_0_0.md` — acht Seiten, geprüft gegen Code und
-  veröffentlichte Fassung, mit Aufwandsschätzung und einer begründeten
-  Reihenfolge (billigste zuerst: Terrain-Fallen, dann Multithreading,
-  Input-Reader, Schaf, Poisson, GPU, Terrain & Gras, Grundgerüst).
-  Vier Punkte braucht Isor vorab, sie stehen dort in Abschnitt 4 —
-  darunter: Wird „Grundgerüst" geteilt (sie beantwortet heute drei
-  Fragen statt einer), und welche Gras-Zellgröße gilt (32 m, ~36 m oder
-  128 m — zwei Seiten widersprechen sich). **GPU-Instancing und
-  Terrain & Gras gehören zusammen angefasst**, sonst wird der
-  Widerspruch schlimmer. Die Index-Nachträge sind dort gesammelt und
-  noch nicht in `ARTIFACT_INDEX.md` eingetragen.
+- [x] **Hooks: erzwingen statt erinnern** — gebaut am 2026-08-23,
+  scharf belegt beim ersten Session-Start danach: Die Zeile
+  `[SessionStart-Hook]` stand ohne sichtbaren Werkzeugaufruf im Kontext,
+  Ergebnis 0 Funde bei 49 Dateien. Damit ist zugleich belegt, dass
+  Claude Code den Platzhalter `${CLAUDE_PROJECT_DIR}` ersetzt und
+  `python` im Hook-Prozess erreichbar ist. Gebaut wurden `SessionStart`,
+  die Vorlage, Prüfung 6 und der Schalter `--hook` (Einzelheiten im
+  `Kern/LOG.md`). `_HARNESS_UMBAU_STRUKTUR.md` ist daraufhin archiviert.
+- [ ] **`pruefen.py` sieht die temporären Wurzeldateien nicht.** Prüfung 1
+  erkennt einen Verweis nur, wenn er mit einer Schicht beginnt oder eine
+  der drei Dateien oben ist (`EIGENE_PFADE`, `EIGENE_DATEIEN`). Die
+  `_HARNESS_*.md` fallen durch — ausgerechnet die einzige Dateiart, die
+  planmäßig verschwindet. Belegt am 2026-08-23: Nach dem Archivieren von
+  `_HARNESS_UMBAU_STRUKTUR.md` standen drei Verweise ohne Ziel da, das
+  Skript meldete null Funde. **Die Liste bloß zu erweitern, genügt aber
+  nicht:** Ein Teil dieser Verweise ist Absicht und soll bleiben —
+  `DOC_RULES.md` belegt eine Regel mit `_HARNESS_UMSETZUNG.md`, das
+  längst im Archiv liegt, und Chroniken zeigen ohnehin auf Vergangenes.
+  Die würden dann mitgemeldet, gegen den eigenen Maßstab des Skripts
+  („ein Fund, den niemand prüfen kann, ist Rauschen — und Rauschen killt
+  den Prüfer"). Zuerst zu entscheiden ist deshalb, woran ein
+  **absichtlicher** Archiv-Verweis erkennbar sein soll; ein Kandidat ist
+  der Zusatz „(im Archiv)", den `_HARNESS_PRUEFUNG_1_0_0.md` schon von
+  Hand setzt.
+- [x] **Artifact-Seite `⚙️ System · Harness` auf 2.0.0 nachziehen** —
+  erledigt am 2026-08-23, gleiche URL. Nachgezogen wurden die
+  Versionszeile, alle gemessenen Zahlen (Leseordnung, Bestand,
+  Kopfzeile), die Nummern-Tabelle, der Pflegetag ohne Backup und der
+  Stand-Abschnitt; neu sind Punkt 5 der Leseordnung, die Prüfebenen als
+  Tabelle und **Tafel 5** aus `Kern/Bilder/hook_sessionstart.svg`. Zwei
+  inhaltliche Fehler der alten Fassung sind mit weg: Sie kündigte die
+  Testphase als automatische Folge an (sie beginnt auf Zuruf) und nannte
+  ein Commit-Format, das es nicht gibt.
+- [x] **Den Artifact-Altbestand nachziehen** — abgeschlossen am
+  2026-08-24, alle acht Seiten an einem Tag, in der geplanten
+  Reihenfolge (Terrain-Fallen → Multithreading → Input-Reader → Schaf →
+  Poisson → GPU + Terrain & Gras als Paar → Grundgerüst). Das
+  Grundgerüst wurde dabei wie entschieden **geteilt**: Die neue Seite
+  „Welt & Überleben" trägt Tag-Nacht, Herde/FSM und den
+  Schadens-Unterbau. Jede Seite wurde vor dem Umbau abgerufen und gegen
+  den echten Code geprüft; die Stände je Seite stehen im
+  `ARTIFACT_INDEX.md`. Die Befundliste `_HARNESS_ARTIFACTS_1_0_0.md`
+  (im Archiv) ist damit abgearbeitet und archiviert.
 - [ ] **Der Pflegetag prüft eine Seite inhaltlich, statt alle
   oberflächlich.** Belegt am 2026-08-23: Er meldete drei Funde, eine
   gründliche Durchsicht derselben acht Seiten fand rund dreißig
@@ -138,7 +151,7 @@ Arbeit Zeiger, die hinterher noch einmal angefasst werden müssen.
   benutzt statt gebaut. Steht bewusst am Ende dieser Liste: Der Beginn
   hängt an keiner Bedingung, die Claude feststellen könnte, sondern an
   Isors Ansage (`Kern/DECISIONS.md`, 2026-08-23). Erste Aufgabe dann:
-  `C:\IsorBackup` aufräumen, in Viererpaketen (`IsorBackup/ROADMAP.md`).
+  den Datenbaum aufräumen, in Viererpaketen (`IsorBackup/ROADMAP.md`).
   Zugleich die erste Belastungsprobe — was dabei nicht trägt, kommt in
   `STOERUNGEN.md`.
 

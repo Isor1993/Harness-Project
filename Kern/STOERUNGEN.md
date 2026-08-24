@@ -246,6 +246,30 @@ einem Schreibvorgang die ersten Bytes prüfen, nicht nur den Text.
 UTF-8 ohne BOM zurückgeschrieben, erste Bytes einzeln nachgezählt
 (`239,187,191` vorher, `45,45,45` nachher), Beschreibungen wieder da.
 
+### 2026-08-23 — Typ und Modus nicht gefragt, sondern übernommen
+**Was:** Beim Start des Development-Abschnitts fragte Claude weder nach
+Typ noch nach Modus. Den **Typ** übernahm er aus dem Vorschlag in
+`PLAN.md` und stellte ihn als feststehend hin, den **Modus** ließ er ganz
+aus und leitete ihn aus einer Erinnerung ab. Gefragt wurden nur der
+Gegenstand und der Regler Visualisierung. Isor hat es bemerkt und
+nachgetragen verlangt.
+**Ursache:** Die Übergabe in `PLAN.md` nannte den Typ bereits („Typ
+Development — Gegenstand: …"). Ein **Vorschlag** der vorigen Session
+wurde damit wie eine getroffene Entscheidung behandelt. `WORKFLOW.md`
+verlangt die Frage aber am Anfang jeder Session und bei jedem Typ, gerade
+weil beide am Abschnitt hängen und nicht an der Übergabe. Beim Regler
+fiel es nicht auf, weil dort tatsächlich gefragt wurde — die Teilfrage
+verdeckte die fehlende Hauptfrage.
+**Regel:** Vorhanden und ausreichend (`WORKFLOW.md` → „Typ, Modus und
+Regler"), der Fehler lag in der Anwendung. **Zweiter Vorfall dieser
+Sorte:** Der erste ist der Eintrag vom 2026-08-22 „Typ des Abschnitts nie
+erfragt", aus dem die Regel überhaupt entstanden ist. Damals fehlte sie,
+diesmal wurde sie übergangen.
+**Stand:** offen. Zu beobachten, ob ein in der Übergabe vorgeschlagener
+Typ die Frage regelmäßig verdrängt — dann liegt die Lücke im Format des
+Abschnitts „Für die nächste Session", der einen Vorschlag heute nicht von
+einer Festlegung unterscheidet.
+
 ### 2026-08-23 — Das Prüfwerkzeug scheiterte an seinem eigenen Fund
 **Was:** `pruefen.py` brach mit einem `UnicodeEncodeError` ab, sobald
 Prüfung 5 einen Fund meldete, der ein `→` enthielt. Der Abbruch kam

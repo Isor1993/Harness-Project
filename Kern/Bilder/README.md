@@ -17,6 +17,14 @@ Sitzungs-Zwischenspeicher liegen geblieben und mit ihm verschwunden.
 |---|---|---|
 | `hook_sessionstart.svg` | den `SessionStart`-Hook: vorher eine Bitte, nachher ein Handgriff des Harness; dazu die fünf Auslöser | `CLAUDE.md` Punkt 5, `Kern/Vorlagen/README.md`, `Kern/WORKFLOW.md` → Die Prüfebenen |
 
+Die Skizze steckt seit dem 2026-08-23 auch in der Artifact-Seite
+`⚙️ System · Harness` (Tafel 5). Dort ist sie **nachgezeichnet**, nicht
+eingebettet: Die Seite ist die Handy-Fassung und verlangt hochkant,
+höchstens 460 px breit und in ihrer Farbwelt (`ARTIFACT_RULES.md` →
+„Gestaltung"), die Datei hier ist quer, hell und 980 px breit. Das ist
+der Preis dafür, dass beide Formen ihren Zweck erfüllen — die Richtung
+bleibt: geändert wird hier, danach wird die Seite nachgezogen.
+
 ## Regeln
 
 - **Führende Quelle bleibt die `.md`-Datei.** Eine Skizze zeigt, was dort

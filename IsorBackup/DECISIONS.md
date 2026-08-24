@@ -1,6 +1,7 @@
 # DECISIONS.md — Entscheidungen Datenablage
 
-Ownership: Nur Entscheidungen zum Datenbaum `C:\IsorBackup\` — was
+Ownership: Nur Entscheidungen zum Datenbaum (`Kern/PFADE.md` →
+`DATENBAUM`) — was
 entschieden wurde, warum, und welche Alternativen verworfen wurden. Kein
 Plan (das ist `ROADMAP.md` dieser Schicht), keine ausformulierte Regel
 (die steht in `RULES.md`; hier steht nur, warum sie gilt).

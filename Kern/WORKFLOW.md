@@ -249,6 +249,7 @@ und wird nicht in die Befehle abgeschrieben.
 | `/harness:ende` | sichern + Commit-Vorschlag | Session ist zu, `/clear` folgt |
 | `/harness:sonntag` | Pflegetag, siehe unten | unabhängig vom Session-Typ |
 | `/harness:zeugnis` | Session-Typ „Zeugnis" starten | Regeln in `ASSESSMENT_RULES.md` |
+| `/harness:einrichten` | Auslieferung im neuen Projekt betriebsbereit machen | einmalig nach dem Auspacken |
 
 **Die Befehlsdateien sind nur Auslöser.** Sie zeigen hierher und tragen
 keinen Ablauf. Grund: Alles Inhaltliche gehört an eine Stelle, und das
@@ -318,13 +319,60 @@ schreiben ohnehin alle in dieses Repo.
    denn das Schreiben erzeugt die Fehler, die es findet. Die Prüfungen:
    tote Verweise · Datumsfolge und Pflichtfelder der Chroniken · Befehle
    gegen ihre Arbeitskopie · Zahlwörter in Überschriften · Glossar gegen
-   die Besitzerdateien · Hooks gegen ihre Vorlage. Das Skript **meldet nur**; jeder Fund ist ein
+   die Besitzerdateien · Hooks gegen ihre Vorlage · absolute Pfade
+   außerhalb von `Kern/PFADE.md`. Das Skript **meldet nur**; jeder Fund ist ein
    Befund, kein Auftrag. Was es nicht sieht, ist, ob eine Aussage stimmt
    — dafür braucht es weiterhin einen Abschnitt vom Typ Prüfung.
 6. **Ergebnis melden:** eine Zeile je Eintrag mit Zieldatei. „Nichts zu
    schreiben" ist ein gültiges Ergebnis und wird ebenso gemeldet — sonst
    ist nicht unterscheidbar, ob nichts anfiel oder etwas vergessen wurde.
    Die Funde des Skripts kommen dazu, auch wenn es null waren.
+
+### Ablauf von `/harness:einrichten`
+
+Einmalig, nachdem eine Auslieferung in ein neues Projekt ausgepackt
+wurde. Er ersetzt die Handgriff-Liste, die bis 2.0.0 in
+`VERSIONIERUNG.md` stand — eine Liste zum Abarbeiten wuchs mit jeder
+Version und wurde dabei unvollständiger.
+
+1. **Nachsehen, was schon da ist.** Trägt `Kern/PFADE.md` bereits Pfade,
+   ist das Projekt eingerichtet: melden, was dort steht, und fragen, ob
+   geändert werden soll. Nichts stillschweigend überschreiben.
+2. **Die Pfade abfragen — einzeln, nicht als Block.** Je Marke aus
+   `Kern/PFADE.md`: wofür sie steht, was dort liegen soll, und ein
+   Vorschlag, wenn sich einer aus der Umgebung ableiten lässt. Ein Ort,
+   den es noch nicht gibt, wird angelegt — nach Rückfrage.
+   Marken, die das Projekt nicht braucht, werden auf `(nicht benutzt)`
+   gesetzt statt geraten.
+3. **`Kern/PFADE.md` schreiben.** Nur die Pfad-Spalte; Marken, Zweck und
+   Regeln bleiben, wie sie sind.
+4. **Befehle in die Arbeitskopie:** `Kern/Befehle/*.md` nach
+   `.claude\commands\harness\`. Ohne diesen Schritt gibt es die Befehle
+   im neuen Projekt nicht (siehe „Wo die Auslöser liegen").
+5. **`PLAN.md` anlegen**, falls sie fehlt — nur Kopf und der Abschnitt
+   „Für die nächste Session". Die Leseordnung nennt die Datei; ohne sie
+   zeigt sie ins Leere. Eine vorhandene `PLAN.md` wird nicht angefasst.
+6. **Hook eintragen:** `Kern/Vorlagen/settings.json` nach
+   `.claude\settings.json`. Gibt es die Datei dort schon, wird **nur der
+   `hooks`-Block** hineinübernommen — der Rest ist rechner- und
+   personenabhängig und gehört dem Nutzer. Ohne diesen Schritt läuft
+   `pruefen.py` beim Session-Start nicht von selbst, und die Leseordnung
+   fällt auf ihre Rückfallebene zurück (`CLAUDE.md`, Punkt 5).
+7. **INDEX erzeugen:** `python Kern/Werkzeuge/index_bauen.py --write`.
+   Zuletzt, weil die Schritte davor Dateien anlegen. Der `INDEX.md` wird
+   erzeugt und nie mitgeliefert — eine mitgelieferte Fassung wäre ab dem
+   ersten neuen Dokument falsch.
+8. **`pruefen.py` laufen lassen und das Ergebnis melden.** Der erste Lauf
+   in einem frischen Baum meldet Verweise auf Schichten, die es dort noch
+   nicht gibt (`Uni/`, `Projekte/<Name>/`) — das ist erwartet und kein
+   Befund. Danach einmal `python Kern/Werkzeuge/pruefen.py --glossar-ok`:
+   Frisch kopierte Dateien tragen alle dasselbe Datum, und der
+   Glossar-Hinweis stünde sonst ohne Anlass da. Was zu tun bleibt,
+   entscheidet der Nutzer.
+
+**Der Befehl legt keine Schichten an.** Welche Schichten ein Projekt
+braucht, weiß nur der Mensch; ein leerer Ordner `Uni/` in einem Projekt
+ohne Studium wäre eine Behauptung. Der Kern läuft ohne sie.
 
 ### Ablauf von `/harness:wechsel <Typ>`
 Der Wechsel ist ein **Kontrollpunkt**, siehe „Wechsel des Abschnitts".
@@ -408,7 +456,7 @@ nicht mehr den Überblick habe")*. Dieser Abschnitt besitzt die
 
 | Ebene | prüft | wann | wer urteilt |
 |---|---|---|---|
-| `Kern/Werkzeuge/pruefen.py` | Verweise · Chronik-Format · Befehle gegen Arbeitskopie · Zahlwörter · Glossar · Hooks gegen Vorlage | Session-Start (**per Hook erzwungen**) und jedes `/harness:sichern` | Skript |
+| `Kern/Werkzeuge/pruefen.py` | Verweise · Chronik-Format · Befehle gegen Arbeitskopie · Zahlwörter · Glossar · Hooks gegen Vorlage · Pfade gegen `PFADE.md` | Session-Start (**per Hook erzwungen**) und jedes `/harness:sichern` | Skript |
 | `Kern/Werkzeuge/index_bauen.py` | fehlt eine `Ownership:`-Zeile? | wenn Dateien dazukommen oder wegfallen | Skript |
 | `Projekte/<Name>/Werkzeuge/prefab_status.py` | welche Prefabs es gibt und was auffiel | bei Projektarbeit | Skript und Mensch |
 | **Review-Gate** (`CODE_GUIDELINES.md`) | Fattening · Enum-Sicherheit · Werkzeugwahl · Naming · Artifact-Bezug | vor dem Coden | Mensch und Claude |

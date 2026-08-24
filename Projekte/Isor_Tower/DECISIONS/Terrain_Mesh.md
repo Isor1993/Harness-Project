@@ -187,3 +187,15 @@ Verworfen: ein `WorldBounds`-MonoBehaviour, das die Wände in `Awake` erzeugt
 in der Szene hängen muss); vier von Hand gesetzte Würfel (Weltgröße abgetippt).
 Offen geblieben: Der Wasserspiegel hat bewusst keinen Collider, der Spieler
 läuft also in den See und weiter auf dem Grund. Am 19.08. nicht angefasst.
+
+## 2026-08-24 — Wasserspiegel 0,14 knapp unter Plateau 0,15 ist Absicht
+Was: Der Abstand von 0,01 zwischen Wasserspiegel (`_waterLevel: 0,14`)
+und Plateauhöhe (`_plateauHeight: 0,15`) im `TerrainConfig_Default.asset`
+bleibt so — das Dorfplateau soll knapp über dem Wasser liegen.
+Warum: Von Isor bestätigt, nachdem die Artifact-Prüfung vom 2026-08-23
+den knappen Abstand als möglichen Tuning-Drift gemeldet hatte
+(Terrain-Fallen, Falle 1: „das Dorf würde absaufen"). Die
+`OnValidate`-Warnung greift erst bei Gleichstand und schlägt korrekt
+nicht an; festgehalten, damit die nächste Prüfung nicht erneut stolpert.
+Verworfen: Wasser senken für mehr Sicherheitsabstand — der knappe Stand
+ist der gewollte Küsteneffekt.

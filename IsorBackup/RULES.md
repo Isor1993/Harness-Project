@@ -1,21 +1,21 @@
 # RULES.md — Regeln für den Datenbaum
 
-Ownership: Baum, Ablageregeln, Benennung und Asset-Library für
-`C:\IsorBackup\`. Keine Aufgaben (das ist `ROADMAP.md` dieser Schicht),
-keine Begründungen (`DECISIONS.md`), keine Regeln für die Repos — die
-stehen in `Kern/CODE_GUIDELINES.md`.
+Ownership: Baum, Ablageregeln, Benennung und Asset-Library für den
+Datenbaum (`Kern/PFADE.md` → `DATENBAUM`). Keine Aufgaben (das ist
+`ROADMAP.md` dieser Schicht), keine Begründungen (`DECISIONS.md`), keine
+Regeln für die Repos — die stehen in `Kern/CODE_GUIDELINES.md`.
 
-Warum die Regeln hier und nicht im Datenbaum selbst liegen:
-`C:\IsorBackup` ist kein Git-Repo. Ein Regeltext ohne
+Warum die Regeln hier und nicht im Datenbaum selbst liegen: Der
+Datenbaum ist kein Git-Repo. Ein Regeltext ohne
 Versionsgeschichte lässt sich nicht mehr nachvollziehen, sobald ihn
 jemand ändert. Im Datenbaum steht deshalb nur ein Wegweiser hierher.
 
 ## Was hier liegt und was nicht
 
-`C:\IsorBackup\` nimmt **alles auf, was nicht Code in einem Git-Repo
-ist.** Angelegt am 2026-08-06. Die Repos liegen daneben auf `C:\`; das
-externe Backup umfasst deshalb **drei** Ordner, nicht einen — der Umfang
-steht im Skript, siehe „Werkzeug" unten.
+Der Datenbaum nimmt **alles auf, was nicht Code in einem Git-Repo
+ist.** Angelegt am 2026-08-06. Die Repos liegen daneben auf derselben
+Platte; das externe Backup umfasst deshalb **drei** Ordner, nicht einen
+— der Umfang steht im Skript, siehe „Werkzeug" unten.
 
 ## Baum
 

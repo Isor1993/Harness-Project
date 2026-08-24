@@ -4,7 +4,7 @@ description: Doku-Pflicht des laufenden Abschnitts abarbeiten, Session läuft we
 
 Nur Auslöser — der Ablauf gehört `Kern/WORKFLOW.md`.
 
-1. Lies `C:\Repos Isor\Harness Project\Kern\WORKFLOW.md`,
+1. Lies `Kern\WORKFLOW.md`,
    Abschnitte „Die Befehle" → „Ablauf von `/harness:sichern`" und „Doku-Pflicht".
 2. Führ aus, was dort steht.
 

@@ -5,7 +5,7 @@ description: Standortbestimmung zu einem festen Datum — Session-Typ „Zeugnis
 Nur Auslöser — die Regeln gehören `Kern/ASSESSMENT_RULES.md`.
 
 1. Lies **vollständig**, bevor sonst etwas passiert:
-   `C:\Repos Isor\Harness Project\Kern\ASSESSMENT_RULES.md`
+   `Kern\ASSESSMENT_RULES.md`
    Diese Datei besitzt Session-Disziplin, Belegpflicht, Aufbau des
    Eintrags, Notenskala, Schreibregeln, Ablage und die benannte
    Artifact-Ausnahme. **Sie gewinnt immer** — auch gegen diese Datei.

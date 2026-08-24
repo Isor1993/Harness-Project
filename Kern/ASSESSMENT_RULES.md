@@ -60,8 +60,9 @@ geschrieben. Vor jedem Zeugnis werden gelesen:
    *Grund:* Die alte Fassung las, was da war — beide Zeugnisse von 2026
    haben sieben Teilabgaben bewertet und hatten die Kriterien für drei.
    Ein Verzeichnis merkt nicht, dass etwas fehlt.
-3. Die aktuellen Abgabedokumente selbst (`.docx` unter
-   `C:\IsorBackup\01_Uni\Semester_<n>\Arbeitsdateien\`), nicht nur die Notizen
+3. Die aktuellen Abgabedokumente selbst (`.docx` im Datenbaum unter
+   `01_Uni\Semester_<n>\Arbeitsdateien\`, siehe `Kern/PFADE.md`), nicht
+   nur die Notizen
 4. Mindestens fünf repräsentative `.cs`-Dateien im Original, darunter
    eine neue, eine alte und eine als problematisch vermerkte
 5. `git log` des betroffenen Repos

@@ -232,3 +232,89 @@ damals, nicht den von heute.
   Ins Knowledge gingen zwei Seiten: die Hook-Mechanik samt Matcher-Falle
   und Shell-Falle (`Werkzeuge/`) und das Prinzip dahinter,
   „Stille ist mehrdeutig" (`Patterns/`) — eigenes Repo, eigener Commit.
+- 2026-08-23 — **Der Hook feuert. Artifact-Seite auf 2.0.0 nachgezogen.**
+  Der scharfe Test von Baustein 2 ist bestanden: Beim ersten Session-Start
+  nach dem Bau stand die Zeile `[SessionStart-Hook]` ohne sichtbaren
+  Werkzeugaufruf im Kontext, Ergebnis 0 Funde bei 48 Dateien. Damit ist
+  zugleich belegt, dass Claude Code `${CLAUDE_PROJECT_DIR}` ersetzt und
+  `python` im Hook-Prozess erreichbar ist. `_HARNESS_UMBAU_STRUKTUR.md`
+  ist daraufhin geschlossen — Kandidat 2 ausdrücklich als *nicht gebaut*
+  markiert — und nach
+  `C:\IsorBackup\99_Archiv\_Zu_Loeschen\2026-08-23_Harness_Umbau_Arbeitsdateien\`
+  archiviert.
+  Danach die Seite `⚙️ System · Harness` auf **2.0.0** nachgezogen, gleiche
+  URL. Alle Zahlen neu gemessen statt fortgeschrieben: Leseordnung 740
+  Zeilen (vorher 574), Bestand rund 10.100, Kopfzeile 48 Dokumente und
+  4 Werkzeuge. Neu sind Punkt 5 der Leseordnung, der Hook als oberstes
+  Glied im Session-Kreislauf, die Prüfebenen als Tabelle und **Tafel 5**
+  nach `Kern/Bilder/hook_sessionstart.svg`. Zwei inhaltliche Fehler der
+  alten Fassung gingen mit weg — sie kündigte die Testphase als
+  automatische Folge an, und ihre Nummern-Tabelle zeigte ein
+  Commit-Format, das es nie gab (`Update V 0126` statt `Update V 0.0049`).
+  Zwei Befunde nebenbei, beide nicht behoben: `pruefen.py` Prüfung 1 sieht
+  die temporären `_HARNESS_*.md` nicht und meldete deshalb null, als drei
+  Verweise durch das Archivieren ins Leere zeigten — steht als Aufgabe in
+  der `ROADMAP.md`, samt Isors Einwand, dass ein bloßes Erweitern der
+  Liste die absichtlichen Archiv-Verweise mitmelden würde. Dazu eine
+  Störung: Typ und Modus wurden zu Abschnittsbeginn nicht gefragt,
+  sondern aus `PLAN.md` übernommen (zweiter Vorfall dieser Sorte).
+  Geprüft: `pruefen.py` 0 Funde in allen sechs Prüfungen · INDEX neu
+  erzeugt, 48 Dateien, alle mit Ownership-Zeile · Glossar-Hinweis zu
+  „Störung" und „Vorlage" gegengelesen, beide Definitionen unverändert.
+  Nicht geprüft: die veröffentlichte Seite im Browser — Artifact-URLs
+  sind ohne Login nicht abrufbar, die Sichtprüfung bleibt bei Isor.
+- 2026-08-24 — **Pfad-System gebaut, Auslieferung `Harness_2.0.0` abgelegt.**
+  Aus Isors Vorschlag, das Einrichten abzufragen statt zu dokumentieren,
+  wurden drei Bausteine: `Kern/PFADE.md` besitzt als einzige Datei die
+  absoluten Pfade (Marken `DATENBAUM`, `KNOWLEDGE`, `PROJEKT`) und die
+  betroffenen Stellen in Kern, Uni, IsorBackup und Projekt nennen jetzt
+  die Marke — die zehn Befehlsdateien sind zugleich auf relative Pfade
+  umgestellt, per Skript, UTF-8 ohne BOM, erste Bytes geprüft. Dazu
+  **Prüfung 7** in `pruefen.py` (absoluter Pfad außerhalb `PFADE.md` und
+  der Chroniken; ihr erster Lauf fand 13 Stellen, danach 0) und der
+  Befehl **`/harness:einrichten`** samt Ablauf in `WORKFLOW.md`, der die
+  Handgriff-Liste aus `VERSIONIERUNG.md` ersetzt. Dort steht neu auch
+  die **Packliste** — vollständig · geleert · fällt weg — je Datei.
+  Beim Glossar-Gegenlesen einen Altfehler gefunden: „Harness-Version"
+  stand als Reifegrad, `VERSIONIERUNG.md` sagt Verträglichkeit;
+  nachgezogen, dazu die neuen Begriffe Marke und Datenbaum (28 Kurzformen).
+  Die Auslieferung wurde nach der Packliste im Scratchpad gepackt, im
+  Probelauf eingerichtet (Schritte 4 bis 8 des neuen Ablaufs; sechs
+  erwartete Schicht-Verweise, sonst 0 Funde) und nach
+  `05_Werkzeuge\Harness_Auslieferungen\Harness_2.0.0\` im Datenbaum
+  abgelegt — 31 Dateien, 269.233 Bytes, Quelle wie Ziel.
+  Geprüft: `pruefen.py` im Repo 0 Funde in allen sieben Prüfungen ·
+  INDEX neu erzeugt, 49 Dateien, 6 Befehle · Prüfung 3 bestätigt
+  Original gleich Arbeitskopie nach der Pfad-Umstellung.
+- 2026-08-24 — **Der Artifact-Altbestand ist nachgezogen — alle acht
+  Seiten an einem Tag, der Bestand wuchs dabei auf neun.** Reihenfolge
+  wie geplant, billigste zuerst: Terrain-Fallen (Palettentausch, der
+  Testlauf der Hausfarbwelt am Altbestand), Multithreading (fünfte Falle
+  aus TerrainConfig.cs/ObjectPlacer.cs verifiziert, Anzahl aus der
+  Fallen-Überschrift entfernt), Input-Reader (canceled-Aussage
+  umgedreht und mit dem echten EnableUI belegt, gehaltene Taste neu,
+  normalized-Beispiel in PlayerMotor.cs:86 belegt), Schaf (vierte Frage
+  samt Nacht-Zeile, FSM-Lesestellen vier statt sechs, Commander als
+  Herdenanker), Poisson (Radius-Wechsel angesagt, Projekt-Kasten belegt
+  die Beispiel-Zeile; drei SVGs statt der geschätzten sechs), dann das
+  Paar GPU + Terrain & Gras (Zellgrößen-Widerspruch über den
+  Engpass-Wechsel aufgelöst, 211.000/190.000 als verschiedene
+  Messstände ausgewiesen, EnsureHeightCurveLookup statt OnEnable,
+  GrassInteraction/GrassLodLevel ergänzt, Ladebalken als gebaut).
+  Zuletzt der **Neubau des Grundgerüsts als zwei Seiten**: „Grundgerüst"
+  (Szenenfluss, Pause als Input-Zustand, Spieler, Interaktions-Vertrag)
+  und die **neue Seite „Welt & Überleben"** (Uhr→Relay→Listener, elf
+  FSM-Zustände — der Code schlägt die geschätzten dreizehn —, Herde,
+  Schadens-Verträge; Goblin und Player.cs ehrlich als Platzhalter bzw.
+  leere Hülle ausgewiesen). Grundlage je Seite: Abruf der
+  veröffentlichten Fassung plus Lesen des echten Codes, darunter alle
+  89 Skript-Köpfe des Tower-Repos.
+  Geprüft: pruefen.py nach jeder Seite und am Ende 0 Funde in allen
+  sieben Prüfungen · INDEX neu erzeugt, 48 Dateien · beide neuen
+  Index-Einträge tragen erstmals gefüllte „Seite →"-Zeilen.
+  Die Befundliste `_HARNESS_ARTIFACTS_1_0_0.md` wurde mit
+  Abschlussvermerk geschlossen und nach
+  `99_Archiv\_Zu_Loeschen\2026-08-24_Artifact_Altbestand_Befundliste\`
+  archiviert. **Nicht geprüft: die Sichtkontrolle der neun Seiten im
+  Browser** — Artifact-URLs sind ohne Login nicht abrufbar, sie bleibt
+  bei Isor.

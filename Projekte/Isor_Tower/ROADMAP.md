@@ -46,7 +46,7 @@ geschieht in einer eigenen Design-Session.
 - [ ] **Ordnerstruktur im Unity-Projekt gegen die Vorlage prüfen.**
   Maßstab ist `05_Werkzeuge\Vorlagen\Unity_Ordnerstruktur`. Zwischendurch
   mitziehen, nicht erst ganz am Schluss — sonst wird daraus ein eigener
-  Arbeitstag. Übernommen aus `C:\IsorBackup\README.md` (2026-08-22);
+  Arbeitstag. Übernommen aus dem README des Datenbaums (2026-08-22);
   die Aufgabe betrifft das Projekt, nicht den Datenbaum.
 - [ ] **GameObject-/Prefab-Aufbau-Konvention** (eigene Design-Session).
   Einheitliches Schema, wie ein Objekt *innen* aufgebaut ist: Root,

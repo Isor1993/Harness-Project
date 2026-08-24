@@ -86,42 +86,48 @@ Ein Git-Stand enthält immer den **ganzen** Harness — Uni-Schicht,
 Projekt-Schicht, den Entscheidungs-Altbestand. Zum Mitnehmen in ein neues
 Projekt wird aber nur der **Kern** gebraucht.
 
-Deshalb wird je Hauptversion eine Auslieferung abgelegt:
-`C:\IsorBackup\05_Werkzeuge\Harness_Auslieferungen\Harness_1.0.0\`
+Deshalb wird je Hauptversion eine Auslieferung abgelegt, im Datenbaum
+unter `05_Werkzeuge\Harness_Auslieferungen\Harness_<Version>\`
+(`Kern/PFADE.md` → `DATENBAUM`).
 
 - Inhalt: nur `Kern/` plus die Datei mit der Leseordnung. Keine Uni, kein
-  Projekt, keine Altbestände. `Kern/` enthält damit auch `Werkzeuge/` und
-  `Befehle/` — beides gehört zum Harness und wäre ohne die Auslieferung
-  nicht mitzunehmen.
+  Projekt, keine Altbestände. `Kern/` enthält damit auch `Werkzeuge/`,
+  `Befehle/`, `Vorlagen/` und `Bilder/` — alles gehört zum Harness und
+  wäre ohne die Auslieferung nicht mitzunehmen.
 - **Eine Auslieferung ist eine Vorlage, keine Kopie** (Isor, 2026-08-23).
-  Was unter `Kern/` liegt, aber nur Isor betrifft, wird beim Packen
-  entfernt: die Zeugnisse, die Einträge im `ARTIFACT_INDEX.md` (Kopf und
-  Feldliste bleiben als Muster) und die Zeilen in `index_geplant.txt`.
   Wer den Harness in ein neues Projekt kopiert, bekommt ein leeres Regal
-  statt fremder Sachen darin. `LOG.md`, `DECISIONS.md` und `_ARCHIV.md`
-  bleiben dagegen drin — sie erklären, **warum** die Regeln so aussehen,
-  und ohne sie steht der Kern ohne Begründung da.
-- **Die Handgriffe beim Einrichten** — mehr verlangt die Auslieferung
-  über das Entpacken hinaus nicht:
-  1. `Kern/Befehle/*.md` nach `.claude\commands\harness\` kopieren, sonst
-     gibt es die Befehle im neuen Projekt nicht (`WORKFLOW.md` → „Wo die
-     Auslöser liegen").
-  2. `PLAN.md` neben `CLAUDE.md` anlegen — leer, nur mit Kopf und dem
-     Abschnitt „Für die nächste Session". Die Leseordnung nennt die
-     Datei; ohne sie zeigt sie ins Leere.
-  3. `python Kern/Werkzeuge/index_bauen.py --write` laufen lassen. Der
-     `INDEX.md` wird erzeugt, nicht mitgeliefert — eine mitgelieferte
-     Fassung wäre ab dem ersten neuen Dokument falsch.
-  4. `Kern/Vorlagen/settings.json` nach `.claude\settings.json` kopieren.
-     Gibt es die Datei dort schon, wird nur ihr `hooks`-Block
-     hineinübernommen — der Rest ist rechner- und personenabhängig.
-     Ohne diesen Handgriff läuft `Kern/Werkzeuge/pruefen.py` beim
-     Session-Start nicht von selbst, und die Leseordnung fällt auf ihre
-     Rückfallebene zurück (`CLAUDE.md`, Punkt 5).
-  *(Punkte 2 und 3 kamen beim Packen von 1.0.0 dazu: Der Probelauf in
-  der fertigen Auslieferung zeigte, dass die Leseordnung auf zwei
-  Dateien zeigte, die es dort nicht gibt. Punkt 4 kam am 2026-08-23 mit
-  dem `SessionStart`-Hook dazu.)*
+  statt fremder Sachen darin.
+
+### Die Packliste
+
+Welche Datei wie behandelt wird, steht **hier** und wird nicht je
+Auslieferung neu entschieden (Isor, 2026-08-24). Grund: Die Frage stellte
+sich beim Packen von 2.0.0 zum zweiten Mal, und beide Male anders
+beantwortet zu haben wäre schlimmer als jede der beiden Antworten.
+
+| Behandlung | Dateien | Warum |
+|---|---|---|
+| **bleibt vollständig** | alle Regeldateien · `LOG.md` · `DECISIONS.md` · `STOERUNGEN.md` · `_ARCHIV.md` · `ROADMAP.md` | Die Chroniken erklären, **warum** die Regeln so aussehen — ohne sie steht der Kern ohne Begründung da. Die ROADMAP zeigt an echten Einträgen, wie eine geführt wird. |
+| **auf den Kopf geleert** | `ARTIFACT_INDEX.md` (Kopf und Feldliste bleiben als Muster) · `index_geplant.txt` (Kommentarkopf) · `PFADE.md` (Marken bleiben, Pfad-Spalte auf `(nicht eingerichtet)`) | Reine Bestandslisten. Ihr Inhalt ist fremd und wäre im neuen Projekt ab dem ersten Blick falsch, ihre **Form** ist die Vorlage. |
+| **fällt ganz weg** | `Kern/Zeugnisse/` | Bewertet eine Person, nicht den Harness. |
+
+Neue Datei im Kern? Dann gehört sie beim Anlegen in eine dieser drei
+Zeilen — nicht erst beim nächsten Packen.
+
+### Das Einrichten
+
+**Ein Befehl statt einer Handgriff-Liste:** `/harness:einrichten` im
+neuen Projekt aufrufen. Er fragt die Pfade ab und führt aus, was früher von
+Hand zu tun war — Befehle in die Arbeitskopie, `PLAN.md` anlegen, INDEX
+erzeugen, Hook eintragen. Was er im Einzelnen tut, steht in
+`WORKFLOW.md` → „Ablauf von `/harness:einrichten`"; wie jeder Befehl
+trägt die Auslöserdatei selbst keinen Ablauf.
+
+*(Bis 2.0.0 standen die Schritte hier als Liste zum Abarbeiten. Zwei
+davon kamen erst durch den Probelauf in der fertigen Auslieferung dazu,
+ein dritter mit dem `SessionStart`-Hook — eine Liste, die man von Hand
+abarbeitet, wächst und wird dabei unvollständiger. Seit 2.0.0 führt der
+Befehl sie aus, siehe `Kern/DECISIONS.md`, 2026-08-24.)*
 - **Das ist kein Backup.** Zum Zurückholen alter Stände dient Git; die
   Auslieferung ist eine fertige Ausgabe zum Kopieren.
 - Angelegt wird sie bei jeder Änderung von `X` oder `Y`, nicht bei `Z`.
