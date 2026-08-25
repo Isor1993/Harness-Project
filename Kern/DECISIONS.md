@@ -920,3 +920,42 @@ TDD_NOTES belegen den Zielwechsel.)*
 Verworfen: 128 m in den Code umsetzen (wäre ein Projekt-Eingriff samt
 Messlauf und gehört nicht in die Seitenpflege) · offen lassen (der
 veröffentlichte Widerspruch bliebe stehen und sperrte zwei Seiten).
+
+## 2026-08-25 — Archiv-Verweise tragen „(im Archiv)", Prüfung 1 erzwingt es
+Was: Ein Verweis auf eine temporäre Befundliste (`_HARNESS_*.md`), die
+schon im Archiv liegt, trägt in lebendem Text den Zusatz „(im Archiv)"
+— auf derselben oder der unmittelbar folgenden Zeile. `pruefen.py`
+(Prüfung 1) schlägt `_HARNESS_`-Verweise jetzt nach und meldet jeden
+ungekennzeichneten, dessen Ziel fehlt; die Befundlisten selbst
+überspringt sie wie Chroniken. Kennzeichen gewählt von Isor
+(2026-08-25).
+Warum: Die Befundlisten sind die einzige Dateiart, die planmäßig
+verschwindet, und genau sie sah die Verweisprüfung nicht — belegt am
+2026-08-23, als nach dem Archivieren drei Verweise ins Leere zeigten
+und das Skript null meldete. Alles zu melden ginge auch nicht: Ein Teil
+der Verweise ist Absicht (Beleg einer Regel, Herkunft eines
+Ereignisses) und würde als Dauer-Fehlalarm den Prüfer entwerten. Das
+Kennzeichen trennt Absicht von Versehen, mechanisch prüfbar; der Zusatz
+stand an zwei Stellen schon von Hand im Bestand.
+Warum das Fenster über beide Zeilen reicht: Der 72-Zeichen-Umbruch
+schiebt den Zusatz real auf die Folgezeile — der erste scharfe Lauf
+fand genau diesen Fall (`Kern/ROADMAP.md`, Eintrag zum
+Artifact-Altbestand). Eine zeilengenaue Regel wäre eine Falle für jeden
+künftigen Umbruch.
+Verworfen: gar nicht prüfen (das belegte Loch bliebe) · alle
+verschwundenen Befundlisten-Verweise melden (Dauer-Fehlalarm —
+„Rauschen killt den Prüfer") · die Existenz im Datenbaum-Archiv
+nachschlagen (der Archivbestand liegt außerhalb des Repos und variiert
+je Rechner; das Skript wäre auf fremden Rechnern stumm oder falsch).
+
+## 2026-08-25 — Die tote ID `0dd96ec7-…` bekommt keinen Nachfolger
+Was: Die gelöschte „große Uni-Seite" der Session 2026-07-16/17 wird von
+keiner heutigen Seite beerbt; die Gelöscht-Tabelle im
+`ARTIFACT_INDEX.md` vermerkt das als abschließenden Zustand (Isor,
+2026-08-25).
+Warum: Ein Erbe hat nur Zweck, wenn ein Verweis umzubiegen ist —
+geprüft am 2026-08-25: Weder im Knowledge-Ordner noch im Harness zeigt
+etwas auf die ID, eine Offline-Kopie existiert nicht. Der Uni-Lernstoff
+von damals lebt verteilt in den Lernstück-Seiten.
+Verworfen: eine Lernstück-Seite als formalen Erben eintragen — ein Erbe
+ohne einen einzigen Verweis, der ihn braucht, wäre Pflege ohne Leser.

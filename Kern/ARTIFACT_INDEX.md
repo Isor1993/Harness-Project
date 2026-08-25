@@ -321,7 +321,7 @@ Damit nachvollziehbar bleibt, warum eine ID ins Leere zeigt.
 | ID | war | gelöscht | Rest |
 |---|---|---|---|
 | `cd2c6331-…` | Village spielbar | 2026-08-09 | Offline-Kopie `Seiten/2026-07-30-village-spielbar.html` |
-| `0dd96ec7-…` | große Uni-Seite der Session 2026-07-16/17 | unbekannt | keine Kopie; Nachfolger nicht festgelegt |
+| `0dd96ec7-…` | große Uni-Seite der Session 2026-07-16/17 | unbekannt | keine Kopie; kein Nachfolger (Isor, 2026-08-25) — nichts zeigt auf die ID, der Stoff lebt in den Lernstück-Seiten |
 
 ---
 

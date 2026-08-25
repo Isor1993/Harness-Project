@@ -476,3 +476,22 @@ Der Build lief mit **null Fehlern** durch (77 s). Offen blieben Warnungen:
   Ablauflogik — beim nächsten Anfassen der Klasse sauber lösen, etwa indem
   der Zeichenzustand aus dem Agent abgeleitet statt mitgeführt wird.
   Die anderen sieben Gizmo-Felder wurden am 16.08. gekapselt.
+
+## 2026-08-25 — ROADMAP-Punkt „Akademische Texte gegen den Harvard-Leitfaden prüfen"
+
+**Abgelöst durch:** Isors Entscheidung vom 2026-08-25: Das Portfolio ist
+seit dem 2026-08-21 final abgegeben, ein rückwirkendes Gegenlesen ändert
+die Abgabe nicht mehr. Verlangt die Benotung eine Nachbesserung, wird
+die Aufgabe neu geplant — dieser Eintrag ist dann die Vorlage.
+**Warum hier:** Der Punkt war Abgabe-Vorbereitung; sein Anlass ist mit
+dem Upload entfallen. Er ist überholt, nicht erledigt.
+
+Originaltext, unverändert:
+
+- [ ] **Akademische Texte gegen den Harvard-Leitfaden prüfen.** Maßstab
+  ist `01_Uni\_Regelwerk\Leitfaden_Harvard_Zitation.md`. Konkret:
+  Kurzbelege und Quellenverzeichnis im TDD gegenlesen und die noch
+  fehlende Quelle ergänzen. Gehört zur Teilabgabe „Arbeiten nach
+  akademischen Standards" (4FSC0PD004.1). Übernommen aus dem README des
+  Datenbaums (2026-08-22) — eine Studiums-Aufgabe, die dort nur lag,
+  weil der Leitfaden im Datenbaum liegt.

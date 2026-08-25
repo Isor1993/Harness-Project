@@ -318,3 +318,29 @@ damals, nicht den von heute.
   archiviert. **Nicht geprüft: die Sichtkontrolle der neun Seiten im
   Browser** — Artifact-URLs sind ohne Login nicht abrufbar, sie bleibt
   bei Isor.
+- 2026-08-25 — Sichtprüfung der neun Artifact-Seiten durch Isor: alle am
+  23./24.08. neu veröffentlichten Seiten im Browser angesehen, keine
+  Beanstandungen („sehen gut aus und passen so erstmal"). Damit ist der
+  offene Punkt aus der Übergabe vom 2026-08-24 erledigt; der Stand je
+  Seite steht im `ARTIFACT_INDEX.md`.
+- 2026-08-25 — GitHub-Repo umbenannt: `Isor1993/My-Harness-Development`
+  → `Isor1993/Harness-Project` (Isor über die GitHub-Settings), die
+  lokale Remote-URL im selben Zug nachgezogen. Geprüft per
+  `git ls-remote` gegen die neue Adresse — sie liefert den letzten
+  lokalen Commit `b49e5aa` (Update V 0.0050).
+- 2026-08-25 — Prüfung 1 sieht jetzt die temporären Wurzeldateien:
+  `_HARNESS_`-Verweise werden nachgeschlagen; eine verschwundene
+  Befundliste ohne den Zusatz „(im Archiv)" auf der Zeile oder der
+  folgenden ist ein Fund, die Befundlisten selbst werden wie Chroniken
+  übersprungen. Der erste scharfe Lauf fand sechs Stellen — fünf ohne
+  Kennzeichen (nachgezogen in `Kern/ROADMAP.md` und
+  `Kern/DOC_RULES.md`), eine mit dem Zusatz auf der Folgezeile, daraus
+  das Zwei-Zeilen-Fenster. Geprüft mit fünf nachgestellten Fällen in
+  einer Wegwerfdatei (die zwei erwarteten Funde kamen, die drei Stillen
+  blieben still), danach Gesamtlauf 0 Funde; Regel in `DOC_RULES.md`
+  Abschnitt 6, Begründung in `DECISIONS.md`.
+- 2026-08-25 — E46 geschlossen: Die tote ID `0dd96ec7-…` bekommt keinen
+  Nachfolger — Knowledge-Ordner und Harness durchsucht, nichts zeigt
+  auf sie; Vermerk in der Gelöscht-Tabelle des `ARTIFACT_INDEX.md`. Die
+  „Seite →"-Restzeilen laufen über die Index-Markierung „(noch nicht
+  erfasst)" statt über einen ROADMAP-Punkt.

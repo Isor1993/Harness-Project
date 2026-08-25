@@ -22,17 +22,14 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(geschrieben 2026-08-24, abends — 2.0.0 ist komplett bis auf einen
-Handgriff von Isor)*
+*(geschrieben 2026-08-25 — Uni ist bis zum Semesterstart sauber, beide
+Isor-Handgriffe vom 24.08. sind erledigt)*
 
-**Für Isor selbst, ohne Session:** die **Sichtprüfung der neun
-Artifact-Seiten** im Browser — alle wurden am 23./24.08. neu
-veröffentlicht, keine ist von einem Menschen gesehen; und das
-**GitHub-Repo umbenennen** (GitHub Desktop, `Kern/ROADMAP.md`).
-**Vorschlag für die nächste Session** (kein Beschluss): die vier
-Uni-Punkte in `Uni/ROADMAP.md` — der Semesterbeginn ist die einzige
-echte Frist (~2 Wochen ab 23.08.). Typ und Modus fragt die Session
-selbst.
+Isors Kurs: die offenen Kern-Punkte **nach und nach** abarbeiten
+(`Kern/ROADMAP.md`), die kleinen zuerst — E56-Vorfrage (automatische
+Tests ja/nein), Pflegetag-Umbau, Parallel-Session-Regel. Uni wartet nur
+noch auf den Semesterstart (`Uni/ROADMAP.md`, Semester 3). Typ und
+Modus fragt die Session selbst.
 
 ---
 
@@ -52,5 +49,8 @@ Begründung in `Kern/DECISIONS.md`.)*
 
 ### Unabhängig vom Zuruf
 
-- [ ] Semesterbeginn in rund zwei Wochen (Stand 2026-08-23) — die vier
-      Uni-Punkte in `Uni/ROADMAP.md` sollten vorher stehen.
+- [x] Semesterbeginn in rund zwei Wochen (Stand 2026-08-23) — die vier
+      Uni-Punkte in `Uni/ROADMAP.md` sollten vorher stehen. *(Erledigt
+      2026-08-25, soweit vor dem Start möglich: Aufgabentexte stehen,
+      Abgabe_Final aufgeräumt, Harvard-Punkt als überholt archiviert;
+      es bleiben die Startgriffe am Semesterbeginn selbst.)*

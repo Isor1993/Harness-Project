@@ -47,8 +47,9 @@ Arbeit Zeiger, die hinterher noch einmal angefasst werden müssen.
   null Weiterleitungen, eine einzige
   `CLAUDE.md`; Notkern und die INDEX-Kategorie Wegweiser sind entfallen.
   Getrackt statt 123 nur noch 58 Dateien. Was beim Ausführen vom Plan
-  abwich, steht in `_HARNESS_UMBAU_STRUKTUR.md`, Baustein 1; das
-  Ereignis im `Kern/LOG.md`, die Entscheidungen in `Kern/DECISIONS.md`.
+  abwich, steht in `_HARNESS_UMBAU_STRUKTUR.md` (im Archiv), Baustein 1;
+  das Ereignis im `Kern/LOG.md`, die Entscheidungen in
+  `Kern/DECISIONS.md`.
 
 - [x] **Auslieferung `Harness_2.0.0` abgelegt** — am 2026-08-24, nach der
   neuen Packliste in `VERSIONIERUNG.md`, mit Probelauf des
@@ -57,11 +58,12 @@ Arbeit Zeiger, die hinterher noch einmal angefasst werden müssen.
   `Vorlagen/`, `Bilder/`, `pruefen.py`, der sechste Befehl
   `einrichten.md`.
 
-- [ ] **GitHub-Repo umbenennen.** Der Remote heißt
-  `Isor1993/My-Harness-Development`, der Ordner `Harness Project` — die
-  Namen laufen auseinander, seit der Unity-Anteil weg ist. Isor benennt
-  um, GitHub leitet den alten Namen weiter. Erst nach dem Umbau-Commit,
-  damit nicht zwei Umstellungen zugleich laufen.
+- [x] **GitHub-Repo umbenannt** — erledigt am 2026-08-25 durch Isor:
+  heißt jetzt `Isor1993/Harness-Project`, passend zum Ordner
+  `Harness Project`. GitHub leitet den alten Namen weiter; die lokale
+  Remote-URL ist nachgezogen und gegen den letzten Commit geprüft
+  (`git ls-remote`). Der alte Name steht nur noch in datierten
+  Chronik-Einträgen.
 - [x] **Hooks: erzwingen statt erinnern** — gebaut am 2026-08-23,
   scharf belegt beim ersten Session-Start danach: Die Zeile
   `[SessionStart-Hook]` stand ohne sichtbaren Werkzeugaufruf im Kontext,
@@ -69,23 +71,18 @@ Arbeit Zeiger, die hinterher noch einmal angefasst werden müssen.
   Claude Code den Platzhalter `${CLAUDE_PROJECT_DIR}` ersetzt und
   `python` im Hook-Prozess erreichbar ist. Gebaut wurden `SessionStart`,
   die Vorlage, Prüfung 6 und der Schalter `--hook` (Einzelheiten im
-  `Kern/LOG.md`). `_HARNESS_UMBAU_STRUKTUR.md` ist daraufhin archiviert.
-- [ ] **`pruefen.py` sieht die temporären Wurzeldateien nicht.** Prüfung 1
-  erkennt einen Verweis nur, wenn er mit einer Schicht beginnt oder eine
-  der drei Dateien oben ist (`EIGENE_PFADE`, `EIGENE_DATEIEN`). Die
-  `_HARNESS_*.md` fallen durch — ausgerechnet die einzige Dateiart, die
-  planmäßig verschwindet. Belegt am 2026-08-23: Nach dem Archivieren von
-  `_HARNESS_UMBAU_STRUKTUR.md` standen drei Verweise ohne Ziel da, das
-  Skript meldete null Funde. **Die Liste bloß zu erweitern, genügt aber
-  nicht:** Ein Teil dieser Verweise ist Absicht und soll bleiben —
-  `DOC_RULES.md` belegt eine Regel mit `_HARNESS_UMSETZUNG.md`, das
-  längst im Archiv liegt, und Chroniken zeigen ohnehin auf Vergangenes.
-  Die würden dann mitgemeldet, gegen den eigenen Maßstab des Skripts
-  („ein Fund, den niemand prüfen kann, ist Rauschen — und Rauschen killt
-  den Prüfer"). Zuerst zu entscheiden ist deshalb, woran ein
-  **absichtlicher** Archiv-Verweis erkennbar sein soll; ein Kandidat ist
-  der Zusatz „(im Archiv)", den `_HARNESS_PRUEFUNG_1_0_0.md` schon von
-  Hand setzt.
+  `Kern/LOG.md`). `_HARNESS_UMBAU_STRUKTUR.md` (im Archiv) ist
+  daraufhin archiviert.
+- [x] **`pruefen.py` sieht jetzt auch die temporären Wurzeldateien** —
+  gebaut am 2026-08-25. Prüfung 1 schlägt Verweise auf `_HARNESS_*.md`
+  nach: Datei in der Wurzel → still; verschwunden → Fund, außer die
+  Zeile oder die unmittelbar folgende trägt den Zusatz „(im Archiv)" —
+  das Kennzeichen hat Isor entschieden, die Regel steht in
+  `Kern/DOC_RULES.md`, Abschnitt 6. Der erste scharfe Lauf fand sechs
+  Stellen: fünf ohne Kennzeichen (nachgezogen), eine mit dem Zusatz auf
+  der Folgezeile — daher das Zwei-Zeilen-Fenster. Die Befundlisten
+  selbst überspringt die Prüfung wie Chroniken; ihre Verweise sind
+  Bericht von damals.
 - [x] **Artifact-Seite `⚙️ System · Harness` auf 2.0.0 nachziehen** —
   erledigt am 2026-08-23, gleiche URL. Nachgezogen wurden die
   Versionszeile, alle gemessenen Zahlen (Leseordnung, Bestand,
@@ -142,10 +139,13 @@ Arbeit Zeiger, die hinterher noch einmal angefasst werden müssen.
   begradigen" oben einen Teil davon vorweg — `.gitignore` und die Frage,
   was dort überhaupt hineingehört. Dieser Punkt behandelt danach nur noch
   die zwei anderen Repos und die übergreifenden Fragen.
-- [ ] **Zwei Reste aus dem ARTIFACT_INDEX** (E46): Die Zeile „Seite →"
-  ist erst bei drei Seiten gefüllt — wird nachgetragen, wenn die
-  jeweilige Seite das nächste Mal angefasst wird. Und für die tote ID
-  `0dd96ec7-…` ist nicht entschieden, welche heutige Seite sie beerbt.
+- [x] **Zwei Reste aus dem ARTIFACT_INDEX** (E46) — geschlossen am
+  2026-08-25. Die tote ID `0dd96ec7-…` bekommt keinen Nachfolger
+  (Isor): Nichts zeigt auf sie, keine Kopie existiert; der Vermerk
+  steht in der Gelöscht-Tabelle des Index. Die „Seite →"-Zeilen
+  brauchen keinen ROADMAP-Punkt — der Index markiert sie selbst als
+  „(noch nicht erfasst)", gefüllt wird beim nächsten Anfassen der
+  jeweiligen Seite.
 
 - [ ] **Testphase beginnen — erst auf Isors Zuruf.** Der Harness wird
   benutzt statt gebaut. Steht bewusst am Ende dieser Liste: Der Beginn

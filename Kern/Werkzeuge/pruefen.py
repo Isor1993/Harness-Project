@@ -74,9 +74,11 @@ PFLICHTFELDER = {
 ZAHLWORT = (u"zwei|drei|vier|fünf|sechs|sieben|acht|neun|zehn|"
             u"elf|zwölf|beide")
 
-# Temporäre Befundlisten beschreiben einen abgeschlossenen Durchgang — dort
-# trägt eine Anzahl Information statt eines Verfallsdatums.
-ZAHLWORT_FREI = ("_HARNESS_",)
+# Temporäre Befundlisten (`_HARNESS_*.md`) beschreiben einen abgeschlossenen
+# Durchgang: Eine Anzahl trägt dort Information statt eines Verfallsdatums,
+# Verweise und Pfade sind Tatsachenbericht. Prüfungen 1, 4 und 7 lassen die
+# Dateien deshalb aus.
+TEMPORAERE_LISTEN = ("_HARNESS_",)
 
 
 def ist_chronik(rel):
@@ -115,14 +117,26 @@ def pruefe_verweise(dateien):
     """Jeder Verweis auf eine Datei *dieses* Baums muss es geben.
 
     Geprüft wird nur, was eindeutig hierher zeigt — ein Pfad, der mit einer
-    Schicht beginnt, oder eine der drei Dateien oben. Alles andere kann das
-    Skript nicht nachschlagen: `validate.py` liegt im Uni-Ordner, `_Quelle.txt`
+    Schicht beginnt, eine der drei Dateien oben oder eine temporäre
+    Befundliste (`_HARNESS_*`). Alles andere kann das Skript nicht
+    nachschlagen: `validate.py` liegt im Uni-Ordner, `_Quelle.txt`
     im Datenbaum, `README.md` im Knowledge. Ein Fund, den niemand prüfen kann,
     ist Rauschen — und Rauschen killt den Prüfer (belegt: erster Lauf am
     2026-08-23, 34 Verweis-Funde, davon 3 echt).
 
     Ebenfalls kein Fund: geplante Dateien aus index_geplant.txt. Der INDEX
     führt sie bewusst, sie existieren nur noch nicht.
+
+    Befundlisten verschwinden planmäßig ins Archiv (Kern/WORKFLOW.md, Typ
+    „Prüfung"). Ein Verweis, der das überleben soll, trägt den Zusatz
+    „(im Archiv)" — auf seiner Zeile oder der unmittelbar folgenden, weil
+    der 72-Zeichen-Umbruch das Kennzeichen dorthin schieben kann
+    (Kern/DOC_RULES.md, Abschnitt 6); ohne ihn ist er ein Fund. Belegt am
+    2026-08-23: Nach dem Archivieren von `_HARNESS_UMBAU_STRUKTUR.md`
+    zeigten drei Verweise ins Leere, und diese Prüfung meldete null — sie
+    kannte das Präfix nicht. Die Befundlisten selbst werden übersprungen:
+    Ihre Verweise beschreiben den Durchgang von damals, wie in einer
+    Chronik.
     """
     funde = []
     uebersprungen = 0
@@ -132,7 +146,10 @@ def pruefe_verweise(dateien):
         if ist_chronik(rel):
             uebersprungen += 1
             continue
-        for nr, zeile in enumerate(zeilen_von(lies(rel)), 1):
+        if os.path.basename(rel).startswith(TEMPORAERE_LISTEN):
+            continue
+        zeilen = zeilen_von(lies(rel))
+        for nr, zeile in enumerate(zeilen, 1):
             for treffer in muster.findall(zeile):
                 pfad = treffer.strip().replace("\\", "/")
                 if "<" in pfad or "*" in pfad:
@@ -143,11 +160,22 @@ def pruefe_verweise(dateien):
                     continue
                 if os.path.exists(os.path.join(BASE, pfad)):
                     continue
+                if os.path.basename(pfad).startswith(TEMPORAERE_LISTEN):
+                    folgezeile = zeilen[nr] if nr < len(zeilen) else u""
+                    if u"(im Archiv)" in zeile or u"(im Archiv)" in folgezeile:
+                        continue
+                    funde.append((rel, nr,
+                                  u"verschwundene Befundliste: `%s` — wenn "
+                                  u"absichtlich, Zusatz „(im Archiv)\" auf "
+                                  u"die Zeile" % pfad))
+                    continue
                 funde.append((rel, nr, u"toter Verweis: `%s`" % pfad))
     return funde, u"%d Chronik-Dateien übersprungen" % uebersprungen
 
 
 def zeigt_hierher(pfad):
+    if os.path.basename(pfad).startswith(TEMPORAERE_LISTEN):
+        return True
     return pfad.startswith(EIGENE_PFADE) or pfad in EIGENE_DATEIEN
 
 
@@ -271,7 +299,7 @@ def pruefe_zahlwoerter(dateien):
     for rel in dateien:
         if ist_chronik(rel):
             continue
-        if any(m in os.path.basename(rel) for m in ZAHLWORT_FREI):
+        if any(m in os.path.basename(rel) for m in TEMPORAERE_LISTEN):
             continue
         for nr, zeile in enumerate(zeilen_von(lies(rel)), 1):
             if zeitangabe.search(zeile):
@@ -447,7 +475,7 @@ def pruefe_pfade(dateien):
         if ist_chronik(rel):
             uebersprungen += 1
             continue
-        if any(m in os.path.basename(rel) for m in ZAHLWORT_FREI):
+        if any(m in os.path.basename(rel) for m in TEMPORAERE_LISTEN):
             continue
         for nr, zeile in enumerate(zeilen_von(lies(rel)), 1):
             treffer = muster.search(zeile)

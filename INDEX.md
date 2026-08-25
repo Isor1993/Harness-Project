@@ -63,11 +63,11 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 | `Uni/DOCX_RULES.md` | Nur der Umgang mit den `.docx`-Abgabedateien — Sicherung, Arbeitsteilung, bekannte Fallen, Prüfung. |
 | `Uni/LOG.md` | Nur was wann passiert ist — datierte Ereignisse, älteste oben. |
 | `Uni/ROADMAP.md` | Nur was für das Studium als Nächstes zu tun ist, semesterübergreifend. |
-| `Uni/Semester_2/ASSIGNMENT_AKADEMISCH.md` | (geplant) Originaltext der Teilabgabe Arbeiten nach akademischen Standards |
-| `Uni/Semester_2/ASSIGNMENT_KI_PROTOTYP.md` | (geplant) Originaltext der Teilabgabe KI-Prototyp |
+| `Uni/Semester_2/ASSIGNMENT_AKADEMISCH.md` | Originaltexte der Uni-Aufgabe Arbeiten nach akademischen Standards (S4) als Referenz — unverändert lassen; eigene Planung gehört in die DECISIONS der Schicht. |
+| `Uni/Semester_2/ASSIGNMENT_KI_PROTOTYP.md` | Originaltext der Uni-Aufgabe KI Prototyp (K1, K2, K3, S1) als Referenz — unverändert lassen; eigene Planung gehört in die DECISIONS der Schicht. |
 | `Uni/Semester_2/ASSIGNMENT_PCG.md` | Originaltext der Uni-Aufgabe PCG (K3, S2, S3) als Referenz — unverändert lassen, eigene Planung gehört in die DECISIONS der Schicht. |
-| `Uni/Semester_2/ASSIGNMENT_SIMULATION.md` | (geplant) Originaltext der Teilabgabe Simulation der Spieleumgebung |
-| `Uni/Semester_2/ASSIGNMENT_SOFTWAREPLANUNG.md` | (geplant) Originaltext der Teilabgabe Softwareplanung |
+| `Uni/Semester_2/ASSIGNMENT_SIMULATION.md` | Originaltext der Uni-Aufgabe Simulation (K3, S2, S3) als Referenz — unverändert lassen; eigene Planung gehört in die DECISIONS der Schicht. |
+| `Uni/Semester_2/ASSIGNMENT_SOFTWAREPLANUNG.md` | Originaltext der Uni-Aufgabe Softwareplanung (K1, S1, S2) als Referenz — unverändert lassen; eigene Planung gehört in die DECISIONS der Schicht. |
 | `Uni/Semester_2/ASSIGNMENT_THREADING.md` | Originaltext der Uni-Aufgabe Threadoptimierung (K2, K3, S3) als Referenz — unverändert lassen; eigene Planung gehört in die DECISIONS der Schicht. |
 | `Uni/Semester_2/ASSIGNMENT_TOOL.md` | Originaltext der Uni-Aufgabe Engine-Tool (K2, S1) als Referenz — unverändert lassen; eigene Planung gehört in die DECISIONS der Schicht. |
 | `Uni/_ARCHIV.md` | Nur überholte Einträge der Uni-Schicht. |

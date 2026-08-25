@@ -47,3 +47,20 @@ damals, nicht den von heute.
 - 2026-08-20 — Build 0.0.3 abgegeben. Beide Portfolio-ZIPs neu gebaut
   (309,8 MB und 541,5 MB), `release` und `src` in beiden Abgaben auf den
   heutigen Stand gezogen.
+- 2026-08-24 — Die vier fehlenden Aufgabentexte nachgetragen (E62 —
+  Fehlende Aufgabentexte nachtragen): vier ASSIGNMENT-Dateien in
+  `Uni/Semester_2/` (Softwareplanung, KI-Prototyp, Simulation,
+  Akademisch), wortgetreu aus den heute abgerufenen Canvas-Aufgaben der
+  Kurse 23111 und 23112; die S4-Aufgabe erwies sich als Verweiskette ins
+  Modul 4GST1XD001 (Kurs 21787) und wurde samt der zwei abgegebenen
+  Übungstexte übernommen. Damit liegen die Originaltexte aller sieben
+  Teilabgaben vor; INDEX neu erzeugt (52 Dateien, alle mit
+  Ownership-Zeile).
+- 2026-08-25 — Semester-2-Abschluss nachgezogen (Isor: Abgabe ist final
+  raus). Der ROADMAP-Punkt „Akademische Texte gegen den Harvard-Leitfaden
+  prüfen" ging als überholt mit Ablöse-Vermerk ins Archiv der Schicht;
+  `Abgabe_Final` im Datenbaum aufgeräumt: die zwei Portfolio-Ordner
+  (2.474 Dateien, 1.420.522.200 Bytes — Dateizahl und Byte-Summe vor dem
+  Verschieben gegen `Abgabe\` geprüft, identisch) nach
+  `99_Archiv\_Zu_Loeschen\2026-08-25_Abgabe_Final_Duplikate\`; es
+  bleiben die zwei Abgabe-ZIPs.

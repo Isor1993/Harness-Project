@@ -203,6 +203,17 @@ wie beim genannten Ablageort in Abschnitt 4. Ein solcher Fund ist dort
 kein Befund. Die Regel gilt für alles, was heute noch geschrieben oder
 geändert wird.
 
+**Ein Verweis auf eine archivierte Befundliste trägt „(im Archiv)".**
+Die temporären `_HARNESS_*.md` verschwinden planmäßig aus der Wurzel
+(`Kern/WORKFLOW.md`, Typ „Prüfung"). Ein Verweis in lebendem Text, der
+das überleben soll, führt den Zusatz direkt beim Verweis — auf
+derselben oder der unmittelbar folgenden Zeile, weil der Zeilenumbruch
+ihn dorthin schieben kann. `pruefen.py` (Prüfung 1) meldet jeden
+ungekennzeichneten Verweis auf eine verschwundene Befundliste;
+Chroniken bleiben außen vor, dort ist der Verweis Tatsachenbericht.
+*(Kennzeichen: Isor, 2026-08-25. Anlass: Drei Verweise zeigten nach dem
+Archivieren vom 2026-08-23 ins Leere, ohne Fund.)*
+
 **Nicht die nackte Nummer.** Eine erlaubte Nummer wird beim ersten
 Nennen zusammen mit ihrem Titel geschrieben — `A10 — Die Ausnahme für
 die Diagramm-Skripte…`, nicht bloß `A10`. Danach genügt die Nummer.
@@ -332,9 +343,10 @@ Sie stammen aus dem Umzug von 2026-08-22 — 1.790 Zeilen DECISIONS,
    setzen oder den Rest ausdrücklich als „nicht gemacht" markieren. Ein
    Archiv wird nie wieder aufgeräumt — ein offener Haken über erledigte
    Arbeit steht dort dauerhaft und behauptet das Gegenteil der Wahrheit.
-   *(Belegt am 2026-08-23: In `_HARNESS_UMSETZUNG.md` gingen drei Punkte
-   offen ins Archiv, darunter ausgerechnet „vor dem Archivieren die
-   Review-Dateien auf Regeln durchsuchen" — getan war er.)*
+   *(Belegt am 2026-08-23: In `_HARNESS_UMSETZUNG.md` (im Archiv) gingen
+   drei Punkte offen ins Archiv, darunter ausgerechnet „vor dem
+   Archivieren die Review-Dateien auf Regeln durchsuchen" — getan war
+   er.)*
 
 Der Preis ist gering, der Nutzen belegt: Der Umzug vom 2026-08-22 hat
 133 von 133 Einträgen und 1.651 von 1.651 Rumpfzeilen unverändert
