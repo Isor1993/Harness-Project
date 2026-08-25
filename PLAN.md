@@ -22,14 +22,16 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(geschrieben 2026-08-25 — Uni ist bis zum Semesterstart sauber, beide
-Isor-Handgriffe vom 24.08. sind erledigt)*
+*(geschrieben 2026-08-25 abends — fünf Kern-Punkte geschlossen: E56,
+Pflegetag, Revier-Regel, E14, E61b samt Abnahme)*
 
-Isors Kurs: die offenen Kern-Punkte **nach und nach** abarbeiten
-(`Kern/ROADMAP.md`), die kleinen zuerst — E56-Vorfrage (automatische
-Tests ja/nein), Pflegetag-Umbau, Parallel-Session-Regel. Uni wartet nur
-noch auf den Semesterstart (`Uni/ROADMAP.md`, Semester 3). Typ und
-Modus fragt die Session selbst.
+Als Nächstes: die **Repo/Git-Design-Session** (`Kern/ROADMAP.md`,
+letzter Baupunkt — fürs Wochenende) oder die Testphase auf Zuruf. Beim
+TDD führt jetzt das **Markdown** — Text nur noch in
+`Projekte/Isor_Tower/TDD.md`, Bau per `abgabe_bauen.py`
+(`Uni/DOCX_RULES.md`). Sonntags erste Ein-Seiten-Prüfung des
+Pflegetags: dran ist `💡 EditorWindow & MVP`. Typ und Modus fragt die
+Session selbst.
 
 ---
 
@@ -46,11 +48,3 @@ Begründung in `Kern/DECISIONS.md`.)*
       Harness im Betrieb; was nicht trägt, kommt in `STOERUNGEN.md`.
 - [ ] Danach zurück ins Projekt Isor's Tower, Basiszustand nach der
       Abgabe (`Projekte/Isor_Tower/ROADMAP.md`).
-
-### Unabhängig vom Zuruf
-
-- [x] Semesterbeginn in rund zwei Wochen (Stand 2026-08-23) — die vier
-      Uni-Punkte in `Uni/ROADMAP.md` sollten vorher stehen. *(Erledigt
-      2026-08-25, soweit vor dem Start möglich: Aufgabentexte stehen,
-      Abgabe_Final aufgeräumt, Harvard-Punkt als überholt archiviert;
-      es bleiben die Startgriffe am Semesterbeginn selbst.)*

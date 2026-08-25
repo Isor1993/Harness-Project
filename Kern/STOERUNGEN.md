@@ -206,7 +206,9 @@ Sonntagsabgleich ihn kontrolliert".
 **Regel:** Vorhanden, aber zu schwach für das, was auf ihr aufbaut.
 Vorschlag: Der Pflegetag nimmt sich **eine** Seite je Woche inhaltlich
 vor, statt alle oberflächlich. Aufgabe steht in `Kern/ROADMAP.md`.
-**Stand:** offen.
+**Stand:** behoben 2026-08-25 — der Pflegetag prüft zusätzlich genau
+eine Seite je Woche gründlich, dran ist die mit dem ältesten Stand
+(`ARTIFACT_RULES.md` → „Wann geschaut wird"; `WORKFLOW.md` → Pflegetag).
 
 ### 2026-08-23 — Aus dem Session-Titel auf den Typ geschlossen
 **Was:** Claude meldete als Störung, eine Parallel-Session sei unter dem
@@ -288,3 +290,21 @@ hat. Der Fehlerfall ist der Normalfall, für den es gebaut ist.
 nach den Imports: `sys.stdout.reconfigure(encoding="utf-8",
 errors="replace")`. Nebenwirkung zum Guten — die Umlaute in der Ausgabe
 stimmen seither ebenfalls.
+
+### 2026-08-25 — Session-Thema beim Klammer-Setzen überschrieben
+**Was:** Beim Setzen der Typ-Klammer schrieb Claude den ganzen
+Session-Titel neu und ersetzte dabei Isors Thema „Harness · Kern-Punkte"
+durch ein eigenes. Bemerkt nur, weil die Werkzeug-Rückmeldung den alten
+Titel nannte; im nächsten Zug zurückgesetzt, die Klammer korrekt.
+**Ursache:** Das Umbenennen-Werkzeug kann den eigenen Titel nur
+überschreiben, nicht vorher lesen — die Sitzungsliste schließt die
+eigene Session aus. Die Regel „das Thema gehört Isor, Claude ändert
+daran kein Wort" (`WORKFLOW.md` → „Der Typ steht im Session-Titel") ist
+damit blind auszuführen: Wer die Klammer setzt, muss raten, was er
+stehen lässt.
+**Regel:** Vorhanden, aber ohne Lese-Werkzeug nicht sicher befolgbar.
+Gegenmittel: Die Rückmeldung des Umbenennens nennt den alten Titel —
+nach jedem Setzen gegenprüfen und ein überschriebenes Thema sofort
+wiederherstellen.
+**Stand:** offen — der Werkzeug-Mangel bleibt; das Gegenmittel hat im
+selben Vorfall funktioniert.

@@ -14,11 +14,19 @@ das entpackte `word/document.xml` — nicht über Word.
 - **Arbeitsdatei ist ausschließlich**
   `01_Uni\Semester_2\Arbeitsdateien\TDD Softwareplanung.docx`.
   Nur diese anfassen; Sicherungen unter `Arbeitsdateien\Sicherung\`.
-- **Ab Harness 1.0.0 gilt zusätzlich (E61b):** Der *Text* lebt in
-  `Projekte/Isor_Tower/TDD.md`, die `.docx` ist die Abgabefassung und
-  keine eigene Quelle. Solange das Werkzeug Markdown→`.docx` nicht
-  gebaut ist (steht auf `Kern/ROADMAP.md`), bleibt die `.docx` führend
-  und diese Regeln gelten unverändert.
+- **Seit 2026-08-25 führt das Markdown (E61b):** Der *Text* lebt in
+  `Projekte/Isor_Tower/TDD.md`; die `.docx` ist die daraus erzeugte
+  Abgabefassung und keine Quelle mehr. Textänderungen gehören
+  ausschließlich ins Manuskript — wer direkt in die `.docx` schreibt,
+  erzeugt eine Gabelung, die der nächste Bau überschreibt. Gebaut wird
+  mit `Kern/Werkzeuge/abgabe_bauen.py` (Aufruf im Docstring; Quelle ist
+  das Manuskript, Formatvorlage `TDD Formatvorlage.docx`, Titelteil
+  `TDD Titelteil.docx`, Bildordner `Arbeitsdateien`). **Layout-Rollen:**
+  Titelblatt, Erklärungen und die Verzeichnis-Felder leben im
+  Titelteil, die Styles in der Formatvorlage — Layout-Änderungen
+  gehören dorthin, nie ins Manuskript. Nach jedem Bau: in Word öffnen,
+  `Strg+A` und `F9`, dann die Prüfung unten. Die abgegebene Fassung vom
+  21.08. bleibt liegen, bis der nächste Textstand gebaut wird.
 - **Was wohin gehört**, steht in der Packliste
   `Arbeitsdateien\Abgabe_Packliste.txt` — die ROADMAP sagt *wann*, die
   Packliste sagt *was wohin*.
@@ -56,6 +64,14 @@ durchlesen.**
   prüft ein gepacktes Dokument gründlicher als ein bloßer XML-Parse —
   **Prüfschritt 1 unten läuft darüber**. `soffice.py` wandelt nach PDF,
   wenn Word nicht zur Verfügung steht.
+  **Zwei bekannte Grenzen unter Windows (belegt 2026-08-25):** Medien,
+  die per Override statt Extension-Default deklariert sind — so baut
+  sie Pandoc —, meldet `validate.py` fälschlich als Fehler (88
+  Fehlalarme bei einer korrekten Datei); und beim Lesen von
+  `document.xml` kann ein `charmap`-Fehler auftreten, weil das Skript
+  ohne UTF-8-Angabe liest. Ein roter `validate.py`-Lauf ist deshalb
+  ein Anlass zum Nachsehen, kein Urteil — das Urteil bleibt beim
+  Sichttest (Prüfschritte 2 und 3).
 - **Word selbst** bleibt für Feldwerte und Verzeichnisse zuständig
   (`Strg+A`, `F9`) und für den PDF-Export mit aktualisierten Feldern.
 - **Handarbeit am entpackten XML** bleibt nötig, wo gezielt in

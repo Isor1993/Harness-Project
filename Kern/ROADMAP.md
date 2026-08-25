@@ -102,33 +102,49 @@ Arbeit Zeiger, die hinterher noch einmal angefasst werden müssen.
   den echten Code geprüft; die Stände je Seite stehen im
   `ARTIFACT_INDEX.md`. Die Befundliste `_HARNESS_ARTIFACTS_1_0_0.md`
   (im Archiv) ist damit abgearbeitet und archiviert.
-- [ ] **Der Pflegetag prüft eine Seite inhaltlich, statt alle
-  oberflächlich.** Belegt am 2026-08-23: Er meldete drei Funde, eine
-  gründliche Durchsicht derselben acht Seiten fand rund dreißig
-  (`STOERUNGEN.md`). Der Abgleich sieht heute nur Metadaten — Index
-  gegen Änderungen und gegen die Veröffentlichungsliste. Zu entscheiden:
-  eine Seite je Woche im Turnus, gegen den Code gehalten. Hängt daran,
-  dass `ARTIFACT_RULES.md` den Stand-Stempel nur erlaubt, **weil** der
-  Pflegetag ihn kontrolliert.
-- [ ] **Regel für parallele Sessions.** `WORKFLOW.md` sagt „höchstens 2–4
-  Sessions parallel offen", aber nichts darüber, wer schreiben darf. Am
-  2026-08-23 hat sich eine Parallel-Session selbst eine Regel gegeben und
-  vorsichtshalber gar nichts ins Repo geschrieben — richtig gehandelt,
-  aber geraten. Zu klären: Wer hält den Stift, wenn zwei Sessions
-  dieselbe Datei berühren könnten, und wie übergibt man ihn.
-- [ ] **Systemliste je Projekt erzeugen** (E14). Skript liest
-  `Assets/Systems`, `Entities`, `Shared` und schreibt Name, Anzahl
-  Skripte, letzte Änderung; die Kurzbeschreibung je System kommt von
-  Hand und wird über Neuerzeugungen übernommen. Beantwortet „was steckt
-  gerade im Projekt drin" — das tut heute kein Dokument.
-- [ ] **Werkzeug Markdown → `.docx`** (E61b). Der Abgabetext lebt in
-  Markdown, die `.docx` wird daraus gefüllt; das vorhandene TDD-Layout
-  wird dabei zur Formatvorlage, nicht weggeworfen. Realistisch ein
-  voller Arbeitstag, die ersten Läufe sitzen nicht auf Anhieb.
-- [ ] **Test-Abschnitt für `CODE_GUIDELINES`** (E56). Die
-  Ownership-Zeile nennt „Tests", der Abschnitt fehlt. Zu klären ist
-  zuerst, ob automatische Tests (Unity Test Framework) überhaupt gewollt
-  sind — bisher wird von Hand über `TestMode`-Schalter geprüft.
+- [x] **Der Pflegetag prüft eine Seite inhaltlich, statt alle
+  oberflächlich** — entschieden und geregelt am 2026-08-25: Der
+  Metadaten-Abgleich bleibt (er kontrolliert die Stand-Stempel), dazu
+  prüft jeder Pflegetag genau eine Seite gegen Code und führende
+  Quelle — dran ist die lebendige Seite mit dem ältesten Stand im
+  ARTIFACT_INDEX. Regeln in `Kern/ARTIFACT_RULES.md` („Wann geschaut
+  wird") und `Kern/WORKFLOW.md` (Pflegetag), Begründung in
+  `Kern/DECISIONS.md`.
+- [x] **Regel für parallele Sessions** — entschieden und geregelt am
+  2026-08-25 als Revier-Modell: frei geschrieben wird nur in der Schicht
+  des eigenen Fokus, die Gemeinschaftsdateien nur innerhalb der Befehle
+  (die Isor nacheinander anstößt), das Revier wird frei durch
+  Abschnittsende; fremde Schicht → melden statt schreiben. Regel in
+  `Kern/WORKFLOW.md` („Parallele Sessions"), Begründung in
+  `Kern/DECISIONS.md`.
+- [x] **Systemliste je Projekt erzeugen** (E14) — gebaut am 2026-08-25
+  als `Projekte/Isor_Tower/Werkzeuge/systeme.py`, erzeugt `SYSTEME.md`
+  (17 Ordner, 93 Skripte beim ersten Lauf). Anders als der alte Wortlaut
+  hier liest es die heutige Typ-Struktur (`Assets/Scripts/<System>/`
+  plus `Assets/Editor/`) und den Projektpfad aus `Kern/PFADE.md` →
+  `PROJEKT`; Zuschnitt in `Kern/DECISIONS.md`. Die Beschreibungen je
+  System füllt Isor — bis dahin stehen sie als „⚠ fehlt".
+- [x] **Werkzeug Markdown → `.docx`** (E61b) — gebaut, nach dem ersten
+  Sichttest umgebaut und am 2026-08-25 von Isor abgenommen:
+  `Kern/Werkzeuge/abgabe_bauen.py` baut den Fließtext per Pandoc und
+  setzt ihn hinter den fixen Titelteil (Sperr-Check, Sicherung,
+  SEQ/REF-Nachlauf, Zusammenbau über Word). Dazu im Datenbaum
+  `TDD Titelteil.docx` und `TDD Formatvorlage.docx`, im Repo das
+  Manuskript `Projekte/Isor_Tower/TDD.md`. **Seit heute führt das
+  Markdown** (`Uni/DOCX_RULES.md`); Architektur in `Kern/DECISIONS.md`,
+  Ereignisse im `Kern/LOG.md`.
+- [x] **SEQ-Felder für Abbildungs-Beschriftungen** (Rest aus E61b) —
+  miterledigt am 2026-08-25 beim Umbau: Der Nachlauf in
+  `abgabe_bauen.py` erzeugt SEQ-Felder samt Sprungmarken (im ersten
+  Lauf 10 Tabellen, 43 Abbildungen) und baut Querverweise zu
+  REF-Feldern um; Abbildungs- und Tabellenverzeichnis füllen sich
+  bei F9.
+- [x] **Test-Abschnitt für `CODE_GUIDELINES`** (E56) — entschieden und
+  geschrieben am 2026-08-25: kein Unity Test Framework, die Hand-Prüfung
+  (TestMode-Muster, Sichtprüfung, Diagnostic-Skripte) steht als
+  Abschnitt „Tests" in `CODE_GUIDELINES.md`, die Verwerfung samt
+  Wiederprüf-Anlass unter „Bewusst nicht übernommen", die Begründung in
+  `Kern/DECISIONS.md`.
 - [ ] **Repo- und Git-System neu ordnen** (eigene Design-Session). Die
   Repos wachsen stark, weil Binärdateien mitversioniert werden. Zu
   klären: was gehört ins Repo und was in die Asset-Library, ob Git LFS

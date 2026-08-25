@@ -444,3 +444,10 @@ damals, nicht den von heute.
   `Prefabs/`, `Materials/`, `SO_Settings/`, `Textures/`, `Shader/`, `VFX/`,
   `FBX/`, `Audio/`, darunter je ein Ordner pro System oder Wesen. Editor-Code
   getrennt in `Assets/Editor/`, Fremdpakete unverändert in `ThirdParty/`.
+- 2026-08-25 — Systemliste eingerichtet: `Werkzeuge/systeme.py` erzeugt
+  `SYSTEME.md` — je Ordner unter `Assets/Scripts/` plus `Assets/Editor/`
+  eine Zeile mit Skriptzahl und letzter Änderung; Beschreibungen kommen
+  von Hand und überleben jeden Lauf, den Projektpfad liefert
+  `Kern/PFADE.md` → `PROJEKT`. Geprüft: Zählung gegen Handmessung
+  (17 Ordner, 93 Skripte) und Beschreibungs-Erhalt über einen zweiten
+  Lauf.

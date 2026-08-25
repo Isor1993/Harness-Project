@@ -208,6 +208,21 @@ hatte.)*
   Der Abgleich gegen die echte Veröffentlichungsliste ist die zweite,
   unabhängige Quelle: Ein falscher Stand-Stempel blieb sonst zehn Tage
   unbemerkt.
+  **Dazu, seit 2026-08-25, eine Seite gründlich:** Der Abgleich sieht
+  nur Metadaten — am 2026-08-23 meldete er drei Funde, eine gründliche
+  Durchsicht derselben acht Seiten fand rund dreißig. Deshalb wird je
+  Pflegetag zusätzlich genau **eine** Seite inhaltlich geprüft: die
+  echte Seite abrufen, jede Aussage und Zahl gegen Code und führende
+  Quelle halten, Befunde in die Vorschlagsliste. **Dran ist die
+  lebendige Seite mit dem ältesten Stand-Datum im `ARTIFACT_INDEX.md`.**
+  Das braucht keinen eigenen Zeiger und heilt sich selbst: Eine beim
+  Coden nachgezogene Seite (Review-Gate) trägt ein frisches Datum und
+  rückt von allein ans Ende. Außerhalb des Turnus stehen die Seiten,
+  die der Index als nicht-nachziehbar führt — Zeugnisse, die
+  Muster-Seite und die Harness-Seite (ihr Stand hängt an der
+  Versionsnummer). Der Metadaten-Abgleich bleibt daneben bestehen: Er
+  ist die Prüfung, die die Stand-Stempel erlaubt macht (`DOC_RULES.md`,
+  Abschnitt 7).
 - **Inhalt aus einer alten Seite übernehmen:** gegen den Code prüfen,
   nicht abschreiben. Was auf einer Seite steht, war zum Stand-Datum wahr.
 

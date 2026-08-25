@@ -344,3 +344,22 @@ damals, nicht den von heute.
   auf sie; Vermerk in der Gelöscht-Tabelle des `ARTIFACT_INDEX.md`. Die
   „Seite →"-Restzeilen laufen über die Index-Markierung „(noch nicht
   erfasst)" statt über einen ROADMAP-Punkt.
+- 2026-08-25 — E61b gebaut: `Kern/Werkzeuge/abgabe_bauen.py` erzeugt
+  eine Abgabe-`.docx` per Vollgenerierung aus Markdown (pandoc 3.10.2);
+  dazu die Formatvorlage mit nachgerüstetem Seitenumbruch je
+  Hauptkapitel und die Erst-Extraktion nach
+  `Projekte/Isor_Tower/TDD.md` (185.694 Zeichen) samt 44 Bildern nach
+  `TDD_Media` im Datenbaum. Geprüft: Dreifach-Test des Werkzeugs
+  (Normal-, Sicherungs-, Sperrfall) und die Kette Ende-zu-Ende mit
+  1240 Absätzen gleich der Quelle. Führend bleibt die `.docx`, bis
+  Isors Sichttest die Kette abnimmt.
+- 2026-08-25 — E61b umgebaut und abgenommen: Der erste Sichttest fiel
+  durch (Titelseite zerlegt, Verzeichnisse als Text dupliziert und als
+  Kapitel mitgezählt, Tabellen ohne Rahmen). Umbau: Titelteil als fixe
+  Datei mit den Verzeichnis-Feldern, Manuskript ab Kapitel 1,
+  Tabellen-Style in der Formatvorlage, Beschriftungen als SEQ-Felder
+  samt Sprungmarken, Querverweise als REF-Felder, Seitenzählung
+  durchgehend arabisch. Geprüft je Runde am gerenderten
+  Seitenvergleich Original gegen Neubau, zuletzt 194 interne Sprünge
+  maschinell (kein toter); zweiter Sichttest bestanden (Isor).
+  Markdown führt seit heute (`Uni/DOCX_RULES.md`).

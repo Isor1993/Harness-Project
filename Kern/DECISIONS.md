@@ -959,3 +959,135 @@ etwas auf die ID, eine Offline-Kopie existiert nicht. Der Uni-Lernstoff
 von damals lebt verteilt in den Lernstück-Seiten.
 Verworfen: eine Lernstück-Seite als formalen Erben eintragen — ein Erbe
 ohne einen einzigen Verweis, der ihn braucht, wäre Pflege ohne Leser.
+
+## 2026-08-25 — Keine automatischen Tests; die Hand-Prüfung wird Regel (E56)
+Was: Das Unity Test Framework wird nicht eingeführt. Der bisherige Weg —
+TestMode-Schalter mit bekannter Eingabe, Sichtprüfung im Editor,
+Diagnostic-Skripte — steht jetzt als Abschnitt „Tests" in
+`CODE_GUIDELINES.md`, die Verwerfung samt Wiederprüf-Anlass dort unter
+„Bewusst nicht übernommen" (Isor, 2026-08-25).
+Warum: Kein Uni-Aufgabentext verlangt automatische Tests (geprüft am
+2026-08-25 in den sechs Assignments von Semester 2 — verlangt sind nur
+Playtests durch Mitstudenten); die Abgabe-Regel „jede Zeile auf
+Semesterniveau verteidigen" verträgt keine NUnit-Attribute und Assembly
+Definitions; und das Zeitbudget soll in Fertigstellung fließen, woran
+das First-Ziel zuletzt scheiterte — nicht in Testpflege. Die
+Architektur bleibt testbar (Model = plain C# ohne Unity-API), die Tür
+also offen.
+Verworfen: UTF nur für EditMode-Zahlenlogik (gleicher Einrichtungs- und
+Lernaufwand bei kleinerem Nutzen) · UTF vollständig mit PlayMode (am
+weitesten über Semesterniveau, laufende Pflegekosten).
+
+## 2026-08-25 — Pflegetag: eine Seite gründlich, Auswahl nach ältestem Stand
+Was: Der Sonntagsabgleich behält den Metadaten-Abgleich und prüft
+zusätzlich genau eine Seite inhaltlich gegen Code und führende Quelle.
+Dran ist die lebendige Seite mit dem ältesten Stand-Datum im
+ARTIFACT_INDEX; außerhalb stehen die dort als nicht-nachziehbar
+geführten Seiten (Zeugnisse, Muster-Seite, Harness-Seite). Regel in
+`Kern/ARTIFACT_RULES.md` und `Kern/WORKFLOW.md` (Isor, 2026-08-25).
+Warum: Der Abgleich allein sieht nur Metadaten — am 2026-08-23 meldete
+er drei Funde, eine gründliche Durchsicht derselben acht Seiten fand
+rund dreißig. Ganz ersetzen darf die Ein-Seiten-Prüfung ihn nicht: Er
+ist die Prüfung, die die Stand-Stempel der Seiten erlaubt macht
+(`DOC_RULES.md`, Abschnitt 7). „Ältester Stand" statt fester Liste,
+weil der Turnus so keinen pflegbaren Zeiger braucht und sich selbst
+heilt — beim Coden nachgezogene Seiten rücken von allein ans Ende. Bei
+elf lebendigen Seiten (Stand heute) ist jede etwa alle elf Wochen dran;
+die erste Verteidigungslinie bleibt das Review-Gate.
+Verworfen: die Ein-Seiten-Prüfung ersetzt den Abgleich (die
+Stempel-Erlaubnis bräche) · eine feste Turnusliste (ein Zeiger, der
+verfallen kann) · alles lassen wie bisher (der belegte blinde Fleck
+bliebe).
+
+## 2026-08-25 — Parallele Sessions: das Revier-Modell
+Was: Bei parallelen Sessions schreibt jede frei nur in die Schicht
+ihres Fokus (das Revier); die Gemeinschaftsdateien (`STOERUNGEN.md`,
+`GLOSSARY.md`, INDEX, `PLAN.md`) werden nur innerhalb der Befehle
+beschrieben; ein Revier wird frei durch Abschnittsende. Fremde Schicht
+nötig → melden statt schreiben. Regel in `Kern/WORKFLOW.md`, Abschnitt
+„Parallele Sessions" (Isor, 2026-08-25).
+Warum: `WORKFLOW.md` erlaubte 2–4 parallele Sessions, sagte aber nicht,
+wer schreiben darf — am 2026-08-23 musste sich eine Parallel-Session
+selbst eine Regel geben und schrieb vorsichtshalber gar nichts. Das
+Revier folgt der Aufteilung, die ohnehin existiert (Isor öffnet
+Sessions je Thema, der Abschnitt trägt den Fokus); der
+Gemeinschaftsboden ist konfliktfrei, weil Isor die Befehle nur
+nacheinander anstoßen kann — er spricht immer nur mit einer Session
+zugleich. Eine Sperre oder ein Titel-Abgleich wäre Verwaltung für einen
+Konflikt, den der Ablauf schon ausschließt; der Titel bleibt ohnehin
+Anzeige, kein Beleg.
+Verworfen: global nur eine Schreib-Session (die Doku-Pflicht der
+übrigen bliebe liegen und lebte nur im Kontext) · vor jedem Schreiben
+fragen (Reibung bei jedem sichern für meist eindeutige Fälle).
+
+## 2026-08-25 — Systemliste (E14): Zuschnitt des Werkzeugs
+Was: `systeme.py` erzeugt `SYSTEME.md` in der Projektschicht — eine
+Tabellenzeile je Ordner unter `Assets/Scripts/` plus eine für
+`Assets/Editor/`: Name, Anzahl .cs (rekursiv), letzte Änderung,
+Beschreibung. Schlüssel ist der Ordnername; Beschreibungen kommen von
+Hand und überleben jeden Lauf (`⚠ fehlt` / `⚠ nicht mehr vorhanden`,
+wie beim Prefab-Prüfstand). Den Projektpfad liest das Skript aus
+`Kern/PFADE.md` → `PROJEKT` (Isor, 2026-08-25).
+Warum: Der ROADMAP-Wortlaut nannte noch `Assets/Systems`, `Entities`
+und `Shared` — die Struktur ist seit der Grundentscheidung vom
+2026-08-20 „Typ oben, ein Ordner je System darunter"
+(`CODE_GUIDELINES.md`). Gelistet wird, was wirklich da ist: 16
+System-Ordner mit 86 Skripten plus 7 Editor-Skripte (gemessen
+2026-08-25). Die Marke statt eines harten Pfads, damit beim Umzug eine
+Zeile reicht — `prefab_status.py` trägt den Pfad noch hart, es entstand
+vor `PFADE.md`.
+Verworfen: `Sandbox/` und `FolderTemplate/` mitlisten (beide sind eine
+offene Projekt-Aufgabe „Ordnerstruktur prüfen" — erst klären, dann
+listen) · Fremdcode (`ThirdParty/`, `TextMesh Pro/`) listen (kein
+Projektwissen) · die letzte Änderung aus `git log` ziehen (teurer; das
+Dateisystem-Datum trägt im Ein-Rechner-Betrieb).
+
+## 2026-08-25 — Markdown→docx (E61b): Zuschnitt des Werkzeugs
+Was: Vollgenerierung — jeder Lauf erzeugt die Abgabe-`.docx` komplett
+neu aus dem Markdown-Manuskript plus einer Referenz-`.docx` mit den
+Styles des bestehenden TDD-Layouts. Gebaut wird generisch als
+Kern-Werkzeug (das TDD ist der erste Fall); Motor ist Pandoc mit
+Referenz-Dokument — eine Vorentscheidung, die der Bautag im Probelauf
+bestätigt. Pflichtteile: Sperrdatei-Check und Zeitstempel-Sicherung vor
+dem Schreiben, `validate.py` danach, Seitenumbruch je Hauptkapitel und
+SEQ-Felder für Beschriftungen aus dem Werkzeug (Isor, 2026-08-25).
+Warum: Nur die Vollgenerierung macht das Manuskript wirklich führend —
+bei Teilersetzung bliebe die `.docx` halbe Quelle, und genau deren
+XML-Handarbeit soll das Werkzeug ablösen. Der Preis ist benannt:
+Layout-Feinschliff von Hand wird bei jedem Lauf überschrieben und
+wandert deshalb als letzter Schritt vor die Abgabe („Bilder zuletzt"
+aus `Uni/DOCX_RULES.md`, verallgemeinert). Generisch im Kern, weil der
+ROADMAP-Punkt dort lebt und jede künftige Abgabe denselben Weg geht.
+Pandoc, weil Referenz-Styles sein Standardfall sind; die Felder-Frage
+(SEQ) ist das benannte Risiko und entscheidet der Probelauf. Der
+Sperr-Check gehört ins Werkzeug, weil die Handregel nachweislich reißt
+— beim Design-Termin stand die Abgabedatei tatsächlich offen in Word.
+Verworfen: kapitelweise Ersetzung in der bestehenden Datei (fummelig,
+Quelle bliebe geteilt) · Spezialskript nur fürs TDD (der zweite Fall
+käme sicher) · Eigenbau mit python-docx als Erstweg (eigener
+Markdown-Parser nötig; bleibt Rückfallebene, falls der Pandoc-Probelauf
+die Felder nicht sauber liefert).
+
+## 2026-08-25 — Abgabe-Bau: Layout-Teile fix, Fließtext generiert
+Was: Die Vollgenerierung (Eintrag oben) gilt nur für den Fließtext ab
+Kapitel 1. Titelblatt, Erklärungen und die Verzeichnis-Felder leben als
+fixe Datei `TDD Titelteil.docx`, die das Werkzeug unverändert
+voranstellt; die Formatvorlage trägt Seitenumbruch- und Tabellen-Style.
+Ein Nachlauf stellt Beschriftungen als SEQ-Felder samt Sprungmarken
+und Querverweise als REF-Felder wieder her; die Seitenzählung läuft
+durchgehend arabisch ab der ersten Seite (Isor, 2026-08-25).
+Warum: Der erste Sichttest fiel durch — Markdown kann kein Layout:
+Tabulator-Spalten und Zentrierung der Titelseite gingen verloren, die
+extrahierten Verzeichnisse wurden Textmüll und ihre Überschriften
+zählten als Kapitel (jede Kapitelnummer um drei verschoben), Tabellen
+verloren ihren Style. Felder sind Words Sache — also bleiben sie in
+Words Obhut (Titelteil) oder werden als echte Felder erzeugt (SEQ,
+REF), statt als Text zu erstarren. Durchgehend arabisch, weil es Isors
+Wunsch (Zählung ab Seite 1 wie in der Abgabe vom 21.08.) und die
+Formatvorgabe zugleich erfüllt — das Original zeigte durchgehend
+römische Ziffern, was keiner der zwei erlaubten Varianten entsprach.
+Verworfen: die Titelseite als rohes OOXML im Manuskript (die
+Unterschrift-Bilder hängen an Beziehungs-IDs, die ein Neubau nicht
+kennt) · Zählung mit Neustart ab Kapitel 1 (die Zählung begänne nicht
+auf Seite 1) · wortwörtlich römische Anzeige wie das Original
+(entspricht keiner erlaubten Variante der Formatvorgabe).

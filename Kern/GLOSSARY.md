@@ -37,12 +37,13 @@ Leseordnung.
 | **Modus** | Wie gearbeitet wird: **Lernmodus** (ausführlich, visuell, Verständnis prüfen) oder **Normal** (kurz). Setzt nur die Voreinstellung der Regler. | `WORKFLOW.md`, Typ, Modus und Regler |
 | **Regler** | Einzeln verstellbare Einstellung innerhalb eines Modus — Visualisierung und „Wer schreibt". Nicht dasselbe wie der Modus. | `WORKFLOW.md`, Typ, Modus und Regler |
 | **Doku-Pflicht** | Was am Ende eines Abschnitts geschrieben wird: die festen Punkte, die bei jedem Typ gelten, plus eine Zeile je Typ. | `WORKFLOW.md`, Doku-Pflicht |
-| **Pflegetag** | Wochentakt, unabhängig vom Session-Typ: Artifacts durchsehen und gegen die veröffentlichten Seiten abgleichen. Ausgelöst durch `/harness:sonntag`. | `WORKFLOW.md`, Pflegetag |
+| **Pflegetag** | Wochentakt, unabhängig vom Session-Typ: Artifacts durchsehen und gegen die veröffentlichten Seiten abgleichen, dazu **eine** Seite gründlich gegen den Code. Ausgelöst durch `/harness:sonntag`. | `WORKFLOW.md`, Pflegetag |
 | **Auslöser** | Eine Befehlsdatei unter `.claude\commands\harness\`. Trägt keinen Ablauf, nur den Zeiger auf die Regeldatei. | `WORKFLOW.md`, Die Befehle |
 | **Review-Gate** | Checkliste, die vor dem Coden durchgegangen wird. | `CODE_GUIDELINES.md` |
 | **Prüfebene** | Eine der Stellen, an denen der Harness prüft — drei davon sind Skripte (Form und Bestand), vier verlangen ein Urteil (Aussagen). | `WORKFLOW.md`, Die Prüfebenen |
 | **Hook** | Kommando, das der Harness bei einem Ereignis selbst ausführt, eingetragen in `.claude\settings.json`. Erzwingt eine Skript-Prüfebene, statt an sie zu erinnern — beurteilt aber nichts. | `WORKFLOW.md`, Die Prüfebenen |
 | **Befund** | Ergebnis einer Prüfung: eine Stelle, an der etwas falsch, doppelt, widersprüchlich ist oder fehlt. Wird notiert, nicht sofort geändert. Ein **Zustand**. | `WORKFLOW.md`, Begriffe |
+| **Revier** | Die Schicht, in die eine Session frei schreiben darf — bestimmt vom Fokus ihres laufenden Abschnitts. Wird frei durch Abschnittsende; Gemeinschaftsdateien laufen nur über die Befehle. | `WORKFLOW.md`, Parallele Sessions |
 | **Störung** | Vorfall, in dem der Harness nicht so gearbeitet hat wie vorgesehen. Ein **Ereignis** — nicht dasselbe wie ein Befund und nicht dasselbe wie ein Fehler im Code. | `STOERUNGEN.md` |
 
 ## Über Nummern und Ausgaben

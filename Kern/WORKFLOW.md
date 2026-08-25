@@ -28,7 +28,8 @@ gegriffen hat —, aber die meisten tun das nicht. Ein fehlender Ordner
 ist ein Befund; dass niemand das Fehlen bemerkt hat, wäre die Störung.
 
 Jeder **Abschnitt** hat genau einen Typ und einen Fokus. Eine **Session**
-kann mehrere Abschnitte enthalten. Höchstens 2–4 Sessions parallel offen.
+kann mehrere Abschnitte enthalten. Höchstens 2–4 Sessions parallel offen
+— wer dabei wohin schreiben darf, regelt „Parallele Sessions" unten.
 
 ## Typ, Modus und Regler
 
@@ -237,6 +238,32 @@ Wechsel festgeschrieben, nicht am Session-Ende. Sonst ist die Begründung
 weg, bevor sie geschrieben wurde, falls der Kontext im Bauen aufgeht.
 Umgesetzt durch `/harness:wechsel`.
 
+## Parallele Sessions
+
+Laufen mehrere Sessions zugleich (Obergrenze siehe „Begriffe"), regelt
+das **Revier**, wer schreiben darf *(seit 2026-08-25; Begründung in
+`DECISIONS.md`)*:
+
+- **Frei geschrieben wird nur im Revier** — der Schicht, auf die der
+  Fokus des laufenden Abschnitts zeigt. Eine Prüfung schreibt zusätzlich
+  ihre eigene Befundliste (Typ „Prüfung" oben). Braucht die Arbeit eine
+  fremde Schicht, wird das **gemeldet statt geschrieben** — genau so hat
+  die Parallel-Session vom 2026-08-23 richtig gehandelt, nur geraten;
+  jetzt ist es Regel.
+- **Der Gemeinschaftsboden läuft nur über die Befehle.** Die
+  Immer-Pflichten der Doku (`STOERUNGEN.md`, `GLOSSARY.md`, INDEX) und
+  `PLAN.md` berühren jede Session, egal welches Revier — aber nur
+  innerhalb von `/harness:sichern`, `/harness:wechsel` und
+  `/harness:ende`. Diese Befehle stößt Isor an, zwangsläufig
+  nacheinander, weil er immer nur mit einer Session zugleich spricht;
+  deshalb braucht es keine Sperre. Außerhalb der Befehle schreibt dort
+  niemand.
+- **Das Revier wird frei durch Abschnittsende** — Klammer `zu`,
+  `aufgehoben` oder Wechsel des Fokus. Wollen zwei offene Sessions
+  dieselbe Schicht, entscheidet Isor, wer schreibt: Nur er sieht beide
+  Sessions. Der Session-Titel bleibt dabei Anzeige, kein Beleg (siehe
+  „Der Typ steht im Session-Titel").
+
 ## Die Befehle
 
 Alle benutzen denselben Kern — die Doku-Pflicht steht **einmal** hier
@@ -430,6 +457,12 @@ dieselbe Arbeitsteilung wie beim Review-Gate.
    veröffentlichten Seiten — Verfahren in `ARTIFACT_RULES.md`,
    Abschnitt „Wann geschaut wird". Claude legt eine Vorschlagsliste vor
    und ändert nichts von selbst.
+2. **Eine Seite gründlich** *(seit 2026-08-25)* — die lebendige Seite
+   mit dem ältesten Stand im `ARTIFACT_INDEX.md`, gegen Code und
+   führende Quelle gehalten. Verfahren, Auswahlregel und Ausnahmen in
+   `ARTIFACT_RULES.md`, Abschnitt „Wann geschaut wird". Grund: Der
+   Abgleich allein sieht nur Metadaten — er fand drei von rund dreißig
+   Funden (2026-08-23).
 
 Mehr Punkte hat der Pflegetag derzeit nicht — und `pruefen.py` wird
 bewusst **keiner**. Das Skript läuft in Sekunden und bei jedem

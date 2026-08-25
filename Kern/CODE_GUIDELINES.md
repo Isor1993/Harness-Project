@@ -1,9 +1,7 @@
 # CODE_GUIDELINES.md — Code-Konventionen
 
-Ownership: Code-Konventionen — Namen, Architektur, Ordnerstruktur, das
-Review-Gate. **Tests sind noch nicht geregelt**; die Lücke steht bewusst
-hier, damit sie sichtbar bleibt, und als offener Punkt in
-`Kern/ROADMAP.md`.
+Ownership: Code-Konventionen — Namen, Architektur, Ordnerstruktur,
+Tests, das Review-Gate.
 
 Status: Entstanden als Rohmaterial aus dem Brainstorm vom 2026-07-17,
 seither in einem vollen Uni-Durchgang erprobt und mehrfach nachgeschärft
@@ -289,6 +287,28 @@ prüft mit, wenn er Code zeigt oder reviewt:
    in einer Skripte-Zeile von ARTIFACT_INDEX.md? Dann veraltet die Seite
    durch die Änderung und wird nach dem Coden nachgezogen.
 
+## Tests
+
+Geprüft wird **von Hand, nicht durch ein Test-Framework** — entschieden
+am 2026-08-25, Begründung in `Kern/DECISIONS.md`; die Verwerfung des
+Unity Test Framework steht unten unter „Bewusst nicht übernommen".
+
+- **TestMode-Muster:** Systeme mit sichtbarem Ergebnis bekommen einen
+  `TestMode`-Schalter (Enum im Inspector), der bekannte Eingaben
+  erzwingt — etwa Flat/Ramp statt Rauschen im Terrain. Gut ist ein
+  TestMode, wenn das richtige Ergebnis vorhersagbar ist: bekannte
+  Eingabe, bekanntes Bild.
+- **Sichtprüfung gehört zum Fertigwerden:** „Geprüft" im Sinne der
+  Baustein-Definition (`Kern/WORKFLOW.md`, Begriff „Baustein") heißt,
+  dass jeder TestMode des Bausteins einmal angesehen wurde — nach jeder
+  Änderung am betroffenen System erneut.
+- **Diagnostic-Skripte** (`Scripts/Diagnostic/`) zählen zum selben
+  Werkzeugkasten: Sie machen Zahlen sichtbar, die das Auge nicht prüfen
+  kann (Timings, Zähler).
+- **Zahlenregeln ohne Bild** (Mindestabstände, Wertebereiche): Wo das
+  Hinsehen nicht trägt, rechnet eine Editor-Debug-Ausgabe oder ein
+  Diagnostic-Skript die Regel nach und meldet Verstöße im Log.
+
 ## Bewusst nicht übernommen
 
 Nur echte Verwerfungen — was geprüft und abgelehnt wurde, damit die
@@ -299,3 +319,7 @@ in der ROADMAP, geltende Regeln in den Blöcken oben.
   zugunsten Kapselung (Begründung in `Kern/DECISIONS.md`).
 - **Semantic Versioning für die Spiel-Version** — verworfen zugunsten
   eines Schemas nach Reifegrad (`Kern/VERSIONIERUNG.md`).
+- **Unity Test Framework** — verworfen am 2026-08-25 zugunsten der
+  Hand-Prüfung (Abschnitt „Tests"; Begründung in `Kern/DECISIONS.md`).
+  Neu geprüft wird, wenn ein Uni-Modul automatische Tests verlangt oder
+  die Lernphase endet.

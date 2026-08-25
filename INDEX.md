@@ -37,7 +37,7 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 | `Kern/ARTIFACT_RULES.md` | Typen, Benennung, Aufbau, Gestaltung, Symbole und Pflege der Artifact-Seiten auf claude.ai. |
 | `Kern/ASSESSMENT_RULES.md` | Der Session-Typ „Zeugnis" vollständig — Auslöser, Ablauf, Belegpflicht, Aufbau, Notenskala, Schreibregeln, Ablage. |
 | `Kern/Bilder/README.md` | Nur die von Hand gebauten Erklärskizzen des Kerns — was hier liegt, wozu es gehört und woran es hängt. |
-| `Kern/CODE_GUIDELINES.md` | Code-Konventionen — Namen, Architektur, Ordnerstruktur, das Review-Gate. |
+| `Kern/CODE_GUIDELINES.md` | Code-Konventionen — Namen, Architektur, Ordnerstruktur, Tests, das Review-Gate. |
 | `Kern/DECISIONS.md` | Nur Entscheidungen zum Harness — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
 | `Kern/DIAGRAM_RULES.md` | Nur der Umgang mit den skriptgenerierten `.drawio`-Diagrammen — Ablage, Arbeitsteilung, Bedienregeln, Prüfung. |
 | `Kern/DOC_RULES.md` | Alle Regeln, die für die .md-Dateien des Harness selbst gelten — Zuständigkeit, Aufbau, Verweise, Verfall, Sprache. |
@@ -97,8 +97,8 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 | `Projekte/Isor_Tower/LOG.md` | Nur was wann passiert ist — datierte Ereignisse, älteste oben. |
 | `Projekte/Isor_Tower/PREFAB_STATUS.md` | Nur der Prüfstand jedes Prefabs — welche schon durchgesehen sind und was dabei auffiel. |
 | `Projekte/Isor_Tower/ROADMAP.md` | Nur was am Projekt als Nächstes gebaut wird. |
-| `Projekte/Isor_Tower/SYSTEME.md` | (geplant) Was gerade im Projekt steckt — wird erzeugt |
-| `Projekte/Isor_Tower/TDD.md` | (geplant) Markdown-Manuskript des TDD, aus dem die Abgabefassung entsteht |
+| `Projekte/Isor_Tower/SYSTEME.md` | Nur die erzeugte Systemliste — welche System-Ordner es unter `Assets/Scripts/` gibt (plus `Assets/Editor/`), wie viele Skripte jeder trägt und wozu er da ist. |
+| `Projekte/Isor_Tower/TDD.md` | Nur das Markdown-Manuskript des TDD — die führende Quelle, aus der `Kern/Werkzeuge/abgabe_bauen.py` die .docx-Abgabefassung baut. |
 | `Projekte/Isor_Tower/TDD_NOTES.md` | Nur Rohmaterial für das Technical Design Document von Isor's Tower — geprüfte Fakten, Zahlen und Formeln aus der Projektarbeit. |
 | `Projekte/Isor_Tower/_ARCHIV.md` | (geplant) Überholte Projekt-Einträge, jeder mit Angabe des Nachfolgers |
 
@@ -113,9 +113,11 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 | Skript | Zweck |
 |---|---|
 | `IsorBackup/Werkzeuge/sichern.ps1` | sichern.ps1 — wöchentliche Sicherung auf die externe Platte. |
+| `Kern/Werkzeuge/abgabe_bauen.py` | Erzeugt eine .docx-Abgabefassung aus einem Markdown-Manuskript. |
 | `Kern/Werkzeuge/index_bauen.py` | Erzeugt INDEX.md aus den Ownership-Zeilen der Harness-Dateien. |
 | `Kern/Werkzeuge/pruefen.py` | Prüft die Harness-Dateien gegen die Regeln, die sich mechanisch prüfen lassen. |
 | `Projekte/Isor_Tower/Werkzeuge/prefab_status.py` | Erzeugt PREFAB_STATUS.md aus den tatsächlich vorhandenen .prefab-Dateien. |
+| `Projekte/Isor_Tower/Werkzeuge/systeme.py` | Erzeugt SYSTEME.md aus den Script-Ordnern des Unity-Projekts. |
 
 ## Befehle — Auslöser, Ablauf in `Kern/WORKFLOW.md`
 
