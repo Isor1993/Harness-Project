@@ -51,11 +51,12 @@ Leseordnung.
 | Begriff | Kurzform | Besitzer |
 |---|---|---|
 | **Harness-Version** | **Verträglichkeit** des Harness — sagt, ob ein bestehendes Projekt beim Mitziehen umziehen muss. Kein Reifegrad (das ist die Spiel-Version). Steht in `CLAUDE.md`. | `VERSIONIERUNG.md` |
-| **V-Nummer** | Vierstellige Commit-Nummer im Titel `Update V 0.0043`. Jedes Repo zählt eigenständig. | `VERSIONIERUNG.md` |
+| **V-Nummer** | Vierstellige Commit-Nummer im Titel `Update V 0.0043`; zählt Sessions, nicht jeden Commit — Zwischenstände von Hand tragen freie Titel. Jedes Repo zählt eigenständig. | `VERSIONIERUNG.md` |
 | **Auslieferung** | **Vorlage** des Kerns unter `05_Werkzeuge\Harness_Auslieferungen\`, benannt nach der Harness-Version — keine Kopie: Was nur Isor betrifft, wird beim Packen entfernt. | `VERSIONIERUNG.md` |
 | **Vorlage** | Zwei Verwendungen, beide meinen „Original zum Kopieren": die Auslieferung als Ganzes (Zeile darüber) und einzeln die Dateien unter `Kern/Vorlagen/`, deren Arbeitskopie in `.claude\` liegt. | `Kern/Vorlagen/README.md` |
 | **Marke** | Platzhalter-Name in Großbuchstaben für einen Ort außerhalb des Repos (`DATENBAUM`, `KNOWLEDGE`, `PROJEKT`). Regeldateien nennen die Marke; den Pfad dahinter besitzt allein `PFADE.md`. | `Kern/PFADE.md` |
 | **Datenbaum** | Der feste Ablagebaum für alles, was kein Repo ist — Marke `DATENBAUM`. | `IsorBackup/RULES.md` |
+| **LFS** | Git Large File Storage — Nebenspeicher für große Dateien: Im Repo liegt ein Zeiger, die Bytes liegen daneben, und ein Clone lädt nur die Stände des Checkouts. | `CODE_GUIDELINES.md`, Repo & Git |
 
 Jeder hier geführte Begriff nennt seinen Besitzer. Ob die Liste
 **vollständig** ist, kann diese Datei nicht selbst sagen — sie wird von

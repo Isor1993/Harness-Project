@@ -363,3 +363,27 @@ damals, nicht den von heute.
   Seitenvergleich Original gegen Neubau, zuletzt 194 interne Sprünge
   maschinell (kein toter); zweiter Sichttest bestanden (Isor).
   Markdown führt seit heute (`Uni/DOCX_RULES.md`).
+- 2026-08-26 — **Repo/Git-System geordnet** (Design und Development in
+  einer Session). Alle drei Repos vermessen: Harness (3,2 MB) und
+  Knowledge (0,2 MB) gesund; im Unity-Repo 119 MB Pack, davon 92 % aus
+  75 Szenen-Ständen (1.269 MB roh, `Village.unity` 73 MB je Stand),
+  während Texturen, Audio und Modelle seit dem ersten Commit über LFS
+  laufen (86 Dateien, 127 MB). Entschieden und geregelt: Szenen und
+  NavMesh künftig über LFS (`.gitattributes` des Projekts erweitert),
+  die Historien-Migration als ROADMAP-Punkt fürs Wochenende, die
+  Repo-Grenze zur Asset-Library und die Sichtbarkeitsregel in
+  `CODE_GUIDELINES.md` → „Repo & Git", Build-Ablage und V-Nummer-Lesart
+  in `VERSIONIERUNG.md`; vier Einträge in `DECISIONS.md`. Nebenbefunde
+  im selben Zug behoben: das GitHub-Token im Klartext aus der
+  Remote-URL des Unity-Repos entfernt (Isor hat es widerrufen),
+  `Isor-Tower-ProtoTyp-2026` privat gestellt (per API-Abruf geprüft:
+  404 ohne Anmeldung, der Harness wie gewollt 200), die toten
+  `ThirdAssets`-Zeilen aus der Unity-`.gitignore`, die
+  Unity-Vorlagen-`.gitignore` im Knowledge-Repo durch eine schlanke
+  ersetzt. Zwei Wissensseiten nach `Werkzeuge/` im Knowledge-Repo.
+  Geprüft: `pruefen.py` nach jedem Schreiben, zuletzt 0 Funde in allen
+  sieben Prüfungen; INDEX neu erzeugt, 54 Dateien mit Ownership-Zeile.
+  Ein eigener Fehler noch in der Session gefunden und behoben: Alle
+  neuen Einträge trugen zunächst das Datum der PLAN-Übergabe (25.)
+  statt des Kalendertags (26.) — vor dem Commit an sämtlichen Stellen
+  korrigiert.

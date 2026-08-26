@@ -1091,3 +1091,74 @@ Unterschrift-Bilder hängen an Beziehungs-IDs, die ein Neubau nicht
 kennt) · Zählung mit Neustart ab Kapitel 1 (die Zählung begänne nicht
 auf Seite 1) · wortwörtlich römische Anzeige wie das Original
 (entspricht keiner erlaubten Variante der Formatvorgabe).
+
+## 2026-08-26 — Szenen wandern nach LFS, die Historie wird migriert
+Was: Im Unity-Repo laufen `*.unity` und die gebackene NavMesh
+(`NavMesh*.asset`) künftig über Git LFS; die kleinen Config-Assets
+bleiben Text. Die gewachsene Historie wird am Wochenende mit
+`git lfs migrate` umgeschrieben — vorher eine Sicherung als Bundle in
+den Datenbaum. Ablauf als Punkt in `Kern/ROADMAP.md` (Isor, 2026-08-26).
+Warum: Gemessen am 2026-08-26: Die Historie trägt 1.269 MB rohe
+Szenen-Stände (75 Blobs, 92 % aller Bytes des Repos), `Village.unity`
+wiegt 73 MB je Stand — GitHub sperrt normale Dateien ab 100 MB, und
+die Grenze rückt mit jedem Terrain-Wachstum näher. Texturen, Audio und
+Modelle laufen seit dem ersten Commit über LFS; nur die Szenen fehlten,
+weil das Standard-Template auf Text-Merges für Teams setzt — bei einer
+73-MB-Szene solo wertlos. Die GitHub-Quote (10 GB LFS-Speicher) lässt
+auch die migrierte Historie (~1,4 GB) bequem zu.
+Verworfen: alle `*.asset` pauschal nach LFS (die Tuning-Configs
+verlören ihre lesbaren Diffs) · die Historie lassen (119 MB Pack für
+immer in jedem Clone) · ein frisches Repo vom heutigen Stand (verwirft
+die Commit-Geschichte — gegen „niemals löschen, nur archivieren").
+
+## 2026-08-26 — Sichtbarkeit und Zugang der Repos
+Was: `Isor-Tower-ProtoTyp-2026` wird privat gestellt, `Harness-Project`
+bleibt bewusst öffentlich, `Knowledge` ist privat. Das GitHub-Token,
+das im Klartext in der Remote-URL des Unity-Repos stand, ist entfernt;
+das Widerrufen und das Privatstellen sind Isors Handgriffe auf
+github.com (`Kern/ROADMAP.md`). Die Anmeldung übernimmt der
+Credential Manager (Isor, 2026-08-26).
+Warum: Das öffentliche Unity-Repo verteilte Asset-Store-Pakete weiter
+(gegen deren Lizenz) und machte das Uni-Abgabeprojekt frei kopierbar —
+ein Plagiatsrisiko in beide Richtungen. Beim Harness kennt Isor die
+Gegenseite (Uni-Originaltexte und Zeugnisse bleiben öffentlich lesbar)
+und wählt die Sichtbarkeit. Ein Token in der URL macht jede Kopie des
+Ordners zu einem gültigen Kontoschlüssel; auf GitHub lag es nie, denn
+`.git/config` wird nicht gepusht.
+Verworfen: beide Repos privat (Isor behält den Harness bewusst
+sichtbar) · das Token nur entfernen, ohne Widerruf (der Schlüssel
+bliebe in älteren Kopien gültig).
+
+## 2026-08-26 — Repo-Grenze zur Asset-Library
+Was: Ins Projekt-Repo gehört alles, was Unity zum Öffnen und Bauen
+braucht — auch Fremd-Assets unter `Assets/ThirdParty/`; LFS trägt die
+Last. In die Asset-Library des Datenbaums gehören Originale und
+Quellformate (.blend, Download-Pakete, `.unitypackage`-Exporte) samt
+`_Quelle.txt`. Regel in `Kern/CODE_GUIDELINES.md` → „Repo & Git"; die
+zwei `ThirdAssets`-Zeilen der Unity-`.gitignore` entfallen — der
+Ordner, den sie ignorieren, hat nie existiert (Isor, 2026-08-26).
+Warum: Ein frischer Clone soll ohne Handarbeit öffnen — fehlende
+Fremd-Pakete wären eine Bitte an das Gedächtnis. Die Library löst die
+andere Hälfte: Lizenznachweis und Wiederverwendung über Projektgrenzen
+(`IsorBackup/RULES.md`). Gelebt wurde die Grenze schon so; sie stand
+nur nirgends als Regel.
+Verworfen: Fremd-Packs nur in der Library halten (jeder Clone bräuchte
+Handarbeit, bis das Projekt öffnet) · die toten Ignore-Zeilen behalten
+(eine Regel über einen Ordner, den es nie gab, ist Rauschen).
+
+## 2026-08-26 — Nummern-Klarstellungen: Build-Ablage und V-Nummer
+Was: Spiel-Builds liegen im Datenbaum unter
+`02_Projekte\<Projekt>\Builds\<Spielversion>_<JJJJ-MM-TT>\`
+(`Kern/PFADE.md` → `DATENBAUM`); die Schema-Zeile steht in
+`Kern/VERSIONIERUNG.md`. Dort steht jetzt außerdem: Die V-Nummer zählt
+**Sessions** — der Commit-Vorschlag bei `/harness:ende` trägt sie,
+Zwischenstände von Hand tragen freie Titel (Isor, 2026-08-26).
+Warum: `Build/` ist im Repo zu Recht ignoriert — ohne benannten
+Ablageort landet jeder Build woanders; das Datum unterscheidet zwei
+Prototyp-Stände derselben Spielversion. Die Commit-Titel des
+Unity-Repos mischten Schema und Zuruf („Update V 0.0023" neben „save
+point") — keine Disziplinfrage, sondern eine Lücke in der Lesart: Die
+Nummer hat nie jeden Commit gezählt, nur sagte das keine Regel.
+Verworfen: das Schema für jeden Zwischenstand (Mehraufwand bei jedem
+schnellen Sichern, ohne Gewinn) · die V-Nummer im Build-Namen (sie sagt
+nichts über den Reifegrad — genau davor warnt `VERSIONIERUNG.md`).

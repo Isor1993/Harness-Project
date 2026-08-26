@@ -145,16 +145,31 @@ Arbeit Zeiger, die hinterher noch einmal angefasst werden müssen.
   Abschnitt „Tests" in `CODE_GUIDELINES.md`, die Verwerfung samt
   Wiederprüf-Anlass unter „Bewusst nicht übernommen", die Begründung in
   `Kern/DECISIONS.md`.
-- [ ] **Repo- und Git-System neu ordnen** (eigene Design-Session). Die
-  Repos wachsen stark, weil Binärdateien mitversioniert werden. Zu
-  klären: was gehört ins Repo und was in die Asset-Library, ob Git LFS
-  eingesetzt wird, wie `.gitignore` je Repo aussehen muss, wie mit der
-  gewachsenen Historie umgegangen wird. Betrifft alle drei Repos.
-  Dazu gehört auch das Build-Versionsschema (`Kern/VERSIONIERUNG.md`).
-  **Überschneidung beachten:** Für das Harness-Repo nimmt „Struktur
-  begradigen" oben einen Teil davon vorweg — `.gitignore` und die Frage,
-  was dort überhaupt hineingehört. Dieser Punkt behandelt danach nur noch
-  die zwei anderen Repos und die übergreifenden Fragen.
+- [x] **Repo- und Git-System neu ordnen** — Design-Session am
+  2026-08-26, alle Fragen entschieden (`Kern/DECISIONS.md`, vier
+  Einträge vom selben Tag). Gemessen: Harness (3,2 MB) und Knowledge
+  (0,2 MB) sind gesund; im Unity-Repo stammen 92 % der Historien-Bytes
+  aus Szenen-Ständen (1.269 MB roh, `Village.unity` 73 MB je Stand).
+  Beschlossen: Szenen und NavMesh künftig über LFS, Historie-Migration
+  als eigener Punkt unten; Isor Tower wird privat, der Harness bleibt
+  bewusst öffentlich; Repo-Grenze zur Asset-Library, Build-Ablage und
+  V-Nummer-Lesart geregelt (`Kern/CODE_GUIDELINES.md` → „Repo & Git",
+  `Kern/VERSIONIERUNG.md`). Das GitHub-Token in der Remote-URL des
+  Unity-Repos wurde dabei gefunden und noch in der Session entfernt.
+- [ ] **LFS-Migration des Unity-Repos** (Development, fürs Wochenende).
+  Ablauf: offene Änderungen committen · Sicherung als `git bundle` in
+  den Datenbaum unter `02_Projekte\Isor_Tower\Repo_Sicherungen\`
+  (`Kern/PFADE.md` → `DATENBAUM`) ·
+  `git lfs migrate import --include="*.unity,NavMesh*.asset"
+  --everything` · prüfen (Pack-Größe, `git lfs ls-files`, Szene im
+  Editor öffnen) · Force-Push · GitHub Desktop frisch verbinden.
+  Erwartung: Git-Pack schrumpft von 119 MB auf wenige MB, der
+  LFS-Speicher wächst auf ~1,4 GB (GitHub-Quote: 10 GB).
+- [x] **GitHub-Handgriffe, nur Isor** — erledigt am 2026-08-26: das
+  alte `gho_`-Token widerrufen und `Isor-Tower-ProtoTyp-2026` privat
+  gestellt. Geprüft per API-Abruf ohne Anmeldung: Das Repo antwortet
+  jetzt mit 404, der Harness wie gewollt mit 200. Begründung:
+  `Kern/DECISIONS.md`, „Sichtbarkeit und Zugang der Repos".
 - [x] **Zwei Reste aus dem ARTIFACT_INDEX** (E46) — geschlossen am
   2026-08-25. Die tote ID `0dd96ec7-…` bekommt keinen Nachfolger
   (Isor): Nichts zeigt auf sie, keine Kopie existiert; der Vermerk

@@ -22,16 +22,14 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(geschrieben 2026-08-25 abends — fünf Kern-Punkte geschlossen: E56,
-Pflegetag, Revier-Regel, E14, E61b samt Abnahme)*
+*(geschrieben 2026-08-26 — Repo/Git-Design komplett: LFS, Sichtbarkeit,
+Repo-Grenze und Build-Ablage entschieden und gebaut)*
 
-Als Nächstes: die **Repo/Git-Design-Session** (`Kern/ROADMAP.md`,
-letzter Baupunkt — fürs Wochenende) oder die Testphase auf Zuruf. Beim
-TDD führt jetzt das **Markdown** — Text nur noch in
-`Projekte/Isor_Tower/TDD.md`, Bau per `abgabe_bauen.py`
-(`Uni/DOCX_RULES.md`). Sonntags erste Ein-Seiten-Prüfung des
-Pflegetags: dran ist `💡 EditorWindow & MVP`. Typ und Modus fragt die
-Session selbst.
+Als Nächstes: die **LFS-Migration des Unity-Repos** — kompletter Ablauf
+in `Kern/ROADMAP.md`, fürs Wochenende; vorher committet Isor die
+offenen Stände in allen drei Repos (Vorschläge lagen als Datei bei).
+Sonntags außerdem die erste Ein-Seiten-Prüfung des Pflegetags: dran ist
+`💡 EditorWindow & MVP`. Typ und Modus fragt die Session selbst.
 
 ---
 

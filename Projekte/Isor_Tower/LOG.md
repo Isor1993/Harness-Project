@@ -451,3 +451,10 @@ damals, nicht den von heute.
   `Kern/PFADE.md` → `PROJEKT`. Geprüft: Zählung gegen Handmessung
   (17 Ordner, 93 Skripte) und Beschreibungs-Erhalt über einen zweiten
   Lauf.
+- 2026-08-26 — Repo-Hygiene aus der Harness-Design-Session: das
+  GitHub-Token aus der Remote-URL entfernt (von Isor widerrufen), das
+  Repo privat gestellt, die `.gitattributes` routet `*.unity` und
+  `NavMesh*.asset` jetzt über LFS, die toten `ThirdAssets`-Zeilen sind
+  aus der `.gitignore`. Die LFS-Migration der Historie steht als Punkt
+  in `Kern/ROADMAP.md`. Geprüft: `git ls-remote` liefert `main`
+  weiterhin; Sichtbarkeit per API-Abruf ohne Anmeldung (404).

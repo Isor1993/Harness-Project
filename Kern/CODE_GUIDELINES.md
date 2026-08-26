@@ -1,7 +1,7 @@
 # CODE_GUIDELINES.md — Code-Konventionen
 
 Ownership: Code-Konventionen — Namen, Architektur, Ordnerstruktur,
-Tests, das Review-Gate.
+Tests, das Review-Gate und die Repo-/Git-Regeln des Projekt-Repos.
 
 Status: Entstanden als Rohmaterial aus dem Brainstorm vom 2026-07-17,
 seither in einem vollen Uni-Durchgang erprobt und mehrfach nachgeschärft
@@ -286,6 +286,29 @@ prüft mit, wenn er Code zeigt oder reviewt:
 5. Artifact-Check: Steht eines der Skripte, die gleich angefasst werden,
    in einer Skripte-Zeile von ARTIFACT_INDEX.md? Dann veraltet die Seite
    durch die Änderung und wird nach dem Coden nachgezogen.
+
+## Repo & Git
+
+Regeln für das Projekt-Repo; Grundentscheidungen vom 2026-08-26,
+Begründungen in `Kern/DECISIONS.md`. Nummern und Build-Ablage besitzt
+`Kern/VERSIONIERUNG.md`.
+
+- **Ins Repo gehört, was Unity zum Öffnen und Bauen braucht** — auch
+  Fremd-Assets (`Assets/ThirdParty/`, innere Struktur unangetastet,
+  siehe „Ordnerstruktur"). Originale und Quellformate (`.blend`,
+  Download-Pakete, `.unitypackage`-Exporte) gehören in die
+  Asset-Library des Datenbaums (`IsorBackup/RULES.md`).
+- **Große Binärdateien laufen über Git LFS**, geregelt in der
+  `.gitattributes` des Projekts: das Unity-Template (Texturen, Audio,
+  Modelle) plus `*.unity` und `NavMesh*.asset`. Kleine YAML-Configs
+  (ScriptableObjects) bleiben Text — ihre Diffs sind beim Tuning die
+  Lesehilfe.
+- **Projekt-Repos mit Fremd-Assets sind privat.** Die
+  Asset-Store-Lizenz erlaubt keine Weiterverbreitung, und ein öffentlich
+  kopierbares Abgabeprojekt ist ein Plagiatsrisiko.
+- **Kein Token in der Remote-URL.** Die Anmeldung übernimmt der
+  Credential Manager; eine URL mit eingebettetem Schlüssel macht jede
+  Ordnerkopie zum Kontozugang.
 
 ## Tests
 

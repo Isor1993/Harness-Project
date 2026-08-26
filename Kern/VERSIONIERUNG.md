@@ -30,6 +30,10 @@ hochgezählt. Sie sagt nichts über Inhalt oder Reifegrad.
 - Je Repo eine eigene Zählung.
 - Die nächste Nummer wird per `git log` nachgeschlagen, nicht geschätzt.
 - Format und Ablauf regelt WORKFLOW.md.
+- **Sie zählt Sessions, nicht jeden Commit:** Der Commit-Vorschlag bei
+  `/harness:ende` trägt sie. Zwischenstände, die Isor von Hand sichert,
+  tragen freie Titel und zählen nicht hoch. *(Klarstellung 2026-08-26;
+  Begründung in `Kern/DECISIONS.md`.)*
 
 ## 2. Spiel-Version — Reifegrad
 
@@ -60,6 +64,15 @@ die interessante Information. Ab `1.x.x` gilt:
 *Ergänzt die Entscheidung vom 2026-08-16, ohne sie umzustoßen: Das
 Schema war für alles vor dem Release präzise und ließ die Zeit danach
 offen (Isor, 2026-08-22).*
+
+### Ablage der Builds
+
+Ein gebauter Stand liegt im Datenbaum unter
+`02_Projekte\<Projekt>\Builds\<Spielversion>_<JJJJ-MM-TT>\`
+(`Kern/PFADE.md` → `DATENBAUM`) — das Repo ignoriert `Build/` zu Recht.
+Die Spielversion kommt aus den Player Settings; das Datum unterscheidet
+zwei Stände derselben Prototyp-Version. *(Entschieden 2026-08-26,
+Begründung in `Kern/DECISIONS.md`.)*
 
 ## 3. Harness-Version — Verträglichkeit
 
