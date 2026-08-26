@@ -108,7 +108,8 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 
 | Dokument | Zuständigkeit |
 |---|---|
-| `_HARNESS_PRUEFUNG_1_0_0.md` | Nur die Befunde **dieses einen Prüfdurchgangs** — der rund zwanzig Dateien, die am 2026-08-23 beim Bau der Version 1.0.0 geschrieben und nicht gegengelesen wurden. |
+| `_HARNESS_CODE_GUIDELINES.md` | Nur die Befunde **dieses einen Prüfdurchgangs** — der Datei `Kern/CODE_GUIDELINES.md`, die beim Durchgang vom 2026-08-23 ausdrücklich ausgelassen wurde und seither nie einen Prüfbogen gesehen hat. |
+| `_HARNESS_UNI_SCHICHT.md` | Nur die Befunde **dieses einen Prüfdurchgangs** — der Uni-Schicht, die beim Durchgang vom 2026-08-23 ausdrücklich ausgelassen wurde und seither nie einen Prüfbogen gesehen hat. |
 
 ## Werkzeuge — erzeugen und pflegen die Dateien oben
 

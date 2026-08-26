@@ -309,6 +309,38 @@ wiederherstellen.
 **Stand:** offen — der Werkzeug-Mangel bleibt; das Gegenmittel hat im
 selben Vorfall funktioniert.
 
+### 2026-08-26 — In die fremde Schicht geschrieben statt gemeldet
+**Was:** Die Repo/Git-Session (Revier: Kern) schrieb zwei Einträge in
+`Projekte/Isor_Tower/` — einen LOG-Eintrag zur Repo-Hygiene und den
+Punkt „Portfolio-Präsentation" in die ROADMAP. Zeitgleich arbeitete
+eine Parallel-Session an genau dieser Schicht und schrieb ihre ROADMAP
+**vollständig neu**. Der Eintrag überlebte nur, weil sie ihn bemerkte
+und ausdrücklich übernahm.
+**Ursache:** Ausführungsfehler, keine Regellücke. Die Revier-Regel
+(`WORKFLOW.md` → „Parallele Sessions") verlangt seit dem 2026-08-25
+„melden statt schreiben", wenn die Arbeit eine fremde Schicht braucht.
+Sie wurde nicht angewandt, weil der Gegenstand — die drei Repos —
+über alle Schichten läuft und der Schreibweg dadurch naheliegend
+wirkte. Genau dafür ist die Regel aber da: Das Thema greift über die
+Schichten, das **Revier** folgt trotzdem dem Fokus des Abschnitts.
+**Regel:** Vorhanden und ausreichend, erster scharfer Test bestanden
+hat sie nicht. Merkmal für den Wiederholungsfall: Wenn eine Datei
+außerhalb der eigenen Schicht liegt, ist die Frage nicht „passt der
+Inhalt dorthin", sondern „ist es mein Revier".
+**Stand:** offen. Beobachten, ob der schichtübergreifende Gegenstand
+regelmäßig zum Schreiben verführt — dann fehlt in der Regel ein Satz
+für genau diesen Fall.
+**Zum Nachbareintrag:** „Zwei Sessions wollten dieselbe Datei
+schreiben" (unten, gleicher Tag) beschreibt **denselben** Zusammenstoß
+von der anderen Seite und urteilt milder — „beide Sessions handelten
+für sich richtig". Das trifft auf die Projekt-Session zu: Sie schrieb
+in ihr eigenes Revier und konnte nicht wissen, dass jemand von außen
+hineinschreibt. Für **diese** Seite gilt es nicht: Die Regel hängt am
+eigenen Fokus, nicht am Wissen über die Nachbarsession, und war damit
+ohne jede Sichtbarkeit befolgbar. Beide Einträge bleiben stehen — eine
+Chronik wird nicht geändert —, aber wer nur einen liest, bekommt den
+Vorfall halb.
+
 ### 2026-08-26 — Zwei Sessions wollten dieselbe Datei schreiben
 **Was:** Die Design-Session „Isor's Tower · Multiplayer" wollte
 `Projekte/Isor_Tower/ROADMAP.md` leeren und neu schreiben. Zwischen dem
@@ -332,3 +364,90 @@ gelesen, nicht nur zu Beginn des Abschnitts.
 **Stand:** offen. Der Zusammenstoß selbst ist aufgelöst — der fremde
 Punkt steht unverändert in der neuen `ROADMAP.md`, im Abschnitt „Nach dem
 Prototyp", mit Herkunftsvermerk.
+
+### 2026-08-26 — „Später, nur bei Bedarf" ist ein blinder Fleck
+**Was:** In `Kern/ROADMAP.md` stand unter „Später, nur bei Bedarf" der
+Punkt „Knowledge-Archivierung automatisieren." — eine Zeile ohne das
+„was und warum", das die ROADMAP im eigenen Kopf vorschreibt. Er stammt
+vom 2026-07-14 und meinte das Auslagern aus einer projektinternen
+Pufferdatei; diese Architektur wurde am 2026-07-17 verworfen. Der Punkt
+war damit **sechs Wochen lang gegenstandslos** und überlebte dabei den
+Umbau auf 1.0.0, den auf 2.0.0 und die Prüfung vom 2026-08-23, die
+vierzehn Befunde fand und die ROADMAP ausdrücklich zum Gegenstand hatte
+(Befund P3 betraf sie). Im selben Abschnitt stand die unprüfbare
+Bedingung „wieder prüfen, wenn er sicher programmiert" — dieselbe
+Bauart, die am 2026-08-23 bei der Testphase erkannt und repariert wurde,
+hier dreizehn Tage länger unbemerkt.
+**Ursache:** Die Überschrift wirkt wie ein Häkchen. „Später, nur bei
+Bedarf" sagt dem Auge „nicht jetzt", und der Blick springt weiter — die
+Zeilen darunter werden zwar mitgelesen, aber nicht mehr geprüft. Keine
+Prüfebene deckt den Abschnitt ab: `pruefen.py` sieht Form und Bestand,
+nicht ob ein Punkt noch ein Objekt hat; der Pflegetag sieht Artifacts;
+der Prüfbogen des Typs Prüfung fragt je **Datei**, nicht je Abschnitt,
+und eine ROADMAP besteht die Fragen 1 bis 5 als Ganzes, während eine
+einzelne tote Zeile darin durchrutscht.
+**Regel:** Lücke, keine Missachtung. `DOC_RULES.md` Abschnitt 7 bekämpft
+Verfall über Anzahlen und Stand-Stempel, hat aber nichts für einen Punkt,
+dessen **Voraussetzung** weggefallen ist. Kandidat als Gegenmaßnahme:
+Der Prüfbogen bekommt eine sechste Frage für Listendateien — *steht jeder
+zurückgestellte Punkt noch auf einer Grundlage, die es gibt?* Nicht
+maschinell prüfbar; ein Skript sieht die verworfene Architektur nicht.
+**Stand:** offen als Bauart. Der konkrete Punkt ist am 2026-08-26
+erledigt: archiviert in `Kern/_ARCHIV.md`, ersetzt durch Prüfung 8, und
+die unprüfbare Bedingung bei „ClaudeSetup" ist auf Zuruf umgestellt.
+
+### 2026-08-26 — Session-Thema überschrieben, Wiederholungsfall
+**Was:** Beim Setzen der Klammer zu Beginn dieser Session hieß der Titel
+`Harness · Repo/Git (zu)`; Claude machte daraus
+`Harness · Restpunkte (Design)` und änderte damit **das Thema**, nicht
+nur die Klammer. `WORKFLOW.md` → „Der Typ steht im Session-Titel" sagt:
+„Das Thema gehört Isor — er benennt die Session, und Claude ändert daran
+kein Wort." Aufgefallen ist es Claude selbst, später am Tag, beim
+Durchgehen der offenen Störungen auf Isors Frage hin; Isor hatte nicht
+widersprochen.
+**Ursache:** Der Titel war von der vorigen Session geerbt und trug die
+Klammer `(zu)` — also der Anzeigezustand „abgeschlossen". Claude las das
+als „kein gültiges Thema" und setzte ein neues. Diese Auslegung ist
+nirgends gedeckt: Die Regel kennt nur „Thema gehört Isor" und „fehlt
+eine Klammer, hängt Claude sie an, ohne den Rest anzufassen" — der Fall
+„Klammer da, aber von gestern" kommt darin nicht vor.
+**Regel:** Lücke plus Ausführungsfehler. Der Buchstabe war eindeutig und
+wurde gebrochen; zugleich beantwortet die Regel den geerbten Titel nicht.
+Dieselbe Sorte wie am 2026-08-25 („Session-Thema beim Klammer-Setzen
+überschrieben"), nur aus anderem Anlass — dort ein Werkzeug ohne
+Vorschau, hier eine eigene Auslegung. Der richtige Handgriff wäre
+gewesen, das neue Thema **vorzuschlagen** statt es zu setzen; Claude hat
+den alten Titel immerhin gemeldet, weil das Werkzeug ihn zurückgibt —
+genau das Gegenmittel aus dem Eintrag vom 2026-08-25, das hier den
+Nachweis überhaupt erst möglich machte.
+**Stand:** offen. Das Thema `Harness · Restpunkte` steht und ist von
+Isor nicht beanstandet, der Regelfall bleibt ungeklärt.
+
+### 2026-08-26 — Niemand fragt, ob eine temporäre Liste überfällig ist
+**Was:** `_HARNESS_PRUEFUNG_1_0_0.md` lag vom 2026-08-23 bis zum
+2026-08-26 in der Repo-Wurzel, obwohl sie sich im eigenen Schlusssatz
+für archivierbar erklärte („Diese Liste ist damit archivierbar") und
+alle vierzehn Befunde behoben waren. In diesen drei Tagen liefen
+mehrere Sessions samt SessionStart-Hook über den Bestand; jede zählte
+die Datei brav als eine von 56 mit. Aufgefallen ist es erst, als Isor
+ausdrücklich fragte, ob am Harness alles fertig sei.
+**Ursache:** Eine temporäre Datei ist die einzige Gattung im Bestand,
+die **planmäßig wieder verschwindet** — und keine Prüfebene kennt diesen
+Lebenslauf. `pruefen.py` prüft ihre Form und lässt sie bei den Prüfungen
+1, 4 und 7 bewusst aus; `index_bauen.py` sortiert sie korrekt in die
+Kategorie „Temporär"; beide fragen nicht, ob ihr Durchgang durch ist.
+Der Zustand steht nur im Fließtext der Datei selbst, und dorthin sieht
+niemand, der nicht gerade mit ihr arbeitet. Verwandt mit „Später, nur
+bei Bedarf ist ein blinder Fleck" (oben, gleicher Tag), aber eine eigene
+Mechanik: Dort wird eine Zeile übersehen, hier eine ganze Datei, die
+sich sogar selbst für erledigt erklärt hat.
+**Regel:** Lücke. `Kern/WORKFLOW.md` → „Prüfung" sagt „danach ins
+Archiv", nennt aber kein „danach", das jemand feststellt — dieselbe
+Bauart wie bei den unprüfbaren Bedingungen vom selben Tag. Gegenmittel,
+als ROADMAP-Punkt aufgenommen (`Kern/ROADMAP.md`): `pruefen.py` meldet
+als **Hinweis**, dass eine `_HARNESS_*.md` in der Wurzel liegt, samt der
+Frage, ob ihr Durchgang abgeschlossen ist. Bewusst ein Hinweis und kein
+Fund — während einer laufenden Prüfung gehört die Datei dorthin, ein
+Fund wäre dann Rauschen.
+**Stand:** offen als Bauart; der konkrete Fall ist am 2026-08-26
+erledigt (archiviert, Eintrag in `Kern/_ARCHIV.md`).

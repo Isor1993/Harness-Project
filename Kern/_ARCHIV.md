@@ -100,4 +100,86 @@ nichts fortzuführen.
 unverändert in `CLAUDE.md`, jetzt als Original statt als Untergrenze.
 Der Begriff „Notkern" ist aus `Kern/GLOSSARY.md` entfernt.
 
+---
+
+## 2026-08-26 — ROADMAP-Punkt „Knowledge-Archivierung automatisieren"
+
+**Abgelöst durch:** nichts. Der Vorgang, den er automatisieren sollte,
+ist am 2026-07-17 verworfen worden — der Punkt hat seither kein Objekt
+mehr. An seine Stelle tritt Prüfung 8 in `Kern/Werkzeuge/pruefen.py`,
+die etwas anderes tut (unten).
+
+**Originaltext, unverändert** — Stand zuletzt unter „Später, nur bei
+Bedarf" in `Kern/ROADMAP.md`:
+
+> - [ ] **Knowledge-Archivierung automatisieren.**
+
+**Was er einmal meinte:** Der Punkt stammt vom 2026-07-14 aus dem
+allerersten ROADMAP-Entwurf und hieß dort vollständig „Erweiterung:
+Knowledge-Archivierung automatisieren (Befehl/Skill) — erst nach
+Praxistest". Zwei Zeilen darüber stand: „KNOWLEDGE.md — Puffer für
+Gelerntes, wird ins externe Archiv ausgelagert". **Die „Archivierung"
+war dieses Auslagern** — Gelerntes sollte zuerst in eine projektinterne
+Pufferdatei und von dort in Sammelläufen ins externe Archiv wandern.
+
+**Warum er hinfällig ist:** Die Puffer-Architektur wurde drei Tage
+später verworfen. `Kern/DECISIONS.md`, 2026-07-17 („Knowledge als
+externer Ordner"), Zeile Verworfen: „einzelne KNOWLEDGE.md im Projekt
+als Puffer mit Auslagerung". Geschrieben wird seither direkt in den
+externen Ordner; es gibt keinen Auslagerungsvorgang, den ein Skript
+übernehmen könnte. Der Punkt überlebte nur, weil er beim Umbau auf
+1.0.0 als Ein-Satz-Zeile mitwanderte — ohne das „was und warum", das
+das Format der ROADMAP verlangt, und damit ohne die Angabe, die seine
+Hinfälligkeit gezeigt hätte.
+
+**Was an seiner Stelle steht:** Vor dem Archivieren wurde gemessen, ob
+am Knowledge-Ordner etwas anderes zu automatisieren wäre (2026-08-26,
+89 Dateien): sieben von sieben Themenordnern mit `README.md`, keine
+Datei ohne `Quelle:`-Zeile, vier Artifact-IDs — alle vier gültig und im
+`ARTIFACT_INDEX.md` geführt. Der Bestand trägt also, ein Skript zum
+Aufräumen hätte nichts zu tun. Gebaut wurde deshalb nur die Sicherung
+gegen den einen Schaden, der dort wirklich entstanden ist: fünfzehn tote
+Artifact-Links am 2026-08-09, weil die Handregel „vor dem Löschen im
+Knowledge nach der ID suchen" (`Kern/ARTIFACT_RULES.md`, Pflege)
+vergessen wurde. Prüfung 8 hält die IDs beider Seiten gegeneinander —
+erzwingen statt erinnern, dasselbe Muster wie beim SessionStart-Hook.
+
+---
+
+## 2026-08-26 — Befundliste `_HARNESS_PRUEFUNG_1_0_0.md`
+
+**Abgelöst durch:** nichts — sie ist planmäßig abgelaufen. Eine
+Befundliste gehört dem Durchgang, der sie erzeugt hat
+(`Kern/WORKFLOW.md` → „Prüfung"); was überlebt, sind die Punkte in der
+ROADMAP. Die Datei selbst liegt im Datenbaum unter
+`99_Archiv\_Zu_Loeschen\2026-08-26_Pruefung_1_0_0\` (`Kern/PFADE.md` →
+`DATENBAUM`).
+
+**Was sie war:** Die Nachlese zur Version 1.0.0, gelaufen am 2026-08-23
+in einer frischen Session gegen rund zwanzig Dateien, die am Bautag
+geschrieben und nicht gegengelesen worden waren. Vierzehn Befunde in
+drei Durchgängen — die neuen Regeln, die aus den Arbeitsdateien
+geretteten Regeln, und ein Querschnitt über den Bestand nach
+Widersprüchen. Alle vierzehn wurden am selben Tag in einem eigenen
+Abschnitt behoben; die Liste trug dafür eine Tabelle „Behebung" mit der
+Stelle je Befund, nachprüfbar statt abgehakt.
+
+**Warum sie erst am 2026-08-26 ging:** Sie war seit dem 2026-08-23
+archivierbar und blieb drei Tage in der Repo-Wurzel liegen. Aufgefallen
+ist es erst, als Isor fragte, ob am Harness wirklich alles fertig sei —
+kein Werkzeug hat es gemeldet, weil kein Werkzeug weiß, wann eine
+temporäre Datei ihren Zweck erfüllt hat.
+
+**Was vor dem Archivieren gerettet wurde** (`DOC_RULES.md`, Abschnitt 11
+— eine Arbeitsdatei wird geschlossen, bevor sie geht): Ein einziger
+Posten, und er stand nicht bei den Befunden, sondern im Abschnitt
+„Stand": Die Prüfung hatte **`Kern/CODE_GUIDELINES.md` und die
+Uni-Schicht ausdrücklich ausgelassen**, weil beide am 2026-08-23 nicht
+angefasst worden waren. Diese Auslassung stand in keiner ROADMAP und
+wäre mit der Datei verschwunden. Sie steht jetzt als eigener Punkt in
+`Kern/ROADMAP.md` → „Die nie geprüfte Fläche nachholen". Die zwei
+halb erledigten Aufträge, die die Liste selbst benannte (die
+Automatisierung zu P4 und P13), sind seit dem 2026-08-23 gebaut —
+Prüfungen 4 und 5 in `Kern/Werkzeuge/pruefen.py`.
+
 

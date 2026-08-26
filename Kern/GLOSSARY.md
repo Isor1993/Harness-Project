@@ -59,6 +59,7 @@ Leseordnung.
 | **Marke** | Platzhalter-Name in Großbuchstaben für einen Ort außerhalb des Repos (`DATENBAUM`, `KNOWLEDGE`, `PROJEKT`). Regeldateien nennen die Marke; den Pfad dahinter besitzt allein `PFADE.md`. | `Kern/PFADE.md` |
 | **Datenbaum** | Der feste Ablagebaum für alles, was kein Repo ist — Marke `DATENBAUM`. | `IsorBackup/RULES.md` |
 | **LFS** | Git Large File Storage — Nebenspeicher für große Dateien: Im Repo liegt ein Zeiger, die Bytes liegen daneben, und ein Clone lädt nur die Stände des Checkouts. | `CODE_GUIDELINES.md`, Repo & Git |
+| **Zustand einer Seite** | Lebensabschnitt einer Artifact-Seite, nicht ihre Sorte: `(geplant)` vor dem Bau, `🗑` am Ende. Ändert den **Typ** nicht — der sagt, worauf die Seite blickt. Nicht zu verwechseln mit „Zustand" beim **Befund**, wo das Wort den Gegensatz zum Ereignis meint. | `ARTIFACT_RULES.md`, Die Typen |
 
 Jeder hier geführte Begriff nennt seinen Besitzer. Ob die Liste
 **vollständig** ist, kann diese Datei nicht selbst sagen — sie wird von

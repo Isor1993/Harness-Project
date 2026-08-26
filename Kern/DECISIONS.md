@@ -1169,3 +1169,57 @@ Nummer hat nie jeden Commit gezählt, nur sagte das keine Regel.
 Verworfen: das Schema für jeden Zwischenstand (Mehraufwand bei jedem
 schnellen Sichern, ohne Gewinn) · die V-Nummer im Build-Namen (sie sagt
 nichts über den Reifegrad — genau davor warnt `VERSIONIERUNG.md`).
+
+## 2026-08-26 — Design-Absicht ist ein Zustand, kein Artifact-Typ
+Was: Eine Artifact-Seite, die ein noch ungebautes System entwirft,
+bleibt ⚙️ System und trägt `(geplant)` als Zusatz im Titel; beim Bau
+fällt nur die Klammer weg, Symbol, Thema und URL bleiben. Am Pflegetag
+steht sie im normalen Turnus, wird aber gegen ihre führende Quelle
+geprüft statt gegen Code. Regeln in `Kern/ARTIFACT_RULES.md`
+(„Die Typen", „Benennung", „Wann geschaut wird", „Pflege").
+Warum: Der Typ sagt, *worauf* eine Seite blickt — und darauf blickt die
+Absichtsseite genauso wie die spätere System-Seite; sie ist dasselbe
+Ding zu einem früheren Zeitpunkt. Derselbe Maßstab hat schon `🗑` und
+`🎓 Zeugnis` aus der Typ-Tabelle herausgehalten. Ein Typ, aus dem jede
+Seite planmäßig wieder herauswächst, ist ein Lebensabschnitt.
+Verworfen: **ein vierter Typ `📐 Entwurf`** — der beste Galerie-Scan,
+aber er widerspricht der Begründung, mit der Zeugnisse keiner wurden,
+und verlangt beim Bau einen Typwechsel statt eines Handgriffs ·
+**die System-Definition auf „soll funktionieren" weiten** — kostet gar
+nichts, macht Absicht in der Galerie aber ununterscheidbar von Zustand,
+und die Galerie ist die Handy-Ansicht, in der nur Symbol und Titel
+sichtbar sind.
+Auslöser: `⚙️ System · Multiplayer`, am 2026-08-26 behelfsweise als
+System veröffentlicht und im Vorspann als Absicht gekennzeichnet.
+
+## 2026-08-26 — Die Restliste der Harness-ROADMAP aufgeräumt
+Was: Die zurückgestellten Punkte durchgesehen. **„Knowledge-Archivierung
+automatisieren"** geht nach `Kern/_ARCHIV.md` und wird durch **Prüfung 8**
+in `Kern/Werkzeuge/pruefen.py` ersetzt: Artifact-IDs im Knowledge-Ordner
+gegen den `ARTIFACT_INDEX.md`. **„ClaudeSetup"** hängt künftig an Isors
+Zuruf statt an „wenn er sicher programmiert". Der Punkt zum
+**Development-Modus** heißt jetzt „Review-Seite" und benennt, was
+wirklich fehlt. Die zwei Weitergabe-Punkte (Englisch, zweite
+Artifact-Seite) bleiben unverändert (Isor, 2026-08-26).
+Warum: Der Knowledge-Punkt meinte das Auslagern aus einer projektinternen
+Pufferdatei — eine Architektur, die am 2026-07-17 im selben Zug verworfen
+wurde, in dem der externe Ordner beschlossen wurde; seither hat er kein
+Objekt. Vor dem Streichen wurde gemessen, ob an seiner Stelle etwas
+anderes zu automatisieren wäre: sieben von sieben Themenordnern mit
+`README.md`, keine der 89 Dateien ohne `Quelle:`-Zeile, vier Artifact-IDs
+und alle vier gültig. Der Bestand trägt also; ein Skript brauchte es nur
+für den einen Schaden, der dort wirklich entstand (fünfzehn tote Links am
+2026-08-09, Handregel vergessen). „Wenn er sicher programmiert" ist keine
+Bedingung, die von außen feststellbar wäre — genau dieser Fehler war bei
+der Testphase schon einmal behoben und stand hier unrepariert weiter. Der
+Development-Modus wiederum ist gebaut und in Betrieb; sein ROADMAP-Punkt
+behauptete das Gegenteil und verdeckte damit die echte Lücke.
+Verworfen: den Knowledge-Punkt **ersatzlos** streichen (die Handregel,
+deren Vergessen fünfzehn tote Links kostete, bliebe unbewacht) · ihn neu
+formulieren und stehen lassen (er zeigte weiter auf einen Vorgang, den es
+nicht gibt).
+Nicht übernommen: die Abgrenzung des Englisch-Punktes gegen die
+Sichtbarkeits-Entscheidung — offen bleibt damit, ob „öffentlich auf
+GitHub lesbar" die Bedingung „eine Weitergabe steht an" bereits erfüllt.
+Am 2026-08-26 vorgelegt und von Isor nicht gewählt; beide
+Weitergabe-Punkte bleiben unverändert.

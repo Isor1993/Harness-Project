@@ -13,6 +13,7 @@ Die Prüfungen, jede aus einem belegten Fehler oder einer benannten Lücke:
   5 Glossar       Kurzform gegen ihre Besitzerdatei  (P13, 2026-08-23)
   6 Hooks         Vorlage gegen .claude/settings.json (2026-08-23)
   7 Pfade         absoluter Pfad außerhalb PFADE.md  (Auslieferung 2.0.0)
+  8 Knowledge     Artifact-IDs gegen ARTIFACT_INDEX  (15 tote Links, 2026-08-09)
 
 Aufruf:
     python pruefen.py               alle Prüfungen
@@ -486,6 +487,101 @@ def pruefe_pfade(dateien):
     return funde, u"%d Chronik-Dateien übersprungen" % uebersprungen
 
 
+# ---------------------------------------------------------------- Prüfung 8
+
+ARTIFACT_ID = re.compile(r"artifact/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}"
+                         r"-[0-9a-f]{4}-[0-9a-f]{12})")
+GELOESCHT_KOPF = u"## Gelöschte Seiten"
+
+
+def marke_pfad(marke):
+    """Der Pfad hinter einer Marke aus Kern/PFADE.md, sonst None.
+
+    None ist kein Fehler: In einer frisch ausgepackten Auslieferung steht
+    dort `(nicht eingerichtet)`, in einem Projekt ohne diesen Ort
+    `(nicht benutzt)`. Beide sind keine Pfade und fallen hier durch.
+    """
+    rel = "Kern/PFADE.md"
+    if not os.path.exists(os.path.join(BASE, rel)):
+        return None
+    for zeile in zeilen_von(lies(rel)):
+        if not zeile.startswith("|") or (u"`%s`" % marke) not in zeile:
+            continue
+        spalten = [s.strip() for s in zeile.strip().strip("|").split("|")]
+        if len(spalten) < 2:
+            continue
+        treffer = re.search(r"`([^`]+)`", spalten[1])
+        if treffer:
+            return treffer.group(1)
+    return None
+
+
+def pruefe_knowledge(_dateien):
+    """Jede Artifact-ID im Knowledge-Ordner muss im ARTIFACT_INDEX stehen.
+
+    Der Anlass: Am 2026-08-09 fielen fünfzehn tote Links auf, weil Seiten
+    geteilt und gelöscht wurden, ohne im Knowledge nach ihrer ID zu suchen.
+    Die Handregel dagegen steht seither in `Kern/ARTIFACT_RULES.md`
+    (Pflege) — sie war schon einmal vergessen worden, und eine Regel, die
+    nur erinnert wird, hält nur so lange wie die Aufmerksamkeit. Diese
+    Prüfung erzwingt sie stattdessen, wie der SessionStart-Hook.
+
+    Geprüft wird **eine** Richtung: Zeigt eine Notiz auf eine Seite, die
+    der Index nicht als lebend führt? Die Gegenrichtung ist kein Fund —
+    der Index darf Seiten führen, auf die keine Notiz zeigt.
+
+    Der Knowledge-Ordner liegt außerhalb dieses Repos; sein Pfad kommt
+    über die Marke `KNOWLEDGE` aus `Kern/PFADE.md`. Fehlt die Marke oder
+    der Ordner, entfällt die Prüfung still — ein Projekt ohne
+    Wissensarchiv ist kein Fehlerfall.
+    """
+    rel_index = "Kern/ARTIFACT_INDEX.md"
+    if not os.path.exists(os.path.join(BASE, rel_index)):
+        return [], u"kein ARTIFACT_INDEX vorhanden"
+    wurzel = marke_pfad(u"KNOWLEDGE")
+    if not wurzel or not os.path.isdir(wurzel):
+        return [], u"Marke KNOWLEDGE nicht eingerichtet"
+
+    # Der Index führt gelöschte Seiten in einer eigenen Tabelle, und zwar
+    # mit abgekürzter ID. Beide Hälften getrennt zu lesen ist der ganze
+    # Grund, warum eine tote ID hier nicht als „geführt" durchgeht.
+    text = lies(rel_index)
+    kopf, _, unten = text.partition(GELOESCHT_KOPF)
+    lebend = set(ARTIFACT_ID.findall(kopf))
+    geloescht = set(re.findall(r"`([0-9a-f]{8})[-…\.]", unten))
+
+    funde = []
+    geprueft = 0
+    for stamm, ordner, dateien in os.walk(wurzel):
+        ordner[:] = [o for o in ordner if o not in NICHT_DURCHSUCHEN]
+        for name in sorted(dateien):
+            if not name.endswith(".md"):
+                continue
+            voll = os.path.join(stamm, name)
+            # Als Marke ausgeben statt als absoluter Pfad: Die Meldung
+            # soll auf jedem Rechner dieselbe sein (Kern/PFADE.md).
+            zeigepfad = u"KNOWLEDGE/%s" % os.path.relpath(
+                voll, wurzel).replace("\\", "/")
+            with io.open(voll, encoding="utf-8") as fh:
+                for nr, zeile in enumerate(fh, 1):
+                    for kennung in ARTIFACT_ID.findall(zeile):
+                        geprueft += 1
+                        if kennung in lebend:
+                            continue
+                        if kennung[:8] in geloescht:
+                            funde.append((zeigepfad, nr,
+                                          u"zeigt auf die gelöschte Seite "
+                                          u"`%s…` — Zeiger auflösen oder auf "
+                                          u"die Offline-Kopie umhängen"
+                                          % kennung[:8]))
+                        else:
+                            funde.append((zeigepfad, nr,
+                                          u"Artifact `%s…` steht in keiner "
+                                          u"lebenden Zeile des "
+                                          u"ARTIFACT_INDEX" % kennung[:8]))
+    return funde, u"%d Artifact-Verweise geprüft" % geprueft
+
+
 # ------------------------------------------------------------------- Ablauf
 
 PRUEFUNGEN = [
@@ -496,6 +592,7 @@ PRUEFUNGEN = [
     (u"Glossar", pruefe_glossar),
     (u"Hooks", pruefe_hooks),
     (u"Pfade", pruefe_pfade),
+    (u"Knowledge", pruefe_knowledge),
 ]
 
 

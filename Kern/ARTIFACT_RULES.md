@@ -26,6 +26,27 @@ Der Harness selbst ist ein System im Sinne dieser Tabelle:
 `🗑` ist **kein Typ, sondern ein Zustand** — eine Seite kann veraltet
 *sein*, sie ist nicht veraltet *als Sorte*. Siehe Abschnitt Pflege.
 
+**`(geplant)` ist ebenso ein Zustand.** Eine Seite, die ein noch
+**ungebautes** System entwirft, stellt dieselbe Frage wie eine
+System-Seite, nur im Futur: „Wie *soll* mein System X funktionieren?"
+Sie bleibt deshalb ⚙️ System und trägt den Zusatz `(geplant)` im Titel
+(siehe Benennung). Ist das System gebaut, fällt der Zusatz weg — Symbol,
+Thema und URL bleiben über die ganze Lebenszeit dieselben.
+
+Der **Zustand einer Seite** sagt damit etwas anderes als ihr Typ: Der Typ
+nennt die Sorte und bleibt, der Zustand nennt den Lebensabschnitt und
+wandert — `(geplant)` vor dem Bau, nichts danach, `🗑` am Ende.
+
+Woran der Zustand hängt: **nicht** daran, ob jede Zeile steht, sondern
+daran, ob die Seite überwiegend Absicht beschreibt. Den Schnitt macht
+der Pflegetag, nicht der erste Commit („Wann geschaut wird").
+
+Warum kein eigener Typ: Der Typ sagt, *worauf* eine Seite blickt, und
+darauf blickt eine Absichtsseite genauso wie die spätere System-Seite —
+sie ist dasselbe Ding zu einem früheren Zeitpunkt. Derselbe Maßstab hat
+schon `🗑` und `🎓 Zeugnis` aus der Typ-Tabelle herausgehalten.
+*(Entschieden 2026-08-26, Begründung und Alternativen in `DECISIONS.md`.)*
+
 **Trennlinie System ↔ Lernstück:** System ist projektspezifisch („so ist
 mein Placement aufgebaut"), Lernstück ist übertragbar („so funktioniert
 Poisson-Disc-Sampling"). Ein Artifact beantwortet genau eine der Fragen —
@@ -48,15 +69,22 @@ die Seiten trotzdem im ARTIFACT_INDEX.
 
 ## Benennung
 
-Titel-Schema: `<Symbol> <Typ> · <Thema>`
+Titel-Schema: `<Symbol> <Typ> · <Thema>`, hinten optional `(<Zustand>)`
 
     📍 Status · Wo das Projekt steht
     ⚙️ System · Terrain & Gras
+    ⚙️ System · Multiplayer (geplant)
     💡 Lernstück · Poisson-Disc-Sampling
     🗑 Löschen · Village spielbar
 
 Symbol **und** Wort: Das Symbol allein ist in der Galerie zu klein zum
 Scannen, das Wort allein sagt es erst beim Lesen.
+
+**Die Klammer trägt den Zustand, nicht das Symbol** — außer bei `🗑`,
+dessen Zustand das Ende der Lebenslinie ist und die Seite deshalb aus
+ihrem Typ herausnimmt. `(geplant)` steht dagegen am Anfang: Die Seite
+lebt weiter, nur ohne Klammer. Bisher gibt es diesen einen Zustand;
+kommt je ein zweiter dazu, gehört er in denselben Klammerplatz.
 
 ## Aufbau einer Seite
 
@@ -223,6 +251,14 @@ hatte.)*
   Versionsnummer). Der Metadaten-Abgleich bleibt daneben bestehen: Er
   ist die Prüfung, die die Stand-Stempel erlaubt macht (`DOC_RULES.md`,
   Abschnitt 7).
+  **Eine Seite im Zustand `(geplant)` bleibt im Turnus**, wird aber gegen
+  ihre führende Quelle geprüft statt gegen Code — den gibt es noch nicht.
+  Zwei Fragen kommen dazu: Gilt die Absicht noch, oder hat eine spätere
+  Entscheidung sie überholt? Und beschreibt die Seite inzwischen
+  überwiegend Zustand statt Absicht — dann greift der Handgriff unten
+  unter „Pflege". Sie aus dem Turnus zu nehmen wäre falsch: Eine Absicht
+  veraltet schneller als ein gebautes System, weil sie nichts festhält,
+  was man nachmessen könnte.
 - **Inhalt aus einer alten Seite übernehmen:** gegen den Code prüfen,
   nicht abschreiben. Was auf einer Seite steht, war zum Stand-Datum wahr.
 
@@ -242,6 +278,12 @@ Beides trägt dasselbe Symbol wie der Titel. Favicon bei Updates **nie
   vorhandene URL mitgeben, sonst entsteht ein zweiter Link zum selben Thema.
 - Veraltete Seiten nicht löschen, sondern auf `🗑 Löschen · …` umbenennen —
   so bleibt nachvollziehbar, was einmal galt.
+- **Ist das Geplante gebaut, fällt `(geplant)` aus dem Titel** — gleiche
+  URL, gleiches Symbol, gleiches Thema; nur die Klammer geht weg, und im
+  ARTIFACT_INDEX wird aus dem Sonderfall-Vermerk eine gewöhnliche
+  Skripte-Zeile. Ausgelöst wird der Handgriff am Pflegetag (oben, „Wann
+  geschaut wird"), nicht vom ersten Commit: Ob eine Seite noch Absicht
+  beschreibt, sieht man ihr an, nicht der Versionsgeschichte.
 - Jede Änderung am Bestand — neue Seite, Teilung, Umbenennung, Löschung —
   wird im ARTIFACT_INDEX.md nachgetragen. Gelöschte Seiten kommen dort in
   die Tabelle „Gelöschte Seiten", damit eine tote ID erklärbar bleibt.
@@ -249,6 +291,10 @@ Beides trägt dasselbe Symbol wie der Titel. Favicon bei Updates **nie
   Seite suchen. Notizen verlinken Seiten in ihrer Quellenzeile; wird das
   vergessen, bleiben Zettel mit Adressen zurück, hinter denen nichts
   mehr steht. Genau so sind am 2026-08-09 fünfzehn tote Links aufgefallen.
+  Seit dem 2026-08-26 fängt `pruefen.py`, Prüfung 8, denselben Fall auch
+  nachträglich ab: Sie meldet jede Knowledge-ID, die hier nicht als
+  lebende Seite geführt ist. Die Handregel bleibt trotzdem stehen — das
+  Skript findet den Schaden erst, wenn er entstanden ist.
 - Fußzeile jeder Seite nennt den Stand (Datum) und die führende .md-Datei.
   Der Stand-Stempel ist hier ausdrücklich erlaubt, weil ihn der
   Sonntagsabgleich kontrolliert (`DOC_RULES.md`, Abschnitt 7).

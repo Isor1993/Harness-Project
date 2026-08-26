@@ -17,10 +17,12 @@ Kein Datum, keine Tagesplanung — das ist Sache von `PLAN.md`.
 ## Als Nächstes
 - [x] **Nachlese zum Bau vom 2026-08-23** — gelaufen am 2026-08-23 als
   Prüfung in frischer Session. Ergebnis: vierzehn Befunde in
-  `_HARNESS_PRUEFUNG_1_0_0.md`, acht davon `muss`. Behoben ist nichts.
+  `_HARNESS_PRUEFUNG_1_0_0.md` (im Archiv), acht davon `muss`. Behoben
+  ist nichts.
 - [x] **Die Befunde der Prüfung 1.0.0 beheben** — am 2026-08-23 in einem
   eigenen Abschnitt erledigt, alle vierzehn. Wo jede Änderung steht,
-  zeigt die Tabelle „Behebung" in `_HARNESS_PRUEFUNG_1_0_0.md`. Offen
+  zeigt die Tabelle „Behebung" in `_HARNESS_PRUEFUNG_1_0_0.md`
+  (im Archiv). Offen
   bleibt allein die Automatisierung zu P4 und P13; sie steht als Punkt
   beim Prüfskript unten. Betroffen waren:
   **P2 — „Plan nachziehen" prüft nur den Übergabe-Abschnitt** (ein
@@ -181,16 +183,77 @@ Arbeit Zeiger, die hinterher noch einmal angefasst werden müssen.
   „(noch nicht erfasst)", gefüllt wird beim nächsten Anfassen der
   jeweiligen Seite.
 
-- [ ] **Ein Artifact-Typ für Design-Absicht fehlt.** `ARTIFACT_RULES.md`
-  kennt drei Typen: Status (wo steht das Projekt), System (wie funktioniert
-  *mein* System X) und Lernstück (übertragbares Konzept). Eine Seite, die
-  ein noch **ungebautes** System entwirft, passt in keinen: Sie beschreibt
-  Absicht, nicht Zustand. Aufgefallen am 2026-08-26 beim Bau von
-  `⚙️ System · Multiplayer`, die deshalb behelfsweise als System geführt
-  wird und im Vorspann ausdrücklich sagt, dass sie Absicht beschreibt.
-  Zu entscheiden: vierter Typ, oder die System-Definition so weiten, dass
-  sie „geplant" einschließt — beides hat Folgen für den Pflegetag, denn
-  eine Absichtsseite lässt sich nicht gegen Code prüfen.
+- [x] **Ein Artifact-Typ für Design-Absicht fehlt** — entschieden und
+  geregelt am 2026-08-26: Es wird **kein** vierter Typ, sondern ein
+  **Zustand** wie `🗑`. Eine Seite über ein noch ungebautes System
+  bleibt ⚙️ System und trägt `(geplant)` als Zusatz im Titel; beim Bau
+  fällt die Klammer weg, Symbol, Thema und URL bleiben. Am Pflegetag
+  steht sie im normalen Turnus, geprüft wird aber gegen die führende
+  Quelle statt gegen Code. Regeln an vier Stellen in
+  `Kern/ARTIFACT_RULES.md` („Die Typen", „Benennung", „Wann geschaut
+  wird", „Pflege"), Begründung samt beider verworfener Wege in
+  `Kern/DECISIONS.md`. Der Auslöser `⚙️ System · Multiplayer` trägt die
+  Klammer draußen noch nicht — nachgezogen wird sie beim nächsten
+  inhaltlichen Anfassen der Seite (Vermerk im `ARTIFACT_INDEX.md`).
+
+- [x] **Prüfung 8: Artifact-IDs im Knowledge gegen den ARTIFACT_INDEX** —
+  gebaut am 2026-08-26. Tritt an die Stelle von „Knowledge-Archivierung
+  automatisieren", der am selben Tag ins `_ARCHIV.md` ging; sein
+  Gegenstand war seit dem 2026-07-17 verworfen. Gesichert ist damit der
+  Schaden, der am Knowledge wirklich entstand: fünfzehn tote
+  Artifact-Links am 2026-08-09, weil die Handregel aus
+  `ARTIFACT_RULES.md` vergessen wurde. Geprüft wird **eine** Richtung —
+  zeigt eine Notiz auf eine Seite, die der Index nicht als lebend führt?
+  Gelöschte Seiten erkennt die Prüfung an ihrer eigenen Tabelle im Index
+  und meldet sie getrennt vom Fall „gar nicht geführt". Der Ordner kommt
+  über die Marke `KNOWLEDGE`; fehlt sie oder der Ordner, entfällt die
+  Prüfung still. Erster scharfer Lauf: **0 Funde bei fünf Verweisen** —
+  der Bestand ist sauber. Dass die Prüfung überhaupt anschlägt, ist
+  gegen einen Wegwerf-Baum mit vier Testfällen belegt, nicht gegen die
+  Null (`Knowledge\Werkzeuge\pruefer-sieht-nur-seine-liste.md`).
+  Nachgezogen: die Prüfungsliste an beiden Stellen in `WORKFLOW.md` und
+  der Zeiger in `ARTIFACT_RULES.md`, Pflege.
+
+- [ ] **Die Befunde zu `CODE_GUIDELINES.md` beheben** — neun Stück aus
+  dem Durchgang vom 2026-08-26, vollständig in
+  `_HARNESS_CODE_GUIDELINES.md`. Fünf `muss`: die Stand-Zeile ist falsch
+  und dürfte gar nicht dort stehen (C1) · die Ownership-Zeile verschweigt
+  den Kommentar-Block und damit ein Fünftel der Datei, was den INDEX
+  miterfasst (C2) · das LFS-Muster ist das nachweislich zu breite
+  `NavMesh*.asset`, korrigiert wurde nur die `.gitattributes` (C3) · ein
+  „Offen"-Block zeigt auf eine Projekt-Aufgabe, die es seit dem Neubau
+  der Projekt-ROADMAP nicht mehr gibt — `FolderTemplate/` und `Sandbox/`
+  sind herrenlos (C4) · **die Sprachregel steht dreimal und sagt
+  zweierlei**, wobei buchstäblich die Fassung gilt, die niemand befolgt
+  (C7). Behoben wird in einem eigenen Abschnitt, nicht von der prüfenden
+  Session. **Zwei Befunde brauchen vorher Isors Entscheidung:** C4 (soll
+  der Ordner-Punkt zurück in die Projekt-ROADMAP? fremdes Revier) und C7
+  (welche Fassung gewinnt — Vorschlag: „immer Englisch").
+
+- [x] **Die nie geprüfte Fläche nachholen** — beide Hälften geprüft am
+  2026-08-26. Der Punkt wurde am selben Tag aus
+  `_HARNESS_PRUEFUNG_1_0_0.md` (im Archiv) gerettet, beim Durchgang vor
+  dem Archivieren: Die Prüfung vom 2026-08-23 hatte
+  `Kern/CODE_GUIDELINES.md` und die Uni-Schicht ausdrücklich
+  ausgelassen, und außer der Liste wusste es niemand.
+  **`CODE_GUIDELINES.md`** (348 Zeilen) → neun Befunde in
+  `_HARNESS_CODE_GUIDELINES.md`, fünf `muss`; Behebung steht als
+  eigener Punkt oben. **Uni-Schicht** (zwölf Dateien, 1.663 Zeilen) →
+  sechs Befunde in `_HARNESS_UNI_SCHICHT.md`, zwei `muss`, beide in
+  `Uni/DOCX_RULES.md` und beide Folge der Markdown-Umstellung vom
+  2026-08-25. Behebung und LOG-Satz der Uni-Schicht sind **gemeldet
+  statt geschrieben** — fremdes Revier, Freigabe steht aus; die
+  vorbereiteten Texte stehen am Ende der Uni-Befundliste.
+
+- [ ] **`pruefen.py` erinnert an überfällige Befundlisten.** Gegenmittel
+  zur Störung vom 2026-08-26 („Niemand fragt, ob eine temporäre Liste
+  überfällig ist"): Liegt eine `_HARNESS_*.md` in der Wurzel, meldet das
+  Skript einen **Hinweis** mit der Frage, ob ihr Durchgang durch ist —
+  kein Fund. Während einer laufenden Prüfung gehört die Datei genau
+  dorthin; ein Fund wäre dann Rauschen, und ein Prüfer, dessen Meldungen
+  man wegklickt, ist wertlos. Anlass: Die Liste zur Version 1.0.0 lag
+  drei Tage archivierbar herum, während mehrere Sessions samt Hook über
+  den Bestand liefen.
 
 - [ ] **Testphase beginnen — erst auf Isors Zuruf.** Der Harness wird
   benutzt statt gebaut. Steht bewusst am Ende dieser Liste: Der Beginn
@@ -201,13 +264,27 @@ Arbeit Zeiger, die hinterher noch einmal angefasst werden müssen.
   `STOERUNGEN.md`.
 
 ## Später, nur bei Bedarf
-- [ ] **Knowledge-Archivierung automatisieren.**
 - [ ] **ClaudeSetup** — ein Editor-Skript, das Szenen baut und
   verdrahtet. Zurückgestellt, solange Isor in der Lernphase selbst
-  tippt; wieder prüfen, wenn er sicher programmiert.
-- [ ] **Development-Modus „Claude baut, Isor reviewt"** — der Regler
-  „Wer schreibt" sieht ihn bereits vor (E21); ausgearbeitet wird er erst
-  nach der Lernphase.
+  tippt. **Wieder aufgenommen auf Isors Zuruf**, nicht wenn Claude ihn
+  für so weit hält: „sicher programmieren" ist keine Bedingung, die von
+  außen feststellbar wäre — dieselbe Konstruktion wie bei der Testphase
+  und aus demselben Grund *(geschärft 2026-08-26; die alte Fassung sagte
+  „wieder prüfen, wenn er sicher programmiert")*. Der wiederkehrende
+  Anlass, die Frage überhaupt zu stellen, ist `/harness:zeugnis`
+  (`Kern/ASSESSMENT_RULES.md`).
+- [ ] **Review-Seite zu „Claude baut, Isor reviewt"** — woran Isor
+  prüft, was Claude an Unity-Code gebaut hat. **Der Modus selbst ist
+  gebaut und in Betrieb:** Der Regler „Wer schreibt" steht in
+  `Kern/WORKFLOW.md` (E21), und bei Harness-Arbeit tippt ohnehin Claude.
+  Offen ist die zweite Hälfte. Für Harness-Werkzeuge ist das Gegenlesen
+  gelebte Praxis, für Unity-Code gibt es kein Verfahren — und dort zählt
+  es am meisten, weil Isors Maßstab das Prüfungsgespräch ist
+  (`Projekte/Isor_Tower/ALTSTAND.md`). Anzuschließen an das Review-Gate
+  in `Kern/CODE_GUIDELINES.md`, das heute ausdrücklich **vor** dem Coden
+  greift und keine Zeile danach prüft. *(Umformuliert 2026-08-26; die
+  alte Fassung stellte den Modus als ungebaut dar und wartete auf das
+  Ende der Lernphase.)*
 - [ ] **Harness-Dokumente auf Englisch** — **erst prüfen, wenn der
   Harness tatsächlich an jemanden weitergegeben werden soll** (E83).
   Solange das nicht ansteht, gilt die Sprachtabelle in `DOC_RULES.md`:

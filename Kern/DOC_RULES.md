@@ -254,6 +254,17 @@ Spracheingabe; eine Sprechregel wäre dort Reibung ohne Gewinn.
   drei ohne Prüfung.
 - **Statusvermerke** („in Arbeit", „ungetestet") gehören zu der Datei,
   die den Gegenstand besitzt, nicht in eine zweite.
+- **Ein Haken nennt seinen Beleg.** Wer einen Punkt abhakt, schreibt
+  dazu, **wo** die Arbeit steht — die geänderte Datei, der Abschnitt, die
+  gemessene Zahl. Ein Haken allein belegt nur, dass jemand ihn gesetzt
+  hat, nicht dass sich etwas geändert hat; bei vielen Handgriffen an
+  einem Tag fällt eine Auslassung niemandem auf. *Beleg:* Am 2026-08-22
+  stand „Eintrag für `⚙️ System · Harness` vorbereiten" abgehakt in einer
+  Bauliste, während das Wort „Harness" im `ARTIFACT_INDEX.md` kein
+  einziges Mal vorkam (`STOERUNGEN.md`, „Haken gesetzt, Arbeit nicht
+  getan"). Gelebt wird die Regel längst — die Behebungstabelle der
+  Prüfung 1.0.0 nannte je Befund die Stelle —, geschrieben stand sie bis
+  zum 2026-08-26 nirgends.
 
 ---
 

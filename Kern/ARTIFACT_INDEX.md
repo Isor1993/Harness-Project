@@ -176,13 +176,17 @@ Seite ←  Patterns/validierung-beim-lesen.md
 ```
 URL      https://claude.ai/code/artifact/cc012a9e-ec18-46ba-a4b3-14d294bbbdee
 Stand    2026-08-26 — neu aus der Design-Session vom 25./26.08.
-Sonderfall Die Seite beschreibt **Absicht, nicht Zustand** — gebaut ist
-         davon nichts. Für Design-Absicht vor dem Bau hat
-         ARTIFACT_RULES keinen Typ; sie wird behelfsweise als System
-         geführt und sagt das im Vorspann. Befund steht in
-         `Kern/ROADMAP.md` → „Ein Artifact-Typ für Design-Absicht fehlt".
-         Folge für den Pflegetag: **nicht gegen Code prüfbar**, solange
-         nichts gebaut ist — führende Quelle ist die DECISIONS-Datei.
+Zustand  **geplant** — die Seite beschreibt Absicht, nicht Zustand;
+         gebaut ist davon nichts. Seit dem 2026-08-26 ist das kein
+         Behelf mehr, sondern geregelt: `(geplant)` ist ein Zustand,
+         kein eigener Typ (`ARTIFACT_RULES.md` → „Die Typen"). Am
+         Pflegetag bleibt die Seite im Turnus, wird aber gegen die
+         führende Quelle geprüft statt gegen Code.
+Titel    Draußen steht noch `⚙️ System · Multiplayer`, ohne die Klammer —
+         die Regel entstand einen Tag nach der Veröffentlichung.
+         Nachgezogen wird beim nächsten inhaltlichen Anfassen, wie beim
+         Stil des Altbestands: Ein Neubau der ganzen Seite allein für
+         eine Klammer lohnt nicht.
 Quelle   Projekte/Isor_Tower/DECISIONS/Multiplayer.md, .../ROADMAP.md,
          .../GDD.md
 Skripte  beschreibt keinen gebauten Code. Gemessen wurde gegen den
@@ -343,6 +347,11 @@ Seite ←  keine
 ```
 URL      https://claude.ai/code/artifact/42f2b4ac-aacb-45eb-8911-55eb7769c459
 Stand    2026-08-23 — nachgezogen auf Version 2.0.0
+Überholt Sammelstelle bis zur nächsten Harness-Version (Regel unten):
+         · Prüfung 8 (2026-08-26) — `pruefen.py` prüft jetzt auch die
+           Artifact-IDs im Knowledge-Ordner gegen diesen Index.
+           Betroffen: der Skript-Abschnitt und die Prüfebenen-Tabelle,
+           die die Prüfungen einzeln aufzählt.
 Quelle   CLAUDE.md, Kern/WORKFLOW.md, DOC_RULES.md, VERSIONIERUNG.md,
          DECISIONS.md
 Skripte  keine Unity-Skripte; die Seite beschreibt die Harness-Dateien,
@@ -358,6 +367,17 @@ Die Seite beschreibt den Harness in seinem **aktuellen** Zustand und wird
 einzige Seite, deren Stand an der Versionsnummer hängt statt am
 Sonntagsabgleich (`Kern/VERSIONIERUNG.md`). Gebaut wird sie erst, wenn
 der Kern nach der Abnahme steht; vorher beschriebe sie eine Baustelle.
+
+**Was ohne neue Versionsnummer passiert** *(ergänzt 2026-08-26)*: Der
+Harness ändert sich auch, ohne dass die Versionsnummer steigt — sie misst
+Verträglichkeit, nicht Umfang. Die Seite wird dafür **nicht** neu gebaut;
+stattdessen sammelt die Zeile `Überholt` oben jede bekannte Abweichung,
+sobald sie entsteht. Die nächste Nachziehung bekommt so eine Liste statt
+einer Suche. Ausgelöst wird der Eintrag vom Review-Gate
+(`CODE_GUIDELINES.md` → Artifact-Check), das beim Anfassen eines Skripts
+ohnehin fragt, welche Seite dadurch veraltet. Anlass: Prüfung 8 am
+2026-08-26 — das Review-Gate verlangte Nachziehen, die Regel darüber
+verbot es, und für den Zwischenfall gab es keinen Weg.
 
 ---
 

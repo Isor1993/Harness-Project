@@ -406,3 +406,86 @@ damals, nicht den von heute.
   14,8 s Rechenzeit in acht Minuten, der erwartete Partnerprozess
   existierte nicht mehr, nur 35 Dateien unter `Assets/` überhaupt
   angefasst). Ein Neustart des Editors löste es.
+- 2026-08-26 — **Die offenen Punkte der Harness-ROADMAP abgearbeitet**,
+  in einem Design- und einem Development-Abschnitt. Entschieden: Eine
+  Artifact-Seite über ein noch ungebautes System wird kein vierter Typ,
+  sondern bleibt ⚙️ System im **Zustand** `(geplant)` — Regeln an vier
+  Stellen in `ARTIFACT_RULES.md`, neue Glossarzeile „Zustand einer
+  Seite", abgegrenzt gegen den Zustandsbegriff beim Befund. Archiviert:
+  „Knowledge-Archivierung automatisieren" — per `git log -S` kam heraus,
+  dass der Punkt vom 2026-07-14 stammt und das Auslagern aus einer
+  Pufferdatei meinte, die am 2026-07-17 verworfen wurde; er stand also
+  sechs Wochen ohne Gegenstand und überlebte dabei beide Umbauten und
+  die Prüfung mit vierzehn Befunden. Gebaut an seiner Stelle:
+  **Prüfung 8** in `pruefen.py` — Artifact-IDs im Knowledge-Ordner gegen
+  den `ARTIFACT_INDEX.md`, mit getrennter Meldung für gelöschte und für
+  ungeführte Seiten; der Ordner kommt über die Marke `KNOWLEDGE`, fehlt
+  sie, schweigt die Prüfung. Geprüft: 0 Funde in allen acht Prüfungen,
+  INDEX unverändert (mit `--write` gegengeprüft). Der Bestand des
+  Knowledge wurde vor dem Streichen gemessen — 89 Dateien, sieben von
+  sieben Themenordnern mit README, keine ohne `Quelle:`-Zeile, vier
+  Artifact-IDs und alle gültig; **dass Prüfung 8 überhaupt anschlägt,
+  ist deshalb nicht gegen diese Null belegt**, sondern gegen einen
+  Wegwerf-Baum mit vier Testfällen im Scratchpad (gültig, gelöscht,
+  ungeführt, ohne ID) plus dem Fall „Marke nicht eingerichtet". Zwei
+  weitere Punkte geschärft: „ClaudeSetup" hing an der unprüfbaren
+  Bedingung „wenn er sicher programmiert" und hängt jetzt an Isors
+  Zuruf; der Punkt zum Development-Modus behauptete, der Modus sei
+  ungebaut, und heißt jetzt „Review-Seite". Als Störung eingetragen:
+  „Später, nur bei Bedarf" ist ein blinder Fleck, den keine Prüfebene
+  abdeckt.
+- 2026-08-26 — **Nachschlag auf Isors Frage „ist damit alles fertig?"**,
+  und die Antwort war nein. Drei Reste, alle vom selben Typ: etwas ist
+  erledigt oder hinfällig, aber niemand räumt es weg. **(a)** Die
+  Befundliste `_HARNESS_PRUEFUNG_1_0_0.md` lag seit dem 2026-08-23
+  archivierbar in der Wurzel — jetzt im Datenbaum unter
+  `99_Archiv\_Zu_Loeschen\2026-08-26_Pruefung_1_0_0\` (`Kern/PFADE.md` →
+  `DATENBAUM`), Archiv-Eintrag im `_ARCHIV.md`, INDEX von 56 auf 55.
+  Der Durchgang vor dem Archivieren (`DOC_RULES.md`, Abschnitt 11) fand
+  **einen** Posten, der nur dort lebte: Die Prüfung vom 2026-08-23 hatte
+  `CODE_GUIDELINES.md` und die Uni-Schicht ausdrücklich ausgelassen, und
+  das stand in keiner ROADMAP — steht jetzt als eigener Punkt.
+  **(b)** In `STOERUNGEN.md` lagen drei benannte Gegenmittel, von denen
+  keines je eine Aufgabe geworden war; die Doku-Pflicht fragt jetzt beim
+  Eintragen danach, und alle drei wurden nachgezogen — Beleg beim
+  Abhaken (`DOC_RULES.md`, Abschnitt 7), Datei vor dem Ersetzen erneut
+  lesen (`WORKFLOW.md`, Parallele Sessions), eine Frage mehr im
+  Prüfbogen für Listendateien. **(c)** Claude hatte zu Beginn dieser
+  Session das Session-Thema überschrieben statt nur die Klammer zu
+  setzen — als Störung eingetragen, und der ungeregelte Fall „geerbter
+  Titel mit Klammer `zu`" ist jetzt in `WORKFLOW.md` beantwortet:
+  vorschlagen, nicht setzen. Geprüft: 0 Funde in allen acht Prüfungen,
+  INDEX gegengeprüft.
+- 2026-08-26 — **`Kern/CODE_GUIDELINES.md` geprüft**, 348 Zeilen, erster
+  Prüfbogen für diese Datei überhaupt: **neun Befunde**, fünf davon
+  `muss`, festgehalten in `_HARNESS_CODE_GUIDELINES.md`. Geprüft wurde
+  gegen den Prüfbogen aus `WORKFLOW.md`, gegen die echte
+  `.gitattributes` des Unity-Repos, gegen `git log` und gegen die
+  Datumsverweise in `DECISIONS.md`. Härtester Fund: Die Sprachregel
+  steht an drei Stellen und sagt zweierlei — `DOC_RULES.md` Abschnitt 9
+  erklärt sich zum Besitzer und verbietet die Kopie namentlich, während
+  CODE_GUIDELINES sie zweimal ausschreibt und dabei verschärft; formal
+  gilt damit die weiche Fassung, die niemand befolgt, und sie wandert in
+  jede Auslieferung mit. Fünf der neun Befunde sind **Verfall statt
+  Schreibfehler** — die Datei war jeweils richtig und wurde von der
+  Wirklichkeit überholt; keine der acht Skript-Prüfungen kann das sehen.
+  Die Uni-Schicht, die zweite Hälfte des Punktes, bleibt offen (fremdes
+  Revier).
+- 2026-08-26 — **Uni-Schicht geprüft**, zwölf Dateien, 1.663 Zeilen:
+  **sechs Befunde** in `_HARNESS_UNI_SCHICHT.md`, zwei davon `muss`.
+  Damit ist der ROADMAP-Punkt „Die nie geprüfte Fläche nachholen" ganz
+  erledigt. Beide `muss`-Befunde sitzen in `Uni/DOCX_RULES.md` und
+  stammen aus derselben Umstellung: Seit dem 2026-08-25 führt das
+  Markdown und baut Pandoc — die Datei hat das im Fließtext nachgezogen,
+  aber nicht in ihrer Ownership-Zeile (sie schickt den TDD-Inhalt noch
+  an ROADMAP und LOG statt an `Projekte/Isor_Tower/TDD.md`) und nicht in
+  ihrer Prüfliste (Schritt 1 verlangt einen `validate.py`-Lauf, der bei
+  Pandoc-Dateien planmäßig rot ist, 88 Fehlalarme — dokumentiert in
+  derselben Datei, zwei Abschnitte weiter oben). Die Schicht ist im
+  übrigen gesund: Chroniken, Archiv und die sieben ASSIGNMENT-Texte sind
+  sauber eingeordnet, und zwei Stellen sind ausdrücklich vorbildlich —
+  die Word-Fallen liegen im Knowledge samt Begründung, und die Grenze
+  zur Abgabe-Packliste ist in einem Halbsatz geregelt. **Nicht
+  geschrieben, sondern gemeldet:** der Behebungspunkt in
+  `Uni/ROADMAP.md` und der Satz in `Uni/LOG.md` — fremdes Revier, die
+  Texte liegen fertig am Ende der Befundliste.

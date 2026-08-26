@@ -60,6 +60,16 @@ und Claude ändert daran kein Wort. Die **Klammer gehört Claude**: Er
 setzt sie beim ersten Typ und schreibt sie bei jedem Wechsel um. Fehlt
 eine Klammer, hängt er sie an, ohne den Rest anzufassen.
 
+**Der geerbte Titel** *(seit 2026-08-26)*: Eine frische Session kann den
+Titel der vorigen tragen, samt deren Klammer `zu`. Das ist **kein Thema,
+das Isor für diese Session gesetzt hat** — aber auch keine Erlaubnis,
+eines zu erfinden. Claude **schlägt** dann ein Thema vor und setzt den
+Titel erst nach Isors Zustimmung; die Klammer darf er sofort richtig
+stellen. Grund: Genau hier ist am 2026-08-26 ein Thema überschrieben
+worden, weil `zu` als „gilt nicht mehr" gelesen wurde und die Regel den
+Fall nicht kannte (`STOERUNGEN.md`, „Session-Thema überschrieben,
+Wiederholungsfall").
+
 **Der Titel ist Anzeige, kein Beleg.** Er lebt in der App, nicht im Repo,
 und trägt immer nur den *letzten* Abschnitt — was eine Session
 tatsächlich getan hat, steht im LOG der Schicht. Aus einem Titel wird
@@ -203,6 +213,18 @@ wäre mit ihr fast ins Archiv gegangen.)*
 Ergebnis je Datei: Soll-Zustand plus konkreter Auftrag für die Session,
 die es umsetzt.
 
+**Eine Frage mehr bei Listendateien** (ROADMAP, PLAN, Baulisten), außer
+der Reihe gestellt, weil sie nicht auf die Datei zielt, sondern auf jede
+einzelne Zeile darin: *Steht jeder zurückgestellte Punkt noch auf einer
+Grundlage, die es gibt?* Der Bogen oben prüft die Datei als Ganzes — und
+eine ROADMAP besteht ihn mühelos, während eine tote Zeile darin
+durchrutscht. Kein Skript kann das übernehmen: Dass die Voraussetzung
+eines Punktes weggefallen ist, sieht nur, wer die Entscheidung dazu
+kennt. *(Belegt am 2026-08-26: „Knowledge-Archivierung automatisieren"
+stand sechs Wochen ohne Gegenstand unter „Später, nur bei Bedarf" und
+überlebte dabei diesen Prüfbogen — `STOERUNGEN.md`, „Später, nur bei
+Bedarf ist ein blinder Fleck".)*
+
 **Widersprüche sind ein eigener Durchgang.** Sie liegen *zwischen* zwei
 Dateien und sind beim Lesen einer einzelnen nicht sichtbar — wer Datei
 für Datei prüft, findet sie nie. Deshalb am Ende ein Durchgang quer über
@@ -258,6 +280,14 @@ das **Revier**, wer schreiben darf *(seit 2026-08-25; Begründung in
   nacheinander, weil er immer nur mit einer Session zugleich spricht;
   deshalb braucht es keine Sperre. Außerhalb der Befehle schreibt dort
   niemand.
+- **Eine ganze Datei wird unmittelbar vor dem Ersetzen erneut gelesen**
+  *(seit 2026-08-26)*. Nicht zu Beginn des Abschnitts — dazwischen kann
+  eine Parallel-Session geschrieben haben. Das Revier verhindert den
+  Zusammenstoß nur, solange sich alle daran halten; am 2026-08-26 tat
+  das eine Session nicht, und gerettet hat den fremden Eintrag allein
+  das Werkzeug, das den veränderten Dateistand bemerkte
+  (`STOERUNGEN.md`, „Zwei Sessions wollten dieselbe Datei schreiben").
+  Auf einen Werkzeug-Zufall soll sich keine Regel verlassen.
 - **Das Revier wird frei durch Abschnittsende** — Klammer `zu`,
   `aufgehoben` oder Wechsel des Fokus. Wollen zwei offene Sessions
   dieselbe Schicht, entscheidet Isor, wer schreibt: Nur er sieht beide
@@ -347,7 +377,8 @@ schreiben ohnehin alle in dieses Repo.
    tote Verweise · Datumsfolge und Pflichtfelder der Chroniken · Befehle
    gegen ihre Arbeitskopie · Zahlwörter in Überschriften · Glossar gegen
    die Besitzerdateien · Hooks gegen ihre Vorlage · absolute Pfade
-   außerhalb von `Kern/PFADE.md`. Das Skript **meldet nur**; jeder Fund ist ein
+   außerhalb von `Kern/PFADE.md` · Artifact-IDs im Knowledge-Ordner gegen
+   den `ARTIFACT_INDEX.md`. Das Skript **meldet nur**; jeder Fund ist ein
    Befund, kein Auftrag. Was es nicht sieht, ist, ob eine Aussage stimmt
    — dafür braucht es weiterhin einen Abschnitt vom Typ Prüfung.
 6. **Ergebnis melden:** eine Zeile je Eintrag mit Zieldatei. „Nichts zu
@@ -489,7 +520,7 @@ nicht mehr den Überblick habe")*. Dieser Abschnitt besitzt die
 
 | Ebene | prüft | wann | wer urteilt |
 |---|---|---|---|
-| `Kern/Werkzeuge/pruefen.py` | Verweise · Chronik-Format · Befehle gegen Arbeitskopie · Zahlwörter · Glossar · Hooks gegen Vorlage · Pfade gegen `PFADE.md` | Session-Start (**per Hook erzwungen**) und jedes `/harness:sichern` | Skript |
+| `Kern/Werkzeuge/pruefen.py` | Verweise · Chronik-Format · Befehle gegen Arbeitskopie · Zahlwörter · Glossar · Hooks gegen Vorlage · Pfade gegen `PFADE.md` · Artifact-IDs im Knowledge | Session-Start (**per Hook erzwungen**) und jedes `/harness:sichern` | Skript |
 | `Kern/Werkzeuge/index_bauen.py` | fehlt eine `Ownership:`-Zeile? | wenn Dateien dazukommen oder wegfallen | Skript |
 | `Projekte/<Name>/Werkzeuge/prefab_status.py` | welche Prefabs es gibt und was auffiel | bei Projektarbeit | Skript und Mensch |
 | **Review-Gate** (`CODE_GUIDELINES.md`) | Fattening · Enum-Sicherheit · Werkzeugwahl · Naming · Artifact-Bezug | vor dem Coden | Mensch und Claude |
@@ -516,8 +547,14 @@ Immer, bei jedem Typ:
    werden soll, schlägt Themen vor, Isor wählt aus oder ergänzt. „Nein"
    ist eine gültige Antwort — die **Frage** darf nie ausfallen.
    Ablage und Form: `KNOWLEDGE_RULES.md`.
-2. **Störungs-Frage.** Gab es einen Aussetzer? Wenn ja, eine Zeile in
-   `STOERUNGEN.md`.
+2. **Störungs-Frage.** Gab es einen Aussetzer? Wenn ja, ein Eintrag in
+   `STOERUNGEN.md`. **Nennt er ein Gegenmittel, wird im selben Zug
+   gefragt, ob es als Punkt in die ROADMAP der Schicht mitkommt** — die
+   Antwort darf „nein" sein, die Frage nicht ausfallen. Ohne diesen
+   zweiten Halbsatz versandet der Vorschlag: `STOERUNGEN.md` ist eine
+   Chronik, und eine Chronik wird nach Belegen durchsucht, nicht nach
+   Aufgaben. Belegt am 2026-08-26 — dort standen drei benannte
+   Gegenmittel, von denen keines je eine Aufgabe geworden war.
 3. **INDEX** nachziehen, falls Dateien dazukamen oder wegfielen.
 4. **Glossar-Frage.** Ist ein Begriff dazugekommen, oder hat sich eine
    Definition geändert? Dann `GLOSSARY.md` nachziehen. Der INDEX wird

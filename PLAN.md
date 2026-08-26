@@ -22,17 +22,17 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(geschrieben 2026-08-26 spät — Multiplayer-Design für Semester 3
-abgeschlossen; die Repo/Git-Session lief parallel, ihr Auftrag gilt
-unverändert weiter)*
+*(geschrieben 2026-08-26 — dritte Session des Tages: die offenen
+Harness-Punkte abgearbeitet, danach zwei Prüfdurchgänge)*
 
-Ein Faden offen: **Phase 0 des Koop-Prototyps**
-(`Projekte/Isor_Tower/ROADMAP.md`, zwei Wochen, gehört vor den
-Semesterstart). Die LFS-Migration ist am 2026-08-26 erledigt und
-gepusht — das Unity-Repo ist schlank, nichts steht dort mehr offen.
-Im Harness-Repo warten noch die Stände beider Sessions auf einen
-Commit. Sonntags die Ein-Seiten-Prüfung: dran ist
-`💡 EditorWindow & MVP`.
+**Fünfzehn Befunde warten auf Behebung** — neun in
+`_HARNESS_CODE_GUIDELINES.md`, sechs in `_HARNESS_UNI_SCHICHT.md`.
+Das muss eine **frische** Session tun (`Kern/WORKFLOW.md`: Prüfer und
+Ausführender nicht dieselbe). Zwei Entscheidungen gehören davor, beide
+in `Kern/ROADMAP.md` benannt; für die Uni-Hälfte fehlt die
+Revier-Freigabe. Sonst unverändert offen: **Phase 0 des Koop-Prototyps**
+(`Projekte/Isor_Tower/ROADMAP.md`, zwei Wochen, vor dem Semesterstart).
+Sonntags die Ein-Seiten-Prüfung: dran ist `💡 EditorWindow & MVP`.
 
 ---
 
@@ -43,6 +43,12 @@ wenn Isor den Harness für so weit erklärt. Bis dahin wird am Harness
 selbst gearbeitet: prüfen, was noch nicht trägt, und es verbessern.
 Claude meldet die Testphase nicht als fällig. *(Isor, 2026-08-23;
 Begründung in `Kern/DECISIONS.md`.)*
+
+**Gegen den Stand vom 2026-08-26 gehalten:** Beide Punkte unten gelten
+unverändert. Der Vorbehalt oben ist an diesem Tag zum ersten Mal
+eingelöst worden — die Arbeit ging in „prüfen, was noch nicht trägt":
+zwei Prüfdurchgänge, fünfzehn Befunde, vier neue Regeln. Die Testphase
+selbst bleibt ungefragt liegen.
 
 - [ ] Den Datenbaum aufräumen, in Viererpaketen — Punkte in
       `IsorBackup/ROADMAP.md`. Zugleich die erste Belastungsprobe des
