@@ -140,6 +140,12 @@ inzwischen gebaut.
 
 ## Sehr spät
 
+- [ ] **Portfolio-Präsentation** (erst wenn eine Bewerbung ansteht):
+  spielbarer Build aus der Build-Ablage (`Kern/VERSIONIERUNG.md` →
+  „Ablage der Builds"), Video oder GIFs, gezielte Lese-Einladung ins
+  private Repo; bei Bedarf ein kuratiertes Showcase-Repo mit nur
+  eigenen Skripten. Das Projekt-Repo selbst bleibt dauerhaft privat
+  (`Kern/DECISIONS.md` → „Sichtbarkeit und Zugang der Repos").
 - [ ] **Kür fürs Terrain:** echte Flüsse (Spline-Mesh), Insel via
   Falloff-Map, höhen- und steigungsabhängige Texturierung.
 - [ ] **Multiplayer**, Koop für 4–5 Spieler. Laut `GDD.md` gesetzt, nicht

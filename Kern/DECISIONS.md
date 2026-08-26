@@ -1128,6 +1128,13 @@ Ordners zu einem gültigen Kontoschlüssel; auf GitHub lag es nie, denn
 Verworfen: beide Repos privat (Isor behält den Harness bewusst
 sichtbar) · das Token nur entfernen, ohne Widerruf (der Schlüssel
 bliebe in älteren Kopien gültig).
+**Ergänzt im selben Zug (Isor):** Das Unity-Repo bleibt **dauerhaft**
+privat — es ist als Hauptprojekt für Bewerbungen gedacht, und gezeigt
+wird über Builds, Videos und gezielte Lese-Einladungen auf GitHub,
+bei Bedarf später über ein kuratiertes Showcase-Repo mit nur eigenen
+Skripten. Ein öffentliches Arbeits-Repo ist dafür weder nötig noch
+wegen der Asset-Store-Lizenzen möglich; ein Bereinigungs-Umbau
+entfällt damit ersatzlos.
 
 ## 2026-08-26 — Repo-Grenze zur Asset-Library
 Was: Ins Projekt-Repo gehört alles, was Unity zum Öffnen und Bauen
