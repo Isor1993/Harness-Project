@@ -5,8 +5,9 @@ und welche Alternativen verworfen wurden. Kein Plan (das ist die
 ROADMAP), kein Ereignis (das ist das LOG), keine ausformulierte Regel
 (die steht in der jeweiligen Regeldatei; hier steht nur, warum sie gilt).
 Nicht hier: alles, was das Terrain-Tool erzeugt — Gelände, Wasserspiegel,
-Weltbegrenzung (`Terrain_Mesh.md`) — und die Darstellung von
-Weltzuständen im HUD (`UI.md`).
+Weltbegrenzung (`Terrain_Mesh.md`) —, die Darstellung von Weltzuständen
+im HUD (`UI.md`) und der Szenenwechsel über ein Portal, sobald mehrere
+Spieler beteiligt sind (`Multiplayer.md`).
 Format: `## JJJJ-MM-TT — Titel` mit **Was** / **Warum** / **Verworfen**,
 je ein bis zwei Zeilen. **Älteste oben**, wie in einer Chronik.
 

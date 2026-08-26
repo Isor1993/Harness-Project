@@ -178,6 +178,17 @@ Arbeit Zeiger, die hinterher noch einmal angefasst werden müssen.
   „(noch nicht erfasst)", gefüllt wird beim nächsten Anfassen der
   jeweiligen Seite.
 
+- [ ] **Ein Artifact-Typ für Design-Absicht fehlt.** `ARTIFACT_RULES.md`
+  kennt drei Typen: Status (wo steht das Projekt), System (wie funktioniert
+  *mein* System X) und Lernstück (übertragbares Konzept). Eine Seite, die
+  ein noch **ungebautes** System entwirft, passt in keinen: Sie beschreibt
+  Absicht, nicht Zustand. Aufgefallen am 2026-08-26 beim Bau von
+  `⚙️ System · Multiplayer`, die deshalb behelfsweise als System geführt
+  wird und im Vorspann ausdrücklich sagt, dass sie Absicht beschreibt.
+  Zu entscheiden: vierter Typ, oder die System-Definition so weiten, dass
+  sie „geplant" einschließt — beides hat Folgen für den Pflegetag, denn
+  eine Absichtsseite lässt sich nicht gegen Code prüfen.
+
 - [ ] **Testphase beginnen — erst auf Isors Zuruf.** Der Harness wird
   benutzt statt gebaut. Steht bewusst am Ende dieser Liste: Der Beginn
   hängt an keiner Bedingung, die Claude feststellen könnte, sondern an

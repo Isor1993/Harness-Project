@@ -308,3 +308,27 @@ nach jedem Setzen gegenprüfen und ein überschriebenes Thema sofort
 wiederherstellen.
 **Stand:** offen — der Werkzeug-Mangel bleibt; das Gegenmittel hat im
 selben Vorfall funktioniert.
+
+### 2026-08-26 — Zwei Sessions wollten dieselbe Datei schreiben
+**Was:** Die Design-Session „Isor's Tower · Multiplayer" wollte
+`Projekte/Isor_Tower/ROADMAP.md` leeren und neu schreiben. Zwischen dem
+Lesen und dem Schreiben hatte eine Parallel-Session dort den Punkt
+„Portfolio-Präsentation" ergänzt. Das Schreiben schlug fehl, weil das
+Werkzeug den veränderten Dateistand bemerkte; der fremde Punkt wurde
+danach gelesen und in den neuen Plan übernommen.
+**Ursache:** Die Revier-Regel (`WORKFLOW.md` → „Parallele Sessions", seit
+2026-08-25) weist Schichten zu, aber nichts zeigt einer Session, welches
+Revier gerade belegt ist. Beide Sessions handelten für sich richtig: Die
+eine hatte die Projekt-Schicht als Fokus, die andere trug das Ergebnis
+ihrer Repo/Git-Entscheidung dorthin ein, wo es hingehört. Ohne
+Sichtbarkeit ist die Regel nicht befolgbar, sondern nur einhaltbar, wenn
+man zufällig weiß, was nebenan läuft.
+**Regel:** Vorhanden, aber ohne Anzeige nicht durchsetzbar — dieselbe
+Sorte Lücke wie beim Session-Titel am 2026-08-25. Was gerettet hat, war
+kein Regelwerk, sondern das Werkzeug: Ein Schreibversuch auf einen
+veränderten Stand wird abgewiesen. Kandidat als bewusste Gegenmaßnahme:
+Vor dem Ersetzen einer ganzen Datei wird sie unmittelbar davor erneut
+gelesen, nicht nur zu Beginn des Abschnitts.
+**Stand:** offen. Der Zusammenstoß selbst ist aufgelöst — der fremde
+Punkt steht unverändert in der neuen `ROADMAP.md`, im Abschnitt „Nach dem
+Prototyp", mit Herkunftsvermerk.

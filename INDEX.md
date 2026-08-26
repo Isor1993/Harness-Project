@@ -86,9 +86,11 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 
 | Dokument | Zuständigkeit |
 |---|---|
+| `Projekte/Isor_Tower/ALTSTAND.md` | Nur was am Ende von Semester 2 dastand und was dabei auffiel — die Befunde, die bei einer Übernahme-Entscheidung zählen. |
 | `Projekte/Isor_Tower/DECISIONS/Audio.md` | Nur Entscheidungen zu Audio — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
 | `Projekte/Isor_Tower/DECISIONS/Entities.md` | Nur Entscheidungen zu Entities und KI — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
 | `Projekte/Isor_Tower/DECISIONS/Gras.md` | Nur Entscheidungen zu Gras und Instancing — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
+| `Projekte/Isor_Tower/DECISIONS/Multiplayer.md` | Nur Entscheidungen zu Multiplayer, Netzwerk und der daraus folgenden Datentrennung — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
 | `Projekte/Isor_Tower/DECISIONS/Platzierung.md` | Nur Entscheidungen zu Platzierung — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
 | `Projekte/Isor_Tower/DECISIONS/Terrain_Mesh.md` | Nur Entscheidungen zu Terrain und Mesh — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
 | `Projekte/Isor_Tower/DECISIONS/UI.md` | Nur Entscheidungen zu UI, Menüs und HUD — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |

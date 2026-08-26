@@ -24,6 +24,7 @@ Leseordnung.
 | **Register** | Verzeichnis fremder Adressen, das vollständig sein muss und deshalb **nicht** nach Schichten geteilt wird. | `DOC_RULES.md`, Abschnitt 8 |
 | **Archiv** | Überholte Einträge. Wird nie aufgeräumt; jeder Eintrag nennt, wodurch er abgelöst wurde. | `DOC_RULES.md`, Abschnitt 4 |
 | **Erzeugt** | Datei, die ein Skript aus einer Quelle schreibt statt von Hand gepflegt zu werden. Das Skript besitzt die Liste, der Mensch die Beschreibung. | `DOC_RULES.md`, Abschnitt 5 |
+| **Altstand** | Der Bestand einer abgeschlossenen Phase samt seiner Befunde. **Kein Auftrag** — wird aufgeschlagen, wenn über die Übernahme eines Bausteins entschieden wird. Nicht dasselbe wie ein Archiv: Archiviertes ist überholt, Altstand ist vertagt. | `Projekte/Isor_Tower/ALTSTAND.md` |
 
 ## Über Sessions
 
@@ -45,6 +46,7 @@ Leseordnung.
 | **Befund** | Ergebnis einer Prüfung: eine Stelle, an der etwas falsch, doppelt, widersprüchlich ist oder fehlt. Wird notiert, nicht sofort geändert. Ein **Zustand**. | `WORKFLOW.md`, Begriffe |
 | **Revier** | Die Schicht, in die eine Session frei schreiben darf — bestimmt vom Fokus ihres laufenden Abschnitts. Wird frei durch Abschnittsende; Gemeinschaftsdateien laufen nur über die Befehle. | `WORKFLOW.md`, Parallele Sessions |
 | **Störung** | Vorfall, in dem der Harness nicht so gearbeitet hat wie vorgesehen. Ein **Ereignis** — nicht dasselbe wie ein Befund und nicht dasselbe wie ein Fehler im Code. | `STOERUNGEN.md` |
+| **Übernahme-Regel** | Nach einem Neustart wird für jeden Baustein des Altstands erst beim Bedarf entschieden, ob er *mitgenommen*, *angepasst* oder *neu gebaut* wird — nie vorab als Liste. | `Projekte/Isor_Tower/DECISIONS/Multiplayer.md`, „Semester 3 ist ein Neustart desselben Projekts" |
 
 ## Über Nummern und Ausgaben
 

@@ -5,7 +5,9 @@ und welche Alternativen verworfen wurden. Kein Plan (das ist die
 ROADMAP), kein Ereignis (das ist das LOG), keine ausformulierte Regel
 (die steht in der jeweiligen Regeldatei; hier steht nur, warum sie gilt).
 Nicht hier: das System, das den angezeigten Zustand hält. Wie die Uhr
-aussieht, steht hier; wie die Tageszeit läuft, in `Welt.md`.
+aussieht, steht hier; wie die Tageszeit läuft, in `Welt.md`. Ebenso beim
+Menü: Wie der Einstieg aussieht, steht hier; **dass** es einen Weg „Welt
+erstellen / Welt beitreten" gibt und warum, in `Multiplayer.md`.
 Format: `## JJJJ-MM-TT — Titel` mit **Was** / **Warum** / **Verworfen**,
 je ein bis zwei Zeilen. **Älteste oben**, wie in einer Chronik.
 

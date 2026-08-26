@@ -172,6 +172,27 @@ Seite →  (noch nicht erfasst)
 Seite ←  Patterns/validierung-beim-lesen.md
 ```
 
+### ⚙️ System · Multiplayer
+```
+URL      https://claude.ai/code/artifact/cc012a9e-ec18-46ba-a4b3-14d294bbbdee
+Stand    2026-08-26 — neu aus der Design-Session vom 25./26.08.
+Sonderfall Die Seite beschreibt **Absicht, nicht Zustand** — gebaut ist
+         davon nichts. Für Design-Absicht vor dem Bau hat
+         ARTIFACT_RULES keinen Typ; sie wird behelfsweise als System
+         geführt und sagt das im Vorspann. Befund steht in
+         `Kern/ROADMAP.md` → „Ein Artifact-Typ für Design-Absicht fehlt".
+         Folge für den Pflegetag: **nicht gegen Code prüfbar**, solange
+         nichts gebaut ist — führende Quelle ist die DECISIONS-Datei.
+Quelle   Projekte/Isor_Tower/DECISIONS/Multiplayer.md, .../ROADMAP.md,
+         .../GDD.md
+Skripte  beschreibt keinen gebauten Code. Gemessen wurde gegen den
+         Bestand: PlayerInputReader, PlayerMotor, PlayerLook,
+         PlayerInteractor, GameController, TimeFastForward,
+         RuntimePlacementSpawner, InstancedRenderer, TerrainConfig
+Seite →  Lernstück Netzwerkgrundlagen, Lernstück NGO-Bausteine
+Seite ←  keine
+```
+
 ---
 
 ## 💡 Lernstück  — Schicht: Kern (übertragbar)
@@ -267,6 +288,51 @@ Beispiel TerrainToolWindow, TerrainToolPresenter,
 Seite →  System · Terrain & Gras
 Seite ←  Patterns/mvp-model-view-presenter.md,
          Unity/editor-scripting-editorwindow.md
+```
+
+### 💡 Lernstück · Netzwerkgrundlagen
+```
+URL      https://claude.ai/code/artifact/1cb76a6f-f73f-420b-9781-35135354eb16
+Stand    2026-08-26 — umbenannt (hieß „Multiplayer von Null") und um
+         einen Nachtrag-Kasten ergänzt. Inhalt vom 2026-08-23,
+         ungeprüft geblieben.
+Herkunft Entstand am 2026-08-23 in einem Vorlauf **ohne Harness** und
+         war deshalb bis heute in keinem Register. Titel und Nachtrag
+         nachgezogen, der Lehrstoff unverändert.
+Überholt Zwei Punkte, im Nachtrag-Kasten benannt: die Annahme eines neu
+         aufgesetzten Projekts (entschieden wurde: gleiches Repo) und
+         die Zeitschätzung, die nur die Netzwerkschicht rechnet.
+Stil     Steht weiter in ihrer eigenen blaugrauen Fassung, nicht in der
+         Hausfarbwelt — bewusste Abweichung von ARTIFACT_RULES →
+         „Der Altbestand": Ein Neubau von 100 KB Lehrtext war der
+         Umbenennung nicht angemessen. Fällig beim nächsten
+         inhaltlichen Anfassen.
+Quelle   Projekte/Isor_Tower/DECISIONS/Multiplayer.md → „Verhältnis zum
+         Vorlauf vom 2026-08-23/24"
+Beispiel erklärt Netzwerktechnik allgemein: Latenz, Tick, UDP gegen TCP,
+         Authority, Topologien, Relay und Lobby
+Seite →  (noch nicht erfasst)
+Seite ←  keine
+```
+
+### 💡 Lernstück · NGO-Bausteine
+```
+URL      https://claude.ai/code/artifact/7fa5f368-d3ee-4635-8e08-f87ce1b230a9
+Stand    2026-08-26 — umbenannt (hieß „Multiplayer bauen") und um einen
+         Nachtrag-Kasten ergänzt. Inhalt vom 2026-08-24, ungeprüft
+         geblieben.
+Herkunft wie die Seite darüber: Vorlauf ohne Harness, bis heute in
+         keinem Register.
+Überholt Der Umbauplan in Etappe 14 geht von einem neu aufgesetzten
+         Projekt aus; entschieden wurde ein Neustart **im selben Repo**.
+         Im Nachtrag-Kasten benannt.
+Stil     wie die Seite darüber — eigene Fassung, nicht Hausfarbwelt.
+Quelle   Projekte/Isor_Tower/DECISIONS/Multiplayer.md → „Verhältnis zum
+         Vorlauf vom 2026-08-23/24"
+Beispiel vierzehn Etappen durch die NGO-Bausteine: NetworkObject,
+         Ownership, NetworkVariable, RPC, Session, Determinismus
+Seite →  Lernstück Netzwerkgrundlagen
+Seite ←  keine
 ```
 
 ---

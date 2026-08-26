@@ -22,14 +22,15 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(geschrieben 2026-08-26 — Repo/Git-Design komplett: LFS, Sichtbarkeit,
-Repo-Grenze und Build-Ablage entschieden und gebaut)*
+*(geschrieben 2026-08-26 spät — Multiplayer-Design für Semester 3
+abgeschlossen; die Repo/Git-Session lief parallel, ihr Auftrag gilt
+unverändert weiter)*
 
-Als Nächstes: die **LFS-Migration des Unity-Repos** — kompletter Ablauf
-in `Kern/ROADMAP.md`, fürs Wochenende; vorher committet Isor die
-offenen Stände in allen drei Repos (Vorschläge lagen als Datei bei).
-Sonntags außerdem die erste Ein-Seiten-Prüfung des Pflegetags: dran ist
-`💡 EditorWindow & MVP`. Typ und Modus fragt die Session selbst.
+Zwei Fäden offen: die **LFS-Migration des Unity-Repos** (Ablauf in
+`Kern/ROADMAP.md`, fürs Wochenende) und **Phase 0 des Koop-Prototyps**
+(`Projekte/Isor_Tower/ROADMAP.md`, zwei Wochen, gehört vor den
+Semesterstart). Vorher committet Isor die offenen Stände. Sonntags die
+Ein-Seiten-Prüfung: dran ist `💡 EditorWindow & MVP`.
 
 ---
 
@@ -44,5 +45,11 @@ Begründung in `Kern/DECISIONS.md`.)*
 - [ ] Den Datenbaum aufräumen, in Viererpaketen — Punkte in
       `IsorBackup/ROADMAP.md`. Zugleich die erste Belastungsprobe des
       Harness im Betrieb; was nicht trägt, kommt in `STOERUNGEN.md`.
-- [ ] Danach zurück ins Projekt Isor's Tower, Basiszustand nach der
-      Abgabe (`Projekte/Isor_Tower/ROADMAP.md`).
+- [ ] Danach zurück ins Projekt Isor's Tower
+      (`Projekte/Isor_Tower/ROADMAP.md`).
+      **Gegen den Stand vom 2026-08-26 gehalten:** Der Abschnitt
+      „Basiszustand nach der Abgabe", auf den dieser Punkt zeigte, gibt
+      es nicht mehr — die Projekt-ROADMAP wurde für Semester 3 neu
+      geschrieben. Offen und von Isor zu entscheiden ist außerdem die
+      Reihenfolge: Der Koop-Prototyp hat jetzt einen Semestertermin, der
+      Datenbaum keinen.

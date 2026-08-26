@@ -76,25 +76,47 @@ Floor sind nie gleichzeitig aktiv.
 ## Persistenz
 - Gespeichert wird ausschließlich der Village-Zustand plus der
   Spielerfortschritt (Level, Ausrüstung, Inventar, freigeschaltete Floors).
+- Beides wird **getrennt** gespeichert, weil beides verschieden weit
+  reicht: Der Spielerfortschritt begleitet den Spieler in jede Welt, der
+  Village-Zustand bleibt bei seinem Besitzer. Siehe „Multiplayer".
 - Floors speichern nichts; abgebaute Ressourcen dort sind mit dem Floor weg.
 
 ## Multiplayer
-- Koop für 4–5 Spieler, **sehr spät** in der Entwicklung. Zuerst wird das
-  Spiel solo aufgebaut.
-- Modell: Jeder Spieler besitzt seine eigene Welt; andere joinen als Gäste,
-  können dort Quests erfüllen und looten und nehmen Fortschritt und Beute
-  in ihre eigene Welt mit.
-- Multiplayer ist gesetzt, nicht optional — er wird nicht vorgebaut, aber
-  bei Architekturentscheidungen mitgedacht.
+- Koop für 4–5 Spieler. Der Koop ist **nicht mehr ein später Zusatz,
+  sondern der Rahmen**, in dem alles Weitere entsteht: Ab dem dritten
+  Semester wird jedes System von Anfang an netzwerkfähig gebaut. *(Diese
+  Umkehr ersetzt die frühere Absicht „sehr spät, zuerst solo aufbauen" —
+  Begründung in `DECISIONS/Multiplayer.md`.)*
+- Jeder Spieler besitzt seine eigene Welt. Andere joinen als Gäste und
+  dürfen dort kämpfen, looten, Ressourcen abbauen, bauen und das Handwerk
+  mitbenutzen.
+- **Der Charakter gehört dem Spieler, nicht der Welt.** Level, Erfahrung,
+  Inventar, Ausrüstung, Rezepte, Quest-Fortschritt und freigeschaltete
+  Floors reisen mit ihm in jede fremde Welt und wieder zurück. Was in der
+  Welt bleibt, ist die Welt selbst: das Dorf mit allem, was darin gebaut,
+  abgebaut oder gezähmt wurde.
+- **Wer die Welt besitzt, hält sie.** Verlässt der Besitzer die Runde,
+  endet sie für alle; die Gäste landen in ihrer eigenen Welt und behalten,
+  was sie gesammelt haben.
+- Gespielt wird als Gruppe: Ein Portal nimmt nach Bestätigung alle
+  gemeinsam mit, sodass immer nur eine Welt aktiv ist. Wer fällt, liegt am
+  Boden und kann von einem Mitspieler wieder aufgerichtet werden. Beute
+  fällt für jeden Spieler getrennt — niemand nimmt einem anderen etwas weg.
+- **Solo bleibt vollwertig.** Es ist dieselbe Welt mit einem einzigen
+  Spieler, nicht eine abgespeckte zweite Spielart.
 
 ## Umfang und Ziel
 Isor's Tower ist das durchgehende Studienprojekt: Jedes Semester zahlt auf
 dasselbe Spiel ein statt auf getrennte Übungen. Ziel ist ein
 veröffentlichungsfähiges Ergebnis, mindestens eine Demo.
-Priorität: Nach der Portfolio-Abgabe wird das Bestehende am GDD
-ausgerichtet — Reihenfolge in `Projekte/Isor_Tower/ROADMAP.md`,
-Abschnitt „Basiszustand nach der Abgabe", die Daten dazu im
-`LOG.md` derselben Schicht.
+Priorität: Das dritte Semester ist ein **Neustart desselben Projekts** —
+neue Szenen, von Anfang an koop-fähig, im selben Repo. Was aus dem
+zweiten Semester dasteht, wird nicht pauschal übernommen, sondern
+Baustein für Baustein entschieden, wenn er gebraucht wird. Reihenfolge in
+`Projekte/Isor_Tower/ROADMAP.md`, Abschnitt „Semester 3 — der
+Koop-Prototyp"; der Bestand samt seiner Befunde in
+`Projekte/Isor_Tower/ALTSTAND.md`; die Daten dazu im `LOG.md` derselben
+Schicht.
 
 ## Offene Design-Fragen
 
