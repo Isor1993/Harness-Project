@@ -156,15 +156,18 @@ Arbeit Zeiger, die hinterher noch einmal angefasst werden müssen.
   V-Nummer-Lesart geregelt (`Kern/CODE_GUIDELINES.md` → „Repo & Git",
   `Kern/VERSIONIERUNG.md`). Das GitHub-Token in der Remote-URL des
   Unity-Repos wurde dabei gefunden und noch in der Session entfernt.
-- [ ] **LFS-Migration des Unity-Repos** (Development, fürs Wochenende).
-  Ablauf: offene Änderungen committen · Sicherung als `git bundle` in
-  den Datenbaum unter `02_Projekte\Isor_Tower\Repo_Sicherungen\`
-  (`Kern/PFADE.md` → `DATENBAUM`) ·
-  `git lfs migrate import --include="*.unity,NavMesh*.asset"
-  --everything` · prüfen (Pack-Größe, `git lfs ls-files`, Szene im
-  Editor öffnen) · Force-Push · GitHub Desktop frisch verbinden.
-  Erwartung: Git-Pack schrumpft von 119 MB auf wenige MB, der
-  LFS-Speicher wächst auf ~1,4 GB (GitHub-Quote: 10 GB).
+- [x] **LFS-Migration des Unity-Repos** — am 2026-08-26 vorgezogen und
+  durchgeführt statt am Wochenende. **Git-Pack 117 MB → 2,2 MB**,
+  Rohbytes der Historie 1.372 MB → 32,6 MB; größte Datei darin jetzt
+  ein 2,26-MB-Font statt einer 73-MB-Szene. Gesichert vorher als
+  `git bundle` (118,7 MB, verifiziert) im Datenbaum unter
+  `02_Projekte\IsorsTower\Repo_Sicherungen\` (`Kern/PFADE.md` →
+  `DATENBAUM`). Isor hat committet und force-gepusht; lokal und GitHub
+  stimmen überein, die Szene liegt dort als Zeiger, Unity öffnet das
+  Projekt normal. Zwei Nacharbeiten waren nötig: 36 Dateien lagen nach
+  der Migration nur als Zeiger im Arbeitsverzeichnis (`git lfs
+  checkout`), und das Muster `NavMesh*.asset` traf auch
+  `ProjectSettings/NavMeshAreas.asset` — es heißt jetzt `NavMesh-*`.
 - [x] **GitHub-Handgriffe, nur Isor** — erledigt am 2026-08-26: das
   alte `gho_`-Token widerrufen und `Isor-Tower-ProtoTyp-2026` privat
   gestellt. Geprüft per API-Abruf ohne Anmeldung: Das Repo antwortet

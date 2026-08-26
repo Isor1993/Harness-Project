@@ -387,3 +387,22 @@ damals, nicht den von heute.
   neuen Einträge trugen zunächst das Datum der PLAN-Übergabe (25.)
   statt des Kalendertags (26.) — vor dem Commit an sämtlichen Stellen
   korrigiert.
+- 2026-08-26 — **LFS-Migration des Unity-Repos durchgeführt**, am selben
+  Tag statt am Wochenende. Ergebnis: **Git-Pack 117 MB → 2,2 MB**,
+  Rohbytes der Historie 1.372 MB → 32,6 MB, alle 52 Commits
+  umgeschrieben; Isor hat committet und force-gepusht, lokal und GitHub
+  sind identisch (`56f6d8c`). Vorher gesichert als verifiziertes
+  `git bundle` (118,7 MB) im Datenbaum. Drei Dinge fielen beim Prüfen
+  auf und wurden behoben, bevor gepusht wurde: **36 Dateien lagen nur
+  als 130-Byte-Zeiger im Arbeitsverzeichnis** statt als Inhalt (darunter
+  `MainMenu.unity`) — `git lfs checkout` holte alle 122 zurück; das
+  Muster `NavMesh*.asset` traf auch die 1-KB-Einstellungsdatei
+  `ProjectSettings/NavMeshAreas.asset` und heißt jetzt `NavMesh-*`; das
+  Migrationswerkzeug hatte zwei Regelzeilen doppelt angehängt und alle
+  Leerzeilen der `.gitattributes` entfernt. Beim ersten Unity-Start
+  danach hing der Editor rund zwölf Minuten — Ursache war **keine Folge
+  der Migration**, sondern eine verwaiste `bee_backend`-Sperre in
+  `Library/` aus einer früheren Sitzung (belegt: nur eine Unity-Instanz,
+  14,8 s Rechenzeit in acht Minuten, der erwartete Partnerprozess
+  existierte nicht mehr, nur 35 Dateien unter `Assets/` überhaupt
+  angefasst). Ein Neustart des Editors löste es.

@@ -26,11 +26,13 @@ der Datei, auf die hier verwiesen wird.
 abgeschlossen; die Repo/Git-Session lief parallel, ihr Auftrag gilt
 unverändert weiter)*
 
-Zwei Fäden offen: die **LFS-Migration des Unity-Repos** (Ablauf in
-`Kern/ROADMAP.md`, fürs Wochenende) und **Phase 0 des Koop-Prototyps**
+Ein Faden offen: **Phase 0 des Koop-Prototyps**
 (`Projekte/Isor_Tower/ROADMAP.md`, zwei Wochen, gehört vor den
-Semesterstart). Vorher committet Isor die offenen Stände. Sonntags die
-Ein-Seiten-Prüfung: dran ist `💡 EditorWindow & MVP`.
+Semesterstart). Die LFS-Migration ist am 2026-08-26 erledigt und
+gepusht — das Unity-Repo ist schlank, nichts steht dort mehr offen.
+Im Harness-Repo warten noch die Stände beider Sessions auf einen
+Commit. Sonntags die Ein-Seiten-Prüfung: dran ist
+`💡 EditorWindow & MVP`.
 
 ---
 
