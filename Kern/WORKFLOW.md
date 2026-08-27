@@ -378,9 +378,17 @@ schreiben ohnehin alle in dieses Repo.
    gegen ihre Arbeitskopie · Zahlwörter in Überschriften · Glossar gegen
    die Besitzerdateien · Hooks gegen ihre Vorlage · absolute Pfade
    außerhalb von `Kern/PFADE.md` · Artifact-IDs im Knowledge-Ordner gegen
-   den `ARTIFACT_INDEX.md`. Das Skript **meldet nur**; jeder Fund ist ein
-   Befund, kein Auftrag. Was es nicht sieht, ist, ob eine Aussage stimmt
-   — dafür braucht es weiterhin einen Abschnitt vom Typ Prüfung.
+   den `ARTIFACT_INDEX.md` · liegengebliebene Befundlisten in der Wurzel.
+   Das Skript **meldet nur**; jeder Fund ist ein Befund, kein Auftrag. Was
+   es nicht sieht, ist, ob eine Aussage stimmt — dafür braucht es
+   weiterhin einen Abschnitt vom Typ Prüfung.
+
+   **Hinweise zählen getrennt von Funden** *(seit 2026-08-27)*. Die
+   Befundlisten-Prüfung meldet immer, wenn eine `_HARNESS_*.md` in der
+   Wurzel liegt — während eines laufenden Durchgangs gehört sie genau
+   dorthin, und ein Fund wäre dann Rauschen. Ihre Zeilen stehen mit `?`
+   statt `!` und lassen „0 Funde" unangetastet, damit dieses Zeichen
+   verlässlich bleibt.
 6. **Ergebnis melden:** eine Zeile je Eintrag mit Zieldatei. „Nichts zu
    schreiben" ist ein gültiges Ergebnis und wird ebenso gemeldet — sonst
    ist nicht unterscheidbar, ob nichts anfiel oder etwas vergessen wurde.
@@ -392,6 +400,20 @@ Einmalig, nachdem eine Auslieferung in ein neues Projekt ausgepackt
 wurde. Er ersetzt die Handgriff-Liste, die bis 2.0.0 in
 `VERSIONIERUNG.md` stand — eine Liste zum Abarbeiten wuchs mit jeder
 Version und wurde dabei unvollständiger.
+
+**Angestoßen wird er von selbst** *(seit 2026-08-27)*. Beim ersten
+Session-Start sieht `Kern/Werkzeuge/pruefen.py`, dass in `Kern/PFADE.md`
+jede Marke `(nicht eingerichtet)` trägt, lässt die Prüfungen aus und
+schreibt stattdessen die Anweisung in den Kontext, diesen Ablauf zu
+beginnen. Getippt werden muss dafür nichts; der Befehl bleibt trotzdem
+aufrufbar, für das Nachtragen einer Marke oder eine Wiederholung.
+Begründung in `Kern/DECISIONS.md`, 2026-08-27.
+
+Warum die Prüfungen dabei ausfallen: In einem frischen Baum melden sie
+Verweise auf Schichten, die es dort noch nicht gibt — dieses Rauschen
+wäre das Erste, was ein neues Projekt vom Harness sieht. Steht nur
+**eine** Marke offen, ist das kein frisches Projekt: Dann läuft alles
+normal, und die Marke wird am Ende als Zeile gemeldet.
 
 1. **Nachsehen, was schon da ist.** Trägt `Kern/PFADE.md` bereits Pfade,
    ist das Projekt eingerichtet: melden, was dort steht, und fragen, ob
@@ -520,7 +542,7 @@ nicht mehr den Überblick habe")*. Dieser Abschnitt besitzt die
 
 | Ebene | prüft | wann | wer urteilt |
 |---|---|---|---|
-| `Kern/Werkzeuge/pruefen.py` | Verweise · Chronik-Format · Befehle gegen Arbeitskopie · Zahlwörter · Glossar · Hooks gegen Vorlage · Pfade gegen `PFADE.md` · Artifact-IDs im Knowledge | Session-Start (**per Hook erzwungen**) und jedes `/harness:sichern` | Skript |
+| `Kern/Werkzeuge/pruefen.py` | Verweise · Chronik-Format · Befehle gegen Arbeitskopie · Zahlwörter · Glossar · Hooks gegen Vorlage · Pfade gegen `PFADE.md` · Artifact-IDs im Knowledge · liegengebliebene Befundlisten | Session-Start (**per Hook erzwungen**) und jedes `/harness:sichern` | Skript |
 | `Kern/Werkzeuge/index_bauen.py` | fehlt eine `Ownership:`-Zeile? | wenn Dateien dazukommen oder wegfallen | Skript |
 | `Projekte/<Name>/Werkzeuge/prefab_status.py` | welche Prefabs es gibt und was auffiel | bei Projektarbeit | Skript und Mensch |
 | **Review-Gate** (`CODE_GUIDELINES.md`) | Fattening · Enum-Sicherheit · Werkzeugwahl · Naming · Artifact-Bezug | vor dem Coden | Mensch und Claude |

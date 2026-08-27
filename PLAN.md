@@ -22,42 +22,36 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(geschrieben 2026-08-26 — dritte Session des Tages: die offenen
-Harness-Punkte abgearbeitet, danach zwei Prüfdurchgänge)*
+*(geschrieben 2026-08-27 — der Harness ist fertig gebaut)*
 
-**Fünfzehn Befunde warten auf Behebung** — neun in
-`_HARNESS_CODE_GUIDELINES.md`, sechs in `_HARNESS_UNI_SCHICHT.md`.
-Das muss eine **frische** Session tun (`Kern/WORKFLOW.md`: Prüfer und
-Ausführender nicht dieselbe). Zwei Entscheidungen gehören davor, beide
-in `Kern/ROADMAP.md` benannt; für die Uni-Hälfte fehlt die
-Revier-Freigabe. Sonst unverändert offen: **Phase 0 des Koop-Prototyps**
-(`Projekte/Isor_Tower/ROADMAP.md`, zwei Wochen, vor dem Semesterstart).
-Sonntags die Ein-Seiten-Prüfung: dran ist `💡 EditorWindow & MVP`.
+**Am Harness ist nichts mehr offen** (`Kern/ROADMAP.md` → „Als Nächstes"
+ist leer). Dran ist **Phase 0 des Koop-Prototyps**: Netz-Prüfstand, rund
+zwei Wochen, Beschreibung in `Projekte/Isor_Tower/ROADMAP.md`. Die Session
+davor beginnt mit einem **Design-Abschnitt**, nicht mit Code
+(`Kern/WORKFLOW.md`: erst Design, dann Development). Sonntags die
+Ein-Seiten-Prüfung: dran ist `💡 EditorWindow & MVP`.
 
 ---
 
-### Testphase — erst auf Isors Zuruf
+### Die Testphase läuft — seit 2026-08-27
 
-Sie beginnt **nicht** nach der Prüfung und nicht nach Kalender, sondern
-wenn Isor den Harness für so weit erklärt. Bis dahin wird am Harness
-selbst gearbeitet: prüfen, was noch nicht trägt, und es verbessern.
-Claude meldet die Testphase nicht als fällig. *(Isor, 2026-08-23;
-Begründung in `Kern/DECISIONS.md`.)*
+Sie hat auf Isors Zuruf begonnen, wie es seit dem 2026-08-23 vorgesehen
+war (`Kern/DECISIONS.md`). Ab jetzt gilt: **Der Harness wird benutzt,
+nicht gebaut.** Claude schlägt von sich aus keine Umbauten mehr vor.
 
-**Gegen den Stand vom 2026-08-26 gehalten:** Beide Punkte unten gelten
-unverändert. Der Vorbehalt oben ist an diesem Tag zum ersten Mal
-eingelöst worden — die Arbeit ging in „prüfen, was noch nicht trägt":
-zwei Prüfdurchgänge, fünfzehn Befunde, vier neue Regeln. Die Testphase
-selbst bleibt ungefragt liegen.
+Was im Betrieb nicht trägt, wird als Störung notiert
+(`Kern/STOERUNGEN.md`) und über die Doku-Pflicht zu einem ROADMAP-Punkt —
+nicht sofort behoben. Ein Befund ist ein Zustand, kein Auftrag.
 
-- [ ] Den Datenbaum aufräumen, in Viererpaketen — Punkte in
-      `IsorBackup/ROADMAP.md`. Zugleich die erste Belastungsprobe des
-      Harness im Betrieb; was nicht trägt, kommt in `STOERUNGEN.md`.
-- [ ] Danach zurück ins Projekt Isor's Tower
-      (`Projekte/Isor_Tower/ROADMAP.md`).
-      **Gegen den Stand vom 2026-08-26 gehalten:** Der Abschnitt
-      „Basiszustand nach der Abgabe", auf den dieser Punkt zeigte, gibt
-      es nicht mehr — die Projekt-ROADMAP wurde für Semester 3 neu
-      geschrieben. Offen und von Isor zu entscheiden ist außerdem die
-      Reihenfolge: Der Koop-Prototyp hat jetzt einen Semestertermin, der
-      Datenbaum keinen.
+- [ ] **Phase 0 · Netz-Prüfstand** *(rund zwei Wochen, vor dem
+      Semesterstart)* — Details in `Projekte/Isor_Tower/ROADMAP.md`.
+      Enthält den ersten Vergleichstest, ob die Generierung auf zwei
+      Rechnern dasselbe liefert; fällt er durch, wird die Zeitrechnung
+      des Semesters enger.
+- [ ] **Der Datenbaum wartet** (`IsorBackup/ROADMAP.md`, vier Punkte).
+      **Kein Termin** — bewusst hinter Phase 0 gestellt, weil nur der
+      Prototyp einen Semestertermin hat (Isor, 2026-08-27). Er bleibt
+      die geplante Belastungsprobe des Harness im Betrieb.
+- [ ] **Abgabe-Struktur anlegen**, sobald die Semester-Aufgaben da sind
+      (`Uni/ROADMAP.md`) — der Punkt, an dem im zweiten Semester Zeit
+      verloren ging.

@@ -1,9 +1,10 @@
 # DOCX_RULES.md — Regeln für das Arbeiten an Word-Dokumenten
 
 Ownership: Nur der Umgang mit den `.docx`-Abgabedateien — Sicherung,
-Arbeitsteilung, bekannte Fallen, Prüfung. Was im TDD steht, gehört in
-`Uni/ROADMAP.md` und `Uni/LOG.md`; warum es so steht, in
-`Uni/DECISIONS.md`.
+Arbeitsteilung, bekannte Fallen, Prüfung. Der *Text* des TDD gehört
+nicht hierher, sondern in `Projekte/Isor_Tower/TDD.md` — seit 2026-08-25
+die führende Quelle. Aufgaben stehen in `Uni/ROADMAP.md`, Ereignisse in
+`Uni/LOG.md`, Begründungen in `Uni/DECISIONS.md`.
 
 Entstanden aus dem Praxisbetrieb 2026-08-07 bis 2026-08-11 am TDD. Claude
 schreibt Änderungen direkt in die Datei (DECISIONS 2026-08-07), und zwar über
@@ -12,7 +13,8 @@ das entpackte `word/document.xml` — nicht über Word.
 ## Welche Datei
 
 - **Arbeitsdatei ist ausschließlich**
-  `01_Uni\Semester_2\Arbeitsdateien\TDD Softwareplanung.docx`.
+  `01_Uni\Semester_2\Arbeitsdateien\TDD Softwareplanung.docx`
+  (`Kern/PFADE.md` → `DATENBAUM`).
   Nur diese anfassen; Sicherungen unter `Arbeitsdateien\Sicherung\`.
 - **Seit 2026-08-25 führt das Markdown (E61b):** Der *Text* lebt in
   `Projekte/Isor_Tower/TDD.md`; die `.docx` ist die daraus erzeugte
@@ -62,7 +64,7 @@ durchlesen.**
 
 - **docx-Skill** (im Harness vorhanden, im August benutzt): `validate.py`
   prüft ein gepacktes Dokument gründlicher als ein bloßer XML-Parse —
-  **Prüfschritt 1 unten läuft darüber**. `soffice.py` wandelt nach PDF,
+  **Prüfschritt 4 unten läuft darüber**. `soffice.py` wandelt nach PDF,
   wenn Word nicht zur Verfügung steht.
   **Zwei bekannte Grenzen unter Windows (belegt 2026-08-25):** Medien,
   die per Override statt Extension-Default deklariert sind — so baut
@@ -71,7 +73,7 @@ durchlesen.**
   `document.xml` kann ein `charmap`-Fehler auftreten, weil das Skript
   ohne UTF-8-Angabe liest. Ein roter `validate.py`-Lauf ist deshalb
   ein Anlass zum Nachsehen, kein Urteil — das Urteil bleibt beim
-  Sichttest (Prüfschritte 2 und 3).
+  Sichttest (Prüfschritte 1 und 2).
 - **Word selbst** bleibt für Feldwerte und Verzeichnisse zuständig
   (`Strg+A`, `F9`) und für den PDF-Export mit aktualisierten Feldern.
 - **Handarbeit am entpackten XML** bleibt nötig, wo gezielt in
@@ -100,15 +102,23 @@ durchlesen.**
 
 ## Prüfung
 Nach jedem Eingriff, in dieser Reihenfolge:
-1. `validate.py` aus dem docx-Skill laufen lassen — prüft gründlicher als
-   ein bloßer `ET.parse` und fängt auch Strukturfehler im Paket.
-2. Datei packen und **in Word öffnen, Felder aktualisieren, als PDF
+1. Datei packen und **in Word öffnen, Felder aktualisieren, als PDF
    exportieren**. Öffnet Word die Datei, ist die Struktur in Ordnung.
-3. **Die betroffenen Seiten als Bild ansehen.** Kein Schritt ist fertig, bevor
+2. **Die betroffenen Seiten als Bild ansehen.** Kein Schritt ist fertig, bevor
    das Ergebnis gesehen wurde — die drei schlimmsten Fehler dieser Sitzung
    waren im XML unauffällig und im Bild sofort sichtbar.
-4. Zählen statt hoffen: Beschriftungen, Verweise und Tabellenzeilen gegen den
+3. Zählen statt hoffen: Beschriftungen, Verweise und Tabellenzeilen gegen den
    erwarteten Stand prüfen.
+4. **Nur nach Handarbeit am entpackten XML:** `validate.py` aus dem
+   docx-Skill laufen lassen — es fängt Strukturfehler im Paket, die
+   Word beim Öffnen stillschweigend repariert.
+
+**Warum `validate.py` hinten steht** *(seit 2026-08-26)*: Seit E61b baut
+Pandoc die Abgabefassung, und bei Pandoc-Paketen schlägt das Skript
+systematisch fehl — 88 Fehlalarme bei einer korrekten Datei, weil die
+Medien per Override deklariert sind (siehe „Werkzeuge"). Als erster
+Schritt wäre es ein Prüfer, dessen Meldungen man wegklickt. Nach einem
+Eingriff von Hand ist es weiterhin das schärfste Werkzeug.
 
 ## Formatvorgaben
 Verbindlich ist `01_Uni\_Regelwerk\Allgemeine_Formatierungsvorgaben.pdf`

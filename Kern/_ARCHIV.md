@@ -182,4 +182,69 @@ halb erledigten Aufträge, die die Liste selbst benannte (die
 Automatisierung zu P4 und P13), sind seit dem 2026-08-23 gebaut —
 Prüfungen 4 und 5 in `Kern/Werkzeuge/pruefen.py`.
 
+---
+
+## 2026-08-26 — Befundliste `_HARNESS_CODE_GUIDELINES.md`
+
+**Abgelöst durch:** nichts — planmäßig abgelaufen, wie jede Befundliste
+(`Kern/WORKFLOW.md` → „Prüfung"). Was überlebt, sind die Punkte in der
+ROADMAP. Die Datei liegt im Datenbaum unter
+`99_Archiv\_Zu_Loeschen\2026-08-26_Pruefung_Code_Guidelines\`
+(`Kern/PFADE.md` → `DATENBAUM`), 16.577 Bytes.
+
+**Was sie war:** Der erste Prüfbogen überhaupt für
+`Kern/CODE_GUIDELINES.md` (348 Zeilen). Sie schloss die eine Hälfte der
+Lücke, die aus der Liste zur Version 1.0.0 gerettet worden war. Neun
+Befunde in zwei Durchgängen — Prüfbogen und Widerspruchs-Querschnitt —,
+fünf davon `muss`.
+
+**Was aus ihr geworden ist:** Acht der neun Befunde am selben Tag
+behoben, in einer eigenen Session; C9 hatte keinen Auftrag. Die Liste
+trug dafür eine Tabelle „Behebung" mit der Stelle je Befund. Zwei
+Entscheidungen fielen vorab und stehen in `Kern/DECISIONS.md`: die
+Sprachregel („Englisch — keine Ausnahme") und der Entfall von
+`Assets/FolderTemplate/` samt `Assets/Sandbox/`. Aus Befund C5 ist ein
+eigener ROADMAP-Punkt geworden — die volle Unity-Event-Reihenfolge.
+
+**Was sie über den Bestand gezeigt hat, und was deshalb bleibt:**
+**Fünf der neun Befunde waren Verfall, nicht Schreibfehler** — die Datei
+war jeweils richtig und wurde von der Wirklichkeit überholt. Keine der
+acht Skript-Prüfungen kann das sehen; sie prüfen Form und Bestand, nicht
+ob eine Aussage noch stimmt. Dazu eine benannte Lücke, die kein Befund
+schließt: Ein Verweis auf einen *Eintrag innerhalb* einer Datei
+(„`DECISIONS.md`, 2026-08-22") wird von nichts geprüft — Prüfung 1
+schlägt nur Dateipfade nach. Befund C8 war genau so ein Zeiger, und er
+lag daneben.
+
+---
+
+## 2026-08-26 — Befundliste `_HARNESS_UNI_SCHICHT.md`
+
+**Abgelöst durch:** nichts — planmäßig abgelaufen. Die Datei liegt im
+Datenbaum unter
+`99_Archiv\_Zu_Loeschen\2026-08-26_Pruefung_Uni_Schicht\`
+(`Kern/PFADE.md` → `DATENBAUM`), 13.092 Bytes. Sie steht hier und nicht
+in `Uni/_ARCHIV.md`, weil eine Befundliste in der **Repo-Wurzel** liegt
+und dem Prüfdurchgang gehört, nicht der geprüften Schicht; was in die
+Uni-Schicht gehörte, steht dort (`Uni/ROADMAP.md`, `Uni/LOG.md`).
+
+**Was sie war:** Die zweite Hälfte derselben Lücke — der erste Prüfbogen
+für die Uni-Schicht, zwölf Dateien, 1.663 Zeilen. Sechs Befunde, zwei
+davon `muss`, beide in `Uni/DOCX_RULES.md` und beide Folge derselben
+Umstellung: Seit dem 2026-08-25 führt das Markdown und baut Pandoc.
+
+**Was aus ihr geworden ist:** Fünf der sechs Befunde am selben Tag
+behoben, nachdem Isor das Uni-Revier freigegeben hatte. U6 bleibt
+bewusst offen und ist im Punkt in `Uni/ROADMAP.md` vermerkt — der Satz,
+den er betrifft, ist bis zum nächsten Textstand richtig.
+
+**Was sie über den Bestand gezeigt hat:** Die Uni-Schicht ist deutlich
+gesünder als `CODE_GUIDELINES.md` — sechs Befunde auf 1.663 Zeilen gegen
+neun auf 348 —, und zwar aus einem Grund, der sich nicht auf andere
+Schichten überträgt: Zwei Drittel der Schicht sind Chroniken, Archiv und
+unveränderliche Aufgabentexte, und die altern nicht. Zwei Stellen hat
+die Liste als vorbildlich hervorgehoben: Die Word-Fallen liegen im
+Knowledge samt Begründung, warum sie dort liegen, und die Grenze zur
+Abgabe-Packliste ist in einem Halbsatz geregelt, der beide Seiten nennt.
+
 

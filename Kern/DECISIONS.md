@@ -1223,3 +1223,125 @@ Sichtbarkeits-Entscheidung — offen bleibt damit, ob „öffentlich auf
 GitHub lesbar" die Bedingung „eine Weitergabe steht an" bereits erfüllt.
 Am 2026-08-26 vorgelegt und von Isor nicht gewählt; beide
 Weitergabe-Punkte bleiben unverändert.
+
+## 2026-08-26 — Kommentare im Code: immer Englisch, ohne Alternative
+Was: Die Sprachtabelle in `Kern/DOC_RULES.md`, Abschnitt 9 trägt für
+„Kommentare im Code" künftig **Englisch** statt „Englisch oder Deutsch,
+aber einheitlich". `Kern/CODE_GUIDELINES.md` schreibt die Regel an
+keiner der beiden Stellen mehr aus (Block 1 Punkt 1, Kopf des
+Abschnitts „Kommentare & Datei-Header") und verweist stattdessen
+dorthin (Isor, 2026-08-26).
+Warum: Die Regel stand an drei Stellen und sagte zweierlei — buchstäblich
+galt die weiche Fassung, weil `DOC_RULES.md` sich zum Besitzer erklärt
+und die Kopie in CODE_GUIDELINES ausdrücklich verbietet. Gelebt wurde die
+harte. Es gewinnt die Verschärfung, nicht der Formalismus: Sie erfüllt die
+SAE-Regel „Code ausschließlich Englisch" mit, hält die Abgabe frei von
+Sprachmischung und ist die Fassung, nach der Isor ohnehin arbeitet. Beide
+Dateien wandern in **jede** Auslieferung — die weiche Fassung wäre sonst
+in jedes neue Projekt mitgereist.
+Verworfen: die weiche Fassung gewinnen lassen und die harte streichen
+(deutsche Kommentare wären erlaubt, und Isors Standard wäre von einer
+Regel zu einer Gewohnheit herabgestuft) · beide Fassungen stehen lassen
+und nur die Reihenfolge klären (der Widerspruch bliebe, nur besser
+sortiert).
+Auslöser: Befund C7 der Prüfung vom 2026-08-26
+(`_HARNESS_CODE_GUIDELINES.md`).
+
+## 2026-08-26 — `FolderTemplate/` und `Sandbox/` entfallen
+Was: Beide Ordner werden aus dem Unity-Projekt gelöscht (Handgriff im
+Editor, damit die `.meta`-Dateien mitgehen). Der Block „Offen
+(2026-08-22)" am Ende der Ordnerstruktur in `Kern/CODE_GUIDELINES.md`
+fällt ersatzlos weg; die Verwerfung der Vorlage steht dort künftig unter
+„Bewusst nicht übernommen" (Isor, 2026-08-26).
+Warum: Gemessen am 2026-08-26 — beide Ordner enthalten **null** Dateien
+(nur `.meta`), und keine Zeile in `Assets/`, `ProjectSettings/` oder
+`Packages/` verweist auf sie. Damit verstoßen sie gegen die Regel „Nur
+anlegen, was gebraucht wird — keine leeren Ordner", die in derselben
+Datei steht. `FolderTemplate/` ist überdies keine leere Hülle, sondern
+eine Falle: Es bündelt neun Typen **unter** einem System und bildet damit
+das Schema ab, das am 2026-08-20 durch „Typ oben, System darunter"
+abgelöst wurde. Sein einziger Informationsgehalt — die Liste der neun
+Typnamen — steht ausgeschrieben in der Regeldatei.
+Verworfen: `FolderTemplate/` behalten und aufs heutige Schema umbauen
+(eine Vorlage, die gepflegt werden muss, für einen Vorgang, der bisher
+nie stattfand) · `Sandbox/` zum erklärten Wegwerf-Platz erklären (macht
+aus einem herrenlosen Ordner eine Ausnahme von „keine leeren Ordner",
+für einen Bedarf, den niemand angemeldet hat).
+Auslöser: Befund C4 derselben Prüfung. Archiviert wurde nichts — es gab
+nichts zu archivieren.
+
+## 2026-08-27 — Eine Auslieferung trägt keine fremde Geschichte
+Was: Die Packliste in `Kern/VERSIONIERUNG.md` wird neu gefasst. Chroniken
+und Bestandslisten (`LOG.md`, `DECISIONS.md`, `STOERUNGEN.md`,
+`_ARCHIV.md`, `ROADMAP.md`, `ARTIFACT_INDEX.md`) gehen künftig als **Kopf
+plus genau ein gekennzeichnetes Musterbeispiel** mit statt vollständig.
+Regeldateien, Werkzeuge, Befehle, Vorlagen und Bilder bleiben unverändert
+vollständig (Isor, 2026-08-27). Löst die Packliste vom 2026-08-24 in ihrer
+ersten Zeile ab; deren übrige Zeilen gelten weiter.
+Warum: Die alte Fassung gab dem neuen Projekt die Begründung der Regeln
+mit — und zugleich Isors Bauschritte, Störungen und Projektentscheidungen,
+die dort niemand liest und niemand pflegt. Ein Bestand ohne Pfleger
+veraltet ab dem ersten Tag und wird zur Falle: Er sieht aus wie geltender
+Stand. Das Musterbeispiel löst das Problem, das die Verwerfung „ganz
+leeren" hätte: Die Formatzeile allein sagt, wie ein Eintrag aussieht, aber
+nicht, wie lang, wie belegt und wie formuliert er sein soll — ein einziger
+echter Eintrag zeigt das in einer Zeile.
+Verworfen: alles vollständig mitliefern (die Fassung vom 2026-08-24 — der
+Kern stünde mit Begründung da, aber jedes neue Projekt startet mit
+fremdem Altbestand) · Chroniken ganz weglassen und die Dateien vom
+Einrichten-Befehl anlegen lassen (dann fehlt die `Ownership:`-Zeile, und
+der INDEX meldete die Datei sofort als ⚠) · `DECISIONS.md` als einzige
+vollständig mitnehmen, weil die Regeln auf sie zeigen (genau sie trägt
+den meisten projektfremden Inhalt — 1.271 Zeilen, gemessen 2026-08-27).
+Preis, ausdrücklich in Kauf genommen: Regelsätze der Form „Begründung in
+`Kern/DECISIONS.md`" zeigen in einer Auslieferung auf ein Beispiel. Die
+echte Begründung steht im öffentlichen Harness-Repo — dass es öffentlich
+bleibt, ist dafür bereits entschieden.
+
+## 2026-08-27 — Der Harness meldet sich selbst, wenn er nicht eingerichtet ist
+Was: `pruefen.py` erkennt beim Session-Start am Zustand von
+`Kern/PFADE.md`, dass der Harness noch nicht eingerichtet ist, und
+schreibt statt der Prüfausgabe eine Anweisung in den Kontext: den Ablauf
+`/harness:einrichten` sofort zu beginnen. Der Befehl bleibt, was er ist —
+er wird nur nicht mehr von Hand angestoßen (Isor, 2026-08-27).
+Warum: Das Einrichten war der einzige Handgriff, den eine Auslieferung
+über das Entpacken hinaus verlangte — und der einzige, den niemand
+erinnert, weil er genau einmal vorkommt. Der Session-Start ist der
+Zeitpunkt, an dem der Zustand ohnehin gelesen wird; ein Hook läuft dort
+bereits, und derselbe Mechanismus, der „0 Funde" meldet, kann auch „noch
+nicht eingerichtet" melden. Die Prüfausgabe entfällt in diesem Zustand
+bewusst: In einem frischen Baum meldet sie Verweise auf Schichten, die es
+dort noch nicht gibt, und dieses Rauschen wäre das Erste, was ein neues
+Projekt vom Harness sieht.
+Verworfen: ein eigenes `einrichten.py`, das die wissensfreien Schritte
+selbst ausführt (Befehle kopieren, `PLAN.md`, INDEX, Hook) — sauberer
+getrennt, aber ein Werkzeug mehr, das schreibt statt nur zu melden, und
+der Ablauf stünde dann an zwei Stellen statt in `Kern/WORKFLOW.md` ·
+`pruefen.py` selbst schreiben lassen (bricht seine Zusage „meldet nur",
+die an drei Stellen dokumentiert ist) · beim Handgriff bleiben (er stand
+seit 2.0.0 in der Auslieferung und ist bisher genau einmal ausgeführt
+worden — vom Autor selbst, im Probelauf).
+
+## 2026-08-27 — Die Auslieferung wird gepackt, nicht zusammengesucht
+Was: `Kern/Werkzeuge/ausliefern.py` setzt die Packliste um — Trockenlauf
+als Voreinstellung, `--schreiben` legt an, eine vorhandene Auslieferung
+bricht den Lauf ab. Absätze, die nur dieses Projekt betreffen, werden in
+der Quelle mit `<!-- nicht ausliefern -->` eingeklammert und fallen beim
+Packen weg (Isor, 2026-08-27).
+Warum: Die Packliste sagt seit dem 2026-08-24, dass sie nicht je
+Auslieferung neu entschieden wird — von Hand gepackt wurde sie beide
+bisherigen Male trotzdem verschieden ausgelegt. Ein Skript legt sie jedes
+Mal gleich aus; das ist dieselbe Bauart wie beim INDEX. Die Klammer löst
+das Problem, das beim ersten Probelauf auffiel: Ein Kopf-Absatz begründet
+oft die Regel **und** erzählt dabei, wann sie in diesem Projekt nötig
+wurde. Ohne Klammer müsste nach jedem Packen von Hand nachgearbeitet
+werden, und eine nachbearbeitete Auslieferung lässt sich nicht
+reproduzieren.
+Verworfen: die Muster-Fassungen als eigene Dateien unter
+`Kern/Vorlagen/` ablegen (dann stünde jede Chronik doppelt in der
+Auslieferung, und die Vorlage veraltet gegenüber dem Original) · nach dem
+Packen von Hand durchsehen (der Schritt wächst mit jeder Version und wird
+dabei unvollständiger — genau die Begründung, mit der die Handgriff-Liste
+zu 2.0.0 abgeschafft wurde) · gar nicht kürzen und nur die Zeugnisse
+weglassen (die Fassung vom 2026-08-24, abgelöst am selben Tag durch die
+Entscheidung oben).

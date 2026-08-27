@@ -5,7 +5,7 @@ Einstieg in eine Session. Regeln über Dokumente stehen in
 `Kern/DOC_RULES.md`, Session-Ablauf und Doku-Pflicht in
 `Kern/WORKFLOW.md`, Nummernsysteme in `Kern/VERSIONIERUNG.md`.
 
-**Harness-Version: 2.0.0.** Lesart der Nummer: `Kern/VERSIONIERUNG.md`.
+**Harness-Version: 2.1.0.** Lesart der Nummer: `Kern/VERSIONIERUNG.md`.
 
 Dieses Projekt entwickelt einen generischen Harness für Game-Dev- und
 Lern-Sessions. Der Harness wird mit seinen eigenen Mitteln gebaut: Diese
@@ -30,9 +30,14 @@ Lern-Sessions. Der Harness wird mit seinen eigenen Mitteln gebaut: Diese
    Schreiben, weil das Schreiben die Fehler erzeugt, die das Skript
    findet (`Kern/WORKFLOW.md`, Ablauf von `/harness:sichern`).
    **Rückfallebene:** Fehlt die Zeile, wird das Skript von Hand
-   gestartet. Das ist der Normalfall in einem frisch ausgelieferten
-   Harness, auf einem anderen Rechner oder nach einer beschädigten
-   Einstellungsdatei.
+   gestartet. Das ist der Normalfall auf einem anderen Rechner oder nach
+   einer beschädigten Einstellungsdatei.
+   **Sonderfall Erststart** *(seit 2.1.0)*: Meldet das Skript statt der
+   Prüfliste, dass der Harness **noch nicht eingerichtet** ist, gilt seine
+   Anweisung — dann wird sofort der Ablauf `/harness:einrichten` begonnen
+   (`Kern/WORKFLOW.md`) und die Leseordnung hier endet an dieser Stelle.
+   Die Punkte 2 bis 4 zeigen in einem frischen Baum ohnehin auf Dateien,
+   die es noch nicht gibt.
    Warum gemeldet wird: Stille ist mehrdeutig — ohne Meldung ist „nichts
    gefunden" nicht davon zu unterscheiden, dass gar nichts gelaufen ist.
    Warum überhaupt geprüft wird: Zwischen zwei Sessions ändert jemand

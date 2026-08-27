@@ -8,13 +8,17 @@ Format: `### JJJJ-MM-TT — Kurztitel` mit den Zeilen **Was**, **Ursache**,
 **Regel** und **Stand**. Der Stand ist entweder `offen` oder
 `behoben <Datum>` samt der Stelle, an der die Behebung steht. So ist die
 Liste der offenen Vorfälle ein Suchlauf nach `Stand: offen` statt eine
-Zählarbeit — bei der am 2026-08-22 dreimal verschieden gezählt wurde.
+Zählarbeit, bei der jeder Durchgang auf eine andere Zahl kommt.
 
-Warum die Datei existiert: Die Überholung von 2026-08-21/22 war nur
-möglich, weil elf konkrete Befunde vorlagen. Ohne Belege wird die nächste
-Revision Ratearbeit. Behobene Vorfälle bleiben stehen — sie sind der
-Beleg, dass die Änderung nötig war. Diese Datei ist eine Chronik und
-braucht daher kein Archiv.
+Warum die Datei existiert: Eine Überholung des Harness ist nur so gut
+wie die Belege, die ihr vorliegen — ohne sie wird sie Ratearbeit.
+Behobene Vorfälle bleiben stehen; sie sind der Beleg, dass die Änderung
+nötig war. Diese Datei ist eine Chronik und braucht daher kein Archiv.
+
+<!-- nicht ausliefern -->
+*Für dieses Projekt:* Gemessen an der Überholung vom 2026-08-21/22 —
+sie war nur möglich, weil elf konkrete Befunde vorlagen.
+<!-- /nicht ausliefern -->
 
 Wer einträgt: Claude, sobald Isor einen Aussetzer meldet — zusätzlich
 fragt die Doku-Pflicht danach, damit es nicht ausfällt. Wann das ist,
@@ -449,5 +453,39 @@ als **Hinweis**, dass eine `_HARNESS_*.md` in der Wurzel liegt, samt der
 Frage, ob ihr Durchgang abgeschlossen ist. Bewusst ein Hinweis und kein
 Fund — während einer laufenden Prüfung gehört die Datei dorthin, ein
 Fund wäre dann Rauschen.
-**Stand:** offen als Bauart; der konkrete Fall ist am 2026-08-26
-erledigt (archiviert, Eintrag in `Kern/_ARCHIV.md`).
+**Stand:** behoben 2026-08-27 — `pruefen.py` hat als **Prüfung 9**
+(„Befundlisten") das beschriebene Gegenmittel bekommen: Liegt eine
+`_HARNESS_*.md` in der Wurzel, meldet sie als Hinweis, seit wann die
+Datei unverändert ist, und fragt, ob der Durchgang durch ist. Hinweise
+zählen getrennt von Funden, damit „0 Funde" verlässlich bleibt (Regel in
+`Kern/WORKFLOW.md`, Ablauf von `/harness:sichern`). Belegt gegen einen
+Wegwerf-Fall mit einer drei Tage alten Datei, nicht gegen die Null. Der
+konkrete Fall war schon am 2026-08-26 erledigt (archiviert, Eintrag in
+`Kern/_ARCHIV.md`).
+
+### 2026-08-27 — Session-Thema überschrieben, dritter Fall
+**Was:** Der erste Handgriff dieser Session war, den geerbten
+Session-Titel „Harness · Befunde beheben (zu)" durch „Harness
+fertigstellen (Development)" zu ersetzen — Thema **und** Klammer in einem
+Zug, ohne Isor zu fragen. Bemerkt hat es Claude selbst, unmittelbar
+danach beim Nachlesen der Regel; der alte Titel wurde wiederhergestellt
+und trägt jetzt nur die richtige Klammer.
+**Ursache:** Die Regel wurde erst **nach** dem Handgriff gelesen. Die
+Klammer `zu` signalisiert „diese Session ist abgeschlossen", und daraus
+folgte in einem Schritt „also darf ich neu benennen" — genau die
+Fehlableitung, die der Eintrag vom 2026-08-26 beschreibt. Dass Isor im
+selben Satz ein neues Vorhaben nannte, machte das Erfinden eines Themas
+zusätzlich plausibel.
+**Regel:** Die Regel greift und ist richtig formuliert
+(`Kern/WORKFLOW.md` → „Der geerbte Titel": Claude **schlägt** ein Thema
+vor, die Klammer darf er sofort richtig stellen). Sie stand nur noch
+nicht im Kontext, weil das Umbenennen vor dem Lesen von `WORKFLOW.md`
+passierte — Punkt 4 der Leseordnung, der Titel wird aber schon bei
+Punkt 1 sichtbar. **Kein Gegenmittel vorgeschlagen:** Eine Regel früher
+zu lesen ist keine Regel, sondern eine Ermahnung, und die Leseordnung
+umzustellen hieße, `WORKFLOW.md` vor `INDEX.md` und `PLAN.md` zu setzen —
+teuer für einen Handgriff, der nichts zerstört und sich in einer Sekunde
+zurücknehmen lässt. Der Vorfall steht hier als dritter Beleg; wird es
+ein vierter, ist die Abwägung neu zu führen.
+**Stand:** behoben 2026-08-27 — Titel wiederhergestellt, Thema von Isor
+unverändert übernommen.

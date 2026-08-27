@@ -37,7 +37,7 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 | `Kern/ARTIFACT_RULES.md` | Typen, Benennung, Aufbau, Gestaltung, Symbole und Pflege der Artifact-Seiten auf claude.ai. |
 | `Kern/ASSESSMENT_RULES.md` | Der Session-Typ „Zeugnis" vollständig — Auslöser, Ablauf, Belegpflicht, Aufbau, Notenskala, Schreibregeln, Ablage. |
 | `Kern/Bilder/README.md` | Nur die von Hand gebauten Erklärskizzen des Kerns — was hier liegt, wozu es gehört und woran es hängt. |
-| `Kern/CODE_GUIDELINES.md` | Code-Konventionen — Namen, Architektur, Ordnerstruktur, Tests, das Review-Gate und die Repo-/Git-Regeln des Projekt-Repos. |
+| `Kern/CODE_GUIDELINES.md` | Code-Konventionen — Namen, Kommentare und Datei-Header, Architektur, Ordnerstruktur, Tests, das Review-Gate und die Repo-/Git-Regeln des Projekt-Repos. |
 | `Kern/DECISIONS.md` | Nur Entscheidungen zum Harness — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
 | `Kern/DIAGRAM_RULES.md` | Nur der Umgang mit den skriptgenerierten `.drawio`-Diagrammen — Ablage, Arbeitsteilung, Bedienregeln, Prüfung. |
 | `Kern/DOC_RULES.md` | Alle Regeln, die für die .md-Dateien des Harness selbst gelten — Zuständigkeit, Aufbau, Verweise, Verfall, Sprache. |
@@ -104,19 +104,13 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 | `Projekte/Isor_Tower/TDD_NOTES.md` | Nur Rohmaterial für das Technical Design Document von Isor's Tower — geprüfte Fakten, Zahlen und Formeln aus der Projektarbeit. |
 | `Projekte/Isor_Tower/_ARCHIV.md` | (geplant) Überholte Projekt-Einträge, jeder mit Angabe des Nachfolgers |
 
-## Temporär — eine Datei je Durchgang, danach ins Archiv
-
-| Dokument | Zuständigkeit |
-|---|---|
-| `_HARNESS_CODE_GUIDELINES.md` | Nur die Befunde **dieses einen Prüfdurchgangs** — der Datei `Kern/CODE_GUIDELINES.md`, die beim Durchgang vom 2026-08-23 ausdrücklich ausgelassen wurde und seither nie einen Prüfbogen gesehen hat. |
-| `_HARNESS_UNI_SCHICHT.md` | Nur die Befunde **dieses einen Prüfdurchgangs** — der Uni-Schicht, die beim Durchgang vom 2026-08-23 ausdrücklich ausgelassen wurde und seither nie einen Prüfbogen gesehen hat. |
-
 ## Werkzeuge — erzeugen und pflegen die Dateien oben
 
 | Skript | Zweck |
 |---|---|
 | `IsorBackup/Werkzeuge/sichern.ps1` | sichern.ps1 — wöchentliche Sicherung auf die externe Platte. |
 | `Kern/Werkzeuge/abgabe_bauen.py` | Erzeugt eine .docx-Abgabefassung aus einem Markdown-Manuskript. |
+| `Kern/Werkzeuge/ausliefern.py` | Packt eine Auslieferung des Kerns nach der Packliste in Kern/VERSIONIERUNG.md. |
 | `Kern/Werkzeuge/index_bauen.py` | Erzeugt INDEX.md aus den Ownership-Zeilen der Harness-Dateien. |
 | `Kern/Werkzeuge/pruefen.py` | Prüft die Harness-Dateien gegen die Regeln, die sich mechanisch prüfen lassen. |
 | `Projekte/Isor_Tower/Werkzeuge/prefab_status.py` | Erzeugt PREFAB_STATUS.md aus den tatsächlich vorhandenen .prefab-Dateien. |

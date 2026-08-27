@@ -1,12 +1,12 @@
 # CODE_GUIDELINES.md — Code-Konventionen
 
-Ownership: Code-Konventionen — Namen, Architektur, Ordnerstruktur,
-Tests, das Review-Gate und die Repo-/Git-Regeln des Projekt-Repos.
+Ownership: Code-Konventionen — Namen, Kommentare und Datei-Header,
+Architektur, Ordnerstruktur, Tests, das Review-Gate und die
+Repo-/Git-Regeln des Projekt-Repos.
 
-Status: Entstanden als Rohmaterial aus dem Brainstorm vom 2026-07-17,
-seither in einem vollen Uni-Durchgang erprobt und mehrfach nachgeschärft
-(zuletzt der Abschnitt „Ordnerstruktur" am 2026-08-22, gelesen gegen den
-tatsächlichen Assets-Baum).
+Herkunft: Entstanden als Rohmaterial aus dem Brainstorm vom 2026-07-17.
+Wann sie zuletzt angefasst wurde, sagt `git log` — genauer, als eine
+Hand es je nachführt.
 
 ## Priorität
 
@@ -21,8 +21,9 @@ gelten dort still die Uni-Regeln. Abgeleitet stellt es sich von selbst
 richtig (`Kern/DECISIONS.md`, 2026-08-22).
 
 ## Block 1 — Stil & Naming (Uni-Pflicht, SAE-Conventions Stand 12/2024)
-1. Code ausschließlich Englisch. Kommentare und Ausgaben Englisch oder
-   Deutsch — aber einheitlich.
+1. Code ausschließlich Englisch. Für Kommentare und Ausgaben ließe die
+   SAE-Vorgabe auch Deutsch zu — hier gilt die schärfere Fassung, und die
+   besitzt `Kern/DOC_RULES.md`, Abschnitt 9.
 2. Kommentare erklären das Warum, nicht das Was. XML-`<summary>` für
    Methoden erwünscht.
 3. Bezeichner aussagekräftig: nur ASCII, keine unbekannten Abkürzungen,
@@ -45,10 +46,9 @@ richtig (`Kern/DECISIONS.md`, 2026-08-22).
 9. Nicht Spezifiziertes: Microsoft-C#-Konventionen bzw. Unity-Style-Guide.
 
 ## Kommentare & Datei-Header (Isors Standard)
-Gilt überall, Uni wie privat. Code, Kommentare und Ausgaben: **immer
-Englisch** — keine Ausnahme; erfüllt damit die SAE-Regeln „Code
-ausschließlich Englisch" und „Kommentare erklären das Warum" aus Block 1.
-Deutsch bleibt nur der Unterhaltung mit Claude vorbehalten.
+Gilt überall, Uni wie privat. **Die Sprache steht nicht hier** — sie
+gehört der Tabelle in `Kern/DOC_RULES.md`, Abschnitt 9. Sie ist schärfer
+als die SAE-Vorgabe aus Block 1 und erfüllt sie damit mit.
 
 Arbeitsteilung: Isor tippt Code ohne Kommentare; Header, Summaries und
 Kommentare ergänzt Claude automatisch beim Review bzw. wenn Code
@@ -130,9 +130,8 @@ Innerhalb einer Klasse in dieser Folge:
 1. `[SerializeField]`-Felder (die Inspector-Oberfläche)
 2. rein private Felder (interner Zustand)
 3. Properties
-4. Unity-Event-Methoden in Lebenszyklus-Reihenfolge:
-   `Awake` → `OnEnable` → `Start` → `Update` / `FixedUpdate` /
-   `LateUpdate` → `OnDisable` → `OnDestroy`
+4. Unity-Event-Methoden in Lebenszyklus-Reihenfolge — volle Folge in der
+   Tabelle unten
 5. public Methoden
 6. private Methoden
 
@@ -144,12 +143,32 @@ Laufzeit — Suchen entfällt.
 Innerhalb der `[SerializeField]`-Gruppe stehen Szenen-Objekte und Assets
 getrennt beieinander, nicht gemischt.
 
-**Offen (Isor, 2026-08-16):** Die Liste der Unity-Event-Methoden deckt
-nur die ab, die bisher vorkommen. Unity dokumentiert die vollständige
-Aufrufreihenfolge („Order of Execution for Event Functions") mit deutlich
-mehr Einträgen — `OnValidate`, `OnTriggerEnter`, `OnCollisionEnter`,
-`OnApplicationQuit` und weitere. Beim Harness-Ausbau übernehmen und hier
-als verbindliche Folge hinterlegen, statt sie je Datei neu zu erraten.
+#### Die Unity-Event-Methoden in ihrer Folge
+
+Übernommen aus Unitys „Order of Execution for Event Functions", damit die
+Folge nicht bei jeder Datei neu geraten wird. **Geschrieben wird nur, was
+die Klasse wirklich benutzt** — das ist eine Reihenfolge, keine
+Checkliste. Kommt eine Methode vor, die hier fehlt, entscheidet ihre
+Stelle im Unity-Flussdiagramm, und die Zeile wird hier nachgetragen.
+
+| Phase | Methoden, in dieser Folge |
+|---|---|
+| nur Editor | `Reset` · `OnValidate` |
+| Start des Objekts | `Awake` · `OnEnable` · `Start` |
+| Physik | `FixedUpdate` · `OnTriggerEnter` / `OnTriggerStay` / `OnTriggerExit` · `OnCollisionEnter` / `OnCollisionStay` / `OnCollisionExit` · `OnControllerColliderHit` · `OnJointBreak` |
+| Eingabe am Collider | `OnMouseEnter` · `OnMouseOver` · `OnMouseDown` · `OnMouseDrag` · `OnMouseUp` · `OnMouseUpAsButton` · `OnMouseExit` |
+| Spiellogik | `Update` · `LateUpdate` |
+| Darstellung | `OnBecameVisible` · `OnBecameInvisible` · `OnPreCull` · `OnWillRenderObject` · `OnPreRender` · `OnRenderObject` · `OnPostRender` · `OnRenderImage` |
+| Skizzen und alte GUI | `OnDrawGizmos` · `OnDrawGizmosSelected` · `OnGUI` |
+| Anhalten und Ende | `OnApplicationPause` · `OnApplicationFocus` · `OnApplicationQuit` · `OnDisable` · `OnDestroy` |
+
+Was die Tabelle **nicht** ist: eine Aussage darüber, wie oft eine Methode
+läuft. `OnEnable` und `OnDisable` feuern bei jedem Ein- und Ausschalten,
+nicht nur am Anfang und am Ende — sie stehen hier trotzdem an den Rändern,
+weil die Folge das Lesen ordnet und nicht die Laufzeit zählt.
+
+Coroutinen stehen nicht in der Tabelle. Sie sind keine Event-Methoden,
+sondern private Methoden, und gehören damit unter Punkt 6.
 
 ### Denkmodell: Model-View-Presenter
 - Model = plain C# ohne Unity-API (testbar), View = nur Anzeige,
@@ -227,7 +246,7 @@ als verbindliche Folge hinterlegen, statt sie je Datei neu zu erraten.
 - Debug-Ausgaben (`Debug.Log`/`LogWarning`/`LogError`) in
   `#if UNITY_EDITOR … #endif` kapseln — Dozenten-Regel: keine Debug-Logs
   im gebauten Spiel. Reine Pipeline-Klassen loggen ohnehin nicht
-  (DECISIONS 2026-07-19).
+  (`Kern/DECISIONS.md`, 2026-07-23 — „Kommentar-Konventionen geschärft").
 - YAGNI: Abstraktion erst beim zweiten konkreten Use-Case.
 - Magic Numbers benennen: ein Literal, das ein externes Faktum kodiert,
   bekommt eine benannte `const` mit Warum-Kommentar. Selbsterklärende
@@ -264,16 +283,6 @@ nicht aus den Notizen abgeschrieben.
   2026-08-08 durch die Trennung in vier Systeme sichtbar geworden waren,
   sind im Ordnerbaum nicht mehr zu erkennen.
 
-**Offen (2026-08-22, beim Lesen des Baums aufgefallen):**
-- `FolderTemplate/` liegt weiter im Projekt und enthält die alte
-  Baustein-Vorlage (Animation, FBX, Materials, Prefabs, SO_Settings,
-  Scripts, Shader, Textures, VFX). Im Typ-Schema hat sie keine Aufgabe
-  mehr. Zu klären: löschen, umbauen oder als Vorlage für neue Projekte
-  behalten.
-- `Sandbox/` kommt in keiner Regel und keiner Entscheidung vor.
-Beides gehört zur Aufgabe `Projekte/Isor_Tower/ROADMAP.md` →
-„Ordnerstruktur im Unity-Projekt gegen die Vorlage prüfen".
-
 ### Review-Gate (vor dem Coden)
 Vor jeder Implementierung den Plan gegen diese Datei prüfen — Claude
 prüft mit, wenn er Code zeigt oder reviewt:
@@ -286,6 +295,10 @@ prüft mit, wenn er Code zeigt oder reviewt:
 5. Artifact-Check: Steht eines der Skripte, die gleich angefasst werden,
    in einer Skripte-Zeile von ARTIFACT_INDEX.md? Dann veraltet die Seite
    durch die Änderung und wird nach dem Coden nachgezogen.
+   **Ausnahme:** Seiten, deren Stand an einer Versionsnummer hängt,
+   werden nicht zwischendurch nachgezogen — dort wird die Abweichung
+   nur gesammelt (`ARTIFACT_INDEX.md` → „Was ohne neue Versionsnummer
+   passiert"). Betrifft heute `⚙️ System · Harness`.
 
 ## Repo & Git
 
@@ -300,7 +313,10 @@ Begründungen in `Kern/DECISIONS.md`. Nummern und Build-Ablage besitzt
   Asset-Library des Datenbaums (`IsorBackup/RULES.md`).
 - **Große Binärdateien laufen über Git LFS**, geregelt in der
   `.gitattributes` des Projekts: das Unity-Template (Texturen, Audio,
-  Modelle) plus `*.unity` und `NavMesh*.asset`. Kleine YAML-Configs
+  Modelle) plus `*.unity` und `NavMesh-*.asset`. Der Bindestrich ist kein
+  Tippfehler: `NavMesh*.asset` traf bei der Migration am 2026-08-26 auch
+  `ProjectSettings/NavMeshAreas.asset`, eine 1-KB-Einstellungsdatei.
+  Kleine YAML-Configs
   (ScriptableObjects) bleiben Text — ihre Diffs sind beim Tuning die
   Lesehilfe.
 - **Projekt-Repos mit Fremd-Assets sind privat.** Die
@@ -346,3 +362,11 @@ in der ROADMAP, geltende Regeln in den Blöcken oben.
   Hand-Prüfung (Abschnitt „Tests"; Begründung in `Kern/DECISIONS.md`).
   Neu geprüft wird, wenn ein Uni-Modul automatische Tests verlangt oder
   die Lernphase endet.
+- **Eine Ordner-Vorlage im Projekt (`Assets/FolderTemplate/`)** —
+  verworfen am 2026-08-26 samt `Assets/Sandbox/`. Beide waren leer und
+  wurden von nichts referenziert; die Vorlage bündelte zudem neun Typen
+  **unter** einem System und bildete damit das Schema ab, das der
+  Abschnitt „Ordnerstruktur" abgelöst hat. Begründung in
+  `Kern/DECISIONS.md`. Eine neue Vorlage wäre nur dann sinnvoll, wenn
+  sie das Typ-Schema abbildet — dann steht sie aber schon als Liste
+  oben und braucht keine leeren Ordner.

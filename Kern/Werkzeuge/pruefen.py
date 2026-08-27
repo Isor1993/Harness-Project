@@ -14,6 +14,12 @@ Die Prüfungen, jede aus einem belegten Fehler oder einer benannten Lücke:
   6 Hooks         Vorlage gegen .claude/settings.json (2026-08-23)
   7 Pfade         absoluter Pfad außerhalb PFADE.md  (Auslieferung 2.0.0)
   8 Knowledge     Artifact-IDs gegen ARTIFACT_INDEX  (15 tote Links, 2026-08-09)
+  9 Befundlisten  liegt eine _HARNESS_*.md herum?    (Störung 2026-08-26)
+
+Vor allen Prüfungen steht ein Blick auf Kern/PFADE.md: Trägt dort **jede**
+Marke `(nicht eingerichtet)`, ist das Projekt frisch ausgepackt. Dann
+entfallen die Prüfungen, und das Skript weist stattdessen an, den Ablauf
+`/harness:einrichten` zu beginnen (Kern/DECISIONS.md, 2026-08-27).
 
 Aufruf:
     python pruefen.py               alle Prüfungen
@@ -31,6 +37,7 @@ import json
 import os
 import re
 import sys
+import time
 
 # Die Windows-Konsole steht auf cp1252 und kann Pfeile und Anfuehrungszeichen
 # nicht darstellen. Ohne diese Zeilen bricht das Skript mit einem
@@ -582,7 +589,52 @@ def pruefe_knowledge(_dateien):
     return funde, u"%d Artifact-Verweise geprüft" % geprueft
 
 
+# ---------------------------------------------------------------- Prüfung 9
+
+def pruefe_befundlisten(_dateien):
+    """Liegt eine temporäre Befundliste in der Wurzel, wird nach ihr gefragt.
+
+    Anlass ist die Störung vom 2026-08-26: Die Liste zur Version 1.0.0 lag
+    drei Tage archivierbar in der Wurzel, während mehrere Sessions samt Hook
+    über den Bestand liefen — niemand fragte, ob ihr Durchgang durch ist.
+    Eine Befundliste gehört dem Moment (Kern/DOC_RULES.md, Abschnitt 8); was
+    sie überlebt, ist der Punkt in der ROADMAP, nicht die Datei.
+
+    Das Ergebnis ist ausdrücklich ein **Hinweis, kein Fund** — es zählt
+    nicht ins Ergebnis unten. Während einer laufenden Prüfung gehört die
+    Datei genau dorthin, und ein Fund wäre dann Rauschen. Ein Prüfer, dessen
+    Meldungen man wegklickt, ist wertlos (belegt bei Prüfung 1: 34 Funde,
+    davon 3 echt).
+
+    Gemessen wird die Zeit seit der letzten Änderung, nicht seit dem
+    Anlegen: Eine Liste, an der gerade geschrieben wird, ist frisch; eine,
+    die seit Tagen unverändert daliegt, ist der Fall aus der Störung. Das
+    Urteil bleibt beim Leser — das Skript nennt nur die Zahl.
+    """
+    hinweise = []
+    for name in sorted(os.listdir(BASE)):
+        if not name.endswith(".md") or not name.startswith(TEMPORAERE_LISTEN):
+            continue
+        tage = tage_unveraendert(os.path.join(BASE, name))
+        seit = (u"heute noch geändert" if tage < 1 else
+                u"seit %d Tag%s unverändert" % (tage, u"" if tage == 1
+                                                else u"en"))
+        hinweise.append((name, 0, u"%s — ist der Durchgang durch? Dann ins "
+                         u"_ARCHIV.md der geprüften Schicht, und der Verweis "
+                         u"darauf bekommt den Zusatz „(im Archiv)\"." % seit))
+    return hinweise, u"keine in der Wurzel" if not hinweise else u""
+
+
+def tage_unveraendert(voll):
+    return int((time.time() - os.path.getmtime(voll)) // 86400)
+
+
 # ------------------------------------------------------------------- Ablauf
+
+# Prüfungen, die melden ohne zu urteilen: Ihre Zeilen zählen nicht ins
+# Ergebnis. Nur so kann eine Meldung dastehen, ohne dass „0 Funde" zur Lüge
+# wird — und nur so bleibt „0 Funde" das Zeichen, dem man trauen kann.
+NUR_HINWEIS = (u"Befundlisten",)
 
 PRUEFUNGEN = [
     (u"Verweise", pruefe_verweise),
@@ -593,6 +645,7 @@ PRUEFUNGEN = [
     (u"Hooks", pruefe_hooks),
     (u"Pfade", pruefe_pfade),
     (u"Knowledge", pruefe_knowledge),
+    (u"Befundlisten", pruefe_befundlisten),
 ]
 
 
@@ -607,6 +660,54 @@ def glossar_abgeglichen():
     os.utime(ziel, None)
     print(u"GLOSSARY.md als abgeglichen vermerkt (Zeitstempel auf jetzt).")
     print(u"Der Vermerk hält, bis eine Besitzerdatei erneut geändert wird.")
+
+
+def einrichtungsstand():
+    """Welche Marken in Kern/PFADE.md noch keinen Pfad haben, und wie viele
+    es überhaupt gibt.
+
+    Erkennungszeichen ist der Eintrag `(nicht eingerichtet)` in der
+    Pfad-Spalte — den trägt eine frisch ausgepackte Auslieferung
+    (Kern/PFADE.md, Regeln). `(nicht benutzt)` zählt **nicht** dazu: Das ist
+    eine getroffene Entscheidung, kein offener Posten.
+    """
+    rel = "Kern/PFADE.md"
+    if not os.path.exists(os.path.join(BASE, rel)):
+        return [], []
+    offen, alle = [], []
+    for zeile in zeilen_von(lies(rel)):
+        if not zeile.startswith("|"):
+            continue
+        spalten = [s.strip() for s in zeile.strip().strip("|").split("|")]
+        if len(spalten) < 2:
+            continue
+        marke = re.match(u"^`([A-ZÄÖÜ][A-ZÄÖÜ_]*)`$", spalten[0])
+        if not marke:
+            continue
+        alle.append(marke.group(1))
+        if u"(nicht eingerichtet)" in spalten[1]:
+            offen.append(marke.group(1))
+    return offen, alle
+
+
+# Was ein frisch ausgepacktes Projekt beim ersten Session-Start liest.
+# Es ersetzt die Prüfausgabe, statt sie zu ergänzen: In einem frischen Baum
+# melden die Prüfungen Verweise auf Schichten, die es dort noch nicht gibt
+# (Kern/WORKFLOW.md, Ablauf von /harness:einrichten, letzter Punkt) — und
+# dieses Rauschen wäre das Erste, was ein neues Projekt vom Harness sieht.
+ANWEISUNG_EINRICHTEN = u"""pruefen.py — dieser Harness ist noch nicht eingerichtet.
+
+In `Kern/PFADE.md` trägt jede Marke `(nicht eingerichtet)`. Das ist der
+Zustand einer frisch ausgepackten Auslieferung, kein Fehler.
+
+ANWEISUNG: Beginne jetzt den Ablauf `/harness:einrichten`, ohne darauf zu
+warten, dass jemand ihn aufruft. Er steht vollständig in
+`Kern/WORKFLOW.md` unter „Ablauf von `/harness:einrichten`" — die Pfade
+einzeln abfragen statt als Block, nichts stillschweigend überschreiben,
+Marken ohne Bedarf auf `(nicht benutzt)` setzen.
+
+Die Prüfungen laufen in diesem Zustand bewusst nicht. Sobald die Pfade
+stehen, meldet der nächste Session-Start wie gewohnt."""
 
 
 def main():
@@ -631,27 +732,48 @@ def main():
         print(u"jedes /harness:sichern prüft weiterhin selbst, nach dem "
               u"Schreiben.\n")
 
+    offen, alle = einrichtungsstand()
+    if alle and len(offen) == len(alle):
+        print(ANWEISUNG_EINRICHTEN)
+        return
+
     gewuenscht = [int(a) for a in sys.argv[1:] if a.isdigit()]
     dateien = md_dateien()
     print(u"pruefen.py — %d Dateien im Bestand\n" % len(dateien))
 
     gesamt = 0
+    hinweise = 0
     for i, (name, funktion) in enumerate(PRUEFUNGEN, 1):
         if gewuenscht and i not in gewuenscht:
             continue
         funde, notiz = funktion(dateien)
-        gesamt += len(funde)
-        kopf = u"[%d] %-12s %d Fund%s" % (i, name, len(funde),
-                                          u"" if len(funde) == 1 else u"e")
+        meldet_nur = name in NUR_HINWEIS
+        if meldet_nur:
+            hinweise += len(funde)
+            wort = u"Hinweis" if len(funde) == 1 else u"Hinweise"
+        else:
+            gesamt += len(funde)
+            wort = u"Fund" if len(funde) == 1 else u"Funde"
+        kopf = u"[%d] %-12s %d %s" % (i, name, len(funde), wort)
         if notiz:
             kopf += u"   (%s)" % notiz
         print(kopf)
         for rel, nr, text in funde:
             ort = u"%s:%d" % (rel, nr) if nr else rel
-            print(u"    ! %s — %s" % (ort, text))
+            print(u"    %s %s — %s" % (u"?" if meldet_nur else u"!", ort, text))
 
     print(u"\nErgebnis: %d Fund%s. Nichts wurde geändert."
           % (gesamt, u"" if gesamt == 1 else u"e"))
+    if hinweise:
+        print(u"Dazu %d Hinweis%s — sie zählen nicht mit und sind kein Auftrag."
+              % (hinweise, u"" if hinweise == 1 else u"e"))
+    # Einzelne offene Marken lösen den Einrichten-Ablauf nicht aus — eine
+    # nachgetragene Marke ist kein frisch ausgepacktes Projekt. Gemeldet wird
+    # sie trotzdem: Ein leerer Pfad fällt sonst erst auf, wenn ein Werkzeug
+    # ihn braucht und still nichts tut (so entfällt heute Prüfung 8).
+    if offen and len(offen) < len(alle):
+        print(u"Offen in Kern/PFADE.md: %s — Pfad eintragen oder auf "
+              u"`(nicht benutzt)` setzen." % u", ".join(offen))
 
 
 if __name__ == "__main__":

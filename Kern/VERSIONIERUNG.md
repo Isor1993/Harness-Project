@@ -110,6 +110,10 @@ unter `05_Werkzeuge\Harness_Auslieferungen\Harness_<Version>\`
 - **Eine Auslieferung ist eine Vorlage, keine Kopie** (Isor, 2026-08-23).
   Wer den Harness in ein neues Projekt kopiert, bekommt ein leeres Regal
   statt fremder Sachen darin.
+- **Dieses Repo bleibt davon unberührt.** Gepackt wird in den Datenbaum;
+  die Originale hier behalten ihren vollen Inhalt. Was die Packliste
+  „leert", leert sie in der Kopie. *(Ausdrücklich hingeschrieben am
+  2026-08-27, weil die Frage beim Neufassen der Packliste aufkam.)*
 
 ### Die Packliste
 
@@ -118,14 +122,60 @@ Auslieferung neu entschieden (Isor, 2026-08-24). Grund: Die Frage stellte
 sich beim Packen von 2.0.0 zum zweiten Mal, und beide Male anders
 beantwortet zu haben wäre schlimmer als jede der beiden Antworten.
 
+**Neu gefasst am 2026-08-27 (Isor): eine Auslieferung trägt keine fremde
+Geschichte.** Bis dahin gingen die Chroniken vollständig mit, damit die
+Regeln ihre Begründung dabeihaben. Der Preis dafür war ein neues Projekt,
+das ab dem ersten Blick Isors Entscheidungen, Störungen und Bauschritte
+vor sich hat — Altbestand, den dort niemand lesen will und niemand pflegt.
+Begründung samt verworfener Wege in `Kern/DECISIONS.md`.
+
 | Behandlung | Dateien | Warum |
 |---|---|---|
-| **bleibt vollständig** | alle Regeldateien · `LOG.md` · `DECISIONS.md` · `STOERUNGEN.md` · `_ARCHIV.md` · `ROADMAP.md` | Die Chroniken erklären, **warum** die Regeln so aussehen — ohne sie steht der Kern ohne Begründung da. Die ROADMAP zeigt an echten Einträgen, wie eine geführt wird. |
-| **auf den Kopf geleert** | `ARTIFACT_INDEX.md` (Kopf und Feldliste bleiben als Muster) · `index_geplant.txt` (Kommentarkopf) · `PFADE.md` (Marken bleiben, Pfad-Spalte auf `(nicht eingerichtet)`) | Reine Bestandslisten. Ihr Inhalt ist fremd und wäre im neuen Projekt ab dem ersten Blick falsch, ihre **Form** ist die Vorlage. |
+| **bleibt vollständig** | alle Regeldateien — `CLAUDE.md`, `WORKFLOW.md`, `DOC_RULES.md`, `CODE_GUIDELINES.md`, `VERSIONIERUNG.md`, `GLOSSARY.md` und die übrigen · `Werkzeuge/` · `Befehle/` · `Vorlagen/` · `Bilder/` | Das **ist** der Harness. Eine Regel ohne ihren Wortlaut ist keine. |
+| **Kopf plus ein Musterbeispiel** | `LOG.md` · `DECISIONS.md` · `STOERUNGEN.md` · `_ARCHIV.md` · `ROADMAP.md` · `ARTIFACT_INDEX.md` | Titelzeile, `Ownership:`, `Format:` und **genau ein** Eintrag, erkennbar als Beispiel gekennzeichnet. Ganz leer wäre die Form nicht ablesbar, und die Formatzeile allein hat sich als zu wenig erwiesen; voll wäre es fremde Geschichte. |
+| **auf den Kopf geleert** | `index_geplant.txt` (Kommentarkopf) · `PFADE.md` (Marken und Zweck bleiben, Pfad-Spalte auf `(nicht eingerichtet)`) | Reine Bestandslisten ohne Eintragsformat. Hier gibt es nichts vorzumachen — die Tabelle selbst ist schon das Muster. |
 | **fällt ganz weg** | `Kern/Zeugnisse/` | Bewertet eine Person, nicht den Harness. |
 
-Neue Datei im Kern? Dann gehört sie beim Anlegen in eine dieser drei
-Zeilen — nicht erst beim nächsten Packen.
+Neue Datei im Kern? Dann gehört sie beim Anlegen in eine dieser Zeilen —
+nicht erst beim nächsten Packen.
+
+### Gepackt wird per Skript
+
+`Kern/Werkzeuge/ausliefern.py` setzt die Tabelle oben um. Ohne Schalter
+ist es ein **Trockenlauf**, der nur meldet; `--schreiben` legt die
+Auslieferung wirklich an. Eine schon vorhandene Auslieferung rührt es
+nicht an, sondern bricht ab — eine abgelegte wird nie bearbeitet (unten).
+
+Warum als Skript: Die Packliste sagt, dass sie nicht je Auslieferung neu
+entschieden wird. Von Hand gepackt wurde sie beide bisherigen Male
+verschieden ausgelegt; ein Skript legt sie jedes Mal gleich aus. Dieselbe
+Bauart wie beim INDEX — erzeugen statt pflegen (`Kern/DOC_RULES.md`,
+Abschnitt 5).
+
+**Ein Absatz, der nur dieses Projekt betrifft, wird in der Quelle
+eingeklammert:**
+
+    <!-- nicht ausliefern -->
+    *Für dieses Projekt:* … was hier geschah, mit Datum …
+    <!-- /nicht ausliefern -->
+
+Beim Packen fällt er weg. Das ist der Weg, wie ein Kopf-Absatz zugleich
+die Regel begründen und die eigene Geschichte erzählen kann, ohne dass
+Letztere mitreist — und wie die Auslieferung ohne Nachbearbeitung von
+Hand entsteht. Das Skript meldet am Ende jede geschnittene Datei, deren
+Kopf noch ein konkretes Datum trägt; steht die Liste leer, ist nichts
+mehr nachzusehen. Der Name „Isor" gilt dabei **nicht** als Altbestand —
+er steht in jeder Regeldatei als Rolle.
+
+**Was die gekürzten Chroniken kosten:** Regelsätze der Form „Begründung in
+`Kern/DECISIONS.md`" zeigen in einer Auslieferung auf ein Musterbeispiel
+statt auf die echte Entscheidung. Der Zeiger bleibt richtig — die Datei
+gibt es, und im neuen Projekt füllt sie sich mit den eigenen
+Entscheidungen. Wer die ursprüngliche Begründung sucht, findet sie im
+öffentlichen Harness-Repo; dass es öffentlich bleibt, ist genau dafür
+entschieden (`Kern/DECISIONS.md` → „Sichtbarkeit und Zugang der Repos").
+Kein Werkzeug prüft das nach: `pruefen.py` sieht, ob eine Datei existiert,
+nicht ob der Satz darin steht.
 
 ### Das Einrichten
 

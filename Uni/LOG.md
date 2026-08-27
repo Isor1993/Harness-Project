@@ -64,3 +64,18 @@ damals, nicht den von heute.
   Verschieben gegen `Abgabe\` geprüft, identisch) nach
   `99_Archiv\_Zu_Loeschen\2026-08-25_Abgabe_Final_Duplikate\`; es
   bleiben die zwei Abgabe-ZIPs.
+- 2026-08-26 — Uni-Schicht geprüft, erster Prüfbogen für diese Schicht:
+  sechs Befunde auf zwölf Dateien (1.663 Zeilen), geprüft gegen den
+  Prüfbogen aus `Kern/WORKFLOW.md`, den INDEX und die Regeldateien des
+  Kerns. Alle sechs stammen aus den zwei echten Regeldateien; Chroniken,
+  Archiv und die sieben Aufgabentexte waren ohne Befund.
+- 2026-08-26 — Fünf der sechs Befunde behoben, in eigener Session nach
+  Isors Revier-Freigabe: `Uni/DOCX_RULES.md` (U1 Ownership-Zeile auf
+  `Projekte/Isor_Tower/TDD.md`, U2 Prüfliste umgestellt — `validate.py`
+  ist jetzt Schritt 4 und läuft nur nach Handarbeit am XML, U3 Marke
+  `DATENBAUM` beim ersten Pfad) und `Uni/ROADMAP.md` (U4 relative
+  Zeitangabe aus der Überschrift, U5 „Abgeschlossenes" → „Überholtes").
+  U6 bleibt bewusst stehen, bis der nächste Textstand gebaut ist. Bei U2
+  wurden die zwei Rückverweise im Abschnitt „Werkzeuge" auf die neue
+  Nummerierung nachgezogen; geprüft mit `pruefen.py` und
+  `index_bauen.py`.

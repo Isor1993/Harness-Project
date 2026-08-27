@@ -297,7 +297,7 @@ Begründung mittragen. Sonst ist sie von Unordnung nicht zu unterscheiden.
 | Erzeugnis | Sprache |
 |---|---|
 | Code, Bezeichner, Ordnernamen | Englisch |
-| Kommentare im Code | Englisch oder Deutsch, aber einheitlich |
+| Kommentare und Ausgaben im Code | Englisch — keine Ausnahme |
 | Commit-Titel und -Beschreibung | Englisch |
 | Harness-Dokumente (diese .md-Dateien) | Deutsch |
 | Knowledge-Seiten | Deutsch |

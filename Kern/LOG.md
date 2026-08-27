@@ -363,6 +363,30 @@ damals, nicht den von heute.
   Seitenvergleich Original gegen Neubau, zuletzt 194 interne Sprünge
   maschinell (kein toter); zweiter Sichttest bestanden (Isor).
   Markdown führt seit heute (`Uni/DOCX_RULES.md`).
+- 2026-08-25 — E14 gebaut: `Projekte/Isor_Tower/Werkzeuge/systeme.py`
+  erzeugt `SYSTEME.md` aus den Script-Ordnern des Unity-Projekts, erster
+  Lauf 17 Ordner mit 93 Skripten. Gelesen wird die heutige Typ-Struktur
+  (`Assets/Scripts/<System>/` plus `Assets/Editor/`), der Projektpfad
+  kommt über die Marke `PROJEKT` aus `Kern/PFADE.md`. Die Beschreibung je
+  System füllt Isor von Hand; bis dahin steht dort „⚠ fehlt".
+  *(Nachgetragen am 2026-08-27: Der Bau stand nur als Haken in der
+  ROADMAP und in keinem LOG-Eintrag — aufgefallen beim Durchgang vor dem
+  Semesterstart.)*
+- 2026-08-25 — E56 entschieden und geschrieben: **kein Unity Test
+  Framework.** Geprüft wird von Hand — TestMode-Muster, Sichtprüfung,
+  Diagnostic-Skripte —, und genau das steht jetzt als Abschnitt „Tests"
+  in `Kern/CODE_GUIDELINES.md`. Die Verwerfung samt ihrem Wiederprüf-
+  Anlass steht dort unter „Bewusst nicht übernommen", die Begründung in
+  `Kern/DECISIONS.md`. *(Nachgetragen am 2026-08-27, gleicher Anlass.)*
+- 2026-08-25 — Der Pflegetag prüft ab sofort **eine Seite gründlich**
+  statt aller oberflächlich: Der Metadaten-Abgleich bleibt und
+  kontrolliert die Stand-Stempel, dazu kommt je Pflegetag genau eine
+  Seite gegen Code und führende Quelle — dran ist die lebendige Seite mit
+  dem ältesten Stand im `ARTIFACT_INDEX.md`. Anlass war die Messung vom
+  2026-08-23: Der Abgleich allein fand drei von rund dreißig Funden.
+  Regeln in `Kern/ARTIFACT_RULES.md` („Wann geschaut wird") und
+  `Kern/WORKFLOW.md` (Pflegetag). *(Nachgetragen am 2026-08-27, gleicher
+  Anlass.)*
 - 2026-08-26 — **Repo/Git-System geordnet** (Design und Development in
   einer Session). Alle drei Repos vermessen: Harness (3,2 MB) und
   Knowledge (0,2 MB) gesund; im Unity-Repo 119 MB Pack, davon 92 % aus
@@ -489,3 +513,111 @@ damals, nicht den von heute.
   geschrieben, sondern gemeldet:** der Behebungspunkt in
   `Uni/ROADMAP.md` und der Satz in `Uni/LOG.md` — fremdes Revier, die
   Texte liegen fertig am Ende der Befundliste.
+- 2026-08-26 — **Die fünfzehn Befunde beider Listen behoben**, in einer
+  frischen Session und damit nicht von der prüfenden
+  (`WORKFLOW.md` → „Prüfung"). Voran ein Design-Abschnitt für die zwei
+  Entscheidungen, die die ROADMAP Isor zugewiesen hatte: Die Sprachregel
+  gewinnt in der harten Fassung („Englisch — keine Ausnahme", Besitzer
+  ist `DOC_RULES.md` Abschnitt 9), und `Assets/FolderTemplate/` samt
+  `Assets/Sandbox/` entfallen — gemessen 0 Dateien und 0 Verweise in
+  `Assets/`, `ProjectSettings/` und `Packages/`, und die Vorlage bündelte
+  neun Typen unter einem System, also das Schema, das am 2026-08-20
+  abgelöst wurde. Danach Development: **acht von neun Kern-Befunden**
+  (C9 hatte keinen Auftrag) in `CODE_GUIDELINES.md`, `DOC_RULES.md` und
+  `ROADMAP.md`, sowie **fünf von sechs Uni-Befunden** in
+  `Uni/DOCX_RULES.md` und `Uni/ROADMAP.md`, nachdem Isor das Uni-Revier
+  freigegeben hatte. Zwei Reste stehen bewusst offen und sind in den
+  ROADMAPs vermerkt: U6 wartet auf den nächsten Textstand, C5 ist zu
+  einem eigenen Punkt geworden (Unity-Event-Reihenfolge). Bei U2 fielen
+  zwei Rückverweise auf die alten Schrittnummern an, die kein Werkzeug
+  meldet — genau das Muster, das Befund C9 beschreibt; von Hand
+  nachgezogen. Geprüft mit `index_bauen.py --write` (57 Dateien, alle mit
+  Ownership-Zeile) und `pruefen.py`: 0 Funde, nachdem der Glossar-Hinweis
+  zu `CODE_GUIDELINES.md` und `DOC_RULES.md` gegengelesen war (neun
+  Kurzformen, keine betroffen) und mit `--glossar-ok` quittiert.
+  Offen bleibt ein Handgriff bei Isor: die zwei Ordner im Unity-Editor
+  löschen.
+- 2026-08-26 — **Beide Befundlisten archiviert**, direkt nach der
+  Behebung statt Tage später: `_HARNESS_CODE_GUIDELINES.md` (16.577 B)
+  und `_HARNESS_UNI_SCHICHT.md` (13.092 B) in den Datenbaum unter
+  `99_Archiv\_Zu_Loeschen\2026-08-26_Pruefung_Code_Guidelines\` bzw.
+  `…_Pruefung_Uni_Schicht\` (`Kern/PFADE.md` → `DATENBAUM`), Bytezahl
+  vor und nach dem Verschieben geprüft. Beide Einträge stehen in
+  `Kern/_ARCHIV.md`, auch der zur Uni-Liste: Eine Befundliste liegt in
+  der Repo-Wurzel und gehört dem Prüfdurchgang, nicht der geprüften
+  Schicht — dieselbe Ablage wie bei `_HARNESS_PRUEFUNG_1_0_0.md`.
+  INDEX neu erzeugt (55 Dateien). `pruefen.py` meldete danach vier
+  Verweise auf die verschwundenen Listen; zwei in `Kern/ROADMAP.md`
+  wurden mit dem Zusatz „(im Archiv)" versehen, die zwei in `PLAN.md`
+  blieben stehen — Gemeinschaftsboden, den nur die Befehle anfassen, und
+  die betroffene Zeile überschreibt `/harness:ende` ohnehin.
+- 2026-08-26 — **`Assets/FolderTemplate/` und `Assets/Sandbox/` sind im
+  Unity-Projekt gelöscht** (Isor, im Editor). Gegengeprüft: kein Rest im
+  Arbeitsbaum, `git status` des Unity-Repos meldet genau elf gelöschte
+  `.meta`-Dateien — die neun inneren und die zwei Ordner-`.meta` im
+  Elternordner. Die zwei äußeren blieben nach dem ersten Durchgang noch
+  liegen und fielen erst, nachdem Unity neu geöffnet war; ein
+  Editor-Refresh räumt sie nicht immer im selben Zug ab. Damit ist
+  Befund C4 nicht nur im Regelwerk, sondern auch im Projekt geschlossen;
+  der Commit steht im Unity-Repo aus.
+- 2026-08-27 — **Harness 2.1.0: fertig gebaut, Testphase eröffnet.** Die
+  letzten beiden Bau-Punkte der ROADMAP erledigt. **Volle
+  Unity-Event-Reihenfolge** in `Kern/CODE_GUIDELINES.md`: acht Phasen von
+  `Reset`/`OnValidate` bis `OnDestroy`, dazu die zwei Abgrenzungen, die
+  der alte „Unvollständig"-Block offenließ (die Tabelle ordnet das Lesen,
+  nicht die Laufzeit; Coroutinen sind private Methoden). **Prüfung 9** in
+  `pruefen.py` meldet als Hinweis, wenn eine `_HARNESS_*.md` in der
+  Wurzel liegt, samt Tagen seit der letzten Änderung — Gegenmittel zur
+  Störung vom 2026-08-26. Dafür trennt das Skript jetzt **Hinweise von
+  Funden**: eigene Zählung, `?` statt `!`, „0 Funde" bleibt unangetastet.
+  Belegt gegen einen Wegwerf-Fall mit einer drei Tage alten Datei.
+- 2026-08-27 — **Der Harness richtet sich beim ersten Start selbst ein.**
+  `pruefen.py` liest vor allen Prüfungen `Kern/PFADE.md`: Trägt **jede**
+  Marke `(nicht eingerichtet)`, entfallen die Prüfungen, und das Skript
+  schreibt die Anweisung in den Kontext, sofort den Ablauf
+  `/harness:einrichten` zu beginnen. Steht nur eine einzelne Marke offen,
+  läuft alles normal und sie wird am Ende als Zeile gemeldet. Belegt
+  gegen einen Wegwerf-Baum im Scratchpad, beide Fälle getrennt: alle
+  Marken offen → Anweisung statt Prüfliste; eine offen, zwei gesetzt →
+  normaler Lauf plus Meldung. Nachgezogen in `Kern/WORKFLOW.md`
+  (Einrichten-Ablauf, Prüfebenen, Sichern-Ablauf) und `CLAUDE.md`
+  (Sonderfall Erststart in der Leseordnung).
+- 2026-08-27 — **Packliste neu gefasst: eine Auslieferung trägt keine
+  fremde Geschichte** (Isor). Chroniken und Bestandslisten gehen künftig
+  als Kopf plus **ein gekennzeichnetes Musterbeispiel** mit statt
+  vollständig; Regeldateien, Werkzeuge, Befehle, Vorlagen und Bilder
+  bleiben unverändert. Löst die erste Zeile der Packliste vom 2026-08-24
+  ab. Ausdrücklich in Kauf genommen und in `Kern/VERSIONIERUNG.md`
+  benannt: Regelsätze der Form „Begründung in `Kern/DECISIONS.md`" zeigen
+  in einer Auslieferung auf ein Beispiel; die echte Begründung steht im
+  öffentlichen Harness-Repo.
+- 2026-08-27 — **ROADMAPs geleert, vor dem Semesterstart.**
+  `Kern/ROADMAP.md` von 313 auf 68 Zeilen, `Uni/ROADMAP.md` von 46 auf
+  35 — alle abgehakten Punkte raus, weil die Ownership-Zeile beider
+  Dateien „was fertig ist, in `LOG.md`" sagt und sie das Gegenteil taten.
+  Vorher gegengeprüft, ob jeder Haken im LOG belegt ist: **drei waren es
+  nicht** (E14 `systeme.py`, E56 Test-Abschnitt, „Pflegetag prüft eine
+  Seite gründlich") und wurden zum 2026-08-25 nachgetragen, bevor
+  irgendetwas verschwand. `IsorBackup/ROADMAP.md` und
+  `Projekte/Isor_Tower/ROADMAP.md` tragen keine Haken und blieben
+  unangetastet. Kein Widerspruch mehr zwischen `PLAN.md` und
+  `Kern/ROADMAP.md` über die erste Aufgabe der Testphase: Sie ist
+  **Phase 0 des Koop-Prototyps**, nicht der Datenbaum (Isor,
+  2026-08-27) — der hat keinen Termin, der Prototyp einen.
+- 2026-08-27 — **Auslieferung `Harness_2.1.0` abgelegt, gepackt per
+  Skript.** Neu gebaut: `Kern/Werkzeuge/ausliefern.py` — Trockenlauf als
+  Voreinstellung, `--schreiben` legt an, eine vorhandene Auslieferung
+  bricht den Lauf ab. Neu ist außerdem die Klammer
+  `<!-- nicht ausliefern -->` in der Quelle: Ein Absatz darin fällt beim
+  Packen weg, wodurch ein Kopf-Absatz zugleich die Regel begründen und
+  die eigene Geschichte erzählen kann. Gesetzt wurde sie an drei Stellen
+  (`Kern/ROADMAP.md` zweimal, `Kern/STOERUNGEN.md` einmal); eine vierte
+  Fundstelle im Ownership-Block von `STOERUNGEN.md` wurde stattdessen
+  allgemein umformuliert. Ergebnis: 33 Dateien, 229.317 Bytes, und die
+  Nachsehen-Liste des Skripts steht leer — die Auslieferung entsteht in
+  **einem** Lauf, ohne Nachbearbeitung von Hand. Gemessen am Zuschnitt:
+  `Kern/LOG.md` 538 → 19 Zeilen, `Kern/DECISIONS.md` 1.271 → 27,
+  `Kern/WORKFLOW.md` unverändert 609. Geprüft im ausgelieferten Baum
+  selbst: `pruefen.py --hook` meldet dort nicht „0 Funde", sondern die
+  Anweisung, den Einrichten-Ablauf zu beginnen — der Erststart-Fall greift
+  also in genau der Lage, für die er gebaut wurde.

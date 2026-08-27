@@ -2,29 +2,33 @@
 
 Ownership: Nur was für das Studium als Nächstes zu tun ist,
 semesterübergreifend. Was gerade dran ist, steht in `PLAN.md`; was
-passiert ist, in `Uni/LOG.md`; Abgeschlossenes in `Uni/_ARCHIV.md`.
+passiert ist, in `Uni/LOG.md`; Überholtes in `Uni/_ARCHIV.md`.
 Format: `- [ ] **Titel** — ein bis drei Sätze, was zu tun ist und warum.`
 
+**Diese Datei wurde am 2026-08-27 geleert**, im selben Durchgang wie
+`Kern/ROADMAP.md`. Die erledigten Punkte (E62, `Abgabe_Final`, die
+Befunde der Prüfung vom 2026-08-26) stehen mit ihren Belegen in
+`Uni/LOG.md`.
+
 ## Als Nächstes
-- [x] **Fehlende Aufgabentexte nachtragen** (E62). Das Portfolio hat
-  sieben Teilabgaben, hinterlegt sind drei Aufgabentexte. Es fehlen
-  Softwareplanung, KI-Prototyp, Simulation der Spieleumgebung und
-  „Arbeiten nach akademischen Standards". `ASSESSMENT_RULES` verlangt für
-  jedes Zeugnis die Kriterien im Originaltext — beide bisherigen Zeugnisse
-  haben sieben Abgaben bewertet und hatten die Kriterien für drei.
-  Wo es keinen eigenen Text gibt, wird **genau das** als Datei
-  festgehalten, damit die Lücke belegt ist statt unsichtbar.
+
 - [ ] **Abgabe-Struktur beim Semesterstart kopieren, nicht am Ende
-  sortieren.** Die Vorlage liegt unter
-  `05_Werkzeuge\Vorlagen\SAE_Abgabe_Struktur\`. Im zweiten Semester
-  wurde erst am Schluss einsortiert; das nächste Mal steht der Baum von
-  Anfang an.
+  sortieren.** Die Vorlage liegt im Datenbaum unter
+  `05_Werkzeuge\Vorlagen\SAE_Abgabe_Struktur\` (`Kern/PFADE.md` →
+  `DATENBAUM`). Im zweiten Semester wurde erst am Schluss einsortiert;
+  das nächste Mal steht der Baum von Anfang an. **Jetzt fällig** —
+  Semester 3 hat begonnen.
 
-- [x] **`Abgabe_Final` aufräumen.** Dort liegen neben den zwei ZIPs noch
-  die zwei Portfolio-Ordner, byteidentisch mit denen in `Abgabe\`. Nach
-  Isors Ablauf gehört in `Abgabe_Final` nur das ZIP — der Rest ins
-  Archiv, sobald der Upload bestätigt ist.
+- [ ] **`U6` streichen, sobald das TDD neu gebaut wird.** Der Satz über
+  die abgegebene Fassung vom 21.08. in `Uni/DOCX_RULES.md` gibt bis dahin
+  eine richtige Auskunft; er wird falsch in dem Moment, in dem eine neue
+  Fassung entsteht. Einziger übriger Befund der Prüfung vom 2026-08-26,
+  bewusst stehen gelassen.
 
-## Semester 3 (beginnt in rund zwei Wochen, Stand 2026-08-22)
+## Semester 3
+
 - [ ] **Ordner `Uni/Semester_3/` anlegen**, sobald die Aufgaben da sind,
-  und die Aufgabentexte gleich zu Beginn ablegen.
+  und die Aufgabentexte gleich zu Beginn ablegen. `ASSESSMENT_RULES`
+  verlangt für jedes Zeugnis die Kriterien im Originaltext — im zweiten
+  Semester fehlten sie für vier von sieben Abgaben und mussten
+  nachträglich zusammengesucht werden.
