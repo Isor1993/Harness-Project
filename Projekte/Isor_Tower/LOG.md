@@ -569,3 +569,12 @@ damals, nicht den von heute.
   Windows-Build auf dem Laptop. `NetTestbed.unity` bleibt als
   Diagnose-Szene stehen, `Fingerprint.unity` daneben als Prüfstand der
   Weltgleichheit.
+- 2026-08-28 — Phase 1, Baustein A gebaut und abgenommen: `ISessionService`
+  (drei Wege, Antworten als Rückrufe) in `Scripts/Interfaces/`,
+  `RelaySessionService` (async innen, kennt keine UI) in
+  `Scripts/NetWorking/`, dazu das Menü als Panel-Kette — Multiplayer-Wahl,
+  Join-Panel, Lobby-Panel (`DECISIONS/UI.md`). Abnahme: „Host World" zeigt
+  den Join-Code im Lobby-Label; Fehlweg geprüft (falscher Code → Meldung
+  im Join-Panel). Den Dienst-Code hat Isor selbst getippt (Entwurf vor
+  Gerüst, kleinschrittig); Verdrahtung der Szene per Skript-Audit
+  gegengelesen, vier Verdrahtungsfehler gefunden und behoben.

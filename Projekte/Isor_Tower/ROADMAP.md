@@ -43,14 +43,30 @@ Kernschleife bleibt dann vollständig vorführbar.
   dem Laptop. Geprüft wird auf PC und Laptop statt mit einem Mitspieler
   (`DECISIONS/Multiplayer.md`, 2026-08-27). Die Szene bleibt dauerhaft
   als Diagnose-Szene stehen.
-- [ ] **Phase 1 · Spielernaht und Einstieg** *(3 Wochen)* — Das
-  Input-Asset wird nach Reichweite geteilt, der Motor bekommt seine
-  Eingabe gereicht statt sie zu holen, das Spieler-Prefab wird zum
-  Netzobjekt mit sichtbarem Körper. Dazu der Einstieg über das bestehende
-  Hauptmenü: allein spielen, Welt erstellen, Welt beitreten; der
-  Ladebalken wartet auf mehrere statt auf einen. Der Verbindungsaufbau
-  bekommt hier seine Naht — `ISessionService`, damit ein späterer
-  Steam-Transport eine Datei kostet und keinen Umbau.
+- [ ] **Phase 1 · Spielernaht und Einstieg** *(3 Wochen)* — geschnitten
+  in vier Bausteine (`DECISIONS/Multiplayer.md`, 2026-08-28), jeder mit
+  sichtbarem Ergebnis:
+  - [x] **Baustein A · `ISessionService` und die drei Menüwege** —
+    **abgenommen am 2026-08-28** (`LOG.md`): Code im Lobby-Label,
+    Fehlweg geprüft. Der Menü-Aufbau wurde dabei zur Panel-Kette mit
+    Lobby (`DECISIONS/UI.md`). Allein
+    spielen (`StartHost()` direkt, kein Internet), Welt erstellen, Welt
+    beitreten. Noch ohne Szenenwechsel; fertig, wenn „Welt erstellen"
+    den Join-Code im Menü zeigt.
+  - [ ] **Baustein B · Netzsynchroner Szenenwechsel und Ladebalken** —
+    Zielszene ist eine leere `StarterVillage` mit flachem Boden; der
+    Ladebalken wartet auf mehrere statt auf einen. Fertig, wenn Host und
+    Gast nach dem Klick in derselben Szene stehen.
+  - [ ] **Baustein C · Spieler-Prefab als Netzobjekt und Eingabe-Naht** —
+    `NetworkObject` plus sichtbarer Körper, `PlayerInputRelay` reicht die
+    Eingabe (`DECISIONS/Player.md`, 2026-08-28), Kamera und AudioListener
+    nur auf der eigenen Figur. Der Behelfsknopf und `NetTestPlayerMover`
+    aus Phase 0 fliegen hier raus. Dazu: die Pause erreicht jetzt die
+    Relay-Komponente statt des Assets, und `Time.timeScale = 0` entfällt
+    (`DECISIONS/Multiplayer.md`, 2026-08-28, „Die Pause friert nichts
+    mehr ein").
+  - [ ] **Baustein D · `StarterVillage` wächst** — der Terrain-Generator
+    kommt in die Szene, danach Features einzeln nach der Übernahme-Regel.
   *Fertig heißt:* Spiel starten, im Menü eine Welt erstellen, Code
   weitergeben, zusammen durch `StarterVillage` laufen — die Zielszene ist
   von Anfang an das Village, keine Wegwerf-Testwelt
@@ -139,6 +155,39 @@ sich klein.
   als eigene Stufe danach und bleibt ungemessen. Kein Termin: Die riskante
   Stelle ist die Poisson-Streuung, nicht der Formtest. Fällig, wenn der Test
   einmal als vollständige Abnahme der Weltgleichheit gelten soll.
+- [ ] **Session auflösen beim Verlassen der Lobby** — Back lässt heute die
+  Verbindung stehen; wer erneut hostet, bekommt korrekt „Already
+  connected.", versteht aber nicht warum (Isors Befund beim ersten
+  Testlauf, 2026-08-28). Braucht einen vierten Weg in `ISessionService`
+  (Leave: Session verlassen, `NetworkManager` herunterfahren). Fällig in
+  Phase 1, Baustein B — dort wird der Session-Lebenszyklus ohnehin gebaut.
+- [ ] **Lobby-Ausbau: Spielerliste und Ready-System** — wer ist drin, wer
+  hat Ready gedrückt, der Host startet erst dann; Knöpfe rollenabhängig
+  ausgrauen. Entwurf steht in `DECISIONS/UI.md` (2026-08-28). Fällig in
+  Phase 1, Baustein B/C — braucht die Verbunden-Meldungen des
+  NetworkManagers.
+- [ ] **Artifact-Seite `⚙️ System · Grundgerüst` nachziehen** — der
+  Menü-Umbau vom 2026-08-28 (Panel-Kette, `ISessionService`,
+  `MainMenuController`) veraltet die Seite; Befund aus dem Review-Gate.
+  Fällig beim nächsten Pflegetag.
+- [ ] **Stick-Umsehen dreht bildratenabhängig** — `PlayerLook` rechnet
+  Maus und Stick gleich (`lookInput * _sensitivity`, ohne `deltaTime`).
+  Für die Maus ist das richtig (ihr Wert ist eine Strecke), der Stick
+  liefert aber eine Auslenkung: Bei 120 fps dreht dieselbe Stickstellung
+  doppelt so schnell wie bei 60. Getrennter Rechenweg je Quelle nötig.
+  Fällig in Phase 1, Baustein C — dort wird `PlayerLook` ohnehin umgebaut.
+- [ ] **FastForward hat keine Gamepad-Bindung** — die Action kennt nur
+  `T`; alle anderen Actions haben ein Gamepad-Pendant. Eine Zeile im
+  `PlayerControls`-Asset. Kosmetisch, kein Termin.
+- [ ] **Join-Code-Eingabe geht nur mit Tastatur** — das `TMP_InputField`
+  verlangt eine; mit dem Controller allein kommt niemand in eine fremde
+  Welt. Entweder eine Zeichen-Auswahl bauen oder die Code-Eingabe bewusst
+  zur Tastatur-Sache erklären; auf Steam löst das Overlay das später von
+  selbst. Weggabelung, fällig in Phase 1, Baustein A.
+- [ ] **Vorspulen wirkt nur lokal** — `TimeFastForward` beschleunigt die
+  eigene `IngameTime`; drückt der Gast `T`, ist bei ihm Nacht und beim
+  Host Tag. Fällig, sobald die Ingame-Uhr ins Netz kommt — spätestens,
+  wenn Gegner oder Schafe nach Tageszeit handeln sollen.
 - [ ] **Projektnamen im Cloud-Dashboard kürzen** — er heißt
   `Isor Tower ProtoTyp 2026 2026-07-03_17-11-35` und trägt einen
   angehängten Zeitstempel, der das Suchen erschwert. Kosmetisch, kein
@@ -161,6 +210,10 @@ offen.
   später. Findet die Datenschnittstelle aus Phase 2 vor.
 - [ ] **Host-geprüfte Bewegung** — wann und ob die Tür benutzt wird, die
   die Input-Naht offenhält.
+- [ ] **Lobby-Komfort** — Text-Chat (billig: dasselbe Muster wie der
+  Ping-Zähler, plus eine Textliste), Voice (eigenes System, Unity Vivox),
+  Spieler entfernen. Gewünscht am 2026-08-28, bewusst hinter den
+  Prototyp gestellt.
 - [ ] **Steam-Transport statt Unity Relay** — sobald eine App-ID
   existiert. Betroffen ist nur die Transportschicht hinter
   `ISessionService`; zu prüfen ist dann, ob ein Community-Transport zur

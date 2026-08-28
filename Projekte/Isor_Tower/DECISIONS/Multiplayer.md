@@ -474,3 +474,47 @@ sichtbar wird, ob sie trägt.
 Verworfen: den Ausweichweg vorsorglich trotzdem bauen (Arbeit an einem
 Weg, der nach Messlage nicht gebraucht wird); die Messung als endgültig
 behandeln (sie gilt für zwei Geräte und eine Plattform, nicht für alle).
+
+## 2026-08-28 — Phase 1 wird in vier Bausteine geschnitten
+Was: Erstens `ISessionService` samt der drei Menüwege, noch ohne
+Szenenwechsel — fertig, wenn „Welt erstellen" den Join-Code zeigt.
+Zweitens der netzsynchrone Szenenwechsel mit Ladebalken in eine leere
+`StarterVillage` (flacher Boden). Drittens das Spieler-Prefab als
+Netzobjekt plus Eingabe-Naht (`DECISIONS/Player.md`); der Behelfsknopf
+aus Phase 0 fliegt hier raus. Viertens wächst die `StarterVillage`: erst
+der Terrain-Generator, danach Features nach der Übernahme-Regel.
+Warum: Isors Schnitt — erst die Menüanbindung, dann das Village nach und
+nach —, ergänzt um die leere Szene dazwischen: Ohne Zielszene ist der
+Menüweg nur am Log prüfbar, und beim ersten netzsynchronen Szenenwechsel
+soll die Generierung nicht als zweite Fehlerquelle danebenstehen. Jeder
+Baustein hat so ein Ergebnis, das man am Bildschirm sieht.
+Verworfen: die Menüanbindung als ein Block bauen (drei Bausteine lang
+nichts Vorführbares); den Terrain-Generator schon in den Szenenwechsel-
+Baustein nehmen (zwei Fehlerquellen im selben Schritt).
+
+## 2026-08-28 — Solo startet den Host direkt und braucht kein Internet
+Was: „Allein spielen" ruft `StartHost()` am NetworkManager — ohne
+`UnityServices`-Anmeldung, ohne Relay, ohne Sessions-API.
+`ISessionService` bekommt dafür einen dritten Weg neben Create und Join.
+Warum: Die Host-Modell-Entscheidung vom 2026-08-25 stützt sich darauf,
+dass ohne Internet etwas läuft — die Sessions-API verlangt aber eine
+Anmeldung übers Netz. Solo ist ein Host mit einem Spieler; dem Rest des
+Spiels ist der Unterschied unsichtbar, es bleibt bei einem Codepfad.
+Verworfen: Solo ebenfalls über Relay laufen lassen (Internetzwang ohne
+Nutzen, und Relay rechnet nach Datenmenge ab); ein eigener Offline-Pfad
+am Netz vorbei (widerspricht „Solo ist eine Runde mit einem Spieler").
+
+## 2026-08-28 — Die Pause friert nichts mehr ein
+Was: Das Pausenmenü hält die Welt nicht mehr an — `Time.timeScale = 0`
+im `GameController` entfällt. Pausieren heißt: Menü zeigen, Cursor
+freigeben, die eigene Spieler-Eingabe abschalten. Gilt auch solo; eine
+Solo-Ausnahme (allein darf einfrieren) bleibt möglich, wird aber nicht
+jetzt gebaut.
+Warum: Isors Entscheidung. `timeScale` wirkt nur auf der eigenen
+Maschine — der Host fröre beide Spieler ein, der Gast nur sich selbst,
+zwei verschiedene Fehlerbilder aus derselben Zeile. Der Preis ist
+benannt: Die pausierende Figur steht angreifbar in der Welt, wie in
+Koop-Spielen üblich.
+Verworfen: die Host-Pause friert alle ein (der Gast steht dann grundlos
+still); die Solo-Ausnahme sofort mitbauen (ein zweiter Fall — genau was
+die Solo-Entscheidung vom 2026-08-25 vermeiden will).

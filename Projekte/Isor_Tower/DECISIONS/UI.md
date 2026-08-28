@@ -218,3 +218,30 @@ Verworfen: `Background` und `UISprite` (beide rund, gleiches Problem); `Knob`
 (ein Kreis, ergab die erste Linsenform); ganz ohne Source Image — dann
 zeichnet Unity ein volles Rechteck und ignoriert `fillAmount`, und das Feld
 `Image Type` erscheint gar nicht erst.
+
+## 2026-08-28 — Der Netz-Einstieg ist eine Panel-Kette mit einer Lobby
+Was: Hauptmenü → `MultiPlayerPanel` (nur die Wahl: Host oder Join) →
+der Host landet direkt im `LobbyPanel` (Join-Code groß, sofort „Creating
+world…" als Klick-Feedback), der Gast erst im `JoinPanel` (Eingabefeld,
+Fehlerzeile, „Joining…") und bei Erfolg in **derselben** Lobby. Eine
+Lobby für beide Rollen — was sich unterscheidet, ist der sichtbare
+Inhalt je Rolle, nicht das Panel. Jeder Back-Knopf spiegelt exakt den
+Knopf, der einen herbrachte. Der `HostGame`-Knopf in der Lobby steht
+leer und wird in Baustein B der Start-Knopf.
+Entwurf für Baustein B, noch nicht gebaut: Spielerliste in der Lobby,
+Ready-Knopf beim Gast, der Host startet erst, wenn alle bereit sind;
+Knöpfe rollenabhängig ausgrauen. Nach dem Prototyp: Text-Chat, Voice,
+Spieler entfernen.
+Warum: Isors Vorschlag nach dem ersten Testlauf (Vorbild R.E.P.O.):
+Host- und Join-Ablauf in einem Panel wirkten gepresst, und der Host
+braucht ohnehin einen eigenen Moment für den Code. Die Kette benutzt
+das vorhandene Tafel-Umschalt-Muster der Options — kein neuer Code,
+keine zweite Formensprache. Die Lobby ist nicht wörtlich geteilt: Jeder
+Rechner zeigt sein eigenes Panel, gefüllt mit dem, was das Netz meldet —
+deshalb kann sie heute schon existieren und mitwachsen.
+Verworfen: Popup-Fenster (zweite Formensprache, eigene Zustands-Fallen —
+genau die Menü-Bugs vom August); alle Knöpfe flach ins Hauptmenü (sieben
+Elemente, Eingabefeld für alle sichtbar); je Rolle ein eigenes
+Lobby-Panel (mein Vorschlag — doppelte Pflege für denselben Inhalt);
+`JoinWorld` am Tür-Knopf der Wahl (das Feld ist dort immer noch leer,
+jeder Klick schiene zu scheitern).

@@ -22,15 +22,16 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(geschrieben 2026-08-28 beim `/harness:ende`)*
+*(geschrieben 2026-08-28 beim `/harness:ende`, zweite Session des Tages)*
 
-**Phase 0 ist abgeschlossen** — alle fünf Abnahmepunkte, der Seed-Weg ist
-gemessen und trägt (`Projekte/Isor_Tower/LOG.md`, 2026-08-28). Als Nächstes
-**Phase 1 · Spielernaht und Einstieg** (3 Wochen,
-`Projekte/Isor_Tower/ROADMAP.md`): Input nach Reichweite teilen,
-Spieler-Prefab zum Netzobjekt, Einstieg über das bestehende Hauptmenü, und
-`ISessionService` als Naht für einen späteren Steam-Transport. Sonntags die
-Ein-Seiten-Prüfung: dran ist `💡 EditorWindow & MVP`.
+**Phase 1, Baustein A ist abgenommen** — `ISessionService`,
+`RelaySessionService`, Menü als Panel-Kette mit Lobby
+(`Projekte/Isor_Tower/LOG.md`, 2026-08-28). Als Nächstes **Baustein B ·
+netzsynchroner Szenenwechsel und Ladebalken** in eine leere
+`StarterVillage` (`Projekte/Isor_Tower/ROADMAP.md`). Dort zuerst als
+Design-Fragen: der Start-Flow aus der Lobby (Ready-Entwurf in
+`DECISIONS/UI.md`) und das Session-Auflösen beim Verlassen (Leave-Weg).
+Sonntags die Ein-Seiten-Prüfung: dran ist `💡 EditorWindow & MVP`.
 
 ---
 

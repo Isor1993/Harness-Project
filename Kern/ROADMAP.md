@@ -44,6 +44,14 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
   Claude, Entscheidungstragendes und selbst Entworfenes → Isor) eine
   dritte Reglerstufe wird, statt mündliche Absprache zu bleiben
   (`Kern/STOERUNGEN.md`, 2026-08-28).
+- [ ] **Unbeantworteter Themenvorschlag gilt als abgelehnt** — In
+  `Kern/WORKFLOW.md` bei „Der geerbte Titel" ergänzen: Bleibt Claudes
+  Themenvorschlag ohne Antwort, ist das **keine** Zustimmung. Der geerbte
+  Titel bleibt dann bis zum Session-Ende stehen, gepflegt wird nur die
+  Klammer. Anlass: dritter Fall desselben Musters am 2026-08-28
+  (`Kern/STOERUNGEN.md`) — die Regel benennt den Fall „keine Antwort"
+  bisher nicht, und das Umbenennen fasst immer den ganzen Titel an, nie
+  die Klammer allein.
 - [ ] **Zeile „Setzt voraus:" im DECISIONS-Format** — In
   `Kern/DOC_RULES.md` eine vierte, **optionale** Zeile neben Was, Warum und
   Verworfen vorsehen: die Bedingung, unter der eine Entscheidung gilt und
