@@ -597,6 +597,53 @@ beim Projekt, nicht bei der Uni. Überholte Einträge wandern nach
   Qualitätsmessung fragt 11 Server ab und bekommt 55 Antworten in rund
   270 ms, im Schnitt 5 ms pro Antwort. Daher die spürbare Verzögerung
   beim ersten Klick und nicht bei den folgenden.
+- 2026-08-28 — [Netzwerk] `NetworkVariable<T>` gegen RPC: Ein RPC ist ein
+  Ereignis und verpufft, eine `NetworkVariable` ist ein Zustand und wird
+  beim Spawnen nachgeliefert. Sie wird als **Feldinitialisierer** angelegt
+  (`readonly`), weil NGO die Felder beim Spawnen einsammelt — ein späteres
+  `new` kommt zu spät. Schreibrecht liegt ab Werk beim Server, Leserecht
+  bei allen. `OnValueChanged` feuert bei jeder Änderung, aber **nicht** für
+  den Startwert eines späten Beitritts; wer den Stand sofort anzeigen will,
+  liest ihn in `OnNetworkSpawn` einmal direkt.
+- 2026-08-28 — [Netzwerk] Lebenszyklus eines `NetworkBehaviour`: In `Awake`
+  existiert das GameObject, aber noch kein Netzobjekt — `IsOwner` ist dort
+  wertlos. Verlässlich wird der Netz-Zustand erst in `OnNetworkSpawn`;
+  abbestellt wird in `OnNetworkDespawn`, dem letzten Moment mit Netz.
+- 2026-08-28 — [Netzwerk] `OnClientConnectedCallback` feuert beim Host für
+  **jeden** Client, bei einem Gast nur für sich selbst. Mit drei Prozessen
+  gemessen. Folge für den Ladebalken in Phase 1: Nur der Host kennt die
+  vollständige Mannschaft und muss den Stand an die Gäste weitergeben.
+- 2026-08-28 — [Determinismus] Fingerabdruck-Verfahren: FNV-1a über 64 Bit,
+  gefüttert mit den **rohen Bitmustern** der Kommazahlen
+  (`BitConverter.SingleToInt32Bits`), nicht mit gerundeten Werten — gerundet
+  würde genau die Drift verschluckt, die der Test sucht. Ein Hash ist
+  reihenfolgeabhängig, deshalb festes Abtastraster und feste Typreihenfolge.
+- 2026-08-28 — [Determinismus] Messreihe auf einem Ryzen 7 8700G,
+  `TerrainConfig_Default`, Seed 2376, placementSeed 154: 16.384 Höhen,
+  13.021 Birken, 4.689.011 Grasbüschel, 958 Glühwürmchen-Schwärme, 7
+  Schafherden. Drei Läufe (Build 15:02, Editor 15:14, Build 15:23) lieferten
+  identische Prüfsummen. Damit ist belegt, dass die Kachel-Parallelisierung
+  des `ObjectPlacer` deterministisch bleibt — Seeds vorab je Kachel gezogen,
+  Zusammenführung über den Index statt über die Fertigstellungsreihenfolge.
+- 2026-08-28 — [Determinismus] Zwei-Geräte-Vergleich bestanden: AMD Ryzen 7
+  8700G gegen Intel Core i9-14900HX, gleicher Seed, **fünf identische
+  Prüfsummen**. Verschiedene Hersteller und Mikroarchitekturen, beide
+  x86-64 und Mono. Damit trägt der Seed-Weg; die riskante Poisson-Stufe mit
+  Sinus, Kosinus und Ablehnungstest hat über 10,5 Millionen Kandidaten
+  hinweg nicht abweichend entschieden.
+- 2026-08-28 — [Netzwerk] Relay über zwei Netze belegt: Lobby mit drei
+  Teilnehmern, einer davon auf den Philippinen (~10.000 km). Keine
+  Portfreigabe nötig — genau der Zweck von Relay, weil beide Seiten hinter
+  NAT sitzen und sich nicht direkt erreichen können. Theoretische
+  Untergrenze der Umlaufzeit rund 100 ms (Lichtgeschwindigkeit im
+  Glasfaserkabel, hin und zurück), real über einen Relay-Umweg eher
+  250–350 ms.
+- 2026-08-28 — [Netzwerk] `NetworkTransform` interpoliert ab Werk: Eine
+  fremde Figur sieht auch bei hoher Verzögerung **flüssig** aus, weil sie
+  weich zur zuletzt empfangenen Position gezogen wird. „Flüssig" ist deshalb
+  kein Beleg für geringe Verzögerung — am Bild lassen sich die beiden nicht
+  auseinanderhalten. Sichtbar wird die Verzögerung erst, wo etwas vom
+  genauen Zeitpunkt abhängt, also ab dem Kampf.
 
 ## Rendering
 

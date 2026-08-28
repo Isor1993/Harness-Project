@@ -44,6 +44,14 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
   Claude, Entscheidungstragendes und selbst Entworfenes → Isor) eine
   dritte Reglerstufe wird, statt mündliche Absprache zu bleiben
   (`Kern/STOERUNGEN.md`, 2026-08-28).
+- [ ] **Zeile „Setzt voraus:" im DECISIONS-Format** — In
+  `Kern/DOC_RULES.md` eine vierte, **optionale** Zeile neben Was, Warum und
+  Verworfen vorsehen: die Bedingung, unter der eine Entscheidung gilt und
+  die selbst nicht entschieden wurde. Optional, weil die meisten
+  Entscheidungen keine haben und eine Pflichtzeile mit „keine" zugemüllt
+  würde. Anlass: Eine Entscheidung vom 2026-08-27 schrieb ihre Folge auf und
+  ließ die Voraussetzung weg; eine Session plante einen Tag darauf
+  (`Kern/STOERUNGEN.md`, 2026-08-28).
 
 Was im Betrieb nicht trägt, kommt als Störung in `Kern/STOERUNGEN.md`
 und wird von dort aus zu einem Punkt hier — genau dafür fragt die

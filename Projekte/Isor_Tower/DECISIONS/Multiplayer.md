@@ -392,3 +392,85 @@ Zug erarbeitet.
 Verworfen: die Sessions-API meiden, um `async` zu vermeiden — dann bliebe
 nur Relay von Hand, mit mehr Code, und `async` wäre dort ebenso dabei;
 `async` ungekapselt durchs Projekt wandern lassen.
+
+## 2026-08-28 — Ein Zähler ist ein Zustand, kein Ereignis
+Was: Der Ping-Zähler des Prüfstands liegt in einer `NetworkVariable<int>`
+statt in einem `int`, und der Rückweg-RPC `AnnouncePingRpc` entfällt. Als
+Muster gilt ab jetzt: **Was einen Wert hält, den ein später Beitretender
+kennen muss, ist eine `NetworkVariable`; was einmalig passiert, ist ein
+RPC.** Betrifft ab Phase 4 Lebenspunkte, Gegner-Zustände und
+Bosskampf-Fortschritt.
+Warum: Ein RPC verpufft — wer beim Aufruf nicht verbunden war, erfährt nie
+davon. Eine `NetworkVariable` wird beim Spawnen nachgeliefert. Gemessen am
+2026-08-28: Ein nach zwei Pings beigetretener Gast bekam den Stand
+lautlos mit (`OnValueChanged` feuert für den Startwert **nicht**) und
+meldete danach korrekt `Ping 2`. Ein Gast, der spät in einen Bosskampf
+kommt, sähe sonst eine volle Lebensleiste an einem angeschlagenen Gegner.
+Nebenbei fällt Code weg statt hinzuzukommen: eine Methode weniger.
+Verworfen: den Zähler im `Update` des Besitzers hochzählen — der Besitzer
+einer Kapsel ist nicht der Server, und die Schreibrechte einer
+`NetworkVariable` liegen ab Werk beim Server; beim Gast wäre es ein
+Laufzeitfehler. Beide Wege parallel führen (RPC **und** Variable) — dann
+gibt es zwei Wahrheiten für denselben Wert.
+
+## 2026-08-28 — Gebaut wird mit Mono, nicht mit IL2CPP
+Was: Das Scripting-Backend bleibt auf Unitys Voreinstellung **Mono**.
+IL2CPP wird nicht installiert. Damit entfällt der ursprüngliche Zweck von
+Lauf 1 des Vergleichstests (Entscheidung vom 2026-08-27): Editor und Build
+rechnen denselben Weg, der Vergleich wäre automatisch grün.
+Warum: Die Entscheidung vom 2026-08-27 setzte stillschweigend voraus, dass
+die Builds IL2CPP nutzen — das stand nirgends und war nie entschieden. Der
+Unterschied Mono gegen IL2CPP ist überhaupt nur dort ein Risiko, wo zwei
+Beteiligte verschiedene Backends fahren; da alle Builds aus denselben
+Projekteinstellungen kommen, kann das nur zwischen Editor und Build
+passieren. Sind beide Mono, existiert der Unterschied nicht. Der Preis von
+IL2CPP wären 2–3 GB Modul und minutenlange Builds bis zur Abgabe, für eine
+Frage, die es dann nicht gibt.
+Verworfen: IL2CPP nachinstallieren, um die Entscheidung vom 2026-08-27
+wörtlich zu erfüllen (Aufwand ohne Erkenntnisgewinn, solange die Abgabe
+mit Mono gebaut wird); die Entscheidung erst vor der Abgabe treffen (dann
+hinge Phase 0 an einer Frage, die heute beantwortbar ist).
+Folge für die ROADMAP: Wechselt das Backend später doch auf IL2CPP, wird
+der Fingerabdruck-Test einmal wiederholt — das Werkzeug steht.
+
+## 2026-08-28 — Der Vergleichstest bekommt einen Lauf-gegen-Lauf-Test vorweg
+Was: Vor dem Zwei-Geräte-Vergleich läuft derselbe Build **zweimal auf
+derselben Maschine**, und die zwei Berichte werden verglichen. Erst danach
+kommt der Hardware-Vergleich gegen den Laptop. Der Hardware-Teil ist auf
+den Laptop-Tag verschoben; Phase 0 bleibt bis dahin offen, Punkt 4 und 5
+sind nicht abgehakt.
+Warum: Die beiden Tests finden **verschiedene** Fehler. Lauf gegen Lauf auf
+einer Maschine prüft die Nebenläufigkeit — der `ObjectPlacer` rechnet über
+`Parallel.For`, und Threads sind laut eigener Knowledge-Notiz der häufigste
+stille Zerstörer von Determinismus. Fiele das durch, säße der Fehler im
+eigenen Code, und man hätte ihn am Laptop-Tag der Hardware zugeschrieben.
+Gemessen am 2026-08-28: drei Läufe, fünf Prüfsummen, alle identisch — die
+Parallelisierung ist damit ausgeschlossen. Das Verschieben des
+Hardware-Teils kostet nichts, weil Phase 1 und 2 den Seed nicht
+verschicken; fällig ist er vor Phase 3.
+Verworfen: gleich den Zwei-Geräte-Test fahren und den Lauf-gegen-Lauf-Test
+weglassen (bei einem roten Ergebnis wären zwei Ursachen im Spiel gewesen);
+den Hardware-Test bis Phase 3 liegen lassen (er entscheidet, wie Phase 3
+gebaut wird, und muss deshalb davor fertig sein).
+
+## 2026-08-28 — Die Bedingung des Seed-Wegs ist geprüft und erfüllt
+Was: Gelände und Bewuchs werden in Phase 3 als **Seed** übertragen, nicht
+als Objektliste. Die Bedingung aus dem Eintrag vom 2026-08-25 („Die
+Generierung muss auf beiden Rechnern dasselbe liefern") wechselt damit von
+*ungeprüft* auf *erfüllt*. Der Ausweichweg — der Host schickt alle Objekte
+einzeln — wird nicht gebaut.
+Warum: Gemessen am 2026-08-28 mit `GenerationFingerprint` auf zwei Geräten
+verschiedener Hersteller (AMD Ryzen 7 8700G gegen Intel Core i9-14900HX):
+fünf Prüfsummen, alle identisch, bei 4,7 Millionen Grasplatzierungen und
+über 10,5 Millionen geprüften Kandidatenpunkten. Vorgeschaltet war ein
+Lauf-gegen-Lauf-Test auf einer Maschine, der die Nebenläufigkeit als
+Fehlerquelle ausschloss. Damit sind beide möglichen Ursachen einzeln
+geprüft und beide grün.
+Setzt voraus: **x86-64 und Mono.** Für einen ARM-Rechner oder einen
+IL2CPP-Build gilt die Messung nicht; in beiden Fällen wird sie wiederholt
+(`ROADMAP.md`). Die Zeile „Setzt voraus" ist der Vorschlag aus
+`Kern/STOERUNGEN.md`, 2026-08-28 — hier zum ersten Mal benutzt, damit
+sichtbar wird, ob sie trägt.
+Verworfen: den Ausweichweg vorsorglich trotzdem bauen (Arbeit an einem
+Weg, der nach Messlage nicht gebraucht wird); die Messung als endgültig
+behandeln (sie gilt für zwei Geräte und eine Plattform, nicht für alle).

@@ -24,14 +24,12 @@ der Datei, auf die hier verwiesen wird.
 
 *(geschrieben 2026-08-28 beim `/harness:ende`)*
 
-**Phase 0 läuft.** Verbindung über den Join-Code, Besitz und Nachrichten
-in beide Richtungen stehen. Offen sind
-**Vergleichstest** und **Windows-Build auf dem Laptop**; beide brauchen
-das zweite Gerät, gehören also auf einen Tag, an dem der Laptop
-danebensteht. **Isor hat um einen gründlichen Netcode-Durchgang gebeten**,
-bevor es tiefer geht — Stoff dazu in
-`Knowledge/Unity/ngo-grundbausteine-praxis.md` und
-`Knowledge/CSharp/async-await-in-unity.md`. Sonntags die
+**Phase 0 ist abgeschlossen** — alle fünf Abnahmepunkte, der Seed-Weg ist
+gemessen und trägt (`Projekte/Isor_Tower/LOG.md`, 2026-08-28). Als Nächstes
+**Phase 1 · Spielernaht und Einstieg** (3 Wochen,
+`Projekte/Isor_Tower/ROADMAP.md`): Input nach Reichweite teilen,
+Spieler-Prefab zum Netzobjekt, Einstieg über das bestehende Hauptmenü, und
+`ISessionService` als Naht für einen späteren Steam-Transport. Sonntags die
 Ein-Seiten-Prüfung: dran ist `💡 EditorWindow & MVP`.
 
 ---
@@ -46,11 +44,11 @@ Was im Betrieb nicht trägt, wird als Störung notiert
 (`Kern/STOERUNGEN.md`) und über die Doku-Pflicht zu einem ROADMAP-Punkt —
 nicht sofort behoben. Ein Befund ist ein Zustand, kein Auftrag.
 
-- [ ] **Phase 0 · Netz-Prüfstand** *(rund zwei Wochen, vor dem
-      Semesterstart)* — Details in `Projekte/Isor_Tower/ROADMAP.md`.
-      Enthält den ersten Vergleichstest, ob die Generierung auf zwei
-      Rechnern dasselbe liefert; fällt er durch, wird die Zeitrechnung
-      des Semesters enger.
+- [x] **Phase 0 · Netz-Prüfstand** — **erledigt am 2026-08-28**, in fünf
+      Tagen statt zwei Wochen. Der Vergleichstest ist bestanden (AMD gegen
+      Intel, identische Prüfsummen), die Zeitrechnung des Semesters bleibt
+      also wie geplant. Zusätzlich belegt: Relay trägt über zwei Netze,
+      getestet bis auf die Philippinen.
 - [ ] **Der Datenbaum wartet** (`IsorBackup/ROADMAP.md`, vier Punkte).
       **Kein Termin** — bewusst hinter Phase 0 gestellt, weil nur der
       Prototyp einen Semestertermin hat (Isor, 2026-08-27). Er bleibt

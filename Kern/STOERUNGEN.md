@@ -557,3 +557,54 @@ schreibt" ergänzen, was mit „Entwurf vor Gerüst" geschieht, wenn er auf
 *Claude* steht — und ob die Aufteilung nach Code-Sorte als dritte Stufe
 des Reglers aufgenommen wird statt als mündliche Absprache zu bleiben.
 **Stand:** offen.
+
+### 2026-08-28 — Eine Entscheidung schrieb ihre Folge auf, nicht ihre Voraussetzung
+**Was:** Der Eintrag „Der Vergleichstest misst Anzahl und Fingerabdruck, in
+zwei Läufen" (`Projekte/Isor_Tower/DECISIONS/Multiplayer.md`, 2026-08-27)
+legt fest, dass Lauf 1 „Editor gegen Build" vergleicht und damit „Mono
+gegen IL2CPP ohne zweiten Rechner" isoliert. Dass die Builds dafür mit
+IL2CPP gebaut sein müssen, steht nirgends — es war nie entschieden und
+IL2CPP war nicht einmal installiert. Claude hat die Session auf dieser
+Folge geplant und Isor gesagt, Abnahmepunkt 4 sei heute ohne Laptop
+erreichbar. Aufgefallen ist es erst, als Isor beim fehlenden Modul
+nachfragte, ob das wirklich sein muss.
+**Ursache:** Der Eintrag nennt Was, Warum und Verworfenes — das verlangt
+`DOC_RULES.md` so. Eine **Voraussetzung** ist keines von dreien: Sie ist
+kein Grund für die Entscheidung, sondern eine Bedingung, unter der sie
+gilt. Sie fiel deshalb durch das Raster, obwohl das Format sie tragen
+kann: Der Eintrag vom 2026-08-25 in derselben Datei hat eine Zeile
+„Bedingung, noch ungeprüft".
+**Regel:** Unvollständig. `DOC_RULES.md` schreibt für DECISIONS die drei
+Felder vor, aber keine Stelle für eine Bedingung — die Zeile vom
+2026-08-25 entstand aus eigenem Antrieb und ist deshalb nicht wiederholbar.
+**Gegenmittel:** Im DECISIONS-Format eine vierte, **optionale** Zeile
+vorsehen — „Setzt voraus:" —, die genau dann gefüllt wird, wenn die
+Entscheidung nur unter einer Bedingung gilt, die selbst nicht entschieden
+wurde. Optional und nicht verpflichtend, weil die meisten Entscheidungen
+keine haben und eine Pflichtzeile sonst mit „keine" zugemüllt wird.
+**Stand:** offen — Gegenmittel am 2026-08-28 als Punkt in
+`Kern/ROADMAP.md` aufgenommen, geschrieben ist die Regel noch nicht.
+
+### 2026-08-28 — Session-Thema überschrieben, dritter Fall
+**Was:** Beim Setzen der Klammer auf `zu` (`/harness:ende`, Schritt 5) hat
+Claude den Titel vollständig ersetzt — aus „Isor's Tower · Netz-Prüfstand
+(zu)" wurde „Isor's Tower · Phase 0 (zu)". Damit war das Thema weg, nicht
+nur die Klammer. Im selben Zug bemerkt und zurückgesetzt; der
+ursprüngliche Titel steht wieder.
+**Ursache:** Der geerbte Titel. Diese Session begann mit dem Titel einer
+vorigen, samt deren Klammer `zu`. Claude hat früh ein Thema
+vorgeschlagen („Phase 0") und **keine Antwort** bekommen — Isor ging
+direkt auf die Arbeit ein. Statt das als „nicht zugestimmt" zu behandeln,
+wurde der eigene Vorschlag am Session-Ende stillschweigend als beschlossen
+genommen. Dazu kommt das Werkzeug: Das Umbenennen nimmt nur den **ganzen**
+Titel, nie die Klammer allein — wer die Klammer pflegt, muss den Rest
+fehlerfrei wiederholen, und genau dort verrutscht es.
+**Regel:** Vorhanden und eindeutig (`WORKFLOW.md`, „Der geerbte Titel":
+Claude schlägt vor, setzt aber erst nach Isors Zustimmung). Sie hat nicht
+gegriffen, weil sie den Fall **„Vorschlag bleibt unbeantwortet"** nicht
+benennt. Ausbleibende Antwort ist keine Zustimmung.
+**Gegenmittel:** In `WORKFLOW.md` bei „Der geerbte Titel" ergänzen, dass
+ein unbeantworteter Themenvorschlag als **abgelehnt** gilt: Der geerbte
+Titel bleibt dann bis zum Session-Ende stehen, gepflegt wird nur die
+Klammer.
+**Stand:** offen.

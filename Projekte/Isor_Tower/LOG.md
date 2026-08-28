@@ -501,3 +501,71 @@ damals, nicht den von heute.
   das Abtippen kamen Verständnisfragen zum Code. Erster Durchgang: Von
   drei Fragen saß eine sofort, eine war halb, eine nicht — nach der
   Auflösung konnte Isor alle drei in eigenen Worten herleiten.
+- 2026-08-28 — `NetTestPing` auf `NetworkVariable` umgebaut: Der Zähler ist
+  jetzt ein Zustand statt eines Ereignisses. `int` → `readonly
+  NetworkVariable<int>` als Feldinitialisierer, Abonnement in
+  `OnNetworkSpawn`, Abbestellung in `OnNetworkDespawn`, und der Rückweg-RPC
+  `AnnouncePingRpc` ersatzlos gelöscht — die Variable verteilt den Wert
+  selbst. Geprüft im Multiplayer Play Mode mit drei Spielern: Ein nach zwei
+  Pings beigetretener Gast schrieb **keine** Ping-Zeile für die Vergangenheit,
+  meldete danach aber `Ping 2` für die fremden Kapseln statt `Ping 1`. Damit
+  ist belegt, dass der Wert beim Spawnen nachgeliefert wird und
+  `OnValueChanged` dafür nicht feuert.
+- 2026-08-28 — `SessionStarter` um zwei Behelfe erweitert: `IsAlreadyConnected`
+  lehnt einen zweiten Start ab (`NetworkManager.Singleton.IsListening`) und
+  loggt eine Warnung, statt die SDK vierzig Zeilen tief scheitern zu lassen;
+  dazu `OnClientConnectedCallback` mit An- und Abmeldung in `Start` und
+  `OnDestroy`. Geprüft mit drei Prozessen: Der Host meldete `Client 0`, `1`
+  und `2`, jeder Gast nur sich selbst — der Rückruf feuert beim Host für alle,
+  beim Gast nur für die eigene Verbindung. Vorarbeit für den Ladebalken aus
+  Phase 1, der auf mehrere Spieler warten muss.
+- 2026-08-28 — Verbindungsaufbau scheiterte zwischendurch mit
+  `SessionException: Failed to start the network manager`. Ursache war eine
+  Skript-Neukompilierung bei laufendem Play Mode, nicht der Code: Ein
+  vollständiger Editor-Neustart behob es ohne jede Änderung. Der Stacktrace
+  wies den Weg — der Beitritt lief bis zur Relay-Zuteilung durch und
+  scheiterte erst am lokalen `StartClient()`.
+- 2026-08-28 — `GenerationFingerprint` gebaut (`Assets/Scripts/Diagnostic/`),
+  dazu die neue Szene `Fingerprint.unity` mit nur diesem einen Objekt. Ein
+  MonoBehaviour statt eines EditorWindow, weil die Messung auch im Build
+  laufen muss. Es tastet 128 × 128 = 16.384 Höhen auf festem Raster ab, läuft
+  den `ObjectPlacer` je Typ und faltet Position, Drehung und Skalierung als
+  rohe Bitmuster in einen FNV-1a-Hash; das Ergebnis geht als Textdatei nach
+  `Application.persistentDataPath`, getrennt nach Editor- und Build-Lauf.
+- 2026-08-28 — Erste Messreihe des Vergleichstests mit
+  `TerrainConfig_Default`, Seed 2376 und placementSeed 154: 16.384 Höhen,
+  13.021 Birken, 4.689.011 Grasbüschel, 958 Glühwürmchen-Schwärme, 7
+  Schafherden. Zwei Läufe derselben .exe (15:02 und 15:23) sowie ein
+  Editor-Lauf (15:14) ergaben **dieselben fünf Prüfsummen bis aufs letzte
+  Bit**. Damit ist die Nebenläufigkeit im `ObjectPlacer` als Fehlerquelle
+  ausgeschlossen: Die Kachel-Parallelisierung liefert reproduzierbar
+  dasselbe. Offen bleibt allein der Hardware-Vergleich gegen den Laptop.
+- 2026-08-28 — Nicht gemessen wird der `PlacementExclusionFilter`: Der
+  Prüfstand misst die Ausgabe des `ObjectPlacer`, die Ausschlusszonen laufen
+  als eigene Stufe danach. Bewusst so, weil die riskante Stelle die
+  Poisson-Streuung ist — festgehalten, damit ein grüner Test nicht mehr
+  behauptet, als er geprüft hat.
+- 2026-08-28 — Vergleichstest auf zwei Maschinen bestanden: Der Laptop
+  (Intel Core i9-14900HX) lieferte gegen den PC (AMD Ryzen 7 8700G) bei
+  gleichem Seed 2376 **exakt dieselben fünf Prüfsummen** — 16.384 Höhen,
+  13.021 Birken, 4.689.011 Grasbüschel, 958 Glühwürmchen-Schwärme, 7
+  Schafherden. Verschiedene Hersteller, verschiedene Mikroarchitekturen.
+  Damit ist die ungeprüfte Bedingung aus `DECISIONS/Multiplayer.md`
+  („Der Floor kommt gemischt herüber", 2026-08-25) erfüllt: Gelände und
+  Bewuchs dürfen als Seed übertragen werden. Nicht abgedeckt bleiben
+  ARM-Prozessoren und IL2CPP-Builds — beide Geräte fahren x86-64 und Mono.
+- 2026-08-28 — Erster Verbindungstest über echtes Internet: eine Lobby mit
+  drei Teilnehmern — PC und Laptop in Deutschland, dazu ein dritter Rechner
+  auf den Philippinen (rund 10.000 km). Beitritt über Join-Code und Relay,
+  ohne dass jemand Ports freigeben musste. Damit ist die in den DECISIONS
+  vom 2026-08-27 ausdrücklich benannte Lücke geschlossen („Nicht abgedeckt
+  bleibt echte Internet-Verzögerung: Beide Geräte hängen am selben Router").
+  Beobachtet: fremde Kapseln liefen flüssig, die Ping-Meldung erschien ohne
+  wahrnehmbare Verzögerung, keine Aussetzer über die Testdauer. Das sind
+  Eindrücke, keine Messung — eine Zahl für die Umlaufzeit fehlt weiterhin.
+- 2026-08-28 — **Phase 0 abgeschlossen**, vor dem Semesterstart wie geplant.
+  Alle fünf Abnahmepunkte stehen: Verbindung über Join-Code, Besitz,
+  Nachrichten in beide Richtungen, gelaufener Vergleichstest und ein
+  Windows-Build auf dem Laptop. `NetTestbed.unity` bleibt als
+  Diagnose-Szene stehen, `Fingerprint.unity` daneben als Prüfstand der
+  Weltgleichheit.

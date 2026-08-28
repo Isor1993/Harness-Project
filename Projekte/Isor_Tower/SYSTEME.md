@@ -13,7 +13,7 @@ Beschreibung je System kommt von Hand und wird bei jedem Lauf
 | System | Skripte | Letzte Änderung | Beschreibung |
 |---|---|---|---|
 | DayNightCycle | 6 | 2026-08-20 | Ingame-Uhr und Tag-Nacht-Wechsel: Himmel, Nachteffekte, Zeitraffer; andere Systeme hören über den EventManager zu. |
-| Diagnostic | 1 | 2026-08-05 | Messwert-Anzeigen fürs laufende Spiel — bisher die FPS-Anzeige. |
+| Diagnostic | 2 | 2026-08-28 | Messwerkzeuge, die nicht zum Spiel gehören: FPS-Anzeige im HUD und der Fingerabdruck-Prüfstand der Weltgenerierung. |
 | Editor | 7 | 2026-08-19 | Editor-Werkzeuge, nicht im Build: Terrain-Generator und Prefab-Painter, je als Window mit Presenter. |
 | Enemies | 1 | 2026-08-20 | Gegner — bisher nur der Goblin als Platzhalter. |
 | GameFlow | 4 | 2026-08-20 | Spielablauf vom Hauptmenü ins Spiel: Szenenwechsel mit Ladebalken, zentraler GameController. |
@@ -21,6 +21,7 @@ Beschreibung je System kommt von Hand und wird bei jedem Lauf
 | Health | 1 | 2026-08-16 | Wiederverwendbare Lebenspunkte-Komponente für alles, was Schaden nehmen kann. |
 | HerdManager | 1 | 2026-08-16 | Herdenverwalter: wird platziert statt einzelner Schafe, erzeugt und führt die Herde. |
 | Interfaces | 5 | 2026-08-16 | Die systemeübergreifenden Interfaces des Projekts. |
+| NetWorking | 3 | 2026-08-28 | Netzcode des Prüfstands aus Phase 0: Sitzungsaufbau über Join-Code, besitzergesteuerte Bewegung, Ping als Muster für Melden und Verteilen. |
 | ObjectPlacement | 13 | 2026-08-20 | Prozedurale Platzierung per Poisson-Disc: Dichte-Strategien, Ausschlusszonen, Spawnen zur Laufzeit hinter dem Ladebalken. |
 | Player | 9 | 2026-08-20 | First-Person-Spieler: Input-Reader als einzige Naht zum Input-System, Bewegung, Kamera, Interaktion, Schritte. |
 | Sheep | 8 | 2026-08-16 | Das Schaf als Wesen: Sinne, Hunger, Leben, Bewegung, Zähm-Interaktion — die Zustandslogik liegt in SheepFSM. |

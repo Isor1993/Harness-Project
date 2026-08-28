@@ -53,6 +53,8 @@ Leseordnung.
 | **Besitz** | Wem eine Figur im Netz gehört. Genau ein Rechner ist Besitzer; nur dort liest ihr Skript die Tastatur (`IsOwner`), alle anderen zeigen an, was ankommt. | `Projekte/Isor_Tower/DECISIONS/Multiplayer.md`, „Bewegung gehört dem Gast, alles Folgenreiche dem Host" |
 | **Autorität** | Wessen Wert im Streitfall gilt. **Nicht dasselbe wie Besitz:** Die Bewegung liegt beim *Besitzer*, Treffer, Beute und Weltzustand beim *Host*. In `NetworkTransform` heißt die Einstellung `Authority Mode`. | `Projekte/Isor_Tower/DECISIONS/Multiplayer.md`, „Bewegung gehört dem Gast, alles Folgenreiche dem Host" |
 | **RPC** | „Remote Procedure Call" — ein Methodenaufruf, dessen Rumpf auf einem **anderen** Rechner ausgeführt wird. In NGO 2.x mit `[Rpc(SendTo.…)]` markiert; der Methodenname muss auf `Rpc` enden. | `Projekte/Isor_Tower/TDD_NOTES.md`, Block „Netzwerk & Multiplayer" |
+| **NetworkVariable** | Ein Wert, der sich von selbst über alle Rechner verteilt und einem später Beitretenden **nachgeliefert** wird. **Gegenstück zum RPC:** Ein RPC ist ein Ereignis und verpufft, eine `NetworkVariable` ist ein Zustand und bleibt. | `Projekte/Isor_Tower/DECISIONS/Multiplayer.md`, „Ein Zähler ist ein Zustand, kein Ereignis" |
+| **Fingerabdruck** | Eine Prüfsumme über alle Ergebnisse eines Generierungslaufs. Zwei Läufe mit gleicher Anzahl, aber verschiedenem Fingerabdruck zeigen eine Abweichung an, die niemand sieht — der mittlere von drei Ausgängen des Vergleichstests. | `Projekte/Isor_Tower/DECISIONS/Multiplayer.md`, „Der Vergleichstest misst Anzahl und Fingerabdruck" |
 
 ## Über Nummern und Ausgaben
 

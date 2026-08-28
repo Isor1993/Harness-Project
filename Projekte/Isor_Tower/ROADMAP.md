@@ -23,7 +23,11 @@ Kernschleife bleibt dann vollständig vorführbar.
 
 ### Vor dem Semesterstart
 
-- [ ] **Phase 0 · Netz-Prüfstand** *(2 Wochen)* — Eine nackte Szene
+- [x] **Phase 0 · Netz-Prüfstand** *(2 Wochen)* — **abgeschlossen am
+  2026-08-28**, alle fünf Abnahmepunkte (`LOG.md`). Der Vergleichstest ist
+  bestanden: Der Seed-Weg trägt, der Ausweichweg entfällt
+  (`DECISIONS/Multiplayer.md`, „Die Bedingung des Seed-Wegs ist geprüft und
+  erfüllt"). Eine nackte Szene
   `NetTestbed.unity`: flacher Boden, zwei Kapseln, sonst nichts. Netcode for GameObjects
   installieren, Verbindung über Join-Code herstellen, Besitz und
   Nachrichten verstehen. Der Verbindungsknopf ist hier ein Behelf und
@@ -118,8 +122,23 @@ sich klein.
 - [ ] **Wiederverbindung des Gastes** — Der Fall „Host geht" ist
   entschieden, der Fall „Gast fliegt raus und kommt zurück" nicht.
   Fällig in Phase 3.
+- [ ] **Umlaufzeit im Prüfstand anzeigen** — Am 2026-08-28 hieß der Befund
+  „Ping kam sofort"; das ist ein Eindruck, keine Zahl. NGO liefert die
+  Umlaufzeit über `GetCurrentRtt(clientId)`. Ein Feld im `NetTestbed` macht
+  daraus eine Messung. Fällig in Phase 4: Dort entscheidet die Zahl, wie
+  weit die sofortige Trefferanzeige beim Gast vorgreifen muss.
 - [ ] **Reichweite des Sichtbarkeitsfilters messen** — Die 40–50 Gegner
   aus dem `GDD.md` sind eine Anzahl, keine Messung. Fällig in Phase 4.
+- [ ] **Fingerabdruck-Test wiederholen, falls das Backend wechselt** — Mono
+  ist gesetzt (`DECISIONS/Multiplayer.md`, 2026-08-28). Ein späterer Wechsel
+  auf IL2CPP macht die Messung vom 2026-08-28 ungültig, weil sie dann einen
+  Rechenweg misst, der nicht mehr ausgeliefert wird. Fällig nur im
+  Wechselfall, dann aber vor der Abgabe.
+- [ ] **Ausschlusszonen in den Vergleichstest aufnehmen** — der Prüfstand
+  misst die Ausgabe des `ObjectPlacer`; der `PlacementExclusionFilter` läuft
+  als eigene Stufe danach und bleibt ungemessen. Kein Termin: Die riskante
+  Stelle ist die Poisson-Streuung, nicht der Formtest. Fällig, wenn der Test
+  einmal als vollständige Abnahme der Weltgleichheit gelten soll.
 - [ ] **Projektnamen im Cloud-Dashboard kürzen** — er heißt
   `Isor Tower ProtoTyp 2026 2026-07-03_17-11-35` und trägt einen
   angehängten Zeitstempel, der das Suchen erschwert. Kosmetisch, kein
