@@ -487,6 +487,12 @@ beim Projekt, nicht bei der Uni. Überholte Einträge wandern nach
   kommt, und die Szene wird erst umgeschaltet, wenn der angezeigte Wert 1
   erreicht hat.
 
+- 2026-08-28 — [Input] `activeInputHandler: 1` in den ProjectSettings:
+  Nur das neue Input System ist aktiv, der alte Input-Manager ist
+  abgeschaltet. `Input.GetAxisRaw` und Verwandte kompilieren zwar, werfen
+  aber zur Laufzeit. Direkter Tastaturzugriff läuft über
+  `Keyboard.current` aus `UnityEngine.InputSystem`.
+
 ## Audio
 
 - 2026-08-14 — [Audio] Unity spielt nur begrenzt viele Quellen wirklich ab:
@@ -552,6 +558,45 @@ beim Projekt, nicht bei der Uni. Überholte Einträge wandern nach
   und in fünf Minuten Spielzeit dreht sich die Sonne um 1,25 Grad. Ein
   bewertetes System, das niemand zu sehen bekommt, zählt in der Vorführung
   wie nicht vorhanden.
+
+## Netzwerk & Multiplayer
+
+- 2026-08-28 — [Netzwerk] Paketstand für Editor 6000.5.2f1: Netcode for
+  GameObjects 2.13.2, Multiplayer Services 2.3.1, Multiplayer Play Mode
+  2.0.2, Multiplayer Tools 2.2.11. Relay und Authentication erscheinen
+  **nicht** im Manifest — sie sind indirekte Abhängigkeiten von
+  Multiplayer Services und damit Teil der Sessions-API.
+- 2026-08-28 — [Netzwerk] `NetworkTransform` steht ab Werk auf
+  `Authority Mode: Server`. Owner-autoritative Bewegung verlangt
+  `Owner`; in NGO 2.13 ist das ein Dropdown auf der Komponente, ein
+  eigener ClientNetworkTransform ist nicht mehr nötig.
+- 2026-08-28 — [Netzwerk] Das `Default Player Prefab` am NetworkManager
+  wird automatisch registriert — die Network-Prefabs-Liste darf dafür
+  leer bleiben. Sie wird erst für Objekte gebraucht, die zusätzlich zur
+  Laufzeit erzeugt werden.
+- 2026-08-28 — [Netzwerk] Bei aktivem `Enable Scene Management` muss jede
+  Szene in der Build-Liste stehen, sonst kann ein Gast sich nicht auf sie
+  synchronisieren. Gilt auf jedem Rechner, also auch im ausgelieferten
+  Build.
+- 2026-08-28 — [Netzwerk] Der NetworkManager wandert beim Start nach
+  `DontDestroyOnLoad` — nötig, damit die Verbindung einen Szenenwechsel
+  überlebt.
+- 2026-08-28 — [Netzwerk] Kette der Sessions-API:
+  `UnityServices.InitializeAsync` → `SignInAnonymouslyAsync` →
+  `MultiplayerService.Instance.CreateSessionAsync(options)` mit
+  `SessionOptions` und `.WithRelayNetwork()` → `session.Code`. Rückgabe
+  ist `IHostSession` (Gäste erhalten den schwächeren Gast-Typ). Beitritt
+  über `JoinSessionByCodeAsync(code)`. **`CreateSessionAsync` startet
+  Netcode selbst** — ein zusätzliches `StartHost()` würde doppelt starten.
+- 2026-08-28 — [Netzwerk] RPCs in NGO 2.x: **ein** Attribut
+  `[Rpc(SendTo.…)]` statt der früheren `[ServerRpc]`/`[ClientRpc]`. Der
+  Methodenname **muss** auf `Rpc` enden, sonst findet der erzeugte Code
+  ihn nicht. Ziele: `Server`, `NotServer`, `Owner`, `NotOwner`, `Me`,
+  `NotMe`, `Everyone`, `ClientsAndHost`, `SpecifiedInParams`.
+- 2026-08-28 — [Netzwerk] Gemessen beim ersten Verbindungsklick: Relays
+  Qualitätsmessung fragt 11 Server ab und bekommt 55 Antworten in rund
+  270 ms, im Schnitt 5 ms pro Antwort. Daher die spürbare Verzögerung
+  beim ersten Klick und nicht bei den folgenden.
 
 ## Rendering
 

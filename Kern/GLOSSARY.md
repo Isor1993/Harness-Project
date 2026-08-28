@@ -30,11 +30,13 @@ Leseordnung.
 
 | Begriff | Kurzform | Besitzer |
 |---|---|---|
-| **Session** | Ein durchgehender Arbeitsraum von Anfang bis `/clear`. Isors Wort dafür: „Work Area". | `WORKFLOW.md`, Begriffe |
+| **Session** | **Zwei Bedeutungen, die auseinanderzuhalten sind.** Im Harness: ein durchgehender Arbeitsraum von Anfang bis `/clear` (Isors Wort: „Work Area"). Im Spiel: die laufende Runde bei Unitys Multiplayer Services — ein Host, seine Gäste und ein Join-Code, im Code `IHostSession`. | `WORKFLOW.md`, Begriffe · `Projekte/Isor_Tower/DECISIONS/Multiplayer.md` |
 | **Abschnitt** | Eine Phase innerhalb einer Session mit genau **einem** Typ. | `WORKFLOW.md`, Begriffe |
 | **Baustein** | Abgeschlossene Funktionseinheit. Fertig heißt gebaut, geprüft **und** dokumentiert. | `WORKFLOW.md`, Begriffe |
 | **Typ** | Was in diesem Abschnitt getan wird: Brainstorm/Design, Development, Zeugnis, Prüfung, (Art). Entscheidet, welche Dateien die Doku-Pflicht schreibt. | `WORKFLOW.md`, Session-Typen |
 | **Prüfung** | Ein Abschnitt, der **liest und bewertet, aber nicht baut**. Ergebnis ist eine Befundliste; der Gegenstand wird beim Wechsel mitgenannt. | `WORKFLOW.md`, Session-Typen |
+| **Prüfstand** | Eine dauerhaft leere Szene im Projekt, in der ein Baustein isoliert getestet wird. **Nicht dasselbe wie der Session-Typ „Prüfung"** — der Prüfstand ist ein Ort im Spiel, die Prüfung eine Arbeitsweise. | `Projekte/Isor_Tower/DECISIONS/Multiplayer.md`, „Phase 0 läuft im eigenen Prüfstand" |
+| **Naht** | Eine bewusst eingezogene Trennstelle, die einen späteren Tausch billig hält: Der Motor bekommt seine Eingabe gereicht, der Verbindungsaufbau liegt hinter `ISessionService`. Kein Selbstzweck — eine Naht ohne absehbaren Tausch ist Abstraktion ohne Anlass. | `Projekte/Isor_Tower/DECISIONS/Multiplayer.md` |
 | **Modus** | Wie gearbeitet wird: **Lernmodus** (ausführlich, visuell, Verständnis prüfen) oder **Normal** (kurz). Setzt nur die Voreinstellung der Regler. | `WORKFLOW.md`, Typ, Modus und Regler |
 | **Regler** | Einzeln verstellbare Einstellung innerhalb eines Modus — Visualisierung und „Wer schreibt". Nicht dasselbe wie der Modus. | `WORKFLOW.md`, Typ, Modus und Regler |
 | **Doku-Pflicht** | Was am Ende eines Abschnitts geschrieben wird: die festen Punkte, die bei jedem Typ gelten, plus eine Zeile je Typ. | `WORKFLOW.md`, Doku-Pflicht |
@@ -48,6 +50,9 @@ Leseordnung.
 | **Revier** | Die Schicht, in die eine Session frei schreiben darf — bestimmt vom Fokus ihres laufenden Abschnitts. Wird frei durch Abschnittsende; Gemeinschaftsdateien laufen nur über die Befehle. | `WORKFLOW.md`, Parallele Sessions |
 | **Störung** | Vorfall, in dem der Harness nicht so gearbeitet hat wie vorgesehen. Ein **Ereignis** — nicht dasselbe wie ein Befund und nicht dasselbe wie ein Fehler im Code. | `STOERUNGEN.md` |
 | **Übernahme-Regel** | Nach einem Neustart wird für jeden Baustein des Altstands erst beim Bedarf entschieden, ob er *mitgenommen*, *angepasst* oder *neu gebaut* wird — nie vorab als Liste. | `Projekte/Isor_Tower/DECISIONS/Multiplayer.md`, „Semester 3 ist ein Neustart desselben Projekts" |
+| **Besitz** | Wem eine Figur im Netz gehört. Genau ein Rechner ist Besitzer; nur dort liest ihr Skript die Tastatur (`IsOwner`), alle anderen zeigen an, was ankommt. | `Projekte/Isor_Tower/DECISIONS/Multiplayer.md`, „Bewegung gehört dem Gast, alles Folgenreiche dem Host" |
+| **Autorität** | Wessen Wert im Streitfall gilt. **Nicht dasselbe wie Besitz:** Die Bewegung liegt beim *Besitzer*, Treffer, Beute und Weltzustand beim *Host*. In `NetworkTransform` heißt die Einstellung `Authority Mode`. | `Projekte/Isor_Tower/DECISIONS/Multiplayer.md`, „Bewegung gehört dem Gast, alles Folgenreiche dem Host" |
+| **RPC** | „Remote Procedure Call" — ein Methodenaufruf, dessen Rumpf auf einem **anderen** Rechner ausgeführt wird. In NGO 2.x mit `[Rpc(SendTo.…)]` markiert; der Methodenname muss auf `Rpc` enden. | `Projekte/Isor_Tower/TDD_NOTES.md`, Block „Netzwerk & Multiplayer" |
 
 ## Über Nummern und Ausgaben
 

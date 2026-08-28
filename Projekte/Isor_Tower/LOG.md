@@ -458,3 +458,46 @@ damals, nicht den von heute.
   aus der `.gitignore`. Die LFS-Migration der Historie steht als Punkt
   in `Kern/ROADMAP.md`. Geprüft: `git ls-remote` liefert `main`
   weiterhin; Sichtbarkeit per API-Abruf ohne Anmeldung (404).
+- 2026-08-28 — Phase 0 begonnen, Arbeit über den 27. und 28. verteilt.
+  Netzwerk-Pakete über das Multiplayer Center installiert: Netcode for
+  GameObjects 2.13.2, Multiplayer Services 2.3.1, Multiplayer Play Mode
+  2.0.2, Multiplayer Tools 2.2.11. Vivox und das Dedicated Server
+  Package abgewählt. Der Assistent empfahl dabei zweimal etwas anderes
+  als am 2026-08-25 entschieden — erst einen Dedicated Server (Folge von
+  „Cheating: very important"), dann Distributed Authority (Folge von
+  „geringste Kosten"); beides von Hand auf Client Server und Client
+  Hosted gestellt. Relay und Player Authentication im
+  Unity-Cloud-Dashboard freigeschaltet; das Cloud-Projekt war bereits
+  verknüpft. Beleg: Der Quickstart meldet „This project is correctly
+  setup to use Unity services."
+- 2026-08-28 — `NetTestbed.unity` gebaut: Boden als Plane (Scale 3, also
+  30 × 30 m), NetworkManager mit Unity Transport, Spieler-Prefab
+  `NetTestPlayer` mit `NetworkObject` und `NetworkTransform` auf
+  `Authority Mode: Owner` (Scale-Synchronisation abgeschaltet, weil sich
+  die Größe nie ändert), Behelfs-UI mit zwei Knöpfen sowie die Skripte
+  `SessionStarter` und `NetTestPlayerMover` in
+  `Assets/Scripts/Networking/`. Geprüft mit zwei Spielern über
+  Multiplayer Play Mode auf einem Rechner: Beide Kapseln erscheinen,
+  jeder steuert nur seine eigene. Damit ist Abnahmepunkt 2 von Phase 0
+  (Besitz) erledigt; die übrigen vier stehen aus.
+- 2026-08-28 — Join-Code über die Sessions-API gebaut: anonyme Anmeldung,
+  `CreateSessionAsync` mit `WithRelayNetwork`, Code in der Behelfs-UI,
+  Beitritt über `JoinSessionByCodeAsync`. Geprüft mit zwei Prozessen auf
+  einem Rechner, aber **über Relay statt über `127.0.0.1`** — beide sahen
+  einander laufen, das Ownership-Overlay zeigte zwei Besitzer (Client 0
+  und 1). Damit ist Abnahmepunkt 1 erledigt. Die Syntax wurde vorher in
+  Unitys Doku nachgeschlagen statt aus dem Gedächtnis geschrieben; drei
+  von drei Annahmen wären falsch gewesen.
+- 2026-08-28 — `NetTestPing` gebaut: Leertaste beim Besitzer →
+  `[Rpc(SendTo.Server)]` zum Host → Zähler → `[Rpc(SendTo.Everyone)]`
+  zurück an alle. Geprüft: In der Konsole des Gastes erschienen beide
+  Meldungen, auch die für die Kapsel des Hosts — damit ist der Rückweg
+  belegt und Abnahmepunkt 3 erledigt. Es fehlen noch Punkt 4
+  (Vergleichstest) und Punkt 5 (Build auf dem Laptop); beide brauchen das
+  zweite Gerät.
+- 2026-08-28 — Der Regler „Wer schreibt" wurde im Lauf der Session
+  geändert: Bibliotheks-Anbindung und Wegwerf-Code schreibt Claude, alles
+  Entscheidungstragende und selbst Entworfene tippt Isor. Als Ersatz für
+  das Abtippen kamen Verständnisfragen zum Code. Erster Durchgang: Von
+  drei Fragen saß eine sofort, eine war halb, eine nicht — nach der
+  Auflösung konnte Isor alle drei in eigenen Worten herleiten.

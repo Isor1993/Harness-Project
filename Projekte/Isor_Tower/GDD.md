@@ -72,6 +72,9 @@ Floor sind nie gleichzeitig aktiv.
   Entfernung sichtbar, nahe Details (Gras) dürfen in der Ferne stark
   vereinfacht werden.
 - Größenordnung gleichzeitig sichtbarer Gegner: 40–50.
+- **Offen:** Wie die Steuerung aussehen soll. Für das richtige Spiel wird
+  sie **neu entworfen** statt aus dem zweiten Semester übernommen (Isor,
+  2026-08-28). Siehe „Offene Design-Fragen" → **Spielersteuerung**.
 
 ## Persistenz
 - Gespeichert wird ausschließlich der Village-Zustand plus der
@@ -108,7 +111,8 @@ Floor sind nie gleichzeitig aktiv.
 ## Umfang und Ziel
 Isor's Tower ist das durchgehende Studienprojekt: Jedes Semester zahlt auf
 dasselbe Spiel ein statt auf getrennte Übungen. Ziel ist ein
-veröffentlichungsfähiges Ergebnis, mindestens eine Demo.
+veröffentlichungsfähiges Ergebnis, mindestens eine Demo; die
+Veröffentlichung ist auf **Steam** vorgesehen *(Isor, 2026-08-27)*.
 Priorität: Das dritte Semester ist ein **Neustart desselben Projekts** —
 neue Szenen, von Anfang an koop-fähig, im selben Repo. Was aus dem
 zweiten Semester dasteht, wird nicht pauschal übernommen, sondern
@@ -137,6 +141,12 @@ geschrieben. Sonst stünde dieselbe Frage an zwei Orten.
 - **Floor-Größenraster:** klein / mittel / groß in Metern.
 - **Village-Terrain:** handgebaut, mit einem eigenen Tool erweitert, oder
   einmalig generiert und dann eingefroren?
+- **Spielersteuerung:** Wie soll sie sich anfühlen — Bewegung, Kampf-
+  Eingaben, Umschaltung First/Third Person? Dass sie für das richtige
+  Spiel **neu entworfen** und nicht aus dem zweiten Semester übernommen
+  wird, steht fest (Isor, 2026-08-28); offen ist das Wie. Betrifft den
+  Prototyp nicht — dort wird die bestehende Steuerung nur netzfähig
+  gemacht.
 
 ## Entwurf — noch nicht einsortiert
 

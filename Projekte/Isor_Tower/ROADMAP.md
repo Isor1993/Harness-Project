@@ -23,8 +23,8 @@ Kernschleife bleibt dann vollständig vorführbar.
 
 ### Vor dem Semesterstart
 
-- [ ] **Phase 0 · Netz-Prüfstand** *(2 Wochen)* — Eine nackte Szene:
-  flacher Boden, zwei Kapseln, sonst nichts. Netcode for GameObjects
+- [ ] **Phase 0 · Netz-Prüfstand** *(2 Wochen)* — Eine nackte Szene
+  `NetTestbed.unity`: flacher Boden, zwei Kapseln, sonst nichts. Netcode for GameObjects
   installieren, Verbindung über Join-Code herstellen, Besitz und
   Nachrichten verstehen. Der Verbindungsknopf ist hier ein Behelf und
   fliegt in Phase 1 wieder raus. Dazu der erste Vergleichstest, ob die
@@ -33,16 +33,24 @@ Kernschleife bleibt dann vollständig vorführbar.
   herüber: Seed plus Objekte". Fällt der Test durch, wandert der
   Floor-Aufbau von „Seed" nach „Host schickt Objekte", und die
   Zeitrechnung wird enger.
-  *Fertig heißt:* Du und dein Mitspieler seid über das Internet verbunden
-  und seht euch laufen. Die Szene bleibt als Prüfstand stehen.
+  *Fertig heißt:* Fünf Punkte stehen — Verbindung über den Join-Code,
+  Besitz (jeder steuert nur seine Kapsel), Nachrichten in beide
+  Richtungen, gelaufener Vergleichstest, und ein Windows-Build läuft auf
+  dem Laptop. Geprüft wird auf PC und Laptop statt mit einem Mitspieler
+  (`DECISIONS/Multiplayer.md`, 2026-08-27). Die Szene bleibt dauerhaft
+  als Diagnose-Szene stehen.
 - [ ] **Phase 1 · Spielernaht und Einstieg** *(3 Wochen)* — Das
   Input-Asset wird nach Reichweite geteilt, der Motor bekommt seine
   Eingabe gereicht statt sie zu holen, das Spieler-Prefab wird zum
   Netzobjekt mit sichtbarem Körper. Dazu der Einstieg über das bestehende
   Hauptmenü: allein spielen, Welt erstellen, Welt beitreten; der
-  Ladebalken wartet auf mehrere statt auf einen.
-  *Fertig heißt:* Spiel starten, im Menü eine Welt erstellen, Code an den
-  Mitspieler schicken, zusammen durch die Testwelt laufen.
+  Ladebalken wartet auf mehrere statt auf einen. Der Verbindungsaufbau
+  bekommt hier seine Naht — `ISessionService`, damit ein späterer
+  Steam-Transport eine Datei kostet und keinen Umbau.
+  *Fertig heißt:* Spiel starten, im Menü eine Welt erstellen, Code
+  weitergeben, zusammen durch `StarterVillage` laufen — die Zielszene ist
+  von Anfang an das Village, keine Wegwerf-Testwelt
+  (`DECISIONS/Multiplayer.md`, 2026-08-27).
 
 ### Im Semester
 
@@ -93,6 +101,11 @@ Kernschleife bleibt dann vollständig vorführbar.
 - [ ] **Village-Terrain** — handgebaut, mit einem Tool erweitert, oder
   einmalig generiert und eingefroren? Offene Frage im `GDD.md` →
   „Village-Terrain". Fällig vor Phase 6.
+- [ ] **Spielersteuerung** — für das richtige Spiel wird sie neu
+  entworfen statt aus Semester 2 übernommen (Isor, 2026-08-28). Offene
+  Frage im `GDD.md` → „Spielersteuerung". **Blockiert den Prototyp
+  nicht:** Phase 1 macht die bestehende Steuerung nur netzfähig, das
+  bleibt unverändert. Fällig nach dem Prototyp.
 
 ## Kleinere offene Punkte des Netzbaus
 
@@ -107,6 +120,11 @@ sich klein.
   Fällig in Phase 3.
 - [ ] **Reichweite des Sichtbarkeitsfilters messen** — Die 40–50 Gegner
   aus dem `GDD.md` sind eine Anzahl, keine Messung. Fällig in Phase 4.
+- [ ] **Projektnamen im Cloud-Dashboard kürzen** — er heißt
+  `Isor Tower ProtoTyp 2026 2026-07-03_17-11-35` und trägt einen
+  angehängten Zeitstempel, der das Suchen erschwert. Kosmetisch, kein
+  Termin. *(Relay und Player Authentication sind seit dem 2026-08-28
+  freigeschaltet — Beleg im `LOG.md`.)*
 
 ## Nach dem Prototyp
 
@@ -124,6 +142,11 @@ offen.
   später. Findet die Datenschnittstelle aus Phase 2 vor.
 - [ ] **Host-geprüfte Bewegung** — wann und ob die Tür benutzt wird, die
   die Input-Naht offenhält.
+- [ ] **Steam-Transport statt Unity Relay** — sobald eine App-ID
+  existiert. Betroffen ist nur die Transportschicht hinter
+  `ISessionService`; zu prüfen ist dann, ob ein Community-Transport zur
+  dann aktuellen NGO-Version passt (`DECISIONS/Multiplayer.md`,
+  2026-08-27).
 - [ ] **Portfolio-Präsentation** (erst wenn eine Bewerbung ansteht):
   spielbarer Build aus der Build-Ablage (`Kern/VERSIONIERUNG.md` →
   „Ablage der Builds"), Video oder GIFs, gezielte Lese-Einladung ins

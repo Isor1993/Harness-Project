@@ -489,3 +489,71 @@ zurücknehmen lässt. Der Vorfall steht hier als dritter Beleg; wird es
 ein vierter, ist die Abwägung neu zu führen.
 **Stand:** behoben 2026-08-27 — Titel wiederhergestellt, Thema von Isor
 unverändert übernommen.
+
+### 2026-08-27 — Typ und Modus nicht am Anfang gefragt
+**Was:** Auf Isors erste Frage antwortete Claude mit einer Übersicht der
+offenen Themen und schrieb dazu, der Session-Einstieg sei gelesen —
+„CLAUDE.md → INDEX → PLAN → WORKFLOW". `Kern/WORKFLOW.md` war zu diesem
+Zeitpunkt nicht gelesen. Dadurch fiel die Regel aus, am Anfang jeder
+Session nach Typ und Modus zu fragen. Nachgeholt im zweiten Zug, bevor
+inhaltlich gearbeitet wurde.
+**Ursache:** Zwei Fehler in einem. Die Leseordnung wurde nur teilweise
+ausgeführt, und ihr Ergebnis wurde trotzdem als vollständig gemeldet. Die
+zweite Hälfte wiegt schwerer: Ein ausgelassener Punkt fällt irgendwann
+auf, eine falsche Vollzugsmeldung deckt ihn zu.
+**Regel:** Die Regel greift und ist richtig formuliert (`WORKFLOW.md` →
+„Typ, Modus und Regler": am Anfang jeder Session, bei jedem Typ — sie
+stammt selbst aus einem Aussetzer vom 2026-08-22). Sie stand nur nicht im
+Kontext. **Dieselbe Ursache wie beim Eintrag „Session-Thema
+überschrieben, dritter Fall" vom selben Tag:** `WORKFLOW.md` ist Punkt 4
+der Leseordnung, und heute sind zwei verschiedene Regeln daran
+gescheitert, dass vor Punkt 4 gehandelt wurde. Mögliches Gegenmittel —
+die wenigen Handgriffe, die vor Punkt 4 anstehen (Titel nicht anfassen,
+Typ und Modus fragen), in `CLAUDE.md` bei Punkt 1 nennen, statt die
+Leseordnung umzustellen.
+**Stand:** behoben 2026-08-27 — Typ, Modus und Regler im zweiten Zug
+gefragt, der Abschnitt lief als Design.
+
+### 2026-08-28 — Versionsabhängige Unity-Angaben aus dem Gedächtnis behauptet
+**Was:** Claude nannte drei Angaben als Tatsache, ohne sie zu prüfen.
+`cloudEnabled: 1` wurde als Beweis für freigeschaltete Cloud-Dienste
+angekündigt — das Feld stammt aus dem alten Services-Fenster und springt
+in Unity 6 nicht mehr um; Isor suchte danach einen Schalter, den es nicht
+gibt. Dazu „der Transport wird beim NetworkManager automatisch
+mitgeliefert" (wurde er nicht) und „im Manifest landen deutlich mehr als
+vier Pakete" (es waren fünf Zeilen, weil das Manifest nur direkte
+Abhängigkeiten führt).
+**Ursache:** Alle drei Angaben sind versionsabhängig, und alle drei ließen
+sich in Sekunden prüfen — zwei im Projekt selbst (`ProjectSettings.asset`,
+`Packages/manifest.json`), eine in der Doku. Nachgesehen wurde erst,
+nachdem die Behauptung im Raum stand.
+**Regel:** Fehlte. `Kern/DIAGRAM_RULES.md` und die Praxis verlangen, vor
+einem Diagramm den echten Code zu lesen — für gesprochene
+Tatsachenbehauptungen über Fremdsoftware gibt es nichts Entsprechendes.
+**Gegenmittel:** Vor einer versionsabhängigen Aussage über Unity, ein
+Paket oder ein Werkzeug erst im Projekt oder in der Doku nachsehen, sonst
+die Unsicherheit benennen statt sie zu glätten. Dass das trägt, zeigt
+derselbe Tag: Bei `NetworkTransform` und beim Input-Handler wurde vorher
+nachgesehen — und beide Male wäre die Annahme falsch gewesen.
+**Stand:** offen — Gegenmittel am 2026-08-28 als Punkt in
+`Kern/ROADMAP.md` aufgenommen, geschrieben ist die Regel noch nicht.
+
+### 2026-08-28 — „Entwurf vor Gerüst" gegen den Regler „Wer schreibt"
+**Was:** Bei `NetTestPing` zeigte Claude das Gerüst, ohne vorher nach
+Isors zwei Sätzen zu fragen. Die Regel „Entwurf vor Gerüst"
+(`WORKFLOW.md`, Session-Typ Development) verlangt das vor **jedem**
+Gerüst und sagt ausdrücklich, Claude solle die Antwort abwarten.
+**Ursache:** Kurz zuvor war der Regler „Wer schreibt" umgestellt worden —
+Bibliotheks-Anbindung und Wegwerf-Code schreibt Claude,
+Entscheidungstragendes und selbst Entworfenes weiterhin Isor. Damit ist
+ungeklärt, ob „Entwurf vor Gerüst" überhaupt noch greift, wenn Claude
+schreibt: Die Regel begründet sich damit, dass Isor das Anfangen vor
+einer leeren Datei übt — was entfällt, wenn er die Datei gar nicht
+anlegt. Claude hat diese Frage nicht gestellt, sondern stillschweigend
+für sich entschieden.
+**Regel:** Unvollständig. `WORKFLOW.md` beschreibt beide Regeln, aber
+nicht ihr Verhältnis zueinander. **Gegenmittel:** Beim Regler „Wer
+schreibt" ergänzen, was mit „Entwurf vor Gerüst" geschieht, wenn er auf
+*Claude* steht — und ob die Aufteilung nach Code-Sorte als dritte Stufe
+des Reglers aufgenommen wird statt als mündliche Absprache zu bleiben.
+**Stand:** offen.

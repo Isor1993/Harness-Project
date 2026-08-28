@@ -269,3 +269,126 @@ wer sie im Kopf behält, unterschätzt das Semester.
 Verworfen: die beiden Seiten löschen (der Lehrstoff ist gut und müsste
 sonst neu geschrieben werden); die Vorfassung als überholt behandeln, nur
 weil sie ohne Harness entstand.
+
+## 2026-08-27 — Phase 0 läuft im eigenen Prüfstand, das Village kommt ab Phase 1
+Was: Der erste Verbindungstest läuft in einer eigenen, nackten Szene
+`NetTestbed.unity` — flacher Boden, zwei Kapseln, Behelfsknopf —, die
+danach dauerhaft als Diagnose-Szene stehen bleibt. Ab Phase 1 führt der
+Einstieg über das Menü direkt nach `StarterVillage`; die „Testwelt" der
+ROADMAP entfällt. Phase 0 ist fertig, wenn fünf Punkte stehen: Verbindung
+über den Join-Code, Besitz (jeder steuert nur seine Kapsel), Nachrichten
+in beide Richtungen, gelaufener Vergleichstest, und ein Windows-Build
+läuft auf dem Laptop.
+Warum: Isors Vorschlag war, gleich im Village über das Menü anzufangen,
+um nichts wegzuwerfen. Der Teil trägt und ist übernommen — die Zielszene
+heißt ab Phase 1 `StarterVillage` statt „Testwelt", das spart eine
+Wegwerf-Szene. Die Trennung bleibt trotzdem: Beim ersten Verbindungstest
+kämen sonst sieben Bausteine als Fehlerquelle in Frage statt drei, weil
+Menü, netzsynchroner Szenenwechsel, Ladebalken und Spawn-Punkte
+dazukommen — und zwei davon sind eigene Fallen. Der Prüfstand ist kein
+Wegwerf, weil eine leere Szene später jeden Netzfehler einkreisen hilft;
+weggeworfen wird nur der Behelfsknopf.
+Verworfen: gleich im Village über das Menü anfangen (Isors Fassung); eine
+Szene, die als Prüfstand anfängt und zum Village wächst (kostet später
+die leere Szene zum Fehlersuchen); Save/Load vor Phase 1 bauen — der
+Schnitt vom 2026-08-25 gilt weiter, in Woche 1 gibt es nichts zu
+speichern.
+
+## 2026-08-27 — Steam ist das Veröffentlichungsziel, die Transportschicht bleibt tauschbar
+Was: Veröffentlicht werden soll auf Steam (`GDD.md` → „Umfang und Ziel").
+Für das Semester bleibt es bei Unity Relay. Der Verbindungsaufbau bekommt
+in Phase 1 mit dem Menü eine dünne Naht — `ISessionService` mit
+`Create(onReady)` und `Join(code, onReady)`, dahinter
+`RelaySessionService`. Ein Steam-Transport käme später als zweite
+Umsetzung daneben.
+Warum: Steam bringt eigenes Netzwerk mit (Steam Datagram Relay), das in
+Steamworks enthalten ist und Einladungen über die Freundesliste erlaubt;
+Unity Relay rechnet dagegen nach durchgeleiteter Datenmenge ab. Benutzen
+lässt sich Steams Netzwerk heute trotzdem nicht — es braucht eine App-ID,
+und die gibt es erst nach der Steam-Direct-Gebühr; vorführen ließe sich
+damit nichts, und die Dozentin bräuchte Steam. Betroffen ist bei einem
+Wechsel ohnehin nur die Transportschicht: Spielcode und Netcode for
+GameObjects bleiben unangetastet.
+Verworfen: jetzt schon auf Steams Netzwerk bauen (App-ID fehlt,
+Vorführung unmöglich); die Naht sofort in Phase 0 einziehen — anders als
+beim Datendienst hat der Verbindungsaufbau genau **einen** Aufrufer, das
+Menü, und eine Abstraktion ohne Anlass müsste im Prüfungsgespräch
+mitverteidigt werden.
+
+## 2026-08-27 — Join-Code über die Sessions-API, Pakete über das Multiplayer Center
+Was: Die Pakete werden über das bereits installierte Multiplayer Center
+ausgewählt und installiert, nicht einzeln von Hand. Der Join-Code
+entsteht über die Sessions-API, nicht durch eigenes Ansteuern von Relay.
+Warum: Das Center kennt den Editor (`6000.5.2f1`) und setzt zueinander
+passende Versionen; von Hand gewählte Versionen kollidieren
+erfahrungsgemäß erst beim Build. Die Sessions-API ist Unitys aktueller
+Weg für Unity 6 und damit im Prüfungsgespräch zitierbar, und Runde
+erstellen wie beitreten sind je eine Handvoll Zeilen statt Anmeldung,
+Allocation und Transport-Verdrahtung von Hand. Da dieser Code beim
+späteren Steam-Wechsel ohnehin ersetzt wird, ist wenig davon der bessere
+Einsatz.
+Verworfen: die Pakete einzeln über den Package Manager holen; Relay
+direkt ansteuern (mehr Zeilen, die zur Abgabe gehören und später doch
+ersetzt werden).
+
+## 2026-08-27 — Geprüft wird auf PC und Laptop, nicht mit einem Mitspieler
+Was: Der Zwei-Rechner-Test läuft auf Isors eigenem PC und Laptop.
+Multiplayer Play Mode ist die tägliche Schleife, die beiden Geräte sind
+die Abnahme. Mitspieler kommen dazu, wenn es Gameplay zu testen gibt —
+und vor der Abgabe, nicht danach.
+Warum: Isors Vorschlag. Er macht Phase 0 von keinem Termin abhängig, und
+bei rund vier verfügbaren Wochenendtagen in zwei Wochen ist
+Terminabsprache der teuerste Posten. Dazu zeigt er beide Seiten eines
+Netzfehlers gleichzeitig statt einer am Telefon beschriebenen Hälfte.
+Drittens haben die Geräte verschiedene CPUs — genau die Bedingung, die
+der Vergleichstest braucht.
+Verworfen: mit einem Mitspieler testen (Terminabhängigkeit, nur eine
+sichtbare Seite); allein mit Multiplayer Play Mode auskommen — es läuft
+auf einer Maschine, beweist Phase 0 damit nicht und macht den
+Vergleichstest grün und wertlos. Nicht abgedeckt bleibt echte
+Internet-Verzögerung: Beide Geräte hängen am selben Router.
+
+## 2026-08-27 — Der Vergleichstest misst Anzahl und Fingerabdruck, in zwei Läufen
+Was: `GenerationFingerprint` in `Assets/Scripts/Diagnostic/` rechnet Höhen
+**und** Platzierungen und meldet zweierlei — die Anzahl der Platzierungen
+je Typ und einen Fingerabdruck über alle Positionen. Gemessen wird in
+zwei Läufen: erst Editor gegen Build auf dem PC allein, dann Build gegen
+Build auf PC und Laptop.
+Warum: „Gleich oder nicht" ist zu grob. Die Anzahl ist, was spielerisch
+zählt; der Fingerabdruck schlägt schon bei Abweichungen an, die niemand
+sieht. So gibt es drei Ausgänge statt zwei, und der mittlere — Anzahl
+gleich, Fingerabdruck verschieden — ist besprechbar statt rot. Die zwei
+Läufe trennen die beiden möglichen Ursachen: Editor gegen Build isoliert
+Mono gegen IL2CPP ohne zweiten Rechner, Build gegen Build isoliert die
+Maschine; ein einziger Lauf über beide Variablen wäre bei Rot nicht
+deutbar. Dass der Test überhaupt eine Chance hat, liegt am Bestand: Der
+`ObjectPlacer` zieht die Seeds je Kachel vorab auf einem Thread und führt
+die Ergebnisse über den Index zusammen, nicht über die
+Fertigstellungsreihenfolge — der übliche Weg, Determinismus an den
+Thread-Pool zu verlieren, ist dort schon versperrt.
+Verworfen: nur die Höhen vergleichen (lässt ausgerechnet die riskante
+Stelle aus — die Poisson-Streuung mit Sinus, Kosinus und einem
+Ablehnungstest je Punkt, wo ein einziger anders ausgefallener Vergleich
+alles ab diesem Punkt ändert); nur die Platzierungen (findet die
+Abweichung, sagt aber nicht, wo sie entstand); Editor gegen Build als
+einziger Aufbau.
+
+## 2026-08-28 — `async`/`await` ist bei der Sessions-API nicht wählbar
+Was: Der Verbindungsaufbau läuft über `await` —
+`UnityServices.InitializeAsync`, `SignInAnonymouslyAsync`,
+`CreateSessionAsync` und `JoinSessionByCodeAsync` bieten nichts anderes
+an. Die Rückruf-Entscheidung vom 2026-08-26 bleibt davon **unberührt**:
+Sie galt `IPlayerDataService`, also einer selbst entworfenen
+Schnittstelle. `ISessionService` bekommt in Phase 1 außen Rückrufe und
+hält `async` innen.
+Warum: Die Begründung von damals — `async` würde quer durch den ganzen
+Code wandern und müsste im Prüfungsgespräch erklärt werden — trifft
+weiter zu, lässt sich hier aber anders einlösen: Hinter einer Naht steht
+das Sprachkonstrukt an **einer** Stelle statt an vielen. Erklären muss
+Isor es trotzdem, weil es im Abgabecode steht; die Faustregel dazu
+(`async void` nur für Ereignisbehandler, und dann zwingend mit
+`try`/`catch`, weil eine Ausnahme dort sonst verfällt) wurde im selben
+Zug erarbeitet.
+Verworfen: die Sessions-API meiden, um `async` zu vermeiden — dann bliebe
+nur Relay von Hand, mit mehr Code, und `async` wäre dort ebenso dabei;
+`async` ungekapselt durchs Projekt wandern lassen.

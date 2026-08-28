@@ -92,6 +92,7 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 | `Projekte/Isor_Tower/DECISIONS/Gras.md` | Nur Entscheidungen zu Gras und Instancing — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
 | `Projekte/Isor_Tower/DECISIONS/Multiplayer.md` | Nur Entscheidungen zu Multiplayer, Netzwerk und der daraus folgenden Datentrennung — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
 | `Projekte/Isor_Tower/DECISIONS/Platzierung.md` | Nur Entscheidungen zu Platzierung — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
+| `Projekte/Isor_Tower/DECISIONS/Player.md` | Nur Entscheidungen zur Spielerfigur und ihrer Steuerung — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
 | `Projekte/Isor_Tower/DECISIONS/Terrain_Mesh.md` | Nur Entscheidungen zu Terrain und Mesh — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
 | `Projekte/Isor_Tower/DECISIONS/UI.md` | Nur Entscheidungen zu UI, Menüs und HUD — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
 | `Projekte/Isor_Tower/DECISIONS/Welt.md` | Nur Entscheidungen zu Welt, Szene und Interaktion — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |

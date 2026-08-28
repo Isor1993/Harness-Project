@@ -22,13 +22,16 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(geschrieben 2026-08-27 — der Harness ist fertig gebaut)*
+*(geschrieben 2026-08-28 beim `/harness:ende`)*
 
-**Am Harness ist nichts mehr offen** (`Kern/ROADMAP.md` → „Als Nächstes"
-ist leer). Dran ist **Phase 0 des Koop-Prototyps**: Netz-Prüfstand, rund
-zwei Wochen, Beschreibung in `Projekte/Isor_Tower/ROADMAP.md`. Die Session
-davor beginnt mit einem **Design-Abschnitt**, nicht mit Code
-(`Kern/WORKFLOW.md`: erst Design, dann Development). Sonntags die
+**Phase 0 läuft.** Verbindung über den Join-Code, Besitz und Nachrichten
+in beide Richtungen stehen. Offen sind
+**Vergleichstest** und **Windows-Build auf dem Laptop**; beide brauchen
+das zweite Gerät, gehören also auf einen Tag, an dem der Laptop
+danebensteht. **Isor hat um einen gründlichen Netcode-Durchgang gebeten**,
+bevor es tiefer geht — Stoff dazu in
+`Knowledge/Unity/ngo-grundbausteine-praxis.md` und
+`Knowledge/CSharp/async-await-in-unity.md`. Sonntags die
 Ein-Seiten-Prüfung: dran ist `💡 EditorWindow & MVP`.
 
 ---

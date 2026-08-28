@@ -20,9 +20,30 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
 
 ## Als Nächstes
 
-**Gerade nichts offen.** Ein leerer Abschnitt ist hier ein gültiger
-Inhalt und kein Versehen. Er wird nicht vorsorglich gefüllt: Ein
-erfundener Punkt sieht genauso verbindlich aus wie ein echter.
+- [ ] **Die Handgriffe vor Punkt 4 in `CLAUDE.md` nennen** — nämlich:
+  den Session-Titel nicht anfassen, und Typ und Modus fragen. Beide
+  Regeln stehen in `Kern/WORKFLOW.md` und damit an Punkt 4 der
+  Leseordnung; am 2026-08-27 sind beide daran gescheitert, dass vor
+  Punkt 4 gehandelt wurde (`Kern/STOERUNGEN.md`, zwei Einträge desselben
+  Tages). Die Leseordnung umzustellen wäre der teurere Weg — dann müsste
+  `WORKFLOW.md` vor `INDEX.md` und `PLAN.md` gelesen werden.
+- [ ] **Regel gegen ungeprüfte Angaben über Fremdsoftware** — In
+  `CLAUDE.md` aufnehmen: Vor einer versionsabhängigen Aussage über Unity,
+  ein Paket oder ein Werkzeug erst im Projekt oder in der Doku nachsehen;
+  wo das nicht geht, die Unsicherheit benennen statt sie zu glätten. Für
+  Diagramme gibt es die Regel bereits („erst die Quelle lesen"), für
+  Behauptungen im Gespräch nicht — am 2026-08-28 kosteten drei davon eine
+  Suche nach einem Schalter, den es gar nicht mehr gibt
+  (`Kern/STOERUNGEN.md`).
+- [ ] **Regler „Wer schreibt" und „Entwurf vor Gerüst" zusammenführen** —
+  In `Kern/WORKFLOW.md` klären, was mit „Entwurf vor Gerüst" geschieht,
+  wenn der Regler auf *Claude* steht: Die Regel begründet sich damit,
+  dass Isor das Anfangen vor einer leeren Datei übt — und das entfällt
+  dann. Im selben Zug entscheiden, ob die am 2026-08-28 entstandene
+  Aufteilung nach Code-Sorte (Bibliotheks-Anbindung und Wegwerf-Code →
+  Claude, Entscheidungstragendes und selbst Entworfenes → Isor) eine
+  dritte Reglerstufe wird, statt mündliche Absprache zu bleiben
+  (`Kern/STOERUNGEN.md`, 2026-08-28).
 
 Was im Betrieb nicht trägt, kommt als Störung in `Kern/STOERUNGEN.md`
 und wird von dort aus zu einem Punkt hier — genau dafür fragt die
