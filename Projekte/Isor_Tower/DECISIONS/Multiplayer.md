@@ -518,3 +518,90 @@ Koop-Spielen üblich.
 Verworfen: die Host-Pause friert alle ein (der Gast steht dann grundlos
 still); die Solo-Ausnahme sofort mitbauen (ein zweiter Fall — genau was
 die Solo-Entscheidung vom 2026-08-25 vermeiden will).
+
+## 2026-08-29 — Der Lobby-Zustand wohnt in einem Objekt je Spieler
+Was: Beim Verbinden spawnt der Host je Spieler ein kleines
+`LobbyPlayer`-Netzobjekt mit einfachen `NetworkVariable`s: Name, Bereit,
+Ping. Schreiben darf nur der Host; der Gast meldet Ready und Namen per
+RPC. Beim Verlassen despawnt das Objekt — die sichtbare Liste baut sich
+aus den vorhandenen Objekten.
+Warum: Folgt dem Muster vom 2026-08-28 (was einen Wert hält, ist eine
+`NetworkVariable`) und bleibt auf Semesterniveau — jede Variable erklärt
+sich in einem Satz. Zugleich die Vorübung auf Baustein C: dasselbe
+Spawnen je Spieler braucht dort die echte Figur. Ping-Updates sind so
+der billigste Fall, eine Zahl pro Sekunde.
+Verworfen: ein Sammelobjekt mit `NetworkList` und eigener
+serialisierbarer Struct (mehr Erklärlast im Prüfungsgespräch, und jedes
+Ping-Update ersetzt eine ganze Listenzeile).
+
+## 2026-08-29 — Szenenwechsel über den NetworkSceneManager, der Ladebalken wartet auf alle
+Was: Der Start-Klick des Hosts ruft einmal den `NetworkSceneManager`;
+jeder Rechner lädt sofort mit eigenem Balken. Wer eher fertig ist, sieht
+„Warte auf Mitspieler…", bis NGO `LoadEventCompleted` meldet — erst dann
+beginnt das Spiel. Der bestehende `LoadingScreenController` wird
+angepasst (erster Anpassen-Fall der Übernahme-Regel): Die
+Fortschrittsquelle wird das NGO-Szenenereignis, die Umschalt-Bedingung
+das Alle-fertig-Signal. Gilt auch solo — ein Host mit einem Spieler.
+Warum: Isors Zielbild „alle warten, bis jeder geladen hat" ist genau das
+eingebaute Verhalten des netzsynchronen Szenenwechsels; ein eigener
+Warte-Mechanismus wäre doppelt gebaut. Ein Codepfad für solo und Netz
+hält die Solo-Entscheidung vom 2026-08-25 ein.
+Verworfen: eigenes Fertig-Melden über RPCs (NGO liefert das Ereignis
+frei Haus); wie bisher am eigenen Anzeigewert umschalten (der lokale Weg
+kennt keine Mitspieler).
+
+## 2026-08-29 — Leave() ist der vierte Weg: der Host löst auf, der Gast geht
+Was: `ISessionService` bekommt `Leave(onDone)`. Der Service kennt seine
+Rolle: Als Host schließt er die Session für alle — die Lobby ist weg,
+ein neues Hosten erzeugt einen neuen Code —, als Gast verlässt er nur
+sich selbst. In beiden Fällen fährt der `NetworkManager` herunter. Back
+in der Lobby ruft erst `Leave()` und folgt dann der Spiegel-Regel der
+Panel-Kette.
+Warum: Behebt Isors Befund vom ersten Testlauf („Already connected."
+nach Back). Das Host-Auflösen folgt dem Host-Modell vom 2026-08-25 —
+verlässt der Besitzer die Runde, endet sie für alle. Eine Methode hält
+das Menü dumm: Es ruft stumpf `Leave()`, die Rollenfrage bleibt im
+Service.
+Verworfen: zwei Methoden nach Rolle (das Menü müsste die Rolle kennen
+und je Knopf richtig verdrahten); die Verbindung beim Back stehen lassen
+(der heutige Zustand — genau der Befund).
+
+## 2026-08-30 — Die Naht verrät die Rolle: IsHost
+Was: `ISessionService` bekommt eine Nur-Lese-Property `IsHost`. Das Menü
+nutzt sie als Wächter am Start-Knopf (Gast-Klick tut nichts), bis die
+Rollen-Ansicht der Lobby den Knopf je Rolle tauscht; dieselbe Property
+trägt dann auch die Rollen-Ansicht.
+Warum: Beim Zwei-Personen-Test lief der Gast-Klick auf Start in den
+NGO-Fehler „Server only action" und ein verstecktes Menü. Die Frage „bin
+ich Host?" ist Netz-Wissen und gehört hinter die Naht — das Menü fasst
+den NetworkManager nicht an.
+Verworfen: das Menü fragt den NetworkManager direkt (bricht die Naht);
+der Wächter nur im `SceneLoader` (verhindert den Fehler, aber das Menü
+hätte die Lobby schon versteckt).
+
+## 2026-08-30 — Ein Rauswurf räumt beide Leitungen
+Was: Wird ein Gast getrennt, verlässt er in `HandleDisconnected` auch die
+Session beim **Sessions-Dienst** (`LeaveAsync`, eng gefasstes try/catch),
+bevor Feld und Ereignis laufen. Abbestellt wird vor dem `await`, damit
+ein zweites Trennungs-Ereignis die pausierte Methode nicht erneut startet.
+Warum: Relay (Spieldaten) und Sessions-Dienst (Mitgliederliste) sind zwei
+getrennte Leitungen. Der Rauswurf kappt nur Relay — der Sitzplatz beim
+Dienst blieb besetzt, und ein erneuter Beitritt scheiterte mit „player is
+already a member of the lobby" (Befund aus dem Test vom 2026-08-30).
+Verworfen: den Sitzplatz per Timeout verfallen lassen (funktioniert, aber
+minutenlang verwirrende Fehlermeldungen); das Aufräumen scheitern lassen
+dürfen ohne catch (ein Dienst-Fehler dürfte dann den Rauswurf-Ablauf
+abbrechen).
+
+## 2026-08-30 — Ein Besetzt-Schild für die drei async-Wege
+Was: `Create`, `Join` und `Leave` teilen sich ein `_isBusy`-Feld: Ist es
+gesetzt, verpufft ein weiterer Klick still; gelöst wird es in einem
+`finally`, damit jeder Ausgang — Erfolg, Fehler, Wächter — das Schild
+garantiert abhängt.
+Warum: Während eines `await` ist die Methode erneut betretbar. Belegt im
+Paartest vom 2026-08-30: Doppel-Back rief `LeaveAsync` doppelt (Warnung
+in der Konsole); Doppelklick auf „Welt erstellen" hätte zwei Sessions
+erzeugt, weil `IsAlreadyConnected` während des Aufbaus noch blind ist.
+Verworfen: die Knöpfe im Menü deaktivieren (zweite Wahrheit in der UI,
+und der Service bliebe für andere Aufrufer ungeschützt); je Weg ein
+eigenes Flag (drei Schilder für dieselbe Tür).

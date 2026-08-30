@@ -245,3 +245,68 @@ Elemente, Eingabefeld für alle sichtbar); je Rolle ein eigenes
 Lobby-Panel (mein Vorschlag — doppelte Pflege für denselben Inhalt);
 `JoinWorld` am Tür-Knopf der Wahl (das Feld ist dort immer noch leer,
 jeder Klick schiene zu scheitern).
+Fortgeführt am 2026-08-29: Der Entwurfs-Absatz für Baustein B ist
+entschieden und erweitert — siehe die beiden Einträge vom 2026-08-29
+unten (Host-Optionen-Panel, Lobby-Ausbau).
+
+## 2026-08-29 — Ein Host-Optionen-Panel vor der Lobby, mit zwei Eingängen
+Was: Neues Panel vor der Lobby: Spielername, Welt-Name, Max-Spieler —
+bewusst dünn, wächst bei Bedarf. Zwei Eingänge: „Allein spielen" führt
+vom Hauptmenü hierher und startet dann **direkt** den Szenenwechsel ohne
+Lobby (Max-Spieler ausgegraut); der Host-Weg kommt aus dem
+`MultiPlayerPanel` und führt nach dem Hosten in die Lobby. Back spiegelt
+je Eingang den Hinweg. Spielername und Welt-Name liegen in `PlayerPrefs`
+(Muster vom 2026-08-14); der Gast gibt seinen Namen im `JoinPanel` ein.
+Warum: Isors Entwurf: Der Host braucht einen eigenen Moment zum
+Einstellen, bevor die Session entsteht — und solo ist derselbe Host, nur
+ohne Lobby. Gleicher Codepfad, ein Sonderfall weniger.
+Verworfen: das Panel erst einziehen, wenn es mehr Optionen gibt (Name
+und Welt-Name brauchen den Platz schon jetzt); eine Ein-Mann-Lobby für
+Solo (sinnloser Extra-Klick); Windows-Benutzername statt Eingabefeld
+(kryptisch, nicht änderbar).
+
+## 2026-08-29 — Lobby-Ausbau: Liste, Ready als Anzeige, Chat-Platz, Stil-Erbschaft
+Was: Spielerliste mit Name · Bereit-Haken · Ping. Der Host sieht Start,
+Gäste sehen Ready am selben Platz — **Ready ist Anzeige, keine Sperre**,
+der Host darf immer starten. Der Chat bekommt reservierten Platz:
+Verlauf mit Luft für vier Schreiber plus Eingabezeile (Enter sendet,
+`onSubmit` des `TMP_InputField`), sichtbar sind die letzten ~6 Zeilen —
+gebaut erst nach Baustein C. Alles erbt den bestehenden Stil: dieselbe
+Tafel, Oswald/LiberationSans nach der Rollenteilung vom 2026-08-16, das
+Umschalt-Muster, der Haken als TMP-Zeichen statt neuem Sprite.
+Warum: Ready als Pflicht ließe einen abwesenden Gast die Gruppe
+blockieren, ohne dass der Host ein Werkzeug hätte (Kick kommt erst nach
+dem Prototyp). Der reservierte Platz verhindert, dass die Tafel beim
+Chat-Bau umgeräumt wird. Ein Bauteil, mehrfach benutzt, ergibt ein
+System (Isors Vorgabe vom 14.08.).
+Verworfen: Ready als Startbedingung; den Chat sofort mitbauen (Isor:
+erst, wenn Verbinden, Spawnen und gemeinsames Laufen stehen); Ping erst
+in Phase 4 (Isor: kommt jetzt mit in die Liste); Scroll-Verlauf im Chat
+(eigenes UI-Teil mit eigenen Fallen, trägt für die Vorführung nichts).
+
+## 2026-08-30 — Der Ladebildschirm ist ein Vorhang, kein Anhalten
+Was: Beim Netz-Wechsel aktiviert NGO die Szene je Rechner sofort —
+angehalten wird nichts. Stattdessen: blickdichter Vollbild-Backdrop auf
+einem eigenen `LoadingCanvas` mit `DontDestroyOnLoad` (das MainMenuUI
+wurde dafür entpackt — als Einzelstück in einer Szene trug das Prefab
+nichts), und aufgedeckt wird erst, wenn der **angezeigte** Balken voll
+ist und das Alle-fertig-Signal kam.
+Warum: Die Wartephase muss den Szenenwechsel überleben, und das
+Wegreißen des Panels bei 30 % brach die eigene Glättungs-Linie vom
+2026-08-19 (mindestens zwei Sekunden, kein Springen). Blickdicht,
+weil ein halbtransparenter Schleier die früh aktivierte Welt sichtbar
+aufpoppen ließ.
+Verworfen: den Wechsel wirklich anhalten (bietet NGO nicht an); das
+Panel beim Alle-fertig-Signal sofort schließen (Blitz-Schnitt — genau
+der Glitch, den die Glättung verhindern soll); ein zweiter
+Ladebildschirm je Szene statt des überlebenden Canvas (doppelte Pflege,
+und Phase 3 braucht denselben Schirm am Portal).
+
+## 2026-08-30 — Der Join-Code bleibt im Eingabefeld stehen
+Was: Das Code-Feld wird beim Verlassen der Lobby nicht geleert — nur die
+Statuszeilen werden zurückgesetzt (Reset-Regel vom 2026-08-15).
+Warum: Der häufigste Fall ist „kurz raus, wieder rein in dieselbe Lobby";
+der stehende Code spart das Neutippen. Ist die Session tot, sagt es die
+Fehlerzeile ohnehin ehrlich („Lobby existiert nicht").
+Verworfen: das Feld beim Verlassen leeren (schützt vor einem toten Code,
+den die Fehlermeldung sowieso abfängt, und kostet den Retry-Komfort).

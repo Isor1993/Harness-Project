@@ -644,6 +644,49 @@ beim Projekt, nicht bei der Uni. Überholte Einträge wandern nach
   kein Beleg für geringe Verzögerung — am Bild lassen sich die beiden nicht
   auseinanderhalten. Sichtbar wird die Verzögerung erst, wo etwas vom
   genauen Zeitpunkt abhängt, also ab dem Kampf.
+- 2026-08-30 — [Netzwerk] Zwei getrennte Leitungen: Relay trägt die
+  Spieldaten (NGO), der Sessions-Dienst die Mitgliederliste (eigene
+  HTTPS/WebSocket-Verbindung). Wer nur die Relay-Seite verliert, bleibt
+  beim Dienst Mitglied — Fehlerbild „player is already a member of the
+  lobby" beim Wiederbeitritt. Deshalb verlässt auch ein rausgeworfener
+  Gast die Session dienstseitig per `LeaveAsync`.
+- 2026-08-30 — [Netzwerk] Szenen reisen als **Hash**: Der
+  `NetworkSceneManager` schickt eine Prüfsumme des Szenenpfads, jeder
+  Client löst sie gegen die eigene Build-Liste auf. Fehlt die Szene dort,
+  fliegt „Scene Hash does not exist in the HashToBuildIndex table".
+  Virtuelle Spieler des Multiplayer Play Mode übernehmen geänderte Build
+  Settings erst beim erneuten Aktivieren.
+- 2026-08-30 — [Netzwerk] Der netzsynchrone Wechsel kennt kein
+  `allowSceneActivation`: NGO besitzt die Aktivierung, der Aufruf gibt
+  keine `AsyncOperation` zurück. Fortschritt kommt später als
+  `Load`-Szenenereignis, das Alle-fertig-Signal ist `LoadEventCompleted`
+  (bei Host **und** Gästen).
+- 2026-08-30 — [Netzwerk] Dienst-Drosselung: zu viele Anfragen in kurzer
+  Zeit → HTTP 429 „Too Many Requests". Ausgelöst durch einen UI-Bug
+  (Automatik-Join, siehe [UI]-Eintrag). Nach einem Absturz (Alt+F4) hält
+  der Dienst den Sitzplatz kurz besetzt, bis der Geist per Timeout fällt.
+- 2026-08-30 — [UI] TMP-Eingabefeld: `onSubmit` feuert **nur** bei Enter,
+  `On End Edit` auch bei jedem Fokus-Verlust — ein dort verdrahteter
+  Join drückt sich beim Panel-Wechsel selbst. Diese TMP-Version zeichnet
+  die On-Submit-Sektion nicht im Inspector; Verdrahtung deshalb per
+  `AddListener` im Code, `RemoveListener` als Gegenstück.
+- 2026-08-30 — [Netzwerk] Die NGO-Szenenaktivierung lässt sich nicht
+  anhalten — „alle wechseln gleichzeitig" ist eine **Vorhang-Illusion**:
+  blickdichter Ladebildschirm auf einem `DontDestroyOnLoad`-Canvas,
+  aufgedeckt bei sichtbar vollem Balken plus `LoadEventCompleted`. Preis:
+  mindestens ~2 s Balken (Glättung 0,5 Balkenlängen/s) — identisch zum
+  lokalen Ladeweg seit dem 2026-08-19.
+- 2026-08-30 — [Architektur] Klick-Spam auf async-Methoden: Während der
+  await-Pause ist die Methode erneut betretbar; ein geteiltes
+  Besetzt-Flag plus `finally` ist das Standard-Gegenmittel. `finally`
+  läuft bei **jedem** Ausgang — try durchlaufen, catch gefeuert oder
+  früher return.
+- 2026-08-30 — [Netzwerk] Bekanntes Rauschen, kein Befund: Wire-„FATAL …
+  header part of a frame could not be read" beim Gast, wenn der Host die
+  Session schließt (der Dienst-Socket wird serverseitig gekappt);
+  „multicast group (err: 10013)" ist Unitys Editor-Diagnoseverbindung,
+  nicht das Spielnetz; „StopAsync: Called after dispose" ist
+  Aufräum-Reihenfolge beim Play-Mode-Ende.
 
 ## Rendering
 

@@ -52,6 +52,13 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
   (`Kern/STOERUNGEN.md`) — die Regel benennt den Fall „keine Antwort"
   bisher nicht, und das Umbenennen fasst immer den ganzen Titel an, nie
   die Klammer allein.
+- [ ] **Datei-Befunde nur aus der Originalquelle** — In `CLAUDE.md`
+  aufnehmen: Bevor Claude einen Befund an einer Datei meldet (kaputte
+  Zeichen, fehlende Zeilen), liest er die Stelle in der Datei selbst
+  gegen — nie nur in einer Such- oder Diff-Anzeige, die die Darstellung
+  verfälschen kann. Anlass: Fehlalarm „`\` statt `//`" am 2026-08-30
+  (`Kern/STOERUNGEN.md`); dieselbe Linie wie der Ownership-Vorfall vom
+  2026-08-21 („Befund braucht Beleg").
 - [ ] **Zeile „Setzt voraus:" im DECISIONS-Format** — In
   `Kern/DOC_RULES.md` eine vierte, **optionale** Zeile neben Was, Warum und
   Verworfen vorsehen: die Bedingung, unter der eine Entscheidung gilt und

@@ -578,3 +578,37 @@ damals, nicht den von heute.
   im Join-Panel). Den Dienst-Code hat Isor selbst getippt (Entwurf vor
   Gerüst, kleinschrittig); Verdrahtung der Szene per Skript-Audit
   gegengelesen, vier Verdrahtungsfehler gefunden und behoben.
+- 2026-08-30 — Leave-Weg gebaut und geprüft: `Leave()` als vierter Weg der
+  Naht (Host löst für alle auf, Gast geht allein), dazu das
+  `SessionEnded`-Ereignis — der Service hört die Trennungs-Meldung des
+  NetworkManagers, das Menü schaltet zurück. Geprüft im Multiplayer Play
+  Mode: Gast-Back → JoinPanel (Spiegel-Regel), Host-Back wirft alle Gäste
+  auf die Host/Join-Wahl. Der „Already connected."-Befund vom 2026-08-28
+  ist damit behoben.
+- 2026-08-30 — Baustein B erreicht sein Fertig-Kriterium: `StarterVillage`
+  (leere Szene, flacher Boden, Build-Liste), `SceneLoader.LoadNetwork`
+  über den `NetworkSceneManager`, der Lobby-Start-Knopf (nur Host,
+  `IsHost`-Wächter). Geprüft doppelt — Multiplayer Play Mode und echter
+  Internet-Test mit Mitspielerin am Windows-Build: Host drückt Start,
+  beide stehen in derselben Szene. Offen aus dem Baustein: der wartende
+  Ladebalken (3b), Host-Optionen-Panel, Spielerliste.
+- 2026-08-30 — Sechs Befunde aus zwei Testrunden behoben: Automatik-Join
+  (JoinWorld hing an On End Edit, feuert bei jedem Fokus-Verlust — jetzt
+  `onSubmit` per Code), stehen gebliebene Statuslabels (Reset-Regel vom
+  2026-08-15), Gast-Klick auf Start lief in den NGO-Fehler (IsHost-Wächter),
+  Geister-Sitzplatz beim Sessions-Dienst nach Rauswurf („already a member"
+  — der Gast verlässt die Session jetzt auch dienstseitig), dazu erklärt:
+  HTTP-429-Drossel und Szenen-Hash-Fehler (Build-Liste des virtuellen
+  Spielers). Beobachtung offen: doppelter AudioListener trat einmal auf,
+  danach nicht reproduziert.
+- 2026-08-30 — Baustein B, Teil 3b gebaut und geprüft: Der Ladebildschirm
+  zog auf einen eigenen `DontDestroyOnLoad`-Canvas um (das MainMenuUI
+  wurde dafür entpackt, sein Prefab-Asset liegt verwaist), bezieht den
+  Fortschritt aus den NGO-Szenenereignissen und deckt als blickdichter
+  Vorhang den frühen Szenenstart ab — aufgedeckt wird erst bei vollem
+  Balken **und** Alle-fertig-Signal. Dazu ein Besetzt-Wächter (`_isBusy`
+  mit `finally`) gegen Doppelklicks in Create, Join und Leave. Geprüft im
+  zweiten Paartest übers Internet: Vorhang, Balken, Warte-Text,
+  gemeinsames Aufdecken — alles wie entworfen. Neuer Befund dabei: Geht
+  der Host, während alle in der Spielszene stehen, bleibt der Gast in der
+  Welt (Punkt in der ROADMAP, fällig Baustein C).

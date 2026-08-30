@@ -142,7 +142,9 @@ sich klein.
   „Ping kam sofort"; das ist ein Eindruck, keine Zahl. NGO liefert die
   Umlaufzeit über `GetCurrentRtt(clientId)`. Ein Feld im `NetTestbed` macht
   daraus eine Messung. Fällig in Phase 4: Dort entscheidet die Zahl, wie
-  weit die sofortige Trefferanzeige beim Gast vorgreifen muss.
+  weit die sofortige Trefferanzeige beim Gast vorgreifen muss. Die
+  Lobby-Liste zeigt die Umlaufzeit schon ab Baustein B (`DECISIONS/UI.md`,
+  2026-08-29); der Prüfstand-Teil bleibt davon unberührt.
 - [ ] **Reichweite des Sichtbarkeitsfilters messen** — Die 40–50 Gegner
   aus dem `GDD.md` sind eine Anzahl, keine Messung. Fällig in Phase 4.
 - [ ] **Fingerabdruck-Test wiederholen, falls das Backend wechselt** — Mono
@@ -155,17 +157,40 @@ sich klein.
   als eigene Stufe danach und bleibt ungemessen. Kein Termin: Die riskante
   Stelle ist die Poisson-Streuung, nicht der Formtest. Fällig, wenn der Test
   einmal als vollständige Abnahme der Weltgleichheit gelten soll.
-- [ ] **Session auflösen beim Verlassen der Lobby** — Back lässt heute die
-  Verbindung stehen; wer erneut hostet, bekommt korrekt „Already
-  connected.", versteht aber nicht warum (Isors Befund beim ersten
-  Testlauf, 2026-08-28). Braucht einen vierten Weg in `ISessionService`
-  (Leave: Session verlassen, `NetworkManager` herunterfahren). Fällig in
-  Phase 1, Baustein B — dort wird der Session-Lebenszyklus ohnehin gebaut.
-- [ ] **Lobby-Ausbau: Spielerliste und Ready-System** — wer ist drin, wer
-  hat Ready gedrückt, der Host startet erst dann; Knöpfe rollenabhängig
-  ausgrauen. Entwurf steht in `DECISIONS/UI.md` (2026-08-28). Fällig in
+- [x] **Session auflösen beim Verlassen der Lobby** — **gebaut und geprüft
+  am 2026-08-30** (`LOG.md`): `Leave()` als vierter Weg, `SessionEnded`
+  wirft Gäste sauber raus, der Sitzplatz beim Dienst wird mit freigegeben.
+  Ursprünglicher Befund vom 2026-08-28 („Already connected.") behoben.
+- [ ] **Lobby-Ausbau: Spielerliste und Ready-System** — **entschieden am
+  2026-08-29** (`DECISIONS/UI.md` und `DECISIONS/Multiplayer.md`): Liste
+  mit Name · Haken · Ping über je ein `LobbyPlayer`-Objekt, Ready als
+  Anzeige statt Sperre, davor das neue Host-Optionen-Panel. Fällig in
   Phase 1, Baustein B/C — braucht die Verbunden-Meldungen des
   NetworkManagers.
+- [ ] **Lobby-Chat bauen** — Verlauf (die letzten ~6 Zeilen, Luft für vier
+  Schreiber) plus Eingabezeile, Enter sendet; RPC plus Textliste, der
+  Platz auf der Tafel ist ab Baustein B reserviert (`DECISIONS/UI.md`,
+  2026-08-29). Fällig nach Baustein C, sobald Verbinden, Spawnen und
+  gemeinsames Laufen stehen — vorgezogen aus „Lobby-Komfort".
+- [ ] **Meldung „Lobby geschlossen" beim Rauswurf** — der Gast landet heute
+  kommentarlos auf der Host/Join-Wahl; Isor wünscht ein Bestätigungsfenster
+  mit Okay (2026-08-30). **Formfrage offen:** kollidiert mit der
+  Popup-Verwerfung vom 2026-08-28 (`DECISIONS/UI.md`) — beim UI-Feinschliff
+  von Phase 1 bewusst entscheiden: Tafel-konforme Meldefläche oder
+  Revision des Eintrags.
+- [ ] **Rauswurf im Spiel: zurück ins Hauptmenü** — geht der Host, während
+  alle schon in der `StarterVillage` stehen, bleibt der Gast einfach in
+  der Welt stehen (Befund aus dem Paartest, 2026-08-30). Der
+  `SessionEnded`-Weg endet heute im Menü — in der Spielszene hört niemand
+  mehr zu, weil der `MainMenuController` mit seiner Szene starb. Braucht
+  einen In-Game-Horcher, der lokal zurück in die MainMenu-Szene lädt
+  (plus die Meldung aus dem Punkt oben). Fällig in Baustein C, wo die
+  Spielszene ihre Netz-Seite bekommt — spätestens mit ihrem Pausenmenü.
+- [ ] **AudioListener-Doppel beobachten** — trat am 2026-08-30 einmal auf
+  (93.000 Warnungen: „2 audio listeners"), danach nicht reproduziert; das
+  Kapsel-Prefab trägt keinen. Falls wieder: im Play Mode Hierarchy-Suche
+  `t:AudioListener`, Objektnamen notieren. Löst sich spätestens mit
+  Baustein C (Kamera und Listener nur auf der eigenen Figur).
 - [ ] **Artifact-Seite `⚙️ System · Grundgerüst` nachziehen** — der
   Menü-Umbau vom 2026-08-28 (Panel-Kette, `ISessionService`,
   `MainMenuController`) veraltet die Seite; Befund aus dem Review-Gate.
@@ -210,10 +235,11 @@ offen.
   später. Findet die Datenschnittstelle aus Phase 2 vor.
 - [ ] **Host-geprüfte Bewegung** — wann und ob die Tür benutzt wird, die
   die Input-Naht offenhält.
-- [ ] **Lobby-Komfort** — Text-Chat (billig: dasselbe Muster wie der
-  Ping-Zähler, plus eine Textliste), Voice (eigenes System, Unity Vivox),
-  Spieler entfernen. Gewünscht am 2026-08-28, bewusst hinter den
-  Prototyp gestellt.
+- [ ] **Lobby-Komfort** — Voice (eigenes System, Unity Vivox) und
+  Spieler entfernen (Kick). Gewünscht am 2026-08-28, bewusst hinter den
+  Prototyp gestellt. Der Text-Chat stand ursprünglich mit hier drin und
+  wurde am 2026-08-29 vorgezogen — jetzt eigener Punkt „Lobby-Chat
+  bauen" unter den offenen Punkten des Netzbaus.
 - [ ] **Steam-Transport statt Unity Relay** — sobald eine App-ID
   existiert. Betroffen ist nur die Transportschicht hinter
   `ISessionService`; zu prüfen ist dann, ob ein Community-Transport zur

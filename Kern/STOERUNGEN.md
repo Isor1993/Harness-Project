@@ -608,3 +608,19 @@ ein unbeantworteter Themenvorschlag als **abgelehnt** gilt: Der geerbte
 Titel bleibt dann bis zum Session-Ende stehen, gepflegt wird nur die
 Klammer.
 **Stand:** offen.
+
+### 2026-08-30 — Werkzeug-Anzeige als Befund behandelt
+**Was:** Claude meldete kaputte Kommentarzeichen (`\` statt `//`) im
+`MainMenuController` und schickte Isor zur Reparatur — die Datei war
+intakt. Erst als der Reparatur-Edit die Stelle nicht fand und eine
+Direktlektüre folgte, flog der Fehlalarm auf.
+**Ursache:** Die Trefferanzeige des Suchwerkzeugs hatte die Zeichen in
+der Darstellung verfälscht; Claude urteilte aus der Anzeige statt aus
+der Datei.
+**Regel:** Fehlte in dieser Form. Gegenmittel benannt: Ein Befund an
+einer Datei wird vor der Meldung an der Originalquelle gegengelesen,
+nie nur an einer Such- oder Diff-Anzeige — dieselbe Linie wie „Befund
+braucht Beleg" beim Ownership-Vorfall vom 2026-08-21.
+**Stand:** offen — Fehlalarm noch in derselben Session korrigiert; ob
+das Gegenmittel eine Regel wird, ist als ROADMAP-Frage gestellt
+(2026-08-30).

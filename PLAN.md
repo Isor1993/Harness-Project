@@ -22,16 +22,16 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(geschrieben 2026-08-28 beim `/harness:ende`, zweite Session des Tages)*
+*(geschrieben 2026-08-30 beim `/harness:ende`)*
 
-**Phase 1, Baustein A ist abgenommen** — `ISessionService`,
-`RelaySessionService`, Menü als Panel-Kette mit Lobby
-(`Projekte/Isor_Tower/LOG.md`, 2026-08-28). Als Nächstes **Baustein B ·
-netzsynchroner Szenenwechsel und Ladebalken** in eine leere
-`StarterVillage` (`Projekte/Isor_Tower/ROADMAP.md`). Dort zuerst als
-Design-Fragen: der Start-Flow aus der Lobby (Ready-Entwurf in
-`DECISIONS/UI.md`) und das Session-Auflösen beim Verlassen (Leave-Weg).
-Sonntags die Ein-Seiten-Prüfung: dran ist `💡 EditorWindow & MVP`.
+**Baustein B: Kern und Ladebalken sind gebaut und geprüft** — Leave-Weg,
+netzsynchroner Wechsel in die `StarterVillage`, Vorhang-Ladebalken; zwei
+Paartests übers Internet (`Projekte/Isor_Tower/LOG.md`, 2026-08-30). Es
+fehlen **Schritt 4 und 5**: Host-Optionen-Panel und Spielerliste mit
+Ready/Ping — das Design steht komplett (`DECISIONS/UI.md` und
+`DECISIONS/Multiplayer.md`, 2026-08-29). Klein dazu: „Start Game" (Solo)
+an den neuen Weg. Sonntags die Ein-Seiten-Prüfung: dran ist
+`💡 EditorWindow & MVP`.
 
 ---
 
