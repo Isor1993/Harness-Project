@@ -59,6 +59,14 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
   verfälschen kann. Anlass: Fehlalarm „`\` statt `//`" am 2026-08-30
   (`Kern/STOERUNGEN.md`); dieselbe Linie wie der Ownership-Vorfall vom
   2026-08-21 („Befund braucht Beleg").
+- [ ] **Lern-Log einführen** — eine laufend geführte Aufzeichnung
+  darüber, was Isor selbst geschafft hat, wo Gerüste oder Hilfe nötig
+  waren und welche Fehler auftraten; die Zeugnisse
+  (`Kern/ASSESSMENT_RULES.md`) sollen daraus lesen statt aus Erinnerung
+  (Isor, 2026-08-30). Erst das Führen bauen, die Auswertung bewusst
+  später. Offen für den Design-Abschnitt: Ablageort und Eintragsform,
+  vor allem aber der Auslöser — Kandidaten sind die Doku-Pflicht und das
+  Review-Gate; die größte Gefahr ist eine Pflicht, die einschläft.
 - [ ] **Zeile „Setzt voraus:" im DECISIONS-Format** — In
   `Kern/DOC_RULES.md` eine vierte, **optionale** Zeile neben Was, Warum und
   Verworfen vorsehen: die Bedingung, unter der eine Entscheidung gilt und
@@ -110,3 +118,13 @@ er benutzt statt gebaut — die Testphase läuft (`PLAN.md`).
   ist als Erklärung für Fremde ungeeignet. Hängt an derselben Bedingung
   wie der Punkt darüber — gebaut wird sie, wenn eine Weitergabe ansteht,
   nicht vorher.
+- [ ] **Sechster Punkt fürs Review-Gate: Widerspruch zu den DECISIONS** —
+  Das Gate in `Kern/CODE_GUIDELINES.md` prüft Fattening, Enum-Sicherheit,
+  Werkzeugwahl, Naming und Artifact-Bezug. Keiner dieser Punkte fragt, ob
+  der Plan einer bereits getroffenen Entscheidung widerspricht — und genau
+  daran ist am 2026-09-01 ein Gerüst durchgerutscht, das ein Panel sein
+  eigenes GameObject abschalten ließ, obwohl `DECISIONS/UI.md` diesen Weg
+  am 2026-08-16 mit einem gemessenen Fehlerbild verworfen hatte
+  (`Kern/STOERUNGEN.md`). Gefunden hat es Isor, nicht die Prüfliste. Der
+  Punkt trifft die Lücke, weil die DECISIONS die einzige Stelle sind, an
+  der **verworfene** Wege festgehalten werden.

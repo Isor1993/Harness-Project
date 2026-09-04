@@ -218,6 +218,42 @@ sich klein.
   angehängten Zeitstempel, der das Suchen erschwert. Kosmetisch, kein
   Termin. *(Relay und Player Authentication sind seit dem 2026-08-28
   freigeschaltet — Beleg im `LOG.md`.)*
+- [ ] **Steam-Profilbild in der Spielerliste** — Isors Vorschlag vom
+  2026-09-01, von ihm selbst als verfrüht eingeschätzt: Es hängt an einer
+  App-ID, die es erst nach der Steam-Direct-Gebühr gibt. Fällig
+  frühestens mit „Steam-Transport statt Unity Relay"; bis dahin trägt die
+  Liste nur Name, Haken und Ping.
+- [ ] **`MainMenuController` teilen** — mit 283 Zeilen noch gesund, aber
+  wachsend. Die Naht liegt zwischen **Session** (die vier Menüwege und
+  die Dienst-Rückrufe) und **Navigation** (welches Panel sichtbar ist,
+  Back-Ziele, Label-Rücksetzung) — **nicht** zwischen Panels und Knöpfen,
+  denn ein Knopfdruck *ist* ein Panelwechsel. Auslöser ist Baustein B,
+  Schritt 5: Die Spielerliste bringt Spawnen und Listenpflege mit und
+  damit die zweite echte Verantwortung. Vorher wäre der Schnitt auf
+  Verdacht.
+- [ ] **Späteinstieg entscheiden** — Beim Test am 2026-09-04 jointe ein
+  Gast in die laufende Runde, und NGO schickte ihn automatisch in die
+  Szene. Heute ist die `StarterVillage` leer, nichts kann auseinander-
+  laufen — sobald Terrain und Platzierung drin sind, braucht der Späte
+  denselben Seed und Weltzustand, oder der Beitritt endet an der Lobby.
+  Fällig in Phase 3, wo der Seed ohnehin übers Netz geht.
+- [ ] **Solo-Ladebalken gegen die Glättungsregel prüfen** — Beim Test war
+  kein Balken zu sehen; die Regel vom 2026-08-19 verspricht mindestens
+  zwei Sekunden Anzeige. Entweder greift die Glättung im Netz-Ladeweg
+  nicht, oder der Moment war schlicht zu kurz zum Hinsehen. Ein Blick in
+  den `LoadingScreenController`, klein.
+- [ ] **UI-Bausteine als Prefabs** — Isors Vorschlag vom 2026-09-04,
+  als Design-Runde vor Schritt 5: StandardButton (mit leerer
+  OnClick-Liste — entschärft die Duplikat-Falle an der Wurzel),
+  Tafel-Hülle (Schleier + Content), InputRow. Die Spielerlisten-Zeile
+  kommt ohnehin dazu, sie wird zur Laufzeit je Spieler instanziiert.
+  Bewertung liegt vor (Chat vom 04.09.), entschieden wird in der Runde.
+- [ ] **UI-Feinschliff Phase 1, Sammelpunkt** — Panel-Größen
+  vereinheitlichen oder wachsen lassen (Isors Frage vom 04.09.) · das
+  Join-Feld ist mit 160×30 der Winzling unter den Eingaben · eine
+  Solo-Fehlermeldung liefe heute ins unsichtbare Lobby-Label · das
+  Textkind des `ConfirmButton` wieder sprechend benennen. Nichts davon
+  blockiert; fällig mit dem bestehenden Feinschliff der Phase 1.
 
 ## Nach dem Prototyp
 

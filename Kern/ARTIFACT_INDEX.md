@@ -197,6 +197,26 @@ Seite →  Lernstück Netzwerkgrundlagen, Lernstück NGO-Bausteine
 Seite ←  keine
 ```
 
+### ⚙️ System · Lobby-Tafel
+```
+URL      https://claude.ai/code/artifact/c57234c7-9e7c-4e9c-b49d-1ced0ccbf5b9
+Stand    2026-09-04 — gebaut am 01.09. für die Layout-Entscheidung der
+         Lobby, am 04.09. um den Maßstabsvergleich gegen 1920×1080
+         ergänzt. Offline-Kopie: Knowledge/Seiten/2026-09-01-lobby-tafel.html
+Zustand  **teils geplant** — die Host-Optionen-Tafel ist seit dem 04.09.
+         gebaut und getestet; die Lobby-Ansicht (Spielerliste, Chat mit
+         Scroll-Verlauf) ist Entwurf und Bauvorlage für Schritt 5.
+Titel    Draußen heißt sie „Die Lobby-Tafel" — benannt, bevor die Seite
+         ins Register kam. Nachgezogen beim nächsten inhaltlichen
+         Anfassen (Schritt 5), wie beim Multiplayer-Präzedenzfall.
+Quelle   Projekte/Isor_Tower/DECISIONS/UI.md (Einträge vom 29.08. und
+         01.09.)
+Skripte  beschreibt UI-Entwurf, keinen Code. Die Maße sind gegen
+         HostOptionsPanel.cs und die Szene geprüft (szene_pruefen.py).
+Seite →  keine
+Seite ←  keine
+```
+
 ---
 
 ## 💡 Lernstück  — Schicht: Kern (übertragbar)

@@ -624,3 +624,25 @@ braucht Beleg" beim Ownership-Vorfall vom 2026-08-21.
 **Stand:** offen — Fehlalarm noch in derselben Session korrigiert; ob
 das Gegenmittel eine Regel wird, ist als ROADMAP-Frage gestellt
 (2026-08-30).
+
+### 2026-09-01 — Gerüst widersprach einer bestehenden Entscheidung
+**Was:** Claude legte Isor ein Code-Gerüst für das Host-Optionen-Panel
+vor, dessen letzter Punkt lautete: „show the panel itself" — die
+Komponente sollte ihr eigenes GameObject einschalten. Genau dieser Weg
+ist in `Projekte/Isor_Tower/DECISIONS/UI.md` (2026-08-16) verworfen, mit
+einem gemessenen Fehlerbild dahinter: Ein Skript, das sein eigenes Objekt
+abschaltet, wacht nie wieder auf (aufgetreten am `TamedSheepDisplay`).
+Gefunden hat es Isor, nicht die Prüfung.
+**Ursache:** Das Review-Gate in `Kern/CODE_GUIDELINES.md` hat fünf
+Punkte — Fattening, Enum-Sicherheit, Werkzeugwahl, Naming, Artifact-Bezug
+—, aber keinen, der fragt, ob der Plan einer bereits getroffenen
+Entscheidung widerspricht. Claude hatte das Gate vor dem Coden
+durchlaufen und alle fünf Punkte beantwortet; der Fehler lag außerhalb
+ihres Rasters.
+**Regel:** Fehlte. Gegenmittel benannt: ein sechster Punkt im
+Review-Gate — *„Widerspricht der Plan einer Entscheidung in den DECISIONS
+der berührten Schicht?"*. Er trifft genau die Lücke, weil die DECISIONS
+die einzige Stelle sind, an der verworfene Wege festgehalten werden.
+**Stand:** offen — der Fehler wurde vor dem Tippen abgefangen und das
+Gerüst korrigiert; ob das Gegenmittel eine Regel wird, ist als
+ROADMAP-Frage gestellt (2026-09-04).

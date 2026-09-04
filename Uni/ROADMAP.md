@@ -32,3 +32,10 @@ Befunde der Prüfung vom 2026-08-26) stehen mit ihren Belegen in
   verlangt für jedes Zeugnis die Kriterien im Originaltext — im zweiten
   Semester fehlten sie für vier von sieben Abgaben und mussten
   nachträglich zusammengesucht werden.
+
+- [ ] **Semester-3-Roadmap in einem Design-Abschnitt bauen**, sobald die
+  Aufgaben eingelesen sind: Bronze/Silber/Gold als Fixpunkte, Puffer
+  **vor** den Statusterminen, eigene Features nur bei Vorsprung auf den
+  Unterricht und nach Nutzen für den Main Loop (Isor, 2026-08-30). Dabei
+  bestätigen, was bisher nur Isors Erinnerung ist: Prototyp in Unity/C#
+  erlaubt, C++ und Unreal nur kleinere Aufgaben der ersten drei Monate.

@@ -22,16 +22,14 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(geschrieben 2026-08-30 beim `/harness:ende`)*
+*(geschrieben 2026-09-04, `/harness:ende` nach Schritt 4)*
 
-**Baustein B: Kern und Ladebalken sind gebaut und geprüft** — Leave-Weg,
-netzsynchroner Wechsel in die `StarterVillage`, Vorhang-Ladebalken; zwei
-Paartests übers Internet (`Projekte/Isor_Tower/LOG.md`, 2026-08-30). Es
-fehlen **Schritt 4 und 5**: Host-Optionen-Panel und Spielerliste mit
-Ready/Ping — das Design steht komplett (`DECISIONS/UI.md` und
-`DECISIONS/Multiplayer.md`, 2026-08-29). Klein dazu: „Start Game" (Solo)
-an den neuen Weg. Sonntags die Ein-Seiten-Prüfung: dran ist
-`💡 EditorWindow & MVP`.
+**Zuerst die Prefab-Design-Runde** (`Projekte/Isor_Tower/ROADMAP.md` →
+„UI-Bausteine als Prefabs"), danach **Baustein B, Schritt 5**: die
+Spielerliste mit Ready und Ping — Design in `DECISIONS/UI.md` (29.08. und
+01.09.), Bauvorlage ist die Seite `⚙️ System · Lobby-Tafel`. Weiter offen
+vom 30.08.: der Lern-Log-Design-Abschnitt (`Kern/ROADMAP.md`) und die
+Ein-Seiten-Prüfung `💡 EditorWindow & MVP`.
 
 ---
 

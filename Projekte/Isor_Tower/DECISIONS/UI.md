@@ -117,6 +117,10 @@ Warum: Der Screenshot wird ohnehin für die Abgabe gebraucht
 Seitenverhältnis, ohne zu verzerren; beschnitten wird am Rand, deshalb
 bleibt die Bildmitte für die Tafel frei.
 Verworfen: das Farbfeld nur abdunkeln; `Preserve Aspect` (ergäbe Balken).
+Fortgeführt am 2026-09-04: Die Abdunkelung liegt heute bei `C7C7C7`
+statt `6E6E6E` — bewusst aufgehellt, so bestätigt. Der Fitter fehlte
+zwischenzeitlich (Fund des Szenen-Audits) und ist wieder angebaut; sein
+Satz gilt unverändert.
 
 ## 2026-08-16 — Oswald Bold als Titel- und Button-Schrift
 Was: `Oswald Bold SDF` für Titel und Buttons, `LiberationSans SDF` bleibt
@@ -128,6 +132,9 @@ Rollen genügen. Der Umzug ist nötig, weil der Examples-Ordner zum
 Löschen gedacht ist — wäre er weg, blieben alle Texte leer.
 Verworfen: eine externe Schrift herunterladen (Lizenzfrage und
 Zeitaufwand vor der Abgabe).
+Fortgeführt am 2026-09-04: Der Ablageort ist überholt — die Schriften
+wohnen heute in `Assets/Fonts/`. Rollenteilung und Herleitung gelten
+weiter; siehe „Alle Schriften wohnen in Assets/Fonts" unten.
 
 ## 2026-08-16 — Ein Schleier je Ebene
 Was: Genau ein abdunkelndes Vollbild-Image pro blockierender Ebene. Im
@@ -283,6 +290,9 @@ Verworfen: Ready als Startbedingung; den Chat sofort mitbauen (Isor:
 erst, wenn Verbinden, Spawnen und gemeinsames Laufen stehen); Ping erst
 in Phase 4 (Isor: kommt jetzt mit in die Liste); Scroll-Verlauf im Chat
 (eigenes UI-Teil mit eigenen Fallen, trägt für die Vorführung nichts).
+Fortgeführt am 2026-09-01: Der verworfene Scroll-Verlauf ist bewusst
+widerrufen — siehe den Eintrag „Die Lobby-Tafel wird gestapelt" unten.
+Alles Übrige dieses Eintrags gilt unverändert.
 
 ## 2026-08-30 — Der Ladebildschirm ist ein Vorhang, kein Anhalten
 Was: Beim Netz-Wechsel aktiviert NGO die Szene je Rechner sofort —
@@ -310,3 +320,78 @@ der stehende Code spart das Neutippen. Ist die Session tot, sagt es die
 Fehlerzeile ohnehin ehrlich („Lobby existiert nicht").
 Verworfen: das Feld beim Verlassen leeren (schützt vor einem toten Code,
 den die Fehlermeldung sowieso abfängt, und kostet den Retry-Komfort).
+
+## 2026-09-01 — Die Lobby-Tafel wird gestapelt, der Chat bekommt seine Scrollbar
+Was: Die Lobby ordnet ihre Teile **untereinander** an — Beitrittscode,
+Spielerliste, Chat, Knopfreihe —, jede Zeile über die volle Tafelbreite.
+Der Chat zeigt **fünf Zeilen bei 17 px** und bekommt **doch einen
+Scroll-Verlauf**; das verwirft den entsprechenden Halbsatz vom
+2026-08-29. Der Host wird als **Textzusatz** `Name (Host)` markiert, der
+Ping als **Zahl in Millisekunden**, nach Stufe eingefärbt.
+Warum: Isors Entscheidung nach einem Maßstabsvergleich. Zwei Spalten
+ließen in der 760er Tafel je rund 330 px — darin bricht schon ein kurzer
+Chat-Satz um. Die Scrollbar kippt an einem Argument, das am 2026-08-29
+**nicht auf dem Tisch lag**: der Bewertung. Sechs Zeilen sind bei vier
+Schreibern nach drei Sätzen voll, und die Dozentin fasst genau das an;
+die alte Begründung („trägt für die Vorführung nichts") zielte auf die
+Vorführung, nicht auf jemanden, der das Ding benotet. 17 px statt 14 sind
+nötig, weil die Tafel auf einer 1920er Leinwand liegt und 14 px dort echte
+14 Pixel sind. Der Textzusatz statt eines Symbols folgt der Stil-Erbschaft:
+Ein TMP-Zeichen wäre möglich gewesen, ein Wort ist ohne Legende lesbar.
+Die Ping-Zahl ist im Prüfungsgespräch belegbar (`GetCurrentRtt` liefert
+sie), ein Balken wäre eine Deutung.
+Verworfen: zwei Spalten (Liste links, Chat rechts — kürzere Tafel, aber
+umbrechende Zeilen); Chat ohne Scroll-Verlauf (die Fassung vom
+2026-08-29); Raute oder Krone als Host-Symbol (braucht eine Legende);
+Ping als Balken.
+
+## 2026-09-01 — Sechs Spieler sind die Obergrenze, deshalb scrollt die Liste nicht
+Was: Der Max-Spieler-Regler im Host-Optionen-Panel läuft von **2 bis 6**.
+Die Spielerliste bekommt **keine** feste Höhe und **keinen** Scroll-Verlauf
+— sie wächst mit der Anzahl, und die Tafel wächst mit ihr.
+Warum: Isors Entscheidung („4 ist geplant, 6 maximal, mehr will ich
+niemals"). Damit ist die Höhe gedeckelt und gerechnet: Sechs Zeilen
+ergeben 278 px Liste und eine Tafel von rund 847 px — 78 % von 1080, mit
+Luft an beiden Rändern. Erst ab acht Spielern (945 px) reichte der
+Bildschirm nicht mehr. Die Obergrenze ist damit **keine Geschmacksfrage
+mehr, sondern die Bedingung**, unter der die Liste ohne eigenes Scroll-Teil
+auskommt — ein UI-Teil weniger, das schiefgehen kann.
+Verworfen: die Liste wie den Chat auf feste Höhe plus Scrollbar setzen
+(mein Vorschlag — kostet ein zweites Scroll-Teil für einen Fall, den Isor
+ausschließt); die Obergrenze offen lassen und die Tafel wachsen lassen
+(bei acht Spielern passt sie nicht mehr auf den Bildschirm).
+
+## 2026-09-04 — Die Szene benennt wie der Code: eine Konvention, fünf Muster
+Was: Panels heißen `<Name>Panel` — die Wurzel ist der Vollbild-Schleier
+(`#000000`, Alpha 120), die Tafel darin heißt `Content` (`#17130F`,
+Alpha 224). Knöpfe heißen `<Aktion>Button`, Eingabefelder `<Was>Input`,
+angezeigte Werte `<Was>Value`. Referenzierte Textkinder tragen
+sprechende Namen, unreferenzierte bleiben `Text (TMP)`. Wo Szene-Objekt
+und Code-Feld ein Paar sind, heißen sie gleich (`LobbyCodeLabel` ↔
+`_lobbyCodeLabel`).
+Warum: Das Szenen-Audit vom 04.09. fand dieselbe Sache mit bis zu drei
+Namen (`HostOptionPanel`/`HostOptionsPanel`, `Row_Master` neben
+`PlayerNameRow`, ein Knopf hieß nach seinem alten Leben `HostGame`). Die
+Konvention ist aus der Mehrheit des Bestands abgelesen, nicht erfunden —
+und der Bestand wurde am selben Tag vollständig angeglichen, darunter
+zwölf Umbenennungen im Options-Prefab und `PlayAloneButton` statt
+`StartButton`.
+Verworfen: das Unterstrich-Schema des Options-Prefabs auf alles
+ausweiten (die Mehrheit sprach PascalCase); den Altbestand ausnehmen
+(Isor wollte die Szene einmal ganz einheitlich).
+
+## 2026-09-04 — Alle Schriften wohnen in Assets/Fonts, auch die mitgebrachte
+Was: `Assets/Fonts/` ist der einzige Schriftenordner. Auch
+`LiberationSans SDF` zog aus TMPs Resources-Ordner dorthin um — die GUID
+reist beim Verschieben mit, alle zwölf Szenen-Verweise und die
+TMP-Grundeinstellung halten (am 04.09. per GUID-Abgleich belegt).
+Warum: Isors Ruf „ein Ort, ein Überblick". Der am 2026-08-16
+dokumentierte Ort `Shared/UI/Fonts` wurde nie bezogen — es wäre der
+dritte Ort für dieselbe Frage gewesen.
+Preis, benannt: TMP legt beim nächsten Essentials-Import eine frische
+Kopie in Resources an; die ist dann tot und wird gelöscht. Am selben Tag
+einmal vorgeführt — eine von Hand angelegte Kopie erzeugte exakt dieses
+Duplikat samt zweiter GUID.
+Verworfen: Paket-Schriften beim Paket lassen (Claudes Empfehlung —
+vermeidet die Wiederkehr-Kopie, verstreut aber die Schriften auf zwei
+Orte).

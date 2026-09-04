@@ -612,3 +612,57 @@ damals, nicht den von heute.
   gemeinsames Aufdecken — alles wie entworfen. Neuer Befund dabei: Geht
   der Host, während alle in der Spielszene stehen, bleibt der Gast in der
   Welt (Punkt in der ROADMAP, fällig Baustein C).
+- 2026-09-01 — Baustein B, Schritt 4 und 5 entworfen. Die Anordnung der
+  Lobby-Tafel wurde an gerechneten Höhen entschieden statt geschätzt:
+  gestapelt ergibt 760 × 753 px und damit 70 % von 1080, zwei Spalten
+  532 px. Isor wählte gestapelt, dazu „(Host)" als Textzusatz, den Ping
+  als Zahl und — gegen die eigene Entscheidung vom 2026-08-29 — doch einen
+  Scroll-Verlauf im Chat; sein Argument war die Bewertung, nicht die
+  Vorführung. Die Rechnung deckte einen Punkt auf, den weder Entwurf noch
+  Prüfung hatten: Nicht der Chat ist der Engpass, sondern die
+  **Spielerliste**, die mit jedem Beitritt wächst (acht Spieler ergäben
+  945 px und passen nicht mehr). Isor deckelte daraufhin die Spieleranzahl
+  auf sechs, womit die Liste ohne eigenes Scroll-Teil auskommt. Beides in
+  `DECISIONS/UI.md`.
+- 2026-09-01 — `HostOptionsPanel.cs` gebaut (`Assets/Scripts/UI/`), von
+  Isor getippt, in vier Runden gegengelesen. Die Fehler der Reihe nach:
+  Dateiname wich vom Klassennamen ab (Unity hätte die Komponente nicht
+  angenommen), `PlayerPrefs.GetString` wurde ohne Zuweisung aufgerufen,
+  `SaveValues` schrieb die Standard-Konstanten statt der Feldinhalte, und
+  der `CanvasGroup` benutzte `blocksRaycasts` statt `interactable` und
+  setzte sich im else-Zweig nicht zurück. Das Speichern sitzt am Ende in
+  `OnDisable` statt an den Knöpfen — so kann kein Ausgang es vergessen.
+- 2026-09-04 — Baustein B, Schritt 4 zur Hälfte verdrahtet. Der
+  `MainMenuController` kennt Panel und Komponente, merkt sich den Eingang
+  in `_isPlayingAlone` und ruft `SetUpEntrance`. Offen bleibt der Kern des
+  Schritts: `StartSolo` und `Create` stehen weiter in `PlayAlone` und
+  `CreateWorld` und starten damit, bevor der Spieler etwas eintippen
+  konnte. Sie wandern in eine Bestätigungs-Methode am Knopf des
+  Optionen-Panels; Solo bekommt dabei einen eigenen Rückruf, weil es an
+  der Lobby vorbei direkt in die Szene geht.
+- 2026-09-04 — Schritt 4 zu Ende verdrahtet und die Tafel in die Szene
+  gebaut (Schleier + Content, sieben angeleitete Bauschritte, Isor am
+  Editor). Der Bestätigungsknopf startet je Eingang, und die
+  Spielergrenze reist als Parameter bis zu Unitys Dienst:
+  `Create(playerLimit, …)` in Tür und Maschinenraum, die Konstante
+  `MAX_PLAYERS` entfiel ersatzlos.
+- 2026-09-04 — Szenen-Audit des Hauptmenüs mit dem neuen Werkzeug
+  `szene_pruefen.py` (liest Szene und UI-Prefabs: Hierarchie, Pivots,
+  Farben, Schriften, jede OnClick-Liste, Feld-Verdrahtung,
+  Prefab-Überschreibungen). 15 Funde, alle am selben Tag behoben und per
+  zweitem Lauf bestätigt — der kritischste: Der Solo-Knopf rief noch
+  `StartGame` statt `PlayAlone` und hätte das alte Village geladen. Dazu
+  die Vereinheitlichung: Schleier-Muster auch an der neuen Tafel,
+  Tafel-Alpha überall 224, Titelgröße 48, zwölf Umbenennungen im
+  Options-Prefab nach der neuen Namenskonvention (`DECISIONS/UI.md`).
+  Schriften-Umzug nach `Assets/Fonts` (GUID-Abgleich: alle Verweise
+  halten), AspectRatioFitter am Hintergrund wieder angebaut.
+- 2026-09-04 — **Baustein B, Schritt 4 fertig**: gebaut, geprüft,
+  dokumentiert. Testprotokoll mit 22 Punkten in sechs Blöcken bestanden,
+  darunter der Limit-Beweis — Grenze 2 gesetzt, zwei drin, der dritte
+  Beitritt vom Dienst abgewiesen — und der Gedächtnis-Test (Feld leeren,
+  Back, Neustart: die gespeicherten Werte kehren zurück). Zwei
+  Beobachtungen als neue ROADMAP-Punkte: Der Solo-Ladebalken war nicht zu
+  sehen (gegen die Glättungsregel vom 19.08. zu prüfen), und
+  Späteinsteiger kommen in laufende Runden — NGO synchronisiert die
+  Szene, den Weltzustand ab Phase 3 aber niemand.

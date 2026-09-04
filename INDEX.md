@@ -104,6 +104,9 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 | `Projekte/Isor_Tower/TDD.md` | Nur das Markdown-Manuskript des TDD — die führende Quelle, aus der `Kern/Werkzeuge/abgabe_bauen.py` die .docx-Abgabefassung baut. |
 | `Projekte/Isor_Tower/TDD_NOTES.md` | Nur Rohmaterial für das Technical Design Document von Isor's Tower — geprüfte Fakten, Zahlen und Formeln aus der Projektarbeit. |
 | `Projekte/Isor_Tower/_ARCHIV.md` | (geplant) Überholte Projekt-Einträge, jeder mit Angabe des Nachfolgers |
+| `Projekte/Python_Lesen/DECISIONS.md` | Nur Entscheidungen zum Python-Lesekurs — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
+| `Projekte/Python_Lesen/LOG.md` | Nur was wann passiert ist — datierte Ereignisse und die Einheiten-Einträge des Kurses, älteste oben. |
+| `Projekte/Python_Lesen/ROADMAP.md` | Nur was im Python-Lesekurs als Nächstes drankommt — der Themenplan in Blöcken und die offenen Kurs-Aufgaben. |
 
 ## Werkzeuge — erzeugen und pflegen die Dateien oben
 
@@ -116,6 +119,7 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 | `Kern/Werkzeuge/pruefen.py` | Prüft die Harness-Dateien gegen die Regeln, die sich mechanisch prüfen lassen. |
 | `Projekte/Isor_Tower/Werkzeuge/prefab_status.py` | Erzeugt PREFAB_STATUS.md aus den tatsächlich vorhandenen .prefab-Dateien. |
 | `Projekte/Isor_Tower/Werkzeuge/systeme.py` | Erzeugt SYSTEME.md aus den Script-Ordnern des Unity-Projekts. |
+| `Projekte/Isor_Tower/Werkzeuge/szene_pruefen.py` | Liest eine Unity-Szene samt UI-Prefabs und meldet Aufbau, Werte und Verdrahtung. |
 
 ## Befehle — Auslöser, Ablauf in `Kern/WORKFLOW.md`
 
