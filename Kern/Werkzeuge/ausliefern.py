@@ -13,6 +13,7 @@ Was es tut:
   * index_geplant.txt            -> nur der Kommentarkopf
   * PFADE.md                     -> Pfad-Spalte auf (nicht eingerichtet)
   * Kern/Zeugnisse/              -> gar nicht
+  * Kern/LERNLOG.md              -> gar nicht (beschreibt eine Person)
 
 Aufruf:
     python ausliefern.py              Trockenlauf — meldet nur, schreibt nichts
@@ -144,13 +145,16 @@ def nur_kommentarkopf(text):
 
 
 def quellen():
-    """Was überhaupt mitgeht: CLAUDE.md und Kern/, ohne Zeugnisse und Cache."""
+    """Was überhaupt mitgeht: CLAUDE.md und Kern/, ohne Zeugnisse, Lern-Log und Cache."""
     treffer = [u"CLAUDE.md"]
     for wurzel, ordner, dateien in os.walk(os.path.join(BASE, "Kern")):
         ordner[:] = [o for o in ordner
                      if o not in ("Zeugnisse", "__pycache__")]
         for d in sorted(dateien):
             if d.endswith(".pyc"):
+                continue
+            # Beschreibt eine Person, nicht den Harness (VERSIONIERUNG.md).
+            if d == "LERNLOG.md":
                 continue
             voll = os.path.join(wurzel, d)
             treffer.append(os.path.relpath(voll, BASE).replace("\\", "/"))

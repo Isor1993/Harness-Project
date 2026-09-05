@@ -31,6 +31,15 @@ Format: `- [ ] **Titel** — ein bis drei Sätze, was zu tun ist und warum.`
   Blender-Dateien. Ohne Quelle lässt sich das Mesh nicht mehr ändern, nur
   ersetzen.
 
+- [ ] **Die Werkzeuge des Datenbaums registrieren.** Unter
+  `05_Werkzeuge\` liegen unregistrierte Skripte — vor allem der
+  UML-Diagramm-Generator (`Vorlagen\uml_drawio.py` mit acht
+  `diagramm_*.py`), dazu `Abgabe_Projektkopie.ps1` und der
+  `Arbeitsprofil`-Ordner. Der INDEX des Harness führt nur
+  Repo-Werkzeuge; was hier liegt, steht nirgends. Anlass: Am 2026-09-04
+  musste der Generator gesucht werden, weil kein Verzeichnis ihn kannte.
+  Beschreiben gehört in `RULES.md` (Baum), nicht in eine neue Liste.
+
 ## Vertagt — der Harness fasst es nicht an
 
 - [ ] **Backup auf die externe Platte.** Das Skript

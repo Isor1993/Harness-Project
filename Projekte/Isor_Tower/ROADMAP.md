@@ -248,6 +248,10 @@ sich klein.
   Tafel-Hülle (Schleier + Content), InputRow. Die Spielerlisten-Zeile
   kommt ohnehin dazu, sie wird zur Laufzeit je Spieler instanziiert.
   Bewertung liegt vor (Chat vom 04.09.), entschieden wird in der Runde.
+- [ ] **Namespace-Nachmittag vor Phase 2** — Befund aus dem Zeugnis vom
+  2026-09-04, dritter Messpunkt mit 0 von inzwischen 100 Dateien in einem
+  `namespace`. Der Semester-3-Code wäre reif; der Umzug wird mit jeder
+  Datei teurer. Ein Nachmittag, solange der Bestand überschaubar ist.
 - [ ] **UI-Feinschliff Phase 1, Sammelpunkt** — Panel-Größen
   vereinheitlichen oder wachsen lassen (Isors Frage vom 04.09.) · das
   Join-Feld ist mit 160×30 der Winzling unter den Eingaben · eine

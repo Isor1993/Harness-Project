@@ -56,6 +56,16 @@ Bestand: Jedes Zeugnis behält seine eigene URL und wird **nie
 nachgezogen** — der alte Stand ist der halbe Zweck. Beim Review-Gate
 sind diese Seiten deshalb zu überspringen.
 
+### 🎓 Zeugnis · 2026-09-04, Semesterstart
+```
+URL      https://claude.ai/code/artifact/90fec556-66a8-41ef-90ec-fa959bd5ad6b
+Datum    2026-09-04 — nach Phase 0 und Baustein B, Schritt 4; drittes
+         Zeugnis, wird nie nachgezogen
+Quelle   Kern/Zeugnisse/2026-09-04.md
+Seite →  keine
+Seite ←  keine
+```
+
 ### 🎓 Zeugnis · 2026-08-16, Politur-Wochenende
 ```
 URL      https://claude.ai/code/artifact/dfb56399-a0ac-467c-8efb-feb88940678e

@@ -67,6 +67,10 @@ geschrieben. Vor jedem Zeugnis werden gelesen:
    eine neue, eine alte und eine als problematisch vermerkte
 5. `git log` des betroffenen Repos
 6. Das jüngste Zeugnis in `Kern/Zeugnisse/` — für den Vergleich
+7. `Kern/LERNLOG.md` — der Verlauf aus Selbst, Hilfe und Fehlerbildern.
+   Seit 2026-09-04 die Quelle für Profil Person und Profil Coding, die
+   davor aus Erinnerung ersetzt werden musste; Einträge vor diesem Datum
+   sind rückwirkend und ausdrücklich lückenhaft.
 
 ## Aufbau eines Eintrags
 Feste Reihenfolge, damit zwei Zeugnisse nebeneinander lesbar sind:

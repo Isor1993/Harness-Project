@@ -59,7 +59,7 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
   verfälschen kann. Anlass: Fehlalarm „`\` statt `//`" am 2026-08-30
   (`Kern/STOERUNGEN.md`); dieselbe Linie wie der Ownership-Vorfall vom
   2026-08-21 („Befund braucht Beleg").
-- [ ] **Lern-Log einführen** — eine laufend geführte Aufzeichnung
+- [x] **Lern-Log einführen** — eine laufend geführte Aufzeichnung
   darüber, was Isor selbst geschafft hat, wo Gerüste oder Hilfe nötig
   waren und welche Fehler auftraten; die Zeugnisse
   (`Kern/ASSESSMENT_RULES.md`) sollen daraus lesen statt aus Erinnerung
@@ -67,6 +67,18 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
   später. Offen für den Design-Abschnitt: Ablageort und Eintragsform,
   vor allem aber der Auslöser — Kandidaten sind die Doku-Pflicht und das
   Review-Gate; die größte Gefahr ist eine Pflicht, die einschläft.
+  **Erledigt am 2026-09-04:** `Kern/LERNLOG.md` angelegt und rückwirkend
+  erstbefüllt; geführt wird laufend, die Doku-Pflicht fragt als Netz nach
+  (fünfte Immer-Frage in `WORKFLOW.md`); die Auslieferung lässt die Datei
+  weg (Packliste + `ausliefern.py`); die Zeugnis-Belegpflicht liest sie
+  als Quelle 7. Begründungen in `Kern/DECISIONS.md`. Die Auswertung
+  passiert im Zeugnis — bewusst kein eigener Bau.
+- [ ] **Zeugnis in zwei Zuschnitte teilen** — Isors Wunsch vom
+  2026-09-04: eine Fassung nur zur Person (wie er programmiert, wo Hilfe
+  nötig ist, wo er besser wurde) und eine volle mit Projektstand und
+  Notenbild. Entschieden wird nach dem nächsten vollen Zeugnis — dann
+  liegt ein Erfahrungswert vor, wie stark sich die beiden Hälften
+  wirklich trennen.
 - [ ] **Zeile „Setzt voraus:" im DECISIONS-Format** — In
   `Kern/DOC_RULES.md` eine vierte, **optionale** Zeile neben Was, Warum und
   Verworfen vorsehen: die Bedingung, unter der eine Entscheidung gilt und

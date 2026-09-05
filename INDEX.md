@@ -44,6 +44,7 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 | `Kern/GDD_RULES.md` | Aufbau und Pflege eines GDD — was hineingehört, wie mit offenen Punkten umgegangen wird, wann aus einem Entwurf feste Absicht wird, in welchem Takt es nachgezogen wird. |
 | `Kern/GLOSSARY.md` | Nur die **Kurzform** jedes Begriffs und der Zeiger auf seinen Besitzer. |
 | `Kern/KNOWLEDGE_RULES.md` | Schreib- und Ablageregeln für den externen Knowledge-Ordner. |
+| `Kern/LERNLOG.md` | Nur das Lern-Log — die laufende Aufzeichnung, was Isor selbst geschafft hat, wo Gerüste oder Hilfe nötig waren und welche Fehlerbilder auftraten — das Rohmaterial, aus dem die Zeugnisse lesen (`ASSESSMENT_RULES.md`). |
 | `Kern/LOG.md` | Nur was wann passiert ist — datierte Ereignisse, älteste oben. |
 | `Kern/PFADE.md` | Nur die Pfade zu Orten außerhalb dieses Repos — welche Marke wofür steht und wo der Ort auf diesem Rechner liegt. |
 | `Kern/ROADMAP.md` | Nur was am Harness als Nächstes gebaut wird. |
@@ -53,6 +54,7 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 | `Kern/WORKFLOW.md` | Wie eine Session abläuft — Begriffe, Typ und Modus samt Reglern, Session-Typen, Doku-Pflicht, die Befehle, der Pflegetag und das Session-Ende. |
 | `Kern/Zeugnisse/2026-08-11.md` | Nur dieses eine Zeugnis — ein datierter Messpunkt. |
 | `Kern/Zeugnisse/2026-08-16.md` | Nur dieses eine Zeugnis — ein datierter Messpunkt. |
+| `Kern/Zeugnisse/2026-09-04.md` | Nur dieses eine Zeugnis — ein datierter Messpunkt. |
 | `Kern/_ARCHIV.md` | Nur überholte Einträge der Kern-Schicht. |
 
 ## Uni — studienspezifisch, herausnehmbar

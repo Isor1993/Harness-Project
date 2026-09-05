@@ -585,6 +585,11 @@ Immer, bei jedem Typ:
    laufend abgeglichen werden muss. Ohne diesen Punkt sammelte es
    zwischen dem 2026-08-22 und dem 2026-08-23 drei falsche Zeilen
    (Befunde P10 bis P13).
+5. **Lern-Log-Frage** *(seit 2026-09-04)*. Stehen die Lern-Zeilen des
+   Abschnitts in `Kern/LERNLOG.md`? Geführt wird **laufend** während der
+   Arbeit — Claude schreibt, sobald etwas selbst gelang, Hilfe nötig war
+   oder ein Fehlerbild auftrat. Diese Frage ist nur das Netz dagegen,
+   dass das Laufende einschläft; „nichts Neues" ist eine gültige Antwort.
 
 Nach Typ zusätzlich:
 

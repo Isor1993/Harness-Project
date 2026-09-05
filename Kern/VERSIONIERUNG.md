@@ -134,7 +134,7 @@ Begründung samt verworfener Wege in `Kern/DECISIONS.md`.
 | **bleibt vollständig** | alle Regeldateien — `CLAUDE.md`, `WORKFLOW.md`, `DOC_RULES.md`, `CODE_GUIDELINES.md`, `VERSIONIERUNG.md`, `GLOSSARY.md` und die übrigen · `Werkzeuge/` · `Befehle/` · `Vorlagen/` · `Bilder/` | Das **ist** der Harness. Eine Regel ohne ihren Wortlaut ist keine. |
 | **Kopf plus ein Musterbeispiel** | `LOG.md` · `DECISIONS.md` · `STOERUNGEN.md` · `_ARCHIV.md` · `ROADMAP.md` · `ARTIFACT_INDEX.md` | Titelzeile, `Ownership:`, `Format:` und **genau ein** Eintrag, erkennbar als Beispiel gekennzeichnet. Ganz leer wäre die Form nicht ablesbar, und die Formatzeile allein hat sich als zu wenig erwiesen; voll wäre es fremde Geschichte. |
 | **auf den Kopf geleert** | `index_geplant.txt` (Kommentarkopf) · `PFADE.md` (Marken und Zweck bleiben, Pfad-Spalte auf `(nicht eingerichtet)`) | Reine Bestandslisten ohne Eintragsformat. Hier gibt es nichts vorzumachen — die Tabelle selbst ist schon das Muster. |
-| **fällt ganz weg** | `Kern/Zeugnisse/` | Bewertet eine Person, nicht den Harness. |
+| **fällt ganz weg** | `Kern/Zeugnisse/` · `LERNLOG.md` | Bewerten und beschreiben eine Person, nicht den Harness. |
 
 Neue Datei im Kern? Dann gehört sie beim Anlegen in eine dieser Zeilen —
 nicht erst beim nächsten Packen.

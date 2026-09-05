@@ -22,14 +22,14 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(geschrieben 2026-09-04, `/harness:ende` nach Schritt 4)*
+*(geschrieben 2026-09-04, nach dem späten Zeugnis-Abschnitt)*
 
 **Zuerst die Prefab-Design-Runde** (`Projekte/Isor_Tower/ROADMAP.md` →
 „UI-Bausteine als Prefabs"), danach **Baustein B, Schritt 5**: die
 Spielerliste mit Ready und Ping — Design in `DECISIONS/UI.md` (29.08. und
-01.09.), Bauvorlage ist die Seite `⚙️ System · Lobby-Tafel`. Weiter offen
-vom 30.08.: der Lern-Log-Design-Abschnitt (`Kern/ROADMAP.md`) und die
-Ein-Seiten-Prüfung `💡 EditorWindow & MVP`.
+01.09.), Bauvorlage ist die Seite `⚙️ System · Lobby-Tafel`. Das
+Lern-Log läuft seit heute (`Kern/LERNLOG.md` — laufend füttern!); weiter
+offen: die Ein-Seiten-Prüfung `💡 EditorWindow & MVP`.
 
 ---
 

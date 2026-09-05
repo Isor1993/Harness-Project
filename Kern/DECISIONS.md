@@ -1345,3 +1345,26 @@ dabei unvollständiger — genau die Begründung, mit der die Handgriff-Liste
 zu 2.0.0 abgeschafft wurde) · gar nicht kürzen und nur die Zeugnisse
 weglassen (die Fassung vom 2026-08-24, abgelöst am selben Tag durch die
 Entscheidung oben).
+
+## 2026-09-04 — Das Lern-Log wird geführt: Kern-Datei, drei Halbsätze, doppelter Auslöser
+Was: `Kern/LERNLOG.md` hält laufend fest, was Isor selbst schaffte, wo
+Hilfe nötig war und welche Fehlerbilder auftraten — je Eintrag Datum,
+Kontext und bis zu drei benannte Halbsätze (Selbst/Hilfe/Fehlerbild).
+Claude schreibt **laufend während der Arbeit**; die Doku-Pflicht fragt
+bei jedem Sichern als Netz nach (fünfte Immer-Frage). Die Zeugnisse
+lesen die Datei als Pflichtquelle 7; die Auslieferung lässt sie weg
+(Packliste und `ausliefern.py`), weil sie eine Person beschreibt, nicht
+den Harness. Die Erstbefüllung vom 2026-09-04 ist rückwirkend aus
+Session, LOG und Knowledge gezogen und als lückenhaft markiert.
+Warum: Isors Auftrag vom 2026-08-30, gezogen am 2026-09-04 vor dem
+dritten Zeugnis — das sonst erneut aus Erinnerung geschrieben worden
+wäre. Der doppelte Auslöser beantwortet die größte benannte Gefahr
+(„eine Pflicht, die einschläft"): Das Laufende liefert die Details, die
+bis zum Sichern verblassen würden; die Pflichtfrage nach dem Muster der
+Knowledge-Frage fängt auf, wenn das Laufende aussetzt.
+Verworfen: Ablage im Datenbaum neben dem Arbeitsprofil (kein git, und
+`pruefen.py` sähe die Datei nie) · in `Kern/Zeugnisse/` (weicht die Regel
+„eine Datei je Zeugnis" auf) · nur laufend führen ohne Pflichtfrage (das
+Einschlaf-Szenario) · nur bei der Doku-Pflicht sammeln (Detailverlust) ·
+eine feste Tabelle je Eintrag (die steifste Form, höchstes
+Einschlaf-Risiko).
