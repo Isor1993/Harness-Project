@@ -73,6 +73,8 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 | `Uni/Semester_2/ASSIGNMENT_SOFTWAREPLANUNG.md` | Originaltext der Uni-Aufgabe Softwareplanung (K1, S1, S2) als Referenz — unverändert lassen; eigene Planung gehört in die DECISIONS der Schicht. |
 | `Uni/Semester_2/ASSIGNMENT_THREADING.md` | Originaltext der Uni-Aufgabe Threadoptimierung (K2, K3, S3) als Referenz — unverändert lassen; eigene Planung gehört in die DECISIONS der Schicht. |
 | `Uni/Semester_2/ASSIGNMENT_TOOL.md` | Originaltext der Uni-Aufgabe Engine-Tool (K2, S1) als Referenz — unverändert lassen; eigene Planung gehört in die DECISIONS der Schicht. |
+| `Uni/Semester_3/STUNDENPLAN.md` | Nur die Unterrichtsblöcke, Präsentations- und Betreuungstermine des Moduls 5-101 (Games Programming, deutscher Track `5FSC0XD101_P 0926de`) — aus Isors Canvas-Export vom 2026-09-06. |
+| `Uni/Semester_3/VORJAHR_AUFGABEN.md` | Nur die Aufgabentexte des Moduls 5-101, wie sie der um ein Semester höhere Jahrgang bekommen hat — als **unverbindliche Vorschau**, von Isor am 2026-09-06 eingebracht. |
 | `Uni/_ARCHIV.md` | Nur überholte Einträge der Uni-Schicht. |
 
 ## IsorBackup — Regeln für den externen Datenbaum

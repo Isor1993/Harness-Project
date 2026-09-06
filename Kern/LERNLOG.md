@@ -137,6 +137,24 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   Pos Y 131 blieb stehen). **Hilfe:** Hierarchie-Soll als Diagramm,
   nachgerechnete Anker-Werte, onSubmit-Abo in den Code verlegt. Das
   Gegenlesen der RPC-Kette ist bewusst auf morgen vertagt.
+- 2026-09-06 · Abend-Abfrage, sechs Fragen auf Isors Wunsch —
+  **Selbst:** Host-Stempel-Begründung vollständig richtig (Manipulation,
+  Name aus dem Netzobjekt); Event-Abo-Muster samt Ansammlungs-Argument;
+  die Chat-Kette ohne Code-Lektüre zu gut der Hälfte hergeleitet
+  (Objekt je Spieler, Weg über den Host); Unsicherheiten präzise selbst
+  markiert — die Markierungen deckten sich mit den echten Lücken.
+  **Fehlerbild:** Kernmuster Zustand-gegen-Ereignis nicht abrufbar (auf
+  die Wann-Frage kam Syntax statt Kriterium; Späteinsteiger- und
+  Rundreise-Teilfragen blieben unbeantwortet); `IsOwner`/Besitz nicht
+  als Werkzeug genannt, obwohl selbst verbaut; die Zerlege-Aufgabe als
+  „Aufgabe unklar" blockiert, während das Konzept (Kamera lokal, nur
+  Positionen reisen) im selben Diktat richtig kam — die eigene
+  Diagnose „Zerlegen ist die Baustelle" damit doppelt bestätigt.
+  **Hilfe:** Schneide-Schablone nachgereicht (Normalfall → Weiche →
+  Aufräumen → Beweis) plus Drei-Gewohnheiten-Plan für wenig Zeit
+  (eigene Schrittliste vor jeder Claude-Liste, eine
+  Wiederhol-Frage je Session-Start, Fragerunde je Baustein-Ende —
+  Ritualisierung offen, Isor entscheidet bei der nächsten Sicherung).
 - 2026-09-06 · Design-Session Gras-Assets (Blender) —
   **Selbst:** Die Design-Session geführt und ihre Grenze verteidigt —
   den Bau zweimal gestoppt, als Claude vor der Entscheidung zu
