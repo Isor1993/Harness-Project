@@ -451,3 +451,28 @@ TMP-Zeichen (Glyphe fehlt im Font-Atlas; das weiße Bestands-Sprite
 wahrt den Geist der Regel vom 29.08. — kein neues Asset-Muster); ein
 Loading-Screen für den Lobby-Beitritt (die Inline-Wartetexte vom
 28.08. bleiben die Linie — erwogen und zurückgestellt).
+
+## 2026-09-06 — Spielername höchstens 16 Zeichen, der Host schneidet mit
+Was: Beide Namensfelder bekommen Character Limit 16 (Inspector-Wert,
+steht im Feinschliff-Sammelpunkt); unabhängig davon kappt der Host in
+`SetNameServerRpc` — trimmen, leer wird „Player", ab dem 17. Zeichen
+wird geschnitten.
+Warum: Isors Punkt beim Chat-Bau: Der Name teilt sich die Chat-Zeile
+mit der Nachricht — bei 16 Zeichen plus Doppelpunkt bleiben drei
+Viertel der Breite. 16 ist zugleich der Branchenkorridor (Minecraft,
+PSN, Epic je 16; WoW 12). Serverseitig zusätzlich, weil alles
+Folgenreiche der Host prüft (`DECISIONS/Multiplayer.md`, 2026-08-25).
+Verworfen: 32 wie Steams Anzeigename (bricht Zeile und Liste); nur das
+Feld-Limit ohne Host-Kappung (ein fremder Client ist nicht das eigene UI).
+
+## 2026-09-06 — Chat-Enter wird im Code abonniert, nicht im Inspector
+Was: `LobbyChat` hängt sich in `OnEnable` an `onSubmit` des
+Eingabefelds und in `OnDisable` wieder ab; die Event-Listen im
+Inspector bleiben leer.
+Warum: Der Inspector des TMP-Eingabefelds zeigt die On-Submit-Liste
+nicht an — nur die Debug-Rohansicht tut es, und dort verdrahtet man
+Typnamen von Hand. `onSubmit` feuert nur bei Enter; `onEndEdit` hätte
+auch beim Fokusverlust gesendet, eine halb getippte Zeile ginge beim
+Wegklicken raus.
+Verworfen: Verdrahtung in der Debug-Rohansicht (fehleranfällig, der
+Probe-Eintrag stand auf Call State Off); `onEndEdit` als Ersatz.

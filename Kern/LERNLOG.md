@@ -122,3 +122,30 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   drei leere Rest-Images im Roster, ein Speicherstand-Versatz
   (Stern-Regel). **Hilfe:** Klickpfade je Runde, Häkchen-Sprite von
   Claude generiert, Maß-Nachträge aus dem Audit.
+- 2026-09-06 · Lobby-Chat, Abendabschnitt (Regler: Claude schreibt) —
+  **Selbst:** die Chat-UI nach Schrittliste in der Szene gebaut und
+  dabei vorgegriffen (ScrollRect samt Clamped und Verdrahtung, Rich
+  Text aus, Character Limit 100 — vor der jeweiligen Ansage); beim
+  Font-Zwischenfall das Muster „kommt wieder, egal was ich tippe"
+  präzise gemeldet — der Schlüssel zur Diagnose; Polishing-Befunde
+  eigenständig gesammelt (Scroll zu flott, Feldgrößen,
+  Fullscreen-Frage, Namensgrenze) und die Semester-Reihenfolge aus dem
+  Kopf richtig rekonstruiert (deckte sich mit der ROADMAP).
+  **Fehlerbild:** im Debug-Inspector einen leeren Persistent-Call
+  angelegt (Rohansicht nicht als solche erkannt); das Eingabefeld
+  zunächst als Kind in den Scroll-Verlauf gehängt (Umhäng-Versatz
+  Pos Y 131 blieb stehen). **Hilfe:** Hierarchie-Soll als Diagramm,
+  nachgerechnete Anker-Werte, onSubmit-Abo in den Code verlegt. Das
+  Gegenlesen der RPC-Kette ist bewusst auf morgen vertagt.
+- 2026-09-06 · Design-Session Gras-Assets (Blender) —
+  **Selbst:** Die Design-Session geführt und ihre Grenze verteidigt —
+  den Bau zweimal gestoppt, als Claude vor der Entscheidung zu
+  modellieren begann. Formfehler am Bild eigenständig erkannt und
+  benannt („zu arg geknickt"), was auf eine echte Konstruktionsursache
+  führte (Krümmung auf zwei Segmente gedrängt). Nach dreimaligem
+  Danebenliegen die entscheidende Abhilfe selbst geliefert:
+  Referenzbilder, aus denen sich Proportionen messen ließen. Alle
+  Design-Entscheidungen selbst getroffen, darunter der Umschwenk vom
+  großen Büschel auf viele kleine.
+  **Hilfe:** Übersetzung des Vorbilds in Zahlen (Seitenverhältnisse,
+  Biegewinkel, Halmzahl), die Messverfahren für Deckung und Pixelgröße.

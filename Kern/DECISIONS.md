@@ -1368,3 +1368,34 @@ Verworfen: Ablage im Datenbaum neben dem Arbeitsprofil (kein git, und
 Einschlaf-Szenario) · nur bei der Doku-Pflicht sammeln (Detailverlust) ·
 eine feste Tabelle je Eintrag (die steifste Form, höchstes
 Einschlaf-Risiko).
+
+## 2026-09-06 — Der Build-Ordner trägt den Projektnamen im Präfix
+Was: Die Build-Ablage heißt `<Projekt>_<Spielversion>_<JJJJ-MM-TT>`
+statt `<Spielversion>_<JJJJ-MM-TT>` — erster Ordner nach diesem Muster:
+`IsorTower_0.0.4_2026-09-06`.
+Warum: Isors Griff beim ersten Versand-Build: Der Ordner wird gezippt
+und an Mitspieler geschickt und verliert dabei seinen Pfad-Kontext —
+`0.0.4_2026-09-06` sagt beim Empfänger nichts, das Präfix schon. Das
+Schema vom 2026-08-26 hatte nur die lokale Ablage bedacht.
+Verworfen: das Schema lassen und den Ordner als Ausnahme führen (die
+Regel soll die Wirklichkeit abbilden, nicht andersherum).
+
+## 2026-09-06 — ART_RULES für erzeugte Grafik-Assets
+Was: Neue Kern-Datei `ART_RULES.md`. Sie besitzt das Verfahren, mit dem
+Grafik-Assets entstehen: was vor dem Bau feststehen muss, der Ablauf, die
+Werkzeuge, Ablage und Messpflichten. Sechs Bedienregeln mit Kurznamen,
+jede mit ihrem Beleg aus der ersten Blender-Session.
+Warum: Isors Frage nach dieser Session („was speichern wir, welche
+Werkzeuge, was muss man vorher sagen"). Der Ertrag lag nicht im Modell,
+sondern im Verfahren — drei Formen wurden verworfen, weil ein
+Referenzbild fehlte, und eine Breitenformel lag um 42 Prozentpunkte
+daneben, weil geschätzt statt gemessen wurde. Beides wäre ohne
+Aufschreiben beim nächsten Asset neu zu lernen. Der Ablageort ist der
+Kern, weil nichts daran projektspezifisch ist.
+Verworfen: die Regeln in `DIAGRAM_RULES.md` mit unterbringen (die
+besitzt die `.drawio`-Diagramme, ein anderer Gegenstand); den geplanten
+Session-Typ „Art" jetzt mit ausarbeiten (er steht seit dem 2026-07-17
+unbenutzt in `WORKFLOW.md`; ob es ihn überhaupt braucht, ist nach *einer*
+Session nicht belegt — als ROADMAP-Punkt festgehalten); die Erkenntnisse
+nur ins Knowledge zu schreiben (dort steht das Wissen, hier gehört die
+Pflicht).

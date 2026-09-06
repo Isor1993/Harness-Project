@@ -605,3 +605,22 @@ erzeugt, weil `IsAlreadyConnected` während des Aufbaus noch blind ist.
 Verworfen: die Knöpfe im Menü deaktivieren (zweite Wahrheit in der UI,
 und der Service bliebe für andere Aufrufer ungeschützt); je Weg ein
 eigenes Flag (drei Schilder für dieselbe Tür).
+
+## 2026-09-06 — Der Chat läuft als RPC-Paar über das Spielerobjekt, der Host stempelt den Namen
+Was: Der Besitzer ruft `SendChatMessageServerRpc` auf seinem
+`LobbyPlayer`; der Host prüft (leer, Länge 100) und ruft
+`ReceiveChatMessageClientRpc` mit dem Namen aus der NetworkVariable —
+auch beim Absender selbst. Der Verlauf ist eine lokale Textliste;
+Späteinsteiger sehen alte Zeilen nicht.
+Warum: Eine Nachricht passiert einmalig — nach dem Muster vom
+2026-08-28 ist sie ein RPC, kein Zustand. Der Name vom Host statt aus
+dem Aufruf folgt der Linie vom 2026-08-25 (alles Folgenreiche prüft der
+Host): Kein Client kann fremde Namen auf Zeilen stempeln. Das
+vorhandene Objekt je Spieler spart ein eigenes Szenen-Netzobjekt samt
+Besitzfragen. Dass die eigene Zeile erst nach der Server-Runde
+erscheint (beim 240-ms-Paartest fühlbar), ist der Preis für eine
+Reihenfolge, die auf allen Rechnern gleich ist.
+Verworfen: `NetworkList` als Verlauf (am 2026-08-29 schon verworfen,
+und ein nachreisender Verlauf trägt in einer Lobby nichts); ein eigenes
+Chat-Netzobjekt in der Szene; die eigene Zeile sofort lokal anzeigen
+(zwei Wahrheiten für denselben Verlauf).

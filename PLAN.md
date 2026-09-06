@@ -22,15 +22,16 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(geschrieben 2026-09-06, nach Abschluss von Baustein B)*
+*(geschrieben 2026-09-06 abends, nach dem Lobby-Chat; Semesterstart:
+2026-09-07)*
 
-**Zuerst der Abgabetext für Baustein B**
-(`Projekte/Isor_Tower/ROADMAP.md` → „Abgabetext für Baustein B" — Isor
-formuliert, die Fakten liegen in `TDD_NOTES.md`), danach **Baustein C**:
-Spieler-Prefab als Netzobjekt und Eingabe-Naht (`DECISIONS/Player.md`).
-Beim nächsten `/harness:sonntag`: zwei Seiten tragen frische
-Überholt-Vermerke (`ARTIFACT_INDEX.md`). Weiter offen: die
-Ein-Seiten-Prüfung `💡 EditorWindow & MVP`.
+**Zuerst Gegenlesen:** Isor erklärt die Chat-RPC-Kette in eigenen Worten
+(Deal des Reglers „Claude schreibt"). **Dann Baustein C**
+(`DECISIONS/Player.md` lesen; Regler neu fragen, Entwurf vor Gerüst).
+**Nach der Moduleinführung:** Aufgaben ablegen, Abgabe-Struktur anlegen
+(`Uni/ROADMAP.md`); Uni wo möglich mit dem Tower verbinden, Unreal/C++
+läuft parallel (Isor, 2026-09-06). Sonntag weiter offen: zwei
+Überholt-Vermerke und die Ein-Seiten-Prüfung `💡 EditorWindow & MVP`.
 
 ---
 

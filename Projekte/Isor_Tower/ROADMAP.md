@@ -166,11 +166,22 @@ sich klein.
   Haken · Ping über je ein `LobbyPlayer`-Objekt, Ready als Anzeige,
   getestet mit vier virtuellen Spielern. Baustein B ist damit durch;
   offen bleibt sein Abgabetext (eigener Punkt unten).
-- [ ] **Lobby-Chat bauen** — Verlauf (die letzten ~6 Zeilen, Luft für vier
-  Schreiber) plus Eingabezeile, Enter sendet; RPC plus Textliste, der
-  Platz auf der Tafel ist ab Baustein B reserviert (`DECISIONS/UI.md`,
-  2026-08-29). Fällig nach Baustein C, sobald Verbinden, Spawnen und
-  gemeinsames Laufen stehen — vorgezogen aus „Lobby-Komfort".
+- [x] **Lobby-Chat bauen** — **gebaut und geprüft am 2026-09-06**
+  (`LOG.md`): Scroll-Verlauf plus Eingabezeile auf der Tafel, RPC-Paar
+  über `LobbyPlayer`, der Host stempelt den Namen
+  (`DECISIONS/Multiplayer.md`). Im Internet-Paartest bestanden (240 ms).
+  Auf Isors Entscheid vor Baustein C gezogen — Verbinden und Lobby
+  standen, nur das gemeinsame Laufen fehlte der alten Fälligkeit.
+- [ ] **Oswald statisch backen** — das SDF-Asset ist dynamisch und hängt
+  an der zurückgeholten Beispiel-TTF (53 KB, ohne „…"-Glyphe); ein
+  statischer Atlas wie bei LiberationSans macht die Abgabe unabhängig
+  von Quelldatei und Laufzeit-Baken (`LOG.md`, 2026-09-06). Fällig beim
+  UI-Feinschliff der Phase 1.
+- [ ] **Font-Quell-GUIDs sieht kein Referenz-Scan** —
+  `m_SourceFontFileGUID` ist ein Textfeld im Font-Asset, kein
+  Objektverweis; der Scan vom 06.09. konnte den Riss deshalb nicht
+  melden. Beim nächsten Ausbau von `szene_pruefen.py` mitprüfen oder
+  dort als bekannte Grenze vermerken. Klein, kein Termin.
 - [ ] **Meldung „Lobby geschlossen" beim Rauswurf** — der Gast landet heute
   kommentarlos auf der Host/Join-Wahl; Isor wünscht ein Bestätigungsfenster
   mit Okay (2026-08-30). **Formfrage offen:** kollidiert mit der
@@ -260,10 +271,13 @@ sich klein.
   Torch-Duplikat wurde zum benannten Flammen-Paar. Kein Riss im
   Nach-Scan.
 - [ ] **Abgabetext für Baustein B** — der Baustein ist seit dem
-  2026-09-06 gebaut und geprüft, aber „fertig heißt dokumentiert": Das
-  TDD-Kapitel zum Netz-Einstieg fehlt. Isor formuliert, Claude liefert
-  Struktur und die Fakten aus `TDD_NOTES.md` (Blöcke „Netzwerk &
-  Multiplayer"). Eigene Session, Rohmaterial liegt bereit.
+  2026-09-06 gebaut und geprüft; das TDD-Kapitel zum Netz-Einstieg steht
+  noch aus. **Fällig erst, sobald die Abgabe-Struktur des Semesters
+  steht** (`PLAN.md` → „Abgabe-Struktur anlegen"): Ein Semester-3-TDD
+  gibt es noch nicht, und der Menü-Feinschliff ist offen (Isor,
+  2026-09-06). Bis dahin sichern die Blöcke „Netzwerk & Multiplayer" in
+  `TDD_NOTES.md` die Fakten; dann formuliert Isor, Claude liefert
+  Struktur und Fakten. Eigene Session.
 - [ ] **Namespace-Nachmittag vor Phase 2** — Befund aus dem Zeugnis vom
   2026-09-04, dritter Messpunkt mit 0 von inzwischen 100 Dateien in einem
   `namespace`. Der Semester-3-Code wäre reif; der Umzug wird mit jeder
@@ -275,8 +289,34 @@ sich klein.
   zeigt Liste und Zähler schon vor der Dienst-Antwort (der Host sieht
   kurz eine leere Tafel — Inline-Warteanzeige erwägen, 06.09.). Das
   Join-Feld war der 160×30-Winzling und misst seit dem 06.09. 200×50
-  (Isor). Nichts davon blockiert; fällig mit dem bestehenden
+  (Isor). Aus dem Chat-Bau vom 06.09. dazu: Character Limit 16 auf beide
+  Namensfelder (der Host kappt schon) · Chat-Scroll-Sensitivity von 25
+  auf ~12 (Isor: zu flott) · Senden-Knopf neben Enter erwägen · das
+  Namensfeld im JoinPanel wirkt zu groß · GuestNameRow-Position gegen
+  den Title prüfen · **Fullscreen-Frage als Design-Entscheid:** Settings
+  und Lobby später Vollbild, weil Chat und Settings wachsen (Isor,
+  06.09.). Nichts davon blockiert; fällig mit dem bestehenden
   Feinschliff der Phase 1.
+
+## Gras-Assets
+
+Aus der Design-Session vom 2026-09-06 (`DECISIONS/Gras.md`, die beiden
+Einträge dieses Datums). Das Set aus fünf Varianten in je drei LOD-Stufen
+liegt fertig im Datenbaum (`Kern/PFADE.md` → `DATENBAUM`,
+`03_AssetLibrary\Eigene\Art\Grass\`), der Generator daneben unter
+`05_Werkzeuge\Vorlagen\Blender\`.
+
+- [ ] **Das neue Gras-Set in Unity gegentesten** — mit dem echten Shader,
+  Textur und Beleuchtung. Die bisherigen Bilder stammen aus einem
+  Platzhalter-Shader in Blender; ob der Look trägt, entscheidet sich erst
+  in der Engine. Erst danach ist zu entscheiden, ob das Set den Bestand
+  aus dem Eintrag vom 2026-08-04 ablöst.
+- [ ] **Instanzdichte und Zellgröße neu rechnen**, falls das Set
+  übernommen wird — die Vorbilder setzen die Wiese aus vielen kleinen
+  Teilen zusammen, gemessen rund 16 Büschel je Quadratmeter gegenüber
+  heute 0,05. Das berührt beide Grenzen aus `DECISIONS/Gras.md`
+  (2026-08-04): die 1023 Instanzen je Batch und die 128-m-Zellkante, die
+  auf die heutige Dichte gerechnet ist.
 
 ## Nach dem Prototyp
 

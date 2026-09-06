@@ -120,3 +120,52 @@ besser aus. Für das TDD zusätzlich wertvoll: Uniform ist der Worst Case der
 Laufzeitmessung, jede Maske dünnt aus. Die gemessenen 12,4 s sind damit eine obere
 Grenze, kein geschönter Wert. Im Text steht die Maske als gebaut und begründet
 abgeschaltet.
+
+## 2026-09-06 — Gras-Geometrie neu: viele kleine Büschel, gedrehte flache Halme
+Was: Ein Grasbüschel ist künftig klein (rund 30 cm hoch statt 1,58 m) und
+wird oft platziert, statt groß zu sein und selten. Fünf Größen bilden ein
+Set — Sprout (3 Halme) · Small (6) · Medium (12) · Large (20) · Tall (10
+lange). Ein Halm ist ein **flacher** Streifen, um die eigene Achse
+gedreht, mit Grasblatt-Kontur (schmale Basis, breiteste Stelle bei einem
+Fünftel, spitz erst im letzten Drittel) und einer Krümmung von 25° Basis
+mit starker Streuung, die zur Spitze hin zunimmt. Kein Dachprofil.
+Attribute: Höhenmaske im roten Vertex-Color-Kanal wie im Bestand, dazu
+neu eine Zufallszahl je Halm im grünen (für Wind-Phasenversatz), UV,
+senkrechte Custom Normals.
+Warum: Isors Referenzbilder eines stylisierten RPG-Dorfs. Aus ihnen
+gemessen: Halme stehen nahezu aufrecht und krümmen sich nur oben, sind
+etwa 14:1 lang zu breit, und die Vorbilder setzen die Wiese aus vielen
+kleinen Teilen zusammen. Das Dachprofil fiel weg, weil ein Toon-Shader
+mit senkrechten Normals die Wölbung wegquantisiert — die Drehung liefert
+denselben Silhouettengewinn für die halben Dreiecke (11 statt 22 je
+Halm). Belegt in einem Kantenansicht-Vergleich am selben Tag.
+Verworfen: das Dachprofil (Isors erste Wahl, vor der Stilangabe
+getroffen — nach dem Kantenvergleich widerrufen); ein einzelnes großes
+Büschel (die drei ersten Fassungen; wirkte als Strauch, nicht als
+Wiese); Kreisbogen-Krümmung über die ganze Länge (legt den Halm flach,
+ergibt einen Fächer); lineare Verjüngung von der Wurzel an (liest sich
+als Speerspitze — der Hauptgrund, warum die ersten Fassungen nicht nach
+Gras aussahen).
+Nicht abgelöst: Der Eintrag vom 2026-08-04 („LOD-Meshpaar von Hand statt
+Automatik") gilt weiter für den **Bestand**. Ob das neue Set ihn ablöst,
+entscheidet sich nach dem Unity-Test (`ROADMAP.md` → „Gras-Assets").
+
+## 2026-09-06 — LOD-Stufen aus einem Seed, Breiten gegen die Deckung gemessen
+Was: Alle drei Stufen einer Variante ziehen ihre Halme aus **einem**
+Zufallsstrom; die groben Stufen nehmen eine Teilmenge davon, geordnet
+nach Wichtigkeit (größter Halm zuerst, dann jeweils der am weitesten von
+allen gewählten entfernte). Die verbleibenden Halme werden verbreitert,
+bis die gerenderte Silhouettenfläche wieder der von LOD0 entspricht — die
+Breiten sind **gemessene** Werte, keine gerechneten. Erreicht: 98,2 % bis
+101,0 % über alle 15 Meshes. Gemessene Umschaltabstände: LOD1 ab etwa 6 m,
+LOD2 erst ab 30 m.
+Warum: Isors Vorgabe, dass man den Wechsel nicht merken darf. Aus einem
+Seed zu ziehen macht die Halmlage über alle Stufen identisch, statt sie
+sorgfältig nachzubauen. „Jeden zweiten Halm" wirft dagegen zufällig den
+höchsten und äußersten weg — gemessen 6,8 % Höhenverlust beim Wechsel.
+Die Breiten mussten gemessen werden, weil Halme einander überlappen und
+weniger Halme weniger überlappen: Eine Formel lag bei einer der fünf
+Varianten um 42 Prozentpunkte daneben (Sprout LOD2 deckte 57 %).
+Verworfen: jeden N-ten Halm behalten (Höhenverlust); alle Halme behalten
+und nur Segmente reduzieren (kostet bei LOD2 das Dreieinhalbfache);
+Breiten aus dem Halmzahl-Verhältnis rechnen (die genannten 42 Punkte).

@@ -706,6 +706,23 @@ beim Projekt, nicht bei der Uni. Überholte Einträge wandern nach
   ist NGOs `SpawnManager.SpawnedObjectsList` die bessere Quelle
   (Spawn- = Beitrittsreihenfolge). Der Multiplayer Play Mode teilt die
   PlayerPrefs aller Klone — ein Registry-Schlüssel je Produkt.
+- 2026-09-06 — [Netzwerk] Lobby-Chat als RPC-Kette: Owner →
+  `SendChatMessageServerRpc` → Host prüft und stempelt den Namen aus
+  der NetworkVariable → `ReceiveChatMessageClientRpc` an alle, auch den
+  Absender. Eine Wahrheit, eine Reihenfolge; die eigene Zeile braucht
+  eine volle Umlaufzeit. Diagramm-Stoff fürs Kapitel Netz-Einstieg.
+- 2026-09-06 — [Messung] Erster realer Fern-Ping übers Relay: 240 ms
+  RTT (Gast interkontinental), über die ganze Testsession stabil —
+  gemessen von der Lobby-Ping-Anzeige. Referenzzahl für Phase 4: Die
+  Host-Bestätigung eines Schlags käme eine Viertelsekunde nach dem
+  Treffer; genau dafür ist die sofortige Trefferanzeige beim Gast
+  entschieden.
+- 2026-09-06 — [Unity/TMP] Dynamische Font-Assets verlieren ihre Quelle
+  still: `m_SourceFontFileGUID` ist ein Textfeld, kein Objektverweis —
+  Referenz-Scans sehen die Abhängigkeit nicht. Signatur des Schadens:
+  `TMP SubMeshUI [<Font> Material + <Fallback> Atlas]` unter jedem
+  Textobjekt. Heilung: Quelldatei samt originaler `.meta` zurücklegen,
+  Editor-Neustart.
 
 ## Rendering
 

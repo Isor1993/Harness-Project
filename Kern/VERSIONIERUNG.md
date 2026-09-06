@@ -68,11 +68,13 @@ offen (Isor, 2026-08-22).*
 ### Ablage der Builds
 
 Ein gebauter Stand liegt im Datenbaum unter
-`02_Projekte\<Projekt>\Builds\<Spielversion>_<JJJJ-MM-TT>\`
+`02_Projekte\<Projekt>\Builds\<Projekt>_<Spielversion>_<JJJJ-MM-TT>\`
 (`Kern/PFADE.md` → `DATENBAUM`) — das Repo ignoriert `Build/` zu Recht.
 Die Spielversion kommt aus den Player Settings; das Datum unterscheidet
-zwei Stände derselben Prototyp-Version. *(Entschieden 2026-08-26,
-Begründung in `Kern/DECISIONS.md`.)*
+zwei Stände derselben Prototyp-Version. Das Projektpräfix trägt der
+Ordner, weil er als Zip zu Mitspielern reist und dort seinen
+Pfad-Kontext verliert. *(Entschieden 2026-08-26, Präfix seit
+2026-09-06; Begründungen in `Kern/DECISIONS.md`.)*
 
 ## 3. Harness-Version — Verträglichkeit
 

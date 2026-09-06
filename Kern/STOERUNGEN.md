@@ -666,3 +666,57 @@ Bestands. Gegenmittel benannt und bereits als Werkzeug-Punkt in
 2026-09-06).
 **Stand:** offen — der Werkzeug-Punkt steht; Claudes eigene
 Inline-Prüfungen beachten die size-Zeile seit dem Vorfall.
+
+### 2026-09-06 — Abgabetext-Auftrag zielte auf ein Dokument, das es nicht gibt
+**Was:** Die Endsession vom Vormittag hinterließ nach Abschluss von
+Baustein B den PLAN-Auftrag „Zuerst der Abgabetext für Baustein B" — ein
+Semester-3-TDD existiert aber nicht: `TDD.md` ist das
+Semester-2-Manuskript, und die Abgabe-Struktur wartet laut `PLAN.md`
+auf die Semesteraufgaben. Isors Einspruch in der Folgesession deckte
+es auf.
+**Ursache:** Die Doku-Pflicht wurde korrekt befolgt — die
+Development-Zeile („Abgabe-Abschnitt, wenn ein Baustein fertig wurde")
+und der Baustein-Begriff kennen den Fall „Abgabedokument existiert noch
+nicht" schlicht nicht.
+**Regel:** `Kern/WORKFLOW.md`, Doku-Pflicht-Tabelle (Development) und
+Begriff „Baustein" — griffen wörtlich, aber am Ziel vorbei.
+**Stand:** behoben 2026-09-06 fürs Projekt — der ROADMAP-Punkt ist auf
+„fällig, sobald die Abgabe-Struktur steht" umformuliert
+(`Projekte/Isor_Tower/ROADMAP.md`); die Regel-Präzisierung steht als
+Punkt in `Kern/ROADMAP.md`.
+
+### 2026-09-06 — Typ und Modus nie gefragt, Wiederholungsfall
+**Was:** Eine ganze Session lief ohne Abfrage von Typ und Modus. Isor
+hatte den Typ von sich aus benannt („nur eine Session für Brainstorm",
+später „lass uns designen"); Claude nahm ihn hin, ohne ihn zu setzen,
+und fragte auch den Modus nicht. Aufgefallen erst bei `/harness:ende`,
+als die Doku-Pflicht ihren Maßstab brauchte.
+**Ursache:** Der Einstieg lief über eine offene Sachfrage („was können
+wir grafisch machen"), nicht über eine Aufgabe. Die Leseordnung in
+`CLAUDE.md` endet beim Prüfskript und übergibt nicht sichtbar an die
+Typ-Abfrage — nichts im Ablauf erzwingt sie.
+**Regel:** Griff nicht: „Am Anfang jeder Session fragt Claude nach Typ
+und Modus" (`WORKFLOW.md`, Typ, Modus und Regler). Die Regel steht seit
+dem 2026-08-22 und wurde damals aus genau diesem Aussetzer geschrieben —
+sie ist eine Verhaltensregel geblieben und hat sich damit zum zweiten Mal
+als vergesslich erwiesen (`DOC_RULES.md`, Abschnitt 1: Ein
+Ausführungsfehler gehört automatisiert oder ins Format eingebaut).
+**Stand:** offen — kein ROADMAP-Punkt auf Isors Entscheidung
+(2026-09-06). Der Schaden blieb aus, weil Isor den Typ selbst benannt
+hatte; die Doku-Pflicht konnte am Ende darauf zurückgreifen.
+
+### 2026-09-06 — Zweimal ins Bauen gerutscht, bevor das Design stand
+**Was:** In einer Design-Session begann Claude zweimal zu modellieren,
+bevor die Form entschieden war — einmal direkt nach dem Vermessen des
+Bestands, einmal nach der Halmform-Entscheidung. Beide Male stoppte Isor
+("haben wir nicht gesagt, dass wir erst eine Design Session machen").
+**Ursache:** Der Übergang vom Vermessen zum Bauen ist fließend — beides
+ist derselbe Handgriff (Skript schreiben, Blender starten, Bild lesen).
+Ohne benannte Grenze fehlt der Punkt, an dem gefragt werden müsste.
+**Regel:** Griff nicht: „erst ein Design-Abschnitt (was und wie), dann
+der Development-Abschnitt" (`WORKFLOW.md`, Brainstorm/Design). Die Regel
+zielt auf den Wechsel zwischen Abschnitten und deckte den Fall innerhalb
+eines Design-Abschnitts nicht ab.
+**Stand:** behoben 2026-09-06 — Regel *Entscheiden vor Bauen* in
+`Kern/ART_RULES.md`, Abschnitt „Bedienregeln", samt diesem Beleg. Kein
+ROADMAP-Punkt auf Isors Entscheidung.

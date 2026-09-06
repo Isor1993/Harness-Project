@@ -35,6 +35,7 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 |---|---|
 | `Kern/ARTIFACT_INDEX.md` | Welche Artifact-Seiten es gibt, woran jede hängt und wer auf sie zeigt. |
 | `Kern/ARTIFACT_RULES.md` | Typen, Benennung, Aufbau, Gestaltung, Symbole und Pflege der Artifact-Seiten auf claude.ai. |
+| `Kern/ART_RULES.md` | Nur das Verfahren, mit dem Grafik-Assets entstehen — was vor dem Bau feststehen muss, wie der Ablauf aussieht, welche Werkzeuge es gibt, wo Ergebnis und Generator liegen und was gemessen wird. |
 | `Kern/ASSESSMENT_RULES.md` | Der Session-Typ „Zeugnis" vollständig — Auslöser, Ablauf, Belegpflicht, Aufbau, Notenskala, Schreibregeln, Ablage. |
 | `Kern/Bilder/README.md` | Nur die von Hand gebauten Erklärskizzen des Kerns — was hier liegt, wozu es gehört und woran es hängt. |
 | `Kern/CODE_GUIDELINES.md` | Code-Konventionen — Namen, Kommentare und Datei-Header, Architektur, Ordnerstruktur, Tests, das Review-Gate und die Repo-/Git-Regeln des Projekt-Repos. |

@@ -707,3 +707,24 @@ damals, nicht den von heute.
   vor dem Netzstart — Rollen-Ansicht und Zähler laufen deshalb nach der
   Dienst-Antwort erneut. Loading-Screen für den Lobby-Beitritt erwogen
   und zurückgestellt: Die Inline-Wartetexte vom 28.08. bleiben die Linie.
+- 2026-09-06 — **Lobby-Chat gebaut und im Internet-Paartest bestanden.**
+  `LobbyChat` (Verlauf als eine Textfläche aus einer Zeilenliste,
+  Kappung bei 100 Zeilen wegen TMP-Vertex-Budget; Feld leert und
+  refokussiert sich nach dem Senden) plus RPC-Paar in `LobbyPlayer`:
+  der Besitzer sendet, der Host prüft und verteilt mit dem Namen aus
+  der NetworkVariable (`DECISIONS/Multiplayer.md`). `onSubmit` im Code
+  abonniert, weil der Inspector die Liste nicht anzeigt
+  (`DECISIONS/UI.md`). Szene von Isor Schritt für Schritt gebaut
+  (ScrollRect Clamped, RectMask2D, Rich Text am Verlauf aus).
+  Spielername serverseitig auf 16 gekappt. Auf Isors Entscheid vor
+  Baustein C gezogen. Getestet solo und im Paartest übers Internet —
+  Chat beidseitig, gleiche Reihenfolge; reale Messung: Gast-Ping 240 ms
+  RTT übers Relay, stabil. Build 0.0.4 als `IsorTower_0.0.4_2026-09-06`
+  abgelegt. Zwischenfall des Tages: Alle Oswald-Texte fielen still auf
+  den LiberationSans-Fallback (`TMP SubMeshUI` je Titel) — das
+  dynamische Font-Asset hatte seine Quelle verloren, weil
+  `Oswald-Bold.ttf` mit dem TMP-Beispielordner gelöscht worden war
+  (Commit „Update V 0.0030"); der Referenz-Scan konnte das nicht sehen,
+  die Quell-GUID ist ein Textfeld im Asset. Aus der Git-Historie samt
+  originaler `.meta` nach `Assets/Fonts/` restauriert, nach
+  Editor-Neustart geheilt.

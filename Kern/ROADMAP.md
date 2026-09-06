@@ -88,6 +88,24 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
   ließ die Voraussetzung weg; eine Session plante einen Tag darauf
   (`Kern/STOERUNGEN.md`, 2026-08-28).
 
+- [ ] **Doku-Pflicht „Abgabe-Abschnitt" an die Existenz des
+  Abgabedokuments binden** — Die Development-Zeile der Doku-Pflicht und
+  der Baustein-Begriff in `Kern/WORKFLOW.md` verlangen den Abgabetext
+  auch dann, wenn es das Abgabedokument des Semesters noch gar nicht
+  gibt; so entstand am 2026-09-06 ein PLAN-Auftrag ins Leere
+  (`Kern/STOERUNGEN.md`). Ergänzung der Art „sobald es das
+  Abgabedokument gibt — bis dahin sichern die TDD_NOTES die Fakten".
+
+- [ ] **Session-Typ „Art" ausarbeiten** — `Kern/WORKFLOW.md` führt ihn
+  seit dem 2026-07-17 als geplant und nie benutzt („Prompts für
+  Bildgenerierung und Concept-Art"). Am 2026-09-06 lief die erste
+  Art-Arbeit tatsächlich — als Brainstorm/Design-Abschnitt, weil es den
+  Typ nicht gibt —, und `Kern/ART_RULES.md` beantwortet seither das
+  *Verfahren*. Offen bleibt der **Typ**: eine Zeile in der
+  Doku-Pflicht-Tabelle, und die Entscheidung, ob er überhaupt einer sein
+  muss oder ob Brainstorm/Design mit den ART_RULES genügt. Belegt ist
+  bisher nur, dass Design-Abschnitt plus ART_RULES getragen haben.
+
 Was im Betrieb nicht trägt, kommt als Störung in `Kern/STOERUNGEN.md`
 und wird von dort aus zu einem Punkt hier — genau dafür fragt die
 Doku-Pflicht in `Kern/WORKFLOW.md` nach beidem im selben Zug.
