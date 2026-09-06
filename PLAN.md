@@ -22,14 +22,15 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(geschrieben 2026-09-04, nach dem späten Zeugnis-Abschnitt)*
+*(geschrieben 2026-09-06, nach Abschluss von Baustein B)*
 
-**Zuerst die Prefab-Design-Runde** (`Projekte/Isor_Tower/ROADMAP.md` →
-„UI-Bausteine als Prefabs"), danach **Baustein B, Schritt 5**: die
-Spielerliste mit Ready und Ping — Design in `DECISIONS/UI.md` (29.08. und
-01.09.), Bauvorlage ist die Seite `⚙️ System · Lobby-Tafel`. Das
-Lern-Log läuft seit heute (`Kern/LERNLOG.md` — laufend füttern!); weiter
-offen: die Ein-Seiten-Prüfung `💡 EditorWindow & MVP`.
+**Zuerst der Abgabetext für Baustein B**
+(`Projekte/Isor_Tower/ROADMAP.md` → „Abgabetext für Baustein B" — Isor
+formuliert, die Fakten liegen in `TDD_NOTES.md`), danach **Baustein C**:
+Spieler-Prefab als Netzobjekt und Eingabe-Naht (`DECISIONS/Player.md`).
+Beim nächsten `/harness:sonntag`: zwei Seiten tragen frische
+Überholt-Vermerke (`ARTIFACT_INDEX.md`). Weiter offen: die
+Ein-Seiten-Prüfung `💡 EditorWindow & MVP`.
 
 ---
 

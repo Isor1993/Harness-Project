@@ -646,3 +646,23 @@ die einzige Stelle sind, an der verworfene Wege festgehalten werden.
 **Stand:** offen — der Fehler wurde vor dem Tippen abgefangen und das
 Gerüst korrigiert; ob das Gegenmittel eine Regel wird, ist als
 ROADMAP-Frage gestellt (2026-09-04).
+
+### 2026-09-06 — Prüfkette las tote Overrides als lebendig, dreimal
+**Was:** Beim Lobby-Bau meldete Claudes Datei-Prüfung dreimal, ein
+geleerter OnClick trage noch seinen Eintrag — Isor wurde dreimal zu
+einem „Nachtrag" aufgefordert, den er längst erledigt hatte. Aufgeklärt
+hat es Isors Inspector-Blick und sein Beharren: In der Datei stand
+`Array.size = 0` vor verwaisten Eintrags-Zeilen, die Unity beim Leeren
+einer Instanz-Liste stehen lässt.
+**Ursache:** Die Prüfungen (Claudes Inline-Parser wie
+`szene_pruefen.py`) lesen Prefab-Überschreibungen Zeile für Zeile,
+ohne dass die `Array.size`-Zeile die dahinter liegenden
+`data[i]`-Zeilen entwertet — Unitys Aufräum-Faulheit war als Datenlage
+nicht eingeplant.
+**Regel:** Griff nicht: „Skripte prüfen Form und Bestand"
+(`WORKFLOW.md`, Prüfebenen) — hier gab die Form ein falsches Bild des
+Bestands. Gegenmittel benannt und bereits als Werkzeug-Punkt in
+`Projekte/Isor_Tower/ROADMAP.md` (verwaiste Listen-Overrides erkennen,
+2026-09-06).
+**Stand:** offen — der Werkzeug-Punkt steht; Claudes eigene
+Inline-Prüfungen beachten die size-Zeile seit dem Vorfall.

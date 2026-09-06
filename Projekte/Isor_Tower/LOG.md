@@ -666,3 +666,44 @@ damals, nicht den von heute.
   sehen (gegen die Glättungsregel vom 19.08. zu prüfen), und
   Späteinsteiger kommen in laufende Runden — NGO synchronisiert die
   Szene, den Weltzustand ab Phase 3 aber niemand.
+- 2026-09-06 — UI-Bausteine als Prefabs gebaut und der Bestand umgezogen
+  (Vorbau zu Baustein B, Schritt 5; Entscheid vom 05.09. in
+  `DECISIONS/UI.md`). Ein erster skriptgetriebener Datei-Umbau scheiterte
+  im Play-Test — Knöpfe ohne Wirkung, die OnClick-Overrides in die leere
+  Prefab-Liste kamen beim Import nicht an — und wurde per Git verworfen.
+  Dann von Hand im Editor: `StandardButton`, `InputRow` und `PanelShell`
+  als Duplikat-Ableger des Bestands; zehn Knöpfe und beide Eingabezeilen
+  als Instanzen neu verdrahtet (die Lobby wartet planmäßig auf ihren
+  Umbau in Schritt 5), `SelectOnHover` sitzt jetzt überall auf der
+  Knopf-Wurzel, das Join-Code-Feld wuchs von 160×30 auf 200×50, die
+  Minus/Plus-Labels wurden optisch zentriert (Glyphen sitzen nicht auf
+  der Box-Mitte). Abnahme: `szene_pruefen.py`-Abgleich gegen das
+  Vorher-Protokoll plus Play-Test; die Prüfläufe fingen unterwegs zwei
+  vergessene OnClick-Listen, zwei leere Inspector-Felder und vertauschte
+  Raycast-Häkchen.
+- 2026-09-06 — Prefab-Sichtung des ganzen Projekts in drei Viererpaketen
+  (Referenz-Scan über Szenen, Prefabs und Assets): zwölf ungenutzte
+  Prefabs und der TMP-Beispielordner entfernt — drei UI-Leichen,
+  `MainMenuPanel` und `MainMenuController` nach Unpack (beide
+  Einzelstücke nach der Merkregel), drei Gras-Experimente, drei
+  WaterPonds, das Graveyard. `Goblin` bewusst behalten: Phase 4 braucht
+  ihn — ungenutzt ist nicht ungebraucht. Das Torch-„Duplikat" entpuppte
+  sich als eigene Flammen-Abstimmung und wurde zum benannten Paar
+  `Torch-Calm`/`Torch-Wild`. Nach-Scan über alle Szenen: keine gerissene
+  Referenz, auch nicht im alten Village. Bestand: 28 Prefabs.
+- 2026-09-06 — **Baustein B, Schritt 5 fertig: die Lobby zeigt ihre
+  Spieler.** Tafel gestapelt nach Bauvorlage (Beitrittscode groß,
+  Players-Kopf mit Zähler aus der Session, Roster, Chat-Platzhalter,
+  Rollen-Knopfpaar), `LobbyPlayerRow` als erstes Laufzeit-UI-Prefab,
+  vier neue Klassen: `LobbyPlayer` (Netzobjekt je Spieler, von Isor
+  getippt), `LobbyPlayerSpawner`, `LobbyPlayerRow`, `LobbyPanel`; dazu
+  `ISessionService.MaxPlayers` und das Gast-Namensfeld im JoinPanel
+  (InputRow-Vorlage, ein PlayerPrefs-Schlüssel mit einem Besitzer).
+  Getestet mit vier virtuellen Spielern (Multiplayer Play Mode): Liste,
+  Namen, Ready-Haken über alle Bildschirme, Ping-Färbung, Rollen-Knöpfe.
+  Wegbefunde: Unity 6000.5 mustert die sortierte FindObjects-Überladung
+  aus, der Multiplayer Play Mode teilt die PlayerPrefs aller Klone
+  (Namens-Wettrennen nur im Testmodus), und die Lobby öffnet beim Host
+  vor dem Netzstart — Rollen-Ansicht und Zähler laufen deshalb nach der
+  Dienst-Antwort erneut. Loading-Screen für den Lobby-Beitritt erwogen
+  und zurückgestellt: Die Inline-Wartetexte vom 28.08. bleiben die Linie.

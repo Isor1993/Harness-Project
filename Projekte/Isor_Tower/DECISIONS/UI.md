@@ -395,3 +395,59 @@ Duplikat samt zweiter GUID.
 Verworfen: Paket-Schriften beim Paket lassen (Claudes Empfehlung —
 vermeidet die Wiederkehr-Kopie, verstreut aber die Schriften auf zwei
 Orte).
+
+## 2026-09-05 — UI-Bausteine als Prefabs: vier Vorlagen, zwei Formen, Vollumzug
+Was: Vier UI-Prefabs in `Assets/Prefabs/UI/`. `StandardButton` (460×72,
+leere OnClick-Liste, `SelectOnHover` auf der Knopf-Wurzel; 320×64 und
+56×56 sind Größen-Overrides der Instanz) und `InputRow` (Label + Feld
+704×46) bleiben als Instanzen **verbunden**; `PanelShell` (Schleier +
+Content + Title) ist ein **Stempel** — reinziehen, entpacken,
+weiterbauen; `LobbyPlayerRow` ist die Laufzeit-Vorlage für Schritt 5 und
+wird dort ausdesignt. Der Bestand zieht vollständig um: 12 Szenen-Knöpfe,
+4 Knöpfe in `MainMenuPanel`/`OptionsPanel` (verschachtelte Prefabs),
+beide InputRows — Abgleich per `szene_pruefen.py` vorher/nachher.
+Merkregel dazu: zur Laufzeit erzeugt → Prefab zwingend · mehrfach gleich,
+nur Text/Größe/Verweis anders → verbunden · Startpunkt mit Eigenleben →
+Stempel · Einzelstück → kein Prefab.
+Warum: Isors Vorschlag vom 04.09., heute entschieden — Ziel „einmal
+richtig aufbauen und ein Gefühl bekommen, wann Prefabs richtig sind",
+deshalb Vollumzug statt Flickwerk. Die leere OnClick-Liste entschärft
+die Duplikat-Falle an der Wurzel (Beleg: drei geerbte Einträge am
+Solo-Knopf, ein Knopf hieß nach dem Kopieren noch `HostGame`).
+Nebenbefund, den der Umzug mit erledigt: `SelectOnHover` sitzt in den
+neuen Panels auf dem Text-Kind und selektiert dort das Textobjekt statt
+des Knopfs — Highlight und Controller-Navigation reißen ab.
+Verworfen: Prefab-Varianten je Panel (neues Konzept ohne Not); Bestand
+stehen lassen und nur Neues aus der Vorlage bauen (Claudes erster
+Vorschlag — an Isors Sauberkeits-Ziel gescheitert); die Tafel-Hülle mit
+lebender Verbindung (nichts Gemeinsames zu pflegen, nur
+Override-Rauschen); die Chat-Eingabezeile als InputRow (kein Label,
+eigenes Enter-Verhalten).
+Fortgeführt am 2026-09-06: Der Umsetzungsweg wechselte — der
+skriptgetriebene Datei-Umbau scheiterte im Play-Test (Knöpfe ohne
+Wirkung; OnClick-Overrides in die leere Prefab-Liste kamen beim Import
+nicht an) und wurde per Git verworfen; gebaut wurde von Hand im Editor
+(Isor klickt, Claude sagt Verdrahtung an und prüft per Skript).
+Entscheidungen und Prüfweg dieses Eintrags gelten unverändert.
+
+## 2026-09-06 — Lobby-Liste gebaut: zwei Rollen-Knöpfe, Haken per Sichtbarkeit, ein Namens-Schlüssel
+Was: Statt eines zur Laufzeit umverdrahteten Ready/Start-Knopfs liegen
+**zwei** Knöpfe im selben Reihenplatz; das Panel schaltet je Rolle einen
+sichtbar, die Layout-Gruppe hält den Platz. Der Bereit-Haken ist ein
+weißes `UI_Checkmark`-Sprite (grün getönt) und wird per `enabled`
+gezeigt statt umgefärbt — kein Haken heißt nicht bereit, die Host-Zeile
+trägt ihn immer. Der Spielername hat einen Schlüssel mit einem Besitzer
+(`HostOptionsPanel.PLAYER_NAME_KEY`); der Gast tippt ihn im JoinPanel
+(InputRow-Vorlage), ein leeres Feld behält den gespeicherten Namen. Die
+Spielergrenze liest die Lobby aus der Session
+(`ISessionService.MaxPlayers`) — Isors Einwand gegen doppelt gepflegte
+Werte, dieselbe Regel wie beim Grenzwert selbst.
+Warum: Statisch verdrahtete Knöpfe bleiben die Formensprache des Menüs;
+ein gedämpfter Haken ließe sich als „halb bereit" lesen (Isor); zwei
+Schreiber desselben PlayerPrefs-Schlüssels wären die Wartungsfalle, vor
+der der MaxPlayers-Einwand warnt.
+Verworfen: ein Knopf mit Laufzeit-Umverdrahtung; der Haken als
+TMP-Zeichen (Glyphe fehlt im Font-Atlas; das weiße Bestands-Sprite
+wahrt den Geist der Regel vom 29.08. — kein neues Asset-Muster); ein
+Loading-Screen für den Lobby-Beitritt (die Inline-Wartetexte vom
+28.08. bleiben die Linie — erwogen und zurückgestellt).

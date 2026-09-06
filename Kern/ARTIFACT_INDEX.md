@@ -129,6 +129,10 @@ Stand    2026-08-24 — Neubau nach der Teilung: behält Spielablauf,
          gegen den Code gebaut; Player.cs ist ehrlich als leere Hülle
          ausgewiesen, der Audio-Plan (AudioManager/SceneMusic) ist
          raus — gebaut wurde Audio anders (FootstepPlayer u.a.).
+Überholt Schritt 5 (2026-09-06) erweitert den Menüfluss: MainMenuController
+         füttert jetzt LobbyPanel (Zähler, Rollen, Gast-Name); neu sind
+         LobbyPlayer, LobbyPlayerSpawner, LobbyPlayerRow, LobbyPanel und
+         ISessionService.MaxPlayers. Beim Nachziehen mit aufnehmen.
 Quelle   Projekte/Isor_Tower/LOG.md und .../DECISIONS/
 Skripte  SceneLoader, LoadingScreenController, GameController,
          MainMenuController, Player, PlayerMotor, PlayerLook,
@@ -216,6 +220,10 @@ Stand    2026-09-04 — gebaut am 01.09. für die Layout-Entscheidung der
 Zustand  **teils geplant** — die Host-Optionen-Tafel ist seit dem 04.09.
          gebaut und getestet; die Lobby-Ansicht (Spielerliste, Chat mit
          Scroll-Verlauf) ist Entwurf und Bauvorlage für Schritt 5.
+Überholt Schritt 5 ist am 2026-09-06 gebaut (LOG.md) — die Spielerliste
+         existiert jetzt als Code und weicht im Detail ab (Host-Zeile,
+         Haken per Sichtbarkeit, Rollen-Knopfpaar); der Chat bleibt
+         Entwurf. Nachziehen beim nächsten Anfassen bzw. Pflegetag.
 Titel    Draußen heißt sie „Die Lobby-Tafel" — benannt, bevor die Seite
          ins Register kam. Nachgezogen beim nächsten inhaltlichen
          Anfassen (Schritt 5), wie beim Multiplayer-Präzedenzfall.

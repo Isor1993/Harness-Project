@@ -67,3 +67,58 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   Signatur abgetippt statt kopiert. **Hilfe:** Klickpfad-Anleitung für
   die sieben Bauschritte; die Inspector-oder-Code-Regel beim Abfragen im
   Kern richtig, nur mit „Netzwerk" statt „später" begründet.
+- 2026-09-05 · Design-Runde UI-Prefabs — **Selbst:** die Stempel-Form
+  (Vorlage reinziehen und entpacken) als eigene dritte Option
+  eingebracht, die in Claudes Zwei-Wege-Bewertung fehlte; das Ziel
+  „einmal richtig aufbauen statt Flickwerk" selbst gesetzt und dabei
+  benannt, Kriterien statt Rezepte lernen zu wollen. **Hilfe:** die
+  Abgrenzung verbunden · Stempel · kein Prefab kam als Merk-Tabelle von
+  Claude, samt Laufzeit-Argument für die `LobbyPlayerRow`.
+- 2026-09-06 · Prefab-Umzug des Hauptmenüs — **Selbst:** die vier
+  HostOptions-Knöpfe gegen Claudes Positions-Ansage richtig als
+  Layout-Fall erkannt und mit LayoutElement gebaut („wie es davor war")
+  — die angesagten Koordinaten waren nur das gespeicherte Ergebnis der
+  HorizontalLayoutGroup; dazu den Join-Code-Winzling eigenständig auf
+  200×50 vergrößert. **Fehlerbild:** an Back- und Confirm-Knopf die
+  OnClick-Verdrahtung vergessen — vom Skript-Abgleich gefunden, nicht
+  beim Bauen. **Hilfe:** Verdrahtungs-Ansagen je Knopf aus dem
+  Vorher-Protokoll.
+- 2026-09-06 · Schritt 5, Panel und Zeilen-View — **Selbst:**
+  Spawner-Handler samt `SpawnWithOwnership` allein; `OnReadyClicked`
+  auf Anhieb fehlerfrei; `TryGetValue` nach einem Hinweis sauber
+  übernommen; eigene Funde: fehlendes LayoutElement am neuen
+  Start-Knopf, das MPPM-Namens-Wettrennen korrekt auf geteilte
+  PlayerPrefs getippt, den Bereit-Haken zur Sichtbarkeits- statt
+  Farbfrage umentschieden, MaxPlayers-Doppelpflege als Wartungsfalle
+  erkannt (führte zur Service-Property); beim API-Streit dreimal auf
+  dem Editor-Befund beharrt — Auflösung durchs Lesen der
+  Obsolete-Meldung, beide lagen halb daneben. **Fehlerbild:** zweimal
+  Objekt statt Komponente erzeugt (Roster — Merksatz:
+  Hierarchy-Rechtsklick baut Objekte, Add Component baut Fähigkeiten);
+  Fallthrough nach if zweimal; im Dictionary gesucht statt
+  nachgeschlagen (`row == player` über zwei Typen); Ping-Kette Quelle
+  vor Ziel plus vertauschte Farbstufen. **Hilfe:**
+  Existenz-gegen-Zustand als Antwort auf die eigene
+  Awake/Start-Regel-Frage; `.Values`/`.gameObject`-Griffe; Gerüste mit
+  vordeklarierter NGO-Syntax.
+- 2026-09-06 · Erste Netz-Klasse (`LobbyPlayer`) — **Selbst:** Entwurf zu
+  drei Vierteln richtig (Werte, Lebenszyklus, ein-Objekt-je-Spieler);
+  beide RPC-Rümpfe und `OnNetworkSpawn` auf Anhieb, PlayerPrefs-Key
+  eigenständig zur Konstante gezogen; den Spawner-Handler samt
+  `SpawnWithOwnership` gefüllt, erster Live-Test erfolgreich.
+  **Fehlerbild:** im Ping-Takt zuerst Schreiben vor Messen — dieselbe
+  Quelle-Ziel-Verwechslung wie am 01.09., über die eigene Kontrollfrage
+  („Wer soll den Wert am Ende haben?") selbst aufgelöst; beim Entwurf
+  Owner-Schreibrecht statt Host-Schreibrecht angesetzt (am Ping-Argument
+  verstanden). **Hilfe:** NetworkVariable-Deklarationssyntax und
+  RPC-Attribute als Gerüst, Cast-Hinweis ulong→int, Sortier-Fragen statt
+  Lösung.
+  Claudes Datei-Befund dreimal auf dem eigenen Inspector-Blick bestanden
+  („da ist nichts drin") und recht behalten — der Parser las verwaiste
+  Listen-Overrides als wirksam, obwohl `Array.size = 0` sie aufhebt;
+  dazu zweimal die Stil-Ansage mit bestandskonformeren Werten
+  überstimmt (Zähler in LiberationSans nach der Value-Konvention,
+  Caption im Feld-Label-Stil). **Fehlerbild:** Objektname „Roaster",
+  drei leere Rest-Images im Roster, ein Speicherstand-Versatz
+  (Stern-Regel). **Hilfe:** Klickpfade je Runde, Häkchen-Sprite von
+  Claude generiert, Maß-Nachträge aus dem Audit.

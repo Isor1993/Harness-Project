@@ -161,12 +161,11 @@ sich klein.
   am 2026-08-30** (`LOG.md`): `Leave()` als vierter Weg, `SessionEnded`
   wirft Gäste sauber raus, der Sitzplatz beim Dienst wird mit freigegeben.
   Ursprünglicher Befund vom 2026-08-28 („Already connected.") behoben.
-- [ ] **Lobby-Ausbau: Spielerliste und Ready-System** — **entschieden am
-  2026-08-29** (`DECISIONS/UI.md` und `DECISIONS/Multiplayer.md`): Liste
-  mit Name · Haken · Ping über je ein `LobbyPlayer`-Objekt, Ready als
-  Anzeige statt Sperre, davor das neue Host-Optionen-Panel. Fällig in
-  Phase 1, Baustein B/C — braucht die Verbunden-Meldungen des
-  NetworkManagers.
+- [x] **Lobby-Ausbau: Spielerliste und Ready-System** — **gebaut am
+  2026-09-06** (`LOG.md`; entschieden am 2026-08-29): Liste mit Name ·
+  Haken · Ping über je ein `LobbyPlayer`-Objekt, Ready als Anzeige,
+  getestet mit vier virtuellen Spielern. Baustein B ist damit durch;
+  offen bleibt sein Abgabetext (eigener Punkt unten).
 - [ ] **Lobby-Chat bauen** — Verlauf (die letzten ~6 Zeilen, Luft für vier
   Schreiber) plus Eingabezeile, Enter sendet; RPC plus Textliste, der
   Platz auf der Tafel ist ab Baustein B reserviert (`DECISIONS/UI.md`,
@@ -237,27 +236,47 @@ sich klein.
   laufen — sobald Terrain und Platzierung drin sind, braucht der Späte
   denselben Seed und Weltzustand, oder der Beitritt endet an der Lobby.
   Fällig in Phase 3, wo der Seed ohnehin übers Netz geht.
+- [ ] **`szene_pruefen.py`: verwaiste Listen-Overrides erkennen** — bei
+  Prefab-Instanzen gewinnt die `Array.size`-Überschreibung; Eintrags-
+  Zeilen hinter `size = 0` sind Leichen, die Unity nicht wegräumt. Das
+  Skript listet sie heute als wären sie wirksam — am 2026-09-06 führte
+  das zu drei Fehlalarmen an einem korrekt geleerten OnClick (Isors
+  Inspector-Blick deckte es auf). Markieren statt mitzählen. Klein,
+  kein Termin.
 - [ ] **Solo-Ladebalken gegen die Glättungsregel prüfen** — Beim Test war
   kein Balken zu sehen; die Regel vom 2026-08-19 verspricht mindestens
   zwei Sekunden Anzeige. Entweder greift die Glättung im Netz-Ladeweg
   nicht, oder der Moment war schlicht zu kurz zum Hinsehen. Ein Blick in
   den `LoadingScreenController`, klein.
-- [ ] **UI-Bausteine als Prefabs** — Isors Vorschlag vom 2026-09-04,
-  als Design-Runde vor Schritt 5: StandardButton (mit leerer
-  OnClick-Liste — entschärft die Duplikat-Falle an der Wurzel),
-  Tafel-Hülle (Schleier + Content), InputRow. Die Spielerlisten-Zeile
-  kommt ohnehin dazu, sie wird zur Laufzeit je Spieler instanziiert.
-  Bewertung liegt vor (Chat vom 04.09.), entschieden wird in der Runde.
+- [x] **UI-Bausteine als Prefabs** — **gebaut am 2026-09-06** (`LOG.md`;
+  entschieden am 2026-09-05, `DECISIONS/UI.md`): `StandardButton` und
+  `InputRow` verbunden, `PanelShell` als Stempel, zehn Knöpfe und beide
+  Eingabezeilen sind Instanzen. Planmäßig offen für Schritt 5: die zwei
+  Lobby-Knöpfe und die `LobbyPlayerRow`.
+- [x] **Prefab-Ordner außerhalb von UI sichten** — **erledigt am
+  2026-09-06** (`LOG.md`), vorgezogen auf Isors Zuruf: kompletter
+  Referenz-Scan, drei Viererpakete, zwölf Prefabs und der
+  TMP-Beispielordner entfernt, `Goblin` bewusst behalten, das
+  Torch-Duplikat wurde zum benannten Flammen-Paar. Kein Riss im
+  Nach-Scan.
+- [ ] **Abgabetext für Baustein B** — der Baustein ist seit dem
+  2026-09-06 gebaut und geprüft, aber „fertig heißt dokumentiert": Das
+  TDD-Kapitel zum Netz-Einstieg fehlt. Isor formuliert, Claude liefert
+  Struktur und die Fakten aus `TDD_NOTES.md` (Blöcke „Netzwerk &
+  Multiplayer"). Eigene Session, Rohmaterial liegt bereit.
 - [ ] **Namespace-Nachmittag vor Phase 2** — Befund aus dem Zeugnis vom
   2026-09-04, dritter Messpunkt mit 0 von inzwischen 100 Dateien in einem
   `namespace`. Der Semester-3-Code wäre reif; der Umzug wird mit jeder
   Datei teurer. Ein Nachmittag, solange der Bestand überschaubar ist.
 - [ ] **UI-Feinschliff Phase 1, Sammelpunkt** — Panel-Größen
-  vereinheitlichen oder wachsen lassen (Isors Frage vom 04.09.) · das
-  Join-Feld ist mit 160×30 der Winzling unter den Eingaben · eine
+  vereinheitlichen oder wachsen lassen (Isors Frage vom 04.09.) · eine
   Solo-Fehlermeldung liefe heute ins unsichtbare Lobby-Label · das
-  Textkind des `ConfirmButton` wieder sprechend benennen. Nichts davon
-  blockiert; fällig mit dem bestehenden Feinschliff der Phase 1.
+  Textkind des `ConfirmButton` wieder sprechend benennen · die Lobby
+  zeigt Liste und Zähler schon vor der Dienst-Antwort (der Host sieht
+  kurz eine leere Tafel — Inline-Warteanzeige erwägen, 06.09.). Das
+  Join-Feld war der 160×30-Winzling und misst seit dem 06.09. 200×50
+  (Isor). Nichts davon blockiert; fällig mit dem bestehenden
+  Feinschliff der Phase 1.
 
 ## Nach dem Prototyp
 

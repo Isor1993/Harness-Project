@@ -688,6 +688,25 @@ beim Projekt, nicht bei der Uni. Überholte Einträge wandern nach
   nicht das Spielnetz; „StopAsync: Called after dispose" ist
   Aufräum-Reihenfolge beim Play-Mode-Ende.
 
+- 2026-09-06 — [Multiplayer] Lobby-Zustand als Netzobjekt je Spieler
+  (`LobbyPlayer`): drei NetworkVariables (FixedString64Bytes Name, bool
+  Ready, int PingMs), Lesen Everyone / Schreiben Server; der Gast meldet
+  per ServerRpc (RequireOwnership-Default schützt fremde Objekte).
+  Despawn beim Verbindungsverlust ist NGO-Default — Objekte im Besitz
+  sterben mit ihrem Owner, null eigene Zeilen.
+- 2026-09-06 — [Multiplayer] Ping-Messweg:
+  `NetworkTransport.GetCurrentRtt(clientId)` liefert ulong Millisekunden
+  (Cast auf int nötig), gemessen serverseitig im 1-s-Takt; der Host hat
+  keinen Ping zu sich selbst (0 → Anzeige „-"). Anzeige-Farbstufen:
+  unter 60 gut, unter 120 mittel, darüber schlecht.
+- 2026-09-06 — [Multiplayer] Unity 6000.5 mustert die
+  `FindObjectsByType(FindObjectsSortMode)`-Überladung aus (InstanceID
+  weicht künftig EntityId, Sortierung entfällt) — Ersatz laut
+  Obsolete-Meldung die parameterlose Überladung; für gespawnte Objekte
+  ist NGOs `SpawnManager.SpawnedObjectsList` die bessere Quelle
+  (Spawn- = Beitrittsreihenfolge). Der Multiplayer Play Mode teilt die
+  PlayerPrefs aller Klone — ein Registry-Schlüssel je Produkt.
+
 ## Rendering
 
 - 2026-08-04 — [Rendering] Gras ohne GameObjects: `Graphics.RenderMeshInstanced`
