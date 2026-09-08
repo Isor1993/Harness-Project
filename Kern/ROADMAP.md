@@ -107,6 +107,27 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
   muss oder ob Brainstorm/Design mit den ART_RULES genügt. Belegt ist
   bisher nur, dass Design-Abschnitt plus ART_RULES getragen haben.
 
+- [ ] **Epic C++ Coding Standard destillieren** — den Standard aus der
+  Quelle in `Kern/CODE_GUIDELINES.md` → „C++ · Unreal — Epic C++ Coding
+  Standard (vorgegeben)" einmal ganz durchgehen und das Arbeitsdestillat
+  dort eintragen, wie es fürs Konsolenprojekt schon steht. Fällig vor
+  dem ersten eigenen Unreal-Code (Unterrichtsblock des Moduls 5-101);
+  angestoßen von Isor am 2026-09-08 — die Vorgabe ist Epics, nicht
+  unsere.
+
+- [ ] **Dritte C++-Umgebung in `CODE_GUIDELINES.md` aufnehmen** — die
+  Tabelle „C++ — welche Konvention wo gilt" führt nur Konsolenprojekt
+  und Unreal; der 3D-Model-Viewer (OpenGL, Aufgabe 2 des Moduls 5-101)
+  fehlt, obwohl er die dritte eigenständige C++-Umgebung des Semesters
+  ist. Von Isor am 2026-09-08 über die Frage gefunden, ob der Viewer
+  nicht ebenfalls ein Konsolenprojekt sei. Was der Aufgabentext hergibt
+  (`Uni/Semester_3/VORJAHR_AUFGABEN.md`): „einheitliche
+  Coding-Convention" steht als Feedbackelement bei Aufgabe 1 und
+  Aufgabe 7, bei Aufgabe 2 dagegen nur „Code kommentiert und lesbar" —
+  ausdrücklich verlangt ist die SAE-Konvention dort also nicht.
+  Eingetragen wird erst nach der Rückfrage beim Dozenten
+  (Unterricht am 2026-09-10), nicht auf diese Auslegung hin.
+
 Was im Betrieb nicht trägt, kommt als Störung in `Kern/STOERUNGEN.md`
 und wird von dort aus zu einem Punkt hier — genau dafür fragt die
 Doku-Pflicht in `Kern/WORKFLOW.md` nach beidem im selben Zug.

@@ -89,3 +89,51 @@ damals, nicht den von heute.
   positiv bis auf das untexturierte Häuschen („fehl am Platz") und
   „nicht super kreativ" — die kreative Idee „verspricht kommende
   Inhalte".
+- 2026-09-08 — C++-Kursstart: die SAE „Coding Conventions C++" (Version
+  05.09.2022) eingegangen und im Datenbaum unter `01_Uni\_Regelwerk\`
+  als `Coding_Guidelines_Cpp.pdf` abgelegt; das Arbeitsdestillat steht
+  seit heute in `Kern/CODE_GUIDELINES.md` (Beleg im Kern-LOG).
+- 2026-09-08 — SAE-Versionsvorgaben des Studienjahrs 0925 eingegangen
+  (Screenshot in der Session): Unreal Engine 5.6, Unity 6000.0.59f2
+  (6000.0.55f1 als veraltet gestrichen), OpenGL-Empfehlung Core 450.
+  Daraufhin Unreal 5.6.1 installiert (Quixel Bridge und Fab-Plugin in
+  der Warteschlange); offen bleibt der Toolchain-Test gegen VS 2026
+  (`PLAN.md`). Die aktuellen Abgabetermine sind noch nicht
+  veröffentlicht — die `~`-Schätzungen des Phasenplans gelten weiter.
+- 2026-09-08 — C++-Unterricht Chapter 1, Abendblock des deutschen
+  Tracks: 1.1 Überblick und Geschichte, 1.2 Nachschlagewerke
+  (cppreference.com, cplusplus.com, isocpp.org), 1.3 Struktur —
+  Projektmappe, `main` als Funktion samt ihren vier Signaturen,
+  Funktionen, Header/Source-Trennung, STL, Namespaces,
+  Multiparadigmen. Live-Coding in Visual Studio: `argc`/`argv`
+  durchlaufen, Kommandozeilenargumente an der `.exe` testen, danach
+  Umbau auf eine Funktion `ExecCmdArgs` mit benannten Konstanten.
+  Angekündigt für den 2026-09-10: 1.4 Primitive Datentypen samt
+  Systems-Hungarian-Tabelle und `true`/`false`, dazu 1.5 Abstrakte
+  Datentypen. Vorgaben des Dozenten: keine Literale im Code, keine
+  globalen Variablen (globale Konstanten erlaubt), jede Variable
+  vorinitialisiert.
+- 2026-09-08 — Drei Fehler im gezeigten Dozentenmaterial gefunden;
+  Isor hatte nichts davon selbst getippt, alle Screenshots stammen vom
+  Beamer. (1) `a_sArgV[i] == "--debugMode"` vergleicht zwei
+  `const char*` und damit Adressen statt Text — im späteren Umbau von
+  selbst behoben, weil die Konstante als `std::string` deklariert
+  wurde. (2) `ExecCmdArgs` nimmt `bool a_bIsDebugMode` als Kopie, die
+  Zuweisung erreicht den Aufrufer nie; nötig wären Referenz oder
+  Rückgabewert. (3) Auf der Folie „1.4 true oder false" stehen
+  `INT_MAX == true` und `INT_MIN == true` als wahr — beide sind falsch,
+  weil `true` zu `int` (1) hochkonvertiert wird; gemeint ist die
+  Umwandlung nach `bool`, nicht der Vergleich. Dazu Ungenauigkeiten der
+  Datentyp-Folien: `char` mit 0..255 (das ist `unsigned char`; plain
+  `char` ist auf MSVC signed), `int` mit „2 oder 4 Byte" (auf Windows
+  x64 immer 4), `Bool` statt `bool` und ein `std::string szText`, wo
+  `sz` laut derselben Tabelle den nullterminierten C-String meint.
+- 2026-09-08 — Offene Rückfrage an den Dozenten, zu stellen am
+  2026-09-10: Gilt die SAE-C++-Konvention nur für das Konsolenprojekt
+  oder auch für den 3D-Model-Viewer? Anlass war Isors Einwand, der
+  Viewer sei doch ebenfalls ein Konsolenprojekt, weil kein Unreal im
+  Spiel ist. Dagegen steht, dass der Aufgabentext für Aufgabe 2
+  ausdrücklich ein Anwendungsfenster verlangt und „einheitliche
+  Coding-Convention" dort nicht als Feedbackelement führt. Die Antwort
+  entscheidet den ROADMAP-Punkt „Dritte C++-Umgebung in
+  `CODE_GUIDELINES.md` aufnehmen" (`Kern/ROADMAP.md`).

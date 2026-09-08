@@ -60,6 +60,17 @@ liegt fertig im Datenbaum (`Kern/PFADE.md` → `DATENBAUM`,
   Quadratmeter (der alte Eigenbau-Renderer war auf 0,05 gerechnet — sein
   Rechenweg steht im `_ARCHIV.md`).
 
+## Unreal-Vorbereitung
+
+- [ ] **Unreal-Grundausstattung über Fab** — nach dem Toolchain-Test
+  (`PLAN.md` → „Unreal installieren, sobald die Kursversion bestätigt
+  ist") eine Erstausstattungs-Runde: Claude legt Kandidaten in
+  Viererpaketen vor, Isor claimt. Daneben als Routine wöchentlich
+  ~5 Minuten die zeitlich begrenzten Fab-Freebies claimen — Claimen
+  bindet dauerhaft an den Epic-Account, geladen wird erst bei Bedarf.
+  Für alles, was in Projekt oder AssetLibrary wandert, gilt die
+  `_Quelle.txt`-Pflicht (`IsorBackup/RULES.md`).
+
 ## Nach dem Prototyp
 
 Zielbild bleibt, Zeitpunkt offen

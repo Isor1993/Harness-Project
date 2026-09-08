@@ -621,3 +621,18 @@ damals, nicht den von heute.
   selbst: `pruefen.py --hook` meldet dort nicht „0 Funde", sondern die
   Anweisung, den Einrichten-Ablauf zu beginnen — der Erststart-Fall greift
   also in genau der Lage, für die er gebaut wurde.
+- 2026-09-08 — **C++-Konventionen eingepflegt** (PLAN → „Umstellung auf
+  Unreal + C++"): `CODE_GUIDELINES.md` um „C++ — welche Konvention wo
+  gilt", „C++ · Konsolenprojekt — SAE-Konvention (Pflicht)"
+  (13-Punkte-Destillat der 17 SAE-Regeln, PDF-Version 05.09.2022) und
+  „C++ · Unreal — Epic C++ Coding Standard (vorgegeben)" erweitert;
+  Block 1 und 2 als Unity-Altstand gekennzeichnet, der Datei-Header gilt
+  jetzt ausdrücklich auch für `.h`/`.cpp`. Das SAE-PDF liegt im
+  Datenbaum unter `01_Uni\_Regelwerk\Coding_Guidelines_Cpp.pdf`; die
+  Epic-Quelle ist abgerufen und bestätigt, ihr Destillat als
+  ROADMAP-Punkt ausgelagert. Dazu die Seite `💡 Lernstück ·
+  SAE-C++-Konventionen` (ARTIFACT_INDEX, Schicht Uni) samt
+  Knowledge-Notiz `Cpp/sae-cpp-konventionen.md` und Offline-Kopie.
+  Geprüft: `pruefen.py` nach jedem Schreibblock, zuletzt 0 Funde in
+  allen neun Prüfungen; der Glossar-Hinweis (Review-Gate, LFS) wurde
+  gegengelesen — beide unverändert — und mit `--glossar-ok` quittiert.

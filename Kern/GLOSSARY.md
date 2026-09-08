@@ -72,6 +72,9 @@ Leseordnung.
 | **Datenbaum** | Der feste Ablagebaum für alles, was kein Repo ist — Marke `DATENBAUM`. | `IsorBackup/RULES.md` |
 | **LFS** | Git Large File Storage — Nebenspeicher für große Dateien: Im Repo liegt ein Zeiger, die Bytes liegen daneben, und ein Clone lädt nur die Stände des Checkouts. | `CODE_GUIDELINES.md`, Repo & Git |
 | **Zustand einer Seite** | Lebensabschnitt einer Artifact-Seite, nicht ihre Sorte: `(geplant)` vor dem Bau, `🗑` am Ende. Ändert den **Typ** nicht — der sagt, worauf die Seite blickt. Nicht zu verwechseln mit „Zustand" beim **Befund**, wo das Wort den Gegensatz zum Ereignis meint. | `ARTIFACT_RULES.md`, Die Typen |
+| **Systems Hungarian** | Typkürzel vor dem Namen (`i`, `f`, `b`, `p`, `C` …), in der SAE-C++-Konvention kombiniert mit den Rollen-Präfixen `m_`/`a_` — `m_iNumb`, `bIsValid`. Gilt im Konsolenprojekt durchgängig, wie in den SAE-Beispielen. | `CODE_GUIDELINES.md`, C++ · Konsolenprojekt |
+| **Epic C++ Coding Standard** | Epics verbindliche C++-Konvention für alles im Unreal-Repo — vorgegeben, nicht gewählt; Typ-Präfixe nach Vererbung (`U`/`A`/`F`/`E`/`I`/`T`, `b` für bool). Das Arbeitsdestillat steht noch aus. | `CODE_GUIDELINES.md`, C++ · Unreal |
+| **Fab** | Epics Marketplace für Unreal-Assets. „Holen" heißt dort claimen: Einmal Geclaimtes bleibt dauerhaft in der Account-Bibliothek, heruntergeladen wird erst bei Bedarf. | `Projekte/Isor_Tower/ROADMAP.md`, „Unreal-Grundausstattung über Fab" |
 
 Jeder hier geführte Begriff nennt seinen Besitzer. Ob die Liste
 **vollständig** ist, kann diese Datei nicht selbst sagen — sie wird von

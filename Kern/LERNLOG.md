@@ -179,3 +179,36 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   (Modul verlangt C++ ohnehin, Kommentar-Zitate, Beispiel-Spiele) und
   der DECISIONS-Eintrag mit Kontrollpunkt als Anker gegen die
   Grübelschleife.
+- 2026-09-08 · Werkzeug-Setup C++/Unreal — **Selbst:** beide neuen Repos
+  über GitHub Desktop committet und veröffentlicht (Lane-Defender samt
+  Push, Isor-Tower-Unreal privat) und Unreal 5.6.1 samt Bridge- und
+  Fab-Plugin-Warteschlange installiert — alles ohne Klickanleitung.
+  **Hilfe:** Einordnung des hängenden „Überprüfen 99 %"
+  (Task-Manager-Datenträger statt Launcher-Anzeige prüfen) und der
+  Toolchain-Frage VS 2026 gegen UE 5.6.
+- 2026-09-08 · C++-Unterricht Chapter 1 (Stoff nur gehört, nicht
+  getippt — alle Code-Screenshots stammen vom Beamer) — **Selbst:**
+  `argc` als Elementzahl und `return 0` als Exit-Code ans
+  Betriebssystem richtig eingeordnet, die Literale-Regel des Dozenten
+  sinngemäß wiedergegeben (nicht nur Zahlen, auch Strings), die
+  Vorinitialisierungs-Pflicht behalten. Stärkster eigener Beitrag: der
+  Einwand, der 3D-Model-Viewer sei doch ebenfalls ein Konsolenprojekt —
+  daraus wurde eine echte Lücke in `Kern/CODE_GUIDELINES.md` und ein
+  ROADMAP-Punkt. **Fehlerbild:** drei Übertragungsfehler aus C#, alle
+  vom selben Muster — bekannte Wörter auf neue Bedeutung gelesen:
+  `a_` als „Member" gedeutet statt als Parameter (Member ist `m_`,
+  lokale Variablen tragen gar kein Rollenpräfix); C → C++ → C# als
+  Versionsreihe gelesen statt als drei eigenständige Sprachen; „Vector"
+  aus `argv` auf `std::vector` übertragen, obwohl das eine ein festes
+  Array und das andere der Listen-Container ist. **Hilfe:** der
+  Adress-gegen-Inhalt-Vergleich in Zahlen aufgeschrieben, die
+  Präfix-Tabelle aus den CODE_GUIDELINES gegen seine Deutung gehalten.
+  Dazu ein Hemmnis abgeräumt, das kein Wissenslücken-Problem war: Die
+  Lesbarkeit der Systems-Hungarian-Notation hatte die Lust am
+  Konsolenprojekt spürbar gedrückt („ich mag es nicht") und drohte auf
+  den Stack überzugehen. Getrennt wurde beides über die belegte Zahl
+  aus `Projekte/Lane_Defender/ZEITPLAN.md` — 36 h, danach gilt die
+  Notation nirgends mehr — und den Vergleich mit dem Epic-Standard, der
+  bis auf `b` für bool ohne Typkürzel auskommt. Die Stack-Entscheidung
+  wurde dabei nicht neu aufgemacht (Anker vom 2026-09-07,
+  Kontrollpunkt Ende November).

@@ -395,4 +395,20 @@ hinter den Pitch zu schieben (Claudes Empfehlung — hätte mit dem
 Alpha-Bau kollidiert und bricht das Frontloading); ihn neben dem
 Prototyp zu strecken.
 
+## 2026-09-08 — Unity-Version des Altstands: bei Wiederanfassen die Blattversion
+Was: Solange der Unity-Altstand des Towers ruht, wird seine
+Unity-Version nicht angefasst. Wird wieder in Unity gearbeitet, gilt
+sicherheitshalber die Version vom aktuellen SAE-Versionsblatt (Stand
+Studienjahr 0925: 6000.0.59f2). Ansage der Fachleiterin, von Isor am
+2026-09-08 so übernommen.
+Warum: Die Fachleiterin nennt die Unity-Version „aktuell egal" — ein
+Upgrade ohne Anlass riskiert den eingefrorenen Stand, ein Arbeiten auf
+einer als veraltet markierten Version die Kompatibilität einer Abgabe.
+Ergänzt den Eintrag „2026-08-12 — Eigene Unity-Version trotz
+abweichender Vorgabe": Der galt der damals laufenden Abgabe mit
+persönlicher Freigabe, dieser hier dem ruhenden Altstand.
+Verworfen: sofortiges Upgrade des ruhenden Altstands (Aufwand ohne
+Nutzen); dauerhaft auf der alten Version bleiben (vom Blatt
+ausdrücklich als veraltet gestrichen).
+
 

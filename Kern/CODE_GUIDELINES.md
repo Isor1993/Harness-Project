@@ -9,14 +9,14 @@ Wann sie zuletzt angefasst wurde, sagt `git log` — genauer, als eine
 Hand es je nachführt.
 
 **Geltungsbereich seit der Stack-Entscheidung** (`Uni/DECISIONS.md` →
-„2026-09-07 — Engine- und Sprachfokus"): Diese Fassung beschreibt den
-C#/Unity-Stand und gilt unverändert für den eingefrorenen Unity-Altstand
-des Towers. Für neuen Code gilt C++ — SAE-C++-Konvention
-(Konsolenprojekt) und Epic C++ Coding Standard (Unreal); die Einpflege
-steht aus (`PLAN.md` → „Umstellung auf Unreal + C++"). Engine-neutral
-weiter gültig: Kommentar-Philosophie (Warum statt Was), Datei-Header,
-Review-Gate, Test-Ansatz und die Repo-Grundregeln. Eine
-Sicherungskopie dieser Unity-Fassung liegt im Datenbaum
+„2026-09-07 — Engine- und Sprachfokus"): Für neuen Code gilt C++ — die
+Abschnitte „C++ · Konsolenprojekt" und „C++ · Unreal" unten, eingepflegt
+am 2026-09-08 aus dem SAE-Kursmaterial. Die Blöcke 1 und 2 beschreiben
+den C#/Unity-Stand und gelten unverändert für den eingefrorenen
+Unity-Altstand des Towers. Engine-neutral gelten überall:
+Kommentar-Philosophie (Warum statt Was), Datei-Header, Review-Gate,
+Test-Ansatz und die Repo-Grundregeln. Eine Sicherungskopie der reinen
+Unity-Fassung liegt im Datenbaum
 (`Kern/PFADE.md` → `DATENBAUM`, `05_Werkzeuge\Vorlagen\`).
 
 ## Priorität
@@ -31,7 +31,99 @@ Projekt hätte man daran denken müssen umzustellen — vergisst man es,
 gelten dort still die Uni-Regeln. Abgeleitet stellt es sich von selbst
 richtig (`Kern/DECISIONS.md`, 2026-08-22).
 
+Für C++-Code entscheidet nicht die Schicht, sondern das Ziel-Repo —
+siehe „C++ — welche Konvention wo gilt".
+
+## C++ — welche Konvention wo gilt
+
+Welche C++-Konvention greift, entscheidet das Ziel-Repo:
+
+| Ziel | Konvention |
+|---|---|
+| Konsolenprojekt (`Kern/PFADE.md` → `PROJEKT_LANE_DEFENDER`) | SAE-C++-Konvention — Uni-Pflicht, die Abgabe wird danach bewertet |
+| Unreal (`Kern/PFADE.md` → `PROJEKT_UNREAL`) | Epic C++ Coding Standard — von Epic vorgegeben |
+
+Beide sind Vorgaben, keine Auswahl: Im Konfliktfall mit Gewohnheiten
+aus dem C#-Stand (etwa `_camelCase` für Felder) gewinnt die Vorgabe des
+Ziel-Repos — dieselbe Logik, mit der Block 1 bei vorhandener
+Uni-Schicht gewinnt.
+
+## C++ · Konsolenprojekt — SAE-Konvention (Pflicht)
+
+Quelle: SAE „Coding Conventions C++" (Games Programming / Software
+Engineer, Version 05.09.2022), im Datenbaum unter
+`01_Uni\_Regelwerk\Coding_Guidelines_Cpp.pdf` (`Kern/PFADE.md` →
+`DATENBAUM`). Die Liste hier ist das Arbeitsdestillat der 17
+SAE-Regeln; im Zweifel zählt das PDF.
+
+1. Code ausschließlich Englisch. Kommentare und Ausgaben ließe die SAE
+   auch auf Deutsch zu — es gilt die schärfere Fassung, und die besitzt
+   `Kern/DOC_RULES.md`, Abschnitt 9.
+2. Kommentare einheitlich, aussagekräftig, prägnant; `///`-Summaries
+   erwünscht. Dichte und Philosophie: Abschnitt „Kommentare &
+   Datei-Header".
+3. Variablen camelCase, Präfix nach Rolle: Klassenvariablen `m_`,
+   Parameter `a_`, lokale Variablen ohne Präfix. Globale Variablen
+   vermeiden.
+4. Dazu Systems Hungarian als Typkürzel: `i` int · `l` long · `c` char
+   · `b` bool · `f` float · `s` std::string · `sz` nullterminierter
+   String · `p` Pointer · `C` Klasse. Zusammen ergibt das `m_iNumb`,
+   `a_iInput`, `bIsValid`, `CExample`. Auslegung: PDF-Regel 14
+   (Ungarische Notation) verlangt sie wörtlich nur ohne IntelliSense —
+   sämtliche SAE-Beispiele tragen die Kürzel aber durchgängig, also
+   wird geschrieben wie die Beispiele.
+5. PascalCase für Methoden, Funktionen, Klassen, Structs und Unions.
+   Methoden- und Funktionsnamen Verb + Nomen (`GetNumb`, `DoStuff`);
+   Klassen, Structs und Unions ein Nomen, das den Sinn zusammenfasst.
+6. MACRO_CASE für Enumerations, Konstanten und constexpr
+   (`E_DIRECTIONS`, `I_SUCCESS`, `F_ANGLE_RAD`) — das Typkürzel wandert
+   groß mit ins Präfix, bei Member-Konstanten auch das `m_`
+   (`M_I_DEFAULT_NUMB`). Enum-Elemente beginnen mit einem
+   Zwei-Buchstaben-Kürzel ihres Enums (`DR_NORTH` in `E_DIRECTIONS`).
+7. Erstinitialisierung, ausnahmslos: Primitive mit einem bewusst
+   falschen Wert (`-1`), Objekte mit `{}`, Pointer mit `nullptr`.
+   (Das PDF-Beispiel `T m_Type = default;` ist ein C#-Rest — gültiges
+   C++ wäre `T m_Type{};`.)
+8. Klassenvariablen werden am Ende der Klasse im Header deklariert:
+   erst die Methoden, unten die Variablen — gegenläufig zur
+   Member-Reihenfolge des Unity-Altstands; im Konsolenprojekt gilt die
+   SAE-Folge.
+9. Eine Anweisung pro Zeile; nur ein einzeiliger Scope darf hinter
+   seine Bedingung. Geschweifte Klammern je eigene Zeile; die öffnende
+   darf an den Scope-Kopf angehängt werden.
+10. Member-Variablen sind private; Zugriff von außen ausschließlich
+    über Getter/Setter.
+11. Literale vermeiden — benannte Konstante statt nackter Zahl im Code.
+12. Namespaces und VS-Filter ordnen größere Projekte.
+13. Jedes Headerfile trägt einen Headerkommentar, der seinen Sinn
+    beschreibt; jede größere Änderung kommt als History-Zeile dazu
+    („wie ein Logbucheintrag"). Format: Abschnitt „Datei-Header", mit
+    `.h`/`.cpp` statt `.cs`.
+
+## C++ · Unreal — Epic C++ Coding Standard (vorgegeben)
+
+Für alles im Unreal-Repo gilt der **Epic C++ Coding Standard** — nicht
+gewählt, sondern Epics eigene, verbindliche Vorgabe („Following the
+coding standards is mandatory"). Quelle ist die offizielle Doku:
+<https://dev.epicgames.com/documentation/en-us/unreal-engine/epic-cplusplus-coding-standard-for-unreal-engine>
+(abgerufen und bestätigt am 2026-09-08).
+
+**Noch nicht destilliert.** Das Arbeitsdestillat hierher — wie beim
+Konsolenprojekt oben — entsteht in einem eigenen Durchgang vor dem
+ersten eigenen Unreal-Code (`Kern/ROADMAP.md` → „Epic C++ Coding
+Standard destillieren"). Bis dahin gilt die Quelle direkt. Der größte
+Unterschied zur SAE-Konvention, schon jetzt belegt: Typ-Präfixe nach
+Vererbung statt nach Datentyp (`U` UObject · `A` Actor · `F` die
+meisten übrigen Klassen · `E` Enum · `I` Interface · `T` Template ·
+`b` bool) — und das Unreal Header Tool **erzwingt** die Präfixe
+größtenteils selbst.
+
 ## Block 1 — Stil & Naming (Uni-Pflicht, SAE-Conventions Stand 12/2024)
+
+*Unity-Altstand (C#) — gilt für den eingefrorenen Unity-Stand des
+Towers (`Kern/PFADE.md` → `PROJEKT`); für neuen Code gelten die
+C++-Abschnitte oben.*
+
 1. Code ausschließlich Englisch. Für Kommentare und Ausgaben ließe die
    SAE-Vorgabe auch Deutsch zu — hier gilt die schärfere Fassung, und die
    besitzt `Kern/DOC_RULES.md`, Abschnitt 9.
@@ -66,11 +158,12 @@ Kommentare ergänzt Claude automatisch beim Review bzw. wenn Code
 geschrieben wurde (vereinbart 2026-07-18).
 
 ### Datei-Header
-Jede .cs-Datei beginnt mit diesem Block:
+Jede Code-Datei beginnt mit diesem Block — `.cs` im Unity-Altstand,
+`.h`/`.cpp` in den C++-Projekten:
 
     /*****************************************************************************
-    * Project : <Unity-Projektname>
-    * File    : <Dateiname>.cs
+    * Project : <Projektname>
+    * File    : <Dateiname>.<ext>
     * Date    : <TT.MM.JJJJ — Erstelldatum>
     * Author  : Eric Rosenberg
     *
@@ -123,6 +216,10 @@ History: pro nennenswerter Änderung eine neue Zeile `<Datum> ER <Was>`.
   den Code verständlich.
 
 ## Block 2 — Architektur & Unity-Praxis (eigene Auswahl)
+
+*Unity-Altstand (C#) — gilt für den eingefrorenen Unity-Stand des
+Towers; für neuen Code gelten die C++-Abschnitte oben.*
+
 Quelle: Code-Rules des Dozenten (v2.2), gefiltert im Brainstorm 2026-07-17.
 
 ### Felder & Kapselung

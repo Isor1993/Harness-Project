@@ -1399,3 +1399,22 @@ unbenutzt in `WORKFLOW.md`; ob es ihn überhaupt braucht, ist nach *einer*
 Session nicht belegt — als ROADMAP-Punkt festgehalten); die Erkenntnisse
 nur ins Knowledge zu schreiben (dort steht das Wissen, hier gehört die
 Pflicht).
+
+## 2026-09-08 — SAE-C++-Einpflege: Hungarian durchgängig, Epic nur als Geltung
+Was: Zwei Auslegungen bei der C++-Erweiterung der `CODE_GUIDELINES.md`
+(2026-09-08, im Zug der Einpflege; Isors Auftrag war das Festhalten der
+Konventionen). Erstens gilt Systems Hungarian im Konsolenprojekt
+durchgängig, obwohl PDF-Regel 14 (Ungarische Notation) sie wörtlich nur
+für Umgebungen ohne IntelliSense verlangt. Zweitens steht der Epic C++
+Coding Standard vorerst nur als Geltungsregel mit geprüfter Quelle in
+der Datei; das Arbeitsdestillat ist ausgelagert (`Kern/ROADMAP.md` →
+„Epic C++ Coding Standard destillieren").
+Warum: Sämtliche Codebeispiele des SAE-PDFs tragen die Typkürzel
+(`m_iNumb`, `a_iInput`, `CExample`) — die sichere Abgabe-Schreibweise
+ist die der offiziellen Beispiele, nicht der Wortlaut einer
+Ausnahmeregel. Der Epic-Standard wiederum ist umfangreich und wird erst
+zum Unreal-Block (ab 27.10.) gebraucht; ein Schnell-Destillat am selben
+Tag wäre ungeprüfte Halbarbeit gewesen.
+Verworfen: Hungarian nur für Arduino-Kontexte (wortlauttreu, aber gegen
+alle Beispiele); den Epic-Standard sofort mitdestillieren (kein Bedarf
+vor Ende Oktober, Zeit gehörte dem L1-Abend).

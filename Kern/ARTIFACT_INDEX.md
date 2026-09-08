@@ -397,6 +397,27 @@ Seite ←  keine
 
 ---
 
+## 💡 Lernstück  — Schicht: Uni
+
+### 💡 Lernstück · SAE-C++-Konventionen
+```
+URL      https://claude.ai/code/artifact/5ea67ac8-e377-46ba-8920-d21ef5508131
+Stand    2026-09-08 — neu, gebaut im Zug der Guidelines-Einpflege; Inhalt
+         aus dem SAE-PDF (Version 05.09.2022) und den C++-Abschnitten
+         der CODE_GUIDELINES vom selben Tag.
+Quelle   Kern/CODE_GUIDELINES.md → „C++ · Konsolenprojekt —
+         SAE-Konvention (Pflicht)"; Original-PDF im Datenbaum unter
+         01_Uni\_Regelwerk\ (Kern/PFADE.md → DATENBAUM)
+Beispiel keine Projekt-Klassen — die Code-Beispiele der Seite (CPlayer)
+         sind synthetisch nach SAE-Muster; sobald echter
+         Lane-Defender-Code existiert, können sie durch ihn belegt werden
+Seite →  keine
+Seite ←  Cpp/sae-cpp-konventionen.md
+         (dort auch Offline-Kopie Seiten/2026-09-08-sae-cpp-konventionen.html)
+```
+
+---
+
 ## ⚙️ System  — Schicht: Kern (der Harness selbst)
 
 ### ⚙️ System · Harness

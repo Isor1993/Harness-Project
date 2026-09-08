@@ -22,16 +22,20 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-09-08 beim `/harness:ende` — der Design-Abschnitt
-„Semester-Roadmap" ist abgeschlossen: `Uni/ROADMAP.md` → „Der
-Phasenplan — beschlossen am 2026-09-08". Der Canvas-Export blieb aus;
-geschätzt wird mit `~`-Terminen, bis Isor exportiert.)*
+*(überschrieben 2026-09-08 beim dritten `/harness:ende` des Tages —
+Abschnitt „C++-Unterricht Chapter 1", Development · Lernmodus, Revier
+Uni. Der Unterrichtsbericht steht in `Uni/LOG.md`; L1 wurde nicht mehr
+angefangen — Abbruch um 21:46 wegen Erschöpfung, Aufstehen um 5 Uhr.)*
 
-**Heute Abend L1**, Anleitung in `Sandbox/` der Lane-Defender-Schicht.
-Nächste Session: Development (Lane Defender) — LERNLOG-Zeile zu L1
-aufnehmen, dann L2 (`Projekte/Lane_Defender/ROADMAP.md`). Daneben
-offen: Canvas-Exporte (echte Termine ersetzen die `~`-Schätzungen),
-Sonntags-Reste und C++-Guidelines, sobald SAE-Material da ist.
+**Mi, 2026-09-09 — kein Unterricht:** L1
+(`Sandbox/L1_Setup_Anleitung.txt` der Lane-Defender-Schicht; Commit
+danach: `Update V 0.0002`), dann L2. Danach Unreal-Toolchain-Test
+(Punkt unten) und Fab-Erstausstattung (`Projekte/Isor_Tower/ROADMAP.md`).
+**Do, 2026-09-10 — Unterricht:** Frage an den Dozenten stellen, ob die
+SAE-Konvention auch für den Model-Viewer gilt; sie entscheidet den Punkt
+„Dritte C++-Umgebung" in `Kern/ROADMAP.md`. Daneben offen: Abgabetermine
+der Uni (bis dahin gelten die `~`-Schätzungen) und die Sonntags-Reste
+(nächster `/harness:sonntag`).
 
 ---
 
@@ -79,6 +83,13 @@ Shader → dann Unreal-C++ mit seinen Eigenheiten.
       Kandidat laut Abgabe-Vorlage im Datenbaum: 5.6. Dabei prüfen, ob
       diese Unreal-Version das installierte VS 2026 als Toolchain
       akzeptiert — sonst die VS-2022-Build-Tools daneben installieren.
+      **Stand 2026-09-08:** Kursversion offiziell bestätigt
+      (Versionsblatt Studienjahr 0925: Unreal 5.6, dazu
+      OpenGL-Empfehlung Core 450 für den Model-Viewer — `Uni/LOG.md`).
+      5.6.1 ist installiert, Bridge und Fab-Plugin folgen automatisch.
+      Offen nur noch der Toolchain-Test (neues C++-Blank-Projekt):
+      Epics Doku empfiehlt für 5.8 ausdrücklich VS 2026, für 5.6 ist es
+      ungeprüft — Plan B bleiben die VS-2022-Build-Tools.
 - [x] **Neues Projekt-Repo für den Unreal-Tower anlegen** —
       Namensvorschlag kommt von Claude; `.gitignore`/LFS nach
       Unreal-Muster (`Binaries/`, `Intermediate/`, `Saved/`,
@@ -90,12 +101,19 @@ Shader → dann Unreal-C++ mit seinen Eigenheiten.
       ungeplant das Repo `Lane-Defender` (Marke
       `PROJEKT_LANE_DEFENDER`), Begründung in
       `Projekte/Lane_Defender/DECISIONS.md`.
-- [ ] **`Kern/CODE_GUIDELINES.md` auf C++ erweitern** — SAE-C++-
+- [x] **`Kern/CODE_GUIDELINES.md` auf C++ erweitern** — SAE-C++-
       Konvention (aus den Semester-3-Unterlagen holen) fürs
       Konsolenprojekt, Epic C++ Coding Standard fürs Spiel; die
       C#/Unity-Blöcke bleiben als Altstand-Regeln gekennzeichnet.
       Sicherungskopie der Unity-Fassung liegt im Datenbaum. Wartet auf
       das SAE-Kursmaterial — der C++-Kurs ist am 2026-09-08 gestartet.
+      **Erledigt am 2026-09-08:** die Abschnitte „C++ — welche
+      Konvention wo gilt", „C++ · Konsolenprojekt — SAE-Konvention
+      (Pflicht)" und „C++ · Unreal — Epic C++ Coding Standard
+      (vorgegeben)" stehen in der Datei; SAE-PDF im Datenbaum
+      (`01_Uni\_Regelwerk\`), Epic-Destillat ausgelagert
+      (`Kern/ROADMAP.md` → „Epic C++ Coding Standard destillieren"),
+      dazu `💡 Lernstück · SAE-C++-Konventionen` im `ARTIFACT_INDEX.md`.
 - [x] **Unreal-Pendant zur „nie durchsuchen"-Regel** — heute nennt
       `CLAUDE.md` nur die Unity-Ordner; sobald das Unreal-Repo
       existiert, kommen `Binaries/`, `Intermediate/`, `Saved/`,
