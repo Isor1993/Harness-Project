@@ -47,6 +47,24 @@ Seite ←  keine
 
 ---
 
+## 📍 Status  — Schicht: Uni
+
+### 📍 Status · Semester 3
+```
+URL      https://claude.ai/code/artifact/990b0be5-f2ec-42e2-affe-858d1cc92208
+Stand    2026-09-08 — neu gebaut im Design-Abschnitt „Semester-Roadmap":
+         Zeitstrahl mit fester/geschätzter Trennung, Schätzlogik-Tafel,
+         Phasenplan. Geschätzte Termine (~) werden ersetzt, sobald Isors
+         Canvas-Export die echten liefert.
+Quelle   Uni/ROADMAP.md (Phasenplan), Uni/DECISIONS.md,
+         Uni/Semester_3/STUNDENPLAN.md, Uni/Semester_3/VORJAHR_AUFGABEN.md
+Skripte  keine — die Seite zeigt Termine und Plan, nicht Code
+Seite →  keine
+Seite ←  keine
+```
+
+---
+
 ## 🎓 Zeugnis  — Schicht: Kern
 
 **Kein vierter Typ** — die Seiten gehören zum Session-Typ „Zeugnis"

@@ -4,6 +4,5 @@
 # Wird ein Eintrag gebaut, meldet das Skript ihn als erledigt; dann
 # hier löschen.
 
-Projekte/Isor_Tower/_ARCHIV.md | Überholte Projekt-Einträge, jeder mit Angabe des Nachfolgers
 IsorBackup/_ARCHIV.md | Überholte Einträge der IsorBackup-Schicht — DECISIONS.md verweist bereits darauf
 IsorBackup/LOG.md | Chronik des Datenbaums — fällig, sobald der erste Aufräum-Durchgang läuft

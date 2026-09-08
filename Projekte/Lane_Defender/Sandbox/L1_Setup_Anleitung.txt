@@ -1,0 +1,49 @@
+L1 - ERSTES C++-PROJEKT ANLEGEN (Anleitung fuer heute Abend)
+Lane Defender - Lern-Vorlauf L1 - Stand 2026-09-08
+
+Das Repo ist schon vorbereitet:  C:\Repos Isor\Lane-Defender
+(.gitignore und README liegen drin, Git ist initialisiert.)
+
+
+SCHRITT 1 - PROJEKT ANLEGEN
+1. Visual Studio 2026 starten.
+2. "Create a new project" waehlen.
+3. Oben nach  C++  filtern, Vorlage "Console App" waehlen. Next.
+4. Project name:      LaneDefender          (ohne Bindestrich!)
+   Location:          C:\Repos Isor\Lane-Defender
+   Haken setzen bei:  "Place solution and project in the same directory"
+5. Create klicken.
+   -> Es oeffnet sich LaneDefender.cpp mit einem Hello-World.
+
+SCHRITT 2 - KOMPILIEREN UND STARTEN
+1. Strg+F5 druecken (Start ohne Debugger).
+   -> Konsolenfenster mit "Hello World!" geht auf.
+2. Wo die .exe liegt:
+   C:\Repos Isor\Lane-Defender\x64\Debug\LaneDefender.exe
+   Die kannst du direkt doppelklicken - sie laeuft ohne Visual Studio.
+
+SCHRITT 3 - DEBUGGER EINMAL BENUTZEN
+1. Links neben die cout-Zeile klicken (oder F9):
+   roter Punkt = Breakpoint.
+2. F5 druecken (Start MIT Debugger).
+   -> Programm haelt am roten Punkt, gelber Pfeil zeigt die Zeile.
+3. F10 = eine Zeile weiter. Unten zeigen "Autos"/"Locals" die
+   Variablenwerte live an.
+4. Umschalt+F5 beendet den Debugger. F9 nochmal = Breakpoint weg.
+
+WARUM DAS ANDERS IST ALS C#/UNITY (Theorie-Happen zu L1)
+- C# wird zu Zwischencode uebersetzt; die .NET-Runtime fuehrt ihn aus
+  und raeumt den Speicher automatisch auf (Garbage Collector).
+- C++ wird vom Compiler (cl.exe) direkt zu Maschinencode fuer deine
+  CPU uebersetzt. Die .exe laeuft allein: keine Runtime, kein
+  Garbage Collector.
+- Folge fuer Lane Defender: Was wir mit new anlegen, geben wir selbst
+  mit delete wieder frei. Das ist das Pflichtthema Memory Management -
+  kommt ab M3, dann mit eigenem Theorie-Happen.
+
+DANACH
+- GitHub Desktop: File -> Add local repository ->
+  C:\Repos Isor\Lane-Defender. Erster Commit: "Update V 0.0001".
+- Kurz merken oder notieren: Was ging selbst? Wo war Hilfe noetig?
+  Was war ungewohnt? -> wird in der naechsten Session die
+  LERNLOG-Zeile.

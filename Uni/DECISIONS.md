@@ -311,4 +311,88 @@ Risiko, bewusst getragen: Bis zum Upload ist Stand 1 vom 17.08. der einzige
 bewertbare Stand. Fällt der Donnerstag aus, zählt nichts von dieser Woche.
 Verworfen: heute Abend hochladen und morgen einen dritten Stand nachschieben.
 
+## 2026-09-07 — Engine- und Sprachfokus: Unreal + C++ für Studium, Isor's Tower und Beruf
+
+Was: Ab heute läuft alles auf einem Stack — Modul 5-101, die
+Berufsvorbereitung und der Tower-Neustart auf **Unreal Engine + C++**
+(kurz: die **Stack-Entscheidung**).
+Die beiden C++-Pflichtaufgaben werden darauf ausgelegt: das
+Konsolenprojekt (Lane Defender) als C++-Lernumgebung, der
+3D-Model-Viewer als Shader-Labor für den Stylized-Look des Towers.
+Entschieden von Isor am Abend der Moduleinführung, nach ausführlicher
+Abwägung mit Claude.
+
+Warum: Das Modul verlangt C++ ohnehin (Konsolenprojekt, OpenGL-Viewer,
+Portfolio-Kriterium „Ich beherrsche C++") und lehrt Unreal
+(27.10.–17.11.) direkt vor der Prototyp-Phase — mit Unity liefe die
+Hauptproduktion neben dem Unterricht her, mit Unreal in ihm. Dazu
+Isors eigene Berufslogik: C++ → C# ist der leichte Wechsel, umgekehrt
+der schwere; C++ öffnet Games- und Nicht-Games-Türen (u. a. Omega
+Robotik). Drittens das Ein-Gleis-Bedürfnis: Unity hätte drei parallele
+Stränge bedeutet (C++-Pflichtaufgaben, C#-Produktion,
+C++-Jobvorbereitung). Die Engine-Eignung fürs eigene Spiel (stylized
+RPG, KI-lastig, Steam, solo) ist keine Falle — Belege auf beiden
+Seiten (Unreal u. a. Manor Lords, Palworld); der Look hängt am Shader,
+nicht an der Engine. Die Unreal-Empfehlung des Dozenten (erklärter
+Unreal-Fan) steht damit nicht allein — das Curriculum bestätigt die
+Richtung unabhängig.
+
+Verworfen: Unity + C#. Die Vorteile — vertraute Umgebung, schnellster
+Produktionsstart, flüssigere Code-Iteration — wiegen die drei
+parallelen Gleise und die fehlende Unterrichts-Rückendeckung nicht
+auf; es wäre nur die bessere Wahl, wenn schnellstes Solo-Indie-Shipping
+das einzige Ziel wäre. Ebenso verworfen: die Strategie vom 2026-09-06,
+Unreal/C++ nur als Parallelstrang neben dem Unity-Tower zu führen.
+
+Notausgang, damit nicht neu verhandelt wird: Kontrollpunkt ist die
+Prototyp-Phase (Ende Nov., vor dem Pitch am 2026-12-03). Steht bis
+dahin kein kleiner spielbarer Unreal-Prototyp, wechselt die
+Hauptproduktion zurück auf Unity; die C++-Pflichtaufgaben bleiben
+davon unberührt. **Bis zu diesem Kontrollpunkt wird die Entscheidung
+nicht wieder aufgemacht** — bei Zweifel wird dieser Eintrag gelesen
+statt neu diskutiert (von Isor ausdrücklich so gewünscht).
+
+Folgen: Das Semester-Spiel wird eine Variante in der Tower-Welt —
+Spielform und Umfang entscheidet das GDD, die Spielidee wird vorab mit
+der Fachbereichsleitung abgesprochen (verlangt die Aufgabe ohnehin).
+Multiplayer-tauglich gebaut wird von Anfang an; ob Multiplayer
+mitliefert oder auf Singleplayer gedrosselt wird, entscheidet das GDD.
+Der Tower-Neustart in Unreal gehört beim Design-Neustart in die
+DECISIONS des Projekts. `Kern/CODE_GUIDELINES.md` ist um
+C++-Konventionen zu ergänzen (SAE-Konvention fürs Konsolenprojekt,
+Epic C++ Coding Standard fürs Spiel) — offener Punkt für die ROADMAP.
+
+## 2026-09-08 — Semester-3-Roadmap: Frontloading mit 24-Stunden-Wochen
+
+Was: Die Semester-Roadmap (Phasenplan in `ROADMAP.md` → „Der Phasenplan
+— beschlossen am 2026-09-08") steht auf drei Grundsätzen.
+**Frontloading:** Jede Abgabe soll vor dem geschätzten Termin und vor
+dem zugehörigen Unterricht fertig sein — das Konsolenprojekt bis
+~05.10., der 3D-Model-Viewer direkt danach im Oktober-Fenster mit
+OpenGL im Selbststudium (der Unterricht ab 29.10. wird Vertiefung),
+damit ab dem Unreal-Block alles ins Spielprojekt geht (Isor: „immer
+versuchen, früher fertig zu werden als Abgabe und Unterricht").
+**24 Stunden je Woche als Rechengrundlage:** Mo–Fr etwa zwei Stunden am
+Tag, Sa und So je acht bis neun; mehr geht, wird aber nicht verplant —
+der Überschuss ist die Crunch-Reserve. **Schätzlogik:** Vorjahresdaten
+plus Versatzspanne +5,7 bis +6,6 Monate, kalibriert an den vier festen
+Präsentationsterminen; jede Schätzung gilt nur, bis Isors echter
+Canvas-Termin sie ersetzt. Dazu die Puffer-Regel: eine Woche vor jedem
+Fixtermin Feature-Stopp, die Betreuungstermine 07.01./28.01./11.02.
+dienen als Generalproben für Alpha/Beta/Gold.
+
+Warum: Hinten ist dieses Semester dichter als das des Vorjahrgangs —
+zwischen Pitch und Goldmaster bleiben nach Abzug der Weihnachtslücke
+rund 60 % von dessen Bauzeit, Alpha→Beta drei statt sechs Wochen. Der
+Ausgleich kann nur vorn passieren, wo der Stundenplan bis zum 27.10.
+Luft lässt. „Bronze/Silber/Gold" (Isors Zuruf vom 2026-08-30) sind die
+Uni-Meilensteine selbst; eigene Scope-Stufen braucht es nicht — die
+Muss-Listen je Meilenstein schreibt das GDD.
+
+Verworfen: der Model-Viewer nach Vorjahresmuster im November (~05.11. —
+dichtester Monat, kollidiert mit Prototyp und Stack-Kontrollpunkt); ihn
+hinter den Pitch zu schieben (Claudes Empfehlung — hätte mit dem
+Alpha-Bau kollidiert und bricht das Frontloading); ihn neben dem
+Prototyp zu strecken.
+
 

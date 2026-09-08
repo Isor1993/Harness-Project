@@ -89,3 +89,7 @@ Harness nur als Auslieferung (`Kern/VERSIONIERUNG.md`).
   `Temp/`, `Logs/`, `obj/`, `UserSettings/`. Unity-generiert, enthält
   kein Projektwissen. *(Stand bis 2.0.0 in der Wegweiser-`CLAUDE.md` des
   Unity-Roots; die gibt es nicht mehr, die Regel gilt weiter.)*
+- **In freigegebenen Unreal-Projekten nie durchsuchen:** `Binaries/`,
+  `Intermediate/`, `Saved/`, `DerivedDataCache/`, `.vs/`.
+  Engine-generiert, enthält kein Projektwissen. *(Seit 2026-09-08, mit
+  dem Anlegen des Unreal-Repos — `Kern/PFADE.md` → `PROJEKT_UNREAL`.)*

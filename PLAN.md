@@ -22,16 +22,16 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(geschrieben 2026-09-06 abends, nach dem Lobby-Chat; Semesterstart:
-2026-09-07)*
+*(überschrieben 2026-09-08 beim `/harness:ende` — der Design-Abschnitt
+„Semester-Roadmap" ist abgeschlossen: `Uni/ROADMAP.md` → „Der
+Phasenplan — beschlossen am 2026-09-08". Der Canvas-Export blieb aus;
+geschätzt wird mit `~`-Terminen, bis Isor exportiert.)*
 
-**Zuerst Gegenlesen:** Isor erklärt die Chat-RPC-Kette in eigenen Worten
-(Deal des Reglers „Claude schreibt"). **Dann Baustein C**
-(`DECISIONS/Player.md` lesen; Regler neu fragen, Entwurf vor Gerüst).
-**Nach der Moduleinführung:** Aufgaben ablegen, Abgabe-Struktur anlegen
-(`Uni/ROADMAP.md`); Uni wo möglich mit dem Tower verbinden, Unreal/C++
-läuft parallel (Isor, 2026-09-06). Sonntag weiter offen: zwei
-Überholt-Vermerke und die Ein-Seiten-Prüfung `💡 EditorWindow & MVP`.
+**Heute Abend L1**, Anleitung in `Sandbox/` der Lane-Defender-Schicht.
+Nächste Session: Development (Lane Defender) — LERNLOG-Zeile zu L1
+aufnehmen, dann L2 (`Projekte/Lane_Defender/ROADMAP.md`). Daneben
+offen: Canvas-Exporte (echte Termine ersetzen die `~`-Schätzungen),
+Sonntags-Reste und C++-Guidelines, sobald SAE-Material da ist.
 
 ---
 
@@ -54,6 +54,50 @@ nicht sofort behoben. Ein Befund ist ein Zustand, kein Auftrag.
       **Kein Termin** — bewusst hinter Phase 0 gestellt, weil nur der
       Prototyp einen Semestertermin hat (Isor, 2026-08-27). Er bleibt
       die geplante Belastungsprobe des Harness im Betrieb.
-- [ ] **Abgabe-Struktur anlegen**, sobald die Semester-Aufgaben da sind
+- [x] **Abgabe-Struktur anlegen**, sobald die Semester-Aufgaben da sind
       (`Uni/ROADMAP.md`) — der Punkt, an dem im zweiten Semester Zeit
-      verloren ging.
+      verloren ging. Die Aufgaben sind seit dem 2026-09-07 bestätigt.
+      **Erledigt am 2026-09-08** — Beleg: `Uni/ROADMAP.md` →
+      „Abgabe-Struktur beim Semesterstart kopieren".
+
+### Umstellung auf Unreal + C++ — entschieden 2026-09-07
+
+Beschluss und Begründung: `Uni/DECISIONS.md` → „2026-09-07 — Engine- und
+Sprachfokus". Der Unity-Bauplan des Towers ist archiviert
+(`Projekte/Isor_Tower/_ARCHIV.md`). Isors Lernpfad: Konsolenprojekt =
+C++-Grundlagen auf C#-Niveau bringen → 3D-Model-Viewer = Grafik und
+Shader → dann Unreal-C++ mit seinen Eigenheiten.
+
+- [x] **Visual Studio 2022 mit C++-Workload installieren** — vor der
+      ersten eigenen C++-Übung nötig; Unreal-Version mit dem Kurs
+      abgleichen und installieren (Unterrichtsblock ab 27.10., früher
+      schadet nicht). **Erledigt am 2026-09-08 (VS-Teil):** VS
+      Community 2026 samt C++-Workload und cl.exe war schon
+      installiert und ist verifiziert — ein 2022 braucht es dafür
+      nicht. Der Unreal-Teil steht als eigener Punkt darunter.
+- [ ] **Unreal installieren, sobald die Kursversion bestätigt ist** —
+      Kandidat laut Abgabe-Vorlage im Datenbaum: 5.6. Dabei prüfen, ob
+      diese Unreal-Version das installierte VS 2026 als Toolchain
+      akzeptiert — sonst die VS-2022-Build-Tools daneben installieren.
+- [x] **Neues Projekt-Repo für den Unreal-Tower anlegen** —
+      Namensvorschlag kommt von Claude; `.gitignore`/LFS nach
+      Unreal-Muster (`Binaries/`, `Intermediate/`, `Saved/`,
+      `DerivedDataCache/`, `.vs/`; `*.uasset`/`*.umap` über LFS).
+      Danach `Kern/PFADE.md` und die Freigaben nachziehen.
+      **Erledigt am 2026-09-08:** `Isor-Tower-Unreal` angelegt (git
+      init, .gitignore, LFS-Attribute, README), Marke `PROJEKT_UNREAL`
+      in `Kern/PFADE.md`, Freigabe in `.claude\settings.json`. Dazu
+      ungeplant das Repo `Lane-Defender` (Marke
+      `PROJEKT_LANE_DEFENDER`), Begründung in
+      `Projekte/Lane_Defender/DECISIONS.md`.
+- [ ] **`Kern/CODE_GUIDELINES.md` auf C++ erweitern** — SAE-C++-
+      Konvention (aus den Semester-3-Unterlagen holen) fürs
+      Konsolenprojekt, Epic C++ Coding Standard fürs Spiel; die
+      C#/Unity-Blöcke bleiben als Altstand-Regeln gekennzeichnet.
+      Sicherungskopie der Unity-Fassung liegt im Datenbaum. Wartet auf
+      das SAE-Kursmaterial — der C++-Kurs ist am 2026-09-08 gestartet.
+- [x] **Unreal-Pendant zur „nie durchsuchen"-Regel** — heute nennt
+      `CLAUDE.md` nur die Unity-Ordner; sobald das Unreal-Repo
+      existiert, kommen `Binaries/`, `Intermediate/`, `Saved/`,
+      `DerivedDataCache/`, `.vs/` dazu. **Erledigt am 2026-09-08** —
+      die Regel steht in `CLAUDE.md`, im selben Zug wie das Repo.

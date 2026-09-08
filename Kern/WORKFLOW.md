@@ -544,7 +544,7 @@ nicht mehr den Überblick habe")*. Dieser Abschnitt besitzt die
 |---|---|---|---|
 | `Kern/Werkzeuge/pruefen.py` | Verweise · Chronik-Format · Befehle gegen Arbeitskopie · Zahlwörter · Glossar · Hooks gegen Vorlage · Pfade gegen `PFADE.md` · Artifact-IDs im Knowledge · liegengebliebene Befundlisten | Session-Start (**per Hook erzwungen**) und jedes `/harness:sichern` | Skript |
 | `Kern/Werkzeuge/index_bauen.py` | fehlt eine `Ownership:`-Zeile? | wenn Dateien dazukommen oder wegfallen | Skript |
-| `Projekte/<Name>/Werkzeuge/prefab_status.py` | welche Prefabs es gibt und was auffiel | bei Projektarbeit | Skript und Mensch |
+| `Projekte/<Name>/Werkzeuge/prefab_status.py` *(Unity-Altstand, ruht seit der Stack-Entscheidung — `Uni/DECISIONS.md`, 2026-09-07)* | welche Prefabs es gibt und was auffiel | bei Projektarbeit am Unity-Altstand | Skript und Mensch |
 | **Review-Gate** (`CODE_GUIDELINES.md`) | Fattening · Enum-Sicherheit · Werkzeugwahl · Naming · Artifact-Bezug | vor dem Coden | Mensch und Claude |
 | **Doku-Pflicht** (unten) | Knowledge- · Störungs- · INDEX- · Glossar-Frage | jedes `/harness:sichern` | Claude fragt, Isor entscheidet |
 | **Pflegetag** (`/harness:sonntag`) | stimmen die Artifact-Seiten noch? | wöchentlich | Mensch und Claude |

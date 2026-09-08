@@ -42,9 +42,10 @@ Wochenende gern mehr.
 
 ## Aufgaben
 
-- [ ] **Einheit 1 bauen** — erstes Snippet unter `Einheiten/` anlegen
+- [x] **Einheit 1 bauen** — erstes Snippet unter `Einheiten/` anlegen
   (Dateien und Code auf Englisch, `Kern/DOC_RULES.md`, Abschnitt 9) und
-  die erste Einheit durchlaufen.
+  die erste Einheit durchlaufen. Beleg: `Einheiten/e01_basics.py` und
+  der LOG-Eintrag dieser Schicht vom 2026-09-01.
 - [ ] **Zwischen-Zeugnis nach Block 4** — erstes `/harness:zeugnis` über
   den Kurs, gelesen aus dem LOG dieser Schicht; danach entscheiden, ob
   Tempo und Zuschnitt der Blöcke 5–8 so bleiben.

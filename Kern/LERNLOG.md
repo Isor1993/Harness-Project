@@ -167,3 +167,15 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   großen Büschel auf viele kleine.
   **Hilfe:** Übersetzung des Vorbilds in Zahlen (Seitenverhältnisse,
   Biegewinkel, Halmzahl), die Messverfahren für Deckung und Pixelgröße.
+- 2026-09-07 · Noten-Auswertung und Stack-Entscheidung — **Selbst:** die
+  D004-Lücke eigenständig diagnostiziert (zu wenig Spielmechaniken, weil
+  einzelne Systeme zu komplex — Tiefe fraß das Breite-Budget) und die
+  Berufslogik C++ → C# selbst hergeleitet; die Engine-Entscheidung trotz
+  benannter Angst getroffen und den Anker samt Notausgang selbst
+  eingefordert; eigene Ängste präzise benannt (C++, KI-Abhängigkeit,
+  Veränderung). **Fehlerbild:** Entscheidungs-Schleife — jedes „Aber"
+  lud das nächste nach, zwei abgebrochene Auswahlfelder, bis die Punkte
+  einzeln beantwortet waren. **Hilfe:** Fakten-Gegenlese je Angst
+  (Modul verlangt C++ ohnehin, Kommentar-Zitate, Beispiel-Spiele) und
+  der DECISIONS-Eintrag mit Kontrollpunkt als Anker gegen die
+  Grübelschleife.

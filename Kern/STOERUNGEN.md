@@ -720,3 +720,22 @@ eines Design-Abschnitts nicht ab.
 **Stand:** behoben 2026-09-06 — Regel *Entscheiden vor Bauen* in
 `Kern/ART_RULES.md`, Abschnitt „Bedienregeln", samt diesem Beleg. Kein
 ROADMAP-Punkt auf Isors Entscheidung.
+
+### 2026-09-07 — Gemeinschaftsboden außerhalb der Befehle beschrieben
+**Was:** Bei offener Parallel-Session (Lane Defender) wurde `PLAN.md`
+mehrfach direkt beschrieben — Auftrag überschrieben, Umstellungs-
+Milestones ergänzt —, obwohl der Gemeinschaftsboden laut Revier-Regel
+nur innerhalb von `/harness:sichern`, `/harness:wechsel` und
+`/harness:ende` angefasst wird. Anlass war die Stack-Entscheidung; Isor
+ordnete das Aufräumen ausdrücklich an, Claude meldete die Abweichung im
+selben Zug. Kein Zusammenstoß entstanden.
+**Ursache:** Die Regel kennt den Fall „Isor ordnet den Schreibzugriff
+direkt an" nicht. Sie schützt vor unkoordinierten Parallel-Schreibern —
+die Koordination lag hier aber bei Isor selbst, der als Einziger beide
+Sessions sieht.
+**Regel:** `Kern/WORKFLOW.md` → „Parallele Sessions", Punkt
+„Gemeinschaftsboden". Gegenmittel wäre eine ausdrückliche
+Zuruf-Ausnahme in der Regel; als ROADMAP-Punkt am 2026-09-07 bewusst
+**nicht** aufgenommen (Isor: nur notieren).
+**Stand:** offen. Beobachten, ob der Fall wieder auftritt — beim
+zweiten Mal die Ausnahme-Frage neu stellen.

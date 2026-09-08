@@ -28,8 +28,9 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
   Tages). Die Leseordnung umzustellen wäre der teurere Weg — dann müsste
   `WORKFLOW.md` vor `INDEX.md` und `PLAN.md` gelesen werden.
 - [ ] **Regel gegen ungeprüfte Angaben über Fremdsoftware** — In
-  `CLAUDE.md` aufnehmen: Vor einer versionsabhängigen Aussage über Unity,
-  ein Paket oder ein Werkzeug erst im Projekt oder in der Doku nachsehen;
+  `CLAUDE.md` aufnehmen: Vor einer versionsabhängigen Aussage über die
+  Engine, ein Paket oder ein Werkzeug erst im Projekt oder in der Doku
+  nachsehen;
   wo das nicht geht, die Unsicherheit benennen statt sie zu glätten. Für
   Diagramme gibt es die Regel bereits („erst die Quelle lesen"), für
   Behauptungen im Gespräch nicht — am 2026-08-28 kosteten drei davon eine
@@ -127,11 +128,11 @@ er benutzt statt gebaut — die Testphase läuft (`PLAN.md`).
   Anlass, die Frage überhaupt zu stellen, ist `/harness:zeugnis`
   (`Kern/ASSESSMENT_RULES.md`).
 - [ ] **Review-Seite zu „Claude baut, Isor reviewt"** — woran Isor
-  prüft, was Claude an Unity-Code gebaut hat. **Der Modus selbst ist
+  prüft, was Claude an Engine-Code gebaut hat. **Der Modus selbst ist
   gebaut und in Betrieb:** Der Regler „Wer schreibt" steht in
   `Kern/WORKFLOW.md` (E21), und bei Harness-Arbeit tippt ohnehin Claude.
   Offen ist die zweite Hälfte. Für Harness-Werkzeuge ist das Gegenlesen
-  gelebte Praxis, für Unity-Code gibt es kein Verfahren — und dort zählt
+  gelebte Praxis, für Engine-/C++-Code gibt es kein Verfahren — und dort zählt
   es am meisten, weil Isors Maßstab das Prüfungsgespräch ist
   (`Projekte/Isor_Tower/ALTSTAND.md`). Anzuschließen an das Review-Gate
   in `Kern/CODE_GUIDELINES.md`, das heute ausdrücklich **vor** dem Coden

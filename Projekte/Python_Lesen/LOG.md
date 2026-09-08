@@ -17,3 +17,15 @@ Eine leere Rubrik schreibt `—` statt wegzufallen, damit „nichts" von
 - 2026-08-31 — Kurs entworfen: Ziel, Einheitsformat, Log-Form und
   Themenplan festgelegt (DECISIONS und ROADMAP dieser Schicht, je
   2026-08-31). Noch keine Einheit gelaufen.
+- 2026-09-01 — Einheit 1 · Grundgerüst: Variablen, Typen, print,
+  f-Strings (Snippet: `Einheiten/e01_basics.py`)
+  Selbst: Ausgaben im Kern richtig vorhergesagt, darunter `87 / 20` als
+  `4.3` mit einer Nachkommastelle; den `if`-Zweig korrekt als
+  übersprungen erkannt (87 nicht kleiner 20).
+  Hilfe: Der direkte Einstieg „erklär den Code" war ohne jede Einführung
+  zu viel — erst die C#-Vergleichstabelle als Brücke machte das Lesen
+  möglich. Konzept des Tages erklärt: `/` liefert in Python immer eine
+  Kommazahl, ganzzahlig wäre `//`.
+  Fehler: Im f-String das `%` hinter dem Platzhalter übersehen
+  („Battery: 87" statt „Battery: 87%") — Text außerhalb von `{ }` wird
+  wörtlich ausgegeben.

@@ -8,6 +8,17 @@ Herkunft: Entstanden als Rohmaterial aus dem Brainstorm vom 2026-07-17.
 Wann sie zuletzt angefasst wurde, sagt `git log` — genauer, als eine
 Hand es je nachführt.
 
+**Geltungsbereich seit der Stack-Entscheidung** (`Uni/DECISIONS.md` →
+„2026-09-07 — Engine- und Sprachfokus"): Diese Fassung beschreibt den
+C#/Unity-Stand und gilt unverändert für den eingefrorenen Unity-Altstand
+des Towers. Für neuen Code gilt C++ — SAE-C++-Konvention
+(Konsolenprojekt) und Epic C++ Coding Standard (Unreal); die Einpflege
+steht aus (`PLAN.md` → „Umstellung auf Unreal + C++"). Engine-neutral
+weiter gültig: Kommentar-Philosophie (Warum statt Was), Datei-Header,
+Review-Gate, Test-Ansatz und die Repo-Grundregeln. Eine
+Sicherungskopie dieser Unity-Fassung liegt im Datenbaum
+(`Kern/PFADE.md` → `DATENBAUM`, `05_Werkzeuge\Vorlagen\`).
+
 ## Priorität
 
 Im Konfliktfall gewinnt **Block 1**, solange das Projekt eine

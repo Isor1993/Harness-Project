@@ -79,3 +79,13 @@ damals, nicht den von heute.
   wurden die zwei Rückverweise im Abschnitt „Werkzeuge" auf die neue
   Nummerierung nachgezogen; geprüft mit `pruefen.py` und
   `index_bauen.py`.
+- 2026-09-07 — Semester-2-Bewertungen in Canvas eingesehen (Beurteilung
+  Alisa Reiter): 4FSC0PD003.1 Portfolio 74 Punkte (1-) = First (Process
+  Sehr gut, Proficiency und Person Gut), 4FSC0PD004.1 Portfolio
+  69 Punkte (2.1+) = Upper Second, ein Punkt unter der First-Grenze
+  (alle drei Kriterien Gut); beide Module „Alle Lernziele erreicht".
+  Kernpunkte der Kommentare: D003 „weniger ist mehr" (Umfang größer als
+  nötig, leere Ordner nicht gelöscht), Code „niveauvoll"; D004 durchweg
+  positiv bis auf das untexturierte Häuschen („fehl am Platz") und
+  „nicht super kreativ" — die kreative Idee „verspricht kommende
+  Inhalte".

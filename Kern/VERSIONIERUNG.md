@@ -2,8 +2,8 @@
 
 Ownership: Alle Nummernsysteme des Projekts — welche Nummer was zählt,
 wie sie gelesen wird und wo sie steht. Besitzt **nicht** die Nummern
-selbst: Die Commit-Nummer steht im Commit-Titel, die Spiel-Version in den
-Unity Player Settings, die Harness-Version in CLAUDE.md.
+selbst: Die Commit-Nummer steht im Commit-Titel, die Spiel-Version in
+den Projekteinstellungen der Engine, die Harness-Version in CLAUDE.md.
 
 Warum eigene Datei: Es gibt drei Nummern nebeneinander, die
 Verschiedenes zählen. Ohne eine Stelle, an der die Lesarten stehen, hält
@@ -14,7 +14,7 @@ man sie früher oder später für dasselbe.
 | Nummer | Zählt | Beantwortet | Steht in |
 |---|---|---|---|
 | `V 0.0035` | Änderungen, fortlaufend | *Welche Sitzung war das?* | Commit-Titel |
-| `0.0.3` | Reifegrad des Spiels | *Wie weit ist das Spiel?* | Unity Player Settings |
+| `0.0.3` | Reifegrad des Spiels | *Wie weit ist das Spiel?* | Projekteinstellungen der Engine |
 | `1.0.0` | Verträglichkeit des Harness | *Muss ein Projekt umziehen?* | CLAUDE.md |
 
 Alle drei sehen aus wie `X.Y.Z` — **gelesen werden sie verschieden.**
@@ -70,8 +70,9 @@ offen (Isor, 2026-08-22).*
 Ein gebauter Stand liegt im Datenbaum unter
 `02_Projekte\<Projekt>\Builds\<Projekt>_<Spielversion>_<JJJJ-MM-TT>\`
 (`Kern/PFADE.md` → `DATENBAUM`) — das Repo ignoriert `Build/` zu Recht.
-Die Spielversion kommt aus den Player Settings; das Datum unterscheidet
-zwei Stände derselben Prototyp-Version. Das Projektpräfix trägt der
+Die Spielversion kommt aus den Projekteinstellungen der Engine (Unity:
+Player Settings; Unreal: Project Settings → Project Version); das Datum
+unterscheidet zwei Stände derselben Prototyp-Version. Das Projektpräfix trägt der
 Ordner, weil er als Zip zu Mitspielern reist und dort seinen
 Pfad-Kontext verliert. *(Entschieden 2026-08-26, Präfix seit
 2026-09-06; Begründungen in `Kern/DECISIONS.md`.)*

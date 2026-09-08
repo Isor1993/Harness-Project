@@ -74,7 +74,7 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 | `Uni/Semester_2/ASSIGNMENT_THREADING.md` | Originaltext der Uni-Aufgabe Threadoptimierung (K2, K3, S3) als Referenz — unverändert lassen; eigene Planung gehört in die DECISIONS der Schicht. |
 | `Uni/Semester_2/ASSIGNMENT_TOOL.md` | Originaltext der Uni-Aufgabe Engine-Tool (K2, S1) als Referenz — unverändert lassen; eigene Planung gehört in die DECISIONS der Schicht. |
 | `Uni/Semester_3/STUNDENPLAN.md` | Nur die Unterrichtsblöcke, Präsentations- und Betreuungstermine des Moduls 5-101 (Games Programming, deutscher Track `5FSC0XD101_P 0926de`) — aus Isors Canvas-Export vom 2026-09-06. |
-| `Uni/Semester_3/VORJAHR_AUFGABEN.md` | Nur die Aufgabentexte des Moduls 5-101, wie sie der um ein Semester höhere Jahrgang bekommen hat — als **unverbindliche Vorschau**, von Isor am 2026-09-06 eingebracht. |
+| `Uni/Semester_3/VORJAHR_AUFGABEN.md` | Nur die Aufgabentexte des Moduls 5-101, wie sie der um ein Semester höhere Jahrgang bekommen hat — von Isor am 2026-09-06 eingebracht, am 2026-09-07 in der Moduleinführung als inhaltlich identisch mit den Aufgaben von Isors Jahrgang bestätigt. |
 | `Uni/_ARCHIV.md` | Nur überholte Einträge der Uni-Schicht. |
 
 ## IsorBackup — Regeln für den externen Datenbaum
@@ -108,7 +108,11 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 | `Projekte/Isor_Tower/SYSTEME.md` | Nur die erzeugte Systemliste — welche System-Ordner es unter `Assets/Scripts/` gibt (plus `Assets/Editor/`), wie viele Skripte jeder trägt und wozu er da ist. |
 | `Projekte/Isor_Tower/TDD.md` | Nur das Markdown-Manuskript des TDD — die führende Quelle, aus der `Kern/Werkzeuge/abgabe_bauen.py` die .docx-Abgabefassung baut. |
 | `Projekte/Isor_Tower/TDD_NOTES.md` | Nur Rohmaterial für das Technical Design Document von Isor's Tower — geprüfte Fakten, Zahlen und Formeln aus der Projektarbeit. |
-| `Projekte/Isor_Tower/_ARCHIV.md` | (geplant) Überholte Projekt-Einträge, jeder mit Angabe des Nachfolgers |
+| `Projekte/Isor_Tower/_ARCHIV.md` | Nur überholte Einträge der Projekt-Schicht Isor's Tower — jeder Eintrag nennt, wodurch er abgelöst wurde. |
+| `Projekte/Lane_Defender/DECISIONS.md` | Nur Entscheidungen zum C++-Konsolenprojekt Lane Defender (früherer Arbeitstitel: Grid Defense) — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
+| `Projekte/Lane_Defender/LOG.md` | Nur was wann passiert ist — datierte Ereignisse und die Kurs-Einträge des Lernens am Projekt, älteste oben. |
+| `Projekte/Lane_Defender/ROADMAP.md` | Nur was an Lane Defender als Nächstes gelernt oder gebaut wird — Lern-Vorlauf, Meilensteine, Ausbauten, offene Aufgaben. |
+| `Projekte/Lane_Defender/ZEITPLAN.md` | Nur die Dreispalten-Zeitplantabelle des C++-Konsolenprojekts — Meilensteine, geschätzte Dauer, tatsächlich gebrauchte Dauer. |
 | `Projekte/Python_Lesen/DECISIONS.md` | Nur Entscheidungen zum Python-Lesekurs — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
 | `Projekte/Python_Lesen/LOG.md` | Nur was wann passiert ist — datierte Ereignisse und die Einheiten-Einträge des Kurses, älteste oben. |
 | `Projekte/Python_Lesen/ROADMAP.md` | Nur was im Python-Lesekurs als Nächstes drankommt — der Themenplan in Blöcken und die offenen Kurs-Aufgaben. |

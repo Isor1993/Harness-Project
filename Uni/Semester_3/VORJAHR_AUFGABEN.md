@@ -1,16 +1,21 @@
 # VORJAHR_AUFGABEN.md — Aufgabentexte des Modul 5-101 vom Vorjahrgang
 
 Ownership: Nur die Aufgabentexte des Moduls 5-101, wie sie der um ein
-Semester höhere Jahrgang bekommen hat — als **unverbindliche Vorschau**,
-von Isor am 2026-09-06 eingebracht. Sobald Isors eigene Originaltexte
-vorliegen, bekommt jede Aufgabe ihre eigene `ASSIGNMENT_*.md` nach dem
-Muster von `Uni/Semester_2/`, und diese Datei wandert ins Archiv.
+Semester höhere Jahrgang bekommen hat — von Isor am 2026-09-06
+eingebracht, am 2026-09-07 in der Moduleinführung als inhaltlich
+identisch mit den Aufgaben von Isors Jahrgang bestätigt. Sobald Isors
+eigene Originaltexte vorliegen, bekommt jede Aufgabe ihre eigene
+`ASSIGNMENT_*.md` nach dem Muster von `Uni/Semester_2/`, und diese
+Datei wandert ins Archiv.
 
-**Nicht verbindlich:** Inhalte können sich ändern, und die
-Fälligkeitsdaten hier sind die des Vorjahrgangs (dessen Semester lief
-bis August) — **Isors Termine stehen im `STUNDENPLAN.md`.** Wortlaut
-weitgehend original übernommen; dreifach wiederholte Präsentations-
-Passagen sind einmal ausgeschrieben und werden referenziert.
+**Verbindlichkeit** *(Stand aus der Moduleinführung, Isor 2026-09-07)*:
+Die Inhalte sind die Originalaufgaben auch für Isors Jahrgang; **nur
+die Fälligkeitsdaten sind die des Vorjahrgangs** (dessen Semester lief
+bis August). Isors feste Termine stehen im `STUNDENPLAN.md`; die
+übrigen verschieben sich um rund sechs Monate, genau auf Monat bis
+Wochen, nicht taggenau (±1–2 Wochen). Wortlaut weitgehend original
+übernommen; dreifach wiederholte Präsentations-Passagen sind einmal
+ausgeschrieben und werden referenziert.
 
 **Die Modul-Logik, aus den Texten ablesbar:** Alle Aufgaben hängen an
 **einer** durchgehenden Medienproduktion — Spieleprototyp → Game Pitch
