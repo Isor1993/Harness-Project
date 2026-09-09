@@ -212,3 +212,49 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   bis auf `b` für bool ohne Typkürzel auskommt. Die Stack-Entscheidung
   wurde dabei nicht neu aufgemacht (Anker vom 2026-09-07,
   Kontrollpunkt Ende November).
+- 2026-09-09 · L1, erstes eigenes C++-Projekt — **Selbst:** VS-Projekt
+  nach Anleitung angelegt, kompiliert und den Debugger bedient
+  (Breakpoint, F5, Locals gelesen); die SAE-Konvention unaufgefordert
+  selbst eingefordert („wir sind doch im Konsolenprojekt") — einen Tag
+  nach „ich mag es nicht"; Commit V 0.0002 mit sauberem Inhalt selbst
+  gebaut. **Fehlerbild:** Wiederholung vom 2026-09-08, andere Richtung:
+  `a_ILive` für eine lokale Variable — das Rollenpräfix `a_` (Parameter)
+  diesmal auf eine Lokale gesetzt statt auf einen Member gedeutet, dazu
+  Typkürzel `I` groß statt klein. Das Rollenpräfix-System ist als System
+  noch nicht verankert. **Hilfe:** Präfix-Tabelle erneut, Strg+R,R als
+  Umbenennen-Werkzeug, Einordnung des Locals-Werts 0 (frisch genullter
+  Stack, keine Garantie — der gelebte Grund für SAE-Regel 7).
+- 2026-09-09 · L2 Ü1, Typen nach SAE — **Selbst:** den eigenen Lernraum
+  verteidigt („keine Lösung zeigen, will es selber erst machen"), dann
+  alle vier Variablennamen beim ersten Selbstversuch SAE-korrekt
+  (`iLives`, `fSpeed`, `bIsRoundRunning`, `sPlayerName`) — das
+  Rollenpräfix-Fehlerbild vom Vormittag trat nicht wieder auf; das
+  Float-Suffix `f` aus C# richtig übertragen; die bool-Überraschung
+  (Ausgabe 1 statt true) selbst gefunden und präzise gemeldet.
+  **Fehlerbild:** `#include <string>` weggelassen, obwohl vorab
+  angesagt — kompilierte nur, weil MSVCs iostream den Header transitiv
+  mitliefert. **Hilfe:** Auflösung bool = kleine Zahl samt
+  `std::boolalpha` als Werkzeug; Datei-Header und Ausgabetext-Korrekturen
+  übernahm Claude nach Arbeitsteilung.
+- 2026-09-09 · L2 Ü2, Kontrollfluss — **Selbst:** die drei Pflichtstücke
+  (for, if/else, while) eigenständig zu einer verschachtelten
+  Runden-Spielschleife komponiert statt sie einzeln abzuliefern; Literale
+  von sich aus in benannte Werte gezogen (vor Behandlung von SAE-Regel
+  11); alle Folge-Fixes selbst gebaut — Lane-Offset samt treffender
+  Umbenennung, Rundenzähler durch Verschieben des Inkrements, Guard
+  Clause mit `break` am Schleifenkopf und dabei defensiv `<=` statt `==`
+  gewählt; beim Konstanten-Umbau Regel gegen Zustand sauber getrennt und
+  MACRO_CASE samt großem Typkürzel fehlerfrei angewandt; testet
+  Änderungen jetzt selbst, bevor er sie abgibt. C#-Transfer der
+  Trainingsfrage 2/3: beide Compiler-Reaktionen auf `if (iLives)`
+  korrekt vorhergesagt. **Fehlerbild:** die Zahl-als-Wahrheit-Regel
+  falsch gedeutet („solange es 3 ist" statt „0 ist die einzige falsche
+  Zahl"); das while als Dauer-Wächter verstanden statt als Prüfung nur
+  am Kopf — deshalb am Vergleich (`>=`) experimentiert statt am
+  Zeitpunkt; Lane-Ausgabe 0-basiert (Off-by-one); in der Verlust-Meldung
+  den Reststand statt des Verlusts ausgegeben (bekanntes
+  Quelle-Ziel-Muster); Game Over eine Runde zu hoch gezählt.
+  **Hilfe:** Zahlen-Trace der Runde 2 plus Ablauf-Diagramm der
+  Prüf-Zeitpunkte (Türsteher gegen blinde Zone); Zielbild mit
+  Erfolgskriterium (bekannte Eingabe 5 → „Game Over in Round 2", nie
+  −1); Konstanten-Aufgabe als Regel-gegen-Zustand-Frage gestellt.

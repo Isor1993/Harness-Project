@@ -22,20 +22,19 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-09-08 beim dritten `/harness:ende` des Tages —
-Abschnitt „C++-Unterricht Chapter 1", Development · Lernmodus, Revier
-Uni. Der Unterrichtsbericht steht in `Uni/LOG.md`; L1 wurde nicht mehr
-angefangen — Abbruch um 21:46 wegen Erschöpfung, Aufstehen um 5 Uhr.)*
+*(überschrieben 2026-09-09 beim `/harness:ende` — Abschnitt „Lane
+Defender · Lern-Vorlauf", Development · Lernmodus, Revier Lane Defender.
+L1 fertig, L2 halb; Bericht in `Projekte/Lane_Defender/LOG.md`,
+Lern-Rubriken in `Kern/LERNLOG.md`.)*
 
-**Mi, 2026-09-09 — kein Unterricht:** L1
-(`Sandbox/L1_Setup_Anleitung.txt` der Lane-Defender-Schicht; Commit
-danach: `Update V 0.0002`), dann L2. Danach Unreal-Toolchain-Test
-(Punkt unten) und Fab-Erstausstattung (`Projekte/Isor_Tower/ROADMAP.md`).
-**Do, 2026-09-10 — Unterricht:** Frage an den Dozenten stellen, ob die
-SAE-Konvention auch für den Model-Viewer gilt; sie entscheidet den Punkt
-„Dritte C++-Umgebung" in `Kern/ROADMAP.md`. Daneben offen: Abgabetermine
-der Uni (bis dahin gelten die `~`-Schätzungen) und die Sonntags-Reste
-(nächster `/harness:sonntag`).
+**Do, 2026-09-10 — Unterricht:** Dozenten-Frage, ob die SAE-Konvention
+auch für den Model-Viewer gilt (entscheidet „Dritte C++-Umgebung",
+`Kern/ROADMAP.md`). **Bis Fr, 2026-09-11, 23:00:** Epic-Flash-Sale
+durchsehen — Gratis-Posten mitnehmen, Kauf nur bei starkem Nutzen für
+Tower/Semester 3; klären, ob Fab-Assets dabei sind (Fab-Punkt:
+`Projekte/Isor_Tower/ROADMAP.md`). Danach L2-Rest (Ü3 Funktionen, Ü4
+Eingabe-Validierung), dann L3. Unreal-Toolchain-Test bleibt offen
+(Punkt unten); ebenso Abgabetermine der Uni und die Sonntags-Reste.
 
 ---
 

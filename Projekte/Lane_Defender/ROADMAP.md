@@ -9,11 +9,20 @@ wird mit Beleg (LOG-Eintrag oder Datei).
 
 ## Lern-Vorlauf — Sandbox, parallel zum Unterrichtsstart
 
-- [ ] **L1 · Werkzeug** — VS-2022-C++-Workload prüfen bzw. installieren,
+- [x] **L1 · Werkzeug** — VS-2022-C++-Workload prüfen bzw. installieren,
   erstes Projekt anlegen, kompilieren, Debugger starten; Unterschied zu
-  C#/Unity (nativ kompiliert, kein Runtime).
+  C#/Unity (nativ kompiliert, kein Runtime). **Erledigt am 2026-09-09:**
+  Workload war seit dem 2026-09-08 verifiziert (VS 2026); Projekt
+  `LaneDefender` angelegt, kompiliert, Debugger mit Breakpoint und
+  Locals benutzt, Theorie-Happen am eigenen Build (65,5 KB gegen
+  119,2 MB Unity). Beleg: Commit `Update V 0.0002` im Code-Repo und
+  `Kern/LERNLOG.md`, 2026-09-09.
 - [ ] **L2 · Syntax-Umzug** — Typen, `if`/`for`/`while`, Funktionen,
   `cin`/`cout` mit Eingabe-Validierung; Mini-Snippets in `Sandbox/`.
+  **Stand 2026-09-09:** Ü1 Typen und Ü2 Kontrollfluss erledigt — als
+  Runden-Spielschleife mit Guard Clause und SAE-Konstanten direkt in
+  `LaneDefender.cpp`, Commit `Update V 0.0003` im Code-Repo. Offen: Ü3
+  Funktionen, Ü4 Eingabe-Validierung.
 - [ ] **L3 · Werte, Pointer, Speicher** — Wertsemantik gegen
   C#-Referenzen, Stack und Heap, `&`, `*`, `nullptr`, `const&`;
   Adressen als echte Zahlen im Debugger ansehen.
