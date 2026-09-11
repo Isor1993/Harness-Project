@@ -41,6 +41,7 @@ Welche C++-Konvention greift, entscheidet das Ziel-Repo:
 | Ziel | Konvention |
 |---|---|
 | Konsolenprojekt (`Kern/PFADE.md` → `PROJEKT_LANE_DEFENDER`) | SAE-C++-Konvention — Uni-Pflicht, die Abgabe wird danach bewertet |
+| 3D-Model-Viewer (OpenGL, Aufgabe 2 des Moduls 5-101 — eigenes Repo folgt) | SAE-C++-Konvention, wie im Konsolenprojekt — Dozenten-Auskunft vom 2026-09-10 |
 | Unreal (`Kern/PFADE.md` → `PROJEKT_UNREAL`) | Epic C++ Coding Standard — von Epic vorgegeben |
 
 Beide sind Vorgaben, keine Auswahl: Im Konfliktfall mit Gewohnheiten

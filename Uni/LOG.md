@@ -137,3 +137,27 @@ damals, nicht den von heute.
   Coding-Convention" dort nicht als Feedbackelement führt. Die Antwort
   entscheidet den ROADMAP-Punkt „Dritte C++-Umgebung in
   `CODE_GUIDELINES.md` aufnehmen" (`Kern/ROADMAP.md`).
+- 2026-09-10 — C++-Unterricht UE 1 (so der Folientitel), deutscher
+  Track: laut Overview-Folie Projekt anlegen, Hello World, I/O und als
+  Abschluss die erste selbst getippte Praxisübung „Der Formelrechner"
+  (45-min-Zeitbox) — Konsolenprogramm mit `GetInput()`-Funktion und
+  Eingabe-Validierung über `cin.fail()`/`clear()`/`ignore()`, Umfang
+  und Fläche eines Kreises aus einem Radius; der erste Lauf traf die
+  Kontrollwerte (r = 5 → 31.4159 / 78.5398). Die offene Rückfrage vom
+  2026-09-08 ist beantwortet: Die SAE-Konvention gilt auch für den
+  3D-Model-Viewer, wie fürs Konsolenprojekt — eingepflegt in
+  `Kern/CODE_GUIDELINES.md` (Beleg: `Kern/LOG.md`); die Lernbefunde
+  des Abends stehen in `Kern/LERNLOG.md`.
+- 2026-09-10 — Zweite Auskunft zur Konventionsfrage, diesmal von der
+  Standort-Dozentin (per Discord — von ihr selbst als inoffizieller
+  Weg eingeordnet): Technisch greife die C++-Convention; die üblichen
+  C#-Conventions seien ebenfalls akzeptiert; verpflichtend sei allein,
+  innerhalb eines Projekts bei einer einzigen Konvention zu bleiben.
+  Daraufhin Regel 14 im SAE-PDF nachgelesen: Typkürzel sind wörtlich
+  nur „in Arduino-Umgebung und der Abwesenheit von IntelliSense
+  ausdrücklich erwünscht", die Beispiele des PDF tragen sie aber
+  durchgängig — beides deckt sich mit der Auslegung, die das Destillat
+  in `Kern/CODE_GUIDELINES.md` seit dem 2026-09-08 ausweist. Die
+  Konventionstabelle bleibt unverändert: Das SAE-Destillat erfüllt
+  alle drei Quellen (PDF, Online-Dozent, Standort-Dozentin) zugleich,
+  und der bestehende Lane-Defender-Code bleibt konsistent.

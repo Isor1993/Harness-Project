@@ -22,19 +22,19 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-09-09 beim `/harness:ende` — Abschnitt „Lane
-Defender · Lern-Vorlauf", Development · Lernmodus, Revier Lane Defender.
-L1 fertig, L2 halb; Bericht in `Projekte/Lane_Defender/LOG.md`,
-Lern-Rubriken in `Kern/LERNLOG.md`.)*
+*(überschrieben 2026-09-10 beim `/harness:ende` — Abschnitt
+„C++-Unterricht UE 1", Development · Lernmodus, Revier Uni. Übung
+Formelrechner gebaut, Dozenten-Auskunft eingepflegt — ROADMAP-Punkt
+„Dritte C++-Umgebung" erledigt; Bericht in `Uni/LOG.md`.)*
 
-**Do, 2026-09-10 — Unterricht:** Dozenten-Frage, ob die SAE-Konvention
-auch für den Model-Viewer gilt (entscheidet „Dritte C++-Umgebung",
-`Kern/ROADMAP.md`). **Bis Fr, 2026-09-11, 23:00:** Epic-Flash-Sale
-durchsehen — Gratis-Posten mitnehmen, Kauf nur bei starkem Nutzen für
+**Bis Fr, 2026-09-11, 23:00:** Epic-Flash-Sale durchsehen —
+Gratis-Posten mitnehmen, Kauf nur bei starkem Nutzen für
 Tower/Semester 3; klären, ob Fab-Assets dabei sind (Fab-Punkt:
-`Projekte/Isor_Tower/ROADMAP.md`). Danach L2-Rest (Ü3 Funktionen, Ü4
-Eingabe-Validierung), dann L3. Unreal-Toolchain-Test bleibt offen
-(Punkt unten); ebenso Abgabetermine der Uni und die Sonntags-Reste.
+`Projekte/Isor_Tower/ROADMAP.md`). Kleinrest Formelrechner: Testreihe
+`abc`/`-3`/`0`/`5` plus `#include <limits>`. Danach L2-Rest — erst
+prüfen, ob Ü3/Ü4 nach der Unterrichtsübung (`Kern/LERNLOG.md`,
+2026-09-10) verkürzt werden —, dann L3. Unverändert offen:
+Unreal-Toolchain-Test, Abgabetermine der Uni, Sonntags-Reste.
 
 ---
 

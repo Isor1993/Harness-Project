@@ -115,7 +115,7 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
   angestoßen von Isor am 2026-09-08 — die Vorgabe ist Epics, nicht
   unsere.
 
-- [ ] **Dritte C++-Umgebung in `CODE_GUIDELINES.md` aufnehmen** — die
+- [x] **Dritte C++-Umgebung in `CODE_GUIDELINES.md` aufnehmen** — die
   Tabelle „C++ — welche Konvention wo gilt" führt nur Konsolenprojekt
   und Unreal; der 3D-Model-Viewer (OpenGL, Aufgabe 2 des Moduls 5-101)
   fehlt, obwohl er die dritte eigenständige C++-Umgebung des Semesters
@@ -127,6 +127,10 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
   ausdrücklich verlangt ist die SAE-Konvention dort also nicht.
   Eingetragen wird erst nach der Rückfrage beim Dozenten
   (Unterricht am 2026-09-10), nicht auf diese Auslegung hin.
+  **Erledigt am 2026-09-10:** Dozenten-Auskunft im Unterricht — die
+  SAE-Konvention gilt auch für den Model-Viewer, wie fürs
+  Konsolenprojekt; die Tabelle führt ihn jetzt als drittes Ziel.
+  Belege: `Kern/LOG.md` (Eintrag), `Uni/LOG.md` (Auskunft).
 
 Was im Betrieb nicht trägt, kommt als Störung in `Kern/STOERUNGEN.md`
 und wird von dort aus zu einem Punkt hier — genau dafür fragt die

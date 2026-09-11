@@ -636,3 +636,13 @@ damals, nicht den von heute.
   Geprüft: `pruefen.py` nach jedem Schreibblock, zuletzt 0 Funde in
   allen neun Prüfungen; der Glossar-Hinweis (Review-Gate, LFS) wurde
   gegengelesen — beide unverändert — und mit `--glossar-ok` quittiert.
+- 2026-09-10 — **Dritte C++-Umgebung eingetragen** (ROADMAP-Punkt vom
+  2026-09-08): Die Tabelle „C++ — welche Konvention wo gilt" in
+  `CODE_GUIDELINES.md` führt den 3D-Model-Viewer jetzt als drittes
+  Ziel unter der SAE-Konvention — per Dozenten-Auskunft im Unterricht
+  vom selben Tag (Ereignis: `Uni/LOG.md`), nicht per Auslegung des
+  Aufgabentexts. Im selben Zug die Glossar-Kurzform „Systems
+  Hungarian" auf die erweiterte Geltung nachgezogen (Konsolenprojekt
+  **und** Model-Viewer); die übrigen fünf Hinweis-Kurzformen des
+  Prüflaufs gegengelesen, alle unverändert. Geprüft mit `pruefen.py`
+  nach dem Schreiben.

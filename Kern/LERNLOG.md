@@ -258,3 +258,24 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   Prüf-Zeitpunkte (Türsteher gegen blinde Zone); Zielbild mit
   Erfolgskriterium (bekannte Eingabe 5 → „Game Over in Round 2", nie
   −1); Konstanten-Aufgabe als Regel-gegen-Zustand-Frage gestellt.
+- 2026-09-10 · C++-Unterricht UE 1, Praxisübung Formelrechner (45-min-
+  Zeitbox, erste selbst getippte Übung im Unterricht) — **Selbst:**
+  `GetInput()` samt Eingabe-Validierung nach Gerüst gebaut — deckt die
+  offenen L2-Themen Funktionen und Validierung vorweg; erster Lauf mit
+  den Kontrollzahlen exakt richtig (31.4159 / 78.5398). Für den
+  vorgewarnten ignore-Hänger eine **eigene** Lösung gebaut (Aufräumen
+  ans Schleifenende verlegt statt Claudes if-Vorschlag) — robuster als
+  der Vorschlag, weil sie auch Restzeichen wie `.7` mit ausräumt;
+  `numeric_limits<streamsize>::max()` statt Literal verbaut; SAE-Namen
+  durchgängig korrekt (`bInputHasFailed`, `iRadius`, `dArea`).
+  Verständnisfrage selbst gestellt (warum `int32_t` statt `int`).
+  **Fehlerbild:** die Linker-Stufe war unbekannt — LNK2005 (doppelte
+  `main`) nicht einordnen können und die Error List nicht als Stand des
+  letzten Builds erkannt (Datei gelöscht, Fehler „blieb");
+  Wiederholung vom 2026-09-09: benutzter Header nicht selbst included
+  (`<limits>`, damals `<string>`) — kompilierte nur über MSVCs
+  transitive Includes; `system("cls")` direkt nach der Ausgabe wischte
+  das Ergebnis weg. **Hilfe:** Compiler-gegen-Linker-Zweistufigkeit
+  samt Lese-Regel (LNK- vs. C-Präfix); Vorwarnung, dass `ignore()` vor
+  der ersten Eingabe blockiert; Typbreiten-Erklärung (int ohne
+  Größengarantie, `_t`-Familie, Brücke zu Unreals `int32`).
