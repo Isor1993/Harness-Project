@@ -251,6 +251,14 @@ hatte.)*
   Versionsnummer). Der Metadaten-Abgleich bleibt daneben bestehen: Er
   ist die Prüfung, die die Stand-Stempel erlaubt macht (`DOC_RULES.md`,
   Abschnitt 7).
+  **Auf Zeit außerhalb des Turnus: die Seiten des ruhenden
+  Unity-Altstands** *(seit 2026-09-11)* — der Index führt sie mit der
+  Zeile `Ruht`. Benannte Ausnahme: Sie beschreiben Code, an dem bis zum
+  Kontrollpunkt der Stack-Entscheidung (Ende November, `Uni/DECISIONS.md`,
+  2026-09-07) niemand arbeitet; eine gründliche Prüfung liefe gegen
+  Stillstand. Der Metadaten-Abgleich schließt sie weiter ein. Am
+  Kontrollpunkt entscheidet Isor, ob sie in den Turnus zurückkehren oder
+  einzeln auf `🗑` gehen. Begründung in `DECISIONS.md`, 2026-09-11.
   **Eine Seite im Zustand `(geplant)` bleibt im Turnus**, wird aber gegen
   ihre führende Quelle geprüft statt gegen Code — den gibt es noch nicht.
   Zwei Fragen kommen dazu: Gilt die Absicht noch, oder hat eine spätere

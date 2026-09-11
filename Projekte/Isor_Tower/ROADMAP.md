@@ -67,9 +67,17 @@ liegt fertig im Datenbaum (`Kern/PFADE.md` → `DATENBAUM`,
   ist") eine Erstausstattungs-Runde: Claude legt Kandidaten in
   Viererpaketen vor, Isor claimt. Daneben als Routine wöchentlich
   ~5 Minuten die zeitlich begrenzten Fab-Freebies claimen — Claimen
-  bindet dauerhaft an den Epic-Account, geladen wird erst bei Bedarf.
-  Für alles, was in Projekt oder AssetLibrary wandert, gilt die
-  `_Quelle.txt`-Pflicht (`IsorBackup/RULES.md`).
+  bindet dauerhaft an den Epic-Account, geladen wird erst bei Bedarf;
+  dauerhaft Kostenloses ohne Frist läuft nicht weg und wird erst in
+  dieser Runde nach Bedarf gesichtet statt auf Vorrat geclaimt
+  (Isor, 2026-09-11). Für alles, was in Projekt oder AssetLibrary
+  wandert, gilt die `_Quelle.txt`-Pflicht (`IsorBackup/RULES.md`).
+- [ ] **Merkposten Ultra Dynamic Sky** — Kandidat für die
+  Erstausstattungs-Runde: Himmel, Wetter und Tageszeit in einem
+  stilunabhängigen Asset, passend zur geplanten Ingame-Uhr. Im
+  Fab-Flash-Sale vom 2026-09-11 (35,86 € statt 51,22 €) bewusst nicht
+  gekauft: Kauf erst bei unmittelbarem Bedarf, und Rabatte darauf
+  kehren in jedem großen Fab-Sale wieder.
 
 ## Nach dem Prototyp
 

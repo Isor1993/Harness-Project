@@ -739,3 +739,46 @@ Zuruf-Ausnahme in der Regel; als ROADMAP-Punkt am 2026-09-07 bewusst
 **nicht** aufgenommen (Isor: nur notieren).
 **Stand:** offen. Beobachten, ob der Fall wieder auftritt — beim
 zweiten Mal die Ausnahme-Frage neu stellen.
+
+### 2026-09-11 — Kommentar-Arbeitsteilung beim Review nicht angewandt
+**Was:** Beim Review der Ü3-Funktionen im Lane Defender gab Claude Isor
+die Header-History-Zeile und eine Ausgabe-Korrektur als Aufgabe mit,
+statt sie selbst zu ergänzen; die `///`-Summaries fehlten im Review
+ganz. Isor musste die Arbeitsteilung einfordern („Kommentare und
+History machst ja du").
+**Ursache:** Die Regel steht seit dem 2026-07-18 in
+`Kern/CODE_GUIDELINES.md` → „Kommentare & Datei-Header" („Header,
+Summaries und Kommentare ergänzt Claude automatisch beim Review"). Sie
+war beim Review nicht im Kontext: Gelesen waren nur SAE-Abschnitt und
+Review-Gate — und das Gate endet vor dem Coden; nach dem Coden erinnert
+keine Prüfebene an die Kommentar-Pflichten.
+**Regel:** Vorhanden und eindeutig, reiner Ausführungsfehler. Gegenmittel
+nach der DOC_RULES-Linie „Ausführungsfehler ins Format einbauen": die
+Kommentar-Nachpflege als festen Prüfpunkt ans Review hängen — als Punkt
+in `Kern/ROADMAP.md` aufgenommen (Isors Ja vom 2026-09-11).
+**Stand:** offen — im Vorfall selbst behoben (History-Zeile, sechs
+Summaries und das Leerzeichen am 2026-09-11 nachgetragen), die
+Format-Verankerung steht aus.
+
+### 2026-09-11 — Pflegetag 18 Tage ausgefallen, drei Pflegeregeln still gerissen
+**Was:** Zwischen dem ersten Pflegetag (2026-08-23) und dem 2026-09-11
+lief keiner; zwei Sonntage (30.08., 06.09.) vergingen ohne
+`/harness:sonntag`. In der Lücke rissen drei Regeln, ohne dass etwas
+meldete: `⚙️ System · Harness` stand nach dem Sprung auf 2.1.0
+(2026-08-27) weiter auf 2.0.0, obwohl die Seite bei jeder neuen
+Harness-Version nachgezogen wird; `Szenenwechsel & Lobby` (2026-08-30)
+ging ohne Eintrag in den `ARTIFACT_INDEX.md`; und die gründliche Prüfung
+einer Seite (seit 2026-08-25) lief kein einziges Mal. Aufgefallen ist
+alles erst am Pflegetag selbst.
+**Ursache:** Alle drei Regeln hängen an einem Vorsatz — der Pflegetag an
+Isors Aufruf, das Nachziehen an der Erinnerung beim Versionssprung, der
+Index-Eintrag an der Session, die veröffentlicht. Nichts Mechanisches
+schaut hin: Den Artifact-Bestand sieht kein Skript, und dass ein
+Pflegetag fällig ist, meldet niemand.
+**Regel:** `WORKFLOW.md` → „Pflegetag (`/harness:sonntag`)"
+(Wochentakt); `ARTIFACT_INDEX.md` → Regel unter `⚙️ System · Harness`;
+`ARTIFACT_RULES.md` → „Pflege" (jede Änderung am Bestand wird
+nachgetragen). Ausführungsfehler, keine fehlende Regel.
+**Stand:** offen — Gegenmittel als ROADMAP-Punkt (`Kern/ROADMAP.md` →
+„Pflege-Fälligkeiten als Hinweis in `pruefen.py`"). Die drei Folgen sind
+am selben Tag behoben (`Kern/LOG.md`, 2026-09-11).

@@ -40,3 +40,13 @@ leere Rubrik schreibt `—`.
   bisher „recht leicht, nur Syntax-Gewöhnung", Respekt vor den
   Pointern (L3). Session nach rund zwei Stunden bewusst an der
   Baustein-Grenze geschnitten.
+- 2026-09-11 — L2 Ü3 Funktionen erledigt, am Spielcode: `main` in die
+  Überladungsfamilie `PrintMessage` (string-/int32_t-/float-Wege,
+  Default `a_bNextLine = true`) und `LoseLives` zerlegt, Prototypen
+  oben, Definitionen unter `main`; die Datei konsequent auf `int32_t`
+  umgestellt (Entscheidung in den DECISIONS dieser Schicht).
+  Regressionslauf gegen die Ü2-Ausgabe bestanden: speed 1.5,
+  Round status true, Leben 5→0, Game Over in Round 2. Die
+  Lern-Rubriken stehen in `Kern/LERNLOG.md` unter 2026-09-11; die
+  Verkürzungsfrage aus `PLAN.md` hat Isor mit „voll machen"
+  entschieden — offen bleibt nur Ü4 Eingabe-Validierung.

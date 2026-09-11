@@ -28,20 +28,30 @@ Zeilen je Eintrag:
   diese Klassen nur als Beleg.
 - **Seite →** — wohin die Seite selbst verlinkt.
 - **Seite ←** — welche Knowledge-Notizen auf sie zeigen.
+- **Ruht** — die Seite beschreibt den ruhenden Unity-Altstand und steht
+  bis zum Kontrollpunkt der Stack-Entscheidung außerhalb der gründlichen
+  Prüfung (`ARTIFACT_RULES.md` → „Wann geschaut wird"). Die Zeile nennt
+  nur das Datum.
 
 ---
 
 ## 📍 Status  — Schicht: Projekt
 
-### 📍 Status · Wo das Projekt steht
+### 🗑 Löschen · Wo das Projekt steht
 ```
 URL      https://claude.ai/code/artifact/d5e30d97-fafd-4f9e-be83-e727df4d0405
 Stand    2026-08-23 — nach dem Umbau neu gebaut, erste Seite im neuen
          Hausstil (ARTIFACT_RULES → „Gestaltung")
+Zustand  **🗑** seit 2026-09-11 (Pflegetag, Isor): Die Seite nannte noch
+         Harness 1.0.0 und kannte weder die Stack-Entscheidung noch
+         Semester 3. Abgelöst durch `📍 Status · Semester 3`, das seit
+         der Stack-Entscheidung auch den Tower trägt. Titel und
+         Kopf-Marke umgestellt, oben ein Hinweis mit Link auf den
+         Nachfolger; Inhalt und Favicon unverändert.
 Quelle   PLAN.md, Kern/ROADMAP.md, Projekte/Isor_Tower/ROADMAP.md,
          Uni/ROADMAP.md, Projekte/Isor_Tower/GDD.md
 Skripte  keine — die Seite beschreibt den Projektstand, nicht Code
-Seite →  System · Harness
+Seite →  System · Harness, Status · Semester 3
 Seite ←  keine
 ```
 
@@ -56,6 +66,7 @@ Stand    2026-09-08 — neu gebaut im Design-Abschnitt „Semester-Roadmap":
          Zeitstrahl mit fester/geschätzter Trennung, Schätzlogik-Tafel,
          Phasenplan. Geschätzte Termine (~) werden ersetzt, sobald Isors
          Canvas-Export die echten liefert.
+Löst ab  `🗑 Löschen · Wo das Projekt steht` (seit 2026-09-11)
 Quelle   Uni/ROADMAP.md (Phasenplan), Uni/DECISIONS.md,
          Uni/Semester_3/STUNDENPLAN.md, Uni/Semester_3/VORJAHR_AUFGABEN.md
 Skripte  keine — die Seite zeigt Termine und Plan, nicht Code
@@ -122,6 +133,7 @@ Stand    2026-08-24 — nachgezogen, im Paar mit GPU-Instancing:
          GrassInteraction und GrassLodLevel ergänzt, Ladebalken als
          gebaut markiert, ShoreMargin-0-Hinweis, 190.000 als Messstand
          datiert und gegen die 211.000-Baseline abgegrenzt.
+Ruht     seit 2026-09-11
 Quelle   Projekte/Isor_Tower/LOG.md und .../DECISIONS/
 Skripte  TerrainConfig, HeightmapGenerator, PlateauModifier, MeshBuilder,
          CurveLookup, Placeable, ObjectPlacer, Placement, PlacementMetrics,
@@ -151,6 +163,7 @@ Stand    2026-08-24 — Neubau nach der Teilung: behält Spielablauf,
          füttert jetzt LobbyPanel (Zähler, Rollen, Gast-Name); neu sind
          LobbyPlayer, LobbyPlayerSpawner, LobbyPlayerRow, LobbyPanel und
          ISessionService.MaxPlayers. Beim Nachziehen mit aufnehmen.
+Ruht     seit 2026-09-11
 Quelle   Projekte/Isor_Tower/LOG.md und .../DECISIONS/
 Skripte  SceneLoader, LoadingScreenController, GameController,
          MainMenuController, Player, PlayerMotor, PlayerLook,
@@ -172,6 +185,7 @@ Stand    2026-08-24 — neu, abgespalten aus „Grundgerüst" (Entscheidung
          ist Platzhalter, das Schadenssystem hat Verträge, aber noch
          keinen Angreifer; Verhungern ist der einzige laufende
          Schadensweg.
+Ruht     seit 2026-09-11
 Quelle   Projekte/Isor_Tower/LOG.md und .../DECISIONS/
          (Entities.md, Welt.md)
 Skripte  IngameTime, DayNightCycle, DayNightCycleEventManager,
@@ -197,6 +211,7 @@ Stand    2026-08-24 — nachgezogen: Hausfarbwelt (Neubau aus der
          Reihenfolge trägt; FSM-Lesestellen auf vier korrigiert;
          neu StatusText/Zähm-Laut und der Commander als Herdenanker
          (HerdManager); Fußzeilen-Pfade auf die echten Orte.
+Ruht     seit 2026-09-11
 Quelle   Projekte/Isor_Tower/LOG.md und .../DECISIONS/
 Skripte  TamedSheepReference (SO), SheepInteractable, Sheep, PlayerInteractor,
          IInteractable, FollowPlayerState, HerdManager
@@ -211,14 +226,18 @@ Stand    2026-08-26 — neu aus der Design-Session vom 25./26.08.
 Zustand  **geplant** — die Seite beschreibt Absicht, nicht Zustand;
          gebaut ist davon nichts. Seit dem 2026-08-26 ist das kein
          Behelf mehr, sondern geregelt: `(geplant)` ist ein Zustand,
-         kein eigener Typ (`ARTIFACT_RULES.md` → „Die Typen"). Am
-         Pflegetag bleibt die Seite im Turnus, wird aber gegen die
-         führende Quelle geprüft statt gegen Code.
-Titel    Draußen steht noch `⚙️ System · Multiplayer`, ohne die Klammer —
-         die Regel entstand einen Tag nach der Veröffentlichung.
-         Nachgezogen wird beim nächsten inhaltlichen Anfassen, wie beim
-         Stil des Altbestands: Ein Neubau der ganzen Seite allein für
-         eine Klammer lohnt nicht.
+         kein eigener Typ (`ARTIFACT_RULES.md` → „Die Typen"). Im
+         Turnus würde sie gegen die führende Quelle geprüft statt gegen
+         Code. Pflegetag 2026-09-11: Die Absicht ist von der
+         Stack-Entscheidung überholt (`Uni/DECISIONS.md`, 2026-09-07) —
+         sie plant NGO in Unity; die engine-neutralen Design-Fragen
+         daraus stehen in `Projekte/Isor_Tower/ROADMAP.md`.
+Ruht     seit 2026-09-11
+Titel    Draußen steht nur `Multiplayer` — ohne Symbol, Typwort und
+         Klammer (Abgleich 2026-09-11; der frühere Vermerk nannte
+         `⚙️ System · Multiplayer`, das stimmte nicht). Nachgezogen beim
+         nächsten inhaltlichen Anfassen: Ein Neubau der ganzen Seite
+         allein für den Titel lohnt nicht.
 Quelle   Projekte/Isor_Tower/DECISIONS/Multiplayer.md, .../ROADMAP.md,
          .../GDD.md
 Skripte  beschreibt keinen gebauten Code. Gemessen wurde gegen den
@@ -245,12 +264,32 @@ Zustand  **teils geplant** — die Host-Optionen-Tafel ist seit dem 04.09.
 Titel    Draußen heißt sie „Die Lobby-Tafel" — benannt, bevor die Seite
          ins Register kam. Nachgezogen beim nächsten inhaltlichen
          Anfassen (Schritt 5), wie beim Multiplayer-Präzedenzfall.
+Ruht     seit 2026-09-11
 Quelle   Projekte/Isor_Tower/DECISIONS/UI.md (Einträge vom 29.08. und
          01.09.)
 Skripte  beschreibt UI-Entwurf, keinen Code. Die Maße sind gegen
          HostOptionsPanel.cs und die Szene geprüft (szene_pruefen.py).
 Seite →  keine
 Seite ←  keine
+```
+
+### ⚙️ System · Szenenwechsel & Lobby
+```
+URL      https://claude.ai/code/artifact/19033944-8b4c-4308-a19d-f59c169df3bf
+Stand    2026-08-30 — Baustand des Kerns von Baustein B (Design am
+         29.08., gebaut und getestet am 30.08.). Nachgetragen am
+         2026-09-11: Beim Abgleich stand die Seite in keinem Register.
+Titel    Draußen heißt sie „Szenenwechsel & Lobby" — ohne Symbol und
+         Typwort. Nachgezogen beim nächsten inhaltlichen Anfassen, wie
+         bei der Lobby-Tafel.
+Ruht     seit 2026-09-11
+Quelle   Projekte/Isor_Tower/DECISIONS/UI.md, .../DECISIONS/Multiplayer.md
+Skripte  laut Seite: MultiPlayerPanel, JoinPanel, LobbyPanel, LobbyPlayer,
+         ISessionService, LoadingScreenController, SelectOnHover
+Seite →  keine
+Seite ←  keine direkt; Unity/ngo-szenenwechsel-ladebalken.md und
+         Unity/ngo-lobby-objekt-je-spieler.md nennen die Design-Session
+         vom 2026-08-29 ohne Link
 ```
 
 ---
@@ -266,6 +305,7 @@ Stand    2026-08-24 — nachgezogen: Hausfarbwelt (Neubau aus der hellen
          ObjectPlacer.cs verifiziert) samt geschärftem Merksatz,
          Anzahl aus der Fallen-Überschrift entfernt, Fußzeile nennt
          LOG.md statt FEATURE_LOG und die führende Quelle.
+Ruht     seit 2026-09-11
 Quelle   Projekte/Isor_Tower/TDD_NOTES.md, Knowledge-Ordner
 Beispiel ObjectPlacer, CurveLookup, ExclusionArea, PlacementExclusionFilter,
          GrassCellBuilder
@@ -332,6 +372,7 @@ Stand    2026-08-24 — nachgezogen: Hausfarbwelt (Neubau aus der hellen
          Kasten mit dem echten EnableUI-Code belegt, Kette zeigt beide
          Maps, neu die gehaltene Taste (ReadValueAsButton) und der
          Beleg des normalized-Beispiels in PlayerMotor.Move().
+Ruht     seit 2026-09-11
 Quelle   Projekte/Isor_Tower/TDD_NOTES.md, Knowledge-Ordner
 Beispiel PlayerInputReader, PlayerControls (.inputactions), GameController
 Seite →  (noch nicht erfasst)
@@ -341,10 +382,17 @@ Seite ←  keine
 ### 💡 Lernstück · EditorWindow & MVP
 ```
 URL      https://claude.ai/code/artifact/415afd2f-e1f4-4e9d-9517-0b8585f74ac6
-Stand    2026-08-08
+Stand    2026-09-11 — erste gründliche Prüfung des Pflegetags, danach
+         Neubau im Hausstil: „niemals `using UnityEditor`" auf „nur
+         hinter `#if UNITY_EDITOR`" korrigiert (Beleg
+         `GameController.QuitGame`), der direkte Blick der View aufs
+         Model in Tafel und Text, der Prefab-Painter als lockerer
+         gesetzter Schnitt ausgewiesen, die Model-Zeile um ObjectPlacer,
+         PlacementExclusionFilter und InstancedRenderer ergänzt.
+Ruht     seit 2026-09-11
 Quelle   Projekte/Isor_Tower/TDD_NOTES.md, Knowledge-Ordner
 Beispiel TerrainToolWindow, TerrainToolPresenter,
-         PrefabPainterWindow, PrefabPainterPresenter
+         PrefabPainterWindow, PrefabPainterPresenter, GameController
 Seite →  System · Terrain & Gras
 Seite ←  Patterns/mvp-model-view-presenter.md,
          Unity/editor-scripting-editorwindow.md
@@ -387,6 +435,7 @@ Herkunft wie die Seite darüber: Vorlauf ohne Harness, bis heute in
          Projekt aus; entschieden wurde ein Neustart **im selben Repo**.
          Im Nachtrag-Kasten benannt.
 Stil     wie die Seite darüber — eigene Fassung, nicht Hausfarbwelt.
+Ruht     seit 2026-09-11
 Quelle   Projekte/Isor_Tower/DECISIONS/Multiplayer.md → „Verhältnis zum
          Vorlauf vom 2026-08-23/24"
 Beispiel vierzehn Etappen durch die NGO-Bausteine: NetworkObject,
@@ -404,16 +453,37 @@ Seite ←  keine
 URL      https://claude.ai/code/artifact/5ea67ac8-e377-46ba-8920-d21ef5508131
 Stand    2026-09-08 — neu, gebaut im Zug der Guidelines-Einpflege; Inhalt
          aus dem SAE-PDF (Version 05.09.2022) und den C++-Abschnitten
-         der CODE_GUIDELINES vom selben Tag.
-Quelle   Kern/CODE_GUIDELINES.md → „C++ · Konsolenprojekt —
-         SAE-Konvention (Pflicht)"; Original-PDF im Datenbaum unter
-         01_Uni\_Regelwerk\ (Kern/PFADE.md → DATENBAUM)
+         der CODE_GUIDELINES vom selben Tag. Geltung am 2026-09-11
+         nachgezogen (Pflegetag): auch der 3D-Model-Viewer
+         (Dozenten-Auskunft vom 10.09.); der L1-Kasten „Heute Abend" ist
+         durch eine Geltungstafel ersetzt.
+Quelle   Kern/CODE_GUIDELINES.md → „C++ — welche Konvention wo gilt" und
+         „C++ · Konsolenprojekt — SAE-Konvention (Pflicht)"; Original-PDF
+         im Datenbaum unter 01_Uni\_Regelwerk\ (Kern/PFADE.md → DATENBAUM)
 Beispiel keine Projekt-Klassen — die Code-Beispiele der Seite (CPlayer)
-         sind synthetisch nach SAE-Muster; sobald echter
-         Lane-Defender-Code existiert, können sie durch ihn belegt werden
+         sind synthetisch nach SAE-Muster. Echter Lane-Defender-Code
+         existiert seit dem 2026-09-09; belegt sind die Beispiele durch
+         ihn noch nicht
 Seite →  keine
 Seite ←  Cpp/sae-cpp-konventionen.md
          (dort auch Offline-Kopie Seiten/2026-09-08-sae-cpp-konventionen.html)
+```
+
+### 💡 Lernstück · C++-Funktionen & Überladung
+```
+URL      https://claude.ai/code/artifact/1a3f534c-2b97-4f84-a81e-13ca4211f227
+Stand    2026-09-11 — neu, gebaut beim Abschluss von L2 Ü3 (Lane
+         Defender): drei Tafeln — Wertübergabe by value, Prototyp gegen
+         Definition (Semikolon), Überladungswahl mit der bool→1-Falle;
+         dazu Default-Argumente und die double-Literal-Falle.
+         Offline-Kopie: Seiten/2026-09-11-cpp-funktionen-ueberladung.html
+Quelle   Knowledge-Ordner: Cpp/funktionen-bekommen-kopien.md und
+         Cpp/ueberladung-nimmt-den-billigsten-weg.md
+Beispiel LaneDefender.cpp — PrintMessage-Überladungsfamilie und
+         LoseLives, belegt am echten Ü3-Code vom 2026-09-11
+Seite →  Lernstück SAE-C++-Konventionen
+Seite ←  Cpp/funktionen-bekommen-kopien.md,
+         Cpp/ueberladung-nimmt-den-billigsten-weg.md
 ```
 
 ---
@@ -423,12 +493,13 @@ Seite ←  Cpp/sae-cpp-konventionen.md
 ### ⚙️ System · Harness
 ```
 URL      https://claude.ai/code/artifact/42f2b4ac-aacb-45eb-8911-55eb7769c459
-Stand    2026-08-23 — nachgezogen auf Version 2.0.0
+Stand    2026-09-11 — nachgezogen auf Version 2.1.0 (Pflegetag, fällig
+         seit dem 2026-08-27): Erststart, Prüfung 9 samt Hinweisen,
+         sechster Befehl, Auslieferung ohne fremde Geschichte,
+         Revier-Regel, Zahlen neu gezählt; dazu ein Abschnitt, was seit
+         2.1.0 ohne neue Nummer dazukam.
 Überholt Sammelstelle bis zur nächsten Harness-Version (Regel unten):
-         · Prüfung 8 (2026-08-26) — `pruefen.py` prüft jetzt auch die
-           Artifact-IDs im Knowledge-Ordner gegen diesen Index.
-           Betroffen: der Skript-Abschnitt und die Prüfebenen-Tabelle,
-           die die Prüfungen einzeln aufzählt.
+         leer — geleert am 2026-09-11 mit dem Nachziehen.
 Quelle   CLAUDE.md, Kern/WORKFLOW.md, DOC_RULES.md, VERSIONIERUNG.md,
          DECISIONS.md
 Skripte  keine Unity-Skripte; die Seite beschreibt die Harness-Dateien,
@@ -474,6 +545,19 @@ Skripte  MainMenuController, PauseMenuController, GameSettings, HudRoot
 Seite →  keine
 Seite ←  Kern/ARTIFACT_RULES.md, Abschnitt „Gestaltung"
 ```
+
+---
+
+## Nicht geführte Seiten
+
+Veröffentlicht, aber kein Teil des Harness. Sie stehen hier nur, damit
+der Abgleich gegen die Veröffentlichungsliste sie nicht jede Woche neu
+meldet — ein Register muss vollständig sein (`DOC_RULES.md`,
+Abschnitt 8).
+
+| ID | Titel | seit | Grund |
+|---|---|---|---|
+| `fc15275b-…` | Fenominal Duftliste | 2026-08-31 | privat, ohne Projektbezug — beim Abgleich am 2026-09-11 aufgefallen |
 
 ---
 

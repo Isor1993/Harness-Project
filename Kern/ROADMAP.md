@@ -60,6 +60,14 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
   verfälschen kann. Anlass: Fehlalarm „`\` statt `//`" am 2026-08-30
   (`Kern/STOERUNGEN.md`); dieselbe Linie wie der Ownership-Vorfall vom
   2026-08-21 („Befund braucht Beleg").
+- [ ] **Pflege-Fälligkeiten als Hinweis in `pruefen.py`** — Gegenmittel
+  zur Störung vom 2026-09-11 (`Kern/STOERUNGEN.md`): ein Hinweis (`?`,
+  kein Fund), wenn der letzte Pflegetag-Eintrag in `Kern/LOG.md` älter
+  als sieben Tage ist, und einer, wenn die Harness-Version in `CLAUDE.md`
+  nicht die Version im Stand von `⚙️ System · Harness` im
+  `ARTIFACT_INDEX.md` ist. Beides steht in Dateien; den veröffentlichten
+  Bestand selbst sieht das Skript weiterhin nicht, der bleibt Sache des
+  Pflegetags.
 - [x] **Lern-Log einführen** — eine laufend geführte Aufzeichnung
   darüber, was Isor selbst geschafft hat, wo Gerüste oder Hilfe nötig
   waren und welche Fehler auftraten; die Zeugnisse
@@ -131,6 +139,14 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
   SAE-Konvention gilt auch für den Model-Viewer, wie fürs
   Konsolenprojekt; die Tabelle führt ihn jetzt als drittes Ziel.
   Belege: `Kern/LOG.md` (Eintrag), `Uni/LOG.md` (Auskunft).
+
+- [ ] **Kommentar-Nachpflege ans Review anhängen** — Die Arbeitsteilung
+  „Header, Summaries und Kommentare ergänzt Claude automatisch beim
+  Review" (`Kern/CODE_GUIDELINES.md`, seit 2026-07-18) hat keinen
+  Prüfpunkt: Das Review-Gate greift nur **vor** dem Coden, und am
+  2026-09-11 wurde die Regel übergangen, bis Isor sie einforderte
+  (`Kern/STOERUNGEN.md`). Als festen Punkt nach Coden/Review verankern,
+  damit die Regel im Format liegt statt im Gedächtnis.
 
 Was im Betrieb nicht trägt, kommt als Störung in `Kern/STOERUNGEN.md`
 und wird von dort aus zu einem Punkt hier — genau dafür fragt die

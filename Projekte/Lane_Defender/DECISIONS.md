@@ -174,3 +174,34 @@ Umbau des alten").
 Verworfen: direkt in der Abgabe-Struktur des Datenbaums arbeiten
 (vermischt Arbeitsstand und Abgabe, keine Historie); ein Unterordner im
 Unreal-Repo (das Konsolenprojekt ist ausdrücklich eigenständig).
+
+## 2026-09-11 — int32_t statt int im ganzen Projekt
+Was: Ganzzahlen im Lane Defender sind durchgängig `int32_t` (aus
+`<cstdint>`, der Include steht ausdrücklich selbst in der Datei); das
+SAE-Typkürzel bleibt `i`. Gilt auch für Konstanten und Schleifenzähler
+— kein Mischbetrieb.
+Warum: Isors Argument vom 2026-09-11 — `int` garantiert seine Breite
+nicht (implementierungsabhängig; auf MSVC/Windows x64 fest 32 Bit),
+`int32_t` macht die Breiten-Entscheidung im Code sichtbar und ist im
+Prüfungsgespräch verteidigbar; zugleich die Brücke zu Unreals `int32`.
+Die SAE-Konvention regelt Namen, nicht Typwahl; die Dozentin verlangt
+nur Konsistenz innerhalb des Projekts.
+Verworfen: `int` nach dem Vorbild der SAE-Beispiele (Claudes erste
+Empfehlung — auf der Zielplattform gleichwertig, macht die Breite aber
+nicht sichtbar); Mischbetrieb je Stelle (verletzt die
+Konsistenz-Vorgabe).
+
+## 2026-09-11 — bool-Ausgaben laufen nicht über PrintMessage
+Was: Die Ausgabe-Hilfsfunktion `PrintMessage` (Überladungen für string,
+int32_t und float, jeweils mit `a_bNextLine = true` als Default) druckt
+keine bool-Werte; die eine Statuszeile schreibt ihren bool direkt über
+`std::cout` mit lokalem `boolalpha`.
+Warum: Das Endargument `a_bNextLine` macht eine bool-Wert-Überladung
+mehrdeutig — `PrintMessage("x", false)` wäre zugleich
+„Label ohne Umbruch" und „Wert false mit Default" —, und ohne eigene
+bool-Überladung wandelt die Überladungswahl den Wert still zu int
+(Ausgabe `1` statt `true`, belegt am 2026-09-11). Eine benannte Grenze
+ist billiger als eine verbogene API.
+Verworfen: vierte Wert-Überladung `(string, bool, bool)` (mehrdeutig
+gegen `(string, bool)`); `boolalpha` global setzen (wirkungslos, weil
+der Wert als int ankam).

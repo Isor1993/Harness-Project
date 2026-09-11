@@ -279,3 +279,24 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   samt Lese-Regel (LNK- vs. C-Präfix); Vorwarnung, dass `ignore()` vor
   der ersten Eingabe blockiert; Typbreiten-Erklärung (int ohne
   Größengarantie, `_t`-Familie, Brücke zu Unreals `int32`).
+- 2026-09-11 · Lane Defender Ü3 Funktionen (L2, erste Funktions-Übung
+  ohne Gerüst) — **Selbst:** PrintMessage-Überladungsfamilie und
+  LoseLives entworfen; die Signatur-Lücke (aktueller Lebensstand fehlt)
+  nach sokratischer Rückfrage selbst geschlossen; `int32_t` gegen die
+  SAE-Beispiel-Praxis selbst begründet (explizite Breite) und
+  konsequent durchgezogen; statt der empfohlenen float-Umstellung
+  eigenständig getrennte int32/float-Überladungen gebaut — die bessere
+  Lösung; `I_ADD_ROUND` ungefragt zur Konstante gemacht; C2084 über
+  Semikolon-Prototypen behoben, Default-Werte korrekt nur in die
+  Prototypen gesetzt; Überladungswahl („billigster Weg") danach in
+  eigenen Worten richtig erklärt. **Fehlerbild:** „kompiliert" mit
+  „fertig" verwechselt — Regressionslauf ausgelassen (Unterbrechung im
+  Alltag) und Warnungen in der Error List ausgeblendet, dadurch
+  float→int32-Abschneiden (C4244) und bool→1 unbemerkt;
+  `iLives -= LoseLives(...)` — Abzug doppelt gerechnet, Spiel endete
+  nie; Prototypen zunächst als Leer-Definitionen `{}` getippt (C2084
+  als Schwester des LNK2005 aus UE 1); boolalpha zunächst als
+  Umwandlungs-Zwang gedeutet statt als Anzeige-Schalter. **Hilfe:**
+  Überladungsauflösung (Anzahl, dann billigste Umwandlung) als
+  Diagramm; Deklaration gegen Definition am Semikolon erklärt; Regel
+  für Default-Argumente (nur im Prototyp); cout-eigener bool-Weg.

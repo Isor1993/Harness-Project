@@ -728,3 +728,11 @@ damals, nicht den von heute.
   die Quell-GUID ist ein Textfeld im Asset. Aus der Git-Historie samt
   originaler `.meta` nach `Assets/Fonts/` restauriert, nach
   Editor-Neustart geheilt.
+- 2026-09-11 — Fab-Flash-Sale im September gesichtet (Frist 23:00 MESZ),
+  nichts gekauft: Toolchain-Test offen, Stilfrage offen, Budget knapp —
+  der einzige ernste Kandidat steht als Merkposten in der ROADMAP dieser
+  Schicht (Ultra Dynamic Sky). Die drei Rotations-Freebies geclaimt
+  (Standardlizenz Privat): Sharur's Normandy Village + PCG Plants,
+  Industrial Infrastructure (Sierra Division) und RPG – Crafting &
+  Environment VFX (VRhinoFX) — zusammen 149,57 € Listenwert für 0 €;
+  Claim von Isor im Browser bestätigt.

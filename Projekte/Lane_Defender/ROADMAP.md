@@ -23,6 +23,12 @@ wird mit Beleg (LOG-Eintrag oder Datei).
   Runden-Spielschleife mit Guard Clause und SAE-Konstanten direkt in
   `LaneDefender.cpp`, Commit `Update V 0.0003` im Code-Repo. Offen: Ü3
   Funktionen, Ü4 Eingabe-Validierung.
+  **Stand 2026-09-11:** Ü3 Funktionen erledigt — PrintMessage-Überladungen
+  und LoseLives am Spielcode, Beleg im LOG dieser Schicht und in
+  `Kern/LERNLOG.md`; die Verkürzungsfrage aus der PLAN-Übergabe hat Isor
+  mit „Ü3/Ü4 voll statt verschmolzen" entschieden. Offen: nur noch Ü4
+  Eingabe-Validierung — dort läuft die Testreihe `abc`/`-3`/`0`/`5` am
+  eigenen Code.
 - [ ] **L3 · Werte, Pointer, Speicher** — Wertsemantik gegen
   C#-Referenzen, Stack und Heap, `&`, `*`, `nullptr`, `const&`;
   Adressen als echte Zahlen im Debugger ansehen.

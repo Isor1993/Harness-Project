@@ -1418,3 +1418,24 @@ Tag wäre ungeprüfte Halbarbeit gewesen.
 Verworfen: Hungarian nur für Arduino-Kontexte (wortlauttreu, aber gegen
 alle Beispiele); den Epic-Standard sofort mitdestillieren (kein Bedarf
 vor Ende Oktober, Zeit gehörte dem L1-Abend).
+
+## 2026-09-11 — Die Artifact-Seiten des Unity-Altstands ruhen bis zum Kontrollpunkt
+Was: Seiten, die den ruhenden Unity-Altstand beschreiben, bleiben
+unverändert stehen und fallen aus der gründlichen Prüfung des Pflegetags;
+der Metadaten-Abgleich schließt sie weiter ein. Im `ARTIFACT_INDEX.md`
+trägt jede eine Zeile `Ruht`, dort steht auch, welche es sind. Am
+Kontrollpunkt der Stack-Entscheidung (Ende November) entscheidet Isor, ob
+sie in den Turnus zurückkehren oder einzeln auf `🗑` gehen. Regel in
+`ARTIFACT_RULES.md` → „Wann geschaut wird". Entschieden von Isor am
+Pflegetag.
+Warum: Die Stack-Entscheidung (`Uni/DECISIONS.md`, 2026-09-07) legt den
+Unity-Stand still, schließt ihn aber nicht ab — ihr Notausgang kann ihn
+zurückbringen. Nachziehen hieße Seiten über Code pflegen, an dem niemand
+arbeitet; `🗑` hieße sie aufgeben, bevor feststeht, ob sie noch gebraucht
+werden. Die gründliche Prüfung wählt nach ältestem Stand und hätte ohne
+die Ausnahme Woche für Woche ruhende Seiten gezogen.
+Verworfen: ein Zustand `(Altstand)` im Titel — in der Galerie sauberer,
+kostet aber rund elf Neuveröffentlichungen für eine Frage, die Ende
+November ohnehin neu gestellt wird · alles im Turnus lassen — die
+gründliche Prüfung liefe ins Leere.
+Auslöser: Pflegetag 2026-09-11, der erste seit dem 2026-08-23.

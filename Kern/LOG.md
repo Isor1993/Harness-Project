@@ -646,3 +646,20 @@ damals, nicht den von heute.
   **und** Model-Viewer); die übrigen fünf Hinweis-Kurzformen des
   Prüflaufs gegengelesen, alle unverändert. Geprüft mit `pruefen.py`
   nach dem Schreiben.
+- 2026-09-11 — **Pflegetag, der erste seit dem 2026-08-23** (Parallel-Session,
+  Revier Kern). Abgleich gegen die Veröffentlichungsliste: 24 Seiten
+  live, alle 22 geführten erreichbar; die 23 Links zwischen den Seiten
+  und die 28 Adressen in Harness und Knowledge treffen lebende Seiten.
+  Zwei Seiten standen in keinem Register — `Szenenwechsel & Lobby`
+  (eingetragen) und `Fenominal Duftliste` (als nicht geführt vermerkt) —,
+  der Titelvermerk bei Multiplayer war falsch. Erste gründliche Prüfung
+  überhaupt: `💡 EditorWindow & MVP` gegen den Code, vier Befunde, darunter
+  „niemals `using UnityEditor`" gegen zwei geklammerte Editor-Aufrufe im
+  Spiel-Code; die Seite im Hausstil neu gebaut. Nach Isors Entscheidung
+  außerdem: `⚙️ System · Harness` auf 2.1.0 nachgezogen, `💡
+  SAE-C++-Konventionen` auf die Geltung vom 10.09., `📍 Status · Wo das
+  Projekt steht` auf 🗑 mit `Semester 3` als Nachfolger; elf Seiten des
+  Unity-Altstands ruhen (`ARTIFACT_RULES.md`, DECISIONS 2026-09-11); zwei
+  Knowledge-Notizen korrigiert. Geprüft: `pruefen.py` nach dem Schreiben,
+  0 Funde bis auf drei Glossar-Hinweise — gegengelesen, alle drei
+  Kurzformen unverändert, mit `--glossar-ok` quittiert.

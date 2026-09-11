@@ -22,19 +22,17 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-09-10 beim `/harness:ende` — Abschnitt
-„C++-Unterricht UE 1", Development · Lernmodus, Revier Uni. Übung
-Formelrechner gebaut, Dozenten-Auskunft eingepflegt — ROADMAP-Punkt
-„Dritte C++-Umgebung" erledigt; Bericht in `Uni/LOG.md`.)*
+*(überschrieben 2026-09-11 beim `/harness:ende` — Abschnitte
+„Fab-Sale-Durchsicht" (Design, Revier Isor's Tower: nichts gekauft,
+drei Freebies geclaimt, Merkposten UDS) und „Lane Defender Ü3"
+(Development · Lernmodus, Revier Lane Defender: Ü3 fertig). Berichte in
+den LOGs beider Schichten und `Kern/LERNLOG.md`.)*
 
-**Bis Fr, 2026-09-11, 23:00:** Epic-Flash-Sale durchsehen —
-Gratis-Posten mitnehmen, Kauf nur bei starkem Nutzen für
-Tower/Semester 3; klären, ob Fab-Assets dabei sind (Fab-Punkt:
-`Projekte/Isor_Tower/ROADMAP.md`). Kleinrest Formelrechner: Testreihe
-`abc`/`-3`/`0`/`5` plus `#include <limits>`. Danach L2-Rest — erst
-prüfen, ob Ü3/Ü4 nach der Unterrichtsübung (`Kern/LERNLOG.md`,
-2026-09-10) verkürzt werden —, dann L3. Unverändert offen:
-Unreal-Toolchain-Test, Abgabetermine der Uni, Sonntags-Reste.
+Lane Defender **Ü4 Eingabe-Validierung** — `cin.fail`/`clear`/`ignore`
+am Spielcode, Testreihe `abc`/`-3`/`0`/`5`, `<limits>` selbst includen;
+danach **L3** (Pointer). Kür davor erlaubt: die `, true`-Argumente per
+Default schrumpfen. Unverändert offen: Unreal-Toolchain-Test,
+Abgabetermine der Uni, Datenbaum. Pflegetag lief am 2026-09-11 parallel.
 
 ---
 
