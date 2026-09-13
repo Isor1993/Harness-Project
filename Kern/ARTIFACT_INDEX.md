@@ -469,6 +469,26 @@ Seite ←  Cpp/sae-cpp-konventionen.md
          (dort auch Offline-Kopie Seiten/2026-09-08-sae-cpp-konventionen.html)
 ```
 
+### 💡 Lernstück · Pointer & Referenzen
+```
+URL      https://claude.ai/code/artifact/38a61247-8221-4115-a5af-79822f94c5e9
+Stand    2026-09-13 — neu, gebaut nach Abschluss des Lern-Vorlaufs L3
+         (Lane Defender): zwei Tafeln — Zettel tauschen gegen Haus
+         besuchen, by value gegen const-Referenz — dazu nullptr-Wächter,
+         die drei Pointer-Einsatzfälle und die Kostenregel als Tabelle.
+         Offline-Kopie: Seiten/2026-09-13-cpp-pointer-referenzen.html
+Quelle   Knowledge-Ordner: Cpp/pointer-hat-nie-den-wert.md und
+         Cpp/referenz-reicht-die-hausnummer-durch.md
+Beispiel LaneDefender.cpp — PrintMessage-Familie auf const std::string&
+         (L3 Ü3); das Ü2-Pointer-Snippet ist nach Abnahme entfernt, der
+         kommende Einsatz (SpecialAttack*-Slot in M5, new/delete-Gegner
+         in M3) steht als Absicht in den DECISIONS der Schicht
+Seite →  Lernstück C++-Funktionen & Überladung,
+         Lernstück SAE-C++-Konventionen
+Seite ←  Cpp/pointer-hat-nie-den-wert.md,
+         Cpp/referenz-reicht-die-hausnummer-durch.md
+```
+
 ### 💡 Lernstück · C++-Funktionen & Überladung
 ```
 URL      https://claude.ai/code/artifact/1a3f534c-2b97-4f84-a81e-13ca4211f227

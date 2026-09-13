@@ -62,6 +62,12 @@ abgabefertig bis ~05.10., vor dem geschätzten Uni-Termin ~15.10.
   Zeichentest tippen nach `Sandbox/M1_Zeichentest_Aufgabe.txt` samt
   Testreihe in zwei Terminals; danach Zustandsautomat → Menü. Die
   Ist-Zeit läuft über Isors Grindstone-Tracking (~3,5 h inkl. Design).
+  **Stand 2026-09-13:** Zeichentest-Szene gebaut und gemessen (26 von
+  30 rasterfest; Schachfiguren doppelbreit und als Figuren-Symbole
+  gesetzt — DECISIONS dieser Schicht), Ausgabe-Helfer in
+  `Output.h`/`Output.cpp`, `/utf-8` gesetzt. Offen in M1:
+  Zustandsautomat → Menü mit Titel → Namenseingabe; die Szene an die
+  versteckte Taste `T` hängen, sobald das Hauptmenü existiert.
 - [ ] **M2 · Lanes und Spieler** — Spielfeld mit Lanes zeichnen
   (nur rastergeprüfte Zeichen), Player-Klasse, Lane-Wechsel und
   Schießen über die nicht-blockierende Tastenabfrage (gelieferter
@@ -107,7 +113,29 @@ abgabefertig bis ~05.10., vor dem geschätzten Uni-Termin ~15.10.
   `@` `^` · Schuss `|` `*` `!` · Runner `o` `v` `w` · Tank `#` `O` `T`
   · Boss `M` `W` `B` · Rahmen und Lane-Trenner `│` `─` `┌` `┐` `└` `┘`
   mit ASCII-Rückfall `|` `-` `+` · HUD-Balken `█` `▓` `░` mit Rückfall
-  `=`.
+  `=`. **Ergänzt 2026-09-13 (Isor):** die Schachfiguren als
+  Wunsch-Kandidaten vor den ASCII-Rückfällen — Runner `♟` `♞`, Tank
+  `♜`, Boss `♚`. **Stand nach dem Zeichentest (2026-09-13):** Die
+  Figuren-Symbole sind entschieden — Schachfiguren, fest doppelbreit
+  (DECISIONS → „Schachfiguren gesetzt"); ASCII bleibt Rückfall für
+  fremde Terminals. Offen wählt M2/M3 nur noch aus den Bestandenen:
+  Schuss (`|` `*` `!`), Rahmen (`│ ─ ┌ ┐ └ ┘`), HUD (`█ ▓ ░`, dazu
+  `▀ ▄`).
+- [ ] **Spieler als zusammengesetztes Sprite prüfen** — Isors Idee vom
+  2026-09-13: die Spielfigur aus mehreren Einzelzeichen statt einem
+  Symbol; Skizze vom selben Tag: T-Form mit breitem Sockel und
+  schmalem Lauf oben („sieht aus wie etwas, das schießt" — der Schuss
+  startet aus der Lauf-Spalte). Gehört in den M2-Design-Abschnitt
+  (Spielfeld und Player-Klasse); die Bausteine — Linien, Ecken,
+  Voll- und Halbblöcke `▀` `▄` — laufen als Bewerber im
+  M1-Zeichentest mit.
+- [ ] **Lane-Layout für die Doppelbreit-Figuren ausgestalten** — die
+  Richtung ist beschlossen (DECISIONS → „Schachfiguren gesetzt",
+  2026-09-13): Lane = Wand + vier Leerzellen + Wand, Figur auf fester
+  Mittelposition, Schuss zwei Zellen breit. Der M2-Design-Abschnitt
+  gestaltet nur noch aus: exakte Zellrechnung je Zeile,
+  Sonderbreiten-Logik beim Zeilenbau, Zusammenspiel mit der
+  Doppelzellbreite aus dem Tick-Beschluss.
 - [ ] **Design gegen die Original-Aufgabe halten**, sobald die echten
   Semester-3-Texte vorliegen. Grundlage bisher:
   `Uni/Semester_3/VORJAHR_AUFGABEN.md` → „1 · C++ Konsolenprojekt".

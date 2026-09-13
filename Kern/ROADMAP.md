@@ -20,6 +20,13 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
 
 ## Als Nächstes
 
+- [ ] **Kommentar-Pass als fester Review-Schritt festschreiben** — In
+  `Kern/CODE_GUIDELINES.md` (Abschnitt „Kommentare & Datei-Header"
+  bzw. Review-Gate) ergänzen: Nach jeder Tipp-Runde und jedem
+  Datei-Umzug läuft ungefragt Claudes Kommentar-Pass — Datei-Köpfe,
+  Summaries, sichtbare Texte —, bevor weitergebaut wird. Anlass:
+  Zweimal am 2026-09-13 mussten die Köpfe neuer Dateien angemahnt
+  werden (`Kern/STOERUNGEN.md`, Eintrag samt Wiederholungs-Vermerk).
 - [ ] **Die Handgriffe vor Punkt 4 in `CLAUDE.md` nennen** — nämlich:
   den Session-Titel nicht anfassen, und Typ und Modus fragen. Beide
   Regeln stehen in `Kern/WORKFLOW.md` und damit an Punkt 4 der

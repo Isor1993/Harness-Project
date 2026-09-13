@@ -519,3 +519,56 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   als Zustand eine einzige Zahl reicht. **Hilfe:** Merksatz „der
   Zustand ist die Zahl, das Bild wird jeden Tick frisch daraus
   gebaut"; Home-statt-Löschen als Flacker-Schutz aus den DECISIONS.
+- 2026-09-13 · Lane Defender M1, Output-Umzug (erster eigener Header) —
+  **Selbst:** die Datei-Trennung selbst eingefordert und mit der
+  eigenen C#-Regel begründet (eine Zuständigkeit je Klasse → in C++ je
+  .h/.cpp-Paar); die Kontrollfrage zu LoseLives richtig beantwortet
+  (Spiellogik, keine Ausgabe) und es konsequent ganz entfernt statt es
+  herrenlos liegen zu lassen; beide Dateien über VS angelegt
+  (Projekteintrag automatisch); Default-Argumente beim Umzug korrekt
+  nur im Header belassen. **Fehlerbild:** beim Ausschneiden
+  Nachbarzeilen mitgerissen — das Console-Include und die
+  LoseLives-Definition verschwanden still, und der Build blieb grün,
+  weil die leere main nichts ruft („kompiliert ist nicht fertig" in
+  neuer Form: Der Linker sucht nur Gerufenes); Includes zunächst
+  weiter über die Console.h-Textkopie geliehen. **Hilfe:** Erklärung
+  der stillen Grün-Falle; SAE-Köpfe und Summaries übernahm Claude —
+  nach Isors berechtigter Rüge, sie standen fälschlich in seiner
+  Aufgabenliste (Arbeitsteilung aus CODE_GUIDELINES).
+- 2026-09-13 · Lane Defender M1, Zeichentest gebaut und gemessen —
+  **Selbst:** Init-Guard mit Meldung und Fehler-Rückgabe allein, dazu
+  unaufgefordert die Design-Frage nach benannten Exit-Codes (eigene
+  Fehlerliste ab 1000) — nach Bewertung selbst auf eine lokale
+  Konstante mit Wert 1 entschieden; die Array-Klammer-Position über
+  den Compiler-Fehler gefunden; die Doppelschleifen-Struktur (Wände
+  außen, zehnmal innen) stand im ersten Entwurf; das foreach nach der
+  Zerlegung korrekt eingebaut; am laufenden Test die Schach-Doppelbreite
+  selbst vermessen („braucht 2 Zellen") und daraus live ein
+  Lane-Layout entworfen (Wand + vier Leerzellen, Figur mittig, Schuss
+  zwei Zellen breit — als M2-Merker in der ROADMAP). **Fehlerbild:**
+  `S_SYMBOL_CANDIDATES->length()` — das Array zerfiel still zum
+  Pointer aufs erste Element, gemessen wurde die Textlänge von „A",
+  die Schleife endete nach zwei Zeilen; die Bewerberliste zunächst als
+  „je Rolle ein String" gebündelt und die Kommentar-Aufzählung als
+  Unicode-Bauteile gedeutet; PrintMessage ohne zweites Argument — der
+  Default machte je Symbol einen Umbruch; Überforderungs-Frust, als
+  Meta-Umbauten und neuer Stoff sich stapelten („bin komplett
+  draußen") — Auslöser war die Menge zugleich, nicht der Stoff.
+  **Hilfe:** die foreach-Zeile zerlegt mit C#-Spiegel (foreach/in ↔
+  for/Doppelpunkt); die Bewerberliste als Tabelle (drei Kandidaten je
+  Rolle, einer gewinnt); Rest-Feinschliff (Lineal, Literal-Wände,
+  ReadKey) übernahm Claude auf Zuruf; Step-für-Step-Modus mit
+  Einzelvorlage je Schritt eingeführt.
+- 2026-09-13 · Lane Defender M1, SymbolTest-Auslagerung (unaufgefordert,
+  am Abschnittsende) — **Selbst:** die Test-Szene komplett
+  selbstständig in ein eigenes Paar `SymbolTest.h`/`SymbolTest.cpp`
+  ausgelagert — die Dateipaar-Regel vom Vormittag aus eigenem Antrieb
+  angewandt und damit die Szenen-Struktur von M2 vorweggenommen; alle
+  vier Includes der neuen .cpp selbst getragen (das Include-Fehlerbild
+  trat nicht wieder auf); Prototyp samt Summary korrekt mitgezogen.
+  **Fehlerbild:** die Exit-Konstante von main im SymbolTest-Header
+  geparkt (fremde Zuständigkeit — die Utils-Falle im Kleinen), dadurch
+  lieh sich der Header int32_t über die Include-Kette; der eigene
+  Header fehlte als erster Include der .cpp (Signatur-Abgleich
+  entfällt). **Hilfe:** beide Funde über Isors eigene Dateipaar-Regel
+  erklärt, Rückverlegung und Köpfe im Kommentar-Pass durch Claude.

@@ -160,6 +160,13 @@ kaputt aus und kostet beim Feedbackelement „läuft stabil, Ein-/Ausgabe
 verständlich" mehr, als jedes hübsche Symbol einbringt. Ob ein Zeichen
 einzellig ist, entscheidet das echte Terminal, nicht die Vermutung.
 Verworfen: Symbole nach Optik wählen und Verschiebungen später flicken.
+**Fortgeführt am 2026-09-13:** Der Grundsatz bleibt — nichts verschiebt
+sich —, aber der Weg dorthin ist für die Figuren-Symbole präzisiert:
+Nach der Messung des Zeichentests plant das Spielfeld die
+Schachfiguren als **fest doppelbreite** Zeichen ein, statt sie
+auszuschließen („Schachfiguren gesetzt", unten). Einzelbreite bleibt
+Pflicht für alles, was im Raster neben Unbekanntem steht (Rahmen,
+HUD, Schuss).
 
 ## 2026-09-08 — Eigenes Code-Repo neben den anderen
 Was: Das VS-Projekt lebt im eigenen Repo `C:\Repos Isor\Lane-Defender`
@@ -322,6 +329,12 @@ Ein-Puffer-Rendering; moderner Standard.
 Verworfen: klassische WinAPI-Aufrufe je Farbwechsel
 (`SetConsoleTextAttribute` — zerschneidet den Ein-Puffer-Ansatz, bei
 geschätzt 30 farbigen Stellen 60+ Aufrufe je Tick statt einem).
+**Fortgeführt am 2026-09-13:** Dazu kommt das Compiler-Flag `/utf-8`
+(alle Konfigurationen der .vcxproj): Quelldateien und String-Literale
+gelten als UTF-8 — die Rahmenzeichen-Literale tragen damit genau die
+Bytes, die die per `SetConsoleOutputCP(CP_UTF8)` umgestellte Konsole
+erwartet. Ohne das Flag hinge Quell-Lesart und Ausgabe an der
+zufälligen System-Codepage.
 
 ## 2026-09-12 — Zeichentest als Szene hinter versteckter Taste T
 Was: Der Zeichentest (jeder Kandidat zehnfach zwischen Randlinien,
@@ -352,6 +365,10 @@ Verworfen: `ReadValueInput` bis M7 drinlassen (totes, wenn auch
 getestetes Werkzeug — kommt bei Bedarf aus der Sicherung zurück, etwa
 für den Upgrade-Screen in M4); Aufteilung in Szenen-Dateien schon
 in M1.
+**Fortgeführt am 2026-09-13:** „Mehr Dateien erst ab M2" ist für die
+Ausgabe-Helfer abgelöst — die PrintMessage-Familie zieht sofort in
+`Output.h`/`Output.cpp` („Ausgabe-Helfer ziehen in Output.h/Output.cpp",
+unten). Der Rest des Eintrags gilt unverändert.
 
 ## 2026-09-12 — Zeitschätzung vor Baustart auf 50 Stunden angehoben
 Was: Die Meilenstein-Schätzung steigt von 36 h auf 50 h: M1 6 · M2 7 ·
@@ -395,3 +412,71 @@ Verworfen: beide Tests in M1 (Claudes Empfehlung — vom Zeitbudget
 geschlagen); die Ränder des statischen Tests aus den hübschen
 Rahmenzeichen zu bauen (die Prüflinge dürfen nicht das Lineal sein,
 Ränder bleiben ASCII `|`).
+
+## 2026-09-13 — Zeichentest-Ergebnis: 26 rasterfest, Schach doppelbreit
+Was: Erster Lauf der Zeichentest-Szene (VS-Konsole und Windows
+Terminal — beide rendern identisch, VS nutzt inzwischen die
+Windows-Terminal-Engine). Bestanden mit bündigem rechten Rand: alle
+15 ASCII-Kandidaten, die Linien `│ ─`, die Ecken `┌ ┐ └ ┘`, die
+Blöcke `█ ▓ ░`, die Halbblöcke `▀ ▄` — 26 Zeichen. Die vier
+Schachfiguren `♟ ♜ ♞ ♚` belegen in beiden Terminals zwei Zellen
+(Glyphe ≈1,5 Zellen breit), und der Bauer rendert als farbiges Emoji,
+dessen Farbe kein VT-Code ändert. Eine Textform mit angehängtem
+U+FE0E („als Text rendern") wurde mitgemessen, änderte nichts und ist
+wieder aus der Kandidatenliste entfernt; die Schachfiguren bleiben
+als Bewerber für die Doppelbreit-Route drin.
+Warum: Abnahme mit dem Auge gegen die Lineal-Zeile (Isor,
+2026-09-13); zwei Terminals als zwei Brillen, wie im Test-Design
+vorgesehen.
+Verworfen: die Schachfiguren als Einzelzell-Symbole (gemessen
+doppelbreit); der U+FE0E-Trick (gemessen wirkungslos). Offen bleibt
+die Doppelbreit-Route über das Lane-Layout (ROADMAP → „Lane-Layout
+für Doppelbreit-Symbole prüfen") — das entscheidet der
+M2-Design-Abschnitt.
+
+## 2026-09-13 — Schachfiguren gesetzt, Lanes werden dafür ausgelegt
+Was: Die Schachfiguren `♟ ♜ ♞ ♚` sind als Figuren-Symbole des Spiels
+gesetzt (Zuordnung je Gegnertyp final beim Bau von M3, Favoriten nach
+ROADMAP-Reihenfolge: Runner `♟`, Tank `♜`, Boss `♚`). Das Spielfeld
+wird dafür ausgelegt: Figuren belegen fest zwei Zellen; Isors
+Lane-Entwurf (Wand + vier Leerzellen + Wand, Figur auf fester
+Mittelposition, Schuss zwei Zellen breit) ist die Bauvorlage für den
+M2-Design-Abschnitt.
+Warum: Isors Entscheid vom 2026-09-13 nach dem Zeichentest — die
+Optik ist ihm den Preis wert, und die Messung trägt die Entscheidung:
+Beide Brillen (VS-Konsole und Windows Terminal, gleiche
+Terminal-Engine) rendern die Figuren identisch doppelbreit, es braucht
+also keine zwei Druck-Logiken auf diesem Rechner. Der Preis ist
+benannt: Sonderbreiten-Logik beim Zeilenbau, die Bauern-Farbe gehört
+dem Terminal (Emoji, kein VT-Code greift), und ein fremdes
+Prüfer-Terminal bleibt Restrisiko — dagegen steht der Zeichentest als
+eingebaute Szene (Taste `T`) für den Nachweis vor Ort.
+Verworfen: ASCII-Einzelzeichen als Figuren-Symbole (rasterfest
+gemessen, aber „sieht grausam aus" — sie bleiben Rückfall, falls ein
+fremdes Terminal die Figuren zerlegt); die Doppelbreit-Route wieder
+aufzumachen — entschieden ist entschieden, M2 gestaltet nur noch aus.
+
+## 2026-09-13 — Ausgabe-Helfer ziehen in Output.h/Output.cpp
+Was: Die PrintMessage-Familie (fünf Überladungen) zieht aus
+`LaneDefender.cpp` in ein eigenes Datei-Paar `Output.h`/`Output.cpp` —
+Zuständigkeit: formatierte Konsolen-Ausgabe. Freie Funktionen wie
+bisher, keine Klasse. `LoseLives` wandert **nicht** mit (Spiellogik,
+keine Ausgabe) und wurde im selben Zug komplett entfernt: kein
+Aufrufer mehr — es kommt wie `ReadValueInput` aus der Sicherung
+zurück, sobald ein Aufrufer existiert (M6-Umfeld), und landet dann
+gleich in der Klassenstruktur, die es bis dahin gibt. In Output kommt
+nur, was zur benannten Zuständigkeit gehört — die Datei ist kein
+Sammelort für Helfer aller Art.
+Warum: Isors Entscheid vom 2026-09-13 — von Anfang an nach
+Zuständigkeit trennen statt bei M2 zwischen frischem Klassen-Code
+aufzuräumen; die Trennung kostet jetzt Minuten und ist selbst Lernziel.
+C#-Übersetzung dahinter: Die Zuständigkeit einer C#-Klasse trägt in C++
+das .h/.cpp-Paar; eine Klasse entsteht nur, wo Zustand und Verhalten
+zusammengehören (M1-Ablauf-Eintrag). Erster selbst angelegter Header.
+Verworfen: Aufteilung erst ab M2 (Freitag-Stand — vom Kostenargument
+geschlagen); eine Printer-Klasse (kein Zustand, Klasse als
+Selbstzweck); eine Sammel-Datei „Utils/Helpers" (genau der Müllsack,
+gegen den die Trennung schützt); `LoseLives` ohne Aufrufer in
+`LaneDefender.cpp` stehen lassen (erste Fassung dieses Eintrags —
+noch am selben Tag vom Toter-Code-Argument geschlagen, das schon
+`ReadValueInput` entfernt hat).

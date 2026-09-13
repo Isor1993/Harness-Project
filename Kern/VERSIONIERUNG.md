@@ -27,13 +27,38 @@ Deshalb nie „Version" sagen, ohne dazuzusagen, welche.
 **Keine Version.** Eine laufende Nummer, die Sitzungen zählt, vierstellig
 hochgezählt. Sie sagt nichts über Inhalt oder Reifegrad.
 
-- Je Repo eine eigene Zählung.
+- Je Repo eine eigene Zählung — nachgeschlagen wird deshalb im Repo,
+  das committet wird, nicht im gerade geöffneten.
 - Die nächste Nummer wird per `git log` nachgeschlagen, nicht geschätzt.
 - Format und Ablauf regelt WORKFLOW.md.
 - **Sie zählt Sessions, nicht jeden Commit:** Der Commit-Vorschlag bei
   `/harness:ende` trägt sie. Zwischenstände, die Isor von Hand sichert,
   tragen freie Titel und zählen nicht hoch. *(Klarstellung 2026-08-26;
   Begründung in `Kern/DECISIONS.md`.)*
+- **Eine vergebene Nummer wird nie rückwärts repariert.** Trägt ein
+  Commit versehentlich eine falsche Nummer, bleibt er stehen: Die
+  Git-Historie ist eine Chronik und wird nicht umgeschrieben. Der
+  Ausreißer wird unten in der Projekt-Klammer vermerkt, und gezählt
+  wird ab dem jüngsten Titel der eigenen Zählung weiter.
+  *(Seit 2026-09-13, nach den zwei Fremd-Nummern im Knowledge-Repo —
+  `Kern/STOERUNGEN.md`.)*
+
+<!-- nicht ausliefern -->
+*Für dieses Projekt — Lesarten der drei Zählungen, geprüft 2026-09-13:*
+- **Harness:** fortlaufend intakt bis `V 0.0071`. Narben der Frühzeit
+  bleiben stehen: nummernlose Titel, die `0.0003` insgesamt dreimal
+  (davon einmal als später Rücksprung), Doppelnummern bei `0.0023`,
+  `0.0029`, `0.0030`, `0.0053` und `0.0065` — je Session plus
+  Nachzügler mit gleichem Titel.
+- **Knowledge:** Vorzeit ohne System (16 nummernlose „Update" plus
+  zwei sechsstellige), dann sauber `0.0021`–`0.0036`. Die zwei
+  Commits danach tragen versehentlich **Harness**-Nummern (`0.0069`,
+  `0.0070`); Isors Commit `V 0.0038` vom 2026-09-13 setzt die eigene
+  Zählung bewusst fort — ab dort normal weiter.
+- **Lane-Defender:** sauber `0.0001`–`0.0005`; dem jüngsten Titel
+  fehlt nur das Wort „Update" (Kosmetik, bleibt).
+<!-- /nicht ausliefern -->
+
 
 ## 2. Spiel-Version — Reifegrad
 

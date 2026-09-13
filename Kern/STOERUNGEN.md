@@ -825,3 +825,39 @@ jedem Aufgabenzettel), auf Isors Entscheidung vom 2026-09-12 bewusst
 **nicht** als ROADMAP-Punkt aufgenommen — erst bei Wiederholung.
 **Stand:** offen — im Vorfall behoben (Modelle nachgeliefert, die
 Erklärung auf eine einzige Unterscheidung eingedampft), beobachten.
+
+### 2026-09-13 — Kommentar-Arbeitsteilung an Isor delegiert
+**Was:** Claude packte die SAE-Datei-Köpfe der neuen Output-Dateien in
+Isors Aufgabenliste, obwohl Kommentare, Datei-Header und Summaries
+laut Arbeitsteilung ausnahmslos Claude schreibt. Isor musste die Regel
+selbst anmahnen („wir haben immer wieder diesen Fehler").
+**Ursache:** Das Review-Gate — vor dem Coden die CODE_GUIDELINES
+durchgehen — wurde beim Einstieg in den Code-Abschnitt übersprungen;
+die Regel stand die ganze Zeit dort (Abschnitt „Kommentare &
+Datei-Header", Arbeitsteilung).
+**Regel:** Vorhanden und eindeutig, griff aber nicht:
+`Kern/WORKFLOW.md` → Development → „Vor dem Coden: Review-Gate aus
+CODE_GUIDELINES.md durchgehen". Reiner Ausführungsfehler.
+**Stand:** offen — im Vorfall behoben (Köpfe nachgetragen, Regel als
+persistentes Claude-Memory verankert). **Noch am selben Tag
+wiederholt:** Beim SymbolTest-Umzug standen die neuen Dateien erneut
+ohne Köpfe da, bis Isor es anmahnte. Das Gegenmittel ist damit nach
+der Wiederholungs-Regel als Aufgabe aufgenommen (`Kern/ROADMAP.md` →
+„Kommentar-Pass als fester Review-Schritt festschreiben").
+
+### 2026-09-13 — V-Nummern aus dem falschen Repo
+**Was:** Im Knowledge-Repo tragen zwei Commits die Harness-Nummern
+`V 0.0069` und `V 0.0070`, obwohl die eigene Zählung bei `0.0036`
+stand. Isor fiel es beim Committen auf; er setzte die Zählung mit
+`V 0.0038` bewusst fort und meldete den Fall in der Session.
+**Ursache:** Beim Nachschlagen der nächsten Nummer wurde `git log` im
+falschen Repo gelesen — die Harness-Nummer wanderte in den
+Knowledge-Commit-Titel. Begünstigt dadurch, dass mehrere Repos in
+einer Session berührt werden und die Zählungen ähnlich aussehen.
+**Regel:** Vorhanden, griff nicht: `Kern/VERSIONIERUNG.md`,
+Abschnitt 1 — „Je Repo eine eigene Zählung. Die nächste Nummer wird
+per `git log` nachgeschlagen."
+**Stand:** behoben 2026-09-13 — Historie bleibt unangetastet; Lesart
+aller drei Zählungen und die neue Regel „eine vergebene Nummer wird
+nie rückwärts repariert" stehen in `Kern/VERSIONIERUNG.md`,
+Abschnitt 1. Knowledge zählt ab `0.0039` normal weiter.

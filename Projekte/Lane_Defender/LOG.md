@@ -88,3 +88,18 @@ leere Rubrik schreibt `—`.
   M1-Ist-Zeit trackt Isor ab jetzt mit Grindstone (Stand ~3,5 h inkl.
   Design). Session am Abend geschnitten — das Zeichentest-Tippen steht
   aus.
+- 2026-09-13 — M1 Zeichentest gebaut, gemessen und entschieden: main
+  aufgeräumt (Übungsschleife und `ReadValueInput` raus), die
+  PrintMessage-Familie in das neue Paar `Output.h`/`Output.cpp`
+  umgezogen (erster von Isor selbst angelegter Header; `LoseLives`
+  komplett entfernt), Compiler-Flag `/utf-8` in allen Konfigurationen
+  gesetzt und die Zeichentest-Szene `RunSymbolTest` gebaut — 30
+  Bewerber, Testreihe in VS-Konsole und Windows Terminal (identisches
+  Rendering, gleiche Terminal-Engine). Ergebnis und Folge-Entscheid in
+  den DECISIONS dieser Schicht: 26 rasterfest, Schachfiguren
+  doppelbreit — von Isor als Figuren-Symbole gesetzt, das Lane-Layout
+  wird dafür ausgelegt. Lern-Rubriken in `Kern/LERNLOG.md` unter
+  2026-09-13. Nachtrag vom Abschnittsende: Die Test-Szene hat Isor
+  unaufgefordert selbst nach `SymbolTest.h`/`SymbolTest.cpp`
+  ausgelagert; Review-Pass (Exit-Konstante zurück zu main, eigener
+  Header zuerst, Datei-Köpfe) durch Claude, Build warnungsfrei.
