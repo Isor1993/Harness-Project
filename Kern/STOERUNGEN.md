@@ -782,3 +782,46 @@ nachgetragen). Ausführungsfehler, keine fehlende Regel.
 **Stand:** offen — Gegenmittel als ROADMAP-Punkt (`Kern/ROADMAP.md` →
 „Pflege-Fälligkeiten als Hinweis in `pruefen.py`"). Die drei Folgen sind
 am selben Tag behoben (`Kern/LOG.md`, 2026-09-11).
+
+### 2026-09-12 — Kommentar-Arbeitsteilung übergangen, Wiederholungsfall
+**Was:** Beim Ü4-Review im Lane Defender trug Claude Isor auf, den
+`///`-Block über dem neuen Prototyp selbst zu schreiben — einen Tag
+nach dem gleichlautenden Vorfall beim Ü3-Review (Eintrag 2026-09-11).
+Isor musste die Arbeitsteilung erneut einfordern („Kommentare und
+Headersachen sind deine Aufgabe, das habe ich dir schon mal gesagt").
+**Ursache:** Wie am Vortag: Die Regel (`Kern/CODE_GUIDELINES.md` →
+„Kommentare & Datei-Header": „Header, Summaries und Kommentare ergänzt
+Claude automatisch beim Review") war beim Review nicht im Kontext — die
+Datei war in der Session bis dahin gar nicht gelesen, nur die SAE-Namen
+über das Spickzettel-Artifact. Nach dem Coden erinnert weiterhin keine
+Prüfebene an die Kommentar-Pflichten.
+**Regel:** Vorhanden und eindeutig, zweiter Ausführungsfehler in zwei
+Tagen. Das am 2026-09-11 beschlossene Gegenmittel — die
+Kommentar-Nachpflege als fester Prüfpunkt am Review (`Kern/ROADMAP.md`)
+— steht noch aus; dieser Eintrag ist sein zweiter Beleg, ein neuer
+Punkt ist nicht nötig.
+**Stand:** offen — im Vorfall selbst behoben (History-Zeile,
+`///`-Block und Include-Leerzeichen am 2026-09-12 von Claude
+nachgetragen), die Format-Verankerung steht weiter aus.
+
+### 2026-09-12 — Theorie-Happen übersprungen, Entwurf von Unbekanntem verlangt
+**Was:** Bei L3 Ü2 verlangte Claude Isors Zwei-Satz-Entwurf für den
+ersten Pointer, ohne den Theorie-Happen davor zu liefern — Isor musste
+stoppen („das ist mir zu wenig visuell, ich habe doch noch nie einen
+Pointer gesehen"). Bei Ü3 folgte aus derselben Wurzel eine
+Stapel-Erklärung (Temporär, Literal und Lebensdauer in einem Zug statt
+der einen Unterscheidung), die in Frust mündete („ich weiß nicht, ob
+ich doof bin").
+**Ursache:** Der Ablauf je Baustein steht in
+`Projekte/Lane_Defender/DECISIONS.md` → „Das Projekt ist der Kurs":
+Theorie-Happen mit Zahlenbeispiel → Entwurf → Gerüst. Bei Ü4 am
+Vormittag wurde er befolgt, bei Ü2 übersprungen — „danach L3" wurde
+als Startsignal fürs Entwerfen gelesen, nicht fürs Erklären. Die
+Stapel-Erklärung verstieß gegen keine geschriebene Regel, nur gegen
+den Zweck des Lernmodus.
+**Regel:** Vorhanden und eindeutig, reiner Ausführungsfehler.
+Gegenmittel benannt (der Theorie-Happen als fester erster Schritt in
+jedem Aufgabenzettel), auf Isors Entscheidung vom 2026-09-12 bewusst
+**nicht** als ROADMAP-Punkt aufgenommen — erst bei Wiederholung.
+**Stand:** offen — im Vorfall behoben (Modelle nachgeliefert, die
+Erklärung auf eine einzige Unterscheidung eingedampft), beobachten.

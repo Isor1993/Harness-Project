@@ -205,3 +205,193 @@ ist billiger als eine verbogene API.
 Verworfen: vierte Wert-Überladung `(string, bool, bool)` (mehrdeutig
 gegen `(string, bool)`); `boolalpha` global setzen (wirkungslos, weil
 der Wert als int ankam).
+
+## 2026-09-12 — Leere Eingabe bleibt stilles Warten
+Was: Drückt der Spieler bei der Leben-Abfrage nur Enter, wartet das
+Programm still auf weitere Eingabe — `ReadValueInput` behandelt den
+Fall nicht gesondert. Grund im Verhalten von `cin >>`: Führender
+Whitespace (auch `\n`) wird übersprungen, der Aufruf kehrt erst mit
+echten Zeichen zurück — es entsteht weder ein Fehlerzustand noch eine
+Endlosschleife.
+Warum: Standardverhalten formatierter Konsoleneingabe, kein Absturz;
+die Ü4-Testreihe verlangt den Fall nicht, und eine Meldung
+rechtfertigt in der Lern-Übung keinen Umbau (Isor, 2026-09-12, nach
+Ansicht der drei Wege).
+Verworfen: `peek`-Wächter vor dem Lesen (vier Zeilen Sonderweg, fängt
+nur den Nur-Enter-Fall); Umbau auf zeilenweises Lesen mit `getline`
+plus Parsen (wasserdicht, aber zwei neue Bausteine — als Härtung bei
+M1/M7 wieder auf dem Tisch, siehe ROADMAP-Aufgabe „getline-Härtung
+bei M1/M7 prüfen").
+
+## 2026-09-12 — String-Parameter laufen als const-Referenz
+Was: Die string-Parameter der PrintMessage-Familie tragen durchgängig
+`const std::string&` (drei Überladungen, je Prototyp und Definition);
+Zahl- und bool-Parameter bleiben by value. Gilt als Konvention für
+künftige Funktionen des Projekts.
+Warum: Kostenregel aus L3 Ü3 — kleine Werte kopieren (eine
+4-Byte-Kopie schlägt den 8-Byte-Adressumweg), große Objekte per
+const-Referenz ausleihen; bei Strings entfällt damit die Zeichen-Kopie
+je Aufruf (~27 String-Aufrufe je Kurzspiel, gezählt am Bestand vom
+2026-09-12). Zugleich die Konvention, die Prüfer erwarten.
+Verworfen: string by value (kopiert bei jedem Aufruf alle Zeichen);
+nicht-konstante Referenz `std::string&` (bindet nicht an
+Literal-Aufrufe und erlaubt versehentliches Schreiben — der
+const-lose Zwischenstand scheiterte genau daran).
+
+## 2026-09-12 — Fachbereichs-Austausch zur Projektidee entfällt
+Was: Der im Aufgabentext verlangte Austausch mit dem Fachbereichs-Team
+vor Festlegung der Projektidee wird nicht geführt; das Projekt startet
+auf Basis der bestätigten Vorjahres-Texte
+(`Uni/Semester_3/VORJAHR_AUFGABEN.md`).
+Warum: Isors Entscheidung vom 2026-09-12 — aus seiner Sicht eine
+Formalität; die Erfahrung aus dem ersten Semester zeigt ihm, dass das
+Vorgehen reicht.
+Verworfen: den Austausch vor Baustart nachholen (Claudes Hinweis; beim
+nächsten Unterrichtsblock weiter möglich — das M1-Gerüst trägt jede
+Konsolenspiel-Idee und ist davon unabhängig).
+
+## 2026-09-12 — M1-Ablauf: Szenen-Zustandsautomat mit sechs Stationen
+Was: Das Gerüst ist ein Zustandsautomat — ein enum-Zustand plus
+Schleife in `main`: Hauptmenü → Namenseingabe → Steuerungs-Szene →
+Spiel → Endszene; beliebige Taste in der Endszene führt zurück ins
+Hauptmenü, beendet wird nur über Exit im Hauptmenü. Die Endszene zeigt
+Sieg oder Game Over samt Name und erreichtem Level. Die
+Steuerungs-Szene (Tastenbelegung plus ein Satz Spielziel) erscheint vor
+jedem Spielstart; beliebige Taste startet das Spiel und wirkt so als
+Bereit-Schranke. Szenen sind in M1 Funktionen, keine Klassen.
+Warum: Isors Szenen-Modell vom 2026-09-12 (Analogie zu Unity-Szenen);
+die Steuerungs-Szene hat er beim Gegenlesen selbst nachgezogen.
+Funktionen statt Szenen-Klassen: Eine Klassenhierarchie hätte in M1
+nichts zu verwalten — sauberes OOP fürs First-Ziel heißt Klassen dort,
+wo Zustand und Verhalten zusammengehören (Player M2, Gegner M3, Skills
+M5), nicht Klasse als Selbstzweck; die Begründung ist im
+Prüfungsgespräch tragfähig.
+Verworfen: Szenen-Klassenhierarchie ab M1 (Umbau bleibt möglich, wenn
+Szenen echten Zustand tragen); Programmende direkt nach der Endszene;
+Mini-Menü in der Endszene (ein Menü mehr ohne Mehrwert — Exit gibt es
+im Hauptmenü); Steuerungs-Anzeige nur beim ersten Spielstart.
+
+## 2026-09-12 — Menü-Bedienung und Titel-Optik
+Was: Menüpunkte als umrahmte Buttons (Rahmenzeichen mit
+ASCII-Rückfall `+ - |`), Auswahl per ↑/↓ und W/S, Marker `>` plus
+gelbe Hervorhebung der gewählten Zeile, nur Enter bestätigt. Titel in
+Linien-Schrift (gezeichnete ASCII-Buchstaben), farbig; Einblendung nur
+beim Programmstart, per Taste überspringbar — danach steht das Menü
+sofort. Die Pfeiltasten-Bedienung zieht die Einzeltasten-Abfrage
+(gelieferter Baustein, geplant für M2) nach M1 vor.
+Warum: Isors Entwurf vom 2026-09-12 (Buttons, Pfeile/W+S, Marker,
+großer Titel mit Einblendung). Enter allein hält die Leertaste
+eindeutig beim Schießen; Gelb statt Rot: bei Isors Rot-Grün-Schwäche
+hundertprozentig sicher und auf schwarzem Grund kontrastreicher, dazu
+trägt die Meldung immer auch als Text. Linien-Schrift fest: pures
+ASCII, kein Test-Vorbehalt.
+Verworfen: Ziffern-Menü (1/2 eintippen); Leertaste als zweite
+Bestätigung; rohe `#`-Blockklötze (Isor: „das Rohe sieht hässlich
+aus"); Block-Schrift aus `█ ▀ ▄`, auch als Variante mit Rückfall
+(Isor wählte fest die Linien-Schrift); Einblendung bei jedem
+Menü-Besuch; Rot als Hervorhebung.
+
+## 2026-09-12 — Namensregeln der Namenseingabe
+Was: Der Name wird per `getline` gelesen. Leere Eingabe (nur Enter) →
+Standardname „Player". Höchstens 16 Zeichen; erlaubt nur `A–Z`,
+`a–z`, `0–9` — keine Leerzeichen, keine Umlaute. Ungültige Eingabe:
+Piepton (`\a`), gelbe Meldung, die die Regel nennt, erneut fragen;
+geprüft wird nach Enter, nicht je Taste. Bestätigt wird auf der
+Szene über die Auswahl Start/Zurück wie im Hauptmenü.
+Warum: Isors Vorschlag vom 2026-09-12 (Default „Player", 16 Zeichen,
+Buchstaben und Ziffern, Ton plus Kennzeichnung). 16 Zeichen halten
+die spätere HUD-Zeile unter ~55 Zeichen; Leerzeichen und Umlaute sind
+Parse- bzw. Zeichensatz-Risiko im Sinne der Raster-Regel; `getline`
+fängt leere wie Leerzeichen-Eingaben — der getline-Merkposten der
+ROADMAP ist damit für M1 entschieden.
+Verworfen: Rot als Fehlerfarbe (Isors erster Gedanke — Gelb plus
+Text trägt doppelt, siehe Menü-Eintrag); Live-Filterung je Taste
+(eigene Eingabeschleife ohne Mehrwert); stilles Abschneiden zu langer
+Namen (Überraschung statt Meldung); Namenszwang bei leerer Eingabe.
+
+## 2026-09-12 — Konsolen-Technik: VT-Escape-Sequenzen
+Was: Farben, Cursor-Home und Cursor-Verstecken laufen über
+VT-Escape-Sequenzen; einmal beim Start aktiviert
+(`ENABLE_VIRTUAL_TERMINAL_PROCESSING`), dazu
+`SetConsoleOutputCP(CP_UTF8)` für die Rahmenzeichen. Alle Codes
+stecken hinter SAE-Konstanten; das Ganze kommt als gelieferter
+Baustein `Console.h`/`Console.cpp`.
+Warum: Die Codes sind Teil des Ausgabetexts — der ganze Frame bleibt
+ein String und ein `cout` je Tick, exakt das beschlossene
+Ein-Puffer-Rendering; moderner Standard.
+Verworfen: klassische WinAPI-Aufrufe je Farbwechsel
+(`SetConsoleTextAttribute` — zerschneidet den Ein-Puffer-Ansatz, bei
+geschätzt 30 farbigen Stellen 60+ Aufrufe je Tick statt einem).
+
+## 2026-09-12 — Zeichentest als Szene hinter versteckter Taste T
+Was: Der Zeichentest (jeder Kandidat zehnfach zwischen Randlinien,
+Urteil per Blick auf den rechten Rand) ist eine eigene Szene,
+erreichbar über die im Menü nicht angezeigte Taste `T` im Hauptmenü.
+Ob er zur Abgabe drinbleibt, wird bei M7 entschieden.
+Warum: Ob ein Zeichen einzellig ist, entscheidet das echte Terminal —
+und davon sind mehrere im Spiel (VS-Debug-Konsole, Windows Terminal,
+Prüfer-Terminal); so bleibt der Test jederzeit wiederholbar.
+Verworfen: sichtbarer Menüpunkt (Werkzeug, kein Spielinhalt);
+Wegwerf-Test nur während der M1-Entwicklung (verliert die
+Wiederholbarkeit auf fremden Terminals).
+
+## 2026-09-12 — M1-Struktur und Verbleib des Übungscodes
+Was: `LaneDefender.cpp` trägt `main`, den Zustandsautomaten und die
+Szenen-Funktionen; `Console.h`/`Console.cpp` den gelieferten
+Konsolen-Baustein. `PrintMessage` bleibt als Ausgabe-Helfer.
+`ReadValueInput` wird entfernt — kein Aufrufer mehr: das Menü läuft
+über Einzeltasten, die Leben sind fest 20, der Name kommt über eine
+eigene getline-Funktion. Die Übungs-Spielschleife in `main` weicht dem
+Automaten; der komplette Übungsstand liegt als Kopie in
+`Sandbox/L2_L3_Uebungsstand.cpp` dieser Schicht und in der
+Git-Historie des Code-Repos.
+Warum: kein toter Code Richtung Abgabe (Feedbackelement „lesbarer,
+aufgeräumter Code"); mehr Dateien wachsen erst mit den Klassen ab M2.
+Entfernen von `ReadValueInput`: Isor, 2026-09-12.
+Verworfen: `ReadValueInput` bis M7 drinlassen (totes, wenn auch
+getestetes Werkzeug — kommt bei Bedarf aus der Sicherung zurück, etwa
+für den Upgrade-Screen in M4); Aufteilung in Szenen-Dateien schon
+in M1.
+
+## 2026-09-12 — Zeitschätzung vor Baustart auf 50 Stunden angehoben
+Was: Die Meilenstein-Schätzung steigt von 36 h auf 50 h: M1 6 · M2 7 ·
+M3 10 · M4 8 · M5 8 · M6 6 · M7 5. Steht im ZEITPLAN dieser Schicht;
+die Ist-Spalte wird ab dem M1-Development-Abschnitt gemessen.
+Warum: Isors Ansatz vom 2026-09-12. Der Lern-Vorlauf L1–L3 brauchte
+real grob 6–8 h und zeigt den echten Lerntakt, und jeder Meilenstein
+trägt ein neues Lernthema; „realistische Zeitabläufe mit Pufferzeiten"
+ist zudem benanntes Feedbackelement der Aufgabe. Budget-Rahmen
+geprüft: Bis zum Zielfenster ~05.10. stehen rund 75–80 h Wochenbudget,
+50 h sind etwa zwei Drittel davon — gedeckt durch die
+Semesterstrategie „Lane Defender früh fertig als Zeitquelle". M1
+wächst auf 6 h, weil das Design vom 2026-09-12 Steuerungs-Szene,
+Button-Rahmen, Titel-Einblendung und Zeichentest-Szene ergänzt hat.
+Verworfen: bei 36 h bleiben (eine knappe Schätzung, die überall
+reißt, wirkt schlechter als eine ehrliche, die hält).
+
+## 2026-09-12 — Ausgeschriebene Schritte statt Mehrschritt-Zeilen
+Was: Aufruf, Vergleich und return bzw. if werden nicht in einer Zeile
+verkettet; Zwischenschritte bekommen benannte Variablen
+(`bModeWasSet`, `bCodepageWasSet` …). `Console.cpp` ist entsprechend
+umgebaut; die Regel gilt als Stil für kommenden Projekt-Code.
+Warum: Isors Lesbarkeits-Entscheid vom 2026-09-12 — beide
+Verständnis-Hänger des Tages (das `|` im if als Vergleich gelesen,
+`return X != FALSE` als bedingtes return) entstanden an kompakten
+Zeilen; SAE-Regel 9 („eine Anweisung pro Zeile") stützt die Langform.
+Verworfen: kompakte Ketten (idiomatisch und kürzer, hier aber zweimal
+die belegte Stolperquelle).
+
+## 2026-09-12 — Zeichentest bleibt statisch, der Lauf-Test wird M2-Einstieg
+Was: Die Zeichentest-Szene prüft nur statisch die Breite — jeder
+Kandidat zehnfach zwischen ASCII-Rändern unter einer Lineal-Zeile.
+Isors eigener Entwurf eines dynamischen Lauf-Tests (ein Symbol läuft
+je Tick eine Mini-Lane mit Wänden hinab und prüft die Stabilität beim
+Neuzeichnen) wird nicht in M1 gebaut, sondern ist der natürliche erste
+Baustein von M2 („Spielfeld mit Lanes zeichnen").
+Warum: Zeitentscheid von Isor am 2026-09-12 bei ~3,5 h M1-Stand; der
+Lauf-Test prüft genau das, was M2 ohnehin als Erstes baut — es geht
+nichts verloren.
+Verworfen: beide Tests in M1 (Claudes Empfehlung — vom Zeitbudget
+geschlagen); die Ränder des statischen Tests aus den hübschen
+Rahmenzeichen zu bauen (die Prüflinge dürfen nicht das Lineal sein,
+Ränder bleiben ASCII `|`).

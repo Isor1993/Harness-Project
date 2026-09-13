@@ -22,17 +22,21 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-09-11 beim `/harness:ende` — Abschnitte
-„Fab-Sale-Durchsicht" (Design, Revier Isor's Tower: nichts gekauft,
-drei Freebies geclaimt, Merkposten UDS) und „Lane Defender Ü3"
-(Development · Lernmodus, Revier Lane Defender: Ü3 fertig). Berichte in
-den LOGs beider Schichten und `Kern/LERNLOG.md`.)*
+*(überschrieben 2026-09-12 beim `/harness:ende` des Abschnitts
+„Lane Defender M1 Gerüst" (Development · Lernmodus, Revier Lane
+Defender). Berichte im LOG der Schicht und in `Kern/LERNLOG.md`.)*
 
-Lane Defender **Ü4 Eingabe-Validierung** — `cin.fail`/`clear`/`ignore`
-am Spielcode, Testreihe `abc`/`-3`/`0`/`5`, `<limits>` selbst includen;
-danach **L3** (Pointer). Kür davor erlaubt: die `, true`-Argumente per
-Default schrumpfen. Unverändert offen: Unreal-Toolchain-Test,
-Abgabetermine der Uni, Datenbaum. Pflegetag lief am 2026-09-11 parallel.
+Lane Defender M1 **läuft**: Design komplett (acht DECISIONS-Einträge,
+ZEITPLAN auf 50 h), Console-Baustein gebaut und abgenommen. Als
+Nächstes den **Zeichentest tippen** nach
+`Projekte/Lane_Defender/Sandbox/M1_Zeichentest_Aufgabe.txt` (Testreihe
+in zwei Terminals), danach Zustandsautomat → Menü. Die M1-Ist-Zeit
+trackt Isor mit Grindstone (~3,5 h Stand).
+**Pflegetag am Sonntag, 2026-09-13** — dort zusätzlich beschlossen:
+💡 Lernstück „Pointer & Referenzen" bauen (Stoff in `Knowledge/Cpp/`);
+gründlich dran ist eines der drei Lernstücke mit Stand 2026-08-24.
+Unverändert offen: Unreal-Toolchain-Test, Abgabetermine der Uni,
+Datenbaum.
 
 ---
 

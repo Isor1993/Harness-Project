@@ -1,0 +1,49 @@
+L3 — Werte, Pointer, Speicher (Lane Defender)
+==============================================
+Datum: 2026-09-12
+Letzter Block des Lern-Vorlaufs; danach beginnt M1 (Gerüst).
+
+ZIEL
+----
+Adressen als echte Zahlen im Debugger sehen, einen Pointer lesen
+und schreiben, und zum Abschluss PrintMessage kopiefrei machen.
+Drei Übungen, jede baut auf der vorigen auf.
+
+Ü1 · ADRESSEN IM DEBUGGER  (nur beobachten, kein Code)
+------------------------------------------------------
+1. Breakpoint auf die return-Zeile von LoseLives.
+2. F5, gültige Leben eingeben, Breakpoint schlägt an.
+3. Ins Watch-Fenster eintragen:
+      a_iCurrentLives
+      &a_iCurrentLives
+4. Im Call-Stack-Fenster auf main doppelklicken, dann ansehen:
+      &iLives
+5. Beide Adressen notieren und vergleichen.
+
+Abnahme: Du nennst Claude beide Adressen und erklärst in einem
+Satz, warum sie verschieden sind.
+
+Ü2 · ERSTER POINTER
+-------------------
+Ein int32_t-Pointer: mit nullptr starten, per & auf iLives zeigen,
+über * lesen und schreiben, davor ein Wächter-if gegen nullptr.
+Ort: Empfehlung — temporär in main, fliegt nach der Abnahme wieder
+raus (wird nicht committet); besprechen wir beim Start.
+
+Abnahme: Eine Änderung über den Pointer ist danach in iLives
+sichtbar — gleiche Adresse, gleicher Karton.
+Ablauf: Erst dein Entwurf in 2 Sätzen an Claude, dann Gerüst.
+
+Ü3 · const& AN PRINTMESSAGE  (am Spielcode)
+-------------------------------------------
+Die string-Parameter der PrintMessage-Familie auf
+const std::string& umstellen — dann entfällt die String-Kopie
+bei jedem Aufruf. Prototypen UND Definitionen anfassen.
+
+Abnahme: Regressionslauf — Eingabe 5 liefert unverändert
+"Game Over in Round 2"; kompiliert warnungsfrei.
+Ablauf: Erst dein Entwurf in 2 Sätzen an Claude, dann Gerüst.
+
+DANACH
+------
+L3 abhaken -> Lern-Vorlauf komplett -> M1 · Gerüst beginnt.

@@ -1,0 +1,51 @@
+Ü4 — Eingabe-Validierung (Lane Defender)
+==========================================
+Datum: 2026-09-12
+Übung aus L2 (Syntax-Umzug), letzter offener Punkt vor L3.
+
+ZIEL
+----
+Das Spiel fragt beim Start, mit wie vielen Leben der Spieler beginnt.
+Es startet erst, wenn eine gültige Zahl eingegeben wurde.
+Das fest verdrahtete iLives = 5 in main() fliegt dafür raus.
+
+WAS GEBAUT WIRD
+---------------
+1. Frage an den Spieler, vor der Spielschleife.
+   Beispieltext: "Mit wie vielen Leben startest du?"
+
+2. Eingabe mit cin >> in eine int32_t-Variable.
+
+3. Müll-Eingabe (abc) abfangen — die drei Handgriffe:
+   erkennen:    cin.fail()
+   entklemmen:  cin.clear()
+   aufräumen:   cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n')
+   Reihenfolge ist Pflicht: erst clear, dann ignore.
+
+4. Zweite Prüfebene: Ist die Zahl im gültigen Bereich?
+   Untergrenze: mindestens 1 (0 Leben wäre sofort Game Over).
+   Obergrenze:  deine Entwurfs-Entscheidung.
+
+5. Bei jedem Fehler: kurze Meldung an den Spieler, dann neu fragen.
+   Das wiederholt sich, bis die Eingabe gültig ist.
+
+6. #include <limits> selbst dazuschreiben (für numeric_limits).
+
+7. SAE-Konventionen einhalten — Spickzettel:
+   Lernstück SAE-C++-Konventionen (gepinnt in der Seitenleiste).
+
+ABNAHME (fertig heißt: alle vier bestehen)
+------------------------------------------
+Programm starten und nacheinander eingeben:
+   abc   ->  abgelehnt, Meldung, KEINE Endlosschleife
+   -3    ->  abgelehnt, Meldung
+   0     ->  abgelehnt, Meldung
+   5     ->  angenommen, Spiel startet mit 5 Leben
+
+ABLAUF
+------
+Schritt 1:  Dein Entwurf — zwei Sätze an Claude:
+            Was muss das Stück tun? Welche Werte braucht es?
+Schritt 2:  Claude zeigt das Gerüst, Vergleich mit deinem Entwurf.
+Schritt 3:  Du tippst in Visual Studio.
+Schritt 4:  Testreihe von oben durchfahren.

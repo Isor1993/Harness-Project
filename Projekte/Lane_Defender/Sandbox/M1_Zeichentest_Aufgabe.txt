@@ -1,0 +1,80 @@
+M1 · Zeichentest — Aufgabenzettel (statischer Breiten-Test)
+Stand 2026-09-12 · Gerüst zum Selbst-Tippen · Kommentare ergänzt Claude beim Review
+
+ZIEL
+Ein Bildschirm zeigt jeden Symbol-Kandidaten zehnmal nebeneinander
+zwischen zwei Rändern. Dein Auge prüft: Bleibt der rechte Rand über
+alle Zeilen bündig? Jede Zeile, die den Rand verschiebt, heißt: Das
+Zeichen fällt durch. Wichtig: Die Ränder bestehen aus sicherem
+ASCII (|), denn die hübschen Rahmenzeichen sind selbst Prüflinge.
+
+SCHRITT 1 — main aufräumen
+- Die Übungs-Spielschleife aus main entfernen (sie ist doppelt
+  gesichert: Sandbox/L2_L3_Uebungsstand.cpp und Git-Historie).
+- ReadValueInput komplett entfernen (Prototyp UND Definition).
+- Die PrintMessage-Familie und LoseLives bleiben stehen.
+- Oben #include "Console.h" ergänzen.
+
+SCHRITT 2 — InitConsole mit Guard aufrufen
+Du bist jetzt der Aufrufer, der entscheidet (Merksatz von heute:
+Funktionen melden, Aufrufer entscheiden). In main als Erstes:
+
+    if (InitConsole() == false)
+    {
+        TODO: Meldung ausgeben ("Console init failed.") und
+        TODO: main mit return beenden
+    }
+
+SCHRITT 3 — Die Kandidatenliste als Array
+Bei den anderen Konstanten über main:
+
+    const std::string S_SYMBOL_CANDIDATES[] =
+    {
+        TODO: je Kandidat ein Eintrag in Anführungszeichen, Reihenfolge:
+        Spieler:  A  @  ^
+        Schuss:   |  *  !
+        Runner:   o  v  w
+        Tank:     #  O  T
+        Boss:     M  W  B
+        Rahmen:   │  ─  ┌  ┐  └  ┘
+        HUD:      █  ▓  ░
+    };
+
+Die Sonderzeichen (Rahmen, HUD) kopierst du aus diesem Zettel —
+nicht von Hand nachbauen.
+
+SCHRITT 4 — RunSymbolTest bauen
+Neue Funktion, Prototyp oben, Definition unter main:
+
+    void RunSymbolTest();
+
+Ablauf innen, den du ausschreibst:
+- ClearScreen();
+- Überschrift ausgeben: "SYMBOL TEST - right edge must stay straight"
+- Lineal-Zeile ausgeben (sicheres X als Referenz):
+      | X X X X X X X X X X |
+- Für jeden Kandidaten eine Zeile bauen und ausgeben:
+      | A A A A A A A A A A |
+  Bauplan je Zeile: erst "| ", dann zehnmal (Kandidat + " "),
+  dann "|". Tipp: ein std::string, der in einer inneren Schleife
+  mit += wächst.
+  Schleifen-Tipp: Das C++-foreach heißt
+      for (const std::string& sCandidate : S_SYMBOL_CANDIDATES)
+  — mit const-Referenz, wie bei PrintMessage (L3).
+- Am Ende "Press any key" ausgeben und ReadKey() aufrufen, damit
+  das Fenster stehen bleibt.
+- In main: RunSymbolTest(); nach dem Init-Guard aufrufen.
+
+BONUS (freiwillig)
+Die Überschrift gelb: vor ihr S_COLOR_YELLOW ausgeben, nach ihr
+S_COLOR_RESET — dein erster Farbeinsatz.
+
+TESTREIHE (Abnahme mit deinem Auge)
+1. In VS starten (Strg+F5): Ist der rechte Rand überall bündig?
+   Durchfaller notieren.
+2. Dieselbe exe zusätzlich im Windows Terminal starten
+   (Projektordner \x64\Debug\LaneDefender.exe) — zweite Brille,
+   gleiche Prüfung.
+3. Melde mir je Terminal, welche Zeichen durchgefallen sind.
+   Das Ergebnis wandert in die DECISIONS; final gewählt wird bei
+   M2/M3.

@@ -50,3 +50,41 @@ leere Rubrik schreibt `—`.
   Lern-Rubriken stehen in `Kern/LERNLOG.md` unter 2026-09-11; die
   Verkürzungsfrage aus `PLAN.md` hat Isor mit „voll machen"
   entschieden — offen bleibt nur Ü4 Eingabe-Validierung.
+- 2026-09-12 — L2 Ü4 Eingabe-Validierung erledigt, am Spielcode: neue
+  Funktion `ReadValueInput` (fail/clear/ignore samt `continue`,
+  Bereichsprüfung gegen `I_MIN_LIVES`) ersetzt das feste `iLives = 5`;
+  Aufgabenzettel in `Sandbox/U4_Aufgabe.txt`. Testreihe
+  `abc`/`-3`/`0`/`5` bestanden, im Gegenlauf belegt (warnungsfrei
+  unter /W4, je Fehleingabe genau eine Meldung, 5 startet das Spiel).
+  Damit ist L2 komplett, der Lern-Vorlauf steht vor L3; die leere
+  Eingabe bleibt stilles Warten (DECISIONS dieser Schicht),
+  Lern-Rubriken in `Kern/LERNLOG.md` unter 2026-09-12.
+- 2026-09-12 — L3 Werte, Pointer, Speicher erledigt, am Spielcode und
+  im Debugger: Ü1 Adressen (Watch mit `&`, Call-Stack-Frames, die zwei
+  Kartons von `LoseLives` an echten Adressen belegt), Ü2 erster Pointer
+  als Wegwerf-Snippet in main (nullptr-Start, Wächter, Schreiben über
+  `*`; nach der Abnahme wieder entfernt), Ü3 die string-Parameter der
+  PrintMessage-Familie auf const-Referenzen (drei Überladungen, je
+  Prototyp und Definition; Regressionslauf bestanden, /W4
+  warnungsfrei). Damit ist der Lern-Vorlauf L1–L3 komplett — nächster
+  Baustein ist M1. Aufgabenzettel in `Sandbox/L3_Aufgabe.txt`,
+  Lern-Rubriken in `Kern/LERNLOG.md` unter 2026-09-12.
+- 2026-09-12 — M1-Design-Abschnitt, die erste Design-Session des
+  Projekts: Ablauf als Szenen-Zustandsautomat mit sechs Stationen nach
+  Isors Szenen-Modell, dazu Menü-Buttons mit Rahmen, Titel in
+  Linien-Schrift mit Start-Einblendung, Namensregeln, VT-Technik,
+  Zeichentest hinter versteckter Taste T und die M1-Struktur — acht
+  Einträge in den DECISIONS dieser Schicht. ZEITPLAN vor Baustart von
+  36 auf 50 h angehoben (Isor); der Übungsstand liegt gesichert als
+  `Sandbox/L2_L3_Uebungsstand.cpp`.
+- 2026-09-12 — M1-Development gestartet: gelieferter Baustein
+  `Console.h`/`Console.cpp` (VT-Init mit UTF-8, Farb-Konstanten,
+  Cursor-Steuerung, Einzeltasten-Abfrage) gebaut, von Isor eingebunden
+  und in einer langen Verstehens-Runde komplett abgenommen —
+  Compiler/Linker, Bit-Oder, Ausgabe-Puffer, Tastatur-Warteschlange;
+  Lern-Rubriken in `Kern/LERNLOG.md`. Auf Isors Stilentscheid auf
+  ausgeschriebene Schritte umgebaut, /W4-warnungsfrei. Aufgabenzettel
+  für den Zeichentest in `Sandbox/M1_Zeichentest_Aufgabe.txt`; die
+  M1-Ist-Zeit trackt Isor ab jetzt mit Grindstone (Stand ~3,5 h inkl.
+  Design). Session am Abend geschnitten — das Zeichentest-Tippen steht
+  aus.

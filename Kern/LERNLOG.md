@@ -300,3 +300,222 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   Überladungsauflösung (Anzahl, dann billigste Umwandlung) als
   Diagramm; Deklaration gegen Definition am Semikolon erklärt; Regel
   für Default-Argumente (nur im Prototyp); cout-eigener bool-Weg.
+- 2026-09-12 · Lane Defender Ü4 Eingabe-Validierung (L2, letzter
+  Übungspunkt vor L3) — **Selbst:** die ganze Übung ohne Gerüst gebaut —
+  eigene Funktion `ReadValueInput` mit Warteschleife, `fail`/`clear`/
+  `ignore` in der richtigen Reihenfolge, Bereichsprüfung als zweite
+  Ebene, `<limits>` wie beauftragt selbst included (das
+  Include-Fehlerbild vom 09./10.09. trat nicht auf); das
+  Nur-Enter-Verhalten eigenständig entdeckt und präzise gemeldet
+  („fail merkt es nicht, wenn leer"); nach der Parameter-Erklärung den
+  Umbau (Signatur auf `a_iMinLives` geschrumpft, Arbeitsvariablen in die
+  Funktion, `continue` gegen die Doppel-Meldung) komplett selbst
+  getippt; die leere Eingabe bewusst als Standardverhalten belassen
+  (stilles Warten, kein Umbau). Testreihe `abc`/`-3`/`0`/`5` bestanden —
+  je Fehleingabe genau eine Meldung, 5 startet das Spiel; belegt durch
+  Claudes Gegenlauf, kompiliert warnungsfrei unter /W4.
+  **Fehlerbild:** Parameter als Zugriffsweg gedeutet („die Funktion kommt
+  nicht an mains Variablen, also gebe ich sie mit") — Arbeitsvariablen
+  durch die Parameterliste gereicht statt lokal angelegt; beim Umzug in
+  die Funktion beide Lokale erneut mit `a_`-Präfix (`a_iInput`,
+  `a_bValidInput`) — dritte Auflage des Rollenpräfix-Fehlerbilds vom
+  2026-09-08/09, das System ist weiter nicht verankert; Doppel-Meldung
+  bei `abc` übersehen (Fallthrough nach dem if, bekanntes Muster vom
+  2026-09-06). **Hilfe:** Whitespace-Regel von `>>` erklärt (Enter ist
+  Whitespace — Warten, kein Fehlerzustand; peek/getline als Wege
+  gezeigt); Merksatz „Parameter ist eine Tür für Wissen des Aufrufers,
+  eine lokale Variable ist Werkzeug der Funktion" samt Diagramm;
+  `continue` als Schnitt gegen den Fallthrough.
+- 2026-09-12 · Lane Defender L3 Ü1, Adressen im Debugger — **Selbst:**
+  die Übung nach Zettel durchgeführt (Breakpoint, Watch mit `&`,
+  Frame-Wechsel über den Call Stack) und die Abnahme-Erklärung im Kern
+  richtig: zwei Variablen, zwei Container, darum zwei Adressen
+  (`0x…ee6fefa0` gegen `0x…ee6ff0a4`); dazu den Müllwert eines noch
+  nicht zugewiesenen `iLives` eigenständig entdeckt und präzise
+  gemeldet. **Fehlerbild:** Breakpoint zunächst am return der falschen
+  Funktion (ReadValueInput statt LoseLives); die Frame-Bindung des
+  Watch-Fensters unbekannt — „identifier is undefined" als Defekt statt
+  als „wohnt hier nicht" gelesen; in der Erklärung den Parameter „nur
+  eine lokale Variable" genannt (Karton-Verhalten richtig, der
+  Tür-Begriff vom Vormittag noch nicht angewandt). **Hilfe:** Klickpfad
+  samt Ebenen-Diagramm (der Watch fragt die markierte
+  Call-Stack-Ebene); Einordnung des Müllwerts als gelebter Grund der
+  Vorinitialisierungs-Regel.
+- 2026-09-12 · Lane Defender L3 Ü2, erster Pointer — **Selbst:** das
+  Snippet komplett ohne Gerüst gebaut (nullptr-Start, `&`-Verbindung,
+  Wächter mit Fehler-Rückgabe, Schreiben über `*`), eigenständig
+  getestet (beide Ausgaben 1) und daraus die richtige Kernregel selbst
+  formuliert: „überschreibt nicht die Adresse, sondern schreibt in die
+  Adresse rein"; SAE-`p`-Präfix auf Anhieb; die Sinnfrage („warum nicht
+  direkt in die Variable?") selbst gestellt — und das Urteil dahinter
+  stimmt: Neben dem sichtbaren Namen ist ein Pointer ein Umweg.
+  **Fehlerbild:** in der Trainingsfrage das Umhängen übersehen —
+  `p = &iRounds` nicht als Zustandswechsel des Pointers gelesen und
+  die 7 gedanklich ans alte Ziel geschrieben; die Ebene „wohin zeigt
+  er" war als Einmal-Setup verbucht, während die Ebene „was liegt
+  dort" sicher saß. Dazu die Sprach-Unschärfe „der Pointer hat 7" (ein
+  Pointer hat nie den Wert, nur die Hausnummer). Vorab die Rückmeldung
+  „zu wenig visuell, ich habe noch nie einen Pointer gesehen" —
+  berechtigt, der Theorie-Happen vor dem Entwurf war übersprungen.
+  **Hilfe:** interaktives Karton-Modell (Zeigen/Lesen/Schreiben/nullptr
+  samt Wächter-Toggle), der Skill-Slot aus den eigenen DECISIONS als
+  Antwort auf die Sinnfrage, Zahlen-Trace und ein zweites Modell mit
+  zwei Zielkartons zum Umhängen.
+- 2026-09-12 · Lane Defender L3 Ü3, const-Referenzen an PrintMessage —
+  **Selbst:** zwei der drei string-Überladungen im ersten Anlauf an
+  beiden Orten (Prototyp und Definition) korrekt umgestellt, die dritte
+  nach Claudes Befund selbst nachgezogen; Regressionslauf eigenständig
+  gefahren und im Gegenlauf bestätigt (Eingabe 5 → „Game Over in
+  Round 2", /W4 warnungsfrei); am Hover die richtige Detektiv-Frage
+  gestellt (const char[36] vorher wie nachher — gemessen an der einen
+  Station, die sich nie ändert) und die Wortfragen (Adressoperator,
+  Referenz, Literal) aktiv eingefordert. **Fehlerbild:** das const
+  zunächst weggelassen (non-const-Referenz hätte an den
+  Literal-Aufrufen den Build gebrochen); die Referenz hartnäckig als
+  Speichern-Vorgang modelliert („schreibt die Zeichen in die Adresse
+  rein, immer die gleiche") — dass die Zeichen schon am Ziel liegen und
+  nur gelesen wird, brauchte zwei Anläufe; zwischenzeitlich Frust
+  („weiß nicht, ob ich doof bin") — Auslöser war Claudes
+  Stapel-Erklärung (Temporär, Literal, Lebensdauer in einem Zug statt
+  einer einzigen Unterscheidung). **Hilfe:** der Vergleich „zwei
+  Adressen gegen eine Adresse — kopieren oder Hausnummer durchreichen"
+  als Auflösung; Referenz als „Pointer im Autopilot" an das
+  Ü2-Wissen gehängt; Vokabeltafel zu `*`/`&` nach Ort und die
+  Literal-Definition an seinen eigenen Codebeispielen.
+- 2026-09-12 · Lane Defender M1, Design-Auftakt — **Selbst:** den
+  Programmablauf eigenständig als Szenen-Modell entworfen (Hauptmenü →
+  Namenseingabe → Spiel → Endszene, hergeleitet aus der
+  Unity-Szenen-Analogie) samt Bedienkonzept (Pfeile/W+S,
+  Auswahlmarker) — trägt direkt den Zustandsautomaten des M1-Gerüsts;
+  dazu die Highscore-Idee, die sich mit Ausbau A2 der ROADMAP deckt;
+  beim Gegenlesen des Ablaufs die fehlende Steuerungs-Anzeige selbst
+  bemerkt und als Zwischenszene nachgezogen.
+- 2026-09-12 · Lane Defender M1, Abnahme Console-Baustein — **Selbst:**
+  den Header ohne Anleitung als „Versprechen, Definition in der .cpp"
+  gedeutet (Transfer aus den Ü3-Prototypen), `&lConsoleMode` als
+  Schreiben über die Adresse gelesen (L3-Transfer),
+  `INVALID_HANDLE_VALUE` korrekt als −1 getippt, Guard-Struktur und
+  die Scan-Code-Übersetzung erkannt; Includes selbst mit C#-usings
+  verknüpft. **Fehlerbild:** „if-Schleife" als Wort; die Prefix-Codes
+  224/0 zunächst als „nicht legitime" Tasten gedeutet statt als
+  Ankündigung des zweiten Codes; `#define`, Header-Rolle und `flush`
+  unbekannt — neuer Stoff, kein Verwechsler. **Hilfe:**
+  Compiler/Linker-Diagramm (C- gegen LNK-Fehler an den eigenen Fällen
+  C2084/LNK2005), define = Textersetzung, flush = Sammelmappe leeren,
+  Out-Parameter als Tür für die Antwort. Transferfrage danach: .h/.cpp-
+  Zuordnung sicher; die fehlende Einlösung aber als Compiler- statt
+  Linker-Fehler getippt (LNK2005 aus UE 1 nicht mehr abrufbar). Dazu
+  offen benannter Motivationsknick: der WinAPI-Teil wirkt „kryptisch,
+  in C# würde ich das verstehen" — Auslöser ist die
+  Betriebssystem-Schicht des gelieferten Bausteins, nicht der eigene
+  C++-Code (dieselbe Quelle wie das SAE-Hemmnis vom 2026-09-08).
+- 2026-09-12 · Lane Defender M1, Vertiefung InitConsole (interaktive
+  Stationen-Maschine) — **Selbst:** den Out-Parameter präzise erklärt
+  („Adresse ist der Ort, an den GetConsoleMode schreiben soll, keine
+  Kopie") und dazu eigenständig das richtige API-Schnittstellen-Bild
+  gebildet; den Zweck des VT-Bits in eigenen Worten („Befehle bleiben
+  unsichtbar und wirken"); die Fail-Pfade der Guards korrekt gelesen.
+  **Fehlerbild:** Bit-Wert mit Bit-Position verwechselt („Bit 4" als
+  viertes Bit gelesen); die Codepage als weiteres Modus-Bit
+  einsortiert, obwohl sie ein eigener Schalter ist; den bool-Rückgabewert
+  an „alle Bits gesetzt" geknüpft statt an „alle Handgriffe geklappt";
+  führende Null in 0111 unklar. Teils von Claudes Lampen-Beschriftung
+  und einer verunglückten Rechenfrage mitverursacht. **Hilfe:**
+  Stellenwert-Tafel 8/4/2/1 samt 007-Vergleich für die führende Null,
+  Trennung der zwei Ebenen (Handgriff-Erfolg gegen Schalter-Inhalt),
+  Bytes-Brille für die Codepage (226/148/140 als Ôöî gegen ┌).
+- 2026-09-12 · Lane Defender M1, Bit-Oder an InitConsole — **Selbst:**
+  2 | 4 = 6 samt richtigen Lampen; nach der Spalten-Erklärung offen
+  gesagt „ich verstehe | nicht" — präzises Selbst-Markieren der Lücke.
+  **Fehlerbild:** | zunächst als + gedeutet (ging bei getrennten Bits
+  zufällig auf); 4 binär als 0011 geschrieben (das wäre 3); die
+  Folge-Antwort „bzw 0110" blieb mehrdeutig (Korrektur der eigenen
+  Binärdarstellung oder 7|4-Versuch mit verrutschter 1er-Spalte).
+  **Hilfe:** Spaltentafel mit Stellenwerten 8/4/2/1, Merksatz „an oder
+  an = an", und das Plus-lügt-Beispiel 7+4 = 1011 (Übertrag verstellt
+  Schalter, die niemand angefasst hat). Auflösung danach: die
+  Kern-Einsicht „7 | 4 bleibt 7" selbst gezogen; hartnäckig blieb nur
+  die Binär-Schreibweise — 7 zweimal als 0110 notiert, die 1er-Spalte
+  fällt wiederholt weg. Gegenmittel: Merksatz „ungerade Zahl = letzte
+  Stelle 1".
+- 2026-09-12 · Lane Defender M1, SetConsoleMode-Zeile selbst zerlegt —
+  **Selbst:** `ENABLE_VIRTUAL_TERMINAL_PROCESSING` = 0x0004 eigenständig
+  in VS nachgeschlagen und richtig als „da kommt immer 4 raus" gedeutet;
+  die Kette „SetConsoleMode gibt bool, darf nicht FALSE sein, sonst
+  Abbruch" korrekt nacherzählt; die eigene Unsicherheit präzise benannt
+  („was gerade im Modus drinsteht, weiß ich ja nicht") — genau die
+  Lücke, die das Lesen-Oder-Zurückschreiben-Muster schließt.
+  **Fehlerbild:** Rollen kurz vertauscht (Handle als „das Ausgelesene"
+  statt als Ansprechpartner); `SetConsoleOutputCP` als „.cpp" gehört
+  (Diktat); der Dreifachschritt der return-Zeile (Aufruf, Vergleich,
+  return in einem) unklar. **Hilfe:** Wer/Was-Trennung
+  (Handle = welche Konsole, Mode = was eingestellt ist),
+  Hex-Kurzerklärung zu 0x, Get/Set-Anker an C#-Properties, die
+  return-Zeile in Langform, BOOL als Zahl-Wahrheit an Ü2 angebunden.
+  Fortsetzung nach eigener Gesamt-Nacherzählung: Ablauf Ausweis → Guard
+  → Karton füllen sowie „dritte Stelle dazu, von 3 auf 7" jetzt korrekt
+  wiedergegeben, „0 heißt automatisch false zurück" selbst gefolgert,
+  und das eigene Nicht-Sitzen ehrlich markiert. Hartnäckig zwei
+  Lese-Fehler mit derselben Wurzel (mehrere Schritte in einer Zeile):
+  das `|` im if als Vergleich gelesen und `return X != FALSE` als
+  bedingtes return („sonst gebe ich gar nichts zurück"); der Handle
+  blieb „irgendwas von Windows". Gegenmittel: Zeitlupen-Langform beider
+  Zeilen, Garderoben-Marke als Handle-Bild, Umleitung `> log.txt` als
+  echter Fall, in dem die Guards greifen.
+- 2026-09-12 · Lane Defender M1, ClearScreen und ReadKey — **Selbst:**
+  das Tempo selbst gedrosselt („Halt, stopp, du bist zu schnell") —
+  wie am 09.09. den eigenen Lernraum verteidigt; ClearScreen-Zweck
+  (leeren plus Cursor setzen) und den ReadKey-Grundablauf samt
+  Guard-Rückgabe und Neu-Mapping korrekt erklärt. **Fehlerbild:**
+  `flush` mit dem Bildschirm-Löschen vermengt („sammelt und cleart
+  dann alles") — das Wort „leeren" war doppelt belegt (Bildschirm
+  gegen Mappe); der Zweck der Prefix-Werte 224/0 unklar („für was habe
+  ich die?"). **Hilfe:** WhatsApp-Bild (cout tippt den Entwurf, flush
+  drückt Senden, endl ist Enter mit Auto-Senden), 224/0 als „Achtung,
+  Durchsage"-Ankündigung samt Pflicht zum zweiten _getch gegen
+  liegengebliebene Geistertasten (Anker: das liegengebliebene \n bei
+  cin). Nachgang: die Geistertasten-Folge im Kern selbst formuliert
+  („der nächste Lesevorgang bekäme den falschen Wert in iKey") — die
+  Ursache dabei an der Variablen-Adresse verortet statt in der
+  Tastatur-Warteschlange; Auflösung über das Bild der Warteschlange,
+  aus der jedes _getch nur den vordersten Wert nimmt. Zur
+  flush-Kontrollfrage kam „der Befehl würde gelöscht, aber die Message
+  kommt noch" (Diktat, mehrdeutig) — die Hälfte „kommt später noch an"
+  stimmt; klargestellt, dass dabei nichts verloren geht: Der Entwurf
+  wartet und reist mit dem nächsten Auto-Senden mit. Nach einer Pause
+  das Ansammeln-Modell selbst sauber formuliert (Container füllt sich,
+  gesendet erst bei endl oder flush) und die Restlücke präzise benannt:
+  Unterschied endl gegen flush — Vermutung „flush macht mehr", richtig
+  ist das Gegenteil. Auflösung: endl = "\n" + flush, flush sendet nur;
+  ClearScreen darf gerade keinen Umbruch anhängen, weil der den frisch
+  gesetzten Cursor eine Zeile nach unten schöbe.
+- 2026-09-12 · Lane Defender M1, Abschluss-Siegel Console-Baustein
+  (je ein Satz je Funktion, frei formuliert) — **Selbst:** ClearScreen
+  fehlerfrei (leeren, Cursor an den Start, mit flush senden); das
+  ReadKey-Konzept richtig (normale gegen Spezialtasten, Scan-Codes auf
+  eigene Konstanten ummappen, Unbekanntes als I_KEY_UNKNOWN);
+  eigenständig beschlossen, die M1-Arbeitszeit ab jetzt mit Grindstone
+  zu tracken — deckt genau die Ist-Spalte des ZEITPLANs.
+  **Fehlerbild:** InitConsole als „stoppt mein Programm automatisch"
+  erklärt — Melden mit Entscheiden verwechselt (die Funktion gibt nur
+  bool zurück, der Aufrufer entscheidet; derselbe Ebenen-Mix wie bei
+  bool gegen Bits), dazu „guckt, ob die Konsole ausgeben kann" statt
+  „stellt sie um"; im ReadKey-Satz iKey und iScanCode einmal verdreht
+  (Konzept dahinter stimmte). **Hilfe:** Merksatz „Funktionen melden,
+  Aufrufer entscheiden"; Dreizeiler-Ablauf zum Geradeziehen der
+  Variablenrollen. Console.h/.cpp hatte er zu diesem Zeitpunkt bereits
+  eigenständig in VS eingebunden und gebaut, ohne den Klickpfad zu
+  brauchen.
+- 2026-09-12 · Lane Defender M1, Entwurf Zeichentest-Szene (Entwurf
+  vor Gerüst) — **Selbst:** über die Vorgabe hinaus einen eigenen,
+  zweiten Test erfunden: ein Symbol läuft Tick für Tick eine Mini-Lane
+  mit Wänden hinab, um die Stabilität beim Neuzeichnen zu prüfen —
+  nimmt exakt die M2-Rendering-Situation vorweg; die Lane-Breite mit
+  zwei Plätzen deckt sich ungeplant mit der beschlossenen
+  Doppelzellbreite; C#-Brücke Console.SetCursorPosition selbst
+  gezogen. **Fehlerbild:** das Symbol einzeln per Cursor setzen wollen
+  statt des beschlossenen Ein-Puffer-Renderings (ganzer Frame als ein
+  String, Cursor-Home, einmal senden); ein Feld-Array angesetzt, wo
+  als Zustand eine einzige Zahl reicht. **Hilfe:** Merksatz „der
+  Zustand ist die Zahl, das Bild wird jeden Tick frisch daraus
+  gebaut"; Home-statt-Löschen als Flacker-Schutz aus den DECISIONS.
