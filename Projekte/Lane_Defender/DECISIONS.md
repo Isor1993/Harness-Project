@@ -413,6 +413,27 @@ geschlagen); die Ränder des statischen Tests aus den hübschen
 Rahmenzeichen zu bauen (die Prüflinge dürfen nicht das Lineal sein,
 Ränder bleiben ASCII `|`).
 
+## 2026-09-13 — Szenen melden die nächste Szene (Melde-Muster)
+Was: Der M1-Zustandsautomat läuft als Melde-Muster: Jede
+Szenen-Funktion gibt `E_GAME_SCENES` zurück, `main` hält den Zustand
+als lokale Variable, wischt je Runde (ClearScreen samt Scrollback)
+und weist im switch zu; `GS_EXIT` beendet `main` direkt. Der
+Szenen-Typ und die Prototypen wohnen in `LaneDefender.h` — nur
+Zusagen, keine Variablen. Der Symbol-Test bleibt eigener Zustand und
+meldet selbst „danach Hauptmenü".
+Warum: Isors Architektur-Anforderung vom 2026-09-13 — main clean,
+Szenen später als eigene Controller auslagerbar, ohne
+Automat-Innereien zu kennen; sein Merksatz „Funktionen melden,
+Aufrufer entscheiden" als Bauform. Der erste Wurf (ChangeScene plus
+geteilte Variable) brach genau an der Auslagerung: Eine Variable im
+Header wird per Include-Textkopie mehrfach definiert.
+Verworfen: ChangeScene mit Variable auf Datei-Ebene (funktionierte,
+koppelt aber jede ausgelagerte Szene an den Automaten); die
+Zustandsvariable im Header; ein `RunEndProgramm` (nur main kann main
+beenden — der GS_EXIT-case returnt selbst); ein Pointer auf die
+aktuelle Szene (der Inhalt wechselt im selben Karton, kein
+Ziel-Wechsel zwischen Objekten).
+
 ## 2026-09-13 — Zeichentest-Ergebnis: 26 rasterfest, Schach doppelbreit
 Was: Erster Lauf der Zeichentest-Szene (VS-Konsole und Windows
 Terminal — beide rendern identisch, VS nutzt inzwischen die
@@ -480,3 +501,50 @@ gegen den die Trennung schützt); `LoseLives` ohne Aufrufer in
 `LaneDefender.cpp` stehen lassen (erste Fassung dieses Eintrags —
 noch am selben Tag vom Toter-Code-Argument geschlagen, das schon
 `ReadValueInput` entfernt hat).
+
+## 2026-09-18 — Zielbreite 120, Zentrierung als eingebautes Padding
+Was: Alle Bildschirme sind auf `I_SCREEN_WIDTH = 120` Spalten
+ausgelegt (Konstante in Console.h, der Windows-Terminal-Standard).
+ASCII-Blöcke werden **blockweise** zentriert: ein gemeinsames Padding
+je Block nach seiner breitesten Zeile, als Leerzeichen direkt im
+Raw-String — nie Tabs, die Konsole springt damit aufs Achter-Raster
+(der Versatz-Bug vom 18.09.).
+Warum: Zentrieren ist ausgerechnetes Padding und braucht weder
+SetCursor noch Laufzeit-Parsing; blockweise, weil zeilenweises
+Zentrieren die Linien-Schrift zerreißt (Zeilen von 61 bis 72 Zeichen
+bekämen verschiedene Ränder).
+Verworfen: Zentrierung per SetCursor je Zeile (bricht das
+Ein-Puffer-Rendering); eine Laufzeit-Zentrierfunktion (Parsing ohne
+Not — kommt erst, wenn variable Inhalte sie brauchen); 80 Spalten als
+Zielbreite (der 72er-Titel ließe nur 4 Spalten Rand).
+
+## 2026-09-18 — Auswahl-Marker wandert im Frame, SetCursor erst zur Namenseingabe
+Was: Auch die Menü-Auswahl bleibt im Ein-Puffer-Muster: Der Zustand
+ist die Auswahl-Zahl, jeder Tastendruck baut den Frame neu, der
+Marker steht in der Button-Zeile, deren Nummer die Zahl ist; die
+Menü-Schleife sendet ab Cursor-Home und überschreibt — ClearScreen
+läuft nur beim Szenenwechsel in main. `SetCursorPosition` wird erst
+mit ihrem ersten echten Nutzer gebaut, der Namenseingabe.
+Warum: Flackern ist das leere Zwischenbild beim Löschen, nicht das
+Neuschreiben — Home-statt-Löschen deckt Isors Flacker-Sorge bereits
+(Beschluss vom Zeichentest); eine auf Vorrat gebaute
+SetCursor-Funktion läge ungenutzt und ungetestet in der Abgabe.
+Verworfen: das Auswahl-Symbol einzeln per SetCursor nachzeichnen
+(zweite Druck-Logik neben dem Puffer, Optimierung ohne gemessene
+Not — Isors Vorschlag vom 14./18.09., am eigenen
+Home-statt-Löschen-Beschluss entschieden); SetCursorPosition auf
+Vorrat bauen.
+
+## 2026-09-18 — Der Titel: Figlet „Standard" voll ausgelegt statt Blockschrift
+Was: Der Menü-Titel ist der Figlet-Font „Standard" in voller
+Buchstabenbreite (patorjk-Generator, Isors Link als Quelle), fünf
+Zeilen, breiteste 72 Zeichen; die Rohfassung liegt in
+`Sandbox/M1_Titel_LaneDefender.txt`. Start und Exit tragen dieselbe
+Schrift als Buttons (Isors eigene Blöcke vom 14.–18.09.).
+Warum: Reines ASCII — rasterfest ohne Sonderfälle und ohne den
+Zeichentest zu bemühen; passt mit 24 Spalten Rand in die
+120er-Breite; die Linien-Schrift-Entscheidung vom 12.09. bleibt
+erfüllt.
+Verworfen: die gefüllte Blockschrift (Isors Favorit, ~128 Zeichen —
+läuft in jedem Standard-Terminal über und schied an der Breite aus);
+die kursiven Fassungen (das L las sich als Z — „Zane Defender").

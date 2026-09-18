@@ -1,8 +1,9 @@
 # STUNDENPLAN.md — Termine Modul 5-101 (Semester 3)
 
-Ownership: Nur die Unterrichtsblöcke, Präsentations- und
+Ownership: Nur die Unterrichtsblöcke, Abgabe-, Präsentations- und
 Betreuungstermine des Moduls 5-101 (Games Programming, deutscher Track
-`5FSC0XD101_P 0926de`) — aus Isors Canvas-Export vom 2026-09-06. Die
+`5FSC0XD101_P 0926de`) — aus Isors Canvas-Export vom 2026-09-06, die
+Abgabetermine aus Isors Canvas-Kursübersicht vom 2026-09-14. Die
 Aufgabenstellungen gehören in die ASSIGNMENT-Dateien (bis die Originale
 da sind: `VORJAHR_AUFGABEN.md`), die Planung in `PLAN.md` und die
 ROADMAPs.
@@ -18,6 +19,29 @@ Do 15:30–17:00 **vor Ort** (Raum Aventurien). Abweichungen stehen
 dabei. Der englische Parallel-Track (`…B101 … en`, 16:00–18:30) läuft
 inhaltsgleich einen Tick voraus und ist nicht Isors Kurs.
 
+## Die Abgabetermine (Canvas-Kursübersicht, alle Fr 23:59)
+
+| Fällig | Abgabe | Kriterien |
+|---|---|---|
+| **2026-10-02** | C++ Konsolenprojekt | K2, K5, S3, S4, S5 |
+| **2026-10-30** | 3D Model-Viewer | K2, S3, S4 |
+| **2026-11-27** | Game Pitch | S1, K2, K3, K4 |
+| **2026-11-27** | Spieleprototyp | K1, K5, S3, S4, S5, S6 |
+| **2026-12-18** | Summative Zwischenprüfung: Abgabe und Benotung Projektplanung | S1, K2, K3, K4 |
+| **2027-01-08** | Alpha | K1, K5, S2, S3, S4, S5, S6 |
+| **2027-01-29** | Beta | K1, K5, S2, S3, S4, S5, S6 |
+| **2027-02-12** | Goldmaster | K1, K5, S2, S3, S4, S5, S6 |
+| **2027-02-19** | Projektreflexion | K1, K2, K4, K5, S3, S5 |
+| **2027-02-26** | Portfolio `[5FSC0XD101.1]` | alle — K1–K5, S1–S6 |
+
+Die **Lernzielkontrolle** steht ohne Termin in der Übersicht.
+
+**Abgabe vor Präsentation:** Jede Projekt-Abgabe ist am Freitag fällig,
+die zugehörige Präsentation folgt am Donnerstag sechs Tage später
+(Pitch 27.11.→03.12., Alpha 08.01.→14.01., Beta 29.01.→04.02.,
+Goldmaster 12.02.→18.02.). Die Betreuungstermine 07.01., 28.01. und
+11.02. liegen jeweils am **Vortag** einer Abgabe.
+
 ## Die Meilenstein-Termine (vor Ort, je Do 15:30)
 
 | Termin | Was |
@@ -27,9 +51,9 @@ inhaltsgleich einen Tick voraus und ist nicht Isors Kurs.
 | **2027-02-04** | Beta-Präsentation |
 | **2027-02-18** | Goldmaster-Präsentation |
 
-Im Vorjahr wurde das GDD **eine Woche nach dem Pitch** als benotete
-Zwischenprüfung abgegeben — Isors Abgabedatum mit den Originalunterlagen
-prüfen.
+Die benotete Planungs-Abgabe ist die Summative Zwischenprüfung
+„Projektplanung" am **2026-12-18** — drei Wochen nach der Pitch-Abgabe,
+nicht wie im Vorjahr eine Woche nach dem Pitch.
 
 ## Unterrichtsblöcke (deutscher Track)
 

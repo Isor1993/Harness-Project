@@ -56,32 +56,48 @@ Befunde der Prüfung vom 2026-08-26) stehen mit ihren Belegen in
 
 ### Der Phasenplan — beschlossen am 2026-09-08
 
-Grundsätze (Frontloading, 24-Stunden-Woche, Schätzlogik, Feature-Stopp):
-`DECISIONS.md` → „2026-09-08 — Semester-3-Roadmap". Geschätzte Termine
-tragen `~` und gelten, bis Isors Canvas-Export sie ersetzt.
+Grundsätze (Frontloading, 24-Stunden-Woche): `DECISIONS.md` →
+„2026-09-08 — Semester-3-Roadmap"; der Schnitt nach Fertig-Zielen seit
+dem 2026-09-14: `DECISIONS.md` → „2026-09-14 — Fertig-vor-fällig". Die
+Abgabetermine besitzt `Semester_3/STUNDENPLAN.md`.
 
-- [ ] **Phase 1 · C++-Grundlagen und Lane Defender (08.09.–05.10.)** —
+**Jede Phase endet mit ihrem Fertig-Ziel vor dem Abgabetermin** — das
+Fertig-Ziel ist der Feature-Stopp, das letzte Wochenende davor die
+Crunch-Reserve, und die Betreuung am Vortag der Abgabe prüft den
+fertigen Stand. Der Plan trägt nur Fertig-Ziele und Abgabetermine;
+Projekt-Meilensteine werden beim Start der jeweiligen Phase
+dazwischengesetzt.
+
+- [ ] **Phase 1 · C++-Grundlagen und Lane Defender (08.09.–27.09.)** —
   C++-Kurs plus Lern-Vorlauf und Meilensteine
-  (`Projekte/Lane_Defender/ROADMAP.md`); Ziel: abgabefertig vor dem
-  geschätzten Termin ~15.10.
-- [ ] **Phase 2 · 3D-Model-Viewer (05.10.–26.10.)** — OpenGL/GLSL im
+  (`Projekte/Lane_Defender/ROADMAP.md`); Fertig-Ziel So 27.09., Abgabe
+  Fr 02.10., die Abgabewoche ist nur Feinschliff. Isors Streckziel vom
+  2026-09-14: wenn möglich schon So 20.09. fertig.
+- [ ] **Phase 2 · 3D-Model-Viewer (28.09.–25.10.)** — OpenGL/GLSL im
   Selbststudium; der Muss-Umfang (Fenster, Pipeline, texturiertes
-  Modell, Licht, Kamera, Skybox) steht vor dem Unreal-Block,
-  Feinschliff bis zum echten Abgabetermin (~05.11.).
-- [ ] **Phase 3 · Unreal-Block und Tower-Prototyp (27.10.–23.11.)** —
-  Unterricht mitnehmen, parallel den spielbaren Unreal-Prototyp in der
-  Tower-Welt bauen (~20.11.) — das ist der Stack-Kontrollpunkt
-  (`DECISIONS.md` → „2026-09-07 — Engine- und Sprachfokus").
-- [ ] **Phase 4 · Pitch und GDD (24.11.–10.12.)** — Pitch am 03.12.
-  (fest), danach das benotete GDD (~10.12.); die Prototyp-Erkenntnisse
-  fließen ein.
-- [ ] **Phase 5 · Alpha (11.12.–14.01.)** — Core-Loop feature-complete
-  mit Win/Lose zur Präsentation am 14.01. (fest); die Weihnachtslücke
-  ist Crunch-Reserve, ab der Betreuung am 07.01. (Generalprobe)
-  Feature-Stopp.
-- [ ] **Phase 6 · Beta (15.01.–04.02.)** — feature-complete, Content
-  vollständig, fremde Tester zur Präsentation am 04.02. (fest); ab der
-  Betreuung am 28.01. (Generalprobe) Feature-Stopp.
-- [ ] **Phase 7 · Gold und Portfolio (05.02.–25.02.)** — Goldmaster am
-  18.02. (fest, Generalprobe 11.02.), danach Projektreflexion und
-  Portfolio (~25.02.).
+  Modell, Licht, Kamera, Skybox) steht vor dem Unreal-Block;
+  Fertig-Ziel So 25.10., Abgabe Fr 30.10. Beginnt früher, wenn das
+  Streckziel aus Phase 1 hält.
+- [ ] **Phase 3 · Unreal-Block, Tower-Prototyp und Pitch-Material
+  (26.10.–22.11.)** — Unterricht mitnehmen, parallel den spielbaren
+  Unreal-Prototyp in der Tower-Welt bauen — der Stack-Kontrollpunkt
+  (`DECISIONS.md` → „2026-09-07 — Engine- und Sprachfokus"); das
+  Pitch-Material entsteht mit, weil beides am selben Tag fällig ist.
+  Fertig-Ziel So 22.11., Abgabe Fr 27.11. (Prototyp und Pitch).
+- [ ] **Phase 4 · Projektplanung (23.11.–13.12.)** — Pitch-Präsentation
+  Do 03.12. (vor Ort); die benotete Projektplanung (Summative
+  Zwischenprüfung) mit den Prototyp-Erkenntnissen: Fertig-Ziel
+  So 13.12., Abgabe Fr 18.12.
+- [ ] **Phase 5 · Alpha (14.12.–06.01.)** — Core-Loop feature-complete
+  mit Win/Lose; die Weihnachtslücke ist Bauzeit, nicht Reserve.
+  Fertig-Ziel Mi 06.01., Betreuung Do 07.01., Abgabe Fr 08.01.,
+  Präsentation Do 14.01.
+- [ ] **Phase 6 · Beta (09.01.–27.01.)** — feature-complete, Content
+  vollständig, fremde Tester. Fertig-Ziel Mi 27.01., Betreuung
+  Do 28.01., Abgabe Fr 29.01., Präsentation Do 04.02.
+- [ ] **Phase 7 · Goldmaster (30.01.–10.02.)** — Fertig-Ziel Mi 10.02.,
+  Betreuung Do 11.02., Abgabe Fr 12.02., Präsentation Do 18.02.
+- [ ] **Phase 8 · Reflexion und Portfolio (13.02.–21.02.)** —
+  Projektreflexion: Fertig-Ziel Mi 17.02., Abgabe Fr 19.02.;
+  Portfolio: Fertig-Ziel So 21.02., Abgabe Fr 26.02. Der letzte
+  Betreuungstermin (Do 25.02.) liegt noch vor der Portfolio-Abgabe.

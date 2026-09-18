@@ -861,3 +861,22 @@ per `git log` nachgeschlagen."
 aller drei Zählungen und die neue Regel „eine vergebene Nummer wird
 nie rückwärts repariert" stehen in `Kern/VERSIONIERUNG.md`,
 Abschnitt 1. Knowledge zählt ab `0.0039` normal weiter.
+
+### 2026-09-18 — Chronik-Eintrag am falschen Ort eingefügt
+**Was:** Claude fügte den Lern-Log-Eintrag zur Solo-Runde (18.09.)
+direkt hinter dem 14.09.-Aufbau-Eintrag ein statt am Datei-Ende — er
+stand damit vor dem 14.09.-Unterrichts-Eintrag, und die Chronik
+behauptete eine falsche Zeitfolge. Beim nächsten Anfügen selbst
+bemerkt und repariert; `pruefen.py` bestätigte danach 0 Chronik-Funde.
+**Ursache:** Als Anker fürs Anhängen diente der zuletzt selbst
+geschriebene Eintrag aus dem Kontext-Gedächtnis statt des
+tatsächlichen Datei-Endes — dass die Abend-Session vom 14.09. dahinter
+längst ergänzt hatte, blieb so unsichtbar.
+**Regel:** Vorhanden, griff nicht: `Kern/DOC_RULES.md`, Abschnitt 4 —
+„Ergänzt wird nach Datum" — und `Kern/WORKFLOW.md`, Parallele
+Sessions — „Eine ganze Datei wird unmittelbar vor dem Ersetzen erneut
+gelesen." Reiner Ausführungsfehler.
+**Stand:** behoben 2026-09-18 — Eintrag ans Datei-Ende verschoben,
+Chronik-Prüfung grün; Gegenmittel als persistentes Claude-Memory: vor
+jedem Chronik-Anhang das Datei-Ende frisch lesen. `pruefen.py`
+(Prüfung 2, Datumsfolge) bleibt das Netz dahinter.

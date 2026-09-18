@@ -62,13 +62,14 @@ Seite ←  keine
 ### 📍 Status · Semester 3
 ```
 URL      https://claude.ai/code/artifact/990b0be5-f2ec-42e2-affe-858d1cc92208
-Stand    2026-09-08 — neu gebaut im Design-Abschnitt „Semester-Roadmap":
-         Zeitstrahl mit fester/geschätzter Trennung, Schätzlogik-Tafel,
-         Phasenplan. Geschätzte Termine (~) werden ersetzt, sobald Isors
-         Canvas-Export die echten liefert.
+Stand    2026-09-14 — echte Abgabetermine eingepflegt: Zeitstrahl auf
+         Isors zwei Terminarten umgebaut (Fertig-Ziele + Abgaben,
+         Projekt-Meilensteine folgen je Phase), Schätzlogik-Tafel durch
+         „Echt gegen geschätzt" ersetzt, Phasenplan Fertig-vor-fällig
+         samt Streckziel 20.09.
 Löst ab  `🗑 Löschen · Wo das Projekt steht` (seit 2026-09-11)
 Quelle   Uni/ROADMAP.md (Phasenplan), Uni/DECISIONS.md,
-         Uni/Semester_3/STUNDENPLAN.md, Uni/Semester_3/VORJAHR_AUFGABEN.md
+         Uni/Semester_3/STUNDENPLAN.md
 Skripte  keine — die Seite zeigt Termine und Plan, nicht Code
 Seite →  keine
 Seite ←  keine
@@ -497,6 +498,12 @@ Stand    2026-09-11 — neu, gebaut beim Abschluss von L2 Ü3 (Lane
          Definition (Semikolon), Überladungswahl mit der bool→1-Falle;
          dazu Default-Argumente und die double-Literal-Falle.
          Offline-Kopie: Seiten/2026-09-11-cpp-funktionen-ueberladung.html
+Überholt Der Belegcode ist am 2026-09-13 umgezogen: Die
+         PrintMessage-Familie lebt jetzt in Output.h/Output.cpp,
+         LoseLives ist entfernt (kehrt mit einem Aufrufer zurück) —
+         Fußzeile und Projekt-Kästen der Seite nennen noch
+         LaneDefender.cpp. Der Lehrstoff selbst stimmt unverändert.
+         Nachziehen beim nächsten inhaltlichen Anfassen bzw. Pflegetag.
 Quelle   Knowledge-Ordner: Cpp/funktionen-bekommen-kopien.md und
          Cpp/ueberladung-nimmt-den-billigsten-weg.md
 Beispiel LaneDefender.cpp — PrintMessage-Überladungsfamilie und

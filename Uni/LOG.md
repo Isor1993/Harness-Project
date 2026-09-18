@@ -161,3 +161,12 @@ damals, nicht den von heute.
   Konventionstabelle bleibt unverändert: Das SAE-Destillat erfüllt
   alle drei Quellen (PDF, Online-Dozent, Standort-Dozentin) zugleich,
   und der bestehende Lane-Defender-Code bleibt konsistent.
+- 2026-09-14 — Die echten Abgabetermine des Moduls 5-101 aus Isors
+  Canvas-Kursübersicht eingegangen (Screenshot in der Session) und
+  eingepflegt: Termin-Tabelle in `Semester_3/STUNDENPLAN.md`, die
+  `~`-Schätzungen des Phasenplans in `ROADMAP.md` ersetzt, das
+  Lane-Defender-Zielfenster auf den 02.10. korrigiert. Größte
+  Abweichungen von der Schätzung: Konsolenprojekt fällig 02.10. statt
+  ~15.10., jede Projekt-Abgabe liegt **vor** ihrer Präsentation
+  (Alpha-Abgabe 08.01. zur Präsentation 14.01.), die benotete
+  Projektplanung erst am 18.12. statt ~10.12.

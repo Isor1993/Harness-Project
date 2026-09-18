@@ -44,9 +44,12 @@ wird mit Beleg (LOG-Eintrag oder Datei).
 
 ## Meilensteine — Schätzung und Ist-Zeiten im ZEITPLAN
 
-Zielfenster aus der Semester-Roadmap, beschlossen am 2026-09-08:
-abgabefertig bis ~05.10., vor dem geschätzten Uni-Termin ~15.10.
-(`Uni/ROADMAP.md` → „Der Phasenplan — beschlossen am 2026-09-08").
+Zielfenster aus der Semester-Roadmap
+(`Uni/ROADMAP.md` → „Der Phasenplan — beschlossen am 2026-09-08"),
+seit dem 2026-09-14 mit den echten Terminen: **Fertig-Ziel So 27.09.**,
+Abgabe **Fr 02.10., 23:59** (`Uni/Semester_3/STUNDENPLAN.md`), die
+Abgabewoche ist nur Feinschliff. Isors Streckziel: wenn möglich schon
+So 20.09. fertig — dann beginnt der Model-Viewer eine Woche früher.
 
 - [ ] **M1 · Gerüst** — Konsolen-Init (Farben, Sonderzeichen,
   Cursor-Home) samt Zeichentest der Symbol-Kandidaten, Hauptmenü mit
@@ -65,9 +68,21 @@ abgabefertig bis ~05.10., vor dem geschätzten Uni-Termin ~15.10.
   **Stand 2026-09-13:** Zeichentest-Szene gebaut und gemessen (26 von
   30 rasterfest; Schachfiguren doppelbreit und als Figuren-Symbole
   gesetzt — DECISIONS dieser Schicht), Ausgabe-Helfer in
-  `Output.h`/`Output.cpp`, `/utf-8` gesetzt. Offen in M1:
-  Zustandsautomat → Menü mit Titel → Namenseingabe; die Szene an die
-  versteckte Taste `T` hängen, sobald das Hauptmenü existiert.
+  `Output.h`/`Output.cpp`, `/utf-8` gesetzt.
+  **Stand 2026-09-13 (Abend):** Szenen-Zustandsautomat fertig —
+  Melde-Muster, sechs Stationen im Kreis, Exit, Symbol-Test als
+  Zustand (DECISIONS → „Szenen melden die nächste Szene"). Offen in
+  M1: das echte Hauptmenü (Linien-Titel, umrahmte Buttons,
+  Pfeil/W-S-Auswahl, Tasten `T` und `ESC`), echte Namenseingabe
+  (getline samt Namensregeln), echte Endszene mit Name und Level.
+  M1-Ist-Zeit: 10:22 h (Grindstone).
+  **Stand 2026-09-18:** Hauptmenü-Frame fertig — Titel und
+  Start/Exit-Buttons in Linien-Schrift, blockzentriert auf
+  `I_SCREEN_WIDTH` 120, Szene in `MainMenu.h`/`.cpp` (drei Einträge
+  vom 18.09. in den DECISIONS dieser Schicht), /W4-warnungsfrei.
+  Offen in M1: Auswahl-Schleife (Auswahl-Zahl, Marker im Frame,
+  Home-Frame-Schleife, Pfeile/W/S, Enter, `ESC`, `T`),
+  Titel-Einblendung, echte Namenseingabe, echte Endszene.
 - [ ] **M2 · Lanes und Spieler** — Spielfeld mit Lanes zeichnen
   (nur rastergeprüfte Zeichen), Player-Klasse, Lane-Wechsel und
   Schießen über die nicht-blockierende Tastenabfrage (gelieferter
@@ -136,6 +151,13 @@ abgabefertig bis ~05.10., vor dem geschätzten Uni-Termin ~15.10.
   gestaltet nur noch aus: exakte Zellrechnung je Zeile,
   Sonderbreiten-Logik beim Zeilenbau, Zusammenspiel mit der
   Doppelzellbreite aus dem Tick-Beschluss.
+- [ ] **Auswahl-Mechanik als wiederverwendbaren Baustein prüfen** —
+  Isors Gedanke vom 2026-09-13 beim Automaten-Bau: Die Listen-Auswahl
+  (Pfeile/W+S, Marker, Enter) so schneiden, dass mehrere Szenen sie
+  nutzen können — Hauptmenü, Bestätigung der Namenseingabe, später der
+  M4-Upgrade-Screen. Entscheidet der Design-Moment des
+  Menü-Bausteins; YAGNI-Regel der CODE_GUIDELINES gilt (Abstraktion
+  beim zweiten konkreten Nutzer).
 - [ ] **Design gegen die Original-Aufgabe halten**, sobald die echten
   Semester-3-Texte vorliegen. Grundlage bisher:
   `Uni/Semester_3/VORJAHR_AUFGABEN.md` → „1 · C++ Konsolenprojekt".

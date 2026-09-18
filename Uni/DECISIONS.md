@@ -395,6 +395,10 @@ hinter den Pitch zu schieben (Claudes Empfehlung — hätte mit dem
 Alpha-Bau kollidiert und bricht das Frontloading); ihn neben dem
 Prototyp zu strecken.
 
+Fortgeführt am 2026-09-14: Schätzlogik und Puffer-Regel sind durch
+„2026-09-14 — Fertig-vor-fällig" ersetzt (echte Termine liegen vor);
+Frontloading und die 24-Stunden-Rechnung gelten unverändert weiter.
+
 ## 2026-09-08 — Unity-Version des Altstands: bei Wiederanfassen die Blattversion
 Was: Solange der Unity-Altstand des Towers ruht, wird seine
 Unity-Version nicht angefasst. Wird wieder in Unity gearbeitet, gilt
@@ -410,5 +414,34 @@ persönlicher Freigabe, dieser hier dem ruhenden Altstand.
 Verworfen: sofortiges Upgrade des ruhenden Altstands (Aufwand ohne
 Nutzen); dauerhaft auf der alten Version bleiben (vom Blatt
 ausdrücklich als veraltet gestrichen).
+
+## 2026-09-14 — Fertig-vor-fällig: Phasenplan an den echten Abgabeterminen
+
+Was: Mit den echten Canvas-Terminen (`Semester_3/STUNDENPLAN.md`) ist
+der Phasenplan neu geschnitten (`ROADMAP.md` → „Der Phasenplan —
+beschlossen am 2026-09-08"). Jede Phase endet mit einem **Fertig-Ziel
+vor dem Abgabetermin** — der Puffer ist damit eingebaut und das
+Fertig-Ziel ist zugleich der Feature-Stopp. Der Plan trägt nur zwei
+Terminarten, Fertig-Ziele und Abgabetermine; Projekt-Meilensteine
+werden erst beim Start der jeweiligen Phase dazwischengesetzt, damit
+ablesbar ist, in welcher Phase man steht und ob man im Verzug ist
+(Isor). Die Betreuungstermine 07.01./28.01./11.02. prüfen als
+Vortag-Checks den fertigen Stand — sie sind keine
+Präsentations-Generalproben, denn die Abgabe liegt vor der Präsentation.
+Ersetzt an „2026-09-08 — Semester-3-Roadmap" die Schätzlogik und die
+Puffer-Regel; Frontloading und 24-Stunden-Rechnung gelten weiter.
+
+Warum: Die echten Termine zeigen zweierlei. Jede Projekt-Abgabe ist
+freitags fällig, die Präsentation folgt erst am Donnerstag danach —
+wer auf die Präsentation plant, verpasst die Abgabe (Alpha: Abgabe
+08.01., Präsentation 14.01.; die Weihnachtslücke ist damit Bauzeit).
+Und das Konsolenprojekt ist am 02.10. statt ~15.10. fällig — ohne
+eigenes Fertig-Ziel davor bliebe kein Puffer.
+
+Verworfen: die Phasen bis zum Abgabetag laufen lassen (kein Puffer,
+die Abgabewoche wäre Bauzeit); die Präsentationstermine als
+Planungsanker behalten (die Abgabe ist früher fällig); alle
+Meilensteine schon jetzt setzen (vor dem Start einer Phase nur
+Rauschen).
 
 

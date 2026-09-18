@@ -22,21 +22,20 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-09-12 beim `/harness:ende` des Abschnitts
-„Lane Defender M1 Gerüst" (Development · Lernmodus, Revier Lane
-Defender). Berichte im LOG der Schicht und in `Kern/LERNLOG.md`.)*
+*(überschrieben 2026-09-18 beim `/harness:ende` des Abschnitts
+„Lane Defender M1" (Development · Lernmodus, Revier Lane Defender).
+Berichte im LOG der Schicht und in `Kern/LERNLOG.md`.)*
 
-Lane Defender M1 **läuft**: Design komplett (acht DECISIONS-Einträge,
-ZEITPLAN auf 50 h), Console-Baustein gebaut und abgenommen. Als
-Nächstes den **Zeichentest tippen** nach
-`Projekte/Lane_Defender/Sandbox/M1_Zeichentest_Aufgabe.txt` (Testreihe
-in zwei Terminals), danach Zustandsautomat → Menü. Die M1-Ist-Zeit
-trackt Isor mit Grindstone (~3,5 h Stand).
-**Pflegetag am Sonntag, 2026-09-13** — dort zusätzlich beschlossen:
-💡 Lernstück „Pointer & Referenzen" bauen (Stoff in `Knowledge/Cpp/`);
-gründlich dran ist eines der drei Lernstücke mit Stand 2026-08-24.
-Unverändert offen: Unreal-Toolchain-Test, Abgabetermine der Uni,
-Datenbaum.
+Lane Defender M1: **Hauptmenü-Frame fertig** (blockzentriert auf 120,
+Szene in `MainMenu.h`/`.cpp` — drei DECISIONS-Einträge vom 18.09.).
+Nächster Baustein: die **Auswahl-Schleife**, Isors Gerüst nach der
+Einigung in den DECISIONS („Auswahl-Marker wandert im Frame"); danach
+Einblendung und Namenseingabe. Fertig-Ziel So 27.09., Streckziel
+So 20.09.; Pflegetag So 20.09. Commits ausstehend (Message-Dateien im
+Chat vom 18.09.): V 0.0007 Spiel · V 0.0073 Harness (Gesamtstand
+13.–18.09., ersetzt die alten Splits) · V 0.0040 Knowledge (drei
+C++-Seiten). M1-Ist-Zeit → ZEITPLAN beim M1-Ende. Unverändert offen:
+Unreal-Toolchain-Test, Datenbaum.
 
 ---
 

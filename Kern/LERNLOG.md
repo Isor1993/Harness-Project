@@ -572,3 +572,131 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   Header fehlte als erster Include der .cpp (Signatur-Abgleich
   entfällt). **Hilfe:** beide Funde über Isors eigene Dateipaar-Regel
   erklärt, Rückverlegung und Köpfe im Kommentar-Pass durch Claude.
+- 2026-09-13 · Lane Defender M1, Szenen-Zustandsautomat (Abend) —
+  **Selbst:** enum class, switch und alle Szenen-Stubs eigenständig
+  aufgesetzt (mündlicher Entwurf vorab korrekt); die
+  Architektur-Anforderung selbst formuliert („main clean, Szenen
+  gehören später zu eigenen Controllern") und damit das Melde-Muster
+  begründet; beim Umbau in acht Einzel-Steps jede Bewegung selbst
+  vollzogen, die Namenseingabe-Station nach Muster allein ergänzt und
+  den Symbol-Test eigenständig konsistenter gelöst als vorgeschlagen
+  (Szene meldet selbst „danach Menü" statt Sonderweg im case); die
+  Pointer-Konzeptfrage präzise gestellt („immer neuer Inhalt — warum
+  kein Pointer?"). **Fehlerbild:** Zustandsvariable im Header
+  definiert (Include-Textkopie → Doppel-Definition beim Linken); das
+  Shadowing ein zweites Mal (lokale Neu-Deklaration in main neben der
+  globalen); im Exit-case Rückgabewert verfallen lassen und ohne break
+  in default durchgefallen (beide bekannten Muster in einer Zeile);
+  ChangeScene setzte anfangs die Hausnummer der Parameter-Kopie
+  (toter Zettel nach Funktionsende); „Wert wechselt im Karton" mit
+  „Ziel wechselt zwischen Kartons" verwechselt. **Hilfe:**
+  Header-Regel („Zusagen, keine Kartons") und return-Regel („nur main
+  beendet main") je an seinem Code; Muster A gegen B als Klickfrage
+  mit Codebildern; Acht-Step-Führung auf seinen Wunsch („Step für
+  Step, sonst komme ich nicht sauber weiter"); Widget zur
+  Variable-gegen-Pointer-Unterscheidung.
+- 2026-09-13 · Abend-Reflexion (Isors eigene Einschätzungen) —
+  **Selbst:** die Acht-Step-Führung als „sehr leicht" bewertet und
+  den eigenen Arbeitsmodus präzise formuliert (Korrekturen
+  kleinschrittig; beim Neu-Bauen erst Aufbau-Gespräch, dann eigenes
+  Gerüst, dann Einigung, Hilfe erst beim Festhängen); die eigenen
+  Lücken exakt benannt — foreach „noch nicht drin, sieht abstrakt
+  aus", Klassen-Syntax fehlt komplett (Hinterkopf-Bild von
+  class/public:/private: vorhanden), Stern und Und-Zeichen „strengt
+  extrem an" („wann existiert was, wann hole ich die Adresse, wann
+  den Wert"); die Zeitlage selbst gemessen und offen angesprochen
+  (10:22 h auf M1 gegen 6 h Schätzung, Grindstone) samt eigener
+  Hypothese, dass spätere Meilensteine schneller laufen. **Hilfe:**
+  Einordnung der Zeit (Einmal-Lernkosten in M1, Budget-Polster,
+  Schnittlinien als Vorsorge — entschieden wird am M2-Trend); Rüge an
+  Claude angenommen: beim Zeichentest die Wunsch-Symbole nicht zuerst
+  getestet — als Arbeitsregel in Claudes Gedächtnis übernommen.
+- 2026-09-14 · Lane Defender M1, Aufbau-Gespräch Hauptmenü — **Selbst:**
+  die Menü-Architektur eigenständig entworfen: Output als reiner
+  Zeichner („bekommt Was und Wo, holt sich nichts"), Trennung von
+  Logik und Darstellung, je Szene eine eigene Einheit — knüpft an den
+  eigenen „main clean"-Satz vom 13.09. an; Ein-Puffer fürs Menü selbst
+  bestätigt und den Zeichenweg der übrigen Szenen bewusst offen
+  gelassen („entscheiden wir je Szene"); die Titelwahl pragmatisch an
+  der Terminalbreite entschieden (Blockschrift 128 Zeichen verworfen,
+  Linien-Fassung ~72 gewählt — Linien-Schrift-Beschluss bleibt gültig).
+  **Fehlerbild:** „Klasse" als Default-Baustein aus der C#-Gewohnheit
+  (Klassen-Syntax laut eigener Reflexion vom 13.09. noch nicht da; V1
+  bleibt beim Dateipaar-Muster des Bestands); den Auswahl-Marker per
+  SetCursor setzen wollen — zweite Auflage des Einzel-Cursor-Musters
+  vom Zeichentest-Entwurf (12.09.), der Merksatz „Zustand ist die
+  Zahl, das Bild wird frisch daraus gebaut" ist noch nicht verankert.
+  **Hilfe:** Vergleichs-Diagramm Entwurf gegen Bestand (main / MainMenu
+  / Output / Console); SetCursor-Vorschau als Escape-Text-Erklärung;
+  Marker-im-Frame statt Cursor-Sprung eingeordnet.
+- 2026-09-14 · C++-Unterricht Chapter 1.4–2.1 (Stoff nur gehört, Folien
+  als Screenshots nachgereicht: true/false, Systems Hungarian, Strings,
+  abstrakte Datentypen, Initialisierung, Von-Neumann) — **Selbst:** den
+  Großteil als bereits vorgearbeitet eingeordnet (.h/.cpp, Klassen,
+  struct); die eigenen Lücken präzise markiert (typedef offen, union
+  halb, Initialisierungsformen nicht auswendig); für typedef die
+  richtige Brücke selbst gebildet („wichtig über mehrere
+  Betriebssysteme"); Architektur-Theorie bewusst niedrig priorisiert,
+  Fokus auf Lane Defender gesetzt. **Fehlerbild:** union als „enum, bei
+  dem ich die Datentypen verändern kann" gedeutet — zwei unverwandte
+  Bausteine über das ähnliche Stichwort verknüpft (Muster vom
+  2026-09-08: bekanntes Wort auf neue Bedeutung gelesen); dazu
+  Entmutigung, weil die Viewer-Bibliothek in C geschrieben ist („noch
+  eine Sprache"). **Hilfe:** Speicher-Widget struct (nebeneinander)
+  gegen union (dieselben 4 Bytes, zwei Lesarten; f = 1.0f → i liest
+  1065353216) samt Abgrenzung zu enum; typedef/using an Unreals int32
+  angebunden; Initialisierung auf zwei Regeln verkürzt (`int k = 1337;`
+  schreiben, uninitialisiert = Müll) statt Liste lernen; zwei
+  Folienfehler benannt (`INT_MAX == true` ist false — ungleich 0 zählt
+  nur als Bedingung wahr; sz-Präfix gehört zu `const char*`, nicht
+  `std::string`); C als aus C++ direkt aufrufbar eingeordnet, GLSL als
+  einzige echte Zusatzsprache.
+- 2026-09-18 · Lane Defender M1, Menü-Frame allein gebaut (zwischen den
+  Sessions, 14.–18.09.) — **Selbst:** `MainMenu.h`/`.cpp` eigenständig
+  angelegt und den Ein-Puffer-Frame über Get-Funktionen komponiert
+  (Titel, Start- und Exit-Button als Bausteine, GetMainMenuScene setzt
+  zusammen); Raw-String-Literale selbst gefunden und damit das
+  angekündigte Backslash-Problem des ASCII-Titels gelöst, bevor Claudes
+  escaped Array nötig war; Start/Exit ungefragt gleich als
+  Linien-Schrift-Blöcke; `BuildEmptyNextline` als eigener Helfer; den
+  Rechts-Versatz des Titels selbst entdeckt, eingegrenzt
+  (LaneDefender.cpp geprüft, ClearScreen als Verdacht benannt) und zur
+  Diskussion gestellt statt drüberzubauen. **Fehlerbild:**
+  VS-Auto-Einrückung im Raw-String übernommen (Tabs — der Raw-String
+  nimmt sie wörtlich, Ursache des Versatzes), Verdacht stattdessen bei
+  der Konsolen-Technik; Off-by-one in `BuildEmptyNextline` (`i <= n`
+  liefert n+1 Zeilen); `PrintMainMenu` in Output gebaut — der Zeichner
+  kennt damit eine konkrete Szene, gegen den eigenen Satz „Output ist
+  nur der Zeichner"; eigener Header erneut nicht erster Include; das
+  Flacker-Modell „ganze Page neu = flackert" (dritter Anlauf zum
+  Einzel-Cursor — Home-statt-Löschen ist als Flacker-Lösung noch nicht
+  verankert). **Hilfe:** Tab-Sprung am Spaltenraster samt
+  View-White-Space-Handgriff; Clear-gegen-Überschreiben als
+  Frame-Folge visualisiert; Block-Zentrierung als Padding-Rechnung auf
+  die 120er-Breite statt SetCursor; Umbau-Pfad benannt (Szene zieht
+  nach MainMenu, Output wird wieder generisch).
+- 2026-09-18 · Lane Defender M1, Rückfragen zum Feinschliff —
+  **Selbst:** die Grenze der Literal-Regel eigenständig hinterfragt
+  („ist die 1 im Schleifenkopf eine Magic Number?") und den
+  Off-by-one-Fix davor allein gezogen (Schleifenstart auf 1); die
+  Zuständigkeit des Automaten aktiv geklärt („gehört RunMainMenuScene
+  nicht zur State Machine in LaneDefender.cpp?") statt den
+  vorgeschlagenen Umzug blind auszuführen. **Hilfe:** Faustregel „eine
+  Zahl braucht einen Namen, wenn der Name mehr sagt als die Zahl";
+  Schalter-gegen-Station-Trennung, belegt am eigenen
+  SymbolTest-Präzedenzfall vom 13.09.
+- 2026-09-18 · Lane Defender M1, Szenen-Umzug und Include-Detektiv —
+  **Selbst:** `RunMainMenuScene` eigenständig nach MainMenu verschoben
+  und dafür `LaneDefender.h` in MainMenu.h selbst als nötig erkannt
+  (das Enum im Prototyp); die ReadKey-Herkunftsfrage allein aufgelöst —
+  Hypothese gebildet (Console), Console.h included, Build bestätigt:
+  erste eigene Include-Ketten-Analyse, das Leih-Fehlerbild vom 13.09.
+  trat nicht wieder auf; nebenbei das Szenen-Enum eigenständig auf
+  `uint8_t` umgestellt. **Fehlerbild:** der alte Stub-Prototyp blieb
+  doppelt in LaneDefender.h stehen, und LaneDefender.cpp rief die
+  Szene weiter über diesen Alt-Prototyp, statt MainMenu.h zu includen —
+  das Leih-Muster eine Ebene höher (Prototyp statt Include); der
+  PrintMainMenu-Rückbau war nicht zu Ende gezogen. **Hilfe:** Regel
+  „jede Datei includet selbst, was sie benutzt"; Restaufräumen durch
+  Claude (Prototyp-Doppel raus, PrintMainMenu entfernt, Include-Gruppen
+  geordnet, Summaries nachgezogen), /W4-Build grün.

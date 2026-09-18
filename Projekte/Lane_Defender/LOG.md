@@ -103,3 +103,34 @@ leere Rubrik schreibt `—`.
   unaufgefordert selbst nach `SymbolTest.h`/`SymbolTest.cpp`
   ausgelagert; Review-Pass (Exit-Konstante zurück zu main, eigener
   Header zuerst, Datei-Köpfe) durch Claude, Build warnungsfrei.
+- 2026-09-13 — M1 Szenen-Zustandsautomat gebaut, zweiter Baustein des
+  Tages: enum class mit sieben Zuständen, while-plus-switch in
+  `main`, sechs Stub-Szenen im Kreis (Menü → Name → Tutorial → Spiel
+  → Endscreen → Menü), Exit über `GS_EXIT`, Symbol-Test als eigener
+  Zustand mit Rückweg ins Menü. Architektur als Melde-Muster
+  (DECISIONS dieser Schicht); der Umbau dahin lief in acht
+  Einzel-Steps auf Isors Wunsch. Console-Baustein um das
+  Scrollback-Löschen erweitert (`3J`). Offen in M1: das echte
+  Hauptmenü (Linien-Titel, Buttons, Tasten `T`/`ESC`), Namenseingabe
+  und Endszene echt. Lern-Rubriken in `Kern/LERNLOG.md`,
+  M1-Ist-Zeit per Grindstone: 10:22 h.
+- 2026-09-14 — M1 Aufbau-Gespräch Hauptmenü (nachgetragen am 18.09.
+  beim Session-Ende): Isors Architektur-Entwurf (Output als reiner
+  Zeichner, je Szene eine eigene Einheit) mit dem Bestand abgeglichen;
+  Einigung: Ein-Puffer-Frame auch fürs Menü, Marker wandert im Frame,
+  `SetCursorPosition` erst zur Namenseingabe, erst statisch bauen und
+  die Einblendung danach. Titel gewählt: Figlet „Standard" voll
+  ausgelegt (~72 Zeichen), Rohfassung in
+  `Sandbox/M1_Titel_LaneDefender.txt`; die Blockschrift (128 Zeichen)
+  scheiterte an der Terminalbreite.
+- 2026-09-18 — M1 Hauptmenü-Frame gebaut: Isors Solo-Stand
+  (`MainMenu.h`/`.cpp` mit Raw-String-Blöcken, eigene
+  Start/Exit-Buttons in Linien-Schrift, `BuildEmptyNextline`) plus
+  gemeinsamer Feinschliff — Tab-Bug im Titel gefunden (Raw-String
+  übernimmt die Editor-Einrückung), alle Blöcke auf `I_SCREEN_WIDTH`
+  120 zentriert (skriptgeprüft, mittig um Spalte 60), die Szene nach
+  MainMenu umgezogen (Prototyp-Doppel aufgelöst, `PrintMainMenu`
+  entfernt — Output wieder generisch), Magic Numbers benannt,
+  Köpfe/Summaries nachgezogen; kompiliert warnungsfrei unter /W4.
+  Lern-Rubriken in `Kern/LERNLOG.md` unter 2026-09-18. Offen in M1:
+  Auswahl-Schleife, Titel-Einblendung, Namenseingabe, Endszene.
