@@ -880,3 +880,20 @@ gelesen." Reiner Ausführungsfehler.
 Chronik-Prüfung grün; Gegenmittel als persistentes Claude-Memory: vor
 jedem Chronik-Anhang das Datei-Ende frisch lesen. `pruefen.py`
 (Prüfung 2, Datumsfolge) bleibt das Netz dahinter.
+
+### 2026-09-19 — Glossar-Wächter benennt die falsche Datei als „jünger"
+**Was:** Beim Sichern meldete `pruefen.py` (Prüfung 5),
+`Uni/DECISIONS.md` und `Projekte/Isor_Tower/ROADMAP.md` seien jünger
+als das Glossar und ihre Kurzformen gegenzulesen — beide waren seit
+dem 14.09. bzw. 11.09. unverändert. Tatsächlich jünger waren die
+namensgleichen Lane-Defender-Dateien der laufenden Session.
+**Ursache:** Die Besitzer-Suche `finde()` sucht bewusst über den
+Dateinamen in allen Schichten (gleiche Dateinamen je Schicht sind
+gewollt — `Kern/DOC_RULES.md`, Abschnitt 6). Prüfung 5 vergleicht
+dann die Zeitstempel **aller** Namensvettern, schreibt in die Meldung
+aber den Besitzer aus der Glossar-Zeile — bei einem Treffer in einer
+fremden Schicht steht so die falsche Datei da.
+**Regel:** Fehlte — kein Ausführungsfehler, das Skript tut, was
+gebaut wurde; nur sein Meldungstext führt in die Irre.
+**Stand:** offen — Gegenmittel als Aufgabe in `Kern/ROADMAP.md` →
+„Glossar-Wächter: Besitzer pfadgenau prüfen".

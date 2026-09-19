@@ -83,6 +83,27 @@ So 20.09. fertig — dann beginnt der Model-Viewer eine Woche früher.
   Offen in M1: Auswahl-Schleife (Auswahl-Zahl, Marker im Frame,
   Home-Frame-Schleife, Pfeile/W/S, Enter, `ESC`, `T`),
   Titel-Einblendung, echte Namenseingabe, echte Endszene.
+  **Stand 2026-09-19:** Auswahl-Schleife fertig — Zahl-Zustand mit
+  Umlauf, Home-Frame-Druck bei konstanter Höhe, Balken+Farbe als
+  Marker und Sound-Feedback (DECISIONS dieser Schicht →
+  „Marker-Optik" und „Sound als freie Funktionen", je 19.09.),
+  Review-Pass und /W4-Build grün, Beleg im LOG. Offen in M1:
+  Titel-Einblendung, echte Namenseingabe (Design-Abschnitt am
+  19.09. begonnen), echte Endszene.
+  **Ausdesignt 2026-09-19 (Namenseingabe):** Dialogfenster mit
+  Unterstrich-Slots, freies Fokus-Modell, Eingabe selbst gezeichnet
+  statt getline, Farbsprache Gelb/Hellrot — drei DECISIONS-Einträge
+  vom 19.09. Offen bleibt die Umsetzung, dazu Titel-Einblendung und
+  Endszene.
+  **Stand 2026-09-19 (Abend):** Statischer Namenseingabe-Screen
+  gebaut — Dialogfenster mit Verteiler über fensterrelative
+  Konstanten, Regeln, Schreiblinie unter der Tippzeile,
+  Back/Confirm-Zeile (DECISIONS → „Namenseingabe-Feinschliff");
+  `SetCursorPosition` und `S_COLOR_RED` in Console; /W4 grün.
+  **Sichtprüfung von Schreiblinie und Button-Zeile steht aus —
+  erster Handgriff der nächsten Session.** Offen in M1: die
+  Zeichen-Schleife der Namenseingabe (Fokus-Modell, Whitelist,
+  Backspace, Farben, Marker), Titel-Einblendung, echte Endszene.
 - [ ] **M2 · Lanes und Spieler** — Spielfeld mit Lanes zeichnen
   (nur rastergeprüfte Zeichen), Player-Klasse, Lane-Wechsel und
   Schießen über die nicht-blockierende Tastenabfrage (gelieferter
@@ -158,6 +179,11 @@ So 20.09. fertig — dann beginnt der Model-Viewer eine Woche früher.
   M4-Upgrade-Screen. Entscheidet der Design-Moment des
   Menü-Bausteins; YAGNI-Regel der CODE_GUIDELINES gilt (Abstraktion
   beim zweiten konkreten Nutzer).
+  **Stand 2026-09-19:** Der zweite Nutzer (Back/Confirm der
+  Namenseingabe) ist waagerecht und textbasiert — entschieden:
+  Kopie, keine Abstraktion (DECISIONS → „Eingabe selbst gezeichnet",
+  Verworfen-Teil). Die Frage stellt sich neu beim dritten Nutzer,
+  dem M4-Upgrade-Screen.
 - [ ] **Design gegen die Original-Aufgabe halten**, sobald die echten
   Semester-3-Texte vorliegen. Grundlage bisher:
   `Uni/Semester_3/VORJAHR_AUFGABEN.md` → „1 · C++ Konsolenprojekt".
@@ -171,3 +197,14 @@ So 20.09. fertig — dann beginnt der Model-Viewer eine Woche früher.
   Namenseingabe"), und die Menüs brauchen keine `cin >>`-Eingabe mehr
   (Einzeltasten-Bedienung). Offen bleibt der M7-Check, ob im übrigen
   Code formatiertes Lesen übrig ist.
+  **Stand 2026-09-19:** Der M1-Teil ist gegenstandslos — die
+  Namenseingabe zeichnet selbst statt getline zu lesen (DECISIONS →
+  „Eingabe selbst gezeichnet"), im Projekt bleibt damit gar kein
+  `cin` übrig. Offen nur noch der M7-Scan als Kontrolle.
+- [ ] **Fenster-Wächter prüfen** — Konsolengröße beim Start abfragen
+  und bei zu kleinem Fenster freundlich um Vergrößern bitten; bis
+  dahin gilt die Fensterregel „Standardgröße 120×30 oder größer".
+  Anlass: der Scroll-Salat vom 2026-09-19 — der Menü-Frame füllte
+  mit dem Extra-`\n` exakt die 30 Terminal-Zeilen, und jedes
+  Überschreiten des unteren Rands versetzt alle Folge-Frames.
+  Gehört ins M7-Umfeld (Härten).

@@ -548,3 +548,144 @@ erfüllt.
 Verworfen: die gefüllte Blockschrift (Isors Favorit, ~128 Zeichen —
 läuft in jedem Standard-Terminal über und schied an der Breite aus);
 die kursiven Fassungen (das L las sich als Z — „Zane Defender").
+
+## 2026-09-19 — Marker-Optik: Balken unter dem Button plus Gelbfärbung
+Was: Der gewählte Menü-Button trägt einen Unterstrich-Balken in
+Blockbreite direkt unter der Schrift (Start 47 Leerzeichen + 25
+Striche, Exit 51 + 18) und wird samt Balken gelb gefärbt (VT-Farben
+aus Console.h). Der nicht gewählte Button schreibt statt des Balkens
+eine Putz-Zeile aus 72 Leerzeichen — eine Leerzeile aus bloßem `\n`
+beschreibt null Zellen, und das Terminal behält, was niemand
+überschreibt. Umgesetzt in Isors gemeinsamer Methode
+`AddSelectedMarker(bool, Block, Balken-Zeile)`; was sich je Aufrufer
+unterscheidet, kommt als Parameter.
+Warum: Das einzelne `>` vom 12.09. stammt aus der Zeit einzeilig
+gedachter Buttons; neben den fünf Zeilen hohen
+Linien-Schrift-Blöcken vom 18.09. wirkte es verloren (Isor,
+2026-09-19). Balken war Isors eigener Vorschlag, die Farbe kam als
+Kombination dazu — billigster Bau der vier Kandidaten, und Form plus
+Farbe tragen die Auswahl doppelt.
+Verworfen: das einzelne `>` (von der Linien-Schrift überholt); der
+fünfzeilige Pfeil (Isors zweiter Kandidat — Fünf-Platzhalter-Bau,
+Zeitkosten vor dem Streckziel); der Rahmen um den Button (teuerster
+Umbau, bleibt Polish-Kandidat fürs M7-Umfeld); das
+find-Platzhalter-Verfahren für ein Einzelzeichen (mit der
+Balken-Entscheidung gegenstandslos).
+
+## 2026-09-19 — Sound als freie Funktionen, benannt nach Bedeutung
+Was: Audio-Feedback wohnt im Paar `Sound.h`/`Sound.cpp`:
+`PlayMenuMoveSound`, `PlayMenuConfirmSound`, `PlayErrorSound` (zwei
+fallende Beeps, Isors „dü-dü") — freie Funktionen, alle Frequenzen
+und Dauern als benannte Konstanten im .cpp, `windows.h` nur dort.
+Aufrufer sagen, was passiert ist; wie es klingt, weiß allein
+Sound.cpp. Der default-Fall des Menüs meldet unbelegte Tasten über
+den Error-Sound.
+Warum: Isors eigener Schnitt nach seinem Output-Muster vom 13.09. —
+kein Zustand, also keine Klasse; die Beep-Literale des Erstwurfs in
+den cases waren Magic Numbers, und die Benennung nach Bedeutung
+macht das Umstimmen zur Ein-Datei-Änderung. WinAPI-`Beep` blockiert
+für die Ton-Dauer — Frequenzen und Dauern bleiben deshalb
+ausdrücklich Regler (Feintuning offen, 80/60 Hz sind auf kleinen
+Lautsprechern ein Restrisiko).
+Verworfen: Beep-Aufrufe mit Literalen direkt in den cases (Isors
+Erstwurf, an der eigenen Magic-Number-Regel gescheitert); eine
+Sound-Klasse (kein Zustand, Klasse als Selbstzweck); das
+Klingel-Zeichen `\a` (ein Ton für vier Bedeutungen); `windows.h` im
+Aufrufer MainMenu (WinAPI wohnt im .cpp der Technik-Schicht,
+Console macht es vor).
+
+## 2026-09-19 — Namenseingabe: Dialogfenster, Slots und Fokus-Modell
+Was: Die Szene zeigt ein zentriertes Dialogfenster (62 Spalten,
+Zeilen 7–20 der 120×30): Aufforderung, drei Regel-Zeilen (bis 16
+Zeichen · A–Z a–z 0–9 · leer wird „Player"), das Eingabefeld als 16
+Unterstrich-Slots, die sich beim Tippen füllen, die Fehlerzeile
+direkt unter dem Feld; unten links Back, unten rechts Confirm als
+Textzeilen mit dem Unterstrich-Marker des Hauptmenüs. Spieltexte
+Englisch. Fokus-Modell: ↓/↑ wechseln zwischen Feld und Button-Zeile,
+←/→ (+A/D) wechseln Back/Confirm, Enter im Feld prüft und springt
+bei gültigem Namen auf Confirm (Schnellweg Enter–Enter), Enter auf
+dem Button führt aus, ESC ist von überall der Rückweg ins Menü.
+Warum: Isors Skizze vom 2026-09-19 — Message-Fenster-Metapher,
+Regeln vor dem Fehler zeigen, Fehler am Feld melden; das freie
+Fokus-Modell ersetzt den zweiphasigen Zwang, der sich in der
+Design-Runde als unnatürlich erwies: Der Spieler wählt selbst, wo
+er ist.
+Verworfen: der zweiphasige Pflicht-Ablauf (erst Name, dann Buttons —
+so der Plan vom 12.09., vom Fokus-Modell abgelöst); der
+Eingabekasten mit eigenem Rahmen (Isors erste Skizze — die Slots
+zeigen die Restlänge und sind eine Zeile statt drei);
+gemischtsprachige Bildschirmtexte (Sprachregel: Ausgaben Englisch).
+
+## 2026-09-19 — Eingabe selbst gezeichnet — löst den getline-Beschluss ab
+Was: Die Namenseingabe liest keine Zeile über `getline`, sondern
+läuft als Zeichen-Schleife im Home-Frame-Muster des Hauptmenüs:
+`ReadKey` liefert jede Taste, eine Whitelist (`A–Z`, `a–z`, `0–9`)
+hängt erlaubte Zeichen an den Namen an, Backspace löscht (Wächter
+gegen leeren Namen), das 17. Zeichen und jedes fremde Zeichen enden
+im Error-Sound. Enter prüft: leer → „Player", sonst übernehmen.
+Unverändert bleiben Prüfung nach Enter für den Leer-Fall, der
+Default, die 16er-Grenze und die Meldung, die die Regel nennt.
+Löst ab: „Namensregeln der Namenseingabe" vom 2026-09-12, dessen
+Lese-Werkzeug getline war.
+Warum: getline ist modal — solange getippt wird, gehört die
+Tastatur der Konsole, ein Fokuswechsel auf die Buttons ist
+unmöglich. Das Selbst-Zeichnen macht den Fokus frei, hält die Slots
+formstabil (kein Echo-Überlauf), erlaubt die Färbung des Getippten
+und tilgt das letzte `cin` aus dem Projekt — der Problemraum des
+liegengebliebenen `\n` entfällt, der M7-Check „formatiertes Lesen
+übrig?" wird trivial. Die 12.09.-Ablehnung der eigenen
+Eingabeschleife („ohne Mehrwert") ist damit überholt: Der Mehrwert
+existiert jetzt und ist benannt. Preis, ebenfalls benannt: nur
+Backspace statt getlines Zeilen-Editing — bei 16 Zeichen ein
+Radiergummi statt eines Texteditors, das reicht.
+Verworfen: getline (modal; Echo läuft bei Überlänge übers Feld);
+die sofortige Generalisierung der Auswahl-Mechanik zum
+wiederverwendbaren Baustein (der zweite Nutzer ist waagerecht und
+textbasiert — die Abstraktions-Entscheidung fällt beim dritten
+Nutzer, dem M4-Upgrade-Screen).
+
+## 2026-09-19 — Farbsprache: Gelb heißt „hier bist du", Hellrot heißt Fehler
+Was: Es gibt genau eine Aktiv-Farbe im Spiel: Gelb trägt das
+fokussierte Element — im Menü den gewählten Button samt Balken, in
+der Namenseingabe das Feld samt getipptem Namen bzw. den gewählten
+Button. Fehlermeldungen sind hellrot (neue Konstante `S_COLOR_RED`,
+VT-Code 91); die Fehlerzeile nennt weiterhin die Regel im Text.
+Löst ab: die Verwerfung „Rot als Fehlerfarbe" vom 2026-09-12.
+Warum: Isors Argument aus der Design-Runde — das Getippte braucht
+eine eigene Kennzeichnung, damit man sieht, wo man ist; damit sind
+zwei Signale zu vergeben, und zwei Signale brauchen zwei Farben.
+Die 12.09.-Verwerfung fiel, als es nur ein Signal gab. Hellrot
+statt Dunkelrot wegen des Kontrasts auf Schwarz; der Text bleibt
+der zweite Träger neben der Farbe.
+Verworfen: Gelb für beides (Aktiv und Fehler wären
+ununterscheidbar); Dunkelrot (VT-Code 31, kontrastschwach auf
+Schwarz); ein Fehlertext ohne Regelnennung („Invalid input" allein
+sagt nicht, was zu tun ist).
+
+## 2026-09-19 — Namenseingabe-Feinschliff: Balance, kurze Linie, Schreiblinie
+Was: Drei Nachbesserungen am Fenster-Layout aus der Sichtprüfung des
+gebauten Screens. Erstens die Zeilen-Balance: Regeln auf die
+Fensterzeilen 6–8, Name auf 10 — der Inhalt klumpte sonst oben und
+ließ vier tote Zeilen unter sich. Zweitens die Trennlinie: 40 Spalten
+bündig unter dem Aufforderungstext statt Wand zu Wand (der Bauer
+rechnet die Ränder selbst und zählt Spalten per Schleife, nie Bytes).
+Drittens die Schreiblinie: Die 16 Unterstrich-Slots wandern eine
+Zeile UNTER die Tippzeile (Fensterzeile 11, Fehlerzeile rückt auf
+12) — getippt wird auf leeren Zellen über der Linie, wie auf einem
+Formular. Dazu die Back/Confirm-Zeile als Bildschirmzeile 28
+(Beschriftung „Confirm", nicht „Start Game"); Marker-Linie und
+Farben folgen erst mit der Eingabe-Schleife.
+Warum: Isors Optik-Urteil am laufenden Programm (kopflastige
+Aufteilung — die zufällige Luftigkeit des Verteiler-Bugs hatte ihm
+besser gefallen und wurde zum bewussten Regler); die Schreiblinie
+ist Isors eigener Einwand: Der echte Konsolen-Cursor ist je nach
+Terminal-Einstellung selbst ein Unterstrich und bliebe auf einem
+Slot unsichtbar — auf leerer Zelle über der Linie blinkt er bei
+jeder Cursor-Form, und die Linie bleibt als Längen-Budget lesbar.
+Verworfen: Slots in der Tippzeile (Cursor-Form-Restrisiko —
+dieselbe Sorge wie beim fremden Prüfer-Terminal); die
+Wand-zu-Wand-Trennlinie (erschlug die Aufforderung); das
+kopflastige Erst-Layout; eine Strich-Konstante durch den
+Textzeilen-Bauer (Byte-Falle — Striche wiegen drei); die
+Beschriftung „Start Game" (nach Confirm kommt erst die
+Steuerungs-Szene, der Knopf würde mehr versprechen als kommt).

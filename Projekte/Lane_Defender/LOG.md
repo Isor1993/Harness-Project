@@ -134,3 +134,40 @@ leere Rubrik schreibt `—`.
   Köpfe/Summaries nachgezogen; kompiliert warnungsfrei unter /W4.
   Lern-Rubriken in `Kern/LERNLOG.md` unter 2026-09-18. Offen in M1:
   Auswahl-Schleife, Titel-Einblendung, Namenseingabe, Endszene.
+- 2026-09-19 — M1 Auswahl-Schleife, Marker und Sound fertig: Die
+  Menü-Schleife läuft als Zahl-Zustand (`iSelection`, Umlauf in beide
+  Richtungen, Tasten ↑↓/W/S, Enter je Auswahl, `ESC`, `T`), gedruckt
+  je Runde ab Cursor-Home bei konstanter Frame-Höhe. Marker-Optik
+  entschieden und gebaut: Balken unter dem gewählten Button plus
+  Gelbfärbung, `AddSelectedMarker` als Isors gemeinsame Methode mit
+  Balken-Parameter, Putz-Zeile aus 72 Leerzeichen gegen stehen
+  gebliebene Balken (DECISIONS dieser Schicht, beide vom 19.09.).
+  Scroll-Ursache diagnostiziert und behoben — der Frame füllte mit
+  dem PrintMessage-Extra-`\n` exakt die 30 Terminal-Zeilen
+  (Extra-`\n` abbestellt, Titel-Luft 6→4, Cursor in InitConsole
+  versteckt). Sound-Feedback als eigenes Paar `Sound.h`/`Sound.cpp`
+  (Move/Confirm/Error als freie Funktionen, Konstanten im .cpp,
+  WinAPI nur dort); MainMenu.cpp beim VS-Encoding-Dialog auf UTF-8
+  ohne Signatur gebracht, wie der Bestand. Review-Pass durch Claude
+  (Datei-Köpfe, Summaries, Kosmetik, geliehenes `<cstdint>` in
+  MainMenu.h behoben), Prüf-Build /W4 grün ohne Warnungen.
+  Lern-Rubriken in `Kern/LERNLOG.md` unter 18./19.09. Offen in M1:
+  Titel-Einblendung, echte Namenseingabe, echte Endszene.
+- 2026-09-19 — M1 Namenseingabe ausdesignt und statisch gebaut: Am
+  Nachmittag Design-Abschnitt nach Isors Paint-Skizze (Dialogfenster,
+  freies Fokus-Modell, Eingabe selbst gezeichnet statt getline,
+  Farbsprache Gelb/Hellrot — drei DECISIONS-Einträge), am Abend die
+  Umsetzung des statischen Screens: `SetCursorPosition` und
+  `S_COLOR_RED` in Console, Szenen-Dateien auf `*Scene` umbenannt
+  und `NameInputScene.h`/`.cpp` angelegt (Umzug diesmal ohne
+  Leih-Fehler), Dialogfenster aus Zeilen-Typ-Bauern mit
+  Zeilen-Verteiler über fensterrelative Konstanten, Textzeilen mit
+  Auffüll-Rechnung (static_cast/size_t), kurze Trennlinie,
+  Balance-Pass, Schreiblinie unter der Tippzeile,
+  Back/Confirm-Zeile. Unterwegs verstanden: Escape-Sequenz-Anatomie
+  samt VT-Dolmetscher (InitConsole als Einschalter — halbe
+  Console.cpp damit erklärt), Byte-Falle (`length()` zählt Bytes),
+  Fließband-gegen-Zellen-Gedächtnis. /W4-Build grün; Sichtprüfung
+  von Schreiblinie und Button-Zeile steht aus. Lern-Rubriken in
+  `Kern/LERNLOG.md` unter 2026-09-19. Offen in M1: Zeichen-Schleife
+  (Fokus, Whitelist, Farben), Titel-Einblendung, echte Endszene.

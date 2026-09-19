@@ -700,3 +700,269 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   „jede Datei includet selbst, was sie benutzt"; Restaufräumen durch
   Claude (Prototyp-Doppel raus, PrintMainMenu entfernt, Include-Gruppen
   geordnet, Summaries nachgezogen), /W4-Build grün.
+- 2026-09-18 · Lane Defender M1, Einstieg Auswahl-Schleife —
+  **Selbst:** die eigene Render-Idee (nur den geänderten Bereich
+  löschen und neu zeichnen) klar formuliert und aktiv zur Prüfung
+  gestellt („oder liege ich da falsch?") statt sie still einzubauen;
+  den Transfer zur späteren Spielersteuerung selbst gezogen — der
+  Instinkt trifft eine echte Technik (dirty rectangles, ncurses).
+  **Fehlerbild:** das Flacker-Modell „alles neu zeichnen = Flackern"
+  hielt sich im vierten Anlauf (Löschen als eigentliche Flacker-Quelle
+  noch nicht verankert); dazu die Annahme, Teil-Zeichnen mache
+  Bewegung flüssiger — Konsolen-Bewegung ist aber zellweise, und der
+  Voll-Frame liegt weit unter dem Refresh-Budget. **Hilfe:**
+  Zell-Zeitachse Löschen-gegen-Überschreiben als Widget; Kernsatz
+  „gleiches Zeichen erneut gezeichnet ist unsichtbar — sichtbar ändert
+  sich nur die Diff-Zelle"; Kostenrechnung 3600 Zeichen ≪ 1 ms gegen
+  16,7 ms Terminal-Takt; Einordnung, wann Diff-Senden wirklich lohnt
+  (langsame Leitung, gemessene Ruckler).
+- 2026-09-18 · Lane Defender M1, Gerüst der Auswahl-Schleife —
+  **Selbst:** die case-Syntax nach dem Anker am eigenen Automaten
+  allein repariert (feste Kandidaten statt Variable hinter case); die
+  Controller-Schleife mit ReadKey, switch und Druck je Richtungstaste
+  gebaut; den Umlauf eigenständig versucht (zweimal ↑ wird über die
+  gemerkte Vorgängertaste zu ↓); die Sprite-Frage selbst erkannt und
+  offen gestellt statt die Doppel-Sprite-Lösung still zu bauen.
+  **Fehlerbild:** der Zustand ist der Tastencode statt der
+  Auswahl-Zahl (Parameter heißen …KeyValue, gedruckt wird je Taste,
+  der Umlauf braucht darum die Tastengeschichte); `GetMainMenuScene`
+  in drei Fassungen — Header ein Parameter, Definition zwei, Aufruf
+  ein Argument: die Versprechen-gegen-Lieferung-Familie vom 11.09.,
+  diesmal als Linker-Fehler; „theoretisch geht es" ohne Build
+  gemeldet. **Hilfe:** die drei Indizien auf die fehlende Auswahl-Zahl
+  zurückgeführt; Platzhalter-Verfahren als Marker-Option neben
+  Doppel-Sprite und Index-Konstante vorgelegt, Entscheidung bei Isor.
+- 2026-09-19 · Lane Defender M1, Marker-Optik entschieden —
+  **Selbst:** die Darstellungsfrage selbst aufgeworfen, bevor gebaut
+  wurde („erst entscheiden, wie wir es darstellen — sonst sind die
+  Funktionen komplett anders"), mit eigenen Vorschlägen (Balken,
+  großer Pfeil); Entscheidung: Balken unter dem gewählten Button plus
+  gelbe Färbung — der eigene Balken-Vorschlag, kombiniert.
+  **Fehlerbild:** der find-/Index-Baustein vom Vortag trug nur
+  minimal — String als nummerierte Zellreihe samt npos war als Bild
+  erklärt, blieb aber wackelig; durch die Marker-Entscheidung entfällt
+  das Verfahren ohnehin. **Hilfe:** vier Optik-Kandidaten als
+  Konsolen-Mockups mit Bau-Preis vorgelegt (Balken · Farbe · Pfeil ·
+  Rahmen), Empfehlung auf Isors eigenem Balken-Vorschlag; Hinweis,
+  dass die Wahl den `>`-Beschluss vom 12.09. legitim überholt
+  (Linien-Schrift kam später) — DECISIONS-Eintrag folgt beim Sichern.
+- 2026-09-19 · Lane Defender M1, Auswahl-Schleife läuft erstmals —
+  **Selbst:** eigene Abstraktion `AddSelectedMarker(bool, string)`
+  erfunden und in beide Getter eingebaut („später nur eine Methode");
+  den kompletten Schleifen-Refactor umgesetzt und die Fälle ↓/Enter/
+  ESC/T selbstständig gespiegelt; den VS-Encoding-Dialog nach
+  Anleitung gemeistert (UTF-8 ohne Signatur); Balken-Konstanten selbst
+  getippt (Zentrierung dann von Claude ausgezählt: 47+25, 51+18).
+  **Fehlerbild:** Loch in der eigenen Abstraktion — die gemeinsame
+  Methode hängt fest den Start-Balken an, was je Aufrufer verschieden
+  ist, kam nicht als Parameter mit; beim Spiegeln des Umlaufs das
+  Vergleichszeichen nicht mitgedreht (`<` statt `>` nach dem ++);
+  kein Modell für Terminal-Scroll — Frame füllte mit dem
+  PrintMessage-Extra-`\n` exakt die 30 Terminal-Zeilen, jeder Frame
+  schob um eins und Home zielte daneben. **Hilfe:** Merksatz „was
+  sich je Aufrufer unterscheidet, wird Parameter"; Zeilen-Budget als
+  Tabelle vorgerechnet (29+1 gegen 30), Regel „nie über den unteren
+  Rand schreiben" mit drei Handgriffen (bNextLine false, Luft 6→4,
+  Cursor verstecken); Fenster-Wächter als Härtungspunkt vorgemerkt.
+- 2026-09-19 · Lane Defender M1, klebender Balken und Zellen-Gedächtnis —
+  **Selbst:** die drei Scroll-Handgriffe, den ↓-Umlauf und die
+  Enter-Verzweigung eigenständig umgesetzt; das Fehlverhalten präzise
+  beschrieben und eine eigene Hypothese samt Gegenrede formuliert
+  („String wird doch jedes Mal neu gebaut") — die Gegenrede war
+  richtig. **Fehlerbild:** Zustand im falschen Ort vermutet (String
+  statt Terminal) — das Modell „nicht geschriebene Zellen behalten
+  ihren Inhalt" fehlte als Kehrseite der Flacker-Lektion; die
+  Leerzeile des else-Zweigs schreibt null Zellen, der alte Balken
+  blieb stehen. **Hilfe:** Kehrseiten-Merksatz „der Bildschirm ist
+  ein Zellen-Gedächtnis — stehen bleibt, was du nicht schreibst;
+  Löschen ist Schreiben von Leerzeichen"; Putz-Zeile (72 Leerzeichen)
+  als Konstante ausgezählt, Umbau auf den dritten Parameter samt
+  else-Putz an Isor übergeben.
+- 2026-09-19 · Lane Defender M1, Beeps und der Weg zum Sound-Paar —
+  **Selbst:** den dritten Parameter samt beiden Aufrufen allein fertig
+  gebaut (Falsch-Balken-Bug damit selbst erledigt); WinAPI-`Beep` auf
+  eigene Faust gefunden und in die cases eingebaut; die eigenen
+  Literale sofort als Magic Numbers erkannt (SAE-Regel griff von
+  allein) und daraus selbstständig den richtigen Schnitt abgeleitet —
+  eigenes Header/CPP-Paar mit Funktionen je Ton-Bedeutung, bewusst
+  ohne Klasse („kein Zustand"): das Output-Muster vom 13.09. aus
+  eigenem Antrieb wiedererkannt und übertragen. **Fehlerbild:**
+  `windows.h` direkt in MainMenu.cpp gezogen (Schichten-Regel „WinAPI
+  wohnt im .cpp der Technik-Schicht" noch nicht verankert — Console
+  macht es vor); Ton-Dauern ohne Blockade-Bewusstsein gewählt (Beep
+  blockiert 200–250 ms je Tastendruck). **Hilfe:** Benennung nach
+  Bedeutung statt Ton (PlayMenuMoveSound statt BeepHigh) mit dem
+  Ein-Datei-Argument; Zahlen-Rat 50–80 ms und 200–400 Hz;
+  Datei-Namen und Konstanten-Muster vorgeschlagen, Isor tippt.
+- 2026-09-19 · Lane Defender M1, Sound-Paar fertig und Include-Frage —
+  **Selbst:** Sound.h/Sound.cpp komplett allein gebaut — Namen nach
+  Bedeutung übernommen, alle acht Zahlen als Konstanten, Fehler-Sound
+  als eigene zweistufige Idee („dü-dü", zwei fallende Beeps),
+  `windows.h` selbst aus MainMenu.cpp entfernt, default-Fall
+  eigenständig mit PlayErrorSound versorgt; die Include-Ordnung aus
+  eigenem Antrieb hinterfragt, Vermutung fast richtig (eigene Header
+  vor Standard — nur die Stufe „die EIGENE .h zuerst" fehlte).
+  **Fehlerbild:** Begriff „zwei Klassen" für ein Datei-Paar mit
+  freien Funktionen (Terminologie fürs Verteidigen); ein geliehenes
+  Include (MainMenu.h nutzt int32_t über LaneDefender.h) — sonst
+  war die Include-Lage entgegen seinem „Knoten"-Gefühl sauber.
+  **Hilfe:** Drei-Gruppen-Regel mit Begründung „eigene .h zuerst als
+  Selbstständigkeits-Test"; Unterscheidung Redundanz (harmlos) gegen
+  Leihen (gefährlich); Review-Pass durch Claude (Datei-Köpfe,
+  Summaries, Kosmetik, cstdint), Prüf-Build grün ohne Warnungen.
+- 2026-09-19 · Lane Defender M1, Standortbestimmung an der Baustein-Grenze —
+  **Selbst:** eigene Zwischenbilanz formuliert: Header/CPP-Modell
+  sitzt („im Header steht das Versprochene, die Definition wohnt im
+  CPP"), eigene Konstanten-Praxis (alles ins .cpp) selbst zur Prüfung
+  gestellt — sie war richtig; offene Baustellen selbst benannt
+  (Console.cpp-Innenleben nur grob → M7-Verstehens-Runde; Pointer/
+  Referenzen werden mit den Klassen ernst) und vorausgedacht, dass
+  der Name zum Player-Objekt gehört. **Fehlerbild:** Meilenstein-
+  Modell „jedes M = eine Szene" (M1 ist das Gerüst samt aller
+  Rahmen-Szenen, M2–M6 füllen die Game-Szene) — Überblick war weg;
+  Unsicherheit global-gegen-const (Gefahr ist Veränderlichkeit, nicht
+  Sichtbarkeit — eigenes 13.09.-Erlebnis als Beleg gezeigt).
+  **Hilfe:** M1–M7-Tabelle; Schaufenster-Regel für Konstanten
+  (Nutzerzahl entscheidet, const im .cpp ist datei-sichtbar);
+  Merksatz „Werte dürfen global sein, Zustand wohnt lokal oder im
+  Objekt"; Wechsel in den Design-Abschnitt Namenseingabe empfohlen.
+- 2026-09-19 · Lane Defender M1, Design der Namenseingabe —
+  **Selbst:** eigenen Screen-Entwurf als Paint-Skizze geliefert
+  (Dialogfenster-Metapher, Regeln vor dem Fehler, Fehlerzeile am
+  Feld, Button-Zeile unten) und die Implementierungsfrage bewusst
+  hinter das Design gestellt; das Unbehagen am zweiphasigen Ablauf
+  präzise artikuliert („man müsste wählen können, ob man im Feld
+  ist") — das ist der Kern des beschlossenen Fokus-Modells; vor dem
+  Kippen des getline-Beschlusses von sich aus die Sicherheitsfrage
+  gestellt („machen wir gerade etwas kaputt?") — Beschluss-Hygiene
+  aus eigenem Antrieb. **Fehlerbild:** Rot als Fehlerfarbe erneut
+  vorgeschlagen, ohne die 12.09.-Verwerfung präsent zu haben —
+  diesmal trug allerdings das neue Zwei-Signale-Argument, und der
+  Vorschlag wurde mit Grund angenommen statt wiederholt abgelehnt;
+  Unsicherheit, wie das Fenster in Code entsteht („Array oder
+  Schleife?" — es ist derselbe statische Raw-String-Block wie beim
+  Menü). **Hilfe:** getline-gegen-Selbst-Zeichnen als
+  Tastatur-Besitz-Frage erklärt (modal: die Konsole hält die
+  Tastatur, bis Enter fällt); Verlust-Bilanz als Tabelle (drei
+  Schutzaufgaben von getline, drei benannte Nachfolger; Preis nur
+  Backspace statt Zeilen-Editing); Fokus-Modell als Diagramm,
+  Layout mit Zahlen (Fenster 62 Spalten, Zeilen-Budget der 30).
+- 2026-09-19 · Lane Defender M1, Solo-Umbau vor der Namenseingabe —
+  **Selbst:** parallel zur Doku-Runde allein umgebaut: `S_COLOR_RED`
+  korrekt angelegt (samt hellem 91er-Code aus der Design-Runde),
+  MainMenu aus eigenem Antrieb auf MainMenuScene umbenannt
+  (Konsistenz-Naming) und die NameInput-Szene in ihr eigenes Paar
+  gezogen — diesmal **ohne** das Leih-Fehlerbild vom 13./18.09.:
+  alter Prototyp raus, Stub raus, alle Includes nachgezogen, eigene
+  .h zuerst; die Baureihenfolge selbst richtig eingeschätzt
+  (SetCursorPosition vor dem Szenen-Bau). **Fehlerbild:** beim
+  Umbenennen die `File:`-Zeilen der Datei-Köpfe nicht nachgezogen
+  und die neuen Dateien ohne Köpfe angelegt — der Kommentar-Pass
+  fing es ab, wofür er da ist. **Hilfe:** Kommentar-Pass durch
+  Claude (File-Zeilen, Köpfe, History, Include-Ordnung in main).
+- 2026-09-19 · Lane Defender M1, SetCursorPosition und die Anatomie
+  der Escape-Sequenzen — **Selbst:** die Funktion nach Vorlage allein
+  gebaut und mit eigenem Testaufruf (5,10 + X) verifiziert; dann
+  nicht weitergerannt, sondern aktiv um Tiefe gebeten („ich möchte
+  den Code einen Tick besser verstehen") — Verstehen vor Tempo aus
+  eigenem Antrieb; das Semikolon als Trenner selbst richtig
+  gedeutet. **Fehlerbild:** `\x1b` als „Flush-Befehl" gelesen (es
+  ist ein einzelnes Zeichen, Nummer 27 — dieselbe wie die eigene
+  I_KEY_ESCAPE-Konstante), die Klammer als Zahlen-Lese-Helfer, das
+  `H` als Abschlusszeichen — das Verb-Konzept fehlte (Argumente
+  zuerst, Befehlsbuchstabe zuletzt, erster Buchstabe beendet die
+  Sequenz); flush als Absender statt als Puffer-Leerung. **Hilfe:**
+  Anatomie-Zerlegung als Bild, Decoder-Tabelle der eigenen
+  Console.h-Konstanten (m/H/J/l als Verben), ESC-Taste-27-Anker.
+  **Zweite Runde (Selbst):** die Anatomie korrekt in eigenen Worten
+  rekonstruiert und die richtige Anschlussfrage gestellt („woher
+  weiß die Konsole, dass m Farbe heißt?") samt eigener
+  Mapping-Vermutung — der Verdacht, das hänge mit der noch unklaren
+  Console.cpp zusammen, stimmte exakt. **Fehlerbild:** das
+  Wörterbuch im eigenen Code vermutet statt im Terminal; die
+  Konstanten für Definitionen gehalten (sie sind Vokabelkarten).
+  **Hilfe:** Dolmetscher-Modell als Pipeline-Bild (Terminal führt
+  intern einen switch über den Verb-Buchstaben — dasselbe Konstrukt
+  wie der eigene Szenen-switch); VT100/ANSI-Standard von 1978 als
+  Herkunft; InitConsole als Dolmetscher-Einschalter erkannt — die
+  halbe Console.cpp ist damit verstanden, offen bleibt die
+  Lese-Seite (ReadKey/_getch) für den M7-Termin.
+- 2026-09-19 · Lane Defender M1, Fenster-Rahmen per Schleife —
+  **Selbst:** nach zwei Anläufen die Zerlegung in drei Zeilen-Typen
+  übernommen und sauber umgesetzt (drei kleine Get-Bauer plus ein
+  Stapler, FRAME_OFFSET bei der Höhe richtig eingesetzt); das
+  Versatz-Problem präzise beschrieben und Hilfe geholt, statt zu
+  raten. **Fehlerbild:** erster Rahmen-Wurf in Einzelzell-Logik
+  (Doppel-Inkrement im Schleifenrumpf, unerreichbare
+  x==Ende-Bedingung bei <-Schleife — Zaunpfahl, Ecken/Kanten-Rollen
+  vermischt); SetCursorPosition als Fenster-Platzierer gedacht —
+  die Regel „\n springt auf Spalte 1, nur die erste Zeile beginnt
+  am Cursor" fehlte; die (5,10)-Testzeile blieb trotz Ansage
+  liegen und wurde zur Versatz-Ursache. **Hilfe:** Drei-Zeilen-
+  Typen-Rezept als Bild mit Zaunpfahl-Zahlen; Merksatz „was sich
+  wiederholt, kommt in die Schleife — was einmal passiert, davor
+  oder dahinter"; \n-Spalte-1-Regel mit Bild; Ein-Byte-Grenze von
+  std::string(n, zeichen) erklärt (UTF-8-Striche brauchen die
+  Schleife, Leerzeichen nicht); Positions- gegen Größen-Konstanten
+  getrennt (Isors Inhalts-Konstanten bleiben, fenster-relativ
+  empfohlen).
+- 2026-09-19 · Lane Defender M1, Textzeilen-Bauer und Autopilot-Stopp —
+  **Selbst:** den Fenster-Versatz sauber gemeldet statt zu raten;
+  Angleichen/Polster/Naming bewusst delegiert („Naming ist nicht
+  meine Stärke" — Selbsteinschätzung); den SetCursor-statt-Polster-
+  Einwand vertreten und den Anker-Gegenbeleg akzeptiert; beim zu
+  kompakten Dreifach-Ausdruck sofort Einspruch erhoben (eigener
+  Ein-Schritt-je-Zeile-Stil eingefordert) und bei static_cast aktiv
+  nachgefragt; GetMessageWindowTextRow danach fehlerfrei gebaut
+  (Cast, Guard, Zusammenbau); am Ende den eigenen Autopilot bemerkt
+  und benannt — Metakognition statt Weitertippen. **Fehlerbild:**
+  SetCursorPosition erneut als Layout-Werkzeug gedacht (dritter
+  Anlauf der Einzel-Cursor-Idee — der Ein-Puffer-Anker musste
+  wieder gezeigt werden); „alles gebaut" gemeldet, als erst eines
+  von drei Stücken stand; interne Helfer erneut in den Header
+  gestellt (Schaufenster-Regel frisch, greift noch nicht von
+  selbst). **Hilfe:** Anker-Zitat der Padding-Entscheidung vom
+  18.09.; size_t/Unsigned-Kippen mit Zahlenbeispiel und
+  static_cast als „suchbare Unterschrift"; Text-Konstanten
+  ausgezählt geliefert; Verteiler-Gerüst mit einem vorgemachten
+  Fall; Schnitt-Empfehlung beim Autopilot-Signal statt Durchziehen.
+- 2026-09-19 · Lane Defender M1, statischer Namenseingabe-Screen steht —
+  **Selbst:** nach dem Autopilot-Stopp bewusst „weiter" entschieden
+  und gezielt um ein Bild gebeten; die Sinnfrage zum Textzeilen-Bauer
+  gestellt und die richtige Lesart selbst formuliert („Text rein,
+  Rest auffüllen"); den Verteiler halb gebaut, bevor Stück 1 stand,
+  mit gutem DRY-Instinkt (TextRow auch für die Trennlinie — an der
+  Byte-Falle gescheitert, Instinkt trotzdem richtig); Screen
+  fertiggestellt, rechter Rand bündig; die überzählige Zwischenzeile
+  selbst bemerkt und die Suche begonnen. **Fehlerbild:** vierter
+  SetCursor-Reflex, diesmal als Welten-Vermischung erkannt
+  („Bildschirm überschreiben" gegen „String anhängen" — Fließband-
+  Bild); die Byte-Falle live erlebt (length() zählt Bytes: Striche
+  wiegen 3 → Füllung 0 → Randloch), trotz ASCII-Kommentar über den
+  Konstanten; im Verteiler unabhängige ifs plus bedingungslose
+  Leerzeile (zwei Zeilen je Treffer-Runde — die gelobte Luftigkeit
+  war der Bug) und Schleife 0-basiert gegen fensterzeilen-basierte
+  Konstanten (alles zwei Zeilen tiefer). **Hilfe:**
+  Vorher/Nachher-Bild mit Zeilenkarte; Runden-Tabelle; Drei-Sorten-
+  Leerzeichen-Tabelle; Byte-Rechnung am Fall; Grundsatz „jede Runde
+  hängt genau eine Zeile an — die Leerzeile ist der Sonst-Fall";
+  Luftigkeit als Design-Regler statt Bug angeboten.
+- 2026-09-19 · Lane Defender M1, Feinschliff-Runde zum Tagesende —
+  **Selbst:** die überzählige Zwischenzeile am Bild selbst bemerkt;
+  das Unbehagen an der Aufteilung geäußert und das Balance-Urteil
+  nach Erklärung mitgetragen; die Zeilen-Umverteilung selbst
+  eingetragen, bevor Claude sie anfasste; die Schreiblinien-Frage
+  selbst aufgeworfen (blinkt der Cursor auf einem Slot überhaupt
+  sichtbar?) — ein Laufzeit-Risiko im statischen Bau vorausgesehen,
+  die robuste Formular-Lösung kam aus seinem Einwand; die restlichen
+  Statik-Stücke bewusst delegiert und den Schnitt zum /harness:ende
+  selbst gesetzt. **Fehlerbild:** eine ungenutzte Strich-Konstante
+  angelegt, die durch den Textzeilen-Bauer gelaufen wäre
+  (Byte-Falle im zweiten Anlauf — als Muster benannt);
+  Unsicherheit, was die Rückgängig-Schaltfläche der App bedeutet
+  (bot an, Claudes Fix zurückzunehmen). **Hilfe:** Kopflastigkeit
+  als Benennung fürs Bauchgefühl (Zeilen-Bilanz 1 oben gegen 4
+  unten); Umbau durch Claude auf Zuruf (Balance-Konstanten waren
+  schon Isors, kurze Trennlinie mit Rand-Rechnung, Schreiblinie,
+  Button-Zeile mit 103er-Füllung); Label-Empfehlung Confirm statt
+  Start Game mit Begründung.

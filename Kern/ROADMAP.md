@@ -155,6 +155,15 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
   (`Kern/STOERUNGEN.md`). Als festen Punkt nach Coden/Review verankern,
   damit die Regel im Format liegt statt im Gedächtnis.
 
+- [ ] **Glossar-Wächter: Besitzer pfadgenau prüfen** — Prüfung 5 in
+  `Kern/Werkzeuge/pruefen.py` vergleicht die Zeitstempel aller
+  namensgleichen Dateien im Bestand, nennt in der Meldung aber den
+  Besitzer aus der Glossar-Zeile — wer die `DECISIONS.md` einer
+  Schicht anfasst, bekommt so Hinweise, die auf fremde Schichten
+  zeigen. Trägt die Besitzer-Spalte einen Pfad, pfadgenau
+  vergleichen; der Namens-Fallback bleibt für Einträge ohne Pfad.
+  Anlass: `Kern/STOERUNGEN.md`, 2026-09-19.
+
 Was im Betrieb nicht trägt, kommt als Störung in `Kern/STOERUNGEN.md`
 und wird von dort aus zu einem Punkt hier — genau dafür fragt die
 Doku-Pflicht in `Kern/WORKFLOW.md` nach beidem im selben Zug.
