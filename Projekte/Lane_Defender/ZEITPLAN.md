@@ -19,7 +19,7 @@ der Kurs").
 
 | Meilenstein | geschätzt | tatsächlich |
 |---|---|---|
-| M1 · Gerüst: Konsolen-Init, Zeichentest, Hauptmenü, Namenseingabe | 6 h | — |
+| M1 · Gerüst: Konsolen-Init, Zeichentest, Hauptmenü, Namenseingabe | 6 h | 20 h |
 | M2 · Lanes und Spieler: Spielfeld, Bewegung, Live-Tasten | 7 h | — |
 | M3 · Gegner: Klassenhierarchie, Spawn-Plan, Tick-Lauf | 10 h | — |
 | M4 · Kampf und Upgrades: Kollision, Gold, Upgrade-Screen | 8 h | — |
@@ -27,3 +27,8 @@ der Kurs").
 | M6 · Level-Lauf: 15 Level, Progression, Sieg/Niederlage, HUD | 6 h | — |
 | M7 · Abgabe-Polish: Härten, Konventionen, Leaks, Build | 5 h | — |
 | Summe | 50 h | — |
+
+M1 gemessen am 2026-09-20 (Grindstone): Projekt gesamt 20:50 h, davon
+~0:46 h Anfangs-Design; die M1-Zeile enthält den Lern-Vorlauf L1–L3
+und alle Design-Runden. Einordnung der Differenz zur Schätzung:
+`ABGABE_NOTIZEN.md` → M1.

@@ -966,3 +966,125 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   schon Isors, kurze Trennlinie mit Rand-Rechnung, Schreiblinie,
   Button-Zeile mit 103er-Füllung); Label-Empfehlung Confirm statt
   Start Game mit Begründung.
+- 2026-09-19 · Lane Defender M1, Eigenversuch Steuerungs-Schleife der
+  Namenseingabe — **Selbst:** die komplette Auswahl-Schleife ohne
+  Gerüst nach dem Hauptmenü-Muster gebaut (while/ReadKey/switch,
+  Auswahl-Konstanten 0–2, Sound je Fall, InputIsValid und
+  ClearNameInput im Header versprochen); das Dreieck-Fokusmodell
+  selbst erdacht (hoch/runter nur Feld↔Confirm, links/rechts nur
+  Confirm↔Back); den Schnellweg Enter→Confirm aus den DECISIONS
+  eingebaut; die WASD-Tipp-Kollision selbst entdeckt, bevor Claude
+  sie nannte; Gelb als Fokusfarbe nach Zahlen- und Bildvergleich
+  bestätigt (Grün verworfen — Rot-Grün-Paar mit der Fehlerfarbe).
+  **Fehlerbild:** switch-Fallthrough unbekannt — zwei fehlende
+  breaks (Rechts-Fall läuft in Enter weiter, Enter-Sonst-Zweig in
+  default), die Warnung C26819 als „fehlendes default" gedeutet;
+  das Dreieck als +1/−1 mit Klemmen auf der Zahlenlinie gebaut,
+  wodurch links/rechts das Feld verlassen; fehlendes else lässt
+  den Fehlerpfad auch bei gültiger Eingabe laufen; Funktionsname
+  ohne Klammern in der Bedingung (prüft die Adresse, nicht die
+  Antwort); Confirm zielt auf GS_GAME statt GS_TUTORIAL — die
+  Zwischenszene des eigenen Automaten übersprungen; der
+  Einmal-Druck vor der Schleife statt Home-Frame je Tastendruck.
+  **Hilfe:** Fallthrough am eigenen Code erklärt (Korridor-Bild
+  samt Spur „Taste → startet das Spiel"); Dreieck gegen
+  Zahlenlinie als Bild; TODO-Marken an alle Fundstellen;
+  Arrow-Tasten als kollisionsfreie Feld-Navigation benannt
+  (eigene Codes ab 1000, nie tippbar).
+- 2026-09-19 · Lane Defender M1, erste eigene C++-Klasse (CPlayer) —
+  **Selbst:** die Ablage-Frage selbst aufgemacht und für die
+  Mini-Klasse jetzt entschieden (gegen Claudes String-Empfehlung, mit
+  eigener Begründung „einmal richtig angehen"); Player.h nach Gerüst
+  fehlerfrei getippt; den .cpp-Versuch ungefragt gestartet, bevor die
+  Erklärung da war; ein eigenes Steuerungs-Modell vorgeschlagen
+  (Enter als einziger Ausgang aus dem Feld, ↑/W zurück) und
+  Step-by-Step-Arbeit für sich eingefordert. **Fehlerbild:**
+  C#-Reflex im .cpp — Klassenblock samt public: erneut aufgemacht
+  statt freier Körper mit Nachnamen (dazu falscher Klassenname
+  Player statt CPlayer); Rückgabetyp weggelassen; die Signaturen
+  beider Methoden zu einer vermischt (GetName mit SetName-Parameter);
+  Include-Tippfehler <strring> und unnötiges <cstdint>; der
+  +1/−1-TODO blieb unverständlich, bis die Zahlenlinie gegen sein
+  Fokus-Modell erklärt war. **Hilfe:** Versprechen-und-Bau-Muster als
+  Bild an CExample (Nachname orange, wanderndes const blau);
+  Brücke zu den freien Funktionen, die er schon trennt;
+  Fehlermeldungs-Decoder für die drei typischen Compiler-Meldungen;
+  Datei-Köpfe und Summaries von Claude nachgetragen. **Nachtrag im
+  selben Zug:** zweiter Anlauf saß — beide Körper korrekt (freie
+  Körper, Nachname, Signaturen, wanderndes const); die const-Frage
+  („nach den Klammern — ist das ein Cast?") selbst präzise gestellt,
+  Drei-Zuhause-Antwort samt const-Referenz-Nutzen nachvollzogen;
+  Kuriosum CPlayer:: auch vor den Membern (legal, aber unnötig) als
+  Stilpunkt erklärt und von Isor selbst bereinigt; VS-Editor-Puffer überschrieb Claudes Datei-Kopf
+  in Player.h beim Speichern (Editor-gegen-Platte-Falle, erklärt).
+- 2026-09-19 · Lane Defender M1, Schritt 2 — Verschachtelungs-Falle —
+  **Selbst:** die Verwirrung sofort gemeldet und die eigene Idee klar
+  beschrieben (switch im switch, „damit ich unten aussuchen kann"),
+  statt still weiterzubauen. **Fehlerbild:** den ganzen Dialog-Fluss
+  in einem einzigen Tastendruck behandeln wollen — innerer switch auf
+  dieselbe Taste im Enter-Fall (sieht immer nur Enter, alle inneren
+  cases toter Code); äußere Verzweigung wieder auf die Taste statt
+  auf den Fokus; Kern-Lücke: dass die while-Schleife je Runde genau
+  eine Taste verarbeitet und der Zustand das Wissen in die nächste
+  Runde trägt. **Hilfe:** Karussell-Bild (Zeichnen → eine Taste lesen
+  → Fokus → kleine Reaktion) plus Filmstreifen über drei Runden;
+  Anker an seinen eigenen Szenen-Automaten in main (Szenen schachteln
+  sich auch nicht ineinander); Gerüst zum Selbsttippen mit
+  vorgemachtem Enter-Fall. **Nachtrag:** Gerüst gefüllt und alle
+  Review-Funde in zwei Runden selbst gefixt; der Fallthrough entstand
+  beim Füllen zweimal neu (Enter-Fall im Feld ohne break; im
+  Button-Enter das falsche break gelöscht, nachdem der
+  Kosmetik-Hinweis „break nach return ist tot" zu weit ausgelegt
+  wurde) — Faustregel gesetzt: jeder case endet auf jedem Weg mit
+  break oder return. Eigenständige Design-Überlegung: den Fehlerton
+  im Feld-default bewusst gestrichen, weil Buchstaben dort später
+  Tipp-Eingaben sind — Vorausdenken auf die Zeichen-Aufnahme; die
+  Sound-Frage für die Button-Zeile selbst zur Entscheidung gestellt.
+- 2026-09-19 · Lane Defender M1, Schritte 3 und 4 — **Selbst:**
+  Schritt 4 (Referenz-Verdrahtung über drei Dateien: Signatur in
+  Header und .cpp, Instanz und Aufruf in main) komplett selbst und
+  fehlerfrei getippt, dazu ungefragt der Vorgriff `S_DEFAULT_NAME`
+  für die kommende Zeichen-Aufnahme; Rundgang-Test selbst gefahren
+  (Enter/Pfeile/ESC, Sounds als Beleg). **Fehlerbild:** keines —
+  nur Kosmetik (fehlendes Leerzeichen im Include). **Hilfe:**
+  Schritt 3 als reine Mechanik von Claude auf Zuruf (Umbenennung
+  I_SELECTION_CONFIRM, Header entrümpelt, Datei-Köpfe); Hinweis auf
+  die erwartete C4100, damit die Warnung nicht als Fehler erschrickt.
+- 2026-09-20 · Lane Defender M1, Schritt 5 Button-Färbung (müder Tag,
+  Umbau auf Zuruf durch Claude) — **Selbst:** trotz „nicht fit" einen
+  eigenen Färbungs-Anlauf gebaut, und die Putz-Mechanik darin selbst
+  konstruiert (beide Marker-Zeilen decken die volle Breite und putzen
+  den je anderen Slot — die Terminal-Lektion angewendet); das eigene
+  Unbehagen präzise gemeldet („nicht wunderschön, Konstanten nicht
+  gut") und gezielt Korrekturhilfe statt Lösung light angefordert.
+  **Fehlerbild:** beim Zerlegen der Button-Zeile den linken
+  3-Spalten-Rand verloren; den Bauplan dreimal kopiert statt einmal
+  gebaut (drei if-Blöcke); Feld-Fall ohne Marker-Zeile (alter Marker
+  blieb kleben); Konstantennamen gegen MACRO_CASE und mit
+  Tippfehlern; Kompensations-Offsets 107/110 statt Wiederverwendung
+  des Zeilen-Skeletts. **Hilfe:** Skelett-Gedanke („Marker-Zeile =
+  Button-Zeile mit anderen Slots"); Umbau komplett durch Claude auf
+  Zuruf (AddFocusColor, GetButtonRow/GetMarkerRow, Konstanten);
+  W4-Befund am Rande: Projekt stand seit je auf /W3 — Warnstufe auf
+  Level4 gehoben, totes Doppel-return in InitConsole entdeckt und
+  entfernt.
+- 2026-09-20 · Lane Defender M1-Abschluss (Zeichen-Aufnahme bis
+  Endszene, überwiegend Zuruf-Modus wegen Formtief) — **Selbst:**
+  die Whitelist-Idee „Bereiche statt cases" mit eigenen Zahlen
+  vorgedacht (Richtung und Operatoren kippten, Prinzip stimmte); die
+  const-Frage und die Header-Inkonsistenz selbst aufgeworfen (Antwort
+  war das Schaufenster-Prinzip — Richtung andersherum als vermutet);
+  Figlet-Kerning der neuen Schriftzüge selbst gerichtet; den gesamten
+  Szenen-Code gelesen und als eigenes Muster eingeordnet („eigentlich
+  Copy & Paste, nicht schwer"); das Kommentar-Stil-Urteil gefällt
+  (zu lang, wirkt KI-generiert → neue Zwei-Zeilen-Regel); Zeitdaten
+  getrackt und selbst eingeordnet (20 h gegen 6 — bewusst besser
+  ausdesignt, Gerüst für M2+ vorbereitet); Vorschau-vor-Code als
+  Arbeitsweise eingefordert und die Einblendung als Zierrat selbst
+  gestrichen. **Fehlerbild:** Blacklist mit unmöglichen &&-Paaren
+  (De-Morgan-Kipper, still immer falsch); Rückerklärungs-Fragen
+  (Leertaste, verschwundene C4100) blieben unbeantwortet — offen für
+  eine wache Runde. **Hilfe:** Zeichen-Aufnahme, Färbungs-Umbau,
+  Tutorial- und Endszene als erklärte Zuruf-Bauten in Happen; die
+  drei Tür-Varianten (Kopie, const&, &) als Bild mit Anker an seine
+  eigenen L3-Seiten.

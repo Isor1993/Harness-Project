@@ -171,3 +171,48 @@ leere Rubrik schreibt `—`.
   von Schreiblinie und Button-Zeile steht aus. Lern-Rubriken in
   `Kern/LERNLOG.md` unter 2026-09-19. Offen in M1: Zeichen-Schleife
   (Fokus, Whitelist, Farben), Titel-Einblendung, echte Endszene.
+- 2026-09-19 — M1 Zeichen-Schleife, Teil 1 — Steuerung und
+  Player-Klasse: Sichtprüfung des statischen Screens bestanden
+  (gestrichelte Underscore-Optik bewusst gelassen — zählbare Slots);
+  Gelb nach Zahlen- und Bildvergleich bestätigt (DECISIONS → „Grün
+  als Fokusfarbe geprüft und verworfen", Dozentin-Merkpunkt in der
+  ROADMAP). Steuerungs-Schleife der Namenseingabe in Schritten
+  gebaut: Fokus-Verzweigung Feld/Buttons mit direkten Übergängen
+  (Isors Modell — DECISIONS → „Enter ist der einzige Ausgang"),
+  Sounds je Fall, ESC überall; erste eigene C++-Klasse `CPlayer`
+  (`Player.h`/`.cpp`) und als Referenz durch main verdrahtet
+  (DECISIONS → „Mini-Player-Klasse"); `I_SELECTION_CONFIRM`
+  umbenannt, tote Versprechen InputIsValid/ClearNameInput aus dem
+  Header entfernt. Rundgang-Test bestanden — die Sounds belegen den
+  Fokuswechsel. /W4 grün bis auf die bewusst offene C4100
+  (`a_player` unbenutzt bis zur Zeichen-Aufnahme). Drei
+  Knowledge-Seiten (Nachname, break-Tür, Zustand-trägt-Wissen);
+  Lern-Rubriken in `Kern/LERNLOG.md` unter 2026-09-19. Offen in M1:
+  Färbung, Zeichen-Aufnahme, Titel-Einblendung, echte Endszene.
+- 2026-09-20 — M1 fertig: Färbung, Zeichen-Aufnahme, End- und
+  Tutorial-Szene: Button-Färbung nach Isors Eigenversuch als
+  Zuruf-Umbau (gemeinsames Zeilen-Skelett 3+4+103+7, AddFocusColor,
+  GetButtonRow/GetMarkerRow — die Marker-Zeile putzt sich selbst);
+  dabei der W4-Befund: Projekt stand seit Anlage auf /W3, alle
+  „/W4 grün"-Angaben waren ungemessen — Warnstufe real auf Level4,
+  totes Doppel-return in InitConsole entfernt (Störung in
+  `Kern/STOERUNGEN.md`). Feld-Gelb über Farb-Parameter des
+  Zeilen-Bauers (färben nach der Füllungs-Rechnung); Header nach dem
+  Schaufenster-Prinzip entrümpelt. Zeichen-Aufnahme komplett:
+  Whitelist-Bereiche im default-Fall, 16er-Grenze, Backspace
+  (I_KEY_BACKSPACE in Console), Enter-Übernahme in CPlayer samt
+  „Player"-Default, rote Fehlerzeile, Tipp-Cursor (ClearScreen
+  versteckt den Cursor jetzt beim Szenenwechsel). Danach auf Zuruf:
+  echte Tutorial- und Endszene als neue Dateipaare (Vorschau erst im
+  Chat, Figlet-Schriftzüge — Kerning von Isor selbst gerichtet),
+  `BuildCenteredText` in Output (zweiter Nutzer), Stubs aus main
+  ausgezogen, .vcxproj um die vier Dateien ergänzt;
+  Titel-Einblendung auf Isors Schnitt gestrichen (DECISIONS).
+  Kommentar-Kürzungs-Pass auf Isors Urteil („sieht KI-generiert
+  aus") — neue Stilregel: Inline-Kommentare höchstens zwei Zeilen.
+  Voller Szenen-Rundlauf getestet, Build warnungsfrei. M1 abgehakt;
+  Ist-Zeit 20 h → ZEITPLAN, Doku-Input → `ABGABE_NOTIZEN.md` (neue
+  Datei, DECISIONS → „Doku-Input je Baustein"). Zwei
+  Knowledge-Erweiterungen (Escape-Byte-Falle, Blacklist-Kipper).
+  Lern-Rubriken in `Kern/LERNLOG.md` unter 2026-09-20. Offen: M2
+  beginnt mit einem Design-Abschnitt.

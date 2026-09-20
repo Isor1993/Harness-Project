@@ -51,7 +51,7 @@ Abgabe **Fr 02.10., 23:59** (`Uni/Semester_3/STUNDENPLAN.md`), die
 Abgabewoche ist nur Feinschliff. Isors Streckziel: wenn möglich schon
 So 20.09. fertig — dann beginnt der Model-Viewer eine Woche früher.
 
-- [ ] **M1 · Gerüst** — Konsolen-Init (Farben, Sonderzeichen,
+- [x] **M1 · Gerüst** — Konsolen-Init (Farben, Sonderzeichen,
   Cursor-Home) samt Zeichentest der Symbol-Kandidaten, Hauptmenü mit
   Titel, Start/Exit, Namenseingabe mit Validierung.
   **Ausdesignt am 2026-09-12** (acht Einträge in den DECISIONS dieser
@@ -104,6 +104,26 @@ So 20.09. fertig — dann beginnt der Model-Viewer eine Woche früher.
   erster Handgriff der nächsten Session.** Offen in M1: die
   Zeichen-Schleife der Namenseingabe (Fokus-Modell, Whitelist,
   Backspace, Farben, Marker), Titel-Einblendung, echte Endszene.
+  **Stand 2026-09-19 (zweite Session):** Sichtprüfung bestanden;
+  Steuerungs-Teil der Zeichen-Schleife fertig — Fokus-Verzweigung
+  Feld/Buttons mit direkten Übergängen (DECISIONS → „Enter ist der
+  einzige Ausgang"), `CPlayer` angelegt und als Referenz verdrahtet
+  (DECISIONS → „Mini-Player-Klasse"), `I_SELECTION_CONFIRM`, Header
+  entrümpelt; Rundgang-Test bestanden, /W4 grün bis auf die bewusst
+  offene C4100 (`a_player` unbenutzt bis zur Zeichen-Aufnahme).
+  Offen in M1: Färbung (Buttons und Feld), Zeichen-Aufnahme
+  (Whitelist, Backspace, 17. Zeichen, Fehlerzeile),
+  Titel-Einblendung, echte Endszene.
+  **Erledigt am 2026-09-20:** Zeichen-Aufnahme komplett (Whitelist,
+  Backspace, Enter-Übernahme in CPlayer, rote Fehlerzeile,
+  Tipp-Cursor), Feld- und Button-Färbung, echte Tutorial- und
+  Endszene als eigene Dateipaare (Figlet-Schriftzüge,
+  `BuildCenteredText` in Output), Titel-Einblendung gestrichen
+  (DECISIONS, 20.09.). Warnstufe real auf /W4 gehoben und
+  warnungsfrei (`Kern/STOERUNGEN.md`, 20.09.), voller
+  Szenen-Rundlauf getestet. Ist-Zeit im ZEITPLAN (20 h gegen 6 h);
+  Doku-Input in `ABGABE_NOTIZEN.md`, Abgabetext folgt am
+  Projektende.
 - [ ] **M2 · Lanes und Spieler** — Spielfeld mit Lanes zeichnen
   (nur rastergeprüfte Zeichen), Player-Klasse, Lane-Wechsel und
   Schießen über die nicht-blockierende Tastenabfrage (gelieferter
@@ -201,6 +221,12 @@ So 20.09. fertig — dann beginnt der Model-Viewer eine Woche früher.
   Namenseingabe zeichnet selbst statt getline zu lesen (DECISIONS →
   „Eingabe selbst gezeichnet"), im Projekt bleibt damit gar kein
   `cin` übrig. Offen nur noch der M7-Scan als Kontrolle.
+- [ ] **Farbsprache der Dozentin vorlegen** — bei Abgabe oder
+  Präsentation fragen, ob Gelb/Hellrot für sie passt (Isor, 2026-09-19:
+  Gelb bestätigt; Grün verworfen — Rot-Grün-Paar mit der Fehlerfarbe,
+  Beleg in der Session). Falls sie anderes will: Umfärben ist eine
+  Ein-Zeilen-Änderung an den Bedeutungs-Konstanten; ein Farb-Setting
+  im Spiel wäre ein eigener kleiner Ausbau. Kein Handlungsbedarf vorher.
 - [ ] **Fenster-Wächter prüfen** — Konsolengröße beim Start abfragen
   und bei zu kleinem Fenster freundlich um Vergrößern bitten; bis
   dahin gilt die Fensterregel „Standardgröße 120×30 oder größer".

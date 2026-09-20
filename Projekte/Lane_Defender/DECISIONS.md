@@ -689,3 +689,90 @@ kopflastige Erst-Layout; eine Strich-Konstante durch den
 Textzeilen-Bauer (Byte-Falle — Striche wiegen drei); die
 Beschriftung „Start Game" (nach Confirm kommt erst die
 Steuerungs-Szene, der Knopf würde mehr versprechen als kommt).
+
+## 2026-09-19 — Enter ist der einzige Ausgang aus dem Eingabefeld
+Was: Die Steuerung der Namenseingabe verzweigt zuerst nach Fokus
+(Feld gegen Button-Zeile), dann nach Taste — zwei kleine switches
+statt einem großen. Im Feld führt nur Enter hinunter (Sprung auf
+Confirm) und ESC hinaus; auf der Button-Zeile wechseln ←/→ (+A/D)
+zwischen Back und Confirm per direkter Zuweisung statt
+Zahlen-Arithmetik, ↑/W führt zurück ins Feld, Enter führt aus, der
+default meldet unbelegte Tasten mit dem Fehlerton. Der Feld-default
+bleibt bewusst lautlos — dort landen später die getippten Zeichen.
+Löst ab: den ↓/↑-Freiwechsel aus „Namenseingabe: Dialogfenster,
+Slots und Fokus-Modell" (2026-09-19, Vormittag); Fenster, Slots,
+Schnellweg Enter–Enter und ESC-Rückweg gelten unverändert.
+Warum: Isors Vorschlag beim Bau — Enter ist der natürliche
+„fertig getippt"-Moment, und der Einwand gegen den
+Zwei-Phasen-Zwang trifft nicht, weil der Rückweg (↑/W) offen
+bleibt. Nebengewinn: Der Feld-Zweig bleibt klein (Enter, ESC,
+später das Tippen), und die Button-Zeile hat nur zwei Stationen —
+zuweisen statt zählen, keine Klemm-Arithmetik.
+Verworfen: ↓ als zweiter Ausgang aus dem Feld (ein Weg reicht;
+W/A/S/D müssen im Feld tippbar bleiben — nur echte Pfeile könnten
+dort navigieren); die Drei-Stationen-Zahlenlinie mit +1/−1 und
+Klemmen (ließ ←/→ aus dem Feld hinauswandern — Isors erster
+Wurf, am Bild „Dreieck gegen Zahlenlinie" verworfen).
+
+## 2026-09-19 — Spielername wohnt sofort in einer Mini-Player-Klasse
+Was: Der Name lebt in `CPlayer` (`Player.h`/`Player.cpp`): privater
+Member `m_sName{}`, Zugriff über `SetName(const std::string&)` und
+`std::string GetName() const` (Kopie-Rückgabe). Das Objekt lebt als
+Wert in main und reist als `CPlayer&`-Referenz in die Szene —
+`RunNameInputScreen(CPlayer&)`. Kein Pointer. M2 baut die Klasse
+aus (Lanes, Leben, Position), der Name ist dann schon zu Hause.
+Warum: Isors Entscheidung gegen Claudes String-in-main-Empfehlung —
+einmal richtig angehen statt späterer Umzugsarbeit; die Klasse
+kommt mit M2 ohnehin, und der Bau war zugleich die erste eigene
+C++-Klasse (Lernwert eingepreist).
+Verworfen: nackter `std::string` in main mit Referenz-Durchreichung
+(Claudes Empfehlung — nur zwei Zeilen Umzug später, aber eben
+Umzug); ein Pointer (die Referenz reicht, das Objekt lebt in main);
+`GetName` als const-Referenz-Rückgabe (Kopie ist bei 16 Zeichen
+gratis und in der Abgabe leichter zu verteidigen).
+
+## 2026-09-19 — Grün als Fokusfarbe geprüft und verworfen
+Was: Gelb bleibt die einzige Aktiv-Farbe; die „Farbsprache" vom
+2026-09-19 steht unverändert. Anlass war ein Grün-Vorschlag aus
+Isors Umfeld; geprüft wurde mit Leuchtdichte-Zahlen und
+Deuteranopie-Simulation statt nach Gefühl.
+Warum: Zwei Signale (Fokus und Fehler) mit Grün und Hellrot wären
+ein Rot-Grün-Paar — für Isor selbst und etwa jeden zwölften
+männlichen Spieler kollabieren beide zu ähnlichem Oliv (Simulation:
+Grün 92 und Hellrot 91 werden oliv, Gelb 93 bleibt nahezu
+unverändert). Helligkeit trägt als zweiter Kanal: Kontrast auf
+Schwarz Gelb ~18:1, Grün ~9:1, Hellrot ~5,5:1 — Gelb/Rot trennt
+rund 3,8-fach in der Leuchtdichte, Grün/Rot nur 1,8-fach. Dazu
+Bedeutungsballast: Grün hieße „gültig", bevor geprüft ist. Und
+einen Grün-Bau könnte Isor selbst nicht abnehmen.
+Verworfen: Grün (VT 92) als Fokusfarbe. Offen gehalten: Cyan
+(VT 96, liegt in Console.h) als farbfehlsichtig-sichere
+Ausweichfarbe, falls Gelb je stört; die Dozentin-Frage steht als
+Merkpunkt in der ROADMAP dieser Schicht.
+
+## 2026-09-20 — Titel-Einblendung gestrichen
+Was: Es gibt keine Start-Einblendung des Titels — das Menü steht
+sofort. Löst ab: den Einblendungs-Teil aus „Menü-Bedienung und
+Titel-Optik" (2026-09-12); Buttons, Marker, Farben und Linien-Schrift
+gelten unverändert.
+Warum: Isors Schnitt am 2026-09-20 unter Zeitdruck — reiner Zierrat
+ohne Lern- oder Bewertungswert, die Abgabe verlangt ihn nicht. Der
+Verzicht sparte zwei Console-Werkzeuge (Tasten-Warteschlange,
+Warten), die nur die Einblendung gebraucht hätte.
+Verworfen: die zeilenweise Einblendung mit Tasten-Skip (fertig
+entworfen und als Vorschau gezeigt — bleibt Polish-Kandidat, falls
+M7 Luft hat).
+
+## 2026-09-20 — Doku-Input je Baustein statt Abgabetext sofort
+Was: Der Abgabetext entsteht am Projektende in einem Zug; nach jedem
+Meilenstein wird nur Roh-Input festgehalten — in `ABGABE_NOTIZEN.md`
+dieser Schicht (Zeit, Gebautes, Begründungen, Besonderheiten). Für
+Lane Defender gilt die Baustein-Bedingung „dokumentiert" damit als
+erfüllt, sobald der Input des Meilensteins dort steht.
+Warum: Isor am 2026-09-20 — Doku-Aufwand bündeln, solange offen ist,
+wie ausführlich die Abgabe-Doku überhaupt wird (womöglich nur Tabelle
+plus README); der Input direkt nach dem Baustein hält die Fakten
+frisch, ohne Form-Arbeit vor der Form-Entscheidung.
+Verworfen: der ausformulierte Abgabe-Abschnitt je Baustein
+(Form-Arbeit vor Klarheit über die Form); gar kein Zwischenstand
+(am Projektende wären die Begründungen aus dem Kopf).

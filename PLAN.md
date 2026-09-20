@@ -22,20 +22,19 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-09-19 beim `/harness:ende` des Abschnitts
+*(überschrieben 2026-09-20 beim `/harness:ende` des Abschnitts
 „Lane Defender M1" (Development · Lernmodus, Revier Lane Defender).
 Berichte im LOG der Schicht und in `Kern/LERNLOG.md`.)*
 
-Lane Defender M1: Auswahl-Schleife **fertig** (Balken+Farbe+Sound),
-Namenseingabe ausdesignt und **statisch gebaut** (Fenster, Regeln,
-Schreiblinie, Back/Confirm-Zeile) — Sichtprüfung der letzten zwei
-Stücke ist der erste Handgriff. Nächster Baustein: die
-**Zeichen-Schleife** (Fokus-Modell, Whitelist, Farben — DECISIONS
-vom 19.09.); danach Titel-Einblendung, Endszene. Fertig-Ziel
-So 27.09.; **So 20.09. ist Streckziel und Pflegetag.** Commits
-ausstehend (Message-Dateien vom 19.09.): V 0.0008 Spiel · V 0.0074
-Harness · V 0.0041 Knowledge (fünf C++-Seiten). M1-Ist-Zeit →
-ZEITPLAN beim M1-Ende. Unverändert offen: Unreal-Toolchain-Test,
+**M1 ist fertig und abgehakt** (Ist 20 h gegen 6 h Schätzung —
+Einordnung in `ABGABE_NOTIZEN.md`). Nächster Schritt:
+**M2-Design-Abschnitt** — Lane-Layout der Doppelbreit-Figuren,
+Sprite-Spieler, Symbolwahl, gelieferter Baustein nicht-blockierende
+Tastenabfrage; danach M2-Bau. Fertig-Ziel So 27.09., Rest-Schätzung
+30 h. Commits ausstehend (Dateien am 20.09. geliefert): V 0.0009
+Spiel · V 0.0075 Harness · V 0.0042 Knowledge. **Pflegetag vom
+So 20.09. nicht gelaufen** — nachholen auf Zuruf (Artifact-Durchsicht,
+Karussell-Seite-Frage). Unverändert offen: Unreal-Toolchain-Test,
 Datenbaum.
 
 ---

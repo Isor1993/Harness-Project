@@ -897,3 +897,24 @@ fremden Schicht steht so die falsche Datei da.
 gebaut wurde; nur sein Meldungstext führt in die Irre.
 **Stand:** offen — Gegenmittel als Aufgabe in `Kern/ROADMAP.md` →
 „Glossar-Wächter: Besitzer pfadgenau prüfen".
+
+### 2026-09-20 — „/W4 grün" stand in den Chroniken, gemessen wurde /W3
+**Was:** Mehrere LOG-, ROADMAP- und LERNLOG-Einträge (13.09.–19.09.)
+melden „/W4 grün" bzw. „/W4-warnungsfrei" für Lane-Defender-Builds.
+Beim ersten Selbst-Build durch Claude fiel auf: Die `.vcxproj` stand
+seit Anlage in allen vier Konfigurationen auf Level3 — `Level4` war
+nie eingetragen (git-Suche über die gesamte Historie). Der erste
+echte W4-Build zeigte zwei bis dahin unsichtbare Warnungen (die
+erwartete C4100 und ein totes Doppel-return in `InitConsole`).
+**Ursache:** Die Warnstufe wurde nie am Projekt verifiziert; „/W4"
+galt als Praxis und wanderte als geglaubter Standard in die Doku —
+Sessions schrieben die Angabe fort, statt die Messgrundlage
+(die Projekteinstellung) einmal nachzusehen.
+**Regel:** `Kern/WORKFLOW.md`, „Nur Belegtes" — keine Zahl, die nicht
+gemessen wurde. Sie hat wiederholt nicht gegriffen, weil die Angabe
+plausibel war und niemand sie anzweifelte.
+**Stand:** behoben am 2026-09-20 — Level4 steht real in allen vier
+Konfigurationen, das tote return ist entfernt, die C4100 war bewusst
+offen und ist mit der Zeichen-Aufnahme verschwunden. Kein
+ROADMAP-Punkt: Das Gegenmittel (die Einstellung selbst ist jetzt die
+Quelle) ist umgesetzt; Isor hat es bei der Störungs-Frage bestätigt.

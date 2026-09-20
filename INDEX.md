@@ -109,6 +109,7 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 | `Projekte/Isor_Tower/TDD.md` | Nur das Markdown-Manuskript des TDD — die führende Quelle, aus der `Kern/Werkzeuge/abgabe_bauen.py` die .docx-Abgabefassung baut. |
 | `Projekte/Isor_Tower/TDD_NOTES.md` | Nur Rohmaterial für das Technical Design Document von Isor's Tower — geprüfte Fakten, Zahlen und Formeln aus der Projektarbeit. |
 | `Projekte/Isor_Tower/_ARCHIV.md` | Nur überholte Einträge der Projekt-Schicht Isor's Tower — jeder Eintrag nennt, wodurch er abgelöst wurde. |
+| `Projekte/Lane_Defender/ABGABE_NOTIZEN.md` | Nur das Roh-Material für die Abgabe-Doku von Lane Defender — je Meilenstein Zeiten, Gebautes und Begründungen, festgehalten direkt nach dem Baustein. |
 | `Projekte/Lane_Defender/DECISIONS.md` | Nur Entscheidungen zum C++-Konsolenprojekt Lane Defender (früherer Arbeitstitel: Grid Defense) — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
 | `Projekte/Lane_Defender/LOG.md` | Nur was wann passiert ist — datierte Ereignisse und die Kurs-Einträge des Lernens am Projekt, älteste oben. |
 | `Projekte/Lane_Defender/ROADMAP.md` | Nur was an Lane Defender als Nächstes gelernt oder gebaut wird — Lern-Vorlauf, Meilensteine, Ausbauten, offene Aufgaben. |
