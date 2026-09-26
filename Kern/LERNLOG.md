@@ -1088,3 +1088,82 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   Tutorial- und Endszene als erklärte Zuruf-Bauten in Happen; die
   drei Tür-Varianten (Kopie, const&, &) als Bild mit Anker an seine
   eigenen L3-Seiten.
+- 2026-09-20 · Lane Defender M2-Design (Screen-Layout, Sprite,
+  Symbole, Tastenabfrage) — **Selbst:** das M2-Screen-Layout als
+  eigene Skizze mitgebracht (HUD oben, Shop unten, Korridore) und
+  den Live-Shop als Vereinfachung erkannt (spart die Shop-Szene);
+  das Sprung-Modell eigenständig hergeleitet samt Überdruck-Argument
+  (Position = Lane-Index, nichts kann überprintet werden); die
+  Lane-Progression selbst zugeschnitten (2/3/4 an den Boss-Siegen).
+  **Hilfe:** Zellrechnung und Zeilenbudget (drei Design-Beispiele
+  als Render), Zuschnitt des kbhit-Wächters samt Drain-Argument.
+- 2026-09-20/21 · Lane Defender M2 B1 Lauf-Test (erste eigene
+  Tick-Schleife, selbst getippt mit Schritt-Führung) — **Selbst:**
+  GetLane mit Figur-Parameter und if/else eigenständig vorgebaut
+  (Figur im String — den Kern des Ein-Puffer-Musters selbst
+  umgesetzt); Spalten der drei Lane-Teile selbst nachgezählt;
+  ++/Wrap eigenständig aus der Drain-Schleife gezogen, bevor der
+  Schritt dran war; Wandbündigkeit empirisch selbst gefixt (ein
+  Leerzeichen mehr in der Bauer-Zeile). **Fehlerbild:** break im
+  switch als Schleifen-Ausgang gedacht (eigene Knowledge-Seite
+  „break ist die Tür im switch" existierte schon); while-Bedingung
+  ohne ! (Schleife lief nie); Erstwurf zeichnete per
+  SetCursor-Overlay statt im Menü-Muster (Wiedererkennung des
+  eigenen Beschlusses vom 18.09. fehlte); doppeltes row++ in
+  for-Kopf und -Körper. **Hilfe:** Flag-Muster für den
+  Drain-Ausgang, Home-ohne-Umbruch-Erklärung, Schritt-für-Schritt-
+  Begleitung auf Zuruf (Formtief am Vorabend).
+- 2026-09-23/25 · Lane Defender M2 B2 Spielfeld-Zeichner
+  (BuildFrame im Schritt-Modus, Isor tippt) — **Selbst:** Ecken-
+  und Symbol-Konstanten als eigene Idee ergänzt, die 118er-Breite
+  selbst benannt; das Copy&Paste-Muster der Zeilen-Schleifen
+  erkannt und übertragen (Kappe → Körper); den /2-Fix parallel zur
+  Korrektur selbst gemacht; die Zaunpfahl-Lücke auf Anhieb richtig;
+  nach der Abnahme selbst die DRY-Frage zur vierfachen
+  Lane-Schleife gestellt samt der besseren Nachfrage, ob der Umbau
+  warten sollte, weil B4/M3 die Zeilen-Logik ohnehin ändern.
+  **Fehlerbild:** Rückgabewerte der Bauer verworfen statt
+  eingesammelt (Korb-Muster fehlte); \n zweimal an der falschen
+  Stelle (an der Lücke, am return) — Regel „jede Bildschirmzeile
+  schließt sich selbst" erst im zweiten Anlauf; Einzelzeilen
+  (Spieler) in 18er-Schleifen verpackt und Shop samt return in der
+  Schleife (Klammer-Struktur); deutsches VERTIKAL im englischen
+  Code. **Hilfe:** Schritt-Modus 3a–3d mit Zwischenlesen,
+  Soll-Visuals (Zonen-Render, \n-Bild), Klammer-Entwirrung auf
+  Zuruf.
+- 2026-09-25 · Lane Defender M2 B3 Spieler (CPlayer-Ausbau, Isor
+  tippt im Schritt-Modus) — **Selbst:** im Entwurf die Trennung
+  „Methode beim Spieler" schon halb richtig vorgedacht;
+  MoveLeft-Beispiel eigenständig zu MoveRight gespiegelt (nach
+  Zaunpfahl-Korrektur); Fall-Stapel im Switch selbst platziert;
+  das Referenz-Muster der Namenseingabe wiedererkannt.
+  **Fehlerbild:** neue Methoden im private-Block angelegt
+  (Schaufenster/Lager verwechselt); MoveRight-Wächter `>= Count`
+  statt `>= Count-1` (T wäre aus dem Feld gesprungen — am
+  Zahlenbeispiel gefunden); die Referenz-Reise nur an 1 von 3
+  Stellen umgesetzt (Header), dabei die Überladungs-Falle erklärt
+  bekommen (baut fehlerfrei, reist aber nie); IntelliSense-Kringel
+  als Compiler-Urteil gelesen („er kennt CPlayer nicht" — Build
+  war grün). Mentaler Knoten „String manipulieren" durch das
+  Wegwerf-Frame-Bild gelöst (Bewegung = Zahl ändern + neu bauen —
+  der eigene Bauer machte es längst vor). **Hilfe:** MoveLeft als
+  vorgemachtes Beispiel, Wegwerf-Frame-Visual, Zeilen-Verortung
+  des Eingabe-Switch.
+- 2026-09-26 · Lane Defender M2 B4 Schießen (CShot + erster
+  vector, Isor tippt im Schritt-Modus) — **Selbst:** im Entwurf
+  mit der Dictionary-Idee den M4-Kollisionscheck vorweggedacht
+  („gleiche Position → handeln") und selbst gespürt, dass es
+  einfacher gehen muss; die kritische Nachfrage zum Range-for
+  („muss ich nicht sagen, bis wohin?") — führte zur
+  Klemmen-gegen-Sterben-Unterscheidung; Leertaste-Case und
+  Beutel-Zustand selbst platziert; erster eigener Konstruktor.
+  **Fehlerbild:** der Methoden-Nachname `CShot::` fehlte komplett
+  (zweites Mal, dass die Antwort auf einer eigenen Knowledge-Seite
+  stand); das IntelliSense-Echo im gesunden Header als
+  Header-Fehler gelesen; die Drei-Stellen-Kette erneut
+  unvollständig (Aufruf vergaß den Beutel — Wiederholung des
+  B3-Musters Header/Definition/Aufruf); Update-Block zunächst
+  hinter Zeichnen/Warten platziert (Tick-Ordnung). **Hilfe:**
+  vector als C#-Übersetzungstabelle, Rückwärts-erase mit
+  Zahlen-Trace, Konstruktor-Erklärung, CShot-Körper als Vorlage
+  nach dem Parse-Chaos.

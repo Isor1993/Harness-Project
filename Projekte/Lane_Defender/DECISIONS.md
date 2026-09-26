@@ -131,6 +131,12 @@ Verworfen: das Tower-Defense-Design vom Vormittag (abgelöste Einträge
 oben); die Vermeidung von Live-Eingabe — der Preis des Umschwenks ist
 eine nicht-blockierende Tastenabfrage (~15 Zeilen, gelieferter
 Baustein wie der Farb-Init).
+**Fortgeführt am 2026-09-20:** Spielgerüst und Pflichtthemen gelten;
+abgelöst sind drei Teile — der Upgrade-Screen zwischen den Leveln
+(„Live-Shop: Kaufen mitten im Lauf"), die Lane-Staffel „Start 1,
+alle drei Level +1" („Lane-Progression 2/3/4 an den Boss-Siegen")
+und die Skill-Freischaltung durch den Boss-Sieg (ebenfalls
+Live-Shop-Eintrag).
 
 ## 2026-09-07 — Schnittlinien Lane Defender
 Was: Wird die Zeit knapp, fällt in dieser Reihenfolge: Skill-System
@@ -454,6 +460,20 @@ doppelbreit); der U+FE0E-Trick (gemessen wirkungslos). Offen bleibt
 die Doppelbreit-Route über das Lane-Layout (ROADMAP → „Lane-Layout
 für Doppelbreit-Symbole prüfen") — das entscheidet der
 M2-Design-Abschnitt.
+**Fortgeführt am 2026-09-21:** Der B1-Lauf-Test misst feiner — es
+gibt zwei Breiten je Zeichen: das **Vorrücken** des Cursors und die
+**Glyphen-Breite**. Der Bauer rückt im Spiel-Terminal nur **eine**
+Zelle vor, die Glyphe malt ~1,5 Zellen — eine voll, die Nachbarzelle
+etwa zur Hälfte (Isors Diagnose „zählt als 1, benutzt heimlich 2",
+per Zoom am Zellraster nachgemessen; Beleg: sein
+Wandbündigkeits-Fix in B1 plus T-Szenen-Gegenprobe im selben Lauf —
+Ränder bündig, Figuren überlappt). Die Glyphen-Breite ≈1,5 stand
+schon im Messprotokoll vom 13.09. — neu ist nur die Vorrück-Lesart
+(damals als 2 gelesen, warum, bleibt offen). Fürs Zeilenbauen zählt
+eine Figur damit **1 Spalte** und braucht eine **Leerzelle rechts**
+als Überzeichnungs-Raum — die feste Mittelposition mit Luft liefert
+den ohnehin. Das Messgerät bleibt die T-Szene; Breite bleibt
+Messfrage je Terminal.
 
 ## 2026-09-13 — Schachfiguren gesetzt, Lanes werden dafür ausgelegt
 Was: Die Schachfiguren `♟ ♜ ♞ ♚` sind als Figuren-Symbole des Spiels
@@ -476,6 +496,10 @@ Verworfen: ASCII-Einzelzeichen als Figuren-Symbole (rasterfest
 gemessen, aber „sieht grausam aus" — sie bleiben Rückfall, falls ein
 fremdes Terminal die Figuren zerlegt); die Doppelbreit-Route wieder
 aufzumachen — entschieden ist entschieden, M2 gestaltet nur noch aus.
+**Fortgeführt am 2026-09-20:** ausgestaltet — der M2-Screen-Eintrag
+(„Design ‚Gerahmt'") legt die Korridore auf innen 8 statt „Wand +
+vier Leerzellen + Wand"; Doppelbreite, feste Mittelposition und
+ASCII-Rückfall gelten unverändert.
 
 ## 2026-09-13 — Ausgabe-Helfer ziehen in Output.h/Output.cpp
 Was: Die PrintMessage-Familie (fünf Überladungen) zieht aus
@@ -776,3 +800,115 @@ frisch, ohne Form-Arbeit vor der Form-Entscheidung.
 Verworfen: der ausformulierte Abgabe-Abschnitt je Baustein
 (Form-Arbeit vor Klarheit über die Form); gar kein Zwischenstand
 (am Projektende wären die Begründungen aus dem Kopf).
+
+## 2026-09-20 — M2-Screen: Design „Gerahmt" mit getrennten Korridoren
+Was: Der Spielbildschirm (120×30) ist dreigeteilt: HUD-Kasten oben
+(Zeilen 1–3: Player, Gold, Damage, Atk Speed, Skill, Level),
+Shop-Kasten unten (Zeilen 25–28), dazwischen das Feld — Lanes als
+getrennte Korridore mit eigenen Wänden, Kappe oben (Zeile 4) und
+offenem Ende unten; innen 8 Spalten, Lücke 6. Gegnerlauf Zeilen 5–22
+(18 Zeilen ≈ 3,6 s bei 200-ms-Tick), Spielerzone Zeilen 23–24 unter
+dem offenen Ende, Zeile 29 Luft, Zeile 30 bleibt frei
+(Scroll-Wächter aus M1). Feldbreite zentriert je Stufe: 2 Lanes 26,
+3 Lanes 42, 4 Lanes 58 Spalten; nicht freigeschaltete Lanes werden
+nicht gezeichnet.
+Warum: Isors Grobziel-Skizze vom 2026-09-20 (HUD oben, Shop unten,
+Korridore), gewählt aus drei voll gerenderten Design-Beispielen —
+die Kasten-Optik der Skizze war ihm die drei Feldzeilen und zwei
+Rahmenbauer wert. Logisch gespeichert wird nur (Lane, Zeile); die
+Doppelbreite der Figuren lebt allein im Zeichnen weiter, ein Treffer
+bleibt „gleiche Lane, gleiche Zeile".
+Verworfen: das Brett mit geteilten Wänden (dichtestes Bild, aber am
+weitesten weg von der Skizze); Korridore mit Trennlinien statt
+Kästen (Claudes Empfehlung — mehr Feldhöhe, Isor wählte die
+Skizzen-Nähe); Innenbreiten 4 und 6 (zu gedrungen für die
+120er-Breite).
+
+## 2026-09-20 — Live-Shop: Kaufen mitten im Lauf
+Was: Der Shop ist der Kasten unten am Spielbildschirm und immer
+offen: [1] Damage 100G · [2] Atk Speed 120G · [3] Life 500G ·
+[4] Multishot 2000G — Kauf per Zifferntaste während der
+Tick-Schleife, zu wenig Gold meldet der Error-Sound. Es gibt erstmal
+genau einen Skill (Multishot), gekauft statt beim Boss-Sieg
+freigeschaltet; was er tut und wie der Slot ihn trägt, klärt das
+M5-Design — der polymorphe Skill-Slot bleibt (Zeiger startet leer,
+der Kauf belegt ihn). Löst ab: den Upgrade-Screen zwischen den
+Leveln und die Skill-Freischaltung durch den ersten Boss-Sieg
+(„Umschwenk auf den Lane-Shooter", 2026-09-07).
+Warum: Isors Entscheid vom 2026-09-20 — Kaufen unter Druck macht das
+Spiel spaßiger; und es ist billiger als der alte Plan: Die
+nicht-blockierende Tastenabfrage liest ohnehin jede Taste pro Tick,
+ein Kauf ist ein weiterer case mit Gold-Prüfung, die eigene
+Shop-Szene entfällt komplett.
+Verworfen: der Upgrade-Screen als eigene Szene zwischen den Leveln
+(eine Szene mehr ohne Spielgefühl-Gewinn); Kauf nur zwischen den
+Wellen (der Live-Reiz wäre weg).
+
+## 2026-09-20 — Lane-Progression 2/3/4 an den Boss-Siegen
+Was: Gestartet wird mit 2 Lanes; der Boss-Sieg von Level 5 öffnet
+die dritte, der von Level 10 die vierte — testweise, Feinjustierung
+nach dem ersten Spielgefühl. Löst ab: „alle drei Level kommt eine
+Lane dazu (Start: eine, Maximum: vier)" aus dem Umschwenk-Eintrag.
+Warum: Isors Entscheid vom 2026-09-20 — eine einzelne Start-Lane
+hätte kein Lane-Wechsel-Gameplay, und die Öffnung am Boss-Sieg macht
+den Sieg zum sichtbaren Meilenstein. Schnittlinie gleich mitbenannt:
+Wird die Zeit knapp, bleibt es bei 3 Lanes — mit fester
+Korridor-Geometrie ist das ein Tabellenwert, keine Logikänderung.
+Verworfen: Start mit 1 Lane (nichts zu wechseln); der feste
+Drei-Level-Takt (entkoppelt vom Boss-Erlebnis).
+
+## 2026-09-20 — Sprung-Modell: Die Position ist der Lane-Index
+Was: Der Spieler steht immer auf der festen Mittelposition unter
+genau einer Lane; A/D und ←/→ springen eine Lane weiter, am Rand
+wird geklemmt (kein Umlauf). Bei 3 offenen Lanes gibt es exakt
+3 Positionen — gespeichert wird nur der Lane-Index, gezeichnet wird
+an dessen Mittelspalten.
+Warum: Isors eigener Entwurf samt Begründung vom 2026-09-20: keine
+Zwischenzustände, nichts kann überdruckt werden, deutlich simpler zu
+programmieren. Klemmen statt Umlauf, weil ein Fehlsprung quer übers
+Feld hier Leben kostet — anders als im Menü, wo der Umlauf richtig
+war.
+Verworfen: Gleiten über die Lücke (Zwischenpositionen plus eine
+Regel fürs Schießen unterwegs); Umlauf wie im Hauptmenü.
+
+## 2026-09-20 — Spieler-Sprite: T-Form massiv, Lauf 2, Sockel 6
+Was: Isors T-Form vom 13.09. wird gebaut als Lauf von 2 Spalten auf
+der Korridor-Mitte (Zeile 23) über einem Sockel von 6 Spalten
+(Zeile 24), beides massiv aus `█`, gefärbt in Gelb nach der
+Farbsprache („Gelb heißt: hier bist du"). Der Schuss startet aus der
+Lauf-Spalte.
+Warum: Proportionen wie die Skizze (breiter Sockel, schmaler Lauf),
+füllt den 8er-Korridor, ohne ihn zu berühren; nur rasterfest
+gemessene Zeichen.
+Verworfen: Sockel 4 (wirkt verloren unter dem 8er-Korridor); der
+Sockel als Halbblock `▀` (Podest-Optik, Isor wählte massiv).
+
+## 2026-09-20 — Schuss-Symbol: || in Cyan
+Was: Der Schuss ist `||` — zwei Pipes, 2 Spalten breit auf der
+Korridor-Mitte, cyan (`S_COLOR_CYAN` liegt in Console.h). Gemerkt:
+`**` bleibt Kandidat für den Treffer-Blitz der M4-Kollision.
+Warum: Ruhiger, eindeutig aufwärts gerichteter Strahl; gewählt aus
+den drei rasterfest bestandenen Kandidaten.
+Verworfen: `**` als Schuss (wirkt wie ein Einschlag, nicht wie ein
+Flug); `!!` (liest sich als Warnmeldung).
+
+## 2026-09-20 — Tastenabfrage-Baustein und Tick-Reihenfolge
+Was: Der gelieferte Baustein ist ein Wächter vor dem vorhandenen
+ReadKey: `ReadKeyNonBlocking` fragt `_kbhit()` und liefert ohne
+wartende Taste sofort das neue `I_KEY_NONE` (−2; −1 ist als
+`I_KEY_UNKNOWN` vergeben — „nichts da" ist nicht „unbekannt"). Dazu
+`WaitMilliseconds` als Sleep-Kapsel, WinAPI bleibt im .cpp. Die
+Tick-Schleife läuft: Eingabe (alle wartenden Tasten, Schleife bis
+`I_KEY_NONE`) → Update (bewegen, Kollision, aufräumen) → einmal
+zeichnen ab Cursor-Home → `WaitMilliseconds(200)`. Löst endgültig
+ab: „Eingabe nur zwischen den Wellen" aus dem Tick-Beschluss vom
+2026-09-07 — dessen Fortführungs-Vermerk das bereits ankündigte.
+Warum: Der Zwei-Schritt-Code der Pfeiltasten bleibt gefahrlos, weil
+beide Bytes zusammen im Puffer liegen — der Wächter macht das
+getestete ReadKey nicht-blockierend, statt ein zweites Lese-Muster
+zu bauen. Alle Tasten je Tick, weil bei 200 ms und schnellem Tippen
+2–3 Tasten pro Tick anfallen — eine pro Tick ließe die Eingabe bis
+zu einer halben Sekunde nachziehen.
+Verworfen: eine Taste pro Tick (schwammige Eingabe durch Rückstau);
+ein eigenes nicht-blockierendes Lese-Muster neben ReadKey (doppelte
+Pfeiltasten-Logik).

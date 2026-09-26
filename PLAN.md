@@ -22,19 +22,20 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-09-20 beim `/harness:ende` des Abschnitts
-„Lane Defender M1" (Development · Lernmodus, Revier Lane Defender).
-Berichte im LOG der Schicht und in `Kern/LERNLOG.md`.)*
+*(überschrieben 2026-09-26 beim `/harness:ende` des Abschnitts
+„Lane Defender M2" (Design → Development · Lernmodus, Revier
+Lane Defender). Berichte im LOG der Schicht und in `Kern/LERNLOG.md`.)*
 
-**M1 ist fertig und abgehakt** (Ist 20 h gegen 6 h Schätzung —
-Einordnung in `ABGABE_NOTIZEN.md`). Nächster Schritt:
-**M2-Design-Abschnitt** — Lane-Layout der Doppelbreit-Figuren,
-Sprite-Spieler, Symbolwahl, gelieferter Baustein nicht-blockierende
-Tastenabfrage; danach M2-Bau. Fertig-Ziel So 27.09., Rest-Schätzung
-30 h. Commits ausstehend (Dateien am 20.09. geliefert): V 0.0009
-Spiel · V 0.0075 Harness · V 0.0042 Knowledge. **Pflegetag vom
-So 20.09. nicht gelaufen** — nachholen auf Zuruf (Artifact-Durchsicht,
-Karussell-Seite-Frage). Unverändert offen: Unreal-Toolchain-Test,
+**M2 ist fertig und abgehakt** (~7,5 h gegen 7 — Punktlandung nach
+M1s 20/6; `ABGABE_NOTIZEN.md`). **Das Fertig-Ziel So 27.09. fürs
+ganze Spiel ist damit nicht haltbar** — Rest M3–M7 ≈ 30 h Schätzung;
+harter Termin bleibt die Abgabe Fr 02.10., 23:59, die Schnittlinien
+der DECISIONS liegen bereit. Nächster Schritt: **M3-Design-Abschnitt**
+— Gegner-Hierarchie (Vererbung), Spawn-Plan (geparkte Frage aus dem
+M2-Design), new/delete, Figuren-Zuordnung. Commits ausstehend
+(Dateien am 26.09. geliefert): V 0.0010 Spiel · V 0.0076 Harness ·
+V 0.0043 Knowledge. **Pflegetage vom 20.09. und 27.09. offen** —
+nachholen auf Zuruf. Unverändert offen: Unreal-Toolchain-Test,
 Datenbaum.
 
 ---

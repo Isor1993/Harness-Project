@@ -124,23 +124,77 @@ So 20.09. fertig — dann beginnt der Model-Viewer eine Woche früher.
   Szenen-Rundlauf getestet. Ist-Zeit im ZEITPLAN (20 h gegen 6 h);
   Doku-Input in `ABGABE_NOTIZEN.md`, Abgabetext folgt am
   Projektende.
-- [ ] **M2 · Lanes und Spieler** — Spielfeld mit Lanes zeichnen
+- [x] **M2 · Lanes und Spieler** — Spielfeld mit Lanes zeichnen
   (nur rastergeprüfte Zeichen), Player-Klasse, Lane-Wechsel und
   Schießen über die nicht-blockierende Tastenabfrage (gelieferter
   Baustein).
+  **Ausdesignt am 2026-09-20** (sieben Einträge in den DECISIONS
+  dieser Schicht): Screen „Gerahmt" mit HUD-Kasten oben, Live-Shop
+  unten und getrennten Korridoren (innen 8, Lücke 6);
+  Sprung-Modell (Position = Lane-Index, geklemmt);
+  Lane-Progression 2/3/4 an den Boss-Siegen; Sprite Lauf 2 über
+  Sockel 6 in Gelb; Schuss `||` cyan; kbhit-Wächter samt
+  Tick-Reihenfolge. Design-Seite:
+  https://claude.ai/artifact/FbqHW5wq6Ay2szchXe7R3j — offen ist
+  der Bau, Einstieg über den Lauf-Test (Beschluss vom 12.09.).
+  **Stand 2026-09-21:** B1 Lauf-Test bestanden — Tick-Schleife mit
+  Drain-Eingabe und Ein-Puffer-Zeichnen, von Isor getippt
+  (`GameScene.h/.cpp`). Nebenbefund: Schachfiguren rücken nur
+  1 Zelle vor, die Glyphe malt ~1,5 Zellen in die Nachbarzelle
+  (DECISIONS → Fortführung am Zeichentest-Ergebnis) — der
+  B2-Zeilenbauer zählt Figuren als 1 Spalte mit Pflicht-Luftzelle
+  rechts. Offen:
+  B2 Spielfeld-Zeichner, B3 Spieler, B4 Schießen.
+  **Stand 2026-09-25:** B2 Spielfeld-Zeichner fertig — `BuildFrame`
+  baut den kompletten Screen als einen String (HUD-Kasten,
+  zentrierte Korridore je Lane-Zahl, Spieler-Zeilen, Shop-Kasten),
+  von Isor im Schritt-Modus getippt, Sichtprüfung am laufenden
+  Spiel bestanden (nichts wandert, Hämmer-Test ruhig, ESC sauber).
+  Offen: B3 Spieler (Lane-Index in CPlayer, Sprung-Eingabe, Gelb),
+  B4 Schießen.
+  **Stand 2026-09-25 (Abend):** B3 Spieler fertig — `CPlayer` um
+  `m_iCurrentLane` mit MoveLeft/MoveRight samt Klemm-Wächtern
+  erweitert, Referenz-Reise in die Szene, A/D und Pfeile als
+  Fall-Stapel im Eingabe-Switch, T-Sprite gelb; Sprung-Test
+  bestanden (springt sofort, klemmt beidseitig, Bauer läuft
+  ungestört). Offen in M2: nur noch B4 Schießen.
+  **Stand 2026-09-26:** B4 Schießen fertig — `CShot` mit
+  Konstruktor als eigenes Dateipaar, `std::vector<CShot>` als
+  Beutel in der Szene (erster Container des Projekts, als
+  C#-List-Übersetzung gelernt), Leertaste spawnt auf der
+  Spieler-Lane, Update mit Range-for und Rückwärts-erase,
+  Zellen-Frage in BuildFrame als Dreier-Kette, `||` cyan.
+  F5-Test bestanden (mehrere Schüsse gleichzeitig, sauberes
+  Verschwinden an der Kappe). **M2 ist gebaut und geprüft** —
+  offen für den Haken: Kommentar-Nachtrag (Claude) und der
+  Doku-Input in `ABGABE_NOTIZEN.md` samt Ist-Zeit (Grindstone).
+  **Erledigt am 2026-09-26:** Kommentar-Nachtrag durch (SAE-Köpfe
+  und Summaries, Build /W4 grün), Doku-Input steht in
+  `ABGABE_NOTIZEN.md` → M2, Ist-Zeit ~7,5 h gegen 7 h im ZEITPLAN
+  — gebaut, geprüft und dokumentiert, der Baustein ist fertig.
 - [ ] **M3 · Gegner** — Basisklasse plus Tank/Runner (Vererbung,
   `virtual`), Spawn-Plan je Lane, Abwärtslauf per Tick, Durchbruch
   kostet Leben; `new`/`delete` für Spawn und Tod.
 - [ ] **M4 · Kampf und Upgrades** — Kollision Schuss/Gegner (gleiche
   Lane, gleiche Zeile), Gold, Upgrade-Screen zwischen den Leveln
   (Schaden, Feuerrate).
+  **Stand 2026-09-20 (M2-Design):** Der Upgrade-Screen ist durch
+  den Live-Shop ersetzt (DECISIONS → „Live-Shop: Kaufen mitten im
+  Lauf") — M4 baut Kollision, Gold und die Kauf-Logik im Tick.
 - [ ] **M5 · Boss und Skills** — Boss-Klasse (belegt eine Lane, die
   übrigen spawnen normal weiter), Skill-Wahl beim ersten Boss-Sieg,
   Spezialattacken Doppel-Lane und Durchschlag als Klassen am
   polymorphen Skill-Slot, Skill-Stufen durch weitere Boss-Siege.
+  **Stand 2026-09-20 (M2-Design):** Erstmal genau ein Skill
+  (Multishot), per Shop-Kauf statt Boss-Freischaltung (DECISIONS →
+  „Live-Shop"); der polymorphe Slot bleibt M5-Thema, Wirkung und
+  Stufen klärt der M5-Design-Moment.
 - [ ] **M6 · Level-Lauf** — 15 Level, Lane-Progression im
   Dreier-Raster, Skalierung je Level, Sieg nach dem dritten Boss,
   Niederlage bei 0 Leben, HUD.
+  **Stand 2026-09-20 (M2-Design):** Die Progression läuft 2/3/4 an
+  den Boss-Siegen von Level 5 und 10 statt im Dreier-Raster
+  (DECISIONS → „Lane-Progression 2/3/4 an den Boss-Siegen").
 - [ ] **M7 · Abgabe-Polish** — Eingaben härten, Konventions-Pass,
   Leak-Kontrolle, Build, README.
 
@@ -177,7 +231,12 @@ So 20.09. fertig — dann beginnt der Model-Viewer eine Woche früher.
   fremde Terminals. Offen wählt M2/M3 nur noch aus den Bestandenen:
   Schuss (`|` `*` `!`), Rahmen (`│ ─ ┌ ┐ └ ┘`), HUD (`█ ▓ ░`, dazu
   `▀ ▄`).
-- [ ] **Spieler als zusammengesetztes Sprite prüfen** — Isors Idee vom
+  **Stand 2026-09-20 (M2-Design):** Schuss `||` und die
+  Rahmenzeichen sind entschieden (DECISIONS → „Schuss-Symbol: ||
+  in Cyan" und „M2-Screen"), `**` als Treffer-Blitz-Kandidat für
+  M4 gemerkt. Offen nur noch: Figuren-Zuordnung je Gegnertyp (M3)
+  und die HUD-Balken (M6).
+- [x] **Spieler als zusammengesetztes Sprite prüfen** — Isors Idee vom
   2026-09-13: die Spielfigur aus mehreren Einzelzeichen statt einem
   Symbol; Skizze vom selben Tag: T-Form mit breitem Sockel und
   schmalem Lauf oben („sieht aus wie etwas, das schießt" — der Schuss
@@ -185,13 +244,20 @@ So 20.09. fertig — dann beginnt der Model-Viewer eine Woche früher.
   (Spielfeld und Player-Klasse); die Bausteine — Linien, Ecken,
   Voll- und Halbblöcke `▀` `▄` — laufen als Bewerber im
   M1-Zeichentest mit.
-- [ ] **Lane-Layout für die Doppelbreit-Figuren ausgestalten** — die
+  **Erledigt am 2026-09-20:** T-Form gewählt und ausgemessen —
+  Lauf 2 Spalten über Sockel 6, massiv aus `█`, gelb (DECISIONS →
+  „Spieler-Sprite: T-Form massiv, Lauf 2, Sockel 6").
+- [x] **Lane-Layout für die Doppelbreit-Figuren ausgestalten** — die
   Richtung ist beschlossen (DECISIONS → „Schachfiguren gesetzt",
   2026-09-13): Lane = Wand + vier Leerzellen + Wand, Figur auf fester
   Mittelposition, Schuss zwei Zellen breit. Der M2-Design-Abschnitt
   gestaltet nur noch aus: exakte Zellrechnung je Zeile,
   Sonderbreiten-Logik beim Zeilenbau, Zusammenspiel mit der
   Doppelzellbreite aus dem Tick-Beschluss.
+  **Erledigt am 2026-09-20:** Korridore innen 8 mit fester
+  Mittelposition, gespeichert wird nur (Lane, Zeile), der
+  Zeilenbauer bucht Figuren als 2 Spalten (DECISIONS → „M2-Screen:
+  Design ‚Gerahmt' mit getrennten Korridoren").
 - [ ] **Auswahl-Mechanik als wiederverwendbaren Baustein prüfen** —
   Isors Gedanke vom 2026-09-13 beim Automaten-Bau: Die Listen-Auswahl
   (Pfeile/W+S, Marker, Enter) so schneiden, dass mehrere Szenen sie
@@ -234,3 +300,10 @@ So 20.09. fertig — dann beginnt der Model-Viewer eine Woche früher.
   mit dem Extra-`\n` exakt die 30 Terminal-Zeilen, und jedes
   Überschreiten des unteren Rands versetzt alle Folge-Frames.
   Gehört ins M7-Umfeld (Härten).
+- [ ] **Zeilen-Schleifen in BuildFrame DRY-en** — Isors Befund vom
+  2026-09-25 nach der B2-Abnahme: die innere Lane-Schleife steht
+  viermal fast identisch da (Kappe, Körper, Barrel, Base).
+  Bewusst zurückgestellt (Isor, gleiche Session): B4 bringt
+  Schuss+Gegner in derselben Zeile, M3 macht aus der Zellen-Frage
+  einen Daten-Lookup — erst wenn das Muster stillsteht, wird
+  einmal richtig abstrahiert. Fällig nach M3.

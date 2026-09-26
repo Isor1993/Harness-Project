@@ -77,6 +77,25 @@ Seite ←  keine
 
 ---
 
+## 📍 Status  — Schicht: Projekt (Lane Defender)
+
+### 📍 Status · Lane Defender M2-Design
+```
+URL      https://claude.ai/artifact/FbqHW5wq6Ay2szchXe7R3j
+Stand    2026-09-20 — neu, gebaut im M2-Design-Abschnitt: Screen
+         „Gerahmt" mit beiden Spielstufen als Render, Zeilenbudget,
+         Feldbreiten je Stufe, Sprite, Schuss-Symbol und der
+         kbhit-Baustein samt Tick-Reihenfolge
+Quelle   Projekte/Lane_Defender/DECISIONS.md (sieben Einträge vom
+         2026-09-20), Projekte/Lane_Defender/ROADMAP.md (M2)
+Skripte  keine — die Seite zeigt den Design-Stand, nicht Code
+Seite →  keine
+Seite ←  keine (die M2-Stand-Zeile der Lane-Defender-ROADMAP nennt
+         die URL)
+```
+
+---
+
 ## 🎓 Zeugnis  — Schicht: Kern
 
 **Kein vierter Typ** — die Seiten gehören zum Session-Typ „Zeugnis"

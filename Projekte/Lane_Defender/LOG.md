@@ -216,3 +216,35 @@ leere Rubrik schreibt `—`.
   Knowledge-Erweiterungen (Escape-Byte-Falle, Blacklist-Kipper).
   Lern-Rubriken in `Kern/LERNLOG.md` unter 2026-09-20. Offen: M2
   beginnt mit einem Design-Abschnitt.
+- 2026-09-21 — M2 B1 Lauf-Test fertig (begonnen am 20.09. abends nach
+  dem Design-Abschnitt): gelieferter Baustein `ReadKeyNonBlocking` +
+  `I_KEY_NONE` + `WaitMilliseconds` in Console, neues Paar
+  `GameScene.h/.cpp`; Isors erste Tick-Schleife mit Drain-Eingabe
+  (Flag-Muster), Wrap und Ein-Puffer-Zeichnen ab Home. Nebenbefund
+  beim Test: Schachfiguren rücken nur 1 Zelle vor, die Glyphe malt
+  ~1,5 (Isors Diagnose samt T-Szenen-Gegenprobe) — Zeilenbau-Regel
+  gekippt, DECISIONS-Fortführung am Zeichentest-Ergebnis.
+- 2026-09-25 — M2 B2 Spielfeld-Zeichner fertig (gebaut 23.–25.09. im
+  Schritt-Modus): `BuildBoxBorder`/`BuildBoxTextLine` als
+  Kasten-Helfer, `BuildFrame` baut den ganzen Screen als einen
+  String — HUD-Kasten, zentrierte Korridore (jede Zeile schneidet
+  durch alle Lanes), Spieler-Zeilen, Shop-Kasten; Sichtprüfung am
+  laufenden Spiel bestanden. Isors DRY-Befund zur vierfachen
+  Lane-Schleife samt eigener Begründung fürs Warten →
+  ROADMAP-Aufgabe „nach M3".
+- 2026-09-25 — M2 B3 Spieler fertig: `CPlayer` um den geklemmten
+  Lane-Index erweitert (MoveLeft/MoveRight als Spiegel-Wächter),
+  Referenz-Reise in die Szene, A/D und Pfeile als Fall-Stapel im
+  Eingabe-Switch, T-Sprite gelb; Sprung-Test bestanden.
+- 2026-09-26 — M2 B4 Schießen fertig und M2 abgeschlossen: `CShot`
+  mit erstem eigenen Konstruktor, `std::vector` als Schuss-Beutel
+  (erster Container des Projekts, als C#-List-Übersetzung gelernt),
+  Leertaste spawnt auf der Spieler-Lane, Range-for-Update,
+  Rückwärts-erase; `||` cyan in der Dreier-Kette der Zellen-Frage.
+  Kommentar-Pass (SAE-Köpfe fürs Shot-Paar, Summaries, Header
+  aktualisiert), Build /W4 grün. Ist-Zeit ~7,5 h gegen 7 geschätzt
+  (Grindstone gesamt 28,37 h) → ZEITPLAN; Doku-Input →
+  `ABGABE_NOTIZEN.md` → M2; M2 in der ROADMAP abgehakt. Offen: M3
+  beginnt mit einem Design-Abschnitt (Gegner-Hierarchie, Spawn-Plan
+  — Frage aus dem M2-Design geparkt —, new/delete,
+  Figuren-Zuordnung).
