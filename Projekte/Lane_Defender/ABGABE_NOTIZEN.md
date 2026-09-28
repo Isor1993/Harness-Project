@@ -76,3 +76,39 @@ in Lane 0 — echte Gegner kommen mit M3 · Schuss und Gegner
 durchfliegen sich noch, die Kollision ist M4 · HUD- und Shop-Werte
 sind statische Texte bis M4/M6, der Shop-Kasten ist aber gezeichnet
 und die Kauf-Tasten laufen später im selben Eingabe-Drain.
+
+## M3 · Gegner (fertig 2026-09-28)
+
+**Zeit:** ~6,7 h gegen 10 h Schätzung (Grindstone: Projekt gesamt
+35:04 h minus M2-Stand 28,37 h; Design-Abschnitt enthalten). Erste
+Unterschreitung, zwei Gründe ehrlich benannt: Das M1/M2-Fundament
+trug (Szenen-Automat, Ein-Puffer-Muster, die Schuss-Schleifen als
+Spiegelvorlagen für die Gegner-Schleifen) — und ab Mitte B2 tippte
+auf Isors Zuruf Claude Teile des Codes (Regler „Wer schreibt",
+Abgabedruck); die Lernarbeit steckt in den Erklär- und
+Gegenlese-Runden, nicht in Tipp-Minuten.
+
+**Gebaut:** `CEnemy`-Basisklasse (Lane, Zeile, Leben, Figur;
+MoveDown; virtual-Destruktor und Tempo-Hook `GetStepIntervalTicks`)
+· `CNormalEnemy` ♟ (1 Leben) und `CTankEnemy` ♜ (2 Leben) als reine
+Startwert-Erben · Gegner-Liste `vector<CEnemy*>` mit
+delete-vor-erase und Aufräum-Schleife vor jedem Szenen-Ausgang ·
+Schrittintervall 3 Ticks/Zeile über den virtual-Hook · Spawner:
+fester Abstand (10 Ticks), Lane-Würfel mit Belegt-Wächter,
+Typ-Würfel per Rest-Wahrscheinlichkeit, Budget 5/1 als
+Zeile-1-Konstanten · `srand`-Saat in main · Durchbruch kostet
+1 Leben (`CPlayer`: Start 20, Untergrenze 0,
+RemoveLife/AddLife/GetLives) · Tick auf Isors Lesbarkeits-Befund in
+fünf benannte Helfer zerlegt (RunSpawner mit drei `int32_t&`).
+
+**Warum so:** die vier DECISIONS-Einträge vom 27.09. — Hierarchie
+mit globalem Level-Tempo statt Runner-Typ, Level-Budget aus der
+15-Zeilen-Tabelle, Zeiger-Liste wegen Slicing und Pflichtthema
+Memory Management, Figuren final ♟/♜/♚. Design-Stand als
+Artifact-Seite (ARTIFACT_INDEX → „Lane Defender M3-Design").
+
+**Besonderheiten:** Nach verbrauchtem Budget läuft das Feld leer —
+der Level-Wechsel ist M6 · Schüsse durchfliegen Gegner noch,
+Kollision ist M4 · das HUD ist statisch, die Leben sind bisher nur
+im Debugger sichtbar (HUD = M6) · `AddLife` wartet auf seinen
+Aufrufer, den M4-Shop-Kauf.

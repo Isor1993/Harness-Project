@@ -90,7 +90,37 @@ Quelle   Projekte/Lane_Defender/DECISIONS.md (sieben Einträge vom
          2026-09-20), Projekte/Lane_Defender/ROADMAP.md (M2)
 Skripte  keine — die Seite zeigt den Design-Stand, nicht Code
 Seite →  keine
-Seite ←  keine (die M2-Stand-Zeile der Lane-Defender-ROADMAP nennt
+Seite ←  📍 Status · Lane Defender M3-Design (Fußzeile); die
+         M2-Stand-Zeile der Lane-Defender-ROADMAP nennt die URL
+```
+
+### 📍 Status · Lane Defender M3-Design
+```
+URL      https://claude.ai/artifact/FMZX3wJ2Lh43GpvpyXccK4
+Stand    2026-09-27 — neu, gebaut im M3-Design-Abschnitt: Klassenbaum
+         der Gegner (Tafel 1), Spawn-Schritt im Tick (Tafel 2),
+         delete-vor-erase-Merksatz, Figuren-Zuordnung und die
+         Bausteine B1–B3
+Quelle   Projekte/Lane_Defender/DECISIONS.md (vier Einträge vom
+         2026-09-27), Projekte/Lane_Defender/ROADMAP.md (M3)
+Skripte  keine — die Seite zeigt den Design-Stand, nicht Code
+Seite →  📍 Status · Lane Defender M2-Design (Fußzeile)
+Seite ←  📍 Status · Lane Defender M4-Design (Fußzeile); die
+         M3-Stand-Zeile der Lane-Defender-ROADMAP nennt die URL
+```
+
+### 📍 Status · Lane Defender M4-Design
+```
+URL      https://claude.ai/artifact/7Dp5vCLrjoh7YCtneSoBut
+Stand    2026-09-28 — neu, gebaut im M4-Design-Abschnitt: Tick mit
+         beiden Kollisions-Prüfungen (Tafel 1), Feuerraten-Tabelle,
+         Shop-Preise samt Wirkungen, Startwert-Kacheln, HUD-Vorzug
+         und die Bausteine B1–B3
+Quelle   Projekte/Lane_Defender/DECISIONS.md (vier Einträge vom
+         2026-09-28), Projekte/Lane_Defender/ROADMAP.md (M4)
+Skripte  keine — die Seite zeigt den Design-Stand, nicht Code
+Seite →  📍 Status · Lane Defender M3-Design (Fußzeile)
+Seite ←  keine (die M4-Stand-Zeile der Lane-Defender-ROADMAP nennt
          die URL)
 ```
 

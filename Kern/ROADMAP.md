@@ -164,6 +164,16 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
   vergleichen; der Namens-Fallback bleibt für Einträge ohne Pfad.
   Anlass: `Kern/STOERUNGEN.md`, 2026-09-19.
 
+- [ ] **Park-Regel um das Wortlaut-Gebot ergänzen** — In
+  `Kern/WORKFLOW.md` (Typ Development) heißt es, Architektur-Fragen
+  „werden notiert und in den nächsten Design-Abschnitt gegeben" —
+  ohne zu sagen, dass der **Wortlaut** der Frage aufgeschrieben
+  gehört und wohin. So parkte der M2-Design-Abschnitt eine
+  Spawn-Frage nur als Zeiger, und ihr Inhalt war beim M3-Design
+  verloren. Die Regel um beides ergänzen: Wortlaut-Pflicht, Ablageort
+  die ROADMAP der Schicht (dort findet der Design-Abschnitt sie
+  wieder). Anlass: `Kern/STOERUNGEN.md`, 2026-09-27.
+
 Was im Betrieb nicht trägt, kommt als Störung in `Kern/STOERUNGEN.md`
 und wird von dort aus zu einem Punkt hier — genau dafür fragt die
 Doku-Pflicht in `Kern/WORKFLOW.md` nach beidem im selben Zug.

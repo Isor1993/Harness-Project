@@ -918,3 +918,22 @@ Konfigurationen, das tote return ist entfernt, die C4100 war bewusst
 offen und ist mit der Zeichen-Aufnahme verschwunden. Kein
 ROADMAP-Punkt: Das Gegenmittel (die Einstellung selbst ist jetzt die
 Quelle) ist umgesetzt; Isor hat es bei der Störungs-Frage bestätigt.
+
+### 2026-09-27 — Geparkte Design-Frage ohne Wortlaut notiert
+**Was:** Der M2-Design-Abschnitt (20.09.) parkte eine Spawn-Frage für
+das M3-Design. Notiert wurde aber nur der Zeiger — „Spawn-Plan
+(geparkte Frage aus dem M2-Design)" im LOG der Schicht und in der
+PLAN-Übergabe —, nie die Frage selbst: weder in den DECISIONS noch
+auf der Design-Seite. Beim M3-Design (27.09.) war der Wortlaut nicht
+mehr rekonstruierbar; der Spawn-Plan wurde komplett frisch designt.
+**Ursache:** Das Parken kennt kein Aufschreib-Gebot. `Kern/WORKFLOW.md`
+(Typ Development) sagt für Architektur-Fragen nur „werden notiert und
+in den nächsten Design-Abschnitt gegeben" — notiert wurde der
+Umstand, nicht der Inhalt; keine Regel verlangt Wortlaut und
+Ablageort.
+**Regel:** Fehlte — der Verweis sah aus wie eine Notiz, war aber nur
+ihre Ankündigung.
+**Stand:** offen — Schaden diesmal gering, weil der M3-Spawn-Plan das
+Feld ohnehin vollständig abdeckte. Gegenmittel als Aufgabe in
+`Kern/ROADMAP.md` → „Park-Regel um das Wortlaut-Gebot ergänzen"
+(Isors Entscheid bei der Störungs-Frage, 2026-09-27).

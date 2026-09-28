@@ -248,3 +248,35 @@ leere Rubrik schreibt `—`.
   beginnt mit einem Design-Abschnitt (Gegner-Hierarchie, Spawn-Plan
   — Frage aus dem M2-Design geparkt —, new/delete,
   Figuren-Zuordnung).
+- 2026-09-27 — M3 B1 Klassen fertig (nach dem M3-Design-Abschnitt vom
+  selben Tag: vier DECISIONS-Einträge, Design-Seite im
+  ARTIFACT_INDEX): `CEnemy` mit virtual-Destruktor und Tempo-Hook,
+  `CNormalEnemy`/`CTankEnemy` als reine Startwert-Erben — das
+  CEnemy-Gerüst hat Isor ungefragt selbst vorgebaut, SAE fehlerfrei.
+  Platzhalter-Bauer durch ein per `new` erzeugtes Objekt ersetzt:
+  Lebenszyklus delete/new am Korridor-Ende, Aufräumen vor dem
+  ESC-return, `BuildFrame` liest Lane, Zeile und Figur aus dem
+  Objekt. Tank-Tausch-Test bestanden — nach einer geänderten Zeile
+  fiel einen Durchgang lang ein Turm, danach wieder Bauer, weil der
+  zweite Geburtsort (Respawn) unverändert war: derselbe Zeiger trug
+  nacheinander zwei Typen, ungeplantes Polymorphie-Experiment.
+  Kommentar-Pass (SAE-Köpfe der drei neuen Paare, Summaries,
+  GameScene-History), Build /W4 grün. Lern-Rubriken in
+  `Kern/LERNLOG.md`. Offen in M3: B2 Liste und Spawner, B3
+  Lebensenden.
+- 2026-09-28 — M3 abgeschlossen (B2-Rest, Tick-Aufräumen, B3):
+  Vormittag Pointer-Klärung (Wohnungs-Bild: Lebensdauer wählt den
+  Wohnort; Beutel-Beschriftung in den spitzen Klammern, F12-Reflex),
+  dann auf Isors eigenen Lesbarkeits-Befund den Tick in fünf
+  benannte Helfer zerlegt — Isor tippte alle Extraktionen selbst,
+  Königsrunde `RunSpawner` mit drei `int32_t&`-Zählern. B3
+  Lebensenden: `CPlayer` um Leben erweitert (Start 20, Untergrenze
+  0, RemoveLife/AddLife/GetLives — AddLife als Isors eigener
+  M4-Vorgriff), Durchbruch kostet `I_BREAKTHROUGH_LIFE_COST`;
+  Debugger-Abnahme bestanden (Breakpoint fünfmal, Watch 20 → 15).
+  Kommentar-Pass, /W4 grün. Ist ~6,7 h gegen 10 geschätzt
+  (Grindstone gesamt 35:04 h) → ZEITPLAN; Doku-Input →
+  `ABGABE_NOTIZEN.md` → M3; M3 in der ROADMAP abgehakt — erste
+  Unterschreitung einer Schätzung. Lern-Rubriken in
+  `Kern/LERNLOG.md`. Offen: M4 beginnt mit einem Design-Abschnitt
+  (Kollision, Gold, Live-Shop-Kauflogik im Tick).

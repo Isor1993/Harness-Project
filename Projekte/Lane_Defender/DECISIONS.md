@@ -137,6 +137,10 @@ abgelöst sind drei Teile — der Upgrade-Screen zwischen den Leveln
 alle drei Level +1" („Lane-Progression 2/3/4 an den Boss-Siegen")
 und die Skill-Freischaltung durch den Boss-Sieg (ebenfalls
 Live-Shop-Eintrag).
+**Fortgeführt am 2026-09-27:** Der Gegner-Zuschnitt ist abgelöst —
+der Runner entfällt als Typ, das Tempo wird globaler Level-Wert; neu
+sind Normal/Tank/Boss (Eintrag „Gegner-Hierarchie: Normal, Tank,
+Boss", 2026-09-27).
 
 ## 2026-09-07 — Schnittlinien Lane Defender
 Was: Wird die Zeit knapp, fällt in dieser Reihenfolge: Skill-System
@@ -500,6 +504,9 @@ aufzumachen — entschieden ist entschieden, M2 gestaltet nur noch aus.
 („Design ‚Gerahmt'") legt die Korridore auf innen 8 statt „Wand +
 vier Leerzellen + Wand"; Doppelbreite, feste Mittelposition und
 ASCII-Rückfall gelten unverändert.
+**Fortgeführt am 2026-09-27:** Die Zuordnung ist final — Normal `♟`,
+Tank `♜`, Boss `♚`, `♞` bleibt Reserve für den A1-Ausbau (Eintrag
+„Figuren-Zuordnung final", 2026-09-27).
 
 ## 2026-09-13 — Ausgabe-Helfer ziehen in Output.h/Output.cpp
 Was: Die PrintMessage-Familie (fünf Überladungen) zieht aus
@@ -843,6 +850,10 @@ Shop-Szene entfällt komplett.
 Verworfen: der Upgrade-Screen als eigene Szene zwischen den Leveln
 (eine Szene mehr ohne Spielgefühl-Gewinn); Kauf nur zwischen den
 Wellen (der Live-Reiz wäre weg).
+**Fortgeführt am 2026-09-28:** Wirkungen, Startwerte und die
+[4]-Sperre bis M5 stehen (Eintrag „Gold, Preise und
+Kauf-Wirkungen"), die Feuerrate hat ihre Mechanik (Eintrag
+„Feuerrate: Sperre in Ticks").
 
 ## 2026-09-20 — Lane-Progression 2/3/4 an den Boss-Siegen
 Was: Gestartet wird mit 2 Lanes; der Boss-Sieg von Level 5 öffnet
@@ -912,3 +923,146 @@ zu einer halben Sekunde nachziehen.
 Verworfen: eine Taste pro Tick (schwammige Eingabe durch Rückstau);
 ein eigenes nicht-blockierendes Lese-Muster neben ReadKey (doppelte
 Pfeiltasten-Logik).
+
+## 2026-09-27 — Gegner-Hierarchie: Normal, Tank, Boss
+Was: Drei Klassen unter der Basis `CEnemy` (Daten: Lane, Zeile,
+Leben, Figur; Können: fallen, Treffer nehmen): `CNormalEnemy`
+(normales Leben, `♟`) und `CTankEnemy` (hohes Leben, `♜`) setzen nur
+Startwerte und werden in M3 gebaut; `CBoss` (`♚`, extrem viel Leben,
+belegt eine Lane) ist ab jetzt designt und wird in M5 gebaut. Der
+Runner entfällt als Typ: Tempo ist kein Klassen-Merkmal mehr,
+sondern ein globaler Level-Wert — als Schrittintervall in Ticks in
+der Basis (Kurve füllt M6), das allein der Boss überschreibt. Tank
+und Normal laufen gleich schnell. `virtual` zeigt sich am Destruktor
+(Pflicht bei `delete` über den Basis-Zeiger) und an diesem
+Tempo-Hook.
+Warum: Isors Zuschnitt vom 2026-09-27. Die Schnittlinie „nie unter
+zwei Gegnertypen" bleibt erfüllt, und das Vererbungs-Pflichtthema
+wird stärker: Tank/Runner unterschieden sich nur in Zahlen, der Boss
+verhält sich anders. Ohne Typ-Tempo braucht M3 keine Takte je Sorte.
+Da 1 Zeile/Tick bereits das Maximum ist, heißt „schneller je Level"
+praktisch: langsamer starten (Intervall 3 → 1; 18 Zeilen in 10,8 s
+bis 3,6 s, Boss darüber). Die Schach-Metapher passt besser: der
+Bauer ist der Normale.
+Verworfen: der Runner als eigene Klasse (nur ein weiterer
+Zahlenunterschied); eine zusätzliche virtual-Methode je Typ schon in
+M3 (künstlich, solange Normal und Tank sich gleich verhalten);
+Schach-Klassennamen CPawn/CRook/CKing (koppeln die Logik an die
+Anzeige — tauscht man eine Figur, lügt der Klassenname).
+
+## 2026-09-27 — Spawn-Plan: Level-Budget aus der Tabelle
+Was: Jedes Level ist ein Budget — eine feste Gesamtzahl Gegner,
+davon ein festes Tank-Kontingent; Budget verbraucht und Feld leer
+heißt Level geschafft. Die Werte stehen in einer 15-Zeilen-Tabelle
+(je Level: Gesamt · Tanks · Spawn-Abstand); M3 baut den Spawner und
+nutzt Zeile 1 als Testlevel, Tabelle füllen und Level-Wechsel sind
+M6. Gespawnt wird im Tick: fester Abstand-Zähler → Lane würfeln
+(oberste Zelle belegt → ein Tick warten) → Typ würfeln (Tank-Chance
+= Rest-Tanks ÷ Rest-Budget) → Gegner oben einsetzen. Durchbruch
+unten: Gegner verschwindet, 1 Leben ab — mehr nicht. Die Boss-Runde
+(jedes 5. Level) bleibt die einzige Ausnahme: Der Boss belegt seine
+Lane allein, die übrigen spawnen normal weiter (Bau in M5).
+Warum: Isors Budget-Ansatz vom 2026-09-27 (Max-Zahl je Level, dann
+nächstes Level), dazu vier Vereinfachungen auf Empfehlung: fester
+Abstand statt Zufallsspanne (ein Zähler, ein Tabellenwert); Tabelle
+statt Zuwachs-Formel (reproduzierbares Balancing); reiner
+Lane-Zufall; Rest-Wahrscheinlichkeit lässt das Kontingent immer
+exakt aufgehen, ohne Listen zu mischen.
+Verworfen: Zufallsspanne beim Spawn-Abstand; „je Level +2 bis +5
+zufällig" (jede Balancing-Runde liefe anders); Wiederhol-Sperre bei
+der Lane-Wahl (Merk-Zustand ohne echtes Problem bei 2 Lanes); feste
+Tank-Positionen wie „jeder vierte Spawn" (vorhersehbares Muster).
+
+## 2026-09-27 — Speicher: Zeiger-Liste, delete an drei Lebensenden
+Was: Die GameScene hält die Gegner als `std::vector<CEnemy*>` neben
+dem Schuss-Beutel; `new` im Spawn-Schritt, `delete` an den drei
+Lebensenden: Durchbruch unten (M3), Tod durch Schuss (M4),
+Szenen-Ende mit Aufräum-Schleife vor jedem `return` (M3). Regel:
+erst `delete`, dann `erase` — erase wirft nur die Adresse weg, und
+die Adresse ist der einzige Zugang zum Objekt. Die Schüsse bleiben
+Werte (`vector<CShot>`), sie haben keine Erben.
+Warum: Vererbung wirkt nur durch einen Zeiger hindurch — in einer
+Werte-Kiste (`vector<CEnemy>`) würde ein `CBoss` beim Einpacken auf
+Basisklassen-Maß zurechtgesägt (Slicing) und der Tempo-Override wäre
+still weg. Dazu ist laufendes `new`/`delete` das Pflichtthema Memory
+Management der Aufgabe. Isors Verständnis-Check bestanden
+(delete-vor-erase selbst begründet).
+Verworfen: `vector<CEnemy>` mit Werten (Slicing); Smart Pointer wie
+`unique_ptr` (über Semesterniveau, und sie automatisierten genau das
+Pflichtthema weg, das die Aufgabe sehen will).
+
+## 2026-09-27 — Figuren-Zuordnung final
+Was: Normal `♟` · Tank `♜` · Boss `♚`; `♞` bleibt Reserve für den
+A1-Ausbau (dritter Gegnertyp). Löst den Favoriten-Vermerk vom
+2026-09-13 ein — nur die `♟`-Rolle wandert vom Runner zum Normal.
+Warum: Alle vier haben den M1-Zeichentest bestanden; der häufige
+Bauer als Normaler, der zähe Turm als Tank, der König als Boss.
+Verworfen: die Zuordnung bis zum Bau offenlassen (kein Gewinn — die
+Kandidaten stehen seit dem Zeichentest fest).
+
+## 2026-09-28 — Kollision: eine Prüfung, zweimal je Tick
+Was: `HandleCollisions` prüft Treffer als „gleiche Lane, gleiche
+Zeile" (Beschluss vom 07.09., wörtlich) und wird zweimal je Tick
+gerufen — nach dem Gegner-Zug und nach dem Schuss-Zug. Beim Treffer
+nimmt der Gegner Schaden in Höhe des Spieler-Schadens (gelesen zur
+Trefferzeit, der Schuss trägt kein eigenes Schadensfeld), der Schuss
+verschwindet immer; fällt das Leben auf 0, wird Gold gutgeschrieben
+und der Gegner mit delete-vor-erase entfernt.
+Warum: Isors Kern-Instinkt „im Bewegungs-Moment prüfen",
+verallgemeinert gegen die Durchtunnel-Falle: Bewegen sich Schuss und
+Gegner im selben Tick aufeinander zu, tauschen sie die Plätze, ohne
+je auf derselben Zeile zu stehen — nur die Prüfung nach **jedem**
+Bewegungs-Zug fängt beide Richtungen. Schaden zur Trefferzeit, weil
+ein Upgrade so sofort auf fliegende Schüsse wirkt und kein neues
+Feld braucht.
+Verworfen: Look-ahead je Beweger (gleicher Effekt, aber die
+Trefferlogik steckt doppelt in zwei Bewegungs-Funktionen); Schaden
+als Abschuss-Schnappschuss im Schuss; der Treffer-Blitz `**` jetzt
+(Ein-Tick-Anzeigen brauchen Merk-Zustand — bleibt M7-Kandidat);
+Schuss-Geschwindigkeit als Upgrade (2 Zeilen je Sprung wäre die
+selbstgebaute Tunnel-Falle, und am Schaden je Sekunde ändert das
+Flugtempo nichts — Isors eigene Diagnose).
+
+## 2026-09-28 — Feuerrate: Sperre in Ticks, geschluckt statt bestraft
+Was: Feuern hat eine Sperre in Ticks — Start 4 (1 Schuss je 0,8 s),
+der Kauf `[2]` senkt sie um 1 bis Minimum 1 (5 Schüsse je Sekunde).
+Die Leertaste während der Sperre wird still geschluckt: kein Error,
+kein Blockier-Gefühl — beim Hämmern feuert die Waffe von selbst im
+Takt. Der Sperr-Wert wohnt als Stat in `CPlayer`, der Rest-Zähler in
+der Szene — das dritte „alle N Ticks"-Muster nach Schrittintervall
+und Spawn-Abstand. Zahlen sind Beispielwerte.
+Warum: Isors Spielgefühl-Einwand („nur manchmal drücken dürfen fühlt
+sich komisch an") trifft nur bestrafte Cooldowns — stilles Schlucken
+ist das Arcade-Muster: Die Sperre fühlt sich als Feuerrate an, nicht
+als Verbot.
+Verworfen: Schuss-Geschwindigkeit statt Feuerrate (Isors erste Idee,
+von ihm selbst angezweifelt — Begründung im Kollisions-Eintrag);
+Error-Sound beim Drücken in der Sperre (bestraft Normalverhalten).
+
+## 2026-09-28 — Gold, Preise und Kauf-Wirkungen
+Was: Gold wohnt in `CPlayer` (Start 0), die Belohnung je Typ als
+drittes Startwert-Feld im `CEnemy`-Konstruktor neben Leben und
+Figur — Bauer 20 G, Turm 50 G (Level 1 bringt 130 G).
+Start-Schaden 1 (Bauer stirbt an 1 Treffer, Turm an 2). Käufe
+jederzeit per Zifferntaste im Eingabe-Drain: [1] Damage 100 G →
+Schaden +1 · [2] Atk Speed 120 G → Sperre −1 · [3] Life 500 G →
++1 Leben (ruft das wartende AddLife) · zu wenig Gold → Error-Sound.
+[4] Multishot bleibt bis M5 gesperrt — Error-Sound, kein Kauf.
+Warum: Belohnung als Konstruktor-Startwert folgt dem „setzt nur
+Startwerte"-Muster der Erben; Schaden 1 passt exakt zur
+Leben-Staffel 1/2; 130 G Beute je Level gegen 100 G Erstpreis ergibt
+das erste Upgrade nach gut einem Level. [4] gesperrt, weil 2000 G
+für einen Skill ohne Wirkung ein Geld-Grab wäre.
+Verworfen: [4] stumm ignorieren (die Taste wirkte kaputt); die
+Zahlen als finale Werte lesen (sie sind Tuning-Masse für M6).
+
+## 2026-09-28 — HUD-Werte vorgezogen nach M4
+Was: Die bestehende HUD-Zeile wird schon in M4 live aus den
+Spieler-Werten zusammengesetzt (Name, Gold, Schaden, Feuerrate,
+Leben) statt aus der statischen Konstante. Das gestaltete HUD
+(Balken, Layout, Level-Anzeige) bleibt M6.
+Warum: Ohne sichtbares Gold wäre der Live-Shop bis M6 nur im
+Debugger testbar; der Vorzug kostet fast nichts, weil
+`BuildBoxTextLine` beliebigen Text längst zentriert.
+Verworfen: das HUD komplett erst in M6 (blinder Shop); ein eigenes
+Zwischen-HUD-Design (doppelte Arbeit für einen Übergang).

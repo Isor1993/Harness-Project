@@ -1167,3 +1167,104 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   vector als C#-Übersetzungstabelle, Rückwärts-erase mit
   Zahlen-Trace, Konstruktor-Erklärung, CShot-Körper als Vorlage
   nach dem Parse-Chaos.
+- 2026-09-27 · Lane Defender M3-Design (Gegner-Hierarchie,
+  Spawn-Plan, Speicher, Figuren) — **Selbst:** den
+  Hierarchie-Zuschnitt komplett selbst mitgebracht (Normal/Tank/Boss
+  als Dreier-Modell; den Runner als globalen Level-Effekt erkannt
+  statt als Klasse — eigene Vereinfachung); das Spawn-System als
+  Level-Budget selbst entworfen (Max-Zahl je Level, Level-Ende,
+  Boss-Ausnahme) und den Durchbruch bewusst einfach gehalten; im
+  Verständnis-Check die delete-vor-erase-Regel selbst richtig
+  begründet (Adresse weg = Objekt unerreichbar). **Hilfe:** den
+  Spawn-Abstand als Lücke des Plans benannt bekommen; Tabelle statt
+  Zufalls-Zuwachs, Rest-Wahrscheinlichkeit und Belegt-Wächter als
+  Vereinfachungen; das Speicher-Thema nach ehrlichem „bin mir nicht
+  sicher" komplett erklärt bekommen (C#-GC-Brücke, Slicing als
+  Karton-Bild, die drei Lebensenden). **Fehlerbild:** keines —
+  reine Design-Runde ohne Code.
+- 2026-09-27 · Lane Defender M3 B1 Klassen (CEnemy + zwei Erben,
+  Isor tippt im Schritt-Modus) — **Selbst:** das komplette
+  CEnemy-Gerüst ungefragt selbst vorgebaut, SAE fehlerfrei
+  (Präfixe, private unten, Erstinitialisierung, Dateipaar) — erste
+  eigene Klasse ohne Vorlage; den Tank eigenständig als Spiegel
+  gebaut; mitten im Umbau die SAE-Pointer-Regel selbst aufgerufen
+  und den neuen Code dagegen gehalten (nullptr-Familie geklärt:
+  Platzhalter nur, wenn der echte Wert später kommt); Kringel
+  gemeldet statt weitergebaut. **Fehlerbild:** Startzeile blieb -1 —
+  das eigene -1-Muster machte es sichtbar; Setter-Reflex aus C#
+  (drei Hintertüren → Schaufenster-Bild); die Erbschafts-Zeile im
+  Header vergessen und nur die Übergabe gebaut (Erben heißt zwei
+  Stellen — diesmal hatte der Kringel recht: Meldung wörtlich
+  lesen); das „mal zwei" in der Übergabe versteckt (Konstante trägt
+  die Wahrheit); zweimal ungespeichert prüfen lassen (Claude liest
+  nur die Platte). **Hilfe:** Erbschafts- und Übergabe-Zeile erklärt
+  (private wirkt auch gegen Kinder), virtual als
+  „Wer antwortet?"-Bild, erster new/delete-Lebenszyklus samt
+  ESC-Aufräumzeile; der Doppel-Geburtsorte-Moment (ein Durchgang
+  Turm, dann Bauer — derselbe Zeiger, zwei Objekte) als ungeplantes
+  Polymorphie-Experiment gedeutet.
+- 2026-09-27 · Lane Defender M3 B2 Liste und Spawner (Regler mitten
+  im Baustein auf Zuruf gedreht: Claude tippt, Isor liest gegen —
+  Abgabedruck) — **Selbst:** Beutel-Deklaration und
+  Bewegungs-Schleife noch selbst getippt; die
+  Compiler-Fehlerliste als Landkarte des Umbaus benutzt; die
+  Abnahme über den Fünf-Punkte-Testbogen selbst gefahren (Turm
+  wandert je Neustart — Saat-Prinzip erkannt); danach aktiv das
+  gemeinsame Durchgehen des gelieferten Codes eingefordert („damit
+  ich alles verstehe"). **Hilfe:** Rückwärts-Schleife mit
+  delete-vor-erase, ESC-Aufräum-Schleife, BuildFrame-Zellsuche
+  (pEnemyHere-nullptr-Muster), Schrittintervall am virtual-Hook
+  und der komplette Spawner (Abstand-Zähler, Lane-Würfel mit
+  Belegt-Wächter, Typ-Würfel als Rest-Wahrscheinlichkeit,
+  srand/rand) geliefert und erklärt bekommen. **Fehlerbild:**
+  Überforderung beim Listen-Umbau ehrlich gemeldet („ich komme
+  nicht mehr mit") statt weiterzuwursteln — der Regler-Wechsel war
+  die Antwort des Harness, kein Versagen.
+- 2026-09-28 · Lane Defender M3, Vormittag (Pointer-Klärung +
+  Tick-Aufräumen, Isor tippt wieder) — **Selbst:** den
+  Lesbarkeits-Befund selbst erhoben („jeder Block sollte heißen,
+  was er macht") und den kompletten Umbau in fünf benannte
+  Funktionen selbst getippt, ab Runde 3 mit selbst gebildeten
+  Köpfen; die SAE-Präfixfrage selbst gestellt (gibt es a_v für
+  Vector? — Liste ist abgeschlossen, nein); F12-zur-Deklaration als
+  Reflex übernommen und im Selbst-Check richtig gelesen.
+  **Fehlerbild:** die gelernte Member-nullptr-Regel auf alle
+  Pointer verallgemeinert („Pointer gehören in die Klasse") —
+  aufgelöst über das Wohnungs-Bild (Lebensdauer wählt den Wohnort;
+  die Regel gilt und kommt beim M5-Skill-Slot); beim Kopf-Bilden
+  den Stern in die Schuss-Köpfe mitkopiert (Kopf erzählte
+  Adressen, Körper Werte — Compiler als Schiedsrichter); Wurzel
+  benannt: C# hat die Wert/Adresse-Wahl nie gezeigt, Klassen waren
+  immer unsichtbar Referenzen. **Hilfe:** Wohnungs-Diagramm und
+  Beutel-Beschriftungs-Bild, Kopie-Desaster-Beispiel für die
+  int&-Zähler der Königsrunde (Spawner-Extraktion), Erinnerung,
+  dass der Aufrufer kein & schreibt (anders als C#s ref).
+- 2026-09-28 · Lane Defender M3 B3 Lebensenden (Isor tippt) —
+  **Selbst:** den CPlayer-Ausbau komplett ungefragt vorgebaut —
+  Handlungen statt Setter, Klemm-Gedanke, Konstanten, und AddLife
+  als eigener Vorgriff auf den M4-Shop-Kauf; die Debugger-Abnahme
+  selbst gefahren (Breakpoint fünfmal, Watch 20 → 15).
+  **Fehlerbild:** Konstante „I_ZERO_LIVE = 1" — der Name log, und
+  die Untergrenze 1 hätte den Spieler unsterblich gemacht
+  (Design-Anker: Niederlage bei 0); Startwert 30 statt der
+  beschlossenen 20; Live/Life-Wortfamilie verwechselt; Parameter
+  erst ohne, dann mit halbem SAE-Präfix — samt Entdeckung, dass
+  der Compiler Parameter-NAMEN zwischen Header und cpp nicht
+  vergleicht (a_value gegen value, Build grün). **Hilfe:**
+  Befundliste mit Begründung je Fund, Durchbruchs-Kosten als
+  benannte Konstante, Debugger-Testplan.
+- 2026-09-28 · Lane Defender M4-Design (Kollision, Feuerrate, Gold,
+  Shop) — **Selbst:** den Kollisions-Aufschlag mit dem richtigen
+  Kern-Instinkt gemacht (im Bewegungs-Moment prüfen — „der Schuss
+  prüft seine nächste Position"); die eigene
+  Schuss-Geschwindigkeits-Idee selbst angezweifelt und damit
+  richtig gelegen (kein Schadens-Gewinn, nur Tunnel-Risiko); den
+  Spielgefühl-Einwand gegen Cooldowns präzise formuliert und damit
+  die Schlucken-Lösung provoziert; „immer kaufen, einfach Keys"
+  deckungsgleich mit dem eigenen Live-Shop-Beschluss vom 20.09.
+  erinnert. **Hilfe:** die zweite Tunnel-Richtung gezeigt (Gegner
+  tritt auf wartenden Schuss) und zum Doppel-Prüfungs-Zuschnitt
+  verallgemeinert; Arcade-Muster „geschluckt statt bestraft" samt
+  Zahlenstaffel; Gold- und Schadens-Werte als Rechenbeispiel
+  (130 G je Level gegen 100 G Erstpreis). **Fehlerbild:** keines —
+  Design-Runde.

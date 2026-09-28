@@ -21,7 +21,7 @@ der Kurs").
 |---|---|---|
 | M1 · Gerüst: Konsolen-Init, Zeichentest, Hauptmenü, Namenseingabe | 6 h | 20 h |
 | M2 · Lanes und Spieler: Spielfeld, Bewegung, Live-Tasten | 7 h | ~7,5 h |
-| M3 · Gegner: Klassenhierarchie, Spawn-Plan, Tick-Lauf | 10 h | — |
+| M3 · Gegner: Klassenhierarchie, Spawn-Plan, Tick-Lauf | 10 h | ~6,7 h |
 | M4 · Kampf und Upgrades: Kollision, Gold, Upgrade-Screen | 8 h | — |
 | M5 · Boss und Skills: Boss, Skill-Wahl, Spezialattacken | 8 h | — |
 | M6 · Level-Lauf: 15 Level, Progression, Sieg/Niederlage, HUD | 6 h | — |
@@ -37,3 +37,9 @@ M2 gemessen am 2026-09-26 (Grindstone): Projekt gesamt 28,37 h; die
 M2-Zeile ist die Differenz zum M1-Stand von 20:50 h (~7,5 h) und
 enthält den M2-Design-Abschnitt vom 20.09. Einordnung:
 `ABGABE_NOTIZEN.md` → M2.
+
+M3 gemessen am 2026-09-28 (Grindstone): Projekt gesamt 35:04 h; die
+M3-Zeile ist die Differenz zum M2-Stand von 28,37 h (~6,7 h) und
+enthält den M3-Design-Abschnitt vom 27.09. Quersumme der sechs
+M3-Einzeleinträge: 6:30 h — die ~0,2 h Rest sind unzugeordnete
+Kleinstücke. Einordnung: `ABGABE_NOTIZEN.md` → M3.

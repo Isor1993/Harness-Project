@@ -22,21 +22,22 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-09-26 beim `/harness:ende` des Abschnitts
-„Lane Defender M2" (Design → Development · Lernmodus, Revier
-Lane Defender). Berichte im LOG der Schicht und in `Kern/LERNLOG.md`.)*
+*(überschrieben 2026-09-28 beim `/harness:ende` der Abschnitte
+„Lane Defender M3" (Development) und „Lane Defender M4" (Design),
+beide Lernmodus, Revier Lane Defender. Berichte im LOG der Schicht
+und in `Kern/LERNLOG.md`.)*
 
-**M2 ist fertig und abgehakt** (~7,5 h gegen 7 — Punktlandung nach
-M1s 20/6; `ABGABE_NOTIZEN.md`). **Das Fertig-Ziel So 27.09. fürs
-ganze Spiel ist damit nicht haltbar** — Rest M3–M7 ≈ 30 h Schätzung;
-harter Termin bleibt die Abgabe Fr 02.10., 23:59, die Schnittlinien
-der DECISIONS liegen bereit. Nächster Schritt: **M3-Design-Abschnitt**
-— Gegner-Hierarchie (Vererbung), Spawn-Plan (geparkte Frage aus dem
-M2-Design), new/delete, Figuren-Zuordnung. Commits ausstehend
-(Dateien am 26.09. geliefert): V 0.0010 Spiel · V 0.0076 Harness ·
-V 0.0043 Knowledge. **Pflegetage vom 20.09. und 27.09. offen** —
-nachholen auf Zuruf. Unverändert offen: Unreal-Toolchain-Test,
-Datenbaum.
+**M3 ist fertig und abgehakt** (~6,7 h gegen 10 — erste
+Unterschreitung; `ABGABE_NOTIZEN.md`) **und M4 ist ausdesignt**
+(vier DECISIONS-Einträge vom 28.09., Design-Seite in der
+M4-Stand-Zeile der ROADMAP). Nächster Schritt: **M4-Bau** — B1
+Spieler-Werte und HUD-Zeile, B2 Kollision, B3 Feuer-Sperre und
+Shop-Tasten; danach M5. Harter Termin bleibt die Abgabe Fr 02.10.,
+23:59 — Rest M5–M7 ≈ 17 h Schätzung, Schnittlinien bereit. Commits
+ausstehend (Dateien am 28.09. geliefert): V 0.0011 Spiel ·
+V 0.0077 Harness · V 0.0044 Knowledge. **Pflegetage 20.09. und
+27.09. offen** — nachholen auf Zuruf. Unverändert offen:
+Unreal-Toolchain-Test, Datenbaum.
 
 ---
 

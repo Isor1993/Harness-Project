@@ -172,15 +172,74 @@ So 20.09. fertig — dann beginnt der Model-Viewer eine Woche früher.
   und Summaries, Build /W4 grün), Doku-Input steht in
   `ABGABE_NOTIZEN.md` → M2, Ist-Zeit ~7,5 h gegen 7 h im ZEITPLAN
   — gebaut, geprüft und dokumentiert, der Baustein ist fertig.
-- [ ] **M3 · Gegner** — Basisklasse plus Tank/Runner (Vererbung,
+- [x] **M3 · Gegner** — Basisklasse plus Tank/Runner (Vererbung,
   `virtual`), Spawn-Plan je Lane, Abwärtslauf per Tick, Durchbruch
   kostet Leben; `new`/`delete` für Spawn und Tod.
+  **Ausdesignt am 2026-09-27** (vier Einträge in den DECISIONS
+  dieser Schicht): Gegner-Hierarchie Normal/Tank/Boss unter
+  `CEnemy` — der Runner entfällt als Typ, Tempo wird globaler
+  Level-Wert als Schrittintervall in Ticks, nur der Boss
+  überschreibt es (Bau in M5, Design steht); Spawn-Plan als
+  Level-Budget aus der 15-Zeilen-Tabelle (fester Abstand,
+  Lane-Würfel mit Belegt-Wächter, Typ per Rest-Wahrscheinlichkeit,
+  Durchbruch = 1 Leben ab); Speicher als `vector<CEnemy*>` mit
+  `new` im Spawner und `delete` an den drei Lebensenden samt
+  Aufräum-Schleife; Figuren ♟/♜/♚, ♞ Reserve. Design-Seite:
+  https://claude.ai/artifact/FMZX3wJ2Lh43GpvpyXccK4 — offen ist
+  der Bau: B1 Klassen, B2 Liste und Spawner, B3 Lebensenden.
+  **Stand 2026-09-27, gleicher Tag:** B1 Klassen fertig — `CEnemy`
+  mit virtual-Destruktor und Tempo-Hook, `CNormalEnemy` (1 Leben,
+  ♟) und `CTankEnemy` (2 Leben, ♜) als reine Startwert-Erben, von
+  Isor getippt (das CEnemy-Gerüst ungefragt selbst vorgebaut). Der
+  Platzhalter-Bauer läuft jetzt als per `new` erzeugtes Objekt:
+  Lebenszyklus delete/new am Korridor-Ende, Aufräumen vor dem
+  ESC-return, `BuildFrame` liest Lane, Zeile und Figur aus dem
+  Objekt. Tank-Tausch-Test bestanden (eine geänderte Zeile — der
+  Turm fällt, ohne dass Szene oder Zeichner Türme kennen);
+  Kommentar-Pass durch, /W4 grün. Offen: B2, B3.
+  **Stand 2026-09-27, weiter:** B2 Liste und Spawner fertig — Gegner
+  leben als `vector<CEnemy*>` (Bewegung, Entsorgung mit delete vor
+  erase, ESC-Aufräum-Schleife, BuildFrame sucht je Zelle mit dem
+  nullptr-Muster), Schrittintervall läuft über den virtual-Hook
+  (Tick-Zähler, 0,6 s je Zeile), Spawner nach Tafel 2 mit den
+  Zeile-1-Konstanten (Budget 5 · 1 Tank · Abstand 10 Ticks),
+  `srand`-Saat einmal in main. Fünf-Punkte-Testbogen bestanden.
+  Regler seit Mitte B2 auf Zuruf: Claude tippt, Isor liest gegen
+  (Abgabedruck). Offen: B3 Lebensenden — der Durchbruch kostet noch
+  kein Leben.
+  **Stand 2026-09-28:** Vormittags auf Isors eigenen Befund („jeder
+  Block sollte heißen, was er macht") den Tick in fünf benannte
+  Helfer zerlegt — MoveEnemies, RemoveFinishedEnemies, RunSpawner
+  (drei `int32_t&`-Zähler), MoveShots, RemoveFinishedShots; Isor
+  tippt wieder selbst. Danach B3 Lebensenden fertig: `CPlayer` um
+  Leben erweitert (Start 20, Untergrenze 0, RemoveLife/AddLife/
+  GetLives — AddLife als Isors eigener M4-Shop-Vorgriff), Durchbruch
+  kostet `I_BREAKTHROUGH_LIFE_COST` über die neue CPlayer-Tür der
+  Entsorgungs-Funktion. Debugger-Abnahme bestanden (Breakpoint 5×,
+  Watch 20 → 15), Kommentar-Pass durch, /W4 grün. **M3 ist gebaut
+  und geprüft** — offen für den Haken: Doku-Input in
+  `ABGABE_NOTIZEN.md` samt Ist-Zeit (Grindstone).
+  **Erledigt am 2026-09-28:** Doku-Input steht in
+  `ABGABE_NOTIZEN.md` → M3, Ist-Zeit ~6,7 h gegen 10 h im ZEITPLAN
+  (erste Unterschreitung einer Schätzung) — gebaut, geprüft und
+  dokumentiert, der Meilenstein ist fertig.
 - [ ] **M4 · Kampf und Upgrades** — Kollision Schuss/Gegner (gleiche
   Lane, gleiche Zeile), Gold, Upgrade-Screen zwischen den Leveln
   (Schaden, Feuerrate).
   **Stand 2026-09-20 (M2-Design):** Der Upgrade-Screen ist durch
   den Live-Shop ersetzt (DECISIONS → „Live-Shop: Kaufen mitten im
   Lauf") — M4 baut Kollision, Gold und die Kauf-Logik im Tick.
+  **Ausdesignt am 2026-09-28** (vier Einträge in den DECISIONS
+  dieser Schicht): Kollision als eine Prüf-Funktion zweimal je
+  Tick (Durchtunnel-Falle beidseitig dicht), Schaden zur
+  Trefferzeit vom Spieler; Feuer-Sperre in Ticks (Start 4, Kauf −1
+  bis Minimum 1, geschluckt statt bestraft); Gold 20/50 als
+  Erben-Startwert, Start-Gold 0, Start-Schaden 1, Preise mit
+  Wirkungen, [4] bis M5 gesperrt; HUD-Werte-Zeile nach M4
+  vorgezogen. Design-Seite:
+  https://claude.ai/artifact/7Dp5vCLrjoh7YCtneSoBut — offen ist
+  der Bau: B1 Spieler-Werte und HUD-Zeile, B2 Kollision, B3
+  Feuer-Sperre und Shop-Tasten.
 - [ ] **M5 · Boss und Skills** — Boss-Klasse (belegt eine Lane, die
   übrigen spawnen normal weiter), Skill-Wahl beim ersten Boss-Sieg,
   Spezialattacken Doppel-Lane und Durchschlag als Klassen am
@@ -236,6 +295,9 @@ So 20.09. fertig — dann beginnt der Model-Viewer eine Woche früher.
   in Cyan" und „M2-Screen"), `**` als Treffer-Blitz-Kandidat für
   M4 gemerkt. Offen nur noch: Figuren-Zuordnung je Gegnertyp (M3)
   und die HUD-Balken (M6).
+  **Stand 2026-09-27 (M3-Design):** Die Figuren-Zuordnung ist final
+  — Normal ♟, Tank ♜, Boss ♚, ♞ Reserve für A1 (DECISIONS →
+  „Figuren-Zuordnung final"). Offen nur noch die HUD-Balken (M6).
 - [x] **Spieler als zusammengesetztes Sprite prüfen** — Isors Idee vom
   2026-09-13: die Spielfigur aus mehreren Einzelzeichen statt einem
   Symbol; Skizze vom selben Tag: T-Form mit breitem Sockel und
@@ -270,6 +332,10 @@ So 20.09. fertig — dann beginnt der Model-Viewer eine Woche früher.
   Kopie, keine Abstraktion (DECISIONS → „Eingabe selbst gezeichnet",
   Verworfen-Teil). Die Frage stellt sich neu beim dritten Nutzer,
   dem M4-Upgrade-Screen.
+  **Stand 2026-09-28 (M4-Design):** Der dritte Nutzer ist
+  gegenstandslos — der Live-Shop kauft per Zifferntaste, ohne
+  Listen-Auswahl. Die Frage ruht, bis ein echter dritter Nutzer
+  auftaucht.
 - [ ] **Design gegen die Original-Aufgabe halten**, sobald die echten
   Semester-3-Texte vorliegen. Grundlage bisher:
   `Uni/Semester_3/VORJAHR_AUFGABEN.md` → „1 · C++ Konsolenprojekt".
