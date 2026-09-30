@@ -112,3 +112,46 @@ der Level-Wechsel ist M6 · Schüsse durchfliegen Gegner noch,
 Kollision ist M4 · das HUD ist statisch, die Leben sind bisher nur
 im Debugger sichtbar (HUD = M6) · `AddLife` wartet auf seinen
 Aufrufer, den M4-Shop-Kauf.
+
+## M4 · Kampf und Upgrades (fertig 2026-09-29)
+
+**Zeit:** ~6 h gegen 8 h Schätzung (Grindstone: zwei M4-Blöcke
+3:53 h + 2:00 h; Differenz zum M3-Gesamtstand 41:27 h − 35:04 h ≈
+6,4 h, der Design-Abschnitt vom 28.09. ist enthalten). Zweite
+Unterschreitung in Folge — das M3-Fundament trug (Gegner-Liste,
+Tick-Helfer, delete-vor-erase als eingeübtes Muster), und wieder
+tippte Claude Teile auf Zuruf (B2 ab der Gegner-Suche, B3 ab den
+Shop-Cases); die Lernarbeit steckt in Erklär-Runde,
+Verstehens-Check und Isors Entwürfen.
+
+**Gebaut:** Belohnung als viertes Startwert-Feld im
+CEnemy-Konstruktor (Bauer 20 G, Turm 50 G) · `TakeDamage` mit
+Null-Klemme, `AddGold` · `HandleCollisions`: rückwärts über die
+Schüsse, Index-Suche mit −1, Schaden zur Trefferzeit, Gold vor
+delete, delete vor erase, Schuss immer verbraucht — **zweimal je
+Tick** gegen die Platztausch-Falle · HUD-Zeile live je Tick aus den
+Spieler-Werten (`BuildHudText`) · Feuer-Sperre: Sperr-Wert als Stat
+in `CPlayer` (Start 4), Rest-Zähler in der Szene, Leertaste in der
+Sperre still geschluckt · Shop-Tasten 1–4 im Eingabe-Drain über
+`TryRemoveGold` (bool — Prüfung und Abzug in einem): [1] Schaden +1
+für 100 G, [2] Sperre −1 bis Minimum 1 für 120 G (am Minimum
+abgelehnt), [3] +1 Leben für 500 G, [4] gesperrt bis M5 ·
+`PlayPurchaseSound` als steigendes Gegenstück zum Error-Sound ·
+AtkSpeed im HUD als hochzählende Stufe 1–4.
+
+**Warum so:** die vier DECISIONS-Einträge vom 28.09. (Kollision
+zweimal je Tick, Feuerrate geschluckt statt bestraft,
+Gold/Preise/Wirkungen, HUD-Vorzug) und die zwei vom 29.09.
+(Kauf-Kette: ein Try, billige Fragen zuerst · Shop-Feedback:
+Kauf-Sound und Stufen-Anzeige — beide auf Isors eigene Befunde am
+laufenden Spiel). Design-Stand als Artifact-Seite (ARTIFACT_INDEX →
+„Lane Defender M4-Design"), Erklär-Seite „💡 Lernstück ·
+Tick-Kollision" aus der B2-Abnahme.
+
+**Besonderheiten:** Die B2-Abnahme lief über einen messbaren
+F5-Testbogen mit Soll-Rechnung 130 G je Testlevel (4 × 20 +
+1 × 50) · der frühere Doppelschuss-Trick (zwei Schüsse in einem
+Tick) ist durch die Feuer-Sperre absichtlich weg · Preise und
+Startwerte sind Tuning-Masse für M6 · [4] Multishot wartet auf den
+M5-Skill-Slot · Start-Gold ist 0; für Shop-Tests wird
+`I_DEFAULT_GOLD` temporär hochgesetzt und zurückgedreht.

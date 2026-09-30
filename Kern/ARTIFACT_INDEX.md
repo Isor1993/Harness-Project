@@ -120,8 +120,8 @@ Quelle   Projekte/Lane_Defender/DECISIONS.md (vier Einträge vom
          2026-09-28), Projekte/Lane_Defender/ROADMAP.md (M4)
 Skripte  keine — die Seite zeigt den Design-Stand, nicht Code
 Seite →  📍 Status · Lane Defender M3-Design (Fußzeile)
-Seite ←  keine (die M4-Stand-Zeile der Lane-Defender-ROADMAP nennt
-         die URL)
+Seite ←  💡 Lernstück · Tick-Kollision (Fußzeile); die M4-Stand-Zeile
+         der Lane-Defender-ROADMAP nennt die URL
 ```
 
 ---
@@ -560,6 +560,22 @@ Beispiel LaneDefender.cpp — PrintMessage-Überladungsfamilie und
 Seite →  Lernstück SAE-C++-Konventionen
 Seite ←  Cpp/funktionen-bekommen-kopien.md,
          Cpp/ueberladung-nimmt-den-billigsten-weg.md
+```
+
+### 💡 Lernstück · Tick-Kollision
+```
+URL      https://claude.ai/artifact/VavXTzq3k7XjqsaaXm2QD9
+Stand    2026-09-29 — neu, gebaut als Erklär-Runde vor der
+         M4-B2-Abnahme (Lane Defender): Tick-Reihenfolge mit beiden
+         Prüfungen (Tafel 1), HandleCollisions als Treffer-Kette
+         samt echtem Code (Tafel 2), die Platztausch-Falle gefangen
+         gegen durchgetunnelt (Tafeln 3a/3b), Zahlen-Kacheln und
+         der F5-Testbogen der Abnahme
+Quelle   Knowledge-Ordner: Cpp/in-ticks-tunnelt-die-kollision.md
+Beispiel GameScene.cpp — HandleCollisions und der Tick-Doppelruf,
+         belegt am echten M4-Code vom 28./29.09.
+Seite →  📍 Status · Lane Defender M4-Design (Fußzeile)
+Seite ←  Cpp/in-ticks-tunnelt-die-kollision.md
 ```
 
 ---

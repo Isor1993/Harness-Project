@@ -223,7 +223,7 @@ So 20.09. fertig — dann beginnt der Model-Viewer eine Woche früher.
   `ABGABE_NOTIZEN.md` → M3, Ist-Zeit ~6,7 h gegen 10 h im ZEITPLAN
   (erste Unterschreitung einer Schätzung) — gebaut, geprüft und
   dokumentiert, der Meilenstein ist fertig.
-- [ ] **M4 · Kampf und Upgrades** — Kollision Schuss/Gegner (gleiche
+- [x] **M4 · Kampf und Upgrades** — Kollision Schuss/Gegner (gleiche
   Lane, gleiche Zeile), Gold, Upgrade-Screen zwischen den Leveln
   (Schaden, Feuerrate).
   **Stand 2026-09-20 (M2-Design):** Der Upgrade-Screen ist durch
@@ -240,6 +240,33 @@ So 20.09. fertig — dann beginnt der Model-Viewer eine Woche früher.
   https://claude.ai/artifact/7Dp5vCLrjoh7YCtneSoBut — offen ist
   der Bau: B1 Spieler-Werte und HUD-Zeile, B2 Kollision, B3
   Feuer-Sperre und Shop-Tasten.
+  **Stand 2026-09-28 (Abend):** B1 fertig — Gold/Schaden/
+  Feuer-Intervall in `CPlayer` (0/1/4), `BuildHudText` live je Tick,
+  `BuildFrame` nimmt `const CPlayer&`; Sichtprüfung bestanden,
+  Kommentar-Pass durch. B2 gebaut — Belohnung als viertes
+  Startwert-Feld (20/50), `TakeDamage`, `AddGold`,
+  `HandleCollisions` zweimal je Tick (Index-Suche, Schaden zur
+  Trefferzeit, Gold vor delete); ab der Gegner-Suche tippte Claude
+  auf Zuruf. /W4 grün. **Offen: B2-Abnahme per F5-Testbogen (Bauer
+  +20, Turm zweistufig +50, Doppelschuss, Soll 130 Gold je
+  Testlevel, Durchbruch kostet weiter) — erster Handgriff der
+  nächsten Session —, danach B3.**
+  **Stand 2026-09-29:** B2-Abnahme bestanden — Erklär-Runde zur
+  Kollision mit Verstehens-Check (Handy-Seite:
+  https://claude.ai/artifact/VavXTzq3k7XjqsaaXm2QD9), dann der
+  F5-Testbogen komplett: Bauer +20, Turm zweistufig +50,
+  Doppelschuss +50, Soll 130 im HUD, Durchbruch kostet weiter.
+  Offen in M4: B3 Feuer-Sperre und Shop-Tasten.
+  **Stand 2026-09-29 (weiter):** B3 fertig — Feuer-Sperre (Zähler
+  in der Szene, geschluckt statt bestraft) von Isor getippt,
+  Shop-Tasten über Isors TryRemoveGold-Muster, dazu Kauf-Sound und
+  AtkSpeed als hochzählende Stufe nach Isors Befunden (DECISIONS,
+  29.09.); alle F5-Tests bestanden, /W4 grün, Kommentar-Pass durch.
+  **M4 ist gebaut und geprüft** — offen für den Haken: Doku-Input
+  in `ABGABE_NOTIZEN.md` samt Ist-Zeit (Grindstone).
+  **Erledigt am 2026-09-29:** Doku-Input steht in
+  `ABGABE_NOTIZEN.md` → M4, Ist-Zeit ~6 h gegen 8 h im ZEITPLAN —
+  gebaut, geprüft und dokumentiert, der Meilenstein ist fertig.
 - [ ] **M5 · Boss und Skills** — Boss-Klasse (belegt eine Lane, die
   übrigen spawnen normal weiter), Skill-Wahl beim ersten Boss-Sieg,
   Spezialattacken Doppel-Lane und Durchschlag als Klassen am
@@ -373,3 +400,13 @@ So 20.09. fertig — dann beginnt der Model-Viewer eine Woche früher.
   Schuss+Gegner in derselben Zeile, M3 macht aus der Zellen-Frage
   einen Daten-Lookup — erst wenn das Muster stillsteht, wird
   einmal richtig abstrahiert. Fällig nach M3.
+- [ ] **Polish-Liste vom 2026-09-29** — Isors Befunde nach dem
+  M4-Spieltest, gehören ins M7-Umfeld: Schuss-Sound und Sterbe-Sound
+  ergänzen, alle Sounds aufeinander abstimmen (unterscheidbar
+  machen); Tutorial-Szene polieren; HUD-Farben (z. B. Gold gelb,
+  Leben eigen — oder nur die Zahlen hervorheben, entscheidet der
+  Polish-Moment); Shop-Zeile: nicht bezahlbare Posten rot statt
+  weiß. Dazu als Abschluss der **Datei-für-Datei-Durchgang**: Isor
+  erklärt jede Datei, Claude vertieft, gemeinsames Refactoring auf
+  Lesbarkeit — Isor bestimmt, was und wie umgebaut wird; der
+  ausführliche Erklärstil bleibt.

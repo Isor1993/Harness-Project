@@ -1268,3 +1268,66 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   Zahlenstaffel; Gold- und Schadens-Werte als Rechenbeispiel
   (130 G je Level gegen 100 G Erstpreis). **Fehlerbild:** keines —
   Design-Runde.
+- 2026-09-28 · Lane Defender M4 B1 Spieler-Werte und HUD-Zeile
+  (Isor tippt) — **Selbst:** im Entwurf mitten im Satz selbst
+  korrigiert (void-Update verworfen, String-Bauer gewählt — das
+  Build-Muster der Datei erkannt); die drei Shop-Stats samt
+  Konstanten und Gettern exakt nach dem m_iLives-Muster gebaut;
+  den BuildFrame-Umbau auf const CPlayer& allein durchgezogen
+  (Signatur, beide Vergleiche, Aufrufstelle). **Fehlerbild:**
+  „std::string += int" — die char-Überladung schluckt die Zahl als
+  unsichtbares Steuerzeichen, und beide Versuche (direkt und
+  to_string) blieben als Doppelzeilen stehen; die fertige Funktion
+  nicht eingehängt — der Aufruf am Tick-Ende verwirft den
+  Rückgabewert, die HUD-Zeile druckt weiter die Konstante (der
+  void-Gedanke des ersten Entwurfs). **Hilfe:** Review-Runde mit
+  der char-Überladung als Erklärstück (C# ruft ToString, C++
+  deutet die Zahl als Zeichencode) und der Einhäng-Kette (Standort
+  über BuildFrame, Zeile 113, toter Aufruf weg).
+- 2026-09-28 · Lane Defender M4 B2 Kollision (Regler-Wechsel
+  mittendrin: bis zur Schleifen-Hülle Isor, ab der Gegner-Suche
+  Claude auf Zuruf — Energie am Abend aufgebraucht) — **Selbst:**
+  Entwurf mit exakt richtiger Parameter-Wahl (Player, Gegner-,
+  Schuss-Liste) samt Selbstkorrektur „Enemy, nicht Player"; die
+  Vorarbeiten weitgehend allein (Reward-Feld und -Konstanten,
+  TakeDamage mit ungefragter Null-Klemme nach dem eigenen
+  RemoveLife-Muster, AddGold); Hülle und Rückwärts-Schleife aus dem
+  eigenen RemoveFinishedShots-Muster abgeleitet. **Fehlerbild:**
+  das vierte Startwert-Feld zweimal halb — erst Konstanten ohne
+  Konstruktor-Weg (Feld blieb −1, Gold wäre gesunken), dann
+  Parameter angenommen, aber nicht zugewiesen (C4100 als Beleg am
+  Build vorgeführt); „Hülle steht" gemeldet, als die Schleife noch
+  fehlte; einmal Ungespeichertes als fertig gemeldet (VS-Puffer).
+  **Hilfe:** Zerlegung in Einzel-Handgriffe nach „zu viel auf
+  einmal"; Gegner-Suche (Index statt Pointer, −1 statt nullptr),
+  Treffer-Block (Schaden zur Trefferzeit, Gold vor delete, Schuss
+  immer verbraucht) und Tick-Doppelruf von Claude getippt.
+- 2026-09-29 · Lane Defender M4 B2-Abnahme (Erklär-Runde vor dem
+  Test, Isor spielt selbst) — **Selbst:** im Verstehens-Check die
+  Gold-Bedingung exakt begründet (Turm nach dem ersten Treffer
+  nicht tot, die Health-Frage entscheidet) und die Zweistufigkeit
+  des Turms erklärt; F5-Testbogen komplett bestanden — alle fünf
+  Punkte, HUD-Soll 130 Gold erreicht. **Hilfe:** das Tick-für-Tick
+  des Doppelschuss-Falls nachgezogen (zwei Drücke im selben Tick =
+  deckungsgleiche Schüsse, ein HandleCollisions-Aufruf erledigt
+  beide; vorwärts würde der zweite übersprungen und flöge für
+  immer am Turm vorbei); davor die Erklär-Runde mit Tick-Bild,
+  Treffer-Kette und Platztausch-Stepper samt Handy-Seite.
+  **Fehlerbild:** keines — Abnahme-Runde.
+- 2026-09-29 · Lane Defender M4 B3 Feuer-Sperre und Shop (Isor tippt
+  die Sperre, ab den Shop-Cases Claude auf Zuruf) — **Selbst:** das
+  Zwei-Werte-Modell im Entwurf benannt (Stat im Player, Zählen in
+  der Szene), die Sperre komplett selbst getippt (stilles Schlucken,
+  Neustart aus dem Stat, Zählstelle nach dem Drain); die Try-Idee
+  selbst eingebracht — RemoveGold als bool, besser als der
+  vorgeschlagene GetGold-Check in der Szene; zwei eigene
+  Game-Design-Befunde am laufenden Spiel (Kauf ohne Sound,
+  AtkSpeed-Anzeige läuft verkehrt herum). **Fehlerbild:** der
+  unbewachte Runterzähler (lief ins Minus, „genau 0" nie wieder
+  wahr — Fix nach Verweis aufs eigene Spawner-Muster);
+  I_BASE_ADD_DAMAGE = 0 als stiller No-Op-Kauf; die VS-Puffer-Falle
+  in Gegenrichtung (alter Puffer überschrieb den frischen Stand auf
+  der Platte). **Hilfe:** Minus-Verlauf als Zahlen-Tabelle; die
+  Try-Grenze erklärt (kein zweites Try nach dem Gold-Abzug —
+  Rückbuchungs-Falle); Shop-Cases, Sounds und Stufen-Anzeige von
+  Claude getippt, Builds über MSBuild geprüft.

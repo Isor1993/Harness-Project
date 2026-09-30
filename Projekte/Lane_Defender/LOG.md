@@ -280,3 +280,48 @@ leere Rubrik schreibt `—`.
   Unterschreitung einer Schätzung. Lern-Rubriken in
   `Kern/LERNLOG.md`. Offen: M4 beginnt mit einem Design-Abschnitt
   (Kollision, Gold, Live-Shop-Kauflogik im Tick).
+- 2026-09-28 — M4 B1 und B2 gebaut (nach dem M4-Design vom selben
+  Tag): B1 Spieler-Werte und HUD-Zeile — `CPlayer` um Gold, Schaden
+  und Feuer-Intervall erweitert (Startwerte 0/1/4 als Konstanten,
+  Getter nach dem Lives-Muster), `BuildHudText` setzt die HUD-Zeile
+  je Tick live aus den Gettern zusammen (`std::to_string`),
+  `BuildFrame` nimmt `const CPlayer&` statt der nackten Lane. Isor
+  tippte; das Review fand die `+= int`-Doppelzeilen (char-Überladung
+  hängt Steuerzeichen an → Knowledge) und den gebauten, aber nicht
+  eingehängten Aufruf. Sichtprüfung bestanden, Kommentar-Pass durch.
+  B2 Kollision — Belohnung als viertes Startwert-Feld im
+  CEnemy-Konstruktor (Bauer 20, Turm 50; C4100 fand die vergessene
+  Zuweisung), `TakeDamage`, `AddGold`; `HandleCollisions` prüft
+  rückwärts über die Schüsse mit Index-Suche (−1 statt nullptr),
+  Schaden zur Trefferzeit, Gold vor delete-vor-erase, Schuss immer
+  verbraucht — zweimal je Tick gegen die Platztausch-Falle.
+  Regler-Wechsel ab der Gegner-Suche: Claude tippte auf Zuruf
+  (Energie aufgebraucht). Build /W4 grün. **Offen: B2-Abnahme
+  (F5-Testbogen, Soll 130 Gold je Testlevel) und B3 Feuer-Sperre
+  plus Shop-Tasten.** Lern-Rubriken in `Kern/LERNLOG.md`. Dazu
+  Projektstand-Analyse: ~55 % nach Schätzgewichten, Rest realistisch
+  14–18 h gegen ~8 h Regulärzeit bis Fr — Schnitt-Kontrollpunkt
+  Mittwochabend (Schnittlinie 1: Skill-System).
+- 2026-09-29 — M4 abgeschlossen (B2-Abnahme, B3, Feinschliff):
+  Erklär-Runde zur Kollision mit Verstehens-Check (Tick-Bild,
+  Treffer-Kette, klickbarer Platztausch-Stepper; Handy-Seite
+  „💡 Lernstück · Tick-Kollision" im ARTIFACT_INDEX), dann
+  B2-Abnahme per F5-Testbogen bestanden (Bauer +20, Turm zweistufig
+  +50, Doppelschuss, Soll 130 Gold, Durchbruch kostet weiter). B3:
+  Feuer-Sperre von Isor getippt (Rest-Zähler in der Szene;
+  Fehlerbild unbewachter Runterzähler, Fix nach dem eigenen
+  Spawner-Muster), Shop-Käufe über Isors TryRemoveGold-Idee
+  (DECISIONS → „Kauf-Kette: ein Try"), dazu auf Isors Spieltest-
+  Befunde Kauf-Sound und AtkSpeed als hochzählende Stufe
+  (DECISIONS → „Shop-Feedback"). Zweimal die VS-Puffer-Falle in
+  Gegenrichtung (alter Puffer überschrieb frische Platte) —
+  Knowledge-Seite erweitert. Builds über MSBuild, /W4 grün,
+  Kommentar-Pass durch. Ist ~6 h gegen 8 h geschätzt (Grindstone
+  gesamt 41:27 h) → ZEITPLAN; Doku-Input → `ABGABE_NOTIZEN.md` →
+  M4; M4 in der ROADMAP abgehakt — zweite Unterschreitung in Folge.
+  Lern-Rubriken in `Kern/LERNLOG.md`. Drei Knowledge-Seiten
+  (Try-Muster neu, Tick-Kollision und Editor-Wahrheit erweitert).
+  Offen: M5 beginnt mit einem Design-Abschnitt (Boss,
+  Multishot-Wirkung, polymorpher Skill-Slot); Polish-Liste vom
+  29.09. als ROADMAP-Aufgabe (Sounds, HUD-Farben, Tutorial,
+  Datei-für-Datei-Durchgang mit Refactoring).

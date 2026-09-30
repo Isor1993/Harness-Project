@@ -22,21 +22,21 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-09-28 beim `/harness:ende` der Abschnitte
-„Lane Defender M3" (Development) und „Lane Defender M4" (Design),
-beide Lernmodus, Revier Lane Defender. Berichte im LOG der Schicht
-und in `Kern/LERNLOG.md`.)*
+*(überschrieben 2026-09-29 (Abend) beim `/harness:ende` des
+Abschnitts „Lane Defender M4" (Development, Lernmodus, Revier
+Lane Defender). Bericht im LOG der Schicht und in `Kern/LERNLOG.md`.)*
 
-**M3 ist fertig und abgehakt** (~6,7 h gegen 10 — erste
-Unterschreitung; `ABGABE_NOTIZEN.md`) **und M4 ist ausdesignt**
-(vier DECISIONS-Einträge vom 28.09., Design-Seite in der
-M4-Stand-Zeile der ROADMAP). Nächster Schritt: **M4-Bau** — B1
-Spieler-Werte und HUD-Zeile, B2 Kollision, B3 Feuer-Sperre und
-Shop-Tasten; danach M5. Harter Termin bleibt die Abgabe Fr 02.10.,
-23:59 — Rest M5–M7 ≈ 17 h Schätzung, Schnittlinien bereit. Commits
-ausstehend (Dateien am 28.09. geliefert): V 0.0011 Spiel ·
-V 0.0077 Harness · V 0.0044 Knowledge. **Pflegetage 20.09. und
-27.09. offen** — nachholen auf Zuruf. Unverändert offen:
+**M4 fertig** (gebaut, geprüft, dokumentiert — ~6 h gegen 8 h,
+zweite Unterschreitung in Folge). Erster Handgriff der nächsten
+Session: **M5-Design-Abschnitt** (Boss belegt eine Lane,
+Multishot-Wirkung, Skill-Slot; Vorentschiedenes in ROADMAP → M5).
+Rest M5–M7 bis Abgabe Fr 02.10., 23:59 — der
+**Schnitt-Kontrollpunkt Mittwochabend** gilt (Schnittlinie 1
+Skill-System, DECISIONS der Schicht). **Commits dreifach
+ausstehend — gestern wurde nicht committet:** V 0.0012 Spiel ·
+V 0.0078 Harness · V 0.0045 Knowledge (Texte am 29.09. als Dateien
+geliefert, decken den 28.–29.09. ab). Pflegetage 20.09. und 27.09.
+offen — nachholen auf Zuruf. Unverändert offen:
 Unreal-Toolchain-Test, Datenbaum.
 
 ---

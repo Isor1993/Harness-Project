@@ -1066,3 +1066,36 @@ Debugger testbar; der Vorzug kostet fast nichts, weil
 `BuildBoxTextLine` beliebigen Text längst zentriert.
 Verworfen: das HUD komplett erst in M6 (blinder Shop); ein eigenes
 Zwischen-HUD-Design (doppelte Arbeit für einen Übergang).
+
+## 2026-09-29 — Kauf-Kette: ein Try, die billigen Fragen zuerst
+Was: Gold-Prüfung und -Abzug stecken zusammen in `TryRemoveGold` —
+das bool sagt, ob der Kauf klappte, der Aufrufer spielt danach
+Wirkung oder Error-Sound. Je Kauf-Kette gibt es genau ein Try (das,
+das Geld bewegt); alle billigen Fragen stehen davor: Der [2]-Kauf
+fragt erst „schon am Minimum?" und wird dort **abgelehnt**, statt
+Gold ohne Wirkung zu schlucken. `ReduceFireInterval` bleibt void mit
+Klemme bei `I_MIN_FIRE_INTERVAL_TICKS`.
+Warum: Isors eigene Idee (Try-Muster, aus C#-TryParse bekannt) — die
+Prüfung wohnt an der einen Stelle, an der das Gold wohnt, kein
+Aufrufer kann sie vergessen. Ein zweites Try nach dem Abzug müsste
+bei Fehlschlag Gold zurückbuchen, und Rückbuchen ist die Fehlerquelle.
+Verworfen: GetGold-Prüfung in der Szene (Claudes erster Vorschlag —
+vergessbar, Wissen doppelt); `TryReduceFireInterval`
+(Rückbuchungs-Falle); ein Kauf am Minimum, der Geld schluckt (sähe
+für den Spieler wie ein Bug aus).
+
+## 2026-09-29 — Shop-Feedback: Kauf-Sound und Stufen-Anzeige
+Was: Jeder gelungene Kauf spielt `PlayPurchaseSound` — zwei steigende
+Töne, das Gegenstück zum fallenden Error-Sound. Die HUD-Zeile zeigt
+AtkSpeed als Stufe, die hochzählt (Startwert − Intervall + 1: Start
+Stufe 1, Vollausbau 4); intern bleibt die Sperre unverändert ein
+Tick-Intervall.
+Warum: Beide Befunde von Isor am laufenden Spiel — Käufe ohne
+Feedback fühlen sich nach nichts an, und eine Zahl, die beim
+Schneller-Werden sinkt, erzählt dem Spieler das Falsche. Übersetzt
+wird in der Anzeige, nicht in der Mechanik: Die Sperre ist das
+dritte „alle N Ticks"-Muster und bleibt es.
+Verworfen: MenuConfirm als Kauf-Sound (verwischt die Bedeutung);
+Schüsse pro Sekunde im HUD (Kommazahlen in der Konsole); internes
+Umdrehen auf einen Speed-Wert (Umbau an Stat, Klemme und Sperre für
+reine Anzeige-Kosmetik).
