@@ -1331,3 +1331,63 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   Try-Grenze erklärt (kein zweites Try nach dem Gold-Abzug —
   Rückbuchungs-Falle); Shop-Cases, Sounds und Stufen-Anzeige von
   Claude getippt, Builds über MSBuild geprüft.
+- 2026-09-30 · Lane Defender M5-Design (Boss und Skill-Slot) —
+  **Selbst:** den kompletten Boss-Zuschnitt vorgeschlagen (zufällige
+  Lane, Durchbruch −5 Leben, Gold 500 mit Verdoppler — die eigene
+  Reihe 500/1000/2000 war der Skalierer schon); den polymorphen
+  Skill-Slot ohne Gerüst richtig entworfen: Zeiger wohnt im Spieler,
+  startet auf null, eigene Basisklasse mit Multishot-Erben, die
+  Leertaste prüft den Zeiger, das Objekt lebt auf dem Heap (Heap
+  selbst richtig verortet); Multishot bewusst simpel geschnitten
+  (rechte Nachbar-Lane, am Rand kein Zusatzschuss) und das
+  JSON-Leaderboard selbst als zu teuer eingestuft; im Gegenhalten
+  die Entweder-oder-Delegation selbst verteidigt (künftige Skills
+  verändern den Schuss, statt nur zu ergänzen — Claudes
+  Zusatz-Hook-Vorschlag verworfen, Isors Schnitt wurde der
+  Beschluss). **Fehlerbild:**
+  Begriffe vermischt — „Referenz im Pointer" (ein Zeiger speichert
+  eine Adresse; die Referenz ist das andere, das Alias-Konstrukt aus
+  L3) und „abstrakte Klasse" als Wort für jede eigene Klasse (der
+  Fachbegriff meint nur Klassen mit rein-virtueller Methode, die
+  sich nicht instanziieren lassen). **Hilfe:** Begriffs-Sortierung
+  Pointer/Referenz/abstrakt mit Diagramm am eigenen Entwurf.
+- 2026-09-30 · Lane Defender M5 B1 Boss (Development, Isor tippt) —
+  **Selbst:** CBoss als Startwert-Erben ungefragt komplett allein
+  vorgebaut (Muster und Werte exakt, eigener cstdint-Include
+  sauberer als der Altbestand); den ersten Override des Projekts
+  nach der Fallen-Erklärung fehlerfrei getippt (Signatur samt
+  const, override-Schlüsselwort); Balance.h angelegt und den
+  Include eigenständig in die .cpp statt in den Header gelegt —
+  besser als Claudes Vorschlag; die Fünf-Parameter-Frage selbst
+  aufgeworfen (Antwort: ok bei drei festen Aufrufern,
+  Parameter-Objekt wartet nach YAGNI); die
+  delete-Reihenfolge-Falle beim Durchbruch-Umbau erstmals **selbst**
+  erkannt (Getter nach dem delete = Frage an ein gelöschtes Objekt)
+  und die Zwischenspeicher-Lösung hergeleitet — Claudes Zusatz nur,
+  dass die Effekt-vor-delete-Umstellung aus dem eigenen
+  M4-Kollisionsblock dieselbe Falle eine Zeile billiger löst; einen
+  Bool-Rückgabewert für RemoveLife erwogen und im Gespräch
+  einsortiert (Try-Muster nur für Operationen, die scheitern
+  können). **Fehlerbild:** die
+  Tempo-Konstante erst definiert, aber nicht benutzt (Override
+  fehlte, Boss fiel mit Basis-Tempo 3); beim fünften
+  Konstruktor-Feld die zuvor angekündigte Vertauschungs-Falle in
+  anderer Gestalt — Step-Interval-Konstanten (3/3/6) an die
+  Durchbruch-Position gereicht statt 1/1/5, dazu zwei
+  Doppel-Konstanten in Balance.h und den Getter vergessen; alles
+  kompiliert grün, gefunden nur im Gegenlesen; beim Boss-Spawn den
+  Würfelwurf per erneutem int32_t in eine Verschattung gelegt
+  (zweite iBossLane nur im if-Block, die äußere bliebe −1) und den
+  Boss-Spawn zunächst in den RunSpawner statt in die
+  Levelbeginn-Vorbereitung gedacht — dort löste die Trennung
+  „Tick-Maschine gegen Einmal-Vorbereitung" den Knoten; die
+  Verschattung direkt danach ein zweites Mal gebaut (bool in beiden
+  if/else-Zweigen des Sperr-Wächters — das äußere true hätte immer
+  gewonnen, der Wächter wäre wirkungslos; im Gegenlesen gefunden,
+  dazu die Kurzform gezeigt: ein Vergleich ist schon ein bool; auf
+  die Nachfrage „nur eine andere Schreibweise?" den toten Wächter
+  per Zeilen-Trace belegt — verdeckt hatte ihn der Zufall, denn der
+  Boss blockiert Zeile 0 selbst und das Testlevel hat nur fünf
+  Spawns). **Hilfe:**
+  Override-Fallen-Tabelle; Geschwister-Includes auf Zuruf von
+  Claude nachgezogen; MSBuild-Prüfläufe durch Claude.

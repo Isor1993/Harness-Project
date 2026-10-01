@@ -56,6 +56,7 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 | `Kern/Zeugnisse/2026-08-11.md` | Nur dieses eine Zeugnis — ein datierter Messpunkt. |
 | `Kern/Zeugnisse/2026-08-16.md` | Nur dieses eine Zeugnis — ein datierter Messpunkt. |
 | `Kern/Zeugnisse/2026-09-04.md` | Nur dieses eine Zeugnis — ein datierter Messpunkt. |
+| `Kern/Zeugnisse/2026-09-30.md` | Nur dieses eine Zeugnis — ein datierter Messpunkt. |
 | `Kern/_ARCHIV.md` | Nur überholte Einträge der Kern-Schicht. |
 
 ## Uni — studienspezifisch, herausnehmbar

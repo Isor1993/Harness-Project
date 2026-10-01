@@ -275,6 +275,27 @@ So 20.09. fertig — dann beginnt der Model-Viewer eine Woche früher.
   (Multishot), per Shop-Kauf statt Boss-Freischaltung (DECISIONS →
   „Live-Shop"); der polymorphe Slot bleibt M5-Thema, Wirkung und
   Stufen klärt der M5-Design-Moment.
+  **Ausdesignt am 2026-09-30** (sechs Einträge in den DECISIONS
+  dieser Schicht): Boss mit zufälliger Lane, Durchbruch −5 Leben,
+  Verdoppler-Gold 500/1000/2000, die Boss-Runde zählt auch bei
+  Durchbruch; Multishot feuert auf der rechten Nachbar-Lane mit
+  (rechts außen fällt der Zusatzschuss weg), keine Skill-Stufen;
+  der Slot als Entweder-oder — `CSkill` abstrakt mit rein-virtuellem
+  `Fire`, `m_pSkill` in `CPlayer`, der Skill besitzt den ganzen
+  Schuss; [4]-Kette nach dem Try-Muster samt delete im ersten
+  Destruktor (`~CPlayer`); schmale Balance-Datei wird in B1
+  angelegt. Design-Seite:
+  https://claude.ai/artifact/Gmwkzh85XeR8AEHnFqDrgh — offen ist
+  der Bau: B1 Boss, B2 Skill-System; Schnittlinie 1 („Skill fällt,
+  Bosse bleiben") liegt exakt zwischen den beiden.
+  **Stand 2026-09-30 (Abend):** B1 Boss fertig — CBoss als
+  Startwert-Erbe mit dem ersten Override des Projekts (Tempo
+  6 Ticks), Boss-Spawn zu Levelbeginn (zufällige Lane,
+  Test-Konstante, Sperr-Wächter im Spawner), Durchbruch-Kosten als
+  fünftes Startwert-Feld (DECISIONS, 30.09.), Balance.h angelegt;
+  F5-Testbogen bestanden, /W4 grün, Kommentar-Pass durch. Offen:
+  B2 Skill-System — **Fallbeil Donnerstagabend**, danach greift
+  Schnittlinie 1 ohne neue Diskussion.
 - [ ] **M6 · Level-Lauf** — 15 Level, Lane-Progression im
   Dreier-Raster, Skalierung je Level, Sieg nach dem dritten Boss,
   Niederlage bei 0 Leben, HUD.
@@ -291,6 +312,11 @@ So 20.09. fertig — dann beginnt der Model-Viewer eine Woche früher.
 - [ ] **A2 · Endlos-Modus mit Highscore-Liste**
 - [ ] **A3 · Dritte Skill-Stufe**
 - [ ] **A4 · raylib-Anzeige als Kür**
+- [ ] **A5 · Leaderboard mit Datei-Speicherung** — Isors Wunsch vom
+  2026-09-30; Entscheidung bewusst erst nach dem M7-Polish, weil
+  Datei-Schreiben (Streams, Fehlerfälle) ein neues Thema ohne
+  Pflichtthema-Bezug ist. Verwandt mit A2, das die Highscore-Liste
+  schon führt.
 
 ## Aufgaben
 
@@ -406,7 +432,18 @@ So 20.09. fertig — dann beginnt der Model-Viewer eine Woche früher.
   machen); Tutorial-Szene polieren; HUD-Farben (z. B. Gold gelb,
   Leben eigen — oder nur die Zahlen hervorheben, entscheidet der
   Polish-Moment); Shop-Zeile: nicht bezahlbare Posten rot statt
-  weiß. Dazu als Abschluss der **Datei-für-Datei-Durchgang**: Isor
+  weiß.
+  **Ergänzt 2026-09-30 (M5-Test):** Nahbereichs-Schüsse sind
+  unsichtbar — steht der Gegner nah am Lauf, entsteht der Schuss,
+  trifft und verschwindet im selben Tick, bevor er je gezeichnet
+  wird; der Schaden stimmt, nur das Auge geht leer aus.
+  Gegenmittel-Kandidaten: der seit M4 geparkte Treffer-Blitz `**`
+  und der Schuss-Sound aus dieser Liste. Kein Layout-Problem — die
+  Korridorlänge ist nicht die Ursache.
+  **Ergänzt 2026-09-30 (Zeugnis):** Vokabel-Runde fürs
+  Prüfungsgespräch — Zeiger, Referenz, abstrakte Klasse und
+  override laut erklären; Befund des Zeugnisses vom 30.09. (die
+  Begriffe sind sortiert, aber noch nicht prüfungsfest). Dazu als Abschluss der **Datei-für-Datei-Durchgang**: Isor
   erklärt jede Datei, Claude vertieft, gemeinsames Refactoring auf
   Lesbarkeit — Isor bestimmt, was und wie umgebaut wird; der
   ausführliche Erklärstil bleibt.

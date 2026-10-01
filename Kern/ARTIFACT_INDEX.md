@@ -120,8 +120,24 @@ Quelle   Projekte/Lane_Defender/DECISIONS.md (vier Einträge vom
          2026-09-28), Projekte/Lane_Defender/ROADMAP.md (M4)
 Skripte  keine — die Seite zeigt den Design-Stand, nicht Code
 Seite →  📍 Status · Lane Defender M3-Design (Fußzeile)
-Seite ←  💡 Lernstück · Tick-Kollision (Fußzeile); die M4-Stand-Zeile
+Seite ←  📍 Status · Lane Defender M5-Design (Fußzeile) und
+         💡 Lernstück · Tick-Kollision (Fußzeile); die M4-Stand-Zeile
          der Lane-Defender-ROADMAP nennt die URL
+```
+
+### 📍 Status · Lane Defender M5-Design
+```
+URL      https://claude.ai/artifact/Gmwkzh85XeR8AEHnFqDrgh
+Stand    2026-09-30 — neu, gebaut im M5-Design-Abschnitt:
+         Boss-Werte-Tabelle samt Durchbruch-Regel, Slot-Diagramm
+         (Zeiger und Heap), Entweder-oder-Feuer-Ablauf,
+         [4]-Kauf-Kette, das vierte delete, Balance-Datei-Schnitt
+         und die Bausteine B1–B2
+Quelle   Projekte/Lane_Defender/DECISIONS.md (sechs Einträge vom
+         2026-09-30), Projekte/Lane_Defender/ROADMAP.md (M5)
+Skripte  keine — die Seite zeigt den Design-Stand, nicht Code
+Seite →  📍 Status · Lane Defender M4-Design (Fußzeile)
+Seite ←  die M5-Stand-Zeile der Lane-Defender-ROADMAP nennt die URL
 ```
 
 ---
@@ -134,6 +150,17 @@ sie nur, damit keine URL unerklärt bleibt. Abweichend vom übrigen
 Bestand: Jedes Zeugnis behält seine eigene URL und wird **nie
 nachgezogen** — der alte Stand ist der halbe Zweck. Beim Review-Gate
 sind diese Seiten deshalb zu überspringen.
+
+### 🎓 Zeugnis · 2026-09-30, Lane Defender
+```
+URL      https://claude.ai/artifact/2PCvp9a5HBxQQvEXYStJBZ
+Datum    2026-09-30 — zwei Tage vor der Abgabe, Gegenstand Lane
+         Defender (Isors Zuruf); viertes Zeugnis, wird nie
+         nachgezogen
+Quelle   Kern/Zeugnisse/2026-09-30.md
+Seite →  keine
+Seite ←  keine
+```
 
 ### 🎓 Zeugnis · 2026-09-04, Semesterstart
 ```

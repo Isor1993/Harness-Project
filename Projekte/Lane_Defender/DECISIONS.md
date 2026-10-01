@@ -1099,3 +1099,120 @@ Verworfen: MenuConfirm als Kauf-Sound (verwischt die Bedeutung);
 Schüsse pro Sekunde im HUD (Kommazahlen in der Konsole); internes
 Umdrehen auf einen Speed-Wert (Umbau an Stat, Klemme und Sperre für
 reine Anzeige-Kosmetik).
+
+## 2026-09-30 — Boss-Zuschnitt: zufällige Lane, −5 Leben, Verdoppler-Gold
+Was: Der Boss würfelt zu Levelbeginn einmal eine der offenen Lanes
+und spawnt sofort oben; seine Lane fliegt für den Rest des Levels
+aus dem Lane-Würfel des Spawners, das Budget der Normalen läuft auf
+den übrigen Lanes unverändert. Schrittintervall 6 Ticks (21,6 s für
+die 18 Zeilen), Leben 25 beim ersten Boss (liest ab M6 denselben
+Level-Faktor wie alle Gegner), Durchbruch kostet 5 Leben, der Kill
+zahlt 500 → 1000 → 2000 Gold — Verdoppler je Boss, drei Bosse in
+der Pflichtfassung. Alle Zahlen sind Beispielwerte, Tuning-Masse
+für M6.
+Warum: Isors Zuschnitt vom 2026-09-30 — seine eigene Reihe
+500/1000/2000 war der Verdoppler schon. Verdoppler statt ×1,5, weil
+ganzzahlig und die Reihe bei drei Bossen endet; 25 Leben aus der
+Rechnung am ersten Boss (Schaden ~2, Sperre 3 → ~70 theoretisch
+möglich, real die halbe Zeit, weil die zweite Lane mitverteidigt
+wird).
+Verworfen: ×1,5 (ab dem zweiten Schritt Kommazahlen bzw.
+Rundungsregeln); eine feste Boss-Lane (der Lane-Würfel existiert im
+Spawner schon, Zufall kostet nichts).
+
+## 2026-09-30 — Boss-Runde zählt auch bei Durchbruch
+Was: Bricht der Boss unten durch, ist die Boss-Runde trotzdem
+beendet: 5 Leben ab, das Level gilt als geschafft, die Lane-Öffnung
+von Level 5/10 kommt trotzdem — nur das Boss-Gold entfällt. Level
+15 durch heißt Sieg, egal wie der Boss ging, solange Leben übrig
+sind. Die Lane-Progression hängt damit an der Boss-Runde, nicht am
+Boss-Sieg (präzisiert „Lane-Progression 2/3/4 an den Boss-Siegen",
+2026-09-20).
+Warum: Die Progression bleibt planbar — ein verpasster Boss darf
+nicht dauerhaft die dritte oder vierte Lane sperren; die Strafe
+sind die 5 Leben.
+Verworfen: Lane öffnet nur bei Kill (die Progression könnte
+dauerhaft steckenbleiben); den Boss wiederholen lassen (eine
+Level-Wiederhol-Mechanik nur für diesen Fall).
+
+## 2026-09-30 — Multishot: rechte Nachbar-Lane, am Rand fällt er weg
+Was: Multishot feuert auf der eigenen und der rechten Nachbar-Lane,
+gleiche Zeile, gleiche Feuer-Sperre, kein Extra-Preis je Schuss.
+Auf der äußersten rechten Lane gibt es keine rechte — dann nur der
+eigene Schuss. Keine Skill-Stufen in der Pflichtfassung (A3 bleibt
+Ausbau); die alte Idee „weitere Boss-Siege verbessern den Skill"
+aus dem Umschwenk-Eintrag ist endgültig abgelöst.
+Warum: Isors Schnitt vom 2026-09-30 — die einfachste Regel, und
+Positionierung wird Taktik: Wer den Skill nutzen will, steht nicht
+rechts außen.
+Verworfen: die Spiegel-Regel der Umschwenk-Idee (rechts außen
+trifft stattdessen links — nie nutzlos, aber ein Erklärsatz mehr);
+Durchschlag als zweiter Skill (Zeit bis zur Abgabe).
+
+## 2026-09-30 — Skill-Slot: Entweder-oder, der Slot besitzt den Schuss
+Was: `CSkill` ist eine abstrakte Basisklasse (`Fire` rein-virtuell,
+dazu der virtual-Destruktor wie bei `CEnemy`), `CMultishotSkill`
+der einzige Erbe; `m_pSkill` (`CSkill*`) wohnt in `CPlayer` und
+startet auf nullptr. Die Feuer-Stelle nach der Sperre: Slot leer →
+die Szene spawnt den normalen Schuss wie bisher; Slot belegt →
+`Fire` des Skills übernimmt den kompletten Schuss (Multishot:
+eigene plus rechte Lane). Dateipaare Skill.h/.cpp und
+MultishotSkill.h/.cpp.
+Warum: Isors Entwurf, im Gegenhalten von ihm verteidigt: Ein
+künftiger Skill verändert den Schuss (Durchschlag, anderes Symbol,
+anderer Schaden), statt nur einen zweiten zu ergänzen — die
+virtuelle Methode tauscht das komplette Verhalten. Preis: die eine
+Spawn-Zeile des normalen Schusses steht doppelt — akzeptiert.
+Verworfen: Claudes Zusatz-Hook (normaler Schuss immer, der Skill
+ergänzt nur — könnte nie ersetzen); der Name BaseSkills
+(C-Präfix-Konvention, die Basis zeigt der Vererbungspfeil); der
+Name FireExtraShots (die Methode besitzt den ganzen Schuss).
+
+## 2026-09-30 — [4]-Kauf-Kette und das vierte delete
+Was: Die [4]-Kette nach dem Try-Muster vom 2026-09-29: erst die
+billige Frage „Slot schon belegt?" (Error-Sound, kein Gold bewegt),
+dann `TryRemoveGold` über 2000 Gold, dann `new CMultishotSkill` in
+den Slot plus Kauf-Sound. Das delete übernimmt der erste Destruktor
+des Projekts: `~CPlayer` (delete auf nullptr ist erlaubt und tut
+nichts, keine if-Prüfung nötig). Merkposten für M6: Der
+Neustart-Reset setzt den Skill mit zurück (delete + nullptr), sonst
+startet die zweite Runde mit gekauftem Multishot.
+Warum: Der Besitzer des Zeigers ist CPlayer, also wohnt das delete
+bei ihm; die billige Frage zuerst wie beim [2]-Minimum-Check, sonst
+frisst ein Doppelkauf 2000 Gold ohne Wirkung.
+Verworfen: der Doppelkauf, der Gold schluckt (sähe wie ein Bug
+aus); das delete in der Szene (sie besitzt den Zeiger nicht).
+
+## 2026-09-30 — Balance-Datei: schmal, nur Tuning-Werte
+Was: Eine zentrale Datei nur für Tuning-Werte — Leben, Gold,
+Preise, Intervalle, die Boss-Werte. Angelegt in M5 B1; die
+15-Zeilen-Tabelle zieht in M6 dort ein. Layout- und
+Technik-Konstanten bleiben in ihren Dateien. Als M6-Absicht gleich
+mitbeschlossen: Leben- und Gold-Skalierung je Level als zwei neue
+Tabellen-Spalten (Isors „+50 % mehr Gold nach jedem Boss-Sieg" ist
+dann nur ein Spaltenmuster).
+Warum: Isors Wunsch — Balancing an einer Stelle statt quer durch
+die Dateien —, geschnitten gegen den God-Header; die M6-Tabelle
+braucht ohnehin einen zentralen Wohnort. Das Risiko, dass die
+Dozentin zentrale Werte-Dateien kritisch sieht, ist benannt und von
+Isor getragen.
+Verworfen: alles zentral samt Figuren-Symbolen (die Erben verlören
+ihr „setzt nur Startwerte"-Muster); Werte je Klasse wie bisher
+(Balancing quer durch mehrere Dateien).
+
+## 2026-09-30 — Durchbruch-Kosten als fünftes Startwert-Feld
+Was: Die Durchbruch-Kosten wohnen als fünfter Konstruktor-Parameter
+samt Getter in `CEnemy` (Bauer und Turm 1, Boss 5 — Konstanten in
+Balance.h); die Entsorgungs-Funktion liest sie **vor** dem delete am
+Gegner ab, Effekt-vor-delete wie beim Gold der Kollision.
+Entschieden im Bau-Moment von B1 — der Design-Abschnitt hatte nur
+die 5 des Bosses festgelegt, nicht den Mechanismus.
+Warum: Kosten sind Daten je Typ wie die Gold-Belohnung — das
+Startwert-Muster trägt sie ohne neuen virtual; der Tempo-Hook
+bleibt dem vorbehalten, was sich anders *verhält*. Fünf Parameter
+sind bei genau drei festen Weiterleitungs-Aufrufern mit benannten
+Konstanten tragbar (Isors eigene Nachfrage in der Session).
+Verworfen: ein zweiter virtual-Hook (das M3-Argument gilt: kein
+virtual für reine Zahlenunterschiede); ein Parameter-Objekt jetzt
+(YAGNI — wartet auf den echten zweiten Nutzer oder das sechste
+Feld).

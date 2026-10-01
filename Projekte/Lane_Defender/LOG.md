@@ -325,3 +325,24 @@ leere Rubrik schreibt `—`.
   Multishot-Wirkung, polymorpher Skill-Slot); Polish-Liste vom
   29.09. als ROADMAP-Aufgabe (Sounds, HUD-Farben, Tutorial,
   Datei-für-Datei-Durchgang mit Refactoring).
+- 2026-09-30 — M5 begonnen: Design-Abschnitt komplett, B1 Boss
+  fertig. Design: Boss-Zuschnitt (zufällige Lane, Durchbruch
+  −5 Leben, Verdoppler-Gold 500/1000/2000, Runde zählt auch bei
+  Durchbruch), Multishot rechte Nachbar-Lane mit Randregel, Slot
+  als Entweder-oder (CSkill abstrakt, m_pSkill in CPlayer),
+  [4]-Kauf-Kette samt viertem delete in ~CPlayer, schmale
+  Balance-Datei — sechs DECISIONS-Einträge, Design-Seite
+  „📍 Status · Lane Defender M5-Design" im ARTIFACT_INDEX.
+  Development (Isor tippt): CBoss ungefragt selbst vorgebaut,
+  erster Override des Projekts (Tempo 6 Ticks), Balance.h
+  angelegt (Isors Include-Entscheid: .cpp statt Header),
+  Durchbruch-Kosten als fünftes Startwert-Feld (DECISIONS,
+  30.09.), Boss-Spawn zu Levelbeginn mit Sperr-Wächter im
+  Spawner; F5-Testbogen bestanden (Boss allein auf seiner Lane),
+  /W4 grün, Kommentar-Pass durch. Fehlerbilder: zweimal
+  Verschattung, Tempo-Konstanten an der Kosten-Position — alle im
+  Gegenlesen gefunden (LERNLOG). Befund Nahbereichs-Schüsse
+  unsichtbar → Polish-Liste. Schnitt-Kontrollpunkt Mittwochabend:
+  B2 morgen mit Fallbeil Donnerstagabend, sonst Schnittlinie 1.
+  Ist heute ~3–3,5 h (Isors Schätzung, Grindstone folgt beim
+  M5-Haken).

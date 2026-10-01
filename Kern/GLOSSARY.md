@@ -65,6 +65,7 @@ Leseordnung.
 | **Ein-Puffer-Rendering** | Je Tick wird der komplette Bildschirm als **ein** String gebaut und nach Cursor-Home mit einem einzigen `cout` gesendet — überschreiben statt löschen, gegen Flackern und halbe Zustände. | `Projekte/Lane_Defender/DECISIONS.md`, „Tick-Modell: Rundensimulation, Eingabe nur zwischen Wellen" |
 | **Gelieferter Baustein** | Codeteil, den Claude fertig liefert, statt Isor ihn tippen zu lassen (Konsolen-Init, Einzeltasten-Abfrage). Kein Freibrief: Er wird gemeinsam abgenommen, und Isor muss ihn erklären und verteidigen können. | `Projekte/Lane_Defender/DECISIONS.md`, „Umschwenk auf den Lane-Shooter: Lane Defender" |
 | **Zeichen-Schleife** | Eingabe-Schleife, die jede Taste einzeln über ReadKey verarbeitet, statt Zeilen zu lesen — eine Taste pro Runde im Home-Frame-Muster; das Programm echot, prüft und färbt selbst. Gegenstück zur modalen Zeileneingabe (getline). | `Projekte/Lane_Defender/DECISIONS.md`, „2026-09-19 — Eingabe selbst gezeichnet — löst den getline-Beschluss ab" |
+| **Balance-Datei** | Die eine zentrale Code-Datei des Lane Defender nur für Tuning-Werte — Leben, Gold, Preise, Intervalle, Boss-Werte, ab M6 die Level-Tabelle. Layout- und Technik-Konstanten bleiben bewusst in ihren Dateien: schmal geschnitten, kein God-Header. | `Projekte/Lane_Defender/DECISIONS.md`, „2026-09-30 — Balance-Datei: schmal, nur Tuning-Werte" |
 
 ## Über Nummern und Ausgaben
 
