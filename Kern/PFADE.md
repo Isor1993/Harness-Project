@@ -33,6 +33,7 @@ für dieselbe Sache.
 | `PROJEKT` | `C:\Repos Isor\Isor-Tower-ProtoTyp-2026\` | Das Unity-Repo des Towers aus Semester 2 — Altstand, ruht seit der Stack-Entscheidung (`Uni/DECISIONS.md` → „2026-09-07 — Engine- und Sprachfokus"). Wird über `additionalDirectories` freigegeben, liegt nie im Harness. |
 | `PROJEKT_UNREAL` | `C:\Repos Isor\Isor-Tower-Unreal\` | Das Unreal-Repo des Towers — Hauptproduktion seit der Stack-Entscheidung; angelegt am 2026-09-08, das Unreal-Projekt selbst folgt mit der Engine-Installation. |
 | `PROJEKT_LANE_DEFENDER` | `C:\Repos Isor\Lane-Defender\` | Das C++-Konsolenprojekt des Moduls 5-101 (`Projekte/Lane_Defender/`); angelegt am 2026-09-08, das VS-Projekt legt Isor beim L1-Setup an. Bei mehreren Projekten je eine Zeile mit eigener Marke. |
+| `PROJEKT_MODEL_VIEWER` | `C:\Repos Isor\Model-Viewer\` | Das OpenGL-Projekt 3D-Model-Viewer des Moduls 5-101 (`Projekte/Model_Viewer/`); angelegt am 2026-10-04 mit Baustein V0. Bibliotheken liegen als Dateien unter `Libraries\` mit im Repo. |
 
 ## Regeln
 

@@ -1465,3 +1465,56 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   Claudes Quell-Gegenlesen fing es. **Hilfe:** Umbauten tippte
   Claude (Regler unverändert); Belege der Nur-Ordnung-Umbauten
   über die Linker-Meldung „0 von 744 Funktionen neu".
+- 2026-10-04 · Model-Viewer Design-Session (Brainstorm/Design,
+  erkältet) — **Selbst:** alle Design-Entscheidungen per Auswahl
+  getroffen und den Rahmen selbst gesetzt („Mini-Crash-Kurs: genau
+  erklären, aber nichts über das Abhak-Kriterium hinaus bauen");
+  den Unterrichts-Code der ersten OpenGL-Stunde eingebracht — er
+  bestätigte den geplanten Technik-Stack und hob die Versionswahl
+  auf 4.6. **Fehlerbild:** Ausgangslage vor dem Crash-Kurs offen
+  benannt: von zwei OpenGL-Unterrichten einen gesehen, „nichts
+  mitgenommen"; dazu die Annahme, OpenGL müsse installiert und in
+  VS eingerichtet werden (es steckt im Treiber, GLAD holt die
+  Funktionen zur Laufzeit). **Hilfe:** Pipeline-Bild mit den zwei
+  selbst zu schreibenden Stationen (Vertex-/Fragment-Shader),
+  Doppelpuffer-Erklärung am SwapBuffers des Unterrichts-Codes,
+  RAII-Vorschau am Programmaufbau.
+- 2026-10-04 · Model-Viewer V1, Fenster-Crash-Kurs (Development,
+  Isor tippt nach Vorlage) — **Selbst:** das komplette
+  Fenster-Programm (Init, Hints, Fenster samt Guard, GLAD,
+  Render-Schleife, Esc, Resize-Callback) in vier Häppchen selbst
+  getippt und je Station nacherzählt; den Fenster-Blitz-Effekt vorab
+  korrekt erklärt (main erreicht return, Programm endet) und die
+  while-Schleife als Lösung selbst gefordert, inklusive der
+  X-Drücken-Bedingung; den Doppelpuffer aus der SwapBuffers-Zeile
+  eigenständig rekonstruiert („einen zeige ich, am anderen arbeite
+  ich, dann getauscht"); constexpr-Kontrollfrage richtig (Laufzeitwert
+  darf nicht hinein). **Fehlerbild:** glClearColor als
+  „Randfarben/Mischbereich" gedeutet statt als eine Wischfarbe (vier
+  Werte = eine RGBA-Farbe); glfwPollEvents zunächst als wartend
+  gedacht (ReadKey-Analogie) — Auflösung über das eigene
+  kbhit/getch-Paar; die GLAD-Zeile fast richtig, nur „holt eine
+  Adresse" statt des übergebenen Nachschlage-Werkzeugs
+  (Funktionszeiger). **Hilfe:** Zeile-für-Zeile-Vorlage je Häppchen
+  mit Erklärung, Eimer-Bild für ClearColor/Clear als Zustand-und-Tat,
+  DLL-Umstellung gegen LNK4098 samt Laufzeitbibliotheks-Erklärung und
+  Kommentar-Pass durch Claude.
+- 2026-10-04 · Model-Viewer, Window-Umzug in CWindow (Development,
+  Abend, erkältet) — **Selbst:** den Umzugs-Entwurf im Kern richtig
+  geschnitten („alles außer der Schleife gehört dem Fenster, die
+  Schleife bleibt in main"); Konstruktor, Destruktor, IsValid und den
+  Callback-Umzug eigenständig vorgezogen, bevor die Steps angesagt
+  waren; den Rest nach Ansage-Zettel selbst getippt; das Formtief
+  offen gemeldet und den Abschluss-Modus selbst gewählt („zusammen,
+  aber ich tippe wenigstens selbst"). **Fehlerbild:** Verschattung,
+  vierte Auflage — `GLFWwindow* m_pWindow = …` deklarierte einen
+  neuen lokalen Namen, der Member wäre leer geblieben; glfwTerminate
+  trotz Ansage in beiden Konstruktor-Wächtern (RAII noch nicht
+  verankert — das Wort kam per Diktat als „RA2" gar nicht erst an);
+  ShouldClose rief die Funktion, verwarf die Antwort und gab fest
+  true zurück (bekanntes Rückgabewert-verfällt-Muster); Tipp-Rest `/`
+  in main. Gegenlesen der Funde bewusst auf den Folgetag vertagt.
+  **Hilfe:** RAII neu erklärt am Lane-Defender-delete (der Destruktor
+  als die Stelle, die immer läuft); Zuordnungstabelle main-Zeilen →
+  Klasse; Ansage-Zettel mit mechanischen Einzelschritten; Gegenbau
+  warnungsfrei durch Claude.

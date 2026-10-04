@@ -1,0 +1,31 @@
+# LOG.md — Chronik 3D-Model-Viewer
+
+Ownership: Nur was wann passiert ist — datierte Ereignisse, älteste
+oben. Eine **Chronik**: Einträge werden nie geändert oder gekürzt, nur
+ergänzt. Was als Nächstes kommt, steht in der ROADMAP dieser Schicht;
+warum das Projekt so gebaut ist, in den DECISIONS; die Lern-Rubriken
+stehen in `Kern/LERNLOG.md`.
+Format: Ereignisse als `- JJJJ-MM-TT — Ereignis (1–3 Sätze)`.
+
+- 2026-10-04 — Projekt entworfen und Schicht angelegt: Design-Session
+  zum 3D-Model-Viewer auf Grundlage von Aufgabe 2
+  (`Uni/Semester_3/VORJAHR_AUFGABEN.md`) und dem Minimal-Beschluss vom
+  2026-10-01 (`Uni/DECISIONS.md`). Vier Einträge in den DECISIONS
+  dieser Schicht (Schicht und Repo, Minimal-Zuschnitt, Technik-Stack,
+  Programmaufbau), Bausteine V0–V6 plus Kür K1 in der ROADMAP. Isors
+  Schnipsel aus der ersten OpenGL-Kursstunde bestätigte GLFW, GLAD und
+  Core Profile und hob die Versionswahl auf 4.6.
+- 2026-10-04 — V0 und V1 gebaut, in derselben Session nach dem
+  Wechsel auf Development: Repo `Model-Viewer` mit VS-Solution nach
+  Lane-Defender-Vorlage, alle vier Bibliotheken unter `Libraries\`
+  (GLFW als DLL-Anbindung wegen LNK4098), Marke und Freigabe gesetzt;
+  danach das Fenster-Programm — Isor tippte alle vier Häppchen selbst,
+  F5-Test bestanden. Belege an den Haken der ROADMAP dieser Schicht,
+  Lern-Rubriken in `Kern/LERNLOG.md`.
+- 2026-10-04 — Window-Umzug abgeschlossen, am Abend derselben Session:
+  Fenster-Code aus `main.cpp` in die RAII-Klasse `CWindow` gezogen
+  (`Window.h`/`Window.cpp`), main spricht nur noch über die kleinen
+  Methoden, das einzige `glfwTerminate` liegt im Destruktor. Isor zog
+  den Großteil selbst vor, der Rest lief erkältungsbedingt als
+  Ansage-Zettel; Gegenbau warnungsfrei, F5-Test wie vorher. Das
+  Gegenlesen der drei Tippfehler-Funde ist auf den Folgetag vertagt.

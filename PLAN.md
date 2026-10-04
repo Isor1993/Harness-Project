@@ -22,23 +22,22 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-10-03 (Abend) beim `/harness:ende` des
-Abschnitts „Lane Defender M5–M7" (Development, Lernmodus, zuletzt
-Claude auf Zuruf, Revier Lane Defender). Bericht im LOG der Schicht
-und in `Kern/LERNLOG.md`.)*
+*(überschrieben 2026-10-04 beim `/harness:ende` der Session
+„3D-Model-Viewer" — Design-Abschnitt und Development-Abschnitt
+(Lernmodus, Isor tippt nach Gerüst, Revier `Projekte/Model_Viewer`)
+in einer Session. Bericht im LOG der Schicht und in `Kern/LERNLOG.md`.)*
 
-**Lane Defender ist fertig und abgegeben** (03.10., Portfolio-Zip in
-Canvas; laut OCE ohnehin bestanden — Entscheid in den DECISIONS der
-Schicht nachgetragen). Nächster Auftrag: **Game-Jam-Briefing Do
-08.10.** im Blick behalten und den **3D-Model-Viewer minimal**
-starten (`Uni/DECISIONS.md` → „3D-Model-Viewer minimal": erst die
-Aufgabe gegen eine Minimal-Checkliste lesen; Ziel-Abgabe
-~23./24.10.). Engine-Entscheidung spätestens So 02.11. Offen:
-Vokabel-Runde vor dem Prüfungsgespräch (ROADMAP Lane Defender),
-Pflegetage 20.09./27.09. Commit-Texte dreifach geliefert (Dateien,
-03.10.): V 0.0014 Spiel · V 0.0080 Harness (deckt auch die
-uncommittete Session vom 01.10. ab) · V 0.0047 Knowledge.
-Unverändert offen: Datenbaum.
+**Der Model-Viewer läuft vor Plan:** Schicht `Projekte/Model_Viewer/`
+steht (Design ausentschieden, fünf DECISIONS-Einträge), Repo
+`Model-Viewer` gebaut, **V0 und V1 fertig** samt RAII-Klasse
+`CWindow` — das Gerüst-Ziel Mi 07.10. ist praktisch erreicht.
+Nächster Auftrag: als Warmup die **drei Funde des Window-Umzugs
+gegenlesen** (`Kern/LERNLOG.md`, letzter Eintrag vom 2026-10-04),
+dann **V2 · erstes Dreieck** (ROADMAP der Schicht).
+**Game-Jam-Briefing Do 08.10.** im Blick. Commit-Texte dreifach
+geliefert (Dateien, 04.10.): V 0.0001 Model-Viewer · V 0.0081
+Harness · V 0.0048 Knowledge. Unverändert offen: Vokabel-Runde Lane
+Defender, Pflegetage, Unreal-Toolchain-Test, Datenbaum.
 
 ---
 
