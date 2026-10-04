@@ -267,7 +267,7 @@ So 20.09. fertig — dann beginnt der Model-Viewer eine Woche früher.
   **Erledigt am 2026-09-29:** Doku-Input steht in
   `ABGABE_NOTIZEN.md` → M4, Ist-Zeit ~6 h gegen 8 h im ZEITPLAN —
   gebaut, geprüft und dokumentiert, der Meilenstein ist fertig.
-- [ ] **M5 · Boss und Skills** — Boss-Klasse (belegt eine Lane, die
+- [x] **M5 · Boss und Skills** — Boss-Klasse (belegt eine Lane, die
   übrigen spawnen normal weiter), Skill-Wahl beim ersten Boss-Sieg,
   Spezialattacken Doppel-Lane und Durchschlag als Klassen am
   polymorphen Skill-Slot, Skill-Stufen durch weitere Boss-Siege.
@@ -296,14 +296,59 @@ So 20.09. fertig — dann beginnt der Model-Viewer eine Woche früher.
   F5-Testbogen bestanden, /W4 grün, Kommentar-Pass durch. Offen:
   B2 Skill-System — **Fallbeil Donnerstagabend**, danach greift
   Schnittlinie 1 ohne neue Diskussion.
-- [ ] **M6 · Level-Lauf** — 15 Level, Lane-Progression im
+  **Erledigt am 2026-10-03:** B2 Skill-System fertig — das Fallbeil
+  wurde durch zwei Krankheitstage gerissen, geschnitten wurde
+  trotzdem nichts: `CSkill` abstrakt (rein-virtuelles Fire,
+  virtueller Destruktor), `CMultishotSkill` mit Randregel rechts
+  außen, Slot `m_pSkill` samt erstem Destruktor des Projekts in
+  `CPlayer`, Feuer-Stelle als Entweder-oder, [4]-Kette nach dem
+  Try-Muster, Shop-Preise komplett in Balance.h.
+  Sieben-Punkte-Testbogen grün, /W4 grün, Kommentar-Pass durch;
+  Ist-Zeit 5,22 h im ZEITPLAN, Doku-Input in `ABGABE_NOTIZEN.md` →
+  M5 — gebaut, geprüft und dokumentiert. Beleg: LOG dieser Schicht
+  und `Kern/LERNLOG.md`, je 2026-10-03.
+- [x] **M6 · Level-Lauf** — 15 Level, Lane-Progression im
   Dreier-Raster, Skalierung je Level, Sieg nach dem dritten Boss,
   Niederlage bei 0 Leben, HUD.
   **Stand 2026-09-20 (M2-Design):** Die Progression läuft 2/3/4 an
   den Boss-Siegen von Level 5 und 10 statt im Dreier-Raster
   (DECISIONS → „Lane-Progression 2/3/4 an den Boss-Siegen").
-- [ ] **M7 · Abgabe-Polish** — Eingaben härten, Konventions-Pass,
+  **Ausdesignt am 2026-10-03** (vier Einträge in den DECISIONS
+  dieser Schicht): Level-Tabelle 15 Zeilen × 6 Spalten mit
+  Ganzzahl-Faktoren in Balance.h (Zeile 1 = Testlevel von heute,
+  Tempo-Sprung bei L8 versetzt zur Lane-Öffnung), Level-Wechsel
+  mit ~2-s-Zwischenstand samt Lane-Ansage, Neustart-Reset als
+  `CPlayer::Reset()` am GameScene-Start (löst den Merkposten vom
+  30.09.), Endszene mit VICTORY/GAME-OVER-Schriftzügen und echtem
+  Level. Offen ist der Bau: B1 Tabelle und Level-Lauf (Bau-Notiz:
+  `I_LANE_COUNT` wird Szenen-Variable, zieht durch BuildFrame und
+  MoveRight), B2 Sieg/Niederlage samt Reset und HUD-Level.
+  Reserve bleiben Schnittlinien 2/3 (fest 3 Lanes · Sieg nach
+  Boss 2).
+  **Erledigt am 2026-10-03:** B1 Tabelle und Level-Lauf, B2 Sieg/
+  Niederlage, Reset und Ergebnis-Transport — Lane-Zahl variabel,
+  Banner mit Lane-Ansage, Skalierung per Ganzzahl-Faktoren, der
+  Endszenen-Platzhalter aus M1 ist eingelöst. Beide Testbögen grün
+  (B1-Zwischentest bis Level 9, M6-Bogen komplett), Isors eigener
+  Sieg-Befund (Konstante statt Zustand) gefixt, /W4 grün,
+  Schnittlinien 2/3 ungenutzt. Ist-Zeit 5 h im ZEITPLAN, Doku-Input
+  in `ABGABE_NOTIZEN.md` → M6 — gebaut, geprüft und dokumentiert.
+  Beleg: `Kern/LERNLOG.md`, 2026-10-03; der LOG-Eintrag kommt mit
+  dem Session-Ende.
+- [x] **M7 · Abgabe-Polish** — Eingaben härten, Konventions-Pass,
   Leak-Kontrolle, Build, README.
+  **Erledigt am 2026-10-03:** Leak-Bilanz dicht (vier new gegen
+  sechs delete, alle Szenen-Ausgänge räumen), kein `cin >>` übrig,
+  Konventions-Pass sauber (Level4 + /utf-8 in allen vier
+  Konfigurationen verifiziert), Datei-für-Datei-Review aller 18
+  Dateipaare mit drei Isor-Befunden (NameInput-Konstanten,
+  GameScene-Putz, Tutorial um Shop/ESC/Ziel ergänzt),
+  Balance-Finaltuning nach Voll-Spieltest (steile Leben-Kurve,
+  Damage 250, Atk Speed 500), Easter Egg „geheimer Name",
+  Release-Build 1.0.0, READ_ME und Zeitplan-PDF im
+  Portfolio-Paket — **abgegeben am 2026-10-03**. Ist-Zeit ~3 h im
+  ZEITPLAN, Doku-Input in `ABGABE_NOTIZEN.md` → M7. Beleg: LOG
+  dieser Schicht und `Kern/LERNLOG.md`, je 2026-10-03.
 
 ## Ausbauten — nur bei Zeitreserve, Reihenfolge in den DECISIONS
 („Schnittlinien Lane Defender")
@@ -328,7 +373,7 @@ So 20.09. fertig — dann beginnt der Model-Viewer eine Woche früher.
   anderen"); Repo mit .gitignore und README angelegt, Marke
   `PROJEKT_LANE_DEFENDER` in `Kern/PFADE.md`, L1-Anleitung in
   `Sandbox/L1_Setup_Anleitung.txt`.
-- [ ] **Symbole final wählen** — beim Bau von M2/M3, ausschließlich
+- [x] **Symbole final wählen** — beim Bau von M2/M3, ausschließlich
   Zeichen, die den Raster-Test bestehen (DECISIONS →
   „Raster-Stabilität vor Schmuck"). Kandidaten für den M1-Zeichentest,
   je Rolle in Vorschlagsreihenfolge (Claude, 2026-09-08): Spieler `A`
@@ -351,6 +396,9 @@ So 20.09. fertig — dann beginnt der Model-Viewer eine Woche früher.
   **Stand 2026-09-27 (M3-Design):** Die Figuren-Zuordnung ist final
   — Normal ♟, Tank ♜, Boss ♚, ♞ Reserve für A1 (DECISIONS →
   „Figuren-Zuordnung final"). Offen nur noch die HUD-Balken (M6).
+  **Geschlossen am 2026-10-03:** Das HUD blieb eine reine
+  Textzeile — M6 brauchte keine Balken, der letzte offene
+  Teilpunkt ist damit entfallen.
 - [x] **Spieler als zusammengesetztes Sprite prüfen** — Isors Idee vom
   2026-09-13: die Spielfigur aus mehreren Einzelzeichen statt einem
   Symbol; Skizze vom selben Tag: T-Form mit breitem Sockel und
@@ -389,10 +437,15 @@ So 20.09. fertig — dann beginnt der Model-Viewer eine Woche früher.
   gegenstandslos — der Live-Shop kauft per Zifferntaste, ohne
   Listen-Auswahl. Die Frage ruht, bis ein echter dritter Nutzer
   auftaucht.
-- [ ] **Design gegen die Original-Aufgabe halten**, sobald die echten
+- [x] **Design gegen die Original-Aufgabe halten**, sobald die echten
   Semester-3-Texte vorliegen. Grundlage bisher:
   `Uni/Semester_3/VORJAHR_AUFGABEN.md` → „1 · C++ Konsolenprojekt".
-- [ ] **getline-Härtung bei M1/M7 prüfen** — zeilenweises Lesen
+  **Geschlossen am 2026-10-03:** gegenstandslos — die Aufgaben
+  wurden am 2026-09-07 in der Moduleinführung als inhaltlich
+  identisch mit dem Vorjahr bestätigt (Ownership-Zeile von
+  `VORJAHR_AUFGABEN.md`); die Abgabe deckt Pflichtthemen und
+  geforderte Teile (Zeitplan-PDF, Projekt, Build) ab.
+- [x] **getline-Härtung bei M1/M7 prüfen** — zeilenweises Lesen
   (`getline` plus Parsen) statt `cin >>` für die Menü-Eingaben: fängt
   auch leere und Leerzeichen-Eingaben und räumt das liegengebliebene
   `\n` ab. Anlass und Abwägung: DECISIONS dieser Schicht →
@@ -406,6 +459,8 @@ So 20.09. fertig — dann beginnt der Model-Viewer eine Woche früher.
   Namenseingabe zeichnet selbst statt getline zu lesen (DECISIONS →
   „Eingabe selbst gezeichnet"), im Projekt bleibt damit gar kein
   `cin` übrig. Offen nur noch der M7-Scan als Kontrolle.
+  **Erledigt am 2026-10-03:** M7-Scan gelaufen — kein `cin >>` im
+  Projekt (Beleg: ABGABE_NOTIZEN → M7).
 - [ ] **Farbsprache der Dozentin vorlegen** — bei Abgabe oder
   Präsentation fragen, ob Gelb/Hellrot für sie passt (Isor, 2026-09-19:
   Gelb bestätigt; Grün verworfen — Rot-Grün-Paar mit der Fehlerfarbe,
@@ -419,13 +474,16 @@ So 20.09. fertig — dann beginnt der Model-Viewer eine Woche früher.
   mit dem Extra-`\n` exakt die 30 Terminal-Zeilen, und jedes
   Überschreiten des unteren Rands versetzt alle Folge-Frames.
   Gehört ins M7-Umfeld (Härten).
-- [ ] **Zeilen-Schleifen in BuildFrame DRY-en** — Isors Befund vom
+- [x] **Zeilen-Schleifen in BuildFrame DRY-en** — Isors Befund vom
   2026-09-25 nach der B2-Abnahme: die innere Lane-Schleife steht
   viermal fast identisch da (Kappe, Körper, Barrel, Base).
   Bewusst zurückgestellt (Isor, gleiche Session): B4 bringt
   Schuss+Gegner in derselben Zeile, M3 macht aus der Zellen-Frage
   einen Daten-Lookup — erst wenn das Muster stillsteht, wird
   einmal richtig abstrahiert. Fällig nach M3.
+  **Geschlossen am 2026-10-03:** entschieden, dass es bleibt —
+  Klarheit vor Abstraktion am stillstehenden Muster (DECISIONS →
+  „BuildFrame bleibt vierfach ausgeschrieben").
 - [ ] **Polish-Liste vom 2026-09-29** — Isors Befunde nach dem
   M4-Spieltest, gehören ins M7-Umfeld: Schuss-Sound und Sterbe-Sound
   ergänzen, alle Sounds aufeinander abstimmen (unterscheidbar
@@ -447,3 +505,12 @@ So 20.09. fertig — dann beginnt der Model-Viewer eine Woche früher.
   erklärt jede Datei, Claude vertieft, gemeinsames Refactoring auf
   Lesbarkeit — Isor bestimmt, was und wie umgebaut wird; der
   ausführliche Erklärstil bleibt.
+  **Stand 2026-10-03 (M7):** Erledigt aus der Liste: Tutorial
+  (Shop/ESC/Ziel ergänzt) und der Datei-für-Datei-Durchgang (alle
+  18 Paare, Befunde im LERNLOG). **Offen bleiben:** Schuss- und
+  Sterbe-Sound samt Abstimmung, HUD-Farben, Shop-Rot bei zu wenig
+  Gold, Treffer-Blitz gegen unsichtbare Nahschüsse — nicht mehr
+  abgabe-relevant, Kandidaten vor der Präsentation — und die
+  **Vokabel-Runde** (seit heute dazu: Destruktor und die Tilde,
+  rein-virtuell, der Entweder-oder-Slot) als eigener Termin vor
+  dem Prüfungsgespräch.

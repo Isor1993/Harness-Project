@@ -174,6 +174,17 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
   die ROADMAP der Schicht (dort findet der Design-Abschnitt sie
   wieder). Anlass: `Kern/STOERUNGEN.md`, 2026-09-27.
 
+- [ ] **Steuer-Modul: Lohnsteuerjahresausgleich mit dem Harness** —
+  Isors Zuruf vom 2026-10-01: Der Harness bekommt eine Regelstrecke,
+  die den privaten Lohnsteuerjahresausgleich über Elster begleitet —
+  erst der Ausgleich für das Steuerjahr 2025 als Testlauf, dann 2026;
+  später eine Erweiterung für ein Kleingewerbe, falls ein Spiel
+  verkauft wird. Die Datenschutz-Grenze wird vor dem ersten Einsatz
+  festgelegt: keine Steuer-ID und keine echten personenbezogenen Daten
+  in den Chat, nur Kostenkategorien, Belegstruktur und
+  Formular-Verständnis — getippt wird in Elster von Isor. Anlass: Der
+  Steuerberater fürs frühere Gewerbe war unverhältnismäßig teuer.
+
 Was im Betrieb nicht trägt, kommt als Störung in `Kern/STOERUNGEN.md`
 und wird von dort aus zu einem Punkt hier — genau dafür fragt die
 Doku-Pflicht in `Kern/WORKFLOW.md` nach beidem im selben Zug.

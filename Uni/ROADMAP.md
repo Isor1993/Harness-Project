@@ -54,6 +54,19 @@ Befunde der Prüfung vom 2026-08-26) stehen mit ihren Belegen in
   „2026-09-08 — Semester-3-Roadmap", Phasenplan unten, Zeitstrahl auf
   der Artifact-Seite `📍 Status · Semester 3` (`Kern/ARTIFACT_INDEX.md`).
 
+- [ ] **Spielkonzept engine-neutral entwickeln** — Core Loop, Spielidee
+  und Pitch-Grundlage für das eigenständige kleine Spiel; läuft ab
+  sofort und hängt nicht an der Engine-Entscheidung vom 02.11.
+  (`DECISIONS.md`, Einträge vom 2026-10-01). Eigener Design-Abschnitt;
+  mit dem Konzept entsteht die neue Projekt-Schicht samt GDD.
+
+- [ ] **Zwei fertige Spiele bis Studienende, eines veröffentlicht** —
+  Isors Ziel vom 2026-10-01 hinter der Portfolio-Strategie
+  (`DECISIONS.md` → „2026-10-01 — Semester-Spiel: eigenständiges
+  kleines Spiel statt Tower-Variante"). Spiel 1 ist das Semester-Spiel;
+  Spiel 2 folgt in Semester 4–6, Release-Fragen nach dem ersten
+  Prototyp.
+
 ### Der Phasenplan — beschlossen am 2026-09-08
 
 Grundsätze (Frontloading, 24-Stunden-Woche): `DECISIONS.md` →
@@ -73,17 +86,26 @@ dazwischengesetzt.
   (`Projekte/Lane_Defender/ROADMAP.md`); Fertig-Ziel So 27.09., Abgabe
   Fr 02.10., die Abgabewoche ist nur Feinschliff. Isors Streckziel vom
   2026-09-14: wenn möglich schon So 20.09. fertig.
-- [ ] **Phase 2 · 3D-Model-Viewer (28.09.–25.10.)** — OpenGL/GLSL im
-  Selbststudium; der Muss-Umfang (Fenster, Pipeline, texturiertes
-  Modell, Licht, Kamera, Skybox) steht vor dem Unreal-Block;
-  Fertig-Ziel So 25.10., Abgabe Fr 30.10. Beginnt früher, wenn das
-  Streckziel aus Phase 1 hält.
-- [ ] **Phase 3 · Unreal-Block, Tower-Prototyp und Pitch-Material
-  (26.10.–22.11.)** — Unterricht mitnehmen, parallel den spielbaren
-  Unreal-Prototyp in der Tower-Welt bauen — der Stack-Kontrollpunkt
-  (`DECISIONS.md` → „2026-09-07 — Engine- und Sprachfokus"); das
-  Pitch-Material entsteht mit, weil beides am selben Tag fällig ist.
-  Fertig-Ziel So 22.11., Abgabe Fr 27.11. (Prototyp und Pitch).
+- [ ] **Phase 2 · 3D-Model-Viewer (03.10.–25.10.)** — OpenGL/GLSL im
+  Selbststudium; seit dem 2026-10-01 bewusst minimal: nur die
+  Minimalkriterien der Aufgabe plus ein simpler Toon-Shader, früh
+  abgeben und OCE-Feedback einholen (`DECISIONS.md` → „2026-10-01 —
+  3D-Model-Viewer minimal"). Vorher die Aufgabe gegen eine
+  Minimal-Checkliste lesen (`Semester_3/VORJAHR_AUFGABEN.md`,
+  Aufgabe 2). Dazwischen liegt der Game Jam (08.–15.10.,
+  `Semester_3/STUNDENPLAN.md`) mit Minimal-Beteiligung — das Gerüst
+  (Fenster, Modell laden) steht deshalb vor dem Jam. Frühe Abgabe
+  ~23./24.10. statt Fertig-Ziel So 25.10.; Frist Fr 30.10.
+- [ ] **Phase 3 · Unreal-Block, Spiel-Prototyp und Pitch-Material
+  (26.10.–22.11.)** — Unterricht mitnehmen; vorweg das Engine-Hands-on
+  (Toolchain-Test plus zwei Mini-Übungen, ~24.10.–01.11.) mit der
+  **Engine-Entscheidung spätestens So 02.11.** (`DECISIONS.md` →
+  „2026-10-01 — Engine-Kontrollpunkt vorgezogen"); danach der Prototyp
+  des eigenständigen kleinen Spiels (`DECISIONS.md` → „2026-10-01 —
+  Semester-Spiel: eigenständiges kleines Spiel statt Tower-Variante")
+  im gewählten Stack, das Pitch-Material entsteht mit, weil beides am
+  selben Tag fällig ist. Fertig-Ziel So 22.11., Abgabe Fr 27.11.
+  (Prototyp und Pitch).
 - [ ] **Phase 4 · Projektplanung (23.11.–13.12.)** — Pitch-Präsentation
   Do 03.12. (vor Ort); die benotete Projektplanung (Summative
   Zwischenprüfung) mit den Prototyp-Erkenntnissen: Fertig-Ziel

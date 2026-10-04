@@ -1391,3 +1391,77 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   Spawns). **Hilfe:**
   Override-Fallen-Tabelle; Geschwister-Includes auf Zuruf von
   Claude nachgezogen; MSBuild-Prüfläufe durch Claude.
+- 2026-10-01 · Semester-3-Neuausrichtung (Brainstorm/Design) —
+  **Selbst:** unaufgeforderte, ehrliche Selbsteinschätzung der
+  KI-Arbeitsteilung im Lane Defender: eigene Schätzung ~80 % Isor /
+  20 % Claude, wobei vom Claude-Anteil der Großteil reine Schreib-
+  und Pflegearbeit sei und nur ~3–4 % echte Codestücke — zwei, drei
+  Fälle, jeweils danach gemeinsam durchreflektiert; die eigene erste
+  Schätzung (95/5) von sich aus nach unten korrigiert.
+  Lern-Selbstbild: „ein paar Knoten lockerer geworden, zwei Steps
+  vor dem Klick" — Pointer, Includes, Klassen sitzen gefühlt;
+  Vermutung, C# fühle sich durch den C++-Umweg jetzt leichter an
+  (ausdrücklich ungetestet, prüfbar beim Engine-Hands-on Ende
+  Oktober). **Hilfe:** keine — reine Selbstauskunft; Abgleich mit
+  dem Zeugnis vom 2026-09-30 durch Claude (deckt sich mit dessen
+  Befundlage).
+- 2026-10-03 · Lane Defender M5 B2, Einstieg (Development) —
+  **Selbst:** den Kern von `CSkill` allein gebaut (abstrakte Klasse
+  mit rein-virtuellem `Fire() = 0`, pragma once, Konvention), dazu
+  allein den Slot-Einbau in `Player.h` begonnen — beides zwischen
+  den Sessions, krank und ohne Vorlage. **Fehlerbild:** den
+  virtuellen Destruktor trotz Enemy-Vorbild ausgelassen; `Fire`
+  ohne Parameter deklariert (woher Lane, Beutel, Startzeile kommen,
+  war nicht durchdacht); in der cpp eine freie Funktion `Fire()`
+  statt der Member-Methode angelegt (fehlendes `CSkill::`);
+  `#include <CSkill>` in Spitzklammern mit Klassen- statt Dateinamen;
+  Zeiger-Member ohne Stern (`CSkill m_pSkill = nullptr;`) — der
+  Name sagte `m_p`, der Typ folgte nicht. Nach dem Review-Gerüst
+  alle Korrekturen an Skill.h/.cpp selbst sauber umgesetzt; den
+  Sieben-Punkte-Testbogen der B2-Abnahme allein durchgeführt, alles
+  grün; auf die Nachfrage zur Tilde den Destruktor selbst richtig
+  geraten. Zweites Fehlerbild danach: das Test-Gold
+  (`I_DEFAULT_GOLD` 2500) nach dem Testbogen nicht zurückgedreht —
+  im Gegenlesen durch Claude gefangen, das M4-Muster „hochsetzen
+  und zurückdrehen" war benannt, der Rückweg fehlte trotzdem.
+  **Hilfe:** Review mit Gerüst-Vergleich durch Claude; wegen
+  Erkältung und Abgabedruck Regler umgestellt — Rest von B2 tippt
+  Claude auf Zuruf, Isor liest gegen; MSBuild-Prüfläufe durch Claude.
+- 2026-10-03 · Lane Defender M6-Design (Brainstorm/Design) —
+  **Selbst:** die vier Vorlage-Entscheidungen geprüft und per
+  Auswahl entschieden (Tabelle, Zwischenstand, Reset, Endszene);
+  den eigenen Anlauf zu einem Tabellen-Vorschlag erkältungsbedingt
+  abgebrochen und bewusst delegiert („mach du mal"). **Hilfe:**
+  anders als bei den Design-Momenten M2–M5 kam die komplette
+  Vorlage von Claude (Anker-Logik, Kassensturz, drei
+  Zusatzpunkte) — krankheitsbedingte Ausnahme, kein neues
+  Arbeitsmuster.
+- 2026-10-03 · Lane Defender M6-Bau (Development, Claude tippt) —
+  **Selbst:** beide F5-Testbögen (B1-Zwischentest bis Level 9,
+  M6-Bogen komplett) allein durchgeführt; die zwei Test-Schrauben
+  (Leben 2, Sieg nach Level 2) ohne Erinnerung sauber
+  zurückgedreht — am Vortag war das vergessene Test-Gold noch
+  Claudes Fang; dazu einen eigenen Code-Befund gefunden, den der
+  Testbogen nicht fragte: Die Sieg-Zeile schrieb die Konstante
+  `I_LEVEL_COUNT` ins Ergebnis, statt den Zustand
+  (`iLevelIndex + 1`) auszulesen — im echten Lauf wertgleich,
+  im Test-Dreher sichtbar falsch; Fix auf seinen Zuruf.
+  **Hilfe:** den M6-Code (Tabelle, Level-Lauf, Reset,
+  Ergebnis-Transport) tippte durchgehend Claude auf Zuruf, Isor
+  las gegen; MSBuild-Prüfläufe durch Claude.
+- 2026-10-03 · Lane Defender M7, Datei-für-Datei-Durchgang
+  (Development, Claude tippt) — **Selbst:** alle 18 Dateipaare in
+  sieben Runden durchgesehen und drei eigene stilistische Befunde
+  gestellt: Balance-Kurve zu flach gegen die unbegrenzten Käufe
+  (aus dem eigenen Voll-Spieltest), NameInput-Konstanten
+  „chaotisch, zu viele Kommentare, nicht geordnet", GameScene
+  „unnötige Leerzeilen und Kommentare" — alle drei trafen; die
+  Kommentar-Mengen-Frage an Balance.h selbst gestellt (Antwort:
+  Menge trägt, nur der Doku-Verweis flog). Den alten
+  DRY-Befund an BuildFrame bewusst ruhen gelassen (Klarheit vor
+  Abstraktion). **Fehlerbild:** das Tutorial mit „sollte passen,
+  erklärt sich selbst" freigegeben, ohne den Text zu prüfen — der
+  kannte weder Shop-Tasten noch ESC noch das echte Spielziel;
+  Claudes Quell-Gegenlesen fing es. **Hilfe:** Umbauten tippte
+  Claude (Regler unverändert); Belege der Nur-Ordnung-Umbauten
+  über die Linker-Meldung „0 von 744 Funktionen neu".

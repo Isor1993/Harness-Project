@@ -346,3 +346,48 @@ leere Rubrik schreibt `—`.
   B2 morgen mit Fallbeil Donnerstagabend, sonst Schnittlinie 1.
   Ist heute ~3–3,5 h (Isors Schätzung, Grindstone folgt beim
   M5-Haken).
+- 2026-10-03 — M5 fertig: B2 Skill-System gebaut, geprüft und
+  dokumentiert; das Fallbeil vom Donnerstag wurde durch zwei
+  Krankheitstage (01./02.10.) gerissen, Schnittlinie 1 blieb
+  trotzdem in der Schublade — Boss und Multishot sind beide drin.
+  Die Abgabefrist Fr 23:59 ist damit überschritten; Klärung mit
+  der Dozentin (Krankmeldung) läuft auf Isors Seite. Ablauf: Isor
+  baute CSkill und den Slot-Einbau allein vor (Kern richtig,
+  fünf Fehlerbilder — LERNLOG, 03.10.), nach dem Review-Gerüst
+  Regler auf „Claude tippt, Isor liest gegen" (Erkältung +
+  Abgabedruck): CMultishotSkill mit Randregel, Slot samt erstem
+  Destruktor des Projekts in CPlayer, Feuer-Stelle als
+  Entweder-oder, [4]-Kette nach dem Try-Muster, alle vier
+  Shop-Preise nach Balance.h umgezogen (Vollzug des
+  Balance-Beschlusses vom 30.09.). Sieben-Punkte-Testbogen von
+  Isor komplett grün (inkl. Doppelkauf ohne Goldabzug und
+  Randregel); Test-Gold-Rückbau vergessen und im Gegenlesen
+  gefangen. MSBuild /W4 grün. Ist 5,22 h gegen 8 h → ZEITPLAN;
+  Doku-Input → `ABGABE_NOTIZEN.md` → M5; M5 in der ROADMAP
+  abgehakt — dritte Unterschreitung in Folge. Offen: der kleine
+  M6-Design-Moment (Level-Tabelle, Level-Wechsel-Erkennung,
+  Sieg/Niederlage samt Neustart-Reset, HUD-Level).
+- 2026-10-03 — M6 und M7 fertig, **Lane Defender abgegeben**
+  (Portfolio-Zip in Canvas, ein Tag nach der Frist — Verspätung
+  durch die zwei Krankheitstage, Klärung mit der Dozentin auf
+  Isors Seite). M6 am selben Tag ausdesignt (vier
+  DECISIONS-Einträge; Vorlage komplett von Claude,
+  krankheitsbedingt) und gebaut: Tabelle 15×7 in Balance.h,
+  SetupLevel, Lane-Zahl variabel, Banner-Zwischenstand,
+  Sieg/Niederlage, CPlayer::Reset, Ergebnis-Transport zur
+  Endszene; Testbögen grün, Isors Sieg-Befund (Konstante statt
+  Zustand) gefixt; Ist 5 h gegen 6 h. M7 danach: Leak-Bilanz
+  dicht, kein cin übrig, Datei-für-Datei-Durchgang aller 18
+  Paare mit drei Isor-Befunden (NameInput-Konstanten neu
+  gruppiert, GameScene geputzt, Tutorial um Shop/ESC/Ziel
+  ergänzt), Balance-Finaltuning nach Voll-Spieltest (steile
+  Leben-Kurve, Damage 250, Atk Speed 500), BuildFrame-DRY
+  bewusst geschlossen (DECISIONS), Easter Egg „geheimer Name",
+  Release-Build 1.0.0 in Build-Ablage und Portfolio, READ_MEs,
+  Zeitplan-PDF über abgabe_bauen.py plus Word; Ist 3 h gegen
+  5 h — fünfte Unterschreitung in Folge, Projektsumme ~53,4 h
+  gegen 50 h. Doku-Input in `ABGABE_NOTIZEN.md` → M6 und M7,
+  Lern-Rubriken in `Kern/LERNLOG.md`. Offen im Projekt: Rest der
+  Polish-Liste (Sounds, HUD-Farben, Shop-Rot, Treffer-Blitz,
+  Fenster-Wächter) vor der Präsentation, Vokabel-Runde vor dem
+  Prüfungsgespräch, Ausbauten A1–A5 nur bei Lust und Zeit.

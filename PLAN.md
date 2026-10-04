@@ -22,21 +22,23 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-09-30 (Abend) beim `/harness:ende` des
-Abschnitts „Lane Defender M5" (Design + Development, Lernmodus,
-Revier Lane Defender). Bericht im LOG der Schicht und in
-`Kern/LERNLOG.md`.)*
+*(überschrieben 2026-10-03 (Abend) beim `/harness:ende` des
+Abschnitts „Lane Defender M5–M7" (Development, Lernmodus, zuletzt
+Claude auf Zuruf, Revier Lane Defender). Bericht im LOG der Schicht
+und in `Kern/LERNLOG.md`.)*
 
-**M5 halb: Design komplett, B1 Boss fertig** (~3–3,5 h). Erster
-Handgriff der nächsten Session: **B2 Multishot** — **Fallbeil
-Donnerstagabend** (vorentschieden am Kontrollpunkt: nicht grün =
-Schnittlinie 1, keine neue Diskussion). Danach kurzer
-M6-Design-Moment, klein schneiden; Reserve: Schnittlinien 2/3
-(fest 3 Lanes · Sieg nach Boss 2). Abgabe **Fr 02.10., 23:59**.
-Commit-Texte dreifach geliefert (Dateien, 30.09.): V 0.0013
-Spiel · V 0.0079 Harness · V 0.0046 Knowledge. Pflegetage 20.09.
-und 27.09. offen — nachholen auf Zuruf. Unverändert offen:
-Unreal-Toolchain-Test, Datenbaum.
+**Lane Defender ist fertig und abgegeben** (03.10., Portfolio-Zip in
+Canvas; laut OCE ohnehin bestanden — Entscheid in den DECISIONS der
+Schicht nachgetragen). Nächster Auftrag: **Game-Jam-Briefing Do
+08.10.** im Blick behalten und den **3D-Model-Viewer minimal**
+starten (`Uni/DECISIONS.md` → „3D-Model-Viewer minimal": erst die
+Aufgabe gegen eine Minimal-Checkliste lesen; Ziel-Abgabe
+~23./24.10.). Engine-Entscheidung spätestens So 02.11. Offen:
+Vokabel-Runde vor dem Prüfungsgespräch (ROADMAP Lane Defender),
+Pflegetage 20.09./27.09. Commit-Texte dreifach geliefert (Dateien,
+03.10.): V 0.0014 Spiel · V 0.0080 Harness (deckt auch die
+uncommittete Session vom 01.10. ab) · V 0.0047 Knowledge.
+Unverändert offen: Datenbaum.
 
 ---
 
@@ -72,6 +74,13 @@ Sprachfokus". Der Unity-Bauplan des Towers ist archiviert
 (`Projekte/Isor_Tower/_ARCHIV.md`). Isors Lernpfad: Konsolenprojekt =
 C++-Grundlagen auf C#-Niveau bringen → 3D-Model-Viewer = Grafik und
 Shader → dann Unreal-C++ mit seinen Eigenheiten.
+
+*Nachtrag 2026-10-01:* Kontrollpunkt und Spielziel sind neu gefasst —
+Engine-Entscheidung spätestens 02.11. nach eigenem Hands-on,
+Semester-Spiel eigenständig statt Tower-Variante (`Uni/DECISIONS.md`,
+Einträge vom 2026-10-01). Der offene Toolchain-Test unten bleibt,
+rutscht aber von „vor dem Prototyp nötig" auf „vor dem
+Unterrichtsblock reicht".
 
 - [x] **Visual Studio 2022 mit C++-Workload installieren** — vor der
       ersten eigenen C++-Übung nötig; Unreal-Version mit dem Kurs

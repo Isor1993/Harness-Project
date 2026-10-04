@@ -3,7 +3,8 @@
 Ownership: Nur die Unterrichtsblöcke, Abgabe-, Präsentations- und
 Betreuungstermine des Moduls 5-101 (Games Programming, deutscher Track
 `5FSC0XD101_P 0926de`) — aus Isors Canvas-Export vom 2026-09-06, die
-Abgabetermine aus Isors Canvas-Kursübersicht vom 2026-09-14. Die
+Abgabetermine aus Isors Canvas-Kursübersicht vom 2026-09-14, die
+Game-Jam-Termine aus Isors OCE-Gespräch vom 2026-10-01. Die
 Aufgabenstellungen gehören in die ASSIGNMENT-Dateien (bis die Originale
 da sind: `VORJAHR_AUFGABEN.md`), die Planung in `PLAN.md` und die
 ROADMAPs.
@@ -35,6 +36,18 @@ inhaltsgleich einen Tick voraus und ist nicht Isors Kurs.
 | **2027-02-26** | Portfolio `[5FSC0XD101.1]` | alle — K1–K5, S1–S6 |
 
 Die **Lernzielkontrolle** steht ohne Termin in der Übersicht.
+
+## Game Jam (Uni-intern, eine Woche)
+
+| Termin | Was |
+|---|---|
+| **2026-10-08** | Game-Jam-Briefing |
+| **2026-10-15** | Game-Jam-Review |
+
+Aus dem OCE-Gespräch vom 2026-10-01 — die Termine liegen in der
+Export-Lücke oben und kamen nicht aus Canvas. Gruppenarbeit über die
+Woche dazwischen; Einordnung und Konsequenz in `Uni/DECISIONS.md` →
+„2026-10-01 — Bewertungslage Semester 3".
 
 **Abgabe vor Präsentation:** Jede Projekt-Abgabe ist am Freitag fällig,
 die zugehörige Präsentation folgt am Donnerstag sechs Tage später

@@ -896,7 +896,10 @@ fremden Schicht steht so die falsche Datei da.
 **Regel:** Fehlte — kein Ausführungsfehler, das Skript tut, was
 gebaut wurde; nur sein Meldungstext führt in die Irre.
 **Stand:** offen — Gegenmittel als Aufgabe in `Kern/ROADMAP.md` →
-„Glossar-Wächter: Besitzer pfadgenau prüfen".
+„Glossar-Wächter: Besitzer pfadgenau prüfen". Erneut aufgetreten am
+2026-10-03 — dieselben zwei Fremd-Dateien, Auslöser diesmal die
+M5/M6-Schreibrunde im Lane Defender; die Session hat den Mechanismus
+erst neu hergeleitet und dann diesen Eintrag gefunden.
 
 ### 2026-09-20 — „/W4 grün" stand in den Chroniken, gemessen wurde /W3
 **Was:** Mehrere LOG-, ROADMAP- und LERNLOG-Einträge (13.09.–19.09.)

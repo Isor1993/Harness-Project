@@ -23,10 +23,10 @@ der Kurs").
 | M2 · Lanes und Spieler: Spielfeld, Bewegung, Live-Tasten | 7 h | ~7,5 h |
 | M3 · Gegner: Klassenhierarchie, Spawn-Plan, Tick-Lauf | 10 h | ~6,7 h |
 | M4 · Kampf und Upgrades: Kollision, Gold, Upgrade-Screen | 8 h | ~6 h |
-| M5 · Boss und Skills: Boss, Skill-Wahl, Spezialattacken | 8 h | — |
-| M6 · Level-Lauf: 15 Level, Progression, Sieg/Niederlage, HUD | 6 h | — |
-| M7 · Abgabe-Polish: Härten, Konventionen, Leaks, Build | 5 h | — |
-| Summe | 50 h | — |
+| M5 · Boss und Skills: Boss, Skill-Wahl, Spezialattacken | 8 h | ~5,2 h |
+| M6 · Level-Lauf: 15 Level, Progression, Sieg/Niederlage, HUD | 6 h | ~5 h |
+| M7 · Abgabe-Polish: Härten, Konventionen, Leaks, Build | 5 h | ~3 h |
+| Summe | 50 h | ~53,4 h |
 
 M1 gemessen am 2026-09-20 (Grindstone): Projekt gesamt 20:50 h, davon
 ~0:46 h Anfangs-Design; die M1-Zeile enthält den Lern-Vorlauf L1–L3
@@ -50,3 +50,18 @@ zwei M4-Arbeitsblöcke messen 3:53 h (28.09.) + 2:00 h (29.09.) =
 Rest sind wieder unzugeordnete Kleinstücke. Die M4-Zeile enthält
 den M4-Design-Abschnitt vom 28.09. Einordnung:
 `ABGABE_NOTIZEN.md` → M4.
+
+M5 gemessen am 2026-10-03 (Grindstone): 5,22 h über die M5-Blöcke
+(30.09. Design-Abschnitt und B1 Boss, 02./03.10. B2 Skill-System);
+zwischen den Blöcken lagen zwei Krankheitstage. Einordnung:
+`ABGABE_NOTIZEN.md` → M5.
+
+M6 gemessen am 2026-10-03 (Grindstone): 5 h über die M6-Blöcke des
+03.10. — Design-Moment und Bau am selben Tag. Einordnung:
+`ABGABE_NOTIZEN.md` → M6.
+
+M7 gemessen am 2026-10-03 (Grindstone): 3 h — Leak-Kontrolle,
+cin-Scan, Konventions-Pass, Datei-für-Datei-Review aller Klassen,
+Balance-Finaltuning samt Voll-Spieltest, Release-Build, README und
+Abgabe-Paket. Summe des Projekts: ~53,4 h gegen 50 h Schätzung.
+Einordnung: `ABGABE_NOTIZEN.md` → M7.

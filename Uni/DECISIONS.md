@@ -362,6 +362,11 @@ DECISIONS des Projekts. `Kern/CODE_GUIDELINES.md` ist um
 C++-Konventionen zu ergänzen (SAE-Konvention fürs Konsolenprojekt,
 Epic C++ Coding Standard fürs Spiel) — offener Punkt für die ROADMAP.
 
+Fortgeführt am 2026-10-01: Kontrollpunkt und Spielziel sind neu
+gefasst — siehe „2026-10-01 — Engine-Kontrollpunkt vorgezogen" und
+„2026-10-01 — Semester-Spiel: eigenständiges kleines Spiel statt
+Tower-Variante". Die Herleitung hier gilt weiter.
+
 ## 2026-09-08 — Semester-3-Roadmap: Frontloading mit 24-Stunden-Wochen
 
 Was: Die Semester-Roadmap (Phasenplan in `ROADMAP.md` → „Der Phasenplan
@@ -443,5 +448,87 @@ die Abgabewoche wäre Bauzeit); die Präsentationstermine als
 Planungsanker behalten (die Abgabe ist früher fällig); alle
 Meilensteine schon jetzt setzen (vor dem Start einer Phase nur
 Rauschen).
+
+## 2026-10-01 — Bewertungslage Semester 3: nur das Spielprojekt wird benotet
+
+Was: Nach Isors Gespräch mit der OCE am 01.10. gilt: Konsolenprojekt,
+Game Jam (08./15.10., `Semester_3/STUNDENPLAN.md`) und 3D-Model-Viewer
+sind reine Abhak-Kriterien ohne Benotung und ohne Extrapunkte; bewertet
+wird allein das Spielprojekt (Pitch, Prototyp und die Folgestufen). Das
+Konsolenprojekt hat die OCE am gezeigten Stand vom 01.10. bereits als
+bestanden bezeichnet. Konsequenz: Der Aufwand je Abhak-Aufgabe geht auf
+das Minimum, die frei werdende Zeit ins Spielprojekt. Nach Isors
+Verständnis sind zudem nur Zwischenprüfung (18.12.) und Portfolio
+(26.02.) harte Termine, die übrigen Abgaben formativ — unbestätigt,
+wird bei Gelegenheit in den Canvas-Kriterien gegengelesen.
+Warum: Zeit gehört dorthin, wo bewertet wird; das verschärft das
+Frontloading-Prinzip („2026-09-08 — Semester-3-Roadmap"), statt ihm zu
+widersprechen.
+Verworfen: in Abhak-Aufgaben Qualität über das Kriterium hinaus bauen
+(bringt keine Note und kostet Spielprojekt-Zeit).
+
+## 2026-10-01 — 3D-Model-Viewer minimal: früh abgeben, Feedback statt Tiefe
+
+Was: Der Viewer erfüllt nur die Minimalkriterien der Aufgabenstellung
+plus einen bewusst simplen Toon-Shader. Vor dem Bau wird die
+Aufgabenstellung (`Semester_3/VORJAHR_AUFGABEN.md`, Aufgabe 2) einmal
+gegen eine Minimal-Checkliste gelesen. Abgabe so früh wie möglich
+(Ziel ~23./24.10., Frist 30.10.), danach fragt Isor die OCE, ob der
+Stand reicht oder etwas nachkommen muss. Arbeitsteilung: Claude
+schreibt das Drumherum (Fenster, Laden, Boilerplate), Isor baut und
+versteht den Shader-Teil.
+Warum: Abhak-Kriterium (siehe Bewertungslage-Eintrag oben); die
+Feedback-Frage macht das Kriterium verbindlich statt geraten. Der
+Toon-Shader ist der einzige Teil mit Wiederverwendungswert für den
+Stylized-Look des Semester-Spiels. OpenGL/GLFW-Tiefe lohnt laut OCE
+nur für eigene Engines/handgeschriebene Shader — kein aktuelles Ziel.
+Verworfen: der Viewer als vertieftes Shader-Labor (Stretch-Ziel vom
+2026-09-11) — bei reiner Abhak-Bewertung Aufwand ohne Gegenwert.
+
+## 2026-10-01 — Engine-Kontrollpunkt vorgezogen: Entscheidung bis 2026-11-02 nach Hands-on
+
+Was: Fortführung von „2026-09-07 — Engine- und Sprachfokus". Die
+Engine des Semester-Spiels wird nicht mehr am Prototyp-Fallbeil Ende
+November entschieden, sondern früher und mit eigener Anschauung: Nach
+der Viewer-Abgabe sehen sich Isor und Claude Unreal gemeinsam an
+(Toolchain-Test plus etwa zwei Mini-Übungen, ~24.10.–01.11., parallel
+startet am 27.10. der Unterrichtsblock). **Entscheidung spätestens
+So 02.11.** — danach bleiben 3,5 Wochen für den Prototyp bis 27.11.
+Isors Tendenz heute: 80 % Unity/C#, 20 % Unreal/C++. Bis zur
+Entscheidung läuft das Spielkonzept engine-neutral (Core Loop, Idee,
+Pitch-Material). Der Unreal-Unterricht wird in jedem Fall besucht —
+Lernschiene ohne Lieferdruck, kein zweites Produktionsgleis. Und
+grundsätzlich: **eine Stack-Entscheidung pro Portfolio-Spiel** — nach
+dem Goldmaster wird für das nächste Spiel neu entschieden, dann mit
+dem ganzen Unreal-Unterricht als Erfahrung.
+Warum: Neue Datenlage statt Grübelschleife — die Bewertungslage
+(Eintrag oben), der OCE-Rat, das Zeugnisprojekt nicht im unsicheren
+neuen Stack zu bauen, und das geänderte Spielziel (Eintrag unten).
+Zeitrechnung (Schätzung vom 01.10., 24-h-Wochen-Maßstab): Unity-Pfad
+~140 h fürs Spiel, Unreal-Pfad ~50 h im fremden Stack, weil nutzbare
+Zeit erst mit dem Unterrichtsblock beginnt. Hands-on ersetzt
+Vermutung; das feste Datum verhindert die Endlos-Verhandlung.
+Verworfen: Unity sofort festlegen (Claudes Empfehlung — Isor will
+erst selbst in Unreal gearbeitet haben, bevor er entscheidet); am
+Fallbeil Ende November festhalten (verbrennt die Pitch- und
+Prototyp-Phase im womöglich falschen Stack).
+
+## 2026-10-01 — Semester-Spiel: eigenständiges kleines Spiel statt Tower-Variante
+
+Was: Das Semester-Spiel gehört nicht mehr zum Tower-Universum. Ziel
+ist ein kleines eigenständiges Spiel mit simplem, ansprechendem Core
+Loop, theoretisch releasefähig, gern mit fertigen Materialien/Assets
+statt Eigenbau. Dahinter steht Isors Portfolio-Strategie: erst drei,
+vier kleine Spiele fertig machen und veröffentlichen, dann das
+Haupt-Traumprojekt — und Bewerbungen ab ~März 2027 (nach der
+Portfolio-Abgabe 26.02.), vor allem auf C#/Unity-Stellen. Ersetzt die
+„Folgen"-Festlegung des Eintrags 2026-09-07 (Variante in der
+Tower-Welt, multiplayer-tauglich).
+Warum: Kleine fertige Spiele lehren die Basis-Erfahrung, füllen das
+Portfolio und senken das Fehlerrisiko im späteren Hauptprojekt; ein
+Tower-Spiel hätte die große Design-Last des Universums an ein
+Abhak-Semesterprojekt gebunden.
+Verworfen: Minigame im Tower-Universum (Beschluss vom 2026-09-07);
+direkt mit dem Hauptprojekt beginnen.
 
 

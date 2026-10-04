@@ -1216,3 +1216,98 @@ Verworfen: ein zweiter virtual-Hook (das M3-Argument gilt: kein
 virtual für reine Zahlenunterschiede); ein Parameter-Objekt jetzt
 (YAGNI — wartet auf den echten zweiten Nutzer oder das sechste
 Feld).
+
+## 2026-10-01 — Fallbeil entschärft: bestanden laut OCE, fertig wird trotzdem
+Was: Die OCE hat das Konsolenprojekt am gezeigten Stand vom 01.10.
+als bestanden bezeichnet — es ist ein Abhak-Kriterium ohne Benotung
+(`Uni/DECISIONS.md` → „Bewertungslage Semester 3"). Isors Entscheid
+vom selben Tag: Das B2-Fallbeil vom 30.09. ist damit gegenstandslos;
+fertig gebaut und ordentlich abgegeben wird trotzdem —
+Level-Progression, B2 Multishot, Polish, keine neuen
+Pflicht-Features. Schnittlinie 1 wurde nie gezogen.
+*(Nachgetragen am 03.10. auf Auftrag der PLAN-Übergabe vom 01.10. —
+die Bau-Session vom 02./03.10. kannte den Entscheid nicht und baute
+unter Fallbeil-Annahme weiter; am Ergebnis änderte das nichts.)*
+Warum: Die frei werdende Zeit gehört ins benotete Spielprojekt, aber
+ein fertiges, sauberes Konsolenprojekt bleibt Lernbeleg und
+Portfolio-Stück.
+Verworfen: das Projekt auf dem 01.10.-Stand einfrieren (hätte M5
+halb und M6/M7 offen gelassen — und den Lernwert des Finales
+verschenkt).
+
+## 2026-10-03 — Level-Tabelle: 15 Zeilen, sechs Spalten, Ganzzahl-Faktoren
+Was: Die Tabelle aus dem M3-Beschluss ist gefüllt und wohnt in
+Balance.h — je Level: Budget, Tanks, Spawn-Abstand, Tempo,
+Leben-Faktor, Gold-Faktor. Zeile 1 bleibt das bisherige Testlevel
+(5 · 1 · 10 · 3). Budget wächst 5 → 32, Tanks 1 → 13, Abstand
+10 → 4; das Tempo springt einmal bei L8 von 3 auf 2 — bewusst
+versetzt zur Lane-Öffnung (L6/L11), damit nie Breite und Druck
+gleichzeitig steigen; Tempo 1 gibt es nie. Leben-Faktor in Prozent
+mit Ganzzahl-Rechnung (`Basis × Faktor / 100`): 100 bis L5, ab L6
+je +10 bis 200 — der Boss liest denselben Faktor (♚ 25 → 37 → 50),
+Turm dreistufig ab L10, Bauer zweistufig erst bei L15. Gold-Faktor
+in Blöcken 100/150/200 je Lane-Phase (Isors „+50 % nach jedem
+Boss-Sieg" als Spaltenmuster); das Boss-Gold bleibt die eigene
+Verdoppler-Reihe und läuft nicht über die Spalte. Alle Zahlen sind
+Tuning-Masse für den M7-Spieltest.
+Warum: Claudes Vorlage auf Isors Zuruf (erkältet, „mach du mal"),
+von Isor angenommen; die Anker-Logik hält die Kurve erklärbar —
+eine Schraube je Phase statt drei auf einmal. Kassensturz geprüft:
+Multishot (2000 G) wird um L7/8 erreichbar, nicht vor Boss 1.
+Verworfen: Kommazahl-Faktoren (Ganzzahl-Teilung reicht, keine
+Rundungsregeln); Tempo 2 schon ab L6 (zu viel gleichzeitig mit der
+Lane-Öffnung); eine Gold-Spalte auch für den Boss (die
+Verdoppler-Reihe 500/1000/2000 ist am 30.09. entschieden).
+
+## 2026-10-03 — Level-Wechsel mit Zwischenstand
+Was: Ist ein Level geschafft (Budget verbraucht und Feld leer, bei
+Boss-Leveln zählt die Boss-Runde auch bei Durchbruch), hält das
+Spiel ~2 Sekunden an: „Level X geschafft" in der HUD-Zeile, bei
+L5/L10 zusätzlich „Neue Lane geöffnet". Liegengebliebene Schüsse
+werden beim Wechsel geleert, Gold und Käufe bleiben. Danach lädt
+die nächste Tabellenzeile.
+Warum: Die Lane-Öffnung verändert das Spielfeld sichtbar — ohne
+Ansage wirkt sie wie ein Fehler; der Halt kostet nur eine
+Textzeile und ein WaitMilliseconds.
+Verworfen: nahtloser Übergang (billiger, aber die Öffnung käme
+kommentarlos).
+
+## 2026-10-03 — Neustart-Reset am GameScene-Start
+Was: `CPlayer::Reset()` läuft zu Beginn von RunGameScene — Leben,
+Gold, Schaden und Feuer-Sperre auf die Startwerte, der Skill wird
+per delete + nullptr geräumt, die Lane auf 0; der Name bleibt
+unangetastet. Damit ist der M6-Merkposten aus der [4]-Kette
+(30.09.) eingelöst.
+Warum: Eine Stelle statt zwei — jeder Weg in die GameScene startet
+frisch, egal ob erster Start oder Neustart nach einer Endszene.
+Verworfen: Reset im Zustandsautomaten von main (funktioniert,
+verteilt das Wissen aber auf zwei Dateien).
+
+## 2026-10-03 — Endszene: zwei Figlet-Schriftzüge
+Was: Die Endszene bekommt Sieg und Niederlage als eigene
+Linien-Schriftzüge (VICTORY bzw. GAME OVER) im Stil der
+bestehenden Szene; darunter wie bisher Name und erreichtes Level —
+das Level jetzt echt statt Platzhalter. Niederlage bei 0 Leben
+sofort mitten im Level, Sieg nach Level 15 unabhängig vom Ausgang
+der letzten Boss-Runde (Beschluss vom 30.09. gilt).
+Warum: Der Schriftzug-Stil existiert samt BuildCenteredText —
+zwei Varianten sind ein zweiter Figlet-Block, kein neues System.
+Verworfen: eine neutrale Textzeile „Sieg/Niederlage" (am wenigsten
+Aufwand, aber das Spielende ist der Moment, der Wumms verdient).
+
+## 2026-10-03 — BuildFrame bleibt vierfach ausgeschrieben
+Was: Der DRY-Befund vom 25.09. (die innere Lane-Schleife steht in
+BuildFrame viermal fast identisch — Kappe, Körper, zwei
+Spieler-Zeilen) wird nicht umgebaut. Beschlossen im
+Datei-für-Datei-Durchgang des M7-Reviews, am fertigen Code statt
+am wachsenden: Die vier Schleifen unterscheiden sich im Inhalt je
+Zelle, nicht im Rahmen — eine gemeinsame Abstraktion bräuchte
+einen Inhalt-Parameter je Zeilentyp und wäre schwerer zu lesen
+als vier parallele, gleich gebaute Schleifen.
+Warum: Klarheit vor Abstraktion — das Muster steht jetzt still,
+und genau dafür war der Umbau aufgeschoben; stillstehend zeigt
+es, dass die Wiederholung Struktur ist, nicht Schuld. Als
+Prüfungsantwort tragfähig.
+Verworfen: der Zeilen-Bauer mit Inhalts-Callback oder
+Typ-Parameter (mehr Indirektion als Ersparnis bei vier festen
+Zeilentypen).
