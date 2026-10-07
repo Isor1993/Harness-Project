@@ -115,6 +115,7 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 | `Projekte/Lane_Defender/LOG.md` | Nur was wann passiert ist — datierte Ereignisse und die Kurs-Einträge des Lernens am Projekt, älteste oben. |
 | `Projekte/Lane_Defender/ROADMAP.md` | Nur was an Lane Defender als Nächstes gelernt oder gebaut wird — Lern-Vorlauf, Meilensteine, Ausbauten, offene Aufgaben. |
 | `Projekte/Lane_Defender/ZEITPLAN.md` | Nur die Dreispalten-Zeitplantabelle des C++-Konsolenprojekts — Meilensteine, geschätzte Dauer, tatsächlich gebrauchte Dauer. |
+| `Projekte/Model_Viewer/ABGABE_NOTIZEN.md` | Nur das Roh-Material für die Abgabe-Doku des 3D-Model-Viewers — je Baustein Zeiten, Gebautes und Begründungen, festgehalten direkt nach dem Baustein. |
 | `Projekte/Model_Viewer/DECISIONS.md` | Nur Entscheidungen zum 3D-Model-Viewer (Uni-Aufgabe 2, Modul 5-101) — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
 | `Projekte/Model_Viewer/LOG.md` | Nur was wann passiert ist — datierte Ereignisse, älteste oben. |
 | `Projekte/Model_Viewer/ROADMAP.md` | Nur was am 3D-Model-Viewer als Nächstes gebaut wird — Bausteine und offene Aufgaben. |

@@ -29,3 +29,16 @@ Format: Ereignisse als `- JJJJ-MM-TT — Ereignis (1–3 Sätze)`.
   den Großteil selbst vor, der Rest lief erkältungsbedingt als
   Ansage-Zettel; Gegenbau warnungsfrei, F5-Test wie vorher. Das
   Gegenlesen der drei Tippfehler-Funde ist auf den Folgetag vertagt.
+- 2026-10-05 — Warmup und V2-Start: die drei Funde des Window-Umzugs
+  gegengelesen (alle im Gegenbau bereits behoben), dazu Isors
+  Transferfrage zur Forward-Declaration geklärt. Danach V2 begonnen:
+  Shaderpaar `Shaders/triangle.vert|.frag` getippt (frag allein),
+  CShader entworfen, Gerüst und Datei-Lesen gebaut. Die Session lief
+  über Nacht weiter.
+- 2026-10-06 — V2 fertig: CShader kompiliert und linkt mit
+  Treiber-Fehler-Logs (Meldung nennt seit dem Sabotage-Test auch die
+  Datei), CMesh bringt die Vertex-Daten als VBO/VAO auf die GPU,
+  erstes oranges Dreieck per F5. Sabotage-Test bestanden (Farbwechsel,
+  Eckpunkt ziehen, Fehlertext lesen); dabei per Experiment die
+  w-Division entdeckt. Beleg am ROADMAP-Haken dieser Schicht,
+  Lern-Rubriken in `Kern/LERNLOG.md` unter 2026-10-05/06.

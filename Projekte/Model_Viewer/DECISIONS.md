@@ -93,3 +93,19 @@ Verworfen: die Warnung ignorieren (gemischte Laufzeiten sind genau die
 Sorte stiller Fehlerquelle, die das Feedbackelement „Memory Leaks"
 meint); GLFW selbst kompilieren (bräuchte CMake, siehe
 Technik-Stack-Eintrag oben).
+
+## 2026-10-06 — Shader-Helfer je Pipeline-Schritt, Fehlermeldung nennt die Datei
+
+Was: `Shader.cpp` trägt drei klassenlose static-Helfer — ReadTextFile,
+CompileShader, LinkProgram — je einen pro Pipeline-Schritt; der
+Konstruktor erzählt nur noch die Abfolge. Compile-Fehlermeldungen
+drucken den Dateipfad mit (dritter Parameter von CompileShader).
+Warum: Lesbarkeit, auf Isors Vorschlag (der Konstruktor blähte sich);
+„je Schritt eine benannte Funktion" ist zugleich die Abgabe-Verteidigung.
+Der Pfad in der Meldung ist Isors Befund aus dem Sabotage-Test: Der
+Treiber kennt keine Dateinamen — ohne Zusatz bliebe unklar, ob vert
+oder frag bricht.
+Verworfen: ein gemeinsamer Status-Block-Helfer (wäre DRY auf gleich
+*aussehendem*, nicht gleichem Code — Shader und Programm haben drei
+verschiedene gl-Funktionspaare); nur den Link-Status auszulagern
+(fasst den Member an, die Helfer bleiben klassenlos).

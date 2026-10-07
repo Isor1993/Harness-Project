@@ -35,9 +35,16 @@ gemeinsamer Durchgang bis es sitzt; die GLSL-Dateien tippt Isor
   umgestellt (Laufzeitbibliotheks-Konflikt LNK4098 der statischen
   Fassung), Kommentar-Pass durch Claude. Lern-Rubriken in
   `Kern/LERNLOG.md` unter 2026-10-04.
-- [ ] **V2 · Erstes Dreieck** — erstes eigenes Shaderpaar aus Dateien
+- [x] **V2 · Erstes Dreieck** — erstes eigenes Shaderpaar aus Dateien
   geladen und kompiliert, Vertex-Daten auf die GPU, ein Dreieck auf dem
-  Schirm — der Beweis, dass die Pipeline läuft.
+  Schirm — der Beweis, dass die Pipeline läuft. **Erledigt am
+  2026-10-06:** Shaderpaar `Shaders/triangle.vert|.frag`, dazu CShader
+  (lesen, kompilieren, linken — mit Treiber-Fehler-Logs) und CMesh
+  (VBO/VAO, RAII) nach dem CWindow-Muster; von Isor in Häppchen selbst
+  getippt, Konstanten/Tippfehler durch Claude. F5-Beweis: oranges
+  Dreieck auf 4.6-Core-Kontext. Lern-Rubriken in `Kern/LERNLOG.md`
+  unter 2026-10-05/06. Kanten noch ohne Glättung — MSAA ist
+  V6-Feinschliff.
 - [ ] **V3 · Texturierte Kugel und Orbit-Kamera** — Kugel-Generator,
   stb_image-Textur, GLM-Matrizen (Model/View/Projection),
   Orbit-Steuerung mit Maus und Rad. V1–V3 fertig vor Do 08.10.
@@ -55,3 +62,10 @@ gemeinsamer Durchgang bis es sitzt; die GLSL-Dateien tippt Isor
 
 - [ ] **K1 · Mini-OBJ-Loader** — ein eigenes Blender-Modell laden;
   erfüllt zusätzlich den Optional-Punkt „Modell-Laden" der Aufgabe.
+
+## Offene Aufgaben
+
+- [ ] **Knowledge · w-Division** — nach V3 als Seite in
+  `Knowledge/Grafik/` festhalten (Isors Experiment vom 2026-10-06:
+  w = 0.5 verdoppelt, w = 2 halbiert — der Perspektiv-Teiler der
+  Projektionsmatrix, dann mit dem Matrizen-Bild komplett).

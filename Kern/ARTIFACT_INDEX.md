@@ -605,6 +605,63 @@ Seite →  📍 Status · Lane Defender M4-Design (Fußzeile)
 Seite ←  Cpp/in-ticks-tunnelt-die-kollision.md
 ```
 
+### 💡 Lernstück · Kompiliervorgang & Präprozessor
+```
+URL      https://claude.ai/artifact/2uiZN5dDKHy7qBzV1HEX1g
+Stand    2026-10-05 — neu, gebaut im Kurz-Konsult zu C++-Unterricht 2
+         (Folien 4.1/4.2): Pipeline-Tafel mit Fehlerpräfixen (C…
+         gegen LNK…, Anker LNK4098 aus Model-Viewer V1), die drei
+         #define-Formen, Include-Schutz, MULTIPLY-Klammer-Falle als
+         Zahlenbeispiel (2,67 gegen 0,67), drei Folien-Korrekturen
+         (#elif, #pragma once, Leerzeichen-Regel), Unreal-Ausblick
+         (UPROPERTY & Co. als Macros) und die Parken-Liste
+         (Lexer/Parser/AST, .obj-Hexdump, STRINGIFY, Engine-DLL)
+Quelle   Kern/LERNLOG.md (Eintrag vom 2026-10-05); Stoffgrundlage
+         sind die SAE-Folien von Unterricht 2 — eine Knowledge-Notiz
+         gibt es nicht (Knowledge-Frage am 2026-10-06 gestellt,
+         Auswahl fiel auf die zwei OpenGL-Themen; der Stoff lebt auf
+         der Seite und im LERNLOG)
+Beispiel Unterrichts-Code CppLesson2 (Defines.h mit ADD/MULTIPLY/
+         STRINGIFY, GetName über #x) und Model-Viewer V1 (LNK4098)
+Seite →  💡 Lernstück · SAE-C++-Konventionen (Fußzeile)
+Seite ←  💡 Marken statt Zeiger und
+         💡 Shader-Pipeline & Fehlertexte (beide Fußzeile)
+```
+
+### 💡 Lernstück · Marken statt Zeiger
+```
+URL      https://claude.ai/artifact/HvvNAzt3vEW4KeGjsk5DNj
+Stand    2026-10-06 — neu, gebaut beim Sichern der V2-Session des
+         Model-Viewers: Grenz-Tafel RAM gegen GPU, Marken-Kacheln
+         (uint32_t, 0 als Flagge), Plural-API-Tabelle, Tafel „Weg
+         der 36 Bytes" (Anschluss und Bind), RAII-Tabelle
+         CShader/CMesh
+Quelle   Knowledge/Grafik/opengl-zwei-welten-und-marken.md
+Beispiel CShader und CMesh (Model-Viewer V2) — m_uiProgramID,
+         m_uiVAO/m_uiVBO, glDelete*-Destruktoren
+Seite →  💡 Shader-Pipeline & Fehlertexte und
+         💡 Kompiliervorgang & Präprozessor (Fußzeile)
+Seite ←  Grafik/opengl-zwei-welten-und-marken.md
+```
+
+### 💡 Lernstück · Shader-Pipeline & Fehlertexte
+```
+URL      https://claude.ai/artifact/WsY2ratacwT59ZQp2Ux4xE
+Stand    2026-10-06 — neu, gebaut beim Sichern der V2-Session des
+         Model-Viewers: Pipeline-Tafel mit fünf Stationen und den
+         Läufe-Kacheln (3 gegen ~115.000), beide triangle-Dateien
+         als Rezept, Compiler-Tabelle MSBuild gegen Treiber,
+         Anatomie-Tafel „0(5)" samt Stolperzeilen-Merksatz,
+         Wächterkette bis exit −1
+Quelle   Knowledge/Grafik/shader-pipeline-und-fehlertexte.md
+Beispiel CShader (CompileShader und LinkProgram, Pfad in der
+         Fehlermeldung) und Shaders/triangle.vert|.frag —
+         Model-Viewer V2
+Seite →  💡 Marken statt Zeiger und
+         💡 Kompiliervorgang & Präprozessor (Fußzeile)
+Seite ←  Grafik/shader-pipeline-und-fehlertexte.md
+```
+
 ---
 
 ## ⚙️ System  — Schicht: Kern (der Harness selbst)

@@ -22,22 +22,27 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-10-04 beim `/harness:ende` der Session
-„3D-Model-Viewer" — Design-Abschnitt und Development-Abschnitt
-(Lernmodus, Isor tippt nach Gerüst, Revier `Projekte/Model_Viewer`)
-in einer Session. Bericht im LOG der Schicht und in `Kern/LERNLOG.md`.)*
+*(überschrieben 2026-10-06 beim `/harness:ende` der Session
+„3D-Model-Viewer" — Warmup-Gegenlesen plus kompletter V2-Baustein
+(Development, Lernmodus, Isor tippt; seit 06.10. korrigiert Claude
+Tippfehler direkt in den Dateien — Isors Zuruf, LRS). Berichte im
+LOG der Schicht und in `Kern/LERNLOG.md`.)*
 
-**Der Model-Viewer läuft vor Plan:** Schicht `Projekte/Model_Viewer/`
-steht (Design ausentschieden, fünf DECISIONS-Einträge), Repo
-`Model-Viewer` gebaut, **V0 und V1 fertig** samt RAII-Klasse
-`CWindow` — das Gerüst-Ziel Mi 07.10. ist praktisch erreicht.
-Nächster Auftrag: als Warmup die **drei Funde des Window-Umzugs
-gegenlesen** (`Kern/LERNLOG.md`, letzter Eintrag vom 2026-10-04),
-dann **V2 · erstes Dreieck** (ROADMAP der Schicht).
-**Game-Jam-Briefing Do 08.10.** im Blick. Commit-Texte dreifach
-geliefert (Dateien, 04.10.): V 0.0001 Model-Viewer · V 0.0081
-Harness · V 0.0048 Knowledge. Unverändert offen: Vokabel-Runde Lane
-Defender, Pflegetage, Unreal-Toolchain-Test, Datenbaum.
+**V2 ist fertig** — oranges Dreieck per F5, Sabotage-Test bestanden,
+Schicht-Doku komplett (dazu `ABGABE_NOTIZEN.md` neu, zwei neue
+💡-Lernstücke, Knowledge-Ordner `Grafik/`). Nächster Auftrag:
+**V3 · Texturierte Kugel und Orbit-Kamera** (ROADMAP der Schicht);
+als Matrizen-Anker dient Isors selbst entdeckte **w-Division**.
+Isor ist am 07.10. krankgeschrieben und will viel schaffen —
+**Game-Jam-Briefing Do 08.10.** im Blick, in der Jam-Woche ruht der
+Viewer. Commit-Texte dreifach geliefert (`COMMIT_V*.txt` je
+Repo-Wurzel, 06.10.): V 0.0082 Harness · V 0.0049 Knowledge ·
+V 0.0002 Model-Viewer. Vor V3 auf Isors Wunsch: die zwei neuen
+💡-Lernstücke lesen und als Warmup eine **Fachwort-Landkarte** am
+eigenen Programmablauf (Compiler, Linker, exe, RAM, Laufzeit,
+Treiber, GPU — je Wort die Stelle im eigenen Projekt). Unverändert
+offen: Vokabel-Runde Lane Defender, Pflegetage,
+Unreal-Toolchain-Test, Datenbaum.
 
 ---
 

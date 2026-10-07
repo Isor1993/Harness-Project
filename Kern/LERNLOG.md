@@ -1518,3 +1518,143 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   als die Stelle, die immer läuft); Zuordnungstabelle main-Zeilen →
   Klasse; Ansage-Zettel mit mechanischen Einzelschritten; Gegenbau
   warnungsfrei durch Claude.
+- 2026-10-05 · Unterrichts-Screenshots im Modelviewer-Unterricht
+  (Kurz-Konsult aus dem Unterricht heraus) — **Selbst:** die
+  Unterrichts-Schnipsel von sich aus als Referenz eingebracht und die
+  Komplexitäts-Vermutung („zu deep") vorab richtig gelegt — das
+  Engine-Framework des Dozenten (IRenderObject, CShaderHandle) ist
+  Überbau, der OpenGL-Kern der Schnipsel deckt sich mit unserem V2.
+  **Fehlerbild:** die DLL-Umstellung gegen LNK4098 aus V1 war nicht
+  mehr abrufbar („das weiß ich nicht was du da gemacht hast") — die
+  Erklärung vom 2026-10-04 lief im Crash-Kurs nur nebenbei mit und
+  hat nicht gehalten. **Hilfe:** Laufzeitbibliotheks-Erklärung neu
+  und einzeln, mit Vorher/Nachher-Diagramm (statisch gegen DLL) und
+  einem Verteidigungssatz für Rückfragen des Prüfers.
+- 2026-10-05 · C++-Unterricht 2, Präprozessor & Kompiliervorgang
+  (Kurz-Konsult zu den Unterrichts-Screenshots) — **Selbst:** Folien
+  und mitgetippten Unterrichts-Code (Defines.h mit ADD/MULTIPLY/
+  STRINGIFY, GetName über #x) von sich aus eingebracht; STRINGIFY im
+  Unterricht selbst benutzt. **Fehlerbild:** im Unterricht nicht
+  mitgekommen; die Einschätzung „zu nerdig, nicht was ich brauche"
+  trifft nur die Compiler-Innereien (Lexer/Parser/AST, .obj-Hexdump)
+  — Pipeline, Include-Schutz und Macro-Klammern braucht der
+  Model-Viewer direkt (Fehlerpräfixe C… gegen LNK…), und Unreal-Code
+  besteht ab dem Unterrichtsblock aus genau diesen Macros
+  (UPROPERTY & Co., <Modul>_API = dllexport-Muster des Dozenten).
+  **Hilfe:** Triage der Folien (jetzt/später/parken),
+  Zahlenbeispiel zur MULTIPLY-Klammer-Falle (2,67 gegen 0,67),
+  Pipeline-Diagramm am eigenen LNK4098 verankert; drei
+  Folien-Korrekturen (#elif statt #elseif, #pragma once nicht nur
+  Microsoft, Leerzeichen-Regel); neu veröffentlicht als
+  „💡 Lernstück · Kompiliervorgang & Präprozessor".
+- 2026-10-05 · Model-Viewer Warmup, Gegenlesen der Window-Umzug-Funde
+  (Development) — **Selbst:** Fund 1 selbst zusammengefasst („lokal
+  neu erstellt statt den originalen benutzt") und daraus eine eigene
+  Transferfrage zur Forward-Declaration entwickelt, mit richtiger
+  Vermutung, dass ein GLFW-Include im Header theoretisch auch ginge;
+  Fund 2 im Kern selbst erklärt (Wächter räumte doppelt auf, der
+  Destruktor als die eine Stelle, die immer läuft); bei Fund 3 die
+  int-Rückgabe von glfwWindowShouldClose selbst korrigiert (erst bool
+  vermutet) und GLFW_TRUE als 1-Definition richtig gedeutet.
+  **Fehlerbild:** Fund 1 zuerst mit „was ist GLFWwindow*" beantwortet
+  statt mit dem, was die Zeile tut — der Kern (Typ vor dem Namen =
+  neue Variable) kam erst mit dem Merksatz; „aufräumen durch den
+  Konstruktor" gesagt, Destruktor gemeint; bei Fund 3 die Mechanik
+  erklärt, aber den sichtbaren Effekt (Schleife läuft nie,
+  Fenster-Blitz) nicht zu Ende verfolgt. **Hilfe:** Speicher-Diagramm
+  Member gegen Lokal samt Merksatz und CPlayer-Zahlenbeispiel;
+  Include-Ketten-Diagramm zur Forward-Declaration samt Grenze (reicht
+  nur für Zeiger und Referenzen); Trace-Tabelle der kaputten
+  ShouldClose-Fassung bis zum Fenster-Blitz.
+- 2026-10-06 · Model-Viewer V2, Shaderpaar und CShader (Development,
+  Isor tippt; begonnen am Abend des 05.10., weiter erkältet) —
+  **Selbst:** triangle.vert nach Vorlage, triangle.frag allein
+  geschrieben; den CShader-Entwurf vor dem Gerüst zu vier Fünfteln
+  selbst diktiert (Pfade in den Konstruktor, Fehler-Wächter mit
+  Ausgabe und return, Destruktor, IsValid — offen nur der Member);
+  das cpp-Gerüst ungefragt vorgezogen; die Auslagerung des
+  Link-Blocks selbst vorgeschlagen und mit dem Lesbarkeits-Argument
+  durchgesetzt (LinkProgram-Helfer — der Vorschlag hat das Design
+  verbessert); den Destruktor-Befehl nach der Welten-Sortierung
+  selbst aus dem eigenen LinkProgram-Wächter geholt; constexpr-
+  Konstanten für die Shader-Pfade eigenständig eingeführt;
+  Unterrichts-Screenshots eingebracht, deren Shader-Code sich als
+  zeilengleich mit unserem CompileShader erwies; OpenGL als
+  State-Machine von sich aus benannt; beim sz-Klären das Nullzeichen
+  in den Längen (13/22) unaufgefordert mitgezählt; F5-Beweis
+  bestanden (Fenster bleibt — gefunden, kompiliert, gelinkt).
+  **Fehlerbild:** das const der IsValid-Signatur auf dem Weg in die
+  cpp verloren; //-Platzhalter innerhalb der if-Klammer (frisst die
+  schließende Klammer); cout-Alarm in IsValid (Frage gegen Meldung);
+  Tippfehler fstream statt ifstream und iSucess; glShaderSource
+  rückwärts gelesen („schreibt die ID auf unsere Adresse");
+  c_str als String-Rückgabe gedeutet; Compiler/Linker-Merkregel
+  schief gespeichert („Linker = Includes"); beim Destruktor in den
+  falschen Welten gesucht (GLAD/Terminate statt GPU-Marke);
+  sz-Präfix als „von S bis Z" gedeutet; Namens-Inkonsistenz
+  S_/SZ_ bei den Pfad-Konstanten; Selbstbild „erste 5 %" gegen
+  tatsächlich rund ein Drittel der Bausteine (6,5 h laut
+  Grindstone). **Hilfe:** Zwei-Welten-Bild mit Garderoben-Marke
+  (RAM gegen GPU, IDs statt Zeiger); Ablauf-Diagramm Programmstart
+  bis Dreieck; Übersetzungstabelle der fünf gl-Aufrufe („Marke 17");
+  Dreier-Regel und „DRY gilt für gleichen, nicht für gleich
+  aussehenden Code"; sz/s/p-Klärung am Speicherbild; Welten-Tabelle
+  fürs Aufräumen; Hinweis auf die kostenlose GLSL-VS-Extension aus
+  seinem eigenen Unterrichts-Screenshot.
+- 2026-10-06 · Model-Viewer V2-Abschluss, CMesh und erstes Dreieck
+  (Development, Isor tippt; Tippfehler/Konstanten seit heute durch
+  Claude direkt — Regel auf Isors Wunsch, LRS) — **Selbst:** das
+  RAII-Formular im dritten Anlauf weitgehend selbst ausgefüllt
+  (Draw-Methode, Destruktor, Vertices-im-Array, Quad = zwei Dreiecke
+  aus dem Unity-Wissen); IsValid allein gebaut — getippt richtiger
+  als diktiert (|| statt „und"); zwei Magic-Number-Befunde selbst
+  gestellt (die 3 und die Steckdosen-0), beide trafen und wurden
+  Konstanten; Konstruktor-Nacherzählung mit Treffern (Wächter,
+  Gen-Schreibrichtung, Bind-Konzept, einmal hochladen / oft
+  zeichnen); erstes eigenes Dreieck per F5 (orange, kompletter
+  Pipeline-Beweis); die Kanten-Treppchen selbst bemerkt.
+  **Fehlerbild:** der Mesh-Entwurf wollte Typ-Enum und
+  Shader-Kopplung in die Klasse (gegen den Modul-Beschluss; am
+  eigenen Austausch-Ziel aufgelöst: dummes Mesh frisst Generator-,
+  Haupt- und Loader-Daten gleichermaßen); die 3 als „drei Ecken"
+  statt „drei Zahlen pro Ecke" gedeutet; die 1 in glGen als Typ
+  gelesen (ist Anzahl der Marken); Enable(0) als „weglegen" gedeutet
+  (schaltet Steckdose 0 scharf); glBufferData für Kompilieren
+  gehalten (Umzug, kein Übersetzen); „wohin gespeichert wird" erst
+  übers Anschluss-Bild verankert; Vertex als „das Dreieck" gedeutet
+  (ein Vertex = ein Eckpunkt). **Hilfe:** Diagramm „Weg der
+  36 Bytes" (RAM → Anschluss GL_ARRAY_BUFFER → VBO);
+  AttribPointer-Parametertabelle gegen die layout-Zeile;
+  Plural-API-Tabelle zur 1; Konstanten I_FLOATS_PER_VERTEX und
+  I_POSITION_LOCATION durch Claude eingebaut; GLSL-Extension-
+  Kompatibilität mit VS 2026 per Marketplace-Quelle belegt
+  (Eintrag „for VS2022", Feld „Works with").
+- 2026-10-06 · Model-Viewer V2, Sabotage-Test und Eigenreflexion
+  (Development) — **Selbst:** alle drei Test-Aufgaben bestanden:
+  Farbwechsel über die frag-Zeile (RGBA selbst erklärt), Spitze über
+  die erste Array-Zeile (Zeilen-zu-Ecken-Zuordnung selbst), beide
+  Treiber-Fehlertexte richtig gelesen — inklusive der Einsicht
+  „gemeldet wird die Stolperzeile, der Fehler wohnt davor"; dabei
+  eigenen Befund gestellt (Meldung nennt die Datei nicht; Fix durch
+  Claude, Pfad-Parameter); per eigenem Experiment die w-Division
+  entdeckt (w 0.5 → doppelt so groß, 2 → halb) — der
+  Perspektiv-Teiler von V3; Alpha-Wirkungslosigkeit richtig auf
+  fehlende Verarbeitung getippt (Blending aus); lange Eigenreflexion
+  über den Gesamtaufbau mit vier Architektur-Befunden
+  (Settings-Auslagerung, Guard-Bündelung, Konstruktorlänge,
+  Array-Umzug nach V3) — zwei trafen, zwei wurden begründet
+  gegengehalten (Wächter am Entstehungsort wegen
+  Konstruktions-Reihenfolge; RAII-Konstruktoren tragen die
+  Beschaffung); die Sabotage-Semikolons ohne Erinnerung selbst
+  zurückgedreht, Farb-/Positionswerte bewusst delegiert.
+  **Fehlerbild:** die zwei vec4 verwechselt (Position-w als
+  Farb-Alpha gelesen, „Alpha geht verloren"); glClear als
+  Einmal-Reset statt Pro-Frame-Wischen gedeutet; Laden/Kompilieren
+  in die Schleife erzählt (läuft einmal im Konstruktor); layout-Zeile
+  und gl_Position als am wenigsten verstanden benannt.
+  **Hilfe:** Parameterlisten-Analogie für die layout-Zeile und
+  gl_Position als eingebaute Pflichtvariable; Perspektiv-Ausblick
+  zur w-Division; Blending-Einordnung; Einordnung der
+  Architektur-Befunde nach Stand / geplant / mögliche Erweiterung;
+  die 0 in „0(5)" als Textstück-Index an glShaderSource
+  zurückgebunden.
