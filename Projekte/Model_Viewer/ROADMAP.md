@@ -45,9 +45,18 @@ gemeinsamer Durchgang bis es sitzt; die GLSL-Dateien tippt Isor
   Dreieck auf 4.6-Core-Kontext. Lern-Rubriken in `Kern/LERNLOG.md`
   unter 2026-10-05/06. Kanten noch ohne Glättung — MSAA ist
   V6-Feinschliff.
-- [ ] **V3 · Texturierte Kugel und Orbit-Kamera** — Kugel-Generator,
+- [x] **V3 · Texturierte Kugel und Orbit-Kamera** — Kugel-Generator,
   stb_image-Textur, GLM-Matrizen (Model/View/Projection),
   Orbit-Steuerung mit Maus und Rad. V1–V3 fertig vor Do 08.10.
+  **Erledigt am 2026-10-07:** Matrizen-Kette zuerst am Dreieck
+  bewiesen, dann UV-Kugel 32×32 (`Geometry.cpp`, mit KI-Vermerk),
+  Gras-Textur (`CTexture`, stb_image, Mipmaps) und Orbit-Kamera
+  (`CCamera`: Maus dreht, Rad zoomt mit Anschlägen, Pitch-Stopp ±89°;
+  `GetAspectRatio` hält die Kugel beim Resize rund). Tiefenpuffer an
+  (DECISIONS). F5-Beweis: drehbare, zoombare Gras-Kugel.
+  Arbeitsteilung: GLSL und Verdrahtung Isor, Drumherum Claude mit
+  Stationen-Durchgang. Lern-Rubriken in `Kern/LERNLOG.md` unter
+  2026-10-07.
 - [ ] **V4 · Licht und Toon-Stufen** — Richtungslicht als Uniforms;
   Isor tippt die GLSL-Logik: erst weicher Lichtverlauf, dann in Stufen
   quantisiert. Outline-Entscheid am echten Bild (DECISIONS dieser
@@ -65,7 +74,17 @@ gemeinsamer Durchgang bis es sitzt; die GLSL-Dateien tippt Isor
 
 ## Offene Aufgaben
 
-- [ ] **Knowledge · w-Division** — nach V3 als Seite in
+- [x] **Knowledge · w-Division** — nach V3 als Seite in
   `Knowledge/Grafik/` festhalten (Isors Experiment vom 2026-10-06:
   w = 0.5 verdoppelt, w = 2 halbiert — der Perspektiv-Teiler der
   Projektionsmatrix, dann mit dem Matrizen-Bild komplett).
+  **Erledigt am 2026-10-07:** Seite
+  `Knowledge/Grafik/mvp-matrizen-und-w-division.md`, dazu ungeplant
+  zwei weitere Seiten (Tiefenpuffer, Datenfluss VBO→Pixel) — Isors
+  Auswahl bei der Knowledge-Frage.
+- [ ] **Artifact-Fassungen der drei Grafik-Seiten vom 2026-10-07** —
+  die neuen Knowledge-Seiten (MVP/w-Division, Tiefenpuffer, Datenfluss)
+  sind visuell und bekommen nach `Kern/KNOWLEDGE_RULES.md` zusätzlich
+  Artifact-Seiten; bauen samt `ARTIFACT_INDEX`-Einträgen und
+  Rückverweisen in den .md-Dateien. Kandidat fürs nächste Warmup oder
+  den Pflegetag.

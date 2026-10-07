@@ -185,6 +185,15 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
   Formular-Verständnis — getippt wird in Elster von Isor. Anlass: Der
   Steuerberater fürs frühere Gewerbe war unverhältnismäßig teuer.
 
+- [ ] **Commit-Lieferform festschreiben** — In `Kern/WORKFLOW.md`
+  („Session-Ende") die Lieferform des Commit-Vorschlags vollständig
+  benennen: je berührtem Repo eine Datei `COMMIT_<Repo>_V<Nummer>.txt`,
+  abgelegt außerhalb der Repos (Session-Ordner), im Chat als Datei
+  angehängt. Heute sagt die Regel nur „als Datei zum Kopieren" — ohne
+  Ablageort und Benennung; so landeten die Texte am 2026-10-06 in den
+  Repo-Wurzeln und hingen am 2026-10-07 ohne Repo-Zuordnung im Chat
+  (`Kern/STOERUNGEN.md`, beide Einträge; Isors Ja vom 2026-10-07).
+
 Was im Betrieb nicht trägt, kommt als Störung in `Kern/STOERUNGEN.md`
 und wird von dort aus zu einem Punkt hier — genau dafür fragt die
 Doku-Pflicht in `Kern/WORKFLOW.md` nach beidem im selben Zug.

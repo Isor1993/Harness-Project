@@ -1658,3 +1658,169 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   Architektur-Befunde nach Stand / geplant / mögliche Erweiterung;
   die 0 in „0(5)" als Textstück-Index an glShaderSource
   zurückgebunden.
+- 2026-10-07 · Model-Viewer V3-Warmup, Fachwort-Landkarte (Development,
+  krankgeschrieben) — **Selbst:** im freien Durchgang vor dem Lesen
+  fünf der sieben Fachwörter richtig am eigenen Projekt verortet
+  (Compiler, Linker samt C-/L-Fehler-Trennung, exe, Laufzeit mit den
+  Shader-Textdateien, GPU als Ziel von Shadern/Buffern/Texturen); im
+  zweiten Durchgang die F5-Reihenfolge komplett richtig (Compiler →
+  Linker → exe → Start → RAM → Shader-Text → Treiber → GPU) und die
+  offene RAM-Frage selbst aufgelöst (Adressen zur Laufzeit, vorher
+  liegt alles auf der Festplatte) samt eigenem Aufräum-Argument
+  (voller RAM — Anschluss ans RAII-Wissen); Bind in eigenen Worten
+  als „richtiger Steckplatz"; bewusst aus dem Kopf gearbeitet statt
+  nachzuschlagen; zum Abschluss den Treiber-Satz frei formuliert und
+  getroffen (Übersetzungsprogramm — das eigene Programm ruft
+  Treiber-Funktionen, die GPU-Hardware führt aus, das Ergebnis geht
+  zum Monitor). **Fehlerbild:** der Treiber-Ort — als Teil der
+  Grafikkarten-Hardware gedacht („läuft nicht auf der CPU"), beim
+  Herleiten CPU und GPU verwechselt und die Fluss-Richtung einmal
+  umgedreht („am Schluss wird's zur CPU geschickt"), mit benanntem
+  Durcheinander-Gefühl; im ersten Durchgang zusätzlich „Adressen zur
+  Compilezeit" (im zweiten selbst korrigiert); in der
+  Schlussformulierung GL einmal als direkte GPU-Sprache gefasst (die
+  GPU bekommt die Treiber-Übersetzung, nicht GL). **Hilfe:**
+  Bewertungstabelle der sieben Einordnungen mit zwei offenen Fragen
+  statt Antworten (wann? wo?); Theorie-Happen „Treiber = Software,
+  GPU = Hardware" an konkreten Ankern (Treiber-DLL wird in die
+  eigene exe geladen; die 0(5)-Fehlertexte schrieb der Treiber, als
+  auf der GPU noch nichts existierte; Monitorkabel steckt an der
+  Karte); Landkarten-Diagramm F5 bis Monitor mit CPU-Seite gegen
+  Grafikkarte.
+- 2026-10-07 · Model-Viewer V3, Matrizen-Theorie und vert-Umbau
+  (Development; Aufteilung neu: Lernkern tippt Isor, Fließband
+  schreibt Claude — Isors Go nach Empfehlung, Wechsel jederzeit) —
+  **Selbst:** im Entwurf den Ist-Zustand exakt getroffen („w ist im
+  vec4 drin, aber wir beeinflussen es nicht") und Mausrad-Zoom
+  richtig als Kamera-Abstand geplant (deckt den Orbit-Plan); eine
+  View-/Kamera-Klasse geahnt, bevor sie dran war; selbst benannt,
+  Matrizen nie benutzt zu haben, und die Überforderung klar gemeldet
+  statt zu raten. **Fehlerbild:** als Kanal für die Matrizen einen
+  neuen Steckplatz angesetzt (Attribut mit Uniform verwechselt — das
+  Uniform-Wort aus dem V2-Lichtplan kam nicht); die w-Richtung
+  umgedreht („mit w die Kamera verschieben" statt Kamera-Abstand →
+  Projection rechnet w); bei der Gerüst-Ansage überfordert — „der
+  Punkt" nicht auf a_Position zuordenbar, das Vertex-Array im Shader
+  gesucht (liegt in main, der Shader sieht je Lauf eine Zeile) und
+  die w-Division als eigene Tippaufgabe verstanden (macht die GPU
+  automatisch). **Hilfe:** Zahlen-Trace der Dreiecksspitze durch
+  M/V/P bei Kamera 3 gegen 6 (doppelte Entfernung → doppeltes w →
+  halbe Größe, angebunden an sein w-Experiment); Tabelle Attribut
+  gegen Uniform (pro Ecke gegen für alle gleich);
+  Maschinen-Diagramm des vert-Shaders mit seinen eigenen Zahlen;
+  die gl_Position-Zeile nach der Überforderungs-Meldung gegeben
+  statt raten zu lassen, Abnahme über Rückwärtslesen der Zeile.
+- 2026-10-07 · Model-Viewer V3, MVP am Dreieck — Umsetzung und
+  Lese-Runde (Development) — **Selbst:** vert-Umbau und MVP-Block
+  nach Vorlage fehlerfrei getippt (Includes, vier Konstanten, Block
+  an der richtigen Stelle zwischen Use und Draw); in der Abnahme die
+  Kette korrekt nacherzählt und das Reihenfolge-Gesetz selbst
+  gefolgert („nicht mehr egal, in welcher Reihenfolge" — Matrizen
+  sind nicht kommutativ), ohne es zu kennen; F5-Beweis bestanden und
+  die Zahlen-Vorhersage (kleiner und schmaler) selbst bestätigt;
+  danach ungefragt eine Lese-Runde über die VS-Tooltips: die
+  lookAt-Parameter im Kern entschlüsselt (eye als Kameraposition, up
+  als Oben), das Resize-Problem der Projection-Konstanten
+  vorhergesagt, den Umzug der View in eine Kamera-Klasse mit
+  Input-Steuerung vorhergesagt, bei nah/fern die
+  Culling-Verwandtschaft erkannt, und den eigenen center-Gedanken
+  („Objekt woanders placen?") selbst angezweifelt — der Zweifel war
+  berechtigt. **Fehlerbild:** GLM als „Bibliothek für den Treiber"
+  einsortiert (sie rechnet nur im RAM; die Treiber-Brücke ist erst
+  der gl-/SetMat4-Aufruf); fov als Drehung gedeutet; nah/fern als
+  Zoom-Grenzen statt Schneidegrenzen; mat4(1.0f) als „überall
+  Einsen" (nur die Diagonale); glm:: als Klasse statt Namespace;
+  daneben das Selbstbild „Mathe kriege ich nicht in den Kopf" im
+  selben Diktat wie das selbst gefolgerte Matrizen-Gesetz.
+  **Hilfe:** Einordnung Rezept statt Herleitung (Unity hat dieselben
+  drei Matrizen ein Jahr lang unsichtbar multipliziert; zwei Sorten
+  Wissen: was/warum gegen wie-innen); Identitäts-Diagonale als „die
+  1 der Matrizenwelt"; Trennung GLM (RAM) gegen gl-Aufrufe
+  (Treiber); fov als Öffnungswinkel, nah/fern als Schneidegrenzen
+  des Sichtkegels samt Frustum-Wort zum Unity-Culling-Anker;
+  History-Zeile und Datei-Köpfe durch Claude.
+- 2026-10-07 · Model-Viewer V3, Kugel, Tiefenpuffer und die
+  Datenfluss-Frage (Development) — **Selbst:** die
+  Normalen-Durchreiche in vert und frag getippt (erste eigene
+  out/in-Strecke), F5 zeigte die Normalen-Kugel; den Maler-Fehler im
+  eigenen Screenshot im Kern richtig gedeutet („untere Hälfte
+  Rückseite bemalt, oben nur manchmal"); die zwei
+  Tiefenpuffer-Zeilen getippt (glEnable vor der Schleife, Depth-Bit
+  im Clear per Bit-Oder aus dem Lane-Defender-Wissen), Riss und
+  Zacken weg; das 8er-Layout im Mesh selbst korrekt gelesen (3+3+2);
+  danach ungefragt beide Shader-Dateien durchgetracet — frag (vec3
+  rein, vec4 raus) und vert (Steckdose 0 Position, Steckdose 1
+  Normale, v_Normal = a_Normal) fehlerfrei — und die exakt richtige
+  Restfrage gestellt: woher kommen die Werte in den Steckdosen?
+  Weiterarbeiten trotz Frust selbst entschieden („wir schneiden
+  nicht"). **Fehlerbild:** die Quelle der Attribut-Daten nicht
+  gefunden — in Shader.cpp gesucht, kurz bei glClearColor abgebogen,
+  dann den Matrizen zugeschrieben (sie verwandeln nur, sie liefern
+  nichts); der Frag-Mix wirkte „automatisch", weil die drei
+  Farbschlitze aus einer Variablen statt aus Literalen gefüllt
+  werden; der Kugel-Generator als „zu viel Mathe" abgebrochen
+  (Kugelkoordinaten — Rezept-Niveau reicht, Verteidigungs-Satz
+  geliefert); zweimal das Selbstbild „das liegt mir nicht", während
+  der eigene Trace fast vollständig stimmte; klar benannt: „kein
+  visuelles Feedback, alles im Kopf vorstellen" — der wunde Punkt
+  (Aphantasie), die Bilder kamen heute teils nach statt vor der
+  Überforderung. **Hilfe:** Datenfluss-Bild mit den echten Zahlen
+  des ersten Päckchens (Nordpol 0·1·0 → Steckdosen → Staffelstab →
+  Schieber → der hellgrüne Pixel oben im eigenen Screenshot);
+  mesh.Draw als Startschuss und die AttribPointer-Zeilen in Mesh.cpp
+  als Steckdosen-Verkabelung benannt; Matrizen ausdrücklich vom
+  Datenliefern entkoppelt.
+- 2026-10-07 · Model-Viewer V3, Stationen-Durchgang der drei
+  Fließband-Klassen (Development, Abschluss) — **Selbst:** alle drei
+  Stationen bestanden — CCamera selbst als „drei Zahlen plus drei
+  Handgriffe" durchgetracet (Zoom-Empfindlichkeit und
+  Min/Max-Anschläge als Stellschrauben erkannt; das Yaw-Vorzeichen
+  vorab eigenständig nach Gefühl gedreht); bei CTexture
+  glTexImage2D als „das glBufferData der Texturen" auf Anhieb
+  gefunden; bei Geometry den Vergleich SpherePoint gegen
+  GetViewMatrix richtig gezogen (gleiches Rezept, anderer Rahmen);
+  zum Abschluss den ganzen Frame frei erzählt und dabei selbst
+  entdeckt, dass der Scroll über einen im Konstruktor registrierten
+  Callback läuft statt über ProcessInput; die KI-Deklarations-Linie
+  selbst gesetzt (nur Geometry — Kriterium: was er nicht verteidigen
+  kann). **Fehlerbild:** static_cast unbekannt (als C#-Cast samt
+  Ganzzahl-Divisions-Grund aufgelöst, 3/4 = 0); `pSelf->` für ein
+  Lambda gehalten (Pfeil = Member-Zugriff über die Hausnummer,
+  L3-Anker); das Textur-Fach „Steckdose" genannt (Fach ≠ Steckdose
+  nachgeschärft); #define STB_IMAGE_IMPLEMENTATION und das
+  Vertikal-Flip unbekannt (Ein-Datei-Bibliothek am LNK2005- und
+  Präprozessor-Anker aufgelöst; Bildzeilen zählen von oben, UV von
+  unten); beim Pitch-Limit zuerst „nahtlos weiterrollen" statt
+  Stopper (am laufenden Viewer gefühlt statt gerechnet).
+  **Hilfe:** Stationen-Format mit je einer Such- oder
+  Vergleichsaufgabe; CShader-gegen-CTexture-Tabelle; Landkarte
+  „Start gegen Schleife" als Spickzettel der Frame-Erzählung.
+- 2026-10-07 · Model-Viewer V3-Abschluss, Textur und Orbit-Kamera
+  (Development) — **Selbst:** die Rote-Kugel-Frage gestellt („wo mixe
+  ich selbst, mit Verlauf?") und damit das Licht-Konzept von V4
+  vorweggenommen; die vec4-Baustein-Frage präzise markiert („nur noch
+  zwei Ziffern drin") und nach der 3+1-Auflösung die eigene
+  vert-Zeile als dasselbe Muster wiedererkannt; beim
+  ClearColor-Experiment Hypothese, Test, Alte-Fenster-Falle und
+  Rückbau komplett allein (ClearColor = Fensterhintergrund selbst
+  bewiesen); UV-Durchreiche und Textur-Nachschlagen getippt
+  (texture() an den Dictionary-Anker gehängt), Gras-Kugel per F5;
+  die fünf Orbit-Verdrahtungsstellen in main getippt, Drehen und
+  Zoomen laufen — V3 damit vor dem Jam-Briefing fertig; zum
+  Lernprozess zwei klare Ansagen: keine Zwischen-Experimente mitten
+  im Baustein (verwirrt, Dateistand muss vertrauenswürdig bleiben)
+  und am Tagesende „zu viel gemacht, wir müssen das zusammen
+  durchgehen" — Durchgang eingefordert statt weitergerannt.
+  **Fehlerbild:** v_Normal für eine vordefinierte Farbpalette aus
+  Shader.cpp gehalten (es sind die Richtungs-Zahlen aus Steckdose 1;
+  die Palette war nur das Rezept der FragColor-Zeile); Sorge, die
+  geplanten Zwischenstufen seien „falsch gebaut" und wieder
+  abzureißen (Beweisbild-Prinzip je Stufe war nicht als Plan
+  erkennbar gemacht). **Hilfe:** Farbfabrik-Satz (der frag ist der
+  einzige Ort, an dem Farbe entsteht; Normale/UV sind
+  Zutaten-Angebote); 3+1-Befüllung des vec4 an seiner eigenen
+  vert-Zeile; UV als Weltkarten-Bild vor dem Tippen; Orbit als
+  „Kamera reitet auf unsichtbarer Kugel" an den Kugel-Generator
+  gehängt; CTexture, CCamera, Fenster-Eingabe und GetAspectRatio als
+  Fließband durch Claude (Builds grün); Stationen-Durchgang in
+  Runden für den Tagesstoff angesetzt.

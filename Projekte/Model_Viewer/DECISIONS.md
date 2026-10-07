@@ -109,3 +109,44 @@ Verworfen: ein gemeinsamer Status-Block-Helfer (wäre DRY auf gleich
 *aussehendem*, nicht gleichem Code — Shader und Programm haben drei
 verschiedene gl-Funktionspaare); nur den Link-Status auszulagern
 (fasst den Member an, die Helfer bleiben klassenlos).
+
+## 2026-10-07 — Vertex-Layout: 8 Floats je Ecke von Anfang an
+
+Was: CMesh stellt auf das interleaved Layout Position (3) + Normale
+(3) + UV (2) um — drei Steckdosen, Stride 32 Bytes; der
+Kugel-Generator (`Geometry.cpp`) schreibt alle acht Werte je Ecke mit.
+Warum: V3 braucht die UV für die Textur, V4 die Normalen fürs Licht —
+ein Layout-Umbau statt zwei, und Kugel-Normalen sind geschenkt
+(Richtung vom Mittelpunkt). Ungenutzte Steckdosen stören nicht: Der
+Shader greift nur ab, was er deklariert.
+Verworfen: erst Position plus UV, Normalen bei V4 nachrüsten (zweiter
+Umbau mitten im Licht-Baustein); ein eigener Buffer je Datenart (mehr
+Verwaltung ohne Gegenwert bei einem Modell).
+
+## 2026-10-07 — Tiefenpuffer ab der ersten 3D-Geometrie
+
+Was: GL_DEPTH_TEST ist an, und glClear wischt je Frame Farbe **und**
+Tiefe (GL_DEPTH_BUFFER_BIT, Bit-Oder).
+Warum: Ohne Tiefenpuffer gilt „wer zuletzt malt, gewinnt" — bei der
+ersten Kugel übermalte die Rückseite die Vorderseite (Riss am Äquator,
+Zacken). Der Tiefenpuffer merkt sich je Pixel die Entfernung und lässt
+nur Näheres übermalen.
+Verworfen: nur Rückseiten wegschneiden (GL_CULL_FACE) — hätte der
+konvexen Kugel geholfen, bricht aber bei jedem konkaven Modell
+(Kür K1, OBJ-Loader); der Tiefenpuffer löst den allgemeinen Fall.
+
+## 2026-10-07 — KI-Deklaration: markiert wird, was Isor nicht verteidigen kann
+
+Was: `Geometry.h`/`Geometry.cpp` tragen einen KI-Vermerk im Datei-Kopf
+(„written with AI assistance, reviewed and walked through");
+`Texture`, `Camera` und der Eingabe-Teil von `Window` nicht. Die
+Deklaration wird zusätzlich in der Abgabe-Doku genannt
+(ABGABE_NOTIZEN → Besonderheiten V3, ausformuliert in V6).
+Warum: Isors Linie — markiert wird, was er nicht selbst hätte
+schreiben können und nicht voll verteidigen kann (die
+Kugelkoordinaten-Mathe); Texture und Camera sind im
+Stationen-Durchgang erklärt und teils selbst nachjustiert
+(Yaw-Vorzeichen).
+Verworfen: alle in der V3-Arbeitsteilung von Claude geschriebenen
+Dateien markieren (Isors Entscheid vom 2026-10-07: nur die Kugel-Mathe
+liegt über seinem Niveau).

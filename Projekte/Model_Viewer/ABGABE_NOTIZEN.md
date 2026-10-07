@@ -52,3 +52,35 @@ unveränderte Mesh füttern.
 ziehen, Treiber-Fehlertexte lesen) · die w-Division per eigenem
 Experiment entdeckt (Perspektiv-Teiler, wird in V3 gebraucht) ·
 Kanten noch ohne MSAA — Feinschliff in V6.
+
+## V3 · Texturierte Kugel und Orbit-Kamera (fertig 2026-10-07)
+
+**Zeit:** 4:13 h am 2026-10-07 (Grindstone-Stand beim Sichern, die
+Session lief noch) — enthält das Fachwort-Warmup und den
+Stationen-Durchgang. Projekt gesamt damit rund 13:16 h.
+
+**Gebaut:** MVP-Matrizenkette (GLM, `CShader::SetMat4`) zuerst am
+Dreieck bewiesen · Kugel-Generator `Geometry.cpp` (UV-Kugel 32×32,
+interleaved 8 Floats: Position, Normale, UV — Stride 32 Bytes) ·
+`CTexture` (stb_image, Mipmaps, Fach-Bind) · `CCamera` als
+Orbit-Kamera (zwei Winkel + Abstand; Maus dreht, Rad zoomt mit
+Anschlägen 1,5–20, Pitch-Stopp ±89°) · Fenster-Eingabe
+(Cursor-Delta, Scroll-Callback, `GetAspectRatio`) · Tiefenpuffer an,
+Clear wischt Farbe und Tiefe.
+
+**Warum so:** 8-Float-Layout von Anfang an — ein Umbau statt zwei, V4
+(Licht) braucht die Normalen (DECISIONS 2026-10-07) · Tiefenpuffer
+statt Culling, löst auch konkave Modelle wie den Kür-OBJ-Loader
+(DECISIONS 2026-10-07) · die Kamera rechnet ihre Position mit
+demselben Kugelkoordinaten-Rezept wie der Generator ·
+Arbeitsteilung nach dem Beschluss vom 01.10.: GLSL und Verdrahtung
+Isor, Drumherum Claude mit Stationen-Durchgang.
+
+**Besonderheiten:** Lehrbuch-Fehler dokumentiert — ohne Tiefenpuffer
+übermalte die Kugel-Rückseite die Vorderseite (Riss am Äquator) ·
+**KI-Deklaration:** `Geometry.h`/`Geometry.cpp` tragen einen
+KI-Vermerk im Datei-Kopf (Isors Linie: markiert wird, was er nicht
+verteidigen kann — DECISIONS 2026-10-07); die Deklaration gehört in
+die Abgabe-Doku (V6) · die Gras-Textur ist ein CC0-Testbild aus der
+Asset-Library, die finale Textur ist offen · der Pol-Wirbel der
+UV-Kugel ist bekannt und im Minimal-Rahmen akzeptiert.

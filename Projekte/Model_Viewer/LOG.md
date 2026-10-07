@@ -42,3 +42,13 @@ Format: Ereignisse als `- JJJJ-MM-TT — Ereignis (1–3 Sätze)`.
   Eckpunkt ziehen, Fehlertext lesen); dabei per Experiment die
   w-Division entdeckt. Beleg am ROADMAP-Haken dieser Schicht,
   Lern-Rubriken in `Kern/LERNLOG.md` unter 2026-10-05/06.
+- 2026-10-07 — V3 fertig (krankgeschrieben, nach Fachwort-Warmup):
+  Matrizen-Kette erst am Dreieck bewiesen, dann prozedurale Kugel
+  (32×32, `Geometry.cpp` mit KI-Vermerk), Gras-Textur über `CTexture`
+  und Orbit-Kamera (`CCamera`, Maus dreht, Rad zoomt) — F5 zeigt die
+  drehbare Gras-Kugel, V1–V3 stehen damit vor dem Jam-Briefing.
+  Unterwegs ein Lehrbuch-Fehler samt Fix (Tiefenpuffer gegen das
+  Maler-Problem, DECISIONS), drei neue Wissensseiten in
+  `Knowledge/Grafik/` und drei Störungen notiert (zwei zur
+  Commit-Lieferung, eine zur Arbeitsteilung — `Kern/STOERUNGEN.md`).
+  Lern-Rubriken in `Kern/LERNLOG.md` unter 2026-10-07.

@@ -940,3 +940,69 @@ ihre Ankündigung.
 Feld ohnehin vollständig abdeckte. Gegenmittel als Aufgabe in
 `Kern/ROADMAP.md` → „Park-Regel um das Wortlaut-Gebot ergänzen"
 (Isors Entscheid bei der Störungs-Frage, 2026-09-27).
+
+### 2026-10-06 — Commit-Texte in die Repo-Wurzeln gelegt
+**Was:** Das `/harness:ende` der V2-Session lieferte die drei
+Commit-Texte als `COMMIT_V0082.txt`, `COMMIT_V0049.txt` und
+`COMMIT_V0002.txt` **in die Wurzeln der drei Repos**. Dort standen sie
+als unversionierte Dateien in genau dem Git-Status, den sie
+beschreiben — in GitHub Desktop wären sie als zu committende Dateien
+aufgetaucht. Isor meldete es am 2026-10-07 beim Session-Start.
+**Ursache:** Die Regel nennt die Lieferform nur halb: „der Vorschlag
+kommt deshalb als Datei zum Kopieren, nie als `git commit`-Befehl"
+(`Kern/WORKFLOW.md` → „Session-Ende") — **wo** die Datei liegt, sagt
+sie nicht. Die Repo-Wurzel ist der schlechteste Ort: Die Datei
+verschmutzt den Stand, den sie committen soll. Kein Netz dahinter:
+`pruefen.py` (Prüfung 9) meldet nur `_HARNESS_*.md` in der Wurzel —
+der Lauf vom 2026-10-07 stand auf „0 Hinweise", während
+`COMMIT_V0082.txt` dort lag.
+**Regel:** Vorhanden, aber unterbestimmt — Ablageort und Benennung
+fehlen. Gegenmittel beim Folgeeintrag (2026-10-07, unten), weil erst
+der zweite Vorfall die ganze Lücke zeigte.
+**Stand:** behoben 2026-10-07 — die drei Dateien aus den Wurzeln in
+den Session-Ordner verschoben und im Chat als Dateien angehängt; die
+Regel-Lücke selbst führt der Folgeeintrag.
+
+### 2026-10-07 — Commit-Lieferung ohne Repo-Zuordnung
+**Was:** Bei der Neulieferung derselben drei Texte hingen die Dateien
+unverändert als `COMMIT_V0082.txt`, `COMMIT_V0049.txt` und
+`COMMIT_V0002.txt` im Chat — aus Name und Inhalt war nicht zu
+erkennen, welcher Text in welches Repo gehört; die Zuordnung stand nur
+in einer Chat-Tabelle daneben. Isor meldete es sofort („man weiß nicht
+mal, für was die Commits sind — das hatten wir die letzten Male
+besser").
+**Ursache:** Dieselbe Lücke wie am Vortag: Die Lieferform ist
+nirgends festgeschrieben, jede Session erfindet sie neu — diesmal
+stimmte der Ort, aber der Dateiname trug nur die Nummer, nicht das
+Repo.
+**Regel:** Vorhanden, aber unterbestimmt (`Kern/WORKFLOW.md` →
+„Session-Ende"). **Gegenmittel:** die Lieferform dort festschreiben —
+je Repo eine Datei `COMMIT_<Repo>_V<Nummer>.txt`, abgelegt außerhalb
+der Repos (Session-Ordner), im Chat als Datei angehängt.
+**Stand:** offen — im Vorfall behoben (Dateien am 2026-10-07 mit
+Repo-Namen neu benannt und neu geliefert); Gegenmittel als Aufgabe in
+`Kern/ROADMAP.md` → „Commit-Lieferform festschreiben" (Isors Ja,
+2026-10-07).
+
+### 2026-10-07 — Fließband-Code ohne gemeinsamen Durchgang
+**Was:** In der V3-Session des Model-Viewers schrieb Claude drei neue
+Klassen am Stück (Geometry, Texture, Camera), mit Konzept-Bildern und
+Verteidigungs-Sätzen, aber ohne den gemeinsamen Code-Durchgang je
+Stück. Isor meldete am Baustein-Ende: „du hast einfach geschrieben …
+ich habe da gar nichts gemacht und dadurch weiß ich auch nichts."
+**Ursache:** Die Arbeitsteilung vom 2026-10-01 (`Uni/DECISIONS.md` →
+„3D-Model-Viewer minimal") hat zwei Hälften — „Claude schreibt das
+Drumherum" **und** „gemeinsamer Durchgang bis es sitzt". Unter dem
+Termindruck (V1–V3 vor dem Jam-Briefing am 08.10.) lief die erste
+Hälfte dreimal, die zweite wurde auf Erklärungen verkürzt und ans
+Tagesende verschoben. Für Isor ist Code, den er weder getippt noch
+durchgegangen ist, Nullwissen — der Durchgang ist keine Kür, er ist
+die zweite Hälfte des Vertrags.
+**Regel:** Vorhanden, aber unterbestimmt: Sie sagt nicht, **wann** der
+Durchgang fällig ist. Gegenmittel: je Fließband-Stück der Durchgang
+**sofort nach dem Bau**, vor dem nächsten Stück — und bei Zeitdruck
+eher den Baustein schneiden als den Durchgang.
+**Stand:** offen — der Durchgang der drei Klassen wurde am 2026-10-07
+unmittelbar angesetzt (Datei für Datei, Stationen-Format); ob das
+Gegenmittel als Punkt in die Uni-ROADMAP kommt, entscheidet Isor
+(Frage gestellt am 2026-10-07).

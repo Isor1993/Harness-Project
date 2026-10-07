@@ -31,6 +31,14 @@ Befunde der Prüfung vom 2026-08-26) stehen mit ihren Belegen in
   Fassung entsteht. Einziger übriger Befund der Prüfung vom 2026-08-26,
   bewusst stehen gelassen.
 
+- [ ] **Arbeitsteilung um den Durchgang-Zeitpunkt schärfen** — In
+  `DECISIONS.md` → „2026-10-01 — 3D-Model-Viewer minimal" die
+  Arbeitsteilung ergänzen: Schreibt Claude ein Stück, kommt der
+  gemeinsame Durchgang **sofort nach dem Stück**, vor dem nächsten;
+  bei Zeitdruck wird der Baustein geschnitten, nicht der Durchgang.
+  Anlass: `Kern/STOERUNGEN.md` → „2026-10-07 — Fließband-Code ohne
+  gemeinsamen Durchgang" (Isors Ja vom 2026-10-07).
+
 ## Semester 3
 
 - [x] **Ordner `Uni/Semester_3/` anlegen**, sobald die Aufgaben da sind,
