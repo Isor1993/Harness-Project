@@ -22,27 +22,24 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-10-06 beim `/harness:ende` der Session
-„3D-Model-Viewer" — Warmup-Gegenlesen plus kompletter V2-Baustein
-(Development, Lernmodus, Isor tippt; seit 06.10. korrigiert Claude
-Tippfehler direkt in den Dateien — Isors Zuruf, LRS). Berichte im
-LOG der Schicht und in `Kern/LERNLOG.md`.)*
+*(überschrieben 2026-10-07 spätabends beim `/harness:ende` der
+Abend-Session „3D-Model-Viewer" — V4 und V5 am selben Tag, auf Isors
+Zuruf vorgezogen. Berichte im LOG der Schicht, in `Kern/LERNLOG.md`
+und in den fünf DECISIONS-Einträgen der Schicht.)*
 
-**V2 ist fertig** — oranges Dreieck per F5, Sabotage-Test bestanden,
-Schicht-Doku komplett (dazu `ABGABE_NOTIZEN.md` neu, zwei neue
-💡-Lernstücke, Knowledge-Ordner `Grafik/`). Nächster Auftrag:
-**V3 · Texturierte Kugel und Orbit-Kamera** (ROADMAP der Schicht);
-als Matrizen-Anker dient Isors selbst entdeckte **w-Division**.
-Isor ist am 07.10. krankgeschrieben und will viel schaffen —
-**Game-Jam-Briefing Do 08.10.** im Blick, in der Jam-Woche ruht der
-Viewer. Commit-Texte dreifach geliefert (`COMMIT_V*.txt` je
-Repo-Wurzel, 06.10.): V 0.0082 Harness · V 0.0049 Knowledge ·
-V 0.0002 Model-Viewer. Vor V3 auf Isors Wunsch: die zwei neuen
-💡-Lernstücke lesen und als Warmup eine **Fachwort-Landkarte** am
-eigenen Programmablauf (Compiler, Linker, exe, RAM, Laufzeit,
-Treiber, GPU — je Wort die Stelle im eigenen Projekt). Unverändert
-offen: Vokabel-Runde Lane Defender, Pflegetage,
-Unreal-Toolchain-Test, Datenbaum.
+**V4 und V5 sind fertig — alle sieben Pflichtpunkte der Aufgabe
+erfüllt:** Stylized-Toon-Ball mit Kontakt-Schatten steht auf einer
+Wiese mit Rand-Fade, unter Himmel 05 samt weißer Sonnenscheibe.
+**Jam-Woche 08.–15.10., der Viewer ruht.** Ab Fr 16.10.: Warmup
+glDepthFunc (LEQUAL-Zeilen erklären), dann **T1 · Tuning-Fenster**,
+dann **V6 · Abgabe** inkl. Code-Aufräum-Pass (alles in der ROADMAP
+der Schicht); Outline-Entscheid (O1) nach Zeitlage, Blending (B1)
+gestrichen. Commit-Texte geliefert (Scratchpad, Repo im Dateinamen):
+**V 0.0084 Harness · V 0.0051 Knowledge · V 0.0004 Model-Viewer** —
+Harness und Knowledge enthalten die Pflegetag-Übergabe der
+Parallel-Session. Unverändert offen: Vokabel-Runde Lane Defender,
+Unreal-Toolchain-Test, Datenbaum; nächster Pflegeschritt am
+Kontrollpunkt 02.11. (ruhende Unity-Seiten).
 
 ---
 

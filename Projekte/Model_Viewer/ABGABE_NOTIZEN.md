@@ -84,3 +84,57 @@ verteidigen kann — DECISIONS 2026-10-07); die Deklaration gehört in
 die Abgabe-Doku (V6) · die Gras-Textur ist ein CC0-Testbild aus der
 Asset-Library, die finale Textur ist offen · der Pol-Wirbel der
 UV-Kugel ist bekannt und im Minimal-Rahmen akzeptiert.
+
+## V4 · Licht und Stylized-Toon (fertig 2026-10-07)
+
+**Zeit:** Abendblock 2026-10-07, zusammen mit V5 und den Extras
+≈5:30 h (Tagessumme laut Grindstone 9:43, davon V3 4:13; Projekt
+gesamt 18:49 — Screenshot-Beleg). Einzeltrennung V4/V5 nicht erfasst.
+
+**Gebaut:** Richtungslicht als zwei vec3-Uniforms
+(`CShader::SetVec3`) · `triangle.frag`: Normale normalisiert, toSun
+mit Vorzeichendreh, dot-Helligkeit, **Stylized-Kante** per smoothstep
+um `F_SHADOW_EDGE` mit Weichzone, mix zwischen kühlem Schatten-Tint
+und voll — Texturfarbe × Lichtfarbe × Ton · GLSL-Logik komplett von
+Isor getippt.
+
+**Warum so:** floor-Stufen gebaut und am echten Bild zugunsten der
+weichen Kante verworfen — Ziel Stylized Richtung Genshin; der
+Schatten-Tint ist zugleich Grundhelligkeit (Nachtseite bleibt
+sichtbar) und ersetzt pauschal das nicht gerechnete indirekte Licht
+(DECISIONS 2026-10-07).
+
+**Besonderheiten:** Isors erste eigene Shader-Design-Entscheidung
+(Grundhelligkeit statt Vollschwarz, eigenständig eingebaut) · der
+Outline-Entscheid ist aus V4 herausgelöst und wartet auf die
+Zeitlage vor der Abgabe (Kür O1).
+
+## V5 · Skybox, Boden und Optik-Extras (fertig 2026-10-07)
+
+**Zeit:** im Abendblock enthalten (siehe V4).
+
+**Gebaut:** `CSkyBox` (RAII-Cubemap: sechs Gesichter, CLAMP_TO_EDGE
+S/T/R, kein Flip, Fehlerpfad nennt das fehlende Gesicht) · eigenes
+Shaderpaar `skybox.vert|.frag` (samplerCube über die Eckrichtung,
+`gl_Position.xyww`, GL_LEQUAL, View ohne Translation per mat3) ·
+Würfel und Bodenplatte als Geometry-Builder im CMesh-Layout · Boden
+mit Seamless-Gras, UV-Kachel-Regler und quadratischem Rand-Fade
+(`max(abs(x), abs(z))` + smoothstep in Horizontfarbe) · generierte
+Toon-Basketball-Textur · Unlit-Shaderpaar; Sonnenscheibe bei
+−Lichtrichtung × 60 m; Kontakt-Schatten als plattgedrückte Kugel
+(y-Skalierung 0.01, Höhe −0.99, sonnenabgewandt versetzt) ·
+`CCamera`-Bodengrenze: tiefster Pitch aus asin(Augenhöhe ÷ Abstand),
+greift in Rotate und Zoom.
+
+**Warum so:** Himmel 05 aus CC0-Paket (Screaming Brain Studios,
+Original im Datenbaum, Kreuz per Skript zerschnitten) · Würfel als
+CMesh hält den Ein-Ressource-RAII-Schnitt · Bodenplatte als
+Weltobjekt statt bottom-Gesicht-Tausch (Cubemap-Vollständigkeit!) ·
+Kontakt-Fleck statt Projektion — er soll erden · alles Weitere in
+den fünf DECISIONS-Einträgen vom 2026-10-07.
+
+**Besonderheiten:** Damit sind **alle sieben Pflichtpunkte der
+Aufgabe erfüllt** · Kamera-Nebel gebaut und bewusst verworfen
+(lieferte die Staffelstab-Lektion) · Blending-Baustein gestrichen,
+nur auf OCE-Feedback zurück · Zeiten bei V6 noch einmal gegen
+Grindstone prüfen (Ansage war diktiert).

@@ -193,6 +193,26 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
   Ablageort und Benennung; so landeten die Texte am 2026-10-06 in den
   Repo-Wurzeln und hingen am 2026-10-07 ohne Repo-Zuordnung im Chat
   (`Kern/STOERUNGEN.md`, beide Einträge; Isors Ja vom 2026-10-07).
+- [ ] **Agenten nur lesend einsetzen** — In `Kern/WORKFLOW.md`
+  (Arbeitsteilung) festschreiben: Agenten prüfen, suchen und bereiten
+  Befunde vor; alles, was schreibt oder veröffentlicht, macht die
+  Hauptsession mit Isors direkter Freigabe. Am 2026-10-07 wurden sieben
+  delegierte Schreibschritte von der Rechteprüfung gesperrt, weil die
+  Freigabe nur über Claude kam (`Kern/STOERUNGEN.md`; Isors Ja vom
+  2026-10-07).
+- [ ] **Jüngste Korrektur zuerst** — In `Kern/ARTIFACT_RULES.md` („Wann
+  geschaut wird", gründliche Prüfung) ergänzen: Bei Zahlen auf einer
+  Seite in der führenden Quelle zuerst nach späteren Korrekturen suchen,
+  dann rechnen. Die Durchsicht vom 23./24.08. übersah so die
+  Poisson-Korrektur vom 08.08. (`Kern/STOERUNGEN.md`; Isors Ja vom
+  2026-10-07).
+- [ ] **VS-Reload-Regel festschreiben** — In `Kern/CODE_GUIDELINES.md`
+  bei der Arbeitsteilung ergänzen: Ändert Claude eine Datei, die in
+  Visual Studio geöffnet ist, wird vor dem nächsten Build der
+  Reload-Dialog bestätigt oder der Tab vorher geschlossen — sonst
+  schreibt der ältere VS-Puffer die Änderungen beim Build ungesehen
+  zurück. Am 2026-10-07 verschwanden so zwei Experiment-Einbauten
+  (`Kern/STOERUNGEN.md`; Isors Ja vom 2026-10-07).
 
 Was im Betrieb nicht trägt, kommt als Störung in `Kern/STOERUNGEN.md`
 und wird von dort aus zu einem Punkt hier — genau dafür fragt die

@@ -663,3 +663,61 @@ damals, nicht den von heute.
   Knowledge-Notizen korrigiert. Geprüft: `pruefen.py` nach dem Schreiben,
   0 Funde bis auf drei Glossar-Hinweise — gegengelesen, alle drei
   Kurzformen unverändert, mit `--glossar-ok` quittiert.
+- 2026-10-07 — **Pflegetag**, der zweite, 26 Tage nach dem vorigen
+  (Parallel-Session, Revier Kern). Abgleich: 35 Seiten live, 34 im
+  Index; `🗑 Wo das Projekt steht` nicht mehr erreichbar (jetzt unter
+  „Gelöschte Seiten"), `R50 Rogue Layout` neu und privat (jetzt unter
+  „Nicht geführte Seiten"). Titel „Lane Defender M2/M5" draußen ohne
+  Schema und zwei abweichende Stand-Daten (Lobby-Tafel, LD M2) —
+  gemeldet, nach Isors Entscheidung liegen gelassen. Gründlich geprüft:
+  `💡 Poisson-Disc-Sampling` — Gleichstand dreier Seiten am 24.08.,
+  gewählt nach Index-Reihenfolge, weil die Regel keinen Gleichstand
+  kennt. Vier Befunde, alle nachgezogen; der schwerste: die
+  TDD_NOTES-Korrektur vom 08.08. (0,5 m statt 0,6 m, 134 MB statt 94 MB)
+  war am 24.08. nicht übernommen worden. Nach Isors Entscheidung
+  außerdem: `📍 Status · Semester 3` auf die Neuausrichtung vom 01.10.
+  nachgezogen; Status-Seiten abgegebener Projekte sind abgeschlossen
+  und fallen aus dem Turnus (DECISIONS 2026-10-07, erste Fälle LD
+  M2–M5); der Kontrollpunkt im Ruht-Absatz von `ARTIFACT_RULES.md` auf
+  den 02.11. korrigiert. Isors Frage „warum pflegen, was fertig ist?"
+  führte zur Abgeschlossen-Regel und zur Klarstellung, dass
+  Registerpflege das Verzeichnis betrifft, nicht die Seiten.
+- 2026-10-07 — **Pflegetag ohne Rundlauf.** Isors zweiter Einwand traf
+  die eigentliche Schwachstelle: Die gründliche Prüfung wählte nach
+  ältestem Stand und prüfte so jede Seite rund alle zwölf Wochen erneut,
+  auch bei eingefrorener Quelle. Neu: zuerst nie geprüfte Seiten, danach
+  nur Seiten mit geänderter Quelle (DECISIONS 2026-10-07). Im Index neu
+  die Zeilen `Geprüft` (Semester 3, Poisson, GPU-Instancing,
+  Terrain-Fallen — bei den letzten beiden ist der Unity-Code laut git
+  seit dem 24.08. unverändert) und `Bekannt` (LD M2, LD M5,
+  Lobby-Tafel; die C+D-Abweichungen kommen damit nicht wieder). Bei der
+  Lobby-Tafel stellte sich die Datumsabweichung als harmlos heraus: Der
+  Maßstabsvergleich steht auf der Seite, nur die Liste nennt den 01.09.
+  Offen bleiben acht nie geprüfte Seiten im Turnus.
+- 2026-10-07 — **Rückstau der gründlichen Prüfung abgearbeitet.** Die
+  acht nie geprüften Seiten parallel von Prüf-Agenten gegen Notiz, Code
+  und Fachwissen gehalten: **keine war fehlerfrei.** Echte Fehler auf
+  drei Seiten:
+  - Pointer: Skill-Slot mit falschem Namen und Auslöser.
+  - Marken: „immer Plural", „eine Ressource je Klasse".
+  - Netzwerkgrundlagen: Rechenfehler, 37 % Auslastung statt Abbruch.
+
+  Dazu Tafel 3b bei Tick-Kollision, die den eigenen Merksatz nicht
+  belegte. Marken und Shader waren einen Tag nach dem Bau veraltet, weil
+  der Model-Viewer auf V3 sprang. Daraus die Regel: Lernstücke nennen
+  ihren Beispiel-Code mit Versionsstand, für die Auswahl zählt nur die
+  Knowledge-Notiz (DECISIONS 2026-10-07).
+
+  Das Nachziehen scheiterte bei den Agenten an der Rechteprüfung im
+  Auto-Modus: Isors Zustimmung kam bei ihnen nur über Claude an. Nach
+  Isors direkter Freigabe zog Claude die sieben Seiten selbst nach,
+  gleiche URLs. Drei Knowledge-Notizen wurden mitkorrigiert (Marken,
+  Shader, Tick). Netzwerkgrundlagen ruht jetzt wie NGO-Bausteine, die
+  Befunde stehen als `Bekannt` im Index.
+
+  Damit trägt jede Seite im Turnus eine `Geprüft`-Zeile; der nächste
+  Pflegetag prüft nur, wo sich eine Quelle geändert hat.
+  Lane-Defender-Stand als „Release-Build 1.0.0, Repo V 0.0014"
+  (Isor). Nebenbefund des SAE-Agenten, nicht behoben:
+  `CODE_GUIDELINES.md` nennt beim Model-Viewer noch „eigenes Repo
+  folgt".

@@ -57,20 +57,47 @@ gemeinsamer Durchgang bis es sitzt; die GLSL-Dateien tippt Isor
   Arbeitsteilung: GLSL und Verdrahtung Isor, Drumherum Claude mit
   Stationen-Durchgang. Lern-Rubriken in `Kern/LERNLOG.md` unter
   2026-10-07.
-- [ ] **V4 · Licht und Toon-Stufen** — Richtungslicht als Uniforms;
+- [x] **V4 · Licht und Toon-Stufen** — Richtungslicht als Uniforms;
   Isor tippt die GLSL-Logik: erst weicher Lichtverlauf, dann in Stufen
   quantisiert. Outline-Entscheid am echten Bild (DECISIONS dieser
-  Schicht). Ab Fr 16.10., nach der Jam-Woche.
-- [ ] **V5 · Skybox** — Cubemap laden (CC0-Himmel), eigener kleiner
-  Skybox-Shader.
-- [ ] **V6 · Abgabe** — Feinschliff, Release-Build, READ_ME,
-  UML-Diagramm der Pipeline, Abgabeordner im Portfolio füllen; Upload
-  ~23./24.10., danach die Feedback-Frage an die OCE (reicht der Stand?).
+  Schicht). **Erledigt am 2026-10-07** (vorgezogen auf Isors Zuruf):
+  Richtungslicht über `SetVec3`, GLSL komplett von Isor getippt; die
+  floor-Stufen wurden gebaut und am Bild zugunsten der Stylized-Kante
+  (smoothstep/mix, kühler Schatten-Tint) verworfen — DECISIONS. Der
+  Outline-Entscheid ist herausgelöst (Kür O1).
+- [x] **V5 · Skybox** — Cubemap laden (CC0-Himmel), eigener kleiner
+  Skybox-Shader. **Erledigt am 2026-10-07:** CSkyBox + Shaderpaar
+  (samplerCube, xyww, LEQUAL, mat3-View), Himmel 05 CC0 im Repo,
+  Original im Datenbaum. Dazu ungeplant: Bodenplatte mit Rand-Fade,
+  Seamless-Gras, Toon-Ball-Textur, Sonnen-Gizmo, Kontakt-Schatten,
+  Kamera-Bodengrenze. **Alle sieben Pflichtpunkte erfüllt.** Belege:
+  LOG und ABGABE_NOTIZEN.
+- [ ] **T1 · Tuning-Fenster** — die vorhandenen Float-Regler (Kante,
+  Weichzone, Lichtrichtung und -farbe, Sonne, Fade) zur Laufzeit
+  verstellbar machen; Zielbild klickbares Fenster mit Slidern (Dear
+  ImGui), erlaubte Vorstufe Tasten + Konsolen-Ausgabe. Nach der
+  Jam-Woche, vor V6.
+- [ ] **V6 · Abgabe** — Feinschliff (MSAA, die zwei
+  VS-Analyse-Hinweise), **Code-Aufräum-Pass: main in benannte
+  Methoden gliedern, danach gemeinsamer Erklär-Durchgang über alles**,
+  Release-Build, READ_ME, UML-Entscheid (nur Tipp der Aufgabe — der
+  Generator macht es billig), Abgabeordner im Portfolio füllen,
+  Zeiten gegen Grindstone prüfen; Upload ~23./24.10., danach die
+  Feedback-Fragen an die OCE: reicht der Stand? Werden Schatten
+  erwartet? Wird ein Settings-UI erwartet?
 
 ## Kür — nur bei Zeit vor der Abgabe
 
 - [ ] **K1 · Mini-OBJ-Loader** — ein eigenes Blender-Modell laden;
   erfüllt zusätzlich den Optional-Punkt „Modell-Laden" der Aufgabe.
+- [ ] **O1 · Outline (Inverted Hull)** — den Ball als minimal
+  aufgepumpte schwarze Hülle (vert: Position + Normale × Dicke) ein
+  zweites Mal zeichnen, nur Rückseiten zeigen → Culling-Lernstück.
+  Entscheid nach Zeitlage; der Look trägt auch ohne (2026-10-07).
+- [ ] **B1 · Blending-Tag** — Alpha-Rand-Fade, additiver Sonnen-Glow,
+  Multiply-Schatten: drei Design-Wünsche, eine Technik. **Gestrichen
+  am 2026-10-07** (DECISIONS); reaktivieren nur, falls das
+  OCE-Feedback mehr verlangt.
 
 ## Offene Aufgaben
 
@@ -82,9 +109,14 @@ gemeinsamer Durchgang bis es sitzt; die GLSL-Dateien tippt Isor
   `Knowledge/Grafik/mvp-matrizen-und-w-division.md`, dazu ungeplant
   zwei weitere Seiten (Tiefenpuffer, Datenfluss VBO→Pixel) — Isors
   Auswahl bei der Knowledge-Frage.
-- [ ] **Artifact-Fassungen der drei Grafik-Seiten vom 2026-10-07** —
-  die neuen Knowledge-Seiten (MVP/w-Division, Tiefenpuffer, Datenfluss)
-  sind visuell und bekommen nach `Kern/KNOWLEDGE_RULES.md` zusätzlich
-  Artifact-Seiten; bauen samt `ARTIFACT_INDEX`-Einträgen und
+- [ ] **Artifact-Fassungen der Grafik-Seiten vom 2026-10-07** —
+  die neuen Knowledge-Seiten (MVP/w-Division, Tiefenpuffer, Datenfluss,
+  dazu die vier Abend-Seiten: Skybox, Staffelstab, Zaun/Seil-Maß,
+  Ein Mesh) sind visuell und bekommen nach `Kern/KNOWLEDGE_RULES.md`
+  zusätzlich Artifact-Seiten; bauen samt `ARTIFACT_INDEX`-Einträgen und
   Rückverweisen in den .md-Dateien. Kandidat fürs nächste Warmup oder
   den Pflegetag.
+- [ ] **Warmup glDepthFunc** — die LEQUAL/LESS-Zeilen um den
+  Skybox-Draw als Einstiegs-Erklärstück der nächsten Viewer-Session;
+  von Isor am 2026-10-07 selbst bestellt („das ist einfach da drin
+  geschrieben").

@@ -1006,3 +1006,55 @@ eher den Baustein schneiden als den Durchgang.
 unmittelbar angesetzt (Datei für Datei, Stationen-Format); ob das
 Gegenmittel als Punkt in die Uni-ROADMAP kommt, entscheidet Isor
 (Frage gestellt am 2026-10-07).
+
+### 2026-10-07 — Delegiertes Nachziehen scheiterte an der Rechteprüfung
+**Was:** Am Pflegetag gab Isor frei, sieben Artifact-Seiten parallel
+nachzuziehen. Claude reichte die Freigabe per Nachricht an die sieben
+Prüf-Agenten weiter; jeder wurde schon beim ersten Schreibschritt von
+der Rechteprüfung des Auto-Modus gesperrt („Unrequested Commit in a
+Connected App"). Nichts wurde geschrieben, die Seiten zog Claude danach
+mit Isors direkter Freigabe selbst nach.
+**Ursache:** Eine Freigabe, die nur über die Hauptsession ankommt, zählt
+für einen Agenten nicht als Freigabe des Nutzers — eine Schutzregel
+gegen weitergereichte Rechte, kein Fehler. Claude hatte sie beim
+Delegieren nicht bedacht.
+**Regel:** Fehlte. Gegenmittel: Agenten nur lesend einsetzen (prüfen,
+suchen, Befunde vorbereiten); alles, was schreibt oder veröffentlicht,
+macht die Hauptsession mit Isors direkter Freigabe.
+**Stand:** offen — Gegenmittel als Aufgabe in `Kern/ROADMAP.md` →
+„Agenten nur lesend einsetzen" (Isors Ja, 2026-10-07).
+
+### 2026-10-07 — Durchsicht übernahm eine Zahlen-Korrektur nicht
+**Was:** Die gründliche Prüfung von `💡 Poisson-Disc-Sampling` fand
+Gras-Radius 0,6 m und 94 MB auf der Seite. TDD_NOTES hatte beides am
+2026-08-08 auf 0,5 m und 134 MB korrigiert. Die Durchsicht vom
+23./24.08. hatte die Seite geprüft und im Index vermerkt „Alle Zahlen
+unverändert — sie hielten der Prüfung stand".
+**Ursache:** Geprüft wurde gegen die Rechnung auf der Seite selbst, die
+in sich stimmig wirkte — nicht gegen die jüngste Korrektur der Quelle.
+Ein Korrektur-Vermerk weiter unten in TDD_NOTES blieb ungelesen.
+**Regel:** Fehlte. Gegenmittel: Bei Zahlen auf einer Seite in der
+führenden Quelle zuerst nach späteren Korrekturen suchen (Datum,
+„korrigiert"), dann erst rechnen.
+**Stand:** offen — Seite am 2026-10-07 nachgezogen; Gegenmittel als
+Aufgabe in `Kern/ROADMAP.md` → „Jüngste Korrektur zuerst" (Isors Ja,
+2026-10-07).
+
+### 2026-10-07 — VS-Puffer überschrieb Claudes Datei-Änderungen
+**Was:** Für ein Experiment schrieb Claude zwei Änderungen in die
+`main.cpp` des Model-Viewers. Beim nächsten Build zeigte das Programm
+den alten Stand, und die Datei auf der Platte trug wieder den Zustand
+vor den Änderungen — Isor meldete „es hat sich gar nichts geändert",
+die Einbauten hatte nie jemand gesehen.
+**Ursache:** Visual Studio hielt die Datei mit einem älteren Puffer
+offen und schrieb ihn beim Build auf die Platte zurück; der
+Reload-Dialog („Datei wurde außerhalb geändert — neu laden?") war
+nicht bestätigt. Claudes Edit und der VS-Puffer sind zwei Schreiber
+auf derselben Datei, und der spätere gewinnt.
+**Regel:** Fehlte — die Arbeitsteilung „Tippfehler und Konstanten
+schreibt Claude direkt in die Datei" kennt den Fall der in VS
+geöffneten Datei nicht.
+**Stand:** offen — im Vorfall behoben (Tab geschlossen, Änderungen
+erneut geschrieben, Experiment lief); Gegenmittel als Aufgabe in
+`Kern/ROADMAP.md` → „VS-Reload-Regel festschreiben" (Isors Ja,
+2026-10-07).

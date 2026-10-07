@@ -32,28 +32,17 @@ Zeilen je Eintrag:
   bis zum Kontrollpunkt der Stack-Entscheidung außerhalb der gründlichen
   Prüfung (`ARTIFACT_RULES.md` → „Wann geschaut wird"). Die Zeile nennt
   nur das Datum.
-
----
-
-## 📍 Status  — Schicht: Projekt
-
-### 🗑 Löschen · Wo das Projekt steht
-```
-URL      https://claude.ai/code/artifact/d5e30d97-fafd-4f9e-be83-e727df4d0405
-Stand    2026-08-23 — nach dem Umbau neu gebaut, erste Seite im neuen
-         Hausstil (ARTIFACT_RULES → „Gestaltung")
-Zustand  **🗑** seit 2026-09-11 (Pflegetag, Isor): Die Seite nannte noch
-         Harness 1.0.0 und kannte weder die Stack-Entscheidung noch
-         Semester 3. Abgelöst durch `📍 Status · Semester 3`, das seit
-         der Stack-Entscheidung auch den Tower trägt. Titel und
-         Kopf-Marke umgestellt, oben ein Hinweis mit Link auf den
-         Nachfolger; Inhalt und Favicon unverändert.
-Quelle   PLAN.md, Kern/ROADMAP.md, Projekte/Isor_Tower/ROADMAP.md,
-         Uni/ROADMAP.md, Projekte/Isor_Tower/GDD.md
-Skripte  keine — die Seite beschreibt den Projektstand, nicht Code
-Seite →  System · Harness, Status · Semester 3
-Seite ←  keine
-```
+- **Geprüft** — Datum der letzten gründlichen Prüfung am Pflegetag.
+  Fehlt die Zeile, wurde die Seite nie gründlich geprüft und ist als
+  Nächstes dran (`ARTIFACT_RULES.md` → „Wann geschaut wird"). Bei
+  `Ruht`- und `Abgeschlossen`-Seiten entfällt sie.
+- **Bekannt** — eine Abweichung zwischen Index und veröffentlichter
+  Seite, die Isor bewusst liegen lässt. Der Abgleich meldet sie nicht
+  erneut.
+- **Abgeschlossen** — die Seite gehört zu einem abgegebenen Projekt und
+  steht dauerhaft außerhalb der gründlichen Prüfung, wird nicht
+  nachgezogen (`ARTIFACT_RULES.md` → „Wann geschaut wird"). Die Zeile
+  nennt das Abgabedatum.
 
 ---
 
@@ -62,12 +51,18 @@ Seite ←  keine
 ### 📍 Status · Semester 3
 ```
 URL      https://claude.ai/code/artifact/990b0be5-f2ec-42e2-affe-858d1cc92208
-Stand    2026-09-14 — echte Abgabetermine eingepflegt: Zeitstrahl auf
-         Isors zwei Terminarten umgebaut (Fertig-Ziele + Abgaben,
-         Projekt-Meilensteine folgen je Phase), Schätzlogik-Tafel durch
-         „Echt gegen geschätzt" ersetzt, Phasenplan Fertig-vor-fällig
-         samt Streckziel 20.09.
-Löst ab  `🗑 Löschen · Wo das Projekt steht` (seit 2026-09-11)
+Stand    2026-10-07 — nachgezogen am Pflegetag: Neuausrichtung vom
+         01.10. als eigener Abschnitt (vier Karten: nur Spielprojekt
+         benotet, Viewer minimal, Engine-Entscheidung bis 02.11.,
+         eigenständiges Spiel), Zeitstrahl um Game Jam, frühe
+         Viewer-Abgabe, Hands-on und Entscheidungstermin ergänzt,
+         Kontrollpunkt vom 22.11. auf den 02.11. verlegt, Lane Defender
+         als abgegeben (03.10.) markiert, Kacheln neu, Phasen 1–3
+         nachgezogen. Termine darüber hinaus unverändert vom 14.09.
+Löst ab  `📍 Status · Wo das Projekt steht` (seit 2026-09-11; die Seite
+         ist inzwischen gelöscht — Tabelle unten)
+Geprüft  2026-10-07 — gegen Uni/ROADMAP.md, die vier DECISIONS vom
+         01.10. und STUNDENPLAN.md
 Quelle   Uni/ROADMAP.md (Phasenplan), Uni/DECISIONS.md,
          Uni/Semester_3/STUNDENPLAN.md
 Skripte  keine — die Seite zeigt Termine und Plan, nicht Code
@@ -79,6 +74,9 @@ Seite ←  keine
 
 ## 📍 Status  — Schicht: Projekt (Lane Defender)
 
+Alle vier Seiten sind **abgeschlossen** — Lane Defender ist am
+2026-10-03 abgegeben (Entscheidung `DECISIONS.md`, 2026-10-07).
+
 ### 📍 Status · Lane Defender M2-Design
 ```
 URL      https://claude.ai/artifact/FbqHW5wq6Ay2szchXe7R3j
@@ -86,6 +84,10 @@ Stand    2026-09-20 — neu, gebaut im M2-Design-Abschnitt: Screen
          „Gerahmt" mit beiden Spielstufen als Render, Zeilenbudget,
          Feldbreiten je Stufe, Sprite, Schuss-Symbol und der
          kbhit-Baustein samt Tick-Reihenfolge
+Abgeschlossen 2026-10-03
+Bekannt  Titel draußen „Lane Defender M2" (ohne Symbol, Typwort und
+         „-Design"), zuletzt veröffentlicht am 21.09. statt 20.09. —
+         Abgleich 2026-10-07, bleibt so
 Quelle   Projekte/Lane_Defender/DECISIONS.md (sieben Einträge vom
          2026-09-20), Projekte/Lane_Defender/ROADMAP.md (M2)
 Skripte  keine — die Seite zeigt den Design-Stand, nicht Code
@@ -101,6 +103,7 @@ Stand    2026-09-27 — neu, gebaut im M3-Design-Abschnitt: Klassenbaum
          der Gegner (Tafel 1), Spawn-Schritt im Tick (Tafel 2),
          delete-vor-erase-Merksatz, Figuren-Zuordnung und die
          Bausteine B1–B3
+Abgeschlossen 2026-10-03
 Quelle   Projekte/Lane_Defender/DECISIONS.md (vier Einträge vom
          2026-09-27), Projekte/Lane_Defender/ROADMAP.md (M3)
 Skripte  keine — die Seite zeigt den Design-Stand, nicht Code
@@ -116,6 +119,7 @@ Stand    2026-09-28 — neu, gebaut im M4-Design-Abschnitt: Tick mit
          beiden Kollisions-Prüfungen (Tafel 1), Feuerraten-Tabelle,
          Shop-Preise samt Wirkungen, Startwert-Kacheln, HUD-Vorzug
          und die Bausteine B1–B3
+Abgeschlossen 2026-10-03
 Quelle   Projekte/Lane_Defender/DECISIONS.md (vier Einträge vom
          2026-09-28), Projekte/Lane_Defender/ROADMAP.md (M4)
 Skripte  keine — die Seite zeigt den Design-Stand, nicht Code
@@ -133,6 +137,9 @@ Stand    2026-09-30 — neu, gebaut im M5-Design-Abschnitt:
          (Zeiger und Heap), Entweder-oder-Feuer-Ablauf,
          [4]-Kauf-Kette, das vierte delete, Balance-Datei-Schnitt
          und die Bausteine B1–B2
+Abgeschlossen 2026-10-03
+Bekannt  Titel draußen „Lane Defender M5" — wie M2, Abgleich
+         2026-10-07, bleibt so
 Quelle   Projekte/Lane_Defender/DECISIONS.md (sechs Einträge vom
          2026-09-30), Projekte/Lane_Defender/ROADMAP.md (M5)
 Skripte  keine — die Seite zeigt den Design-Stand, nicht Code
@@ -341,6 +348,10 @@ Zustand  **teils geplant** — die Host-Optionen-Tafel ist seit dem 04.09.
 Titel    Draußen heißt sie „Die Lobby-Tafel" — benannt, bevor die Seite
          ins Register kam. Nachgezogen beim nächsten inhaltlichen
          Anfassen (Schritt 5), wie beim Multiplayer-Präzedenzfall.
+Bekannt  Die Veröffentlichungsliste nennt den 01.09. als letzten Stand,
+         nicht den 04.09. Der Maßstabsvergleich gegen 1920×1080 steht
+         trotzdem auf der Seite (abgerufen 2026-10-07) — nur das Datum
+         weicht ab, der Inhalt nicht. Bleibt so.
 Ruht     seit 2026-09-11
 Quelle   Projekte/Isor_Tower/DECISIONS/UI.md (Einträge vom 29.08. und
          01.09.)
@@ -393,12 +404,17 @@ Seite ←  keine
 ### 💡 Lernstück · Poisson-Disc-Sampling
 ```
 URL      https://claude.ai/code/artifact/2a5340fb-b4de-4326-be1a-c330767d8fdb
-Stand    2026-08-24 — nachgezogen: Hausfarbwelt (die drei SVG-Diagramme
-         wanderten über ihre CSS-Variablen mit), der Radius-Wechsel
-         5 m → 0,6 m ist jetzt angesagt statt stillschweigend, neuer
-         Projekt-Kasten belegt die Beispiel-Zeile (SamplePoissonDisc,
-         MAX_SAMPLE_ATTEMPTS, cellOffset = 2), Fußzeile mit führender
-         Quelle. Alle Zahlen unverändert — sie hielten der Prüfung stand.
+Stand    2026-10-07 — gründliche Prüfung des Pflegetags, vier Befunde
+         nachgezogen: Gras-Radius 0,6 → 0,5 m samt Gitter (5793², 134 MB;
+         je Kachel 725², 2,1 MB — die Korrektur aus TDD_NOTES vom 08.08.
+         war am 24.08. nicht übernommen worden), Messtabelle als Spalte
+         „Erzeugen + Filtern" benannt und um die 10,1-s-Zeile ergänzt
+         (die 8,8 s enthalten den entschärften Ausschlussfilter), Kopf-
+         Kacheln auf Birke 9,47 m je 256-m-Kachel statt 5 m global,
+         Seed-Satz auf „je Kachel ein Generator" geschärft.
+         Vorher: 2026-08-24, Hausfarbwelt und Projekt-Kasten.
+Geprüft  2026-10-07 — gegen ObjectPlacer.cs, TerrainConfig_Default.asset,
+         TDD_NOTES.md und TDD.md (Messreihe)
 Quelle   Projekte/Isor_Tower/TDD_NOTES.md, Knowledge-Ordner
 Beispiel ObjectPlacer
 Seite →  (noch nicht erfasst)
@@ -418,6 +434,9 @@ Stand    2026-08-24 — nachgezogen, im Paar mit Terrain & Gras: beide
          Render-Distanz stehen jetzt auf der Seite. Hausfarbwelt, die
          vier Diagramme über Klassen-Variablen mitgefärbt; Quellenzeile
          ergänzt.
+Geprüft  2026-08-24 — Durchsicht des Altbestands vom 23.08., Befunde am
+         24.08. nachgezogen. Beispiel-Code seitdem unverändert (git,
+         Abgleich 2026-10-07)
 Quelle   Projekte/Isor_Tower/TDD_NOTES.md, Knowledge-Ordner
 Beispiel InstancedRenderer, GrassCellBuilder, GrassCell, GrassRenderProfile,
          GrassLodSelector, PlaceableRenderMode
@@ -435,6 +454,8 @@ Stand    2026-08-24 — nachgezogen: Hausfarbwelt (Palettentausch, SVGs
          Überholt-Kasten trägt die heutigen Asset-Werte samt der
          Wasser-Absicht (DECISIONS/Terrain_Mesh.md), Fußzeile nennt die
          führende Quelle. Erste Altbestand-Seite im Hausstil.
+Geprüft  2026-08-24 — wie GPU-Instancing; Beispiel-Code seitdem
+         unverändert (git, Abgleich 2026-10-07)
 Quelle   Projekte/Isor_Tower/TDD_NOTES.md, Knowledge-Ordner
 Beispiel MeshBuilder, HeightmapGenerator
 Seite →  (noch nicht erfasst)
@@ -492,6 +513,20 @@ Stil     Steht weiter in ihrer eigenen blaugrauen Fassung, nicht in der
          „Der Altbestand": Ein Neubau von 100 KB Lehrtext war der
          Umbenennung nicht angemessen. Fällig beim nächsten
          inhaltlichen Anfassen.
+Bekannt  Gründlich geprüft am 2026-10-07, nicht nachgezogen (Isor: ruht
+         wie NGO-Bausteine). Der Lehrstoff hält (UDP/TCP, Authority,
+         Topologien, Relay, die meisten Zahlen). Offen:
+         - Rechenfehler: „40 Objekte mehr, die Verbindung bricht" —
+           tatsächlich ≈ 3,7 Mbit/s, 37 % von 10 Mbit/s.
+         - Fall A ohne die 30 B Verpackung gerechnet (≈ 0,09 statt
+           0,06 Mbit/s).
+         - Der Nachtrag-Kasten nennt Punkte der NGO-Seite und die Seite
+           `⚙️ Multiplayer` als führend.
+         - Prediction, Determinismus, async-Backend und öffentliche
+           Lobby sind vom Design 25.–28.08. überholt.
+         - Unity/NGO ist von der Stack-Entscheidung überholt.
+         Am Kontrollpunkt 02.11. mitentscheiden.
+Ruht     seit 2026-10-07
 Quelle   Projekte/Isor_Tower/DECISIONS/Multiplayer.md → „Verhältnis zum
          Vorlauf vom 2026-08-23/24"
 Beispiel erklärt Netzwerktechnik allgemein: Latenz, Tick, UDP gegen TCP,
@@ -528,7 +563,8 @@ Seite ←  keine
 ### 💡 Lernstück · SAE-C++-Konventionen
 ```
 URL      https://claude.ai/code/artifact/5ea67ac8-e377-46ba-8920-d21ef5508131
-Stand    2026-09-08 — neu, gebaut im Zug der Guidelines-Einpflege; Inhalt
+Stand    2026-10-07 — gründlich geprüft und nachgezogen (Zeile Geprüft).
+         Vorher 2026-09-08 — neu, gebaut im Zug der Guidelines-Einpflege; Inhalt
          aus dem SAE-PDF (Version 05.09.2022) und den C++-Abschnitten
          der CODE_GUIDELINES vom selben Tag. Geltung am 2026-09-11
          nachgezogen (Pflegetag): auch der 3D-Model-Viewer
@@ -538,9 +574,11 @@ Quelle   Kern/CODE_GUIDELINES.md → „C++ — welche Konvention wo gilt" und
          „C++ · Konsolenprojekt — SAE-Konvention (Pflicht)"; Original-PDF
          im Datenbaum unter 01_Uni\_Regelwerk\ (Kern/PFADE.md → DATENBAUM)
 Beispiel keine Projekt-Klassen — die Code-Beispiele der Seite (CPlayer)
-         sind synthetisch nach SAE-Muster. Echter Lane-Defender-Code
-         existiert seit dem 2026-09-09; belegt sind die Beispiele durch
-         ihn noch nicht
+         sind synthetisch nach SAE-Muster. Angewandt: Lane Defender,
+         Abgabestand (Release-Build 1.0.0, Repo V 0.0014), und Model-Viewer
+Geprüft  2026-10-07 — gegen CODE_GUIDELINES, das SAE-PDF und Stichproben
+         im Code; nachgezogen: Englisch gilt auch für Ausgaben,
+         Debug-Kachel abgeschwächt (0xCC oder 0)
 Seite →  keine
 Seite ←  Cpp/sae-cpp-konventionen.md
          (dort auch Offline-Kopie Seiten/2026-09-08-sae-cpp-konventionen.html)
@@ -549,17 +587,21 @@ Seite ←  Cpp/sae-cpp-konventionen.md
 ### 💡 Lernstück · Pointer & Referenzen
 ```
 URL      https://claude.ai/code/artifact/38a61247-8221-4115-a5af-79822f94c5e9
-Stand    2026-09-13 — neu, gebaut nach Abschluss des Lern-Vorlaufs L3
+Stand    2026-10-07 — gründlich geprüft und nachgezogen (Zeile Geprüft).
+         Vorher 2026-09-13 — neu, gebaut nach Abschluss des Lern-Vorlaufs L3
          (Lane Defender): zwei Tafeln — Zettel tauschen gegen Haus
          besuchen, by value gegen const-Referenz — dazu nullptr-Wächter,
          die drei Pointer-Einsatzfälle und die Kostenregel als Tabelle.
          Offline-Kopie: Seiten/2026-09-13-cpp-pointer-referenzen.html
 Quelle   Knowledge-Ordner: Cpp/pointer-hat-nie-den-wert.md und
          Cpp/referenz-reicht-die-hausnummer-durch.md
-Beispiel LaneDefender.cpp — PrintMessage-Familie auf const std::string&
-         (L3 Ü3); das Ü2-Pointer-Snippet ist nach Abnahme entfernt, der
-         kommende Einsatz (SpecialAttack*-Slot in M5, new/delete-Gegner
-         in M3) steht als Absicht in den DECISIONS der Schicht
+Beispiel Lane Defender, Abgabestand (Release-Build 1.0.0, Repo V 0.0014)
+         — Output.h (PrintMessage auf const std::string&), Player.h
+         (CSkill* m_pSkill), GameScene.cpp (vector<CEnemy*>, Wächter im
+         Feuer-Zweig); dazu die L3-Übungen vom 12./13.09.
+Geprüft  2026-10-07 — acht Befunde nachgezogen, darunter einer falsch:
+         Der Skill-Slot hieß SpecialAttack* und galt als „vor dem ersten
+         Boss-Sieg leer"; tatsächlich CSkill*, gefüllt per [4]-Kauf
 Seite →  Lernstück C++-Funktionen & Überladung,
          Lernstück SAE-C++-Konventionen
 Seite ←  Cpp/pointer-hat-nie-den-wert.md,
@@ -569,21 +611,21 @@ Seite ←  Cpp/pointer-hat-nie-den-wert.md,
 ### 💡 Lernstück · C++-Funktionen & Überladung
 ```
 URL      https://claude.ai/code/artifact/1a3f534c-2b97-4f84-a81e-13ca4211f227
-Stand    2026-09-11 — neu, gebaut beim Abschluss von L2 Ü3 (Lane
+Stand    2026-10-07 — gründlich geprüft und nachgezogen (Zeile Geprüft).
+         Vorher 2026-09-11 — neu, gebaut beim Abschluss von L2 Ü3 (Lane
          Defender): drei Tafeln — Wertübergabe by value, Prototyp gegen
          Definition (Semikolon), Überladungswahl mit der bool→1-Falle;
          dazu Default-Argumente und die double-Literal-Falle.
          Offline-Kopie: Seiten/2026-09-11-cpp-funktionen-ueberladung.html
-Überholt Der Belegcode ist am 2026-09-13 umgezogen: Die
-         PrintMessage-Familie lebt jetzt in Output.h/Output.cpp,
-         LoseLives ist entfernt (kehrt mit einem Aufrufer zurück) —
-         Fußzeile und Projekt-Kästen der Seite nennen noch
-         LaneDefender.cpp. Der Lehrstoff selbst stimmt unverändert.
-         Nachziehen beim nächsten inhaltlichen Anfassen bzw. Pflegetag.
 Quelle   Knowledge-Ordner: Cpp/funktionen-bekommen-kopien.md und
          Cpp/ueberladung-nimmt-den-billigsten-weg.md
-Beispiel LaneDefender.cpp — PrintMessage-Überladungsfamilie und
-         LoseLives, belegt am echten Ü3-Code vom 2026-09-11
+Beispiel Lane Defender, Abgabestand (Release-Build 1.0.0, Repo V 0.0014)
+         — Output.h/Output.cpp; der LoseLives-Kasten und Tafel 3 als
+         historischer Ü3-Stand (Commit e822709, 11.09.) gekennzeichnet
+Geprüft  2026-10-07 — sieben Befunde nachgezogen: Code-Ort, Referenz-
+         Ausnahme bei by value, Ränge nach dem Standard (Exact Match /
+         Promotion / Conversion), Default-Argumente zählen bei der
+         Anzahl mit. Der Überholt-Vermerk vom 13.09. ist damit erledigt
 Seite →  Lernstück SAE-C++-Konventionen
 Seite ←  Cpp/funktionen-bekommen-kopien.md,
          Cpp/ueberladung-nimmt-den-billigsten-weg.md
@@ -592,15 +634,21 @@ Seite ←  Cpp/funktionen-bekommen-kopien.md,
 ### 💡 Lernstück · Tick-Kollision
 ```
 URL      https://claude.ai/artifact/VavXTzq3k7XjqsaaXm2QD9
-Stand    2026-09-29 — neu, gebaut als Erklär-Runde vor der
+Stand    2026-10-07 — gründlich geprüft und nachgezogen (Zeile Geprüft).
+         Vorher 2026-09-29 — neu, gebaut als Erklär-Runde vor der
          M4-B2-Abnahme (Lane Defender): Tick-Reihenfolge mit beiden
          Prüfungen (Tafel 1), HandleCollisions als Treffer-Kette
          samt echtem Code (Tafel 2), die Platztausch-Falle gefangen
          gegen durchgetunnelt (Tafeln 3a/3b), Zahlen-Kacheln und
          der F5-Testbogen der Abnahme
 Quelle   Knowledge-Ordner: Cpp/in-ticks-tunnelt-die-kollision.md
-Beispiel GameScene.cpp — HandleCollisions und der Tick-Doppelruf,
-         belegt am echten M4-Code vom 28./29.09.
+Beispiel Lane Defender, Abgabestand (Release-Build 1.0.0, Repo V 0.0014)
+         — GameScene.cpp (HandleCollisions, Tick-Doppelruf) und Balance.h
+Geprüft  2026-10-07 — Tafel 1 auf zwölf Stationen, Durchbruch-Preis je
+         Gegner (Boss 5), Takt aus der Level-Tabelle, Tafel 3b neu: Sie
+         zeigte einen Fall, den Prüfung 2 fängt, statt des echten
+         Platztauschs, den nur Prüfung 1 fängt. Knowledge-Notiz: das
+         Stepper-Versprechen auf feste Tafeln korrigiert
 Seite →  📍 Status · Lane Defender M4-Design (Fußzeile)
 Seite ←  Cpp/in-ticks-tunnelt-die-kollision.md
 ```
@@ -608,7 +656,8 @@ Seite ←  Cpp/in-ticks-tunnelt-die-kollision.md
 ### 💡 Lernstück · Kompiliervorgang & Präprozessor
 ```
 URL      https://claude.ai/artifact/2uiZN5dDKHy7qBzV1HEX1g
-Stand    2026-10-05 — neu, gebaut im Kurz-Konsult zu C++-Unterricht 2
+Stand    2026-10-07 — gründlich geprüft und nachgezogen (Zeile Geprüft).
+         Vorher 2026-10-05 — neu, gebaut im Kurz-Konsult zu C++-Unterricht 2
          (Folien 4.1/4.2): Pipeline-Tafel mit Fehlerpräfixen (C…
          gegen LNK…, Anker LNK4098 aus Model-Viewer V1), die drei
          #define-Formen, Include-Schutz, MULTIPLY-Klammer-Falle als
@@ -621,8 +670,12 @@ Quelle   Kern/LERNLOG.md (Eintrag vom 2026-10-05); Stoffgrundlage
          gibt es nicht (Knowledge-Frage am 2026-10-06 gestellt,
          Auswahl fiel auf die zwei OpenGL-Themen; der Stoff lebt auf
          der Seite und im LERNLOG)
-Beispiel Unterrichts-Code CppLesson2 (Defines.h mit ADD/MULTIPLY/
-         STRINGIFY, GetName über #x) und Model-Viewer V1 (LNK4098)
+Beispiel Model-Viewer V1 (LNK4098, GLFW als DLL) — Commit c5bcf1c,
+         Update V 0.0001, 2026-10-04; Unterrichts-Code CppLesson2 liegt
+         nicht im Bestand (gesucht 2026-10-07)
+Geprüft  2026-10-07 — LNK4098 ist eine Warnung (LNK4xxx), kein Fehler;
+         UHT und TOWER_API im Unreal-Ausblick ergänzt, #elseif
+         präzisiert, Dateinamen main.cpp / Window.cpp
 Seite →  💡 Lernstück · SAE-C++-Konventionen (Fußzeile)
 Seite ←  💡 Marken statt Zeiger und
          💡 Shader-Pipeline & Fehlertexte (beide Fußzeile)
@@ -631,14 +684,19 @@ Seite ←  💡 Marken statt Zeiger und
 ### 💡 Lernstück · Marken statt Zeiger
 ```
 URL      https://claude.ai/artifact/HvvNAzt3vEW4KeGjsk5DNj
-Stand    2026-10-06 — neu, gebaut beim Sichern der V2-Session des
+Stand    2026-10-07 — gründlich geprüft und nachgezogen (Zeile Geprüft).
+         Vorher 2026-10-06 — neu, gebaut beim Sichern der V2-Session des
          Model-Viewers: Grenz-Tafel RAM gegen GPU, Marken-Kacheln
          (uint32_t, 0 als Flagge), Plural-API-Tabelle, Tafel „Weg
          der 36 Bytes" (Anschluss und Bind), RAII-Tabelle
          CShader/CMesh
 Quelle   Knowledge/Grafik/opengl-zwei-welten-und-marken.md
-Beispiel CShader und CMesh (Model-Viewer V2) — m_uiProgramID,
-         m_uiVAO/m_uiVBO, glDelete*-Destruktoren
+Beispiel Model-Viewer V2 (Commit e428f94) — CShader und CMesh; V3
+         (Commit 44302a5) ergänzt CTexture und die Kugel (8 floats je Ecke)
+Geprüft  2026-10-07 — zwei Aussagen falsch: „immer im Plural" (Shader
+         und Programme entstehen per Rückgabewert) und „eine Ressource je
+         Klasse" (CMesh hat zwei). Dazu 36 Bytes als V2-Beispiel, keine
+         Lücken-Garantie, CTexture. Knowledge-Notiz mitkorrigiert
 Seite →  💡 Shader-Pipeline & Fehlertexte und
          💡 Kompiliervorgang & Präprozessor (Fußzeile)
 Seite ←  Grafik/opengl-zwei-welten-und-marken.md
@@ -647,16 +705,20 @@ Seite ←  Grafik/opengl-zwei-welten-und-marken.md
 ### 💡 Lernstück · Shader-Pipeline & Fehlertexte
 ```
 URL      https://claude.ai/artifact/WsY2ratacwT59ZQp2Ux4xE
-Stand    2026-10-06 — neu, gebaut beim Sichern der V2-Session des
+Stand    2026-10-07 — gründlich geprüft und nachgezogen (Zeile Geprüft).
+         Vorher 2026-10-06 — neu, gebaut beim Sichern der V2-Session des
          Model-Viewers: Pipeline-Tafel mit fünf Stationen und den
          Läufe-Kacheln (3 gegen ~115.000), beide triangle-Dateien
          als Rezept, Compiler-Tabelle MSBuild gegen Treiber,
          Anatomie-Tafel „0(5)" samt Stolperzeilen-Merksatz,
          Wächterkette bis exit −1
 Quelle   Knowledge/Grafik/shader-pipeline-und-fehlertexte.md
-Beispiel CShader (CompileShader und LinkProgram, Pfad in der
-         Fehlermeldung) und Shaders/triangle.vert|.frag —
-         Model-Viewer V2
+Beispiel Model-Viewer V2 (Commit e428f94) — CShader und
+         Shaders/triangle.vert|.frag; ein Kasten zeigt, was V3 (Commit
+         44302a5) am Rezept ändert
+Geprüft  2026-10-07 — Rezept als V2-Stand gekennzeichnet, w-Division vor
+         dem Rasterizer, Fragments statt Pixel samt Per-Fragment-Tests.
+         Knowledge-Notiz: aPos → a_Position
 Seite →  💡 Marken statt Zeiger und
          💡 Kompiliervorgang & Präprozessor (Fußzeile)
 Seite ←  Grafik/shader-pipeline-und-fehlertexte.md
@@ -675,7 +737,13 @@ Stand    2026-09-11 — nachgezogen auf Version 2.1.0 (Pflegetag, fällig
          Revier-Regel, Zahlen neu gezählt; dazu ein Abschnitt, was seit
          2.1.0 ohne neue Nummer dazukam.
 Überholt Sammelstelle bis zur nächsten Harness-Version (Regel unten):
-         leer — geleert am 2026-09-11 mit dem Nachziehen.
+         - 2026-10-07, Pflegetag: Die gründliche Prüfung wählt nicht
+           mehr nach ältestem Stand, sondern nie geprüfte Seiten oder
+           solche mit geänderter Quelle.
+         - Neue Index-Zeilen `Geprüft`, `Bekannt` und `Abgeschlossen`.
+         - Lernstücke nennen ihren Beispiel-Code mit Versionsstand.
+         - Der Kontrollpunkt für die ruhenden Seiten liegt am 02.11.
+         Quelle: DECISIONS 2026-10-07.
 Quelle   CLAUDE.md, Kern/WORKFLOW.md, DOC_RULES.md, VERSIONIERUNG.md,
          DECISIONS.md
 Skripte  keine Unity-Skripte; die Seite beschreibt die Harness-Dateien,
@@ -734,6 +802,7 @@ Abschnitt 8).
 | ID | Titel | seit | Grund |
 |---|---|---|---|
 | `fc15275b-…` | Fenominal Duftliste | 2026-08-31 | privat, ohne Projektbezug — beim Abgleich am 2026-09-11 aufgefallen |
+| `aa76bbca-…` | R50 Rogue Layout | 2026-10-05 | privat, Aufstellung in einem Handyspiel — beim Abgleich am 2026-10-07 aufgefallen |
 
 ---
 
@@ -745,6 +814,7 @@ Damit nachvollziehbar bleibt, warum eine ID ins Leere zeigt.
 |---|---|---|---|
 | `cd2c6331-…` | Village spielbar | 2026-08-09 | Offline-Kopie `Seiten/2026-07-30-village-spielbar.html` |
 | `0dd96ec7-…` | große Uni-Seite der Session 2026-07-16/17 | unbekannt | keine Kopie; kein Nachfolger (Isor, 2026-08-25) — nichts zeigt auf die ID, der Stoff lebt in den Lernstück-Seiten |
+| `d5e30d97-…` | 🗑 Löschen · Wo das Projekt steht (Stand 2026-08-23, seit 2026-09-11 auf 🗑) | zwischen 2026-09-11 und 2026-10-07 | keine Kopie; Nachfolger `📍 Status · Semester 3`. Beim Abgleich am 2026-10-07 nicht mehr erreichbar, nichts im Knowledge zeigt auf die ID |
 
 ---
 

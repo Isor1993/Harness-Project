@@ -1439,3 +1439,68 @@ kostet aber rund elf Neuveröffentlichungen für eine Frage, die Ende
 November ohnehin neu gestellt wird · alles im Turnus lassen — die
 gründliche Prüfung liefe ins Leere.
 Auslöser: Pflegetag 2026-09-11, der erste seit dem 2026-08-23.
+
+## 2026-10-07 — Design-Seiten eines abgegebenen Projekts sind abgeschlossen
+Was: Die Status-Seiten eines Projekts, das abgegeben ist, bleiben
+unverändert stehen und fallen dauerhaft aus der gründlichen Prüfung des
+Pflegetags — wie die Zeugnisse, nur ohne eigene Gattung. Im
+`ARTIFACT_INDEX.md` trägt jede eine Zeile `Abgeschlossen` mit dem
+Abgabedatum. Der Metadaten-Abgleich schließt sie weiter ein. Erste
+Fälle: die vier Design-Seiten M2 bis M5 von Lane Defender (abgegeben
+2026-10-03). Regel in `ARTIFACT_RULES.md` → „Wann geschaut wird".
+Entschieden von Isor am Pflegetag.
+Dazu nachgezogen: Der Kontrollpunkt, an dem die ruhenden Unity-Seiten
+wieder auf den Tisch kommen (Eintrag 2026-09-11), liegt seit
+`Uni/DECISIONS.md` → „2026-10-01 — Engine-Kontrollpunkt vorgezogen" am
+**2026-11-02**, nicht mehr Ende November.
+Warum: Eine Design-Seite hält fest, was zu einem Meilenstein
+beschlossen war. Nach der Abgabe gibt es keinen Stand mehr, gegen den
+sie veralten könnte; eine gründliche Prüfung liefe gegen eingefrorenen
+Code und fände nur, dass der Plan vom Ergebnis abweicht — das ist
+Geschichte, kein Befund. Ohne die Ausnahme hätte die Auswahl nach
+ältestem Stand diese Seiten über Wochen gezogen.
+Verworfen: im Turnus lassen (Prüfung ohne Gegenwert) · auf `🗑` setzen
+(die Seiten sind nicht falsch, nur fertig; die Lane-Defender-ROADMAP
+nennt ihre URLs als Beleg) · `Ruht` wiederverwenden (ruhen heißt
+„kommt vielleicht zurück", abgegeben kommt nicht zurück).
+Auslöser: Pflegetag 2026-10-07; Isors Frage dazu: „Seiten, an denen wir
+nicht mehr arbeiten, müssen doch nicht aktualisiert werden."
+
+## 2026-10-07 — Gründliche Prüfung nur bei Bedarf, bekannte Abweichungen still
+Was: Die gründliche Prüfung des Pflegetags wählt nicht mehr die Seite
+mit dem ältesten Stand, sondern zuerst eine nie geprüfte Seite, sonst
+eine, deren Quelle oder Beispiel-Code sich seit ihrer letzten Prüfung
+geändert hat (per `git log`). Trifft beides auf keine zu, ist Punkt 2
+des Pflegetags „nichts zu tun". Der Index führt dafür je Seite eine
+Zeile `Geprüft`. Dazu: Eine Abweichung, die Isor bewusst liegen lässt,
+bekommt die Zeile `Bekannt` und wird vom Abgleich nicht erneut
+gemeldet. Bei Gleichstand entscheidet die Reihenfolge im Index — die
+Lücke war am selben Pflegetag aufgefallen. Regel in
+`ARTIFACT_RULES.md` → „Wann geschaut wird", Liste in `WORKFLOW.md` →
+Pflegetag. Entschieden von Isor.
+Warum: Die alte Auswahl lief im Kreis. Eine geprüfte Seite bekam ein
+frisches Datum und rückte ans Ende, kam aber bei zwölf Seiten im
+Turnus rund alle zwölf Wochen wieder dran — auch wenn sich an ihrer
+Quelle nichts geändert hatte. Am 2026-10-07 wären die nächsten sieben
+Pflegetage auf Seiten über eingefrorenen Code gefallen (ruhender
+Unity-Stand, abgegebener Lane Defender). Liegen gelassene Abweichungen
+kamen aus demselben Grund jede Woche wieder.
+Risiko, bewusst getragen: Eine einzige Prüfung ist nicht unfehlbar —
+der Poisson-Fehler (0,6 statt 0,5 m) überstand die Durchsicht vom
+2026-08-23 und fiel erst am 2026-10-07 auf. Bei unveränderter Quelle
+bekommt eine solche Seite keine zweite Prüfung mehr. Isor nimmt das
+gegen die Entlastung in Kauf.
+Verworfen: alles beim Alten (Rundlauf ohne Gegenwert) · nur neue Seiten
+prüfen (ältere, nie geprüfte Seiten blieben für immer ungeprüft).
+Auslöser: Isors Eindruck beim Pflegetag 2026-10-07: „dass beim
+Pflegetag die halt immer wieder wiederholt werden".
+Ergänzt am selben Tag, nach der gründlichen Prüfung aller acht nie
+geprüften Seiten (keine war fehlerfrei): **Lernstücke nennen ihren
+Beispiel-Code mit Versionsstand**, und für die Auswahl zählt bei ihnen
+nur die führende Quelle, nicht der Code. Ohne das hätte die neue Regel
+jede Seite zu einem laufenden Projekt nach jedem Commit wieder auf die
+Liste gesetzt — `💡 Marken statt Zeiger` und `💡 Shader-Pipeline` waren
+einen Tag nach dem Bau veraltet, weil der Model-Viewer auf V3 sprang.
+Ein Lernstück erklärt ein Konzept; der Code ist Beleg, kein Gegenstand.
+Verworfen: Lernstücke bei jedem Versionssprung nachziehen (genau der
+Rundlauf, der abgeschafft werden sollte). Entschieden von Isor.

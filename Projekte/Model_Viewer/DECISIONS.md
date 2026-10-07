@@ -150,3 +150,90 @@ Stationen-Durchgang erklärt und teils selbst nachjustiert
 Verworfen: alle in der V3-Arbeitsteilung von Claude geschriebenen
 Dateien markieren (Isors Entscheid vom 2026-10-07: nur die Kugel-Mathe
 liegt über seinem Niveau).
+
+## 2026-10-07 — Stylized-Toon: weiche Kante statt harter Stufen
+
+Was: Der Toon-Look rechnet eine smoothstep-Kante um die
+Schattenschwelle (`F_SHADOW_EDGE` 0.4, Weichzone `F_EDGE_SOFTNESS`)
+und mischt per mix zwischen getöntem Schatten (`VEC3_SHADOW_TINT`,
+kühl-blau) und voller Helligkeit — zwei Töne, keine Stufenzahl. Der
+Tint ist zugleich die Grundhelligkeit: Die Nachtseite bleibt sichtbar,
+der Pauschal-Ersatz für nicht gerechnetes indirektes Licht.
+Warum: Die floor-Stufen wurden gebaut und am echten Bild als zu hart
+verworfen; Isors Ziel ist Stylized Richtung Genshin, und deren
+Grundrezept ist die schmale weiche Kante plus kühler Schatten. Die
+Schwelle 0.4 hält die flache Wiese bei der 27°-Sonne im Lichtband
+(dot der Boden-Normale ≈ 0.45).
+Verworfen: floor-Quantisierung in N Stufen (zu hart, Bänder 0.35/0.5
+zu ähnlich); Vollschwarz als Nachtseite (Isors Grundhelligkeits-
+Entscheid — Spielobjekte müssen nachts sichtbar bleiben; die
+max-Untergrenze 0.35 ging später im Tint auf).
+
+## 2026-10-07 — Skybox: eine GPU-Ressource, Würfel als CMesh, xyww-Tiefe
+
+Was: `CSkyBox` besitzt nur die Cubemap (sechs 512er-Gesichter,
+CLAMP_TO_EDGE in S/T/R, **kein** Vertikal-Flip); der Himmelwürfel ist
+ein normales CMesh aus `GenerateSkyboxCubeVertices` (8er-Layout,
+Normalen und UV null). Der eigene Shader liest per `samplerCube` über
+die Eckrichtung; `gl_Position.xyww` legt die Tiefe fest auf 1.0,
+gezeichnet als Letztes mit GL_LEQUAL, View per `mat3`-Stutzen ohne
+Translation. Himmel 05 aus dem CC0-Paket „Cloudy Skyboxes" (Screaming
+Brain Studios), Kreuz-Blätter per Skript zerschnitten, Original im
+Datenbaum (`03_AssetLibrary\Extern_Frei\Himmel_Cloudy_SBS\`).
+Warum: hält den Programmaufbau-Beschluss „je Klasse genau eine
+GPU-Ressource"; der Würfel braucht kein Sonder-VAO; xyww nutzt die
+w-Division (Tiefe w÷w = 1), LEQUAL löst den Randfall „1.0 gegen
+leere Leinwand"; zuletzt zeichnen spart jeden verdeckten Himmelspixel.
+Verworfen: CSkyBox besitzt zusätzlich Würfel-VBO/VAO (bräche den
+RAII-Schnitt); Flip wie bei CTexture (Cubemaps lesen von oben); das
+bottom-Gesicht durch eine Boden-Textur ersetzen (ungleiche Größe macht
+die Cubemap unvollständig → alles schwarz; Isors Experiment).
+
+## 2026-10-07 — Welt statt Würfeltrick: Bodenplatte mit Rand-Fade
+
+Was: 80×80-m-Plane (`GenerateGroundPlaneVertices`: Normalen nach
+oben, UV kachelt Isors Seamless-Gras über eine Tiles-Konstante),
+Höhe −1 = Kugel-Südpol — der Ball steht. Der Rand blendet im frag
+per Zaun-Maß `max(abs(x), abs(z))` und smoothstep 28→38 in eine
+Horizontfarbe; die Fade-Grenze läuft damit parallel zur Plattenkante.
+Warum: Ein „Unten" verankert das Modell — als Weltobjekt mit echter
+Perspektive statt als Malerei im mitreisenden Himmelwürfel; das
+quadratische Maß ist Isors Form-Entscheid am Bild, die
+Seamless-Textur (Isors Fund) löste die sichtbare Wiederholung.
+Verworfen: Kamera-Entfernungs-Nebel (machte beim Rauszoomen alles
+milchig; lieferte nebenbei die Staffelstab-Lektion — Positionen
+interpolieren, fertige Längen nicht); Kreis-Fade per `length` (fraß
+die Plattenecken); Alpha-Ausblenden (braucht Blending — gestrichen,
+siehe unten).
+
+## 2026-10-07 — Sonnen-Gizmo und Kontakt-Schatten über einen Unlit-Shader
+
+Was: Ein Mini-Paar `unlit.vert|.frag` (MVP durchreichen, flache Farbe
+raus) zeichnet dieselbe Kugel-Mesh zweimal zusätzlich: als weiße
+Sonnenscheibe bei −Lichtrichtung × 60 m (Radius 2.5) und als
+plattgedrückten Kontakt-Schatten (Skalierung y 0.01, Höhe −0.99
+gegen Z-Fighting, 0.88 m von der Sonne weg versetzt, dunkles
+Grasgrün statt Schwarz).
+Warum: „Ein Mesh, viele Objekte" — erste echte translate/scale-
+Nutzung der Model-Matrix; das Gizmo koppelt die sichtbare Sonne an
+die Licht-Konstante (eine Quelle, Settings bewegen später beides);
+der Kontakt-Fleck klebt den Ball an den Boden — sein Job ist Erden,
+nicht Physik.
+Verworfen: Sonnen-Textur (läse sich als Planet; Anime-Sonnen sind
+flache Scheiben, der Glow braucht additives Blending); echtes Shadow
+Mapping (größtes Einzelstück der Echtzeitgrafik, jenseits des
+Rahmens); volle Schatten-Projektion (löste den Fleck 2 m vom Ball);
+Gras-Textur auf dem Fleck (Kugel-UVs strudeln am Pol, Muster deckt
+sich nicht mit der Wiese — Isors Experiment).
+
+## 2026-10-07 — Blending-Baustein gestrichen
+
+Was: Der gebündelte Baustein „Blending" (Alpha-Rand, additiver
+Sonnen-Glow, Multiply-Schatten) wird nicht gebaut; reaktiviert nur,
+falls das OCE-Feedback nach der frühen Abgabe mehr verlangt.
+Warum: Isors Komplexitätsgrenze ist erreicht („das ist meine
+Grenze"), die Pflicht der Aufgabe ist komplett erfüllt, und der Look
+trägt auch ohne — obwohl drei Design-Wünsche desselben Abends auf
+genau diese Technik liefen.
+Verworfen: Blending jetzt lernen (das Zeitbudget vor der Abgabe
+gehört dem Tuning-Fenster und V6).

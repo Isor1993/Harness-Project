@@ -510,9 +510,11 @@ dieselbe Arbeitsteilung wie beim Review-Gate.
    veröffentlichten Seiten — Verfahren in `ARTIFACT_RULES.md`,
    Abschnitt „Wann geschaut wird". Claude legt eine Vorschlagsliste vor
    und ändert nichts von selbst.
-2. **Eine Seite gründlich** *(seit 2026-08-25)* — die lebendige Seite
-   mit dem ältesten Stand im `ARTIFACT_INDEX.md`, gegen Code und
-   führende Quelle gehalten. Verfahren, Auswahlregel und Ausnahmen in
+2. **Eine Seite gründlich** *(seit 2026-08-25)* — eine nie geprüfte
+   Seite oder eine, deren Quelle sich seit der letzten Prüfung geändert
+   hat (seit 2026-10-07); trifft das auf keine zu, ist hier nichts zu
+   tun. Gegen Code und führende Quelle gehalten. Verfahren,
+   Auswahlregel und Ausnahmen in
    `ARTIFACT_RULES.md`, Abschnitt „Wann geschaut wird". Grund: Der
    Abgleich allein sieht nur Metadaten — er fand drei von rund dreißig
    Funden (2026-08-23).

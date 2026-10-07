@@ -52,3 +52,17 @@ Format: Ereignisse als `- JJJJ-MM-TT — Ereignis (1–3 Sätze)`.
   `Knowledge/Grafik/` und drei Störungen notiert (zwei zur
   Commit-Lieferung, eine zur Arbeitsteilung — `Kern/STOERUNGEN.md`).
   Lern-Rubriken in `Kern/LERNLOG.md` unter 2026-10-07.
+- 2026-10-07 — V4 und V5 am selben Tag fertig, in der Abend-Session
+  auf Isors Zuruf (vorgezogen vor die Jam-Woche): Richtungslicht mit
+  Stylized-Toon-Kante (smoothstep/mix, kühler Schatten-Tint — die
+  floor-Stufen wurden gebaut und am Bild verworfen) und Skybox
+  „Himmel 05" (CC0-Paket im Datenbaum, CSkyBox mit eigenem Shader,
+  xyww/LEQUAL). Dazu ungeplant: Bodenplatte mit quadratischem
+  Rand-Fade (Isors Idee, selbst getippt und getunt), Seamless-Gras
+  (Isors Fund), generierte Toon-Basketball-Textur, Sonnen-Gizmo,
+  Kontakt-Schatten und die zoomabhängige Kamera-Bodengrenze (Isors
+  Entwurf). Damit sind alle sieben Pflichtpunkte der Aufgabe erfüllt;
+  Outline-Entscheid vertagt, Blending gestrichen (DECISIONS, fünf
+  Einträge). Vier neue Wissensseiten in `Knowledge/Grafik/`, eine
+  Störung (VS-Puffer — `Kern/STOERUNGEN.md`), Grindstone-Stand
+  18:49 h. Lern-Rubriken in `Kern/LERNLOG.md` unter 2026-10-07.

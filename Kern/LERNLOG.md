@@ -1824,3 +1824,126 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   gehängt; CTexture, CCamera, Fenster-Eingabe und GetAspectRatio als
   Fließband durch Claude (Builds grün); Stationen-Durchgang in
   Runden für den Tagesstoff angesetzt.
+- 2026-10-07 · Pflegetag der Artifact-Seiten (Harness) — **Selbst:**
+  den Konstruktionsfehler des Pflegetags gespürt, bevor er benannt war
+  („dass beim Pflegetag die halt immer wieder wiederholt werden") — die
+  Auswahl nach ältestem Stand prüfte tatsächlich jede Seite etwa alle
+  zwölf Wochen erneut; das Ziel selbst formuliert: nur pflegen, was sich
+  verändert, Abgeschlossenes heraus. **Fehlerbild:** Registerpflege
+  (Zeilen im Verzeichnis) für Seitenpflege gehalten und deshalb das
+  ganze Verfahren in Frage gestellt. **Hilfe:** Telefonbuch-Bild (der
+  Index ist das Verzeichnis, die Seiten bleiben unberührt) und die
+  Tabelle der nächsten sieben Pflegetage mit ihren eingefrorenen Quellen.
+- 2026-10-07 · Model-Viewer V4, Richtungslicht im frag (Development;
+  auf Isors Zuruf vorgezogen, zurück im V2-Modus — er tippt alles) —
+  **Selbst:** die zwei Licht-Uniforms fehlerfrei nach dem
+  u_Texture-Muster getippt; den brightness-Dreizeiler aus dem
+  Pseudorezept selbst konstruiert (einziger Patzer ein Int-Literal
+  statt 1.0) und dabei ungefragt auf die unäre Minus-Form umgebaut;
+  den FragColor-Fehler vorab selbst gespürt („denke ich habs
+  falsch"); SetVec3 komplett vorausgebaut (Deklaration und
+  Implementierung nach SetMat4-Muster), bevor das Häppchen kam; am
+  Schieberegler die Halbkugel-Einsicht selbst formuliert („die halbe
+  Kugel ist schwarz"); nach dem F5-Beweis die erste eigene
+  Shader-Design-Entscheidung: max-Untergrenze 0.35 statt 0.0 als
+  Grundhelligkeit, mit Spielbegründung (nachts sichtbar, Toon
+  braucht kein Vollschwarz) — Ambient selbst erfunden.
+  **Fehlerbild:** den vec4-Konstruktor mit 3+4 Fächern befüllt
+  (ganzes texColor statt Alpha-Float); im vorausgebauten SetVec3 den
+  Matrix-Lastwagen glUniformMatrix4fv stehen gelassen (16 Floats für
+  ein 3er-Paket — der stille Fehler ohne Konsolen-Text); Winkel
+  ausdrücklich nicht vorstellbar (Aphantasie) — trug erst, als dot
+  als Fach-mal-Fach-Rechnung ohne Winkel stand; mitten in der fast
+  fehlerfreien Strecke das Selbstbild „Shader ist gar nicht meins"
+  samt klarer Meldung „zu wenig Hilfe, ich verstehe immer weniger".
+  **Hilfe:** Kugel-Querschnitt mit dot-Werten an drei Punkten;
+  interaktiver Schieberegler mit Live-Rechnung und Pixel-Farbfeld
+  statt Winkeln; Lastwagen-Tabelle glUniform1i/3fv/Matrix4fv; nach
+  der Meldung Hilfe-Regler hoch: Vorlagen zum Abtippen statt
+  Selbst-Herleiten (glUniform3fv-Zeile, main-Konstanten und
+  -Aufrufe), Messzettel gegen das Selbstbild; Beweisbild-Vorhersage
+  vor dem F5; Tippfehler- und Kommentar-Pass durch Claude.
+- 2026-10-07 · Model-Viewer V4, Licht-Durchgang am lebenden Bild
+  (Development) — **Selbst:** Experiment 1 mit Lesart A vorhergesagt
+  („y = −1 heißt Sonne unten") und nach dem Gegenbeweis des Bildes
+  beide Lesarten im eigenen Code verortet (u_LightDirection =
+  Flugrichtung, toSun = Sonnenstand); den Orbit-Befund präziser
+  formuliert als die Frage danach („die helle Seite bleibt am
+  gleichen Punkt der Kugel, weil ich mich im 3D-Raum bewege, nicht
+  die Kugel"); ungefragt die physikalische Grundfrage gestellt (ein
+  echter Ball wäre rundum hell) — Auflösung indirektes Licht, die
+  eigene 0.35 als Industrie-Antwort wiedererkannt; die
+  Entfernungs-Idee selbst eingebracht (Vorgriff auf Punktlichter);
+  die litColor-Kette korrekt gelesen (färbt alle Kanäle jedes
+  Pixels, brightness skaliert) und die Mitfärbung der 0.35-Zone
+  richtig vorhergesagt; Abendsonnen-Test und Rückbau selbst
+  gefahren. **Fehlerbild:** Richtung gegen Position beim Licht
+  (Lesart A statt B — dieselbe Falle, die beim Tippen das Minus
+  trägt); der Orbit fühlt sich optisch falsch an trotz korrekter
+  eigener Erklärung (Museum- gegen Drohnen-Modell benannt, Umbau
+  geparkt); Lichtstärke und -farbe zunächst als getrennte Größen
+  gesucht (ein vec3 trägt beides). **Hilfe:**
+  Zwei-Lesarten-Tabelle vor dem F5, Bild als Schiedsrichter statt
+  Claude; Nordpol-Zahlenkette ((0,−1,0) → Minus → (0,1,0) =
+  Nordpol-Normale → dot 1.0); Directional-gegen-Point-Tabelle am
+  Unity-Anker; Gras-Pixel-Rechnung für beide Zonen unter
+  Abendsonne.
+- 2026-10-07 · Model-Viewer, Abend-Marathon: Stufen → Stylized, V5
+  Skybox, Boden und Optik-Stücke (Development; V4-Stufen und V5 auf
+  Isors Zuruf vorgezogen, Session lief auf seinen Wunsch bis in die
+  Nacht — „ich bin in Fahrt") — **Selbst:** floor-Stufen getippt und
+  am Bild als „zu hart" verworfen, Ziel selbst benannt (Stylized
+  Richtung Genshin); die alte max-Zeile nach dem Umbau selbst als
+  Doppel-Deklaration erkannt („float davor wäre eine neue Lokale");
+  beim CSkyBox-Abtippen die Konstruktions-Frage gestellt, warum
+  glGenTextures diesmal VOR der Lade-Schleife kommt (CTexture-Muster
+  gegengelesen); SetVec3-Namenskollision „skybox" nach Hinweis selbst
+  aufgelöst und die Regel nachgefragt (Name zählt, nicht Typ); das
+  Tiling-Problem der Wiese eigenständig per Seamless-Textur gelöst
+  (eigene Quelle); die UV-Kachel-Frage fast richtig verortet (suchte
+  in glTexImage2D — der Regler war die eigene Tiles-Konstante); den
+  Rand-Fade als eigene Idee vorgeschlagen (statt Claudes
+  Kamera-Nebel), komplett selbst getippt, selbst getunt
+  (Start/End/Farbe) und die Alpha-Variante als zu teuer selbst
+  vertagt; Zaun-gegen-Seil nach Widget und Bild in eigenen Worten
+  fehlerfrei zurückerklärt; die Kamera-Bodengrenze (eigener Entwurf
+  „Pitch je nach Zoom") nach Vorlage gebaut, F5 bestanden; beim
+  Sonnen-Gizmo die Positions-Übersetzung selbst geahnt („−1 bis 1
+  muss man übersetzen") und den Pfad-Kopierfehler allein über die
+  eigene Uniform-not-found-Meldung gefunden und behoben; Blob-Schatten
+  und Licht-Gizmo unabhängig selbst erfunden (Industrie-Standards);
+  Settings-UI korrekt als „alles Float-Werte" durchschaut.
+  **Fehlerbild:** die 36 Würfel-Ecken zunächst als „8 Flächen"
+  verrechnet (danach selbst hergeleitet: 6×2×3); UV als
+  „oben/unten am Objekt" statt Bildachsen gelesen; beim
+  Richtungslicht Position mit Neigung verwechselt („wenn der Ball
+  vorne Licht kriegt, müsste die Wiese davor auch…") — aufgelöst
+  über die positionsfreie dot-Zeile und den Hauswand-Anker; length
+  gegen max(abs) lange nicht greifbar (Interpolations-Niveau:
+  Staffelstab mischt linear — Claudes Vorlagen-Fehler beim
+  Kamera-Nebel auf der 4-Ecken-Platte sichtbar geworden); Frust-Spitze
+  „verstehe immer weniger" mit klarer Regler-Ansage, danach stabil.
+  **Hilfe:** Vorlagen-Niveau durchgehend; Türsteher-Skala als Bild
+  für F_SHADOW_EDGE; interaktive Draufsicht mit Live-Pixel-Rechnung
+  und Messregel-Umschalter; Zaun-gegen-Seil-Doppelbild mit
+  Schritt-Zahlen; Lastwagen-/Netz-Anker wiederverwendet; Claude
+  übernahm Konstanten, Kreuz-Zerschneiden, Toon-Ball-Textur,
+  Kommentar-Pässe und zwei Direkt-Fixes auf Zuruf („mach du das
+  kurz").
+- 2026-10-07 · Model-Viewer, Nachtschicht-Ausklang: Gizmo-Feinschliff
+  und Schatten-Experiment (Development) — **Selbst:** die
+  Gras-auf-dem-Fleck-Idee als lückenlose Logik-Kette hergeleitet
+  (Mesh → texturierbar → Farbe abdunkeln; die Kette stimmt) und im
+  eigenen Experiment die beiden Mauern selbst benannt (Pol-Strudel
+  der Kugel-UVs, fehlende Muster-Deckung — dabei wörtlich „damit es
+  sich **einblendet**" gesagt und so das fehlende Blending selbst
+  benannt); den Weiß-Entscheid für die Sonnenscheibe mitgetragen und
+  die Grenze der flachen Scheibe verstanden (Bloom braucht
+  Nachbar-Pixel); den Pfad-Kopierfehler am Unlit-Shader allein über
+  die eigene Uniform-not-found-Meldung gefunden. **Fehlerbild:**
+  Multiply und Additiv noch als ein Topf („normalerweise über
+  Multiply"); die VS-Puffer-Kollision zunächst als eigener
+  Kopierfehler gesucht (war keiner — `Kern/STOERUNGEN.md`).
+  **Hilfe:** Experiment statt dritter Erklärung (der eigene Befund
+  trug sofort); Mischmodi-Tabelle (Multiply dunkelt, Additiv hellt);
+  VS-Reload-Regel benannt.

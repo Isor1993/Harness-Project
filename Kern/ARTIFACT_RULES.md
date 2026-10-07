@@ -235,17 +235,36 @@ hatte.)*
   entscheidet, welche nachgezogen werden; Claude ändert nichts von selbst.
   Der Abgleich gegen die echte Veröffentlichungsliste ist die zweite,
   unabhängige Quelle: Ein falscher Stand-Stempel blieb sonst zehn Tage
-  unbemerkt.
+  unbemerkt. Eine Abweichung, die Isor bewusst liegen lässt, bekommt im
+  Index eine Zeile `Bekannt` und wird danach **nicht erneut gemeldet**
+  — nur wenn sie sich ändert *(seit 2026-10-07)*.
   **Dazu, seit 2026-08-25, eine Seite gründlich:** Der Abgleich sieht
   nur Metadaten — am 2026-08-23 meldete er drei Funde, eine gründliche
   Durchsicht derselben acht Seiten fand rund dreißig. Deshalb wird je
   Pflegetag zusätzlich genau **eine** Seite inhaltlich geprüft: die
   echte Seite abrufen, jede Aussage und Zahl gegen Code und führende
-  Quelle halten, Befunde in die Vorschlagsliste. **Dran ist die
-  lebendige Seite mit dem ältesten Stand-Datum im `ARTIFACT_INDEX.md`.**
-  Das braucht keinen eigenen Zeiger und heilt sich selbst: Eine beim
-  Coden nachgezogene Seite (Review-Gate) trägt ein frisches Datum und
-  rückt von allein ans Ende. Außerhalb des Turnus stehen die Seiten,
+  Quelle halten, Befunde in die Vorschlagsliste; danach bekommt die
+  Seite im `ARTIFACT_INDEX.md` die Zeile `Geprüft` mit dem Datum.
+  **Dran ist, in dieser Reihenfolge** *(seit 2026-10-07)*:
+  1. eine Seite **ohne** `Geprüft`-Zeile — sie wurde nie gründlich
+     geprüft —, die mit dem ältesten Stand zuerst;
+  2. sonst eine Seite, deren führende Quelle oder Beispiel-Code sich
+     **seit** ihrer `Geprüft`-Zeile geändert hat — nachgesehen per
+     `git log --since=<Datum>` in den Repos, die die Seite nennt.
+  **Lernstücke nennen ihren Beispiel-Code mit Versionsstand**
+  *(seit 2026-10-07)* — „Model-Viewer V2 (Commit e428f94)", „Lane
+  Defender, Abgabestand 1.0.0". Die Seite belegt das Konzept an einem
+  festen Stand und bleibt wahr, auch wenn der Code weiterläuft. Für
+  Punkt 2 zählt bei ihnen deshalb nur die führende Quelle (die
+  Knowledge-Notiz), nicht der Code. Anlass: Zwei Seiten zum Model-Viewer
+  waren einen Tag nach dem Bau veraltet, weil das Projekt auf V3
+  sprang.
+  Bei Gleichstand entscheidet die Reihenfolge im Index. Trifft keins
+  von beiden zu, lautet Punkt 2 des Pflegetags „nichts zu tun". Grund:
+  Eine geprüfte Seite mit unveränderter Quelle kann nicht von selbst
+  veralten. Die frühere Auswahl nach ältestem Stand prüfte sie trotzdem
+  im Rundlauf etwa alle zwölf Wochen erneut (`DECISIONS.md`,
+  2026-10-07). Außerhalb des Turnus stehen die Seiten,
   die der Index als nicht-nachziehbar führt — Zeugnisse, die
   Muster-Seite und die Harness-Seite (ihr Stand hängt an der
   Versionsnummer). Der Metadaten-Abgleich bleibt daneben bestehen: Er
@@ -254,11 +273,19 @@ hatte.)*
   **Auf Zeit außerhalb des Turnus: die Seiten des ruhenden
   Unity-Altstands** *(seit 2026-09-11)* — der Index führt sie mit der
   Zeile `Ruht`. Benannte Ausnahme: Sie beschreiben Code, an dem bis zum
-  Kontrollpunkt der Stack-Entscheidung (Ende November, `Uni/DECISIONS.md`,
-  2026-09-07) niemand arbeitet; eine gründliche Prüfung liefe gegen
-  Stillstand. Der Metadaten-Abgleich schließt sie weiter ein. Am
-  Kontrollpunkt entscheidet Isor, ob sie in den Turnus zurückkehren oder
-  einzeln auf `🗑` gehen. Begründung in `DECISIONS.md`, 2026-09-11.
+  Kontrollpunkt der Stack-Entscheidung (**2026-11-02**, vorgezogen am
+  2026-10-01 — `Uni/DECISIONS.md`; vorher Ende November) niemand
+  arbeitet; eine gründliche Prüfung liefe gegen Stillstand. Der
+  Metadaten-Abgleich schließt sie weiter ein. Am Kontrollpunkt
+  entscheidet Isor, ob sie in den Turnus zurückkehren oder einzeln auf
+  `🗑` gehen. Begründung in `DECISIONS.md`, 2026-09-11 und 2026-10-07.
+  **Dauerhaft außerhalb des Turnus: die Status-Seiten abgegebener
+  Projekte** *(seit 2026-10-07)* — der Index führt sie mit der Zeile
+  `Abgeschlossen`. Eine Design-Seite hält fest, was zu einem Meilenstein
+  beschlossen war; nach der Abgabe gibt es keinen Stand mehr, gegen den
+  sie veralten könnte. Sie werden nicht nachgezogen und nicht auf `🗑`
+  gesetzt. Der Metadaten-Abgleich schließt sie weiter ein. Begründung in
+  `DECISIONS.md`, 2026-10-07.
   **Eine Seite im Zustand `(geplant)` bleibt im Turnus**, wird aber gegen
   ihre führende Quelle geprüft statt gegen Code — den gibt es noch nicht.
   Zwei Fragen kommen dazu: Gilt die Absicht noch, oder hat eine spätere
