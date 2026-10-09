@@ -140,3 +140,9 @@ Humor ist Würze, nicht Fundament.
   können), weitere Waffen und Slot-Inhalte, Tränke, Persistenz-Modus,
   größere oder weitere Inseln.
 - Store-Namenskandidat neben dem Arbeitstitel: „Guildbreak".
+- *(2026-10-09, Mini-GDD-Session)* Pitch-Fassung des verschickten
+  Mini-GDD: Einstieg über „wacht auf einer einsamen Insel auf und baut
+  eine Basis, um zu überleben", Spielerzahl im ersten Satz, schlicht
+  „Dungeons" als Begriff („Portal-Risse" vorgeschlagen und von Isor
+  verworfen) — Kandidat für die Pitch-Schärfung im vollen GDD
+  (`MINI_GDD.md`).

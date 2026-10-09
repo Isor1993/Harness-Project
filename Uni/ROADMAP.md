@@ -39,6 +39,13 @@ Befunde der Prüfung vom 2026-08-26) stehen mit ihren Belegen in
   Anlass: `Kern/STOERUNGEN.md` → „2026-10-07 — Fließband-Code ohne
   gemeinsamen Durchgang" (Isors Ja vom 2026-10-07).
 
+- [ ] **Modulbezeichnung im Bestand bereinigen** — „5-101" →
+  `5FSC0XD101_P` in allen lebenden Dateien; Besitzer der Bezeichnung
+  ist `Semester_3/STUNDENPLAN.md`, dessen Kopf zuerst. Chroniken und
+  datierte Einträge bleiben stehen. Anlass: `Kern/STOERUNGEN.md` →
+  „2026-10-09 — Modulname wiederholt falsch geschrieben" (Isors Ja
+  vom 2026-10-09).
+
 ## Semester 3
 
 - [x] **Ordner `Uni/Semester_3/` anlegen**, sobald die Aufgaben da sind,

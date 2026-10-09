@@ -1058,3 +1058,29 @@ geöffneten Datei nicht.
 erneut geschrieben, Experiment lief); Gegenmittel als Aufgabe in
 `Kern/ROADMAP.md` → „VS-Reload-Regel festschreiben" (Isors Ja,
 2026-10-07).
+
+### 2026-10-09 — Modulname wiederholt falsch geschrieben
+**Was:** Claude schrieb die Modulbezeichnung ins Mini-GDD als „5-101";
+nach Isors erster Korrektur wurde daraus „XD101" — wieder falsch.
+Richtig ist `5FSC0XD101_P` (Canvas: `5FSC0XD101_P 0926`). Isor musste
+zweimal korrigieren, das zweite Mal von Hand in der Fassung, die an
+die Dozentin ging, und stufte den Fall selbst als Störung ein.
+**Ursache:** „5-101" ist eine beim Anlegen der Semester-3-Dateien
+erfundene Kurzform. Sie steht seitdem im Bestand — unter anderem im
+Kopf von `Uni/Semester_3/STUNDENPLAN.md`, dem Besitzer der
+Modulbezeichnung — und jede Session las sie als gegeben und schrieb
+sie weiter: Der Fehler verstärkte sich selbst. Der richtige Code stand
+die ganze Zeit daneben (Track-Code im selben Kopf, Ordnername
+`Portfolio_5FSC0XD101_Rosenberg` in `Uni/ROADMAP.md`). Die
+Nachbesserung „XD101" beging denselben Fehler erneut: wieder eine
+selbst gebaute Kurzform statt der offiziellen Bezeichnung.
+**Regel:** Fehlte. Keine Prüfebene gleicht Eigennamen und offizielle
+Bezeichnungen gegen ihre Quelle ab — dieselbe Familie wie
+„Versionsabhängige Unity-Angaben aus dem Gedächtnis behauptet"
+(2026-08-28): behauptet statt nachgesehen. Gegenmittel: den Bestand
+bereinigen (lebende Dateien auf `5FSC0XD101_P`, Chroniken und datierte
+Einträge bleiben) — als Punkt in `Uni/ROADMAP.md` (Isors Ja vom
+2026-10-09); zusätzlich trägt Claudes Projektgedächtnis seit heute die
+offizielle Form.
+**Stand:** offen — die Mini-GDD-Fassungen sind am 2026-10-09
+korrigiert, der Bestand folgt über den ROADMAP-Punkt.

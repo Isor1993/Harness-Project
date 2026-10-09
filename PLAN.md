@@ -22,18 +22,17 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-10-09 abends beim `/harness:ende` der Session
-„Game Pitch · Ideenrunde". Berichte: `Projekte/Isors_Outbreak/` —
-GDD, DECISIONS, ROADMAP — und `Kern/LERNLOG.md`.)*
+*(überschrieben 2026-10-09 nachts beim `/harness:ende` der Session
+„Game Pitch · Mini-GDD". Berichte: `Projekte/Isors_Outbreak/` — DECISIONS,
+ROADMAP, GDD-Entwurf, `MINI_GDD.md` — und `Kern/STOERUNGEN.md`.)*
 
-**Die Spielidee ist festgezurrt** — Schicht `Projekte/Isors_Outbreak/`
-steht (GDD · DECISIONS · ROADMAP). Nächster Block: **Mini-GDD zur
-Freigabe** (Schicht-ROADMAP → „G1 · Mini-GDD zur Freigabe"; erst
-Layout-Runde, dann gemeinsam befüllen) — **Code-Start WE 17./18.10.**
-Nebenher Jam minimal; Toolchain-Test vor dem Unterrichtsblock 27.10.
-Unverändert offen: Vokabel-Runde Lane Defender, Datenbaum, Pflegeschritt
-02.11.; dazu unbeantwortet aus der Ideenrunde die Knowledge- und die
-Glossar-Frage (Kandidaten im Session-Verlauf vom 09.10.).
+**Das Mini-GDD ist verschickt** (G1 erledigt; Freigabe-Antwort steht
+aus, gilt als erteilt). Nächster Block: **volles Pitch-GDD** — zuerst
+Layout-Runde, Erstfassung bis 18.10., Deckblatt-Template und schlanke
+Vorlage liegen bereit (Schicht-ROADMAP → „G2"); **Prototyp ab 18.10.**
+Nebenher: Toolchain-Test vor dem 27.10., Vokabel-Runde Lane Defender,
+Datenbaum, Pflegeschritt 02.11.; weiter unbeantwortet die Knowledge-
+und die Glossar-Frage der Ideenrunde (Kandidaten im Verlauf vom 09.10.).
 
 ---
 

@@ -157,3 +157,54 @@ die Abgabe soll den minimalen Schnitt zeigen, die Ideen-Fabrik bleibt
 intern. Vorarbeit ist gewollt, weil die Idee tragfähig wirkt.
 Verworfen: alles direkt und ausführlich ins Abgabe-GDD schreiben (bläht
 die Abgabe auf und widerspricht der erwarteten Freigabe-Auflage).
+
+## 2026-10-09 — Mini-GDD: Zuschnitt und Versandweg
+
+Was: Das Mini-GDD besteht aus fünf Blöcken — Kopf, Pitch, Ablauf einer
+Partie, Umfang, Rahmen — auf einer Seite und geht als schlichte
+Textdatei im Anhang einer Discord-Nachricht an die Dozentin; die
+Nachricht selbst schreibt Isor. Der USP steht als Satz im Pitch, nicht
+als eigener Block. Manuskript: `MINI_GDD.md` in dieser Schicht;
+verschickt am 2026-10-09.
+Warum: Die Freigabe beantwortet nur zwei Fragen — was ist es, und wie
+groß ist es (Isor). Alles andere gehört ins volle Pitch-GDD
+(Abgabe-Strategie oben). Eine Textdatei genügt dem Zweck; der
+Abgabe-Bauweg über Word und PDF ist für einen Einseiter Überbau.
+Verworfen: eigene Blöcke für USP und Referenzen (für die Entscheidung
+der Dozentin unnötig); ein Zeitplan-Block (Isor: für sie egal); eine
+Zeile zur vorhandenen Multiplayer-Vorarbeit (Isor: muss sie nicht
+wissen, kommt mündlich, falls sie Bedenken äußert); der Versand als
+PDF über die docx-Schiene (gebaut, dann als Überbau verworfen).
+
+## 2026-10-09 — Multiplayer-Grundlage aus Isor's Tower wird übernommen
+
+Was: Die für Isor's Tower gebaute und geprüfte Netz-Grundlage — Unity
+Netcode for GameObjects mit Relay und Join-Code, Lobby samt
+Bereit-Status und Chat, netzsynchrones Laden
+(`Projekte/Isor_Tower/DECISIONS/Multiplayer.md`) — wird für Isor's
+Outbreak übernommen statt neu gebaut.
+Warum: Der Netz-Prüfstand ist bestanden (Verbindung über zwei Netze,
+identische Weltgenerierung auf zwei CPUs — `PLAN.md`, Phase 0), und
+mit dem Engine-Entscheid (`Uni/DECISIONS.md` → „2026-10-09 —
+Engine-Entscheid: Das Semester-Spiel entsteht in Unity") passt die
+Grundlage direkt. Multiplayer ist das größte Einzelrisiko des
+Semesterspiels; übernommene, getestete Vorarbeit senkt es am
+stärksten.
+Verworfen: den Netz-Stack für das neue Spiel neu aufsetzen (Arbeit
+ohne Erkenntnisgewinn); die Vorarbeit im Mini-GDD erwähnen (Eintrag
+darüber).
+
+## 2026-10-09 — Reihenfolge bis zur Abgabe: GDD vor Prototyp
+
+Was: Erst entsteht die Erstfassung des vollen Pitch-GDD (bis zum
+18.10.), dann startet der Prototyp. Beides ist am 27.11. fällig (Pitch
+und Spieleprototyp), die Pitch-Präsentation am 03.12. nutzt Bilder und
+kurze Videos aus dem Prototyp (`Uni/Semester_3/STUNDENPLAN.md`).
+Warum: Isors Einschätzung — ein GDD ist ein Textdokument, die
+Erstfassung braucht höchstens eine Woche, und ergänzen lässt sie sich
+laufend. Die Präsentation nach dem Prototyp liefert echtes Material
+und zahlt auf das Feedback-Kriterium „Prototyp berücksichtigt" ein.
+Verworfen: Code-Start am Wochenende 17./18.10. vor dem GDD (alte
+Übergabe aus der Ideenrunde); Prototyp-Start erst Ende Oktober (erste
+Fassung im Gespräch — Isor zieht ihn direkt ans Ende der
+GDD-Erstfassung).
