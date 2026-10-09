@@ -22,21 +22,18 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-10-09 nachts beim `/harness:ende` der Session
-„Model-Viewer · Outline & Abgabe". Berichte: LOG der Viewer-Schicht,
-`Kern/LERNLOG.md`, Zeugnis `Kern/Zeugnisse/2026-10-09.md`.)*
+*(überschrieben 2026-10-09 abends beim `/harness:ende` der Session
+„Game Pitch · Ideenrunde". Berichte: `Projekte/Isors_Outbreak/` —
+GDD, DECISIONS, ROADMAP — und `Kern/LERNLOG.md`.)*
 
-**Der Viewer ist abgegeben** (09.10., 21 Tage vor der Frist; das
-OCE-Feedback samt CMake-Frage steht aus — Umbau nur auf Ansage,
-ROADMAP der Schicht). **Unity ist fix** (`Uni/DECISIONS.md`
-2026-10-09 — Kontrollpunkt 02.11. vorzeitig eingelöst). Nächster
-Block **Game Pitch** (`Uni/Semester_3/ASSIGNMENT_GAME_PITCH.md`):
-entspannte Design-Sessions, Spielidee bis ~So 12.10. festzurren
-(zwei Kandidaten im Viewer-LOG vom 09.10.), Mini-GDD zur
-Idee-Freigabe, **Code-Start WE 17./18.10.** — sechs Wochenenden bis
-zur Prototyp-Frist 27.11. Nebenher: Jam minimal als C#-Warmup;
-Learn-Session Pipeline wartet (Viewer-ROADMAP → L1). Unverändert
-offen: Vokabel-Runde Lane Defender, Datenbaum, Pflegeschritt 02.11.
+**Die Spielidee ist festgezurrt** — Schicht `Projekte/Isors_Outbreak/`
+steht (GDD · DECISIONS · ROADMAP). Nächster Block: **Mini-GDD zur
+Freigabe** (Schicht-ROADMAP → „G1 · Mini-GDD zur Freigabe"; erst
+Layout-Runde, dann gemeinsam befüllen) — **Code-Start WE 17./18.10.**
+Nebenher Jam minimal; Toolchain-Test vor dem Unterrichtsblock 27.10.
+Unverändert offen: Vokabel-Runde Lane Defender, Datenbaum, Pflegeschritt
+02.11.; dazu unbeantwortet aus der Ideenrunde die Knowledge- und die
+Glossar-Frage (Kandidaten im Session-Verlauf vom 09.10.).
 
 ---
 

@@ -2005,3 +2005,19 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   Wert-Member / Zeiger), Besitz-Tabelle roh/unique/shared,
   Fünf-Schritte-Lebenslauf eines Zeigers, MSAA-Proberaster;
   Zeugnis samt eigener Handy-Seite als Projekt-Abschluss.
+- 2026-10-09 · Game Pitch, Ideenrunde (Brainstorm/Design, Start der
+  Schicht Isor's Outbreak) — **Selbst:** das Marktsegment eigenständig
+  recherchiert und als Profil formuliert (Koop-Kleinspiele, eigene
+  Referenzliste mit Screenshots); den Core-Loop selbst entwickelt
+  (Sammeln → Bauen → Outbreak) und dabei die beiden Schwächen des
+  klassischen Pfad-TD selbst erkannt (Nahkämpfer läuft hinterher, enge
+  Gänge töten die Physik) samt 7DtD-Blutmond als selbst herangezogener
+  Lösung; Scope-Disziplin durchgehend selbst gehalten (Dungeons als
+  Teil 2 geschnitten, „wir müssen klein bleiben", Insel als billigste
+  Weltgrenze); die Werkbank-Gründung samt Auto-Timer im Gespräch selbst
+  zu Ende gedacht; das Performance-Risiko (200 Gegner × Physik) selbst
+  als Frage aufgemacht statt es zu übergehen. **Hilfe:** Einordnung der
+  Gegner-Zielmodelle (Pfad/Belagerung/Aggro), Eskalationskurve als
+  Antwort auf die Partielängen-Sorge, Dreistufen-Physikmodell,
+  Genre-Referenzen (Dome Keeper, Dungeon Defenders, Solo Leveling,
+  KonoSuba). **Fehlerbild:** keines — Design-Session ohne Code.

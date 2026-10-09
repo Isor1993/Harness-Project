@@ -67,6 +67,11 @@ Befunde der Prüfung vom 2026-08-26) stehen mit ihren Belegen in
   sofort und hängt nicht an der Engine-Entscheidung vom 02.11.
   (`DECISIONS.md`, Einträge vom 2026-10-01). Eigener Design-Abschnitt;
   mit dem Konzept entsteht die neue Projekt-Schicht samt GDD.
+  **Stand 2026-10-09:** Spielidee in der Ideenrunde festgezurrt, die
+  Schicht `Projekte/Isors_Outbreak/` ist mit GDD, DECISIONS und ROADMAP
+  angelegt. Offen bleibt die Pitch-Grundlage: das Mini-GDD zur Freigabe
+  (`Projekte/Isors_Outbreak/ROADMAP.md` → „G1 · Mini-GDD zur
+  Freigabe").
 
 - [ ] **Zwei fertige Spiele bis Studienende, eines veröffentlicht** —
   Isors Ziel vom 2026-10-01 hinter der Portfolio-Strategie
