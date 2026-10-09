@@ -300,6 +300,8 @@ Begründung mittragen. Sonst ist sie von Unordnung nicht zu unterscheiden.
 | Kommentare und Ausgaben im Code | Englisch — keine Ausnahme |
 | Commit-Titel und -Beschreibung | Englisch |
 | Harness-Dokumente (diese .md-Dateien) | Deutsch |
+| READMEs mit Abgabe-Rolle (Uni-Repos, Abgabeordner) | Deutsch *(Isor, 2026-10-08 — deutscher Track, deutsche Prüfer; gilt auch, wenn das Repo selbst die Abgabe ist)* |
+| READMEs ohne Abgabe-Rolle (reine GitHub-Repos) | Englisch |
 | Knowledge-Seiten | Deutsch |
 | Zeugnisse | Deutsch (Ausnahme: Dateinamen, Code, Zitate daraus) |
 | Unterhaltung | Deutsch |

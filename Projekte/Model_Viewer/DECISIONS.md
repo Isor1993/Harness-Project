@@ -237,3 +237,49 @@ trägt auch ohne — obwohl drei Design-Wünsche desselben Abends auf
 genau diese Technik liefen.
 Verworfen: Blending jetzt lernen (das Zeitbudget vor der Abgabe
 gehört dem Tuning-Fenster und V6).
+
+## 2026-10-08 — Outline per Skalierung, Wickelrichtung auf CCW-Standard
+
+Was: Die Inverted-Hull-Outline (O1) entsteht nicht per
+Normalen-Versatz im Vertex-Shader, sondern als zweiter Draw der Kugel
+mit skalierter Model-Matrix (`F_OUTLINE_SCALE` 1.03), unlit schwarz,
+Front-Culling drumherum (Schalter an, GL_FRONT, Draw, GL_BACK,
+Schalter aus). Im selben Zug wickelt der Kugel-Generator seine
+Dreiecke jetzt CCW von außen — OpenGLs Front-Face-Standard.
+Warum: Isors eigener Entwurf — bei einer Kugel ist Skalieren
+mathematisch identisch mit dem Normalen-Versatz (die Normale zeigt
+vom Mittelpunkt weg), spart einen eigenen Shader, und jede Zeile ist
+auf Semesterniveau verteidigbar. Der Winding-Fix: Der erste
+Culling-Einsatz des Projekts enttarnte die CW-Wicklung aus V3
+(schwarzer Voll-Ball statt Ring); die Konvention gehört in den
+Generator korrigiert, nicht umgangen.
+Verworfen: `outline.vert` mit Position + Normale × Dicke (der
+ROADMAP-Plan — nötig erst für beliebige Meshes, Kür K1);
+glCullFace(GL_BACK) als Symptom-Fix (hätte die falsche Wicklung
+zementiert).
+
+## 2026-10-08 — CApplication: Zeiger-Member mit Initialize-Gruppen
+
+Was: Szene und Schleife ziehen aus main in die neue Klasse
+CApplication. Alle besessenen Objekte sind rohe Zeiger-Member
+(nullptr-Start, SAE-p-Präfix), erschaffen per new in
+InitializeShaders/InitializeMeshes/InitializeTextures, gelöscht
+gesammelt im Destruktor in umgekehrter Reihenfolge; das Fenster
+bleibt geliehen (main besitzt — der Zeigertyp dokumentiert den
+Besitz). Die Schleife ruft sechs parameterlose Ein-Zweck-Stationen
+(Ball, Ground, Sun, Shadow, Outline, Skybox); die Frame-Matrizen
+sind Wert-Member. main: erzeugen, Initialize, Run — drei Handgriffe.
+Warum: Isors Design in dritter Iteration — die
+Konstruktor-Initialisierungsliste („nicht verteidigbar") und
+Kommentar-Regions abgelehnt, Struktur aus echten Sprachmitteln
+verlangt; Zeiger geben Membern den vertrauten C#-Lebenslauf (leer
+geboren, im Rumpf befüllt), und delete-auf-nullptr macht
+Teil-Abbrüche der Initialisierung sicher. Revidiert „keine
+App-Klasse" vom 04.10. — damals war main 30 Zeilen, vor dem Umbau
+250.
+Verworfen: Initialisierungsliste mit Wert-Membern (Claudes erster
+Bau — baute warnungsfrei, las sich für Isor aber wie Vererbung);
+alles in main mit freien Render-Funktionen (Referenz-Parameter je
+Aufruf); unique_ptr (im Unterricht nur gestreift — new/delete kann
+Isor vollständig erklären, der Umstieg bliebe eine
+Fünf-Minuten-Änderung).

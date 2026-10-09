@@ -138,3 +138,39 @@ Aufgabe erfüllt** · Kamera-Nebel gebaut und bewusst verworfen
 (lieferte die Staffelstab-Lektion) · Blending-Baustein gestrichen,
 nur auf OCE-Feedback zurück · Zeiten bei V6 noch einmal gegen
 Grindstone prüfen (Ansage war diktiert).
+
+## O1 + V6 · Outline, Aufräum-Pass und Abgabe (fertig 2026-10-09)
+
+**Zeit:** 3:49 h am 08.10. (Grindstone-Session, Screenshot) plus die
+Nachtstunden bis zum Upload am 09.10. gegen 00:30. **Projekt gesamt
+laut Grindstone 22:39 h**, dazu nach Isors Einordnung ~2–3 h bewusst
+nicht erfasste Lernanteile außerhalb der Produktionskette.
+
+**Gebaut:** Inverted-Hull-Outline als skalierter Zweit-Draw
+(`F_OUTLINE_SCALE` 1.03, unlit schwarz, Front-Culling mit
+Rückstellung) · Wicklungs-Fix des Kugel-Generators auf CCW ·
+`CApplication` (Zeiger-Member, drei Initialize-Gruppen, sechs
+Ein-Zweck-Render-Stationen, alle deletes gesammelt im Destruktor) ·
+4x MSAA (Window-Hint plus Enable) · Review-Pass über alle Dateien:
+benannte Konstanten (GL-Version, Log-Puffer, −1, Kugel-Minima, 36er,
+RGBA-Kanäle, MAT4_IDENTITY), Include-Konvention, GetUniformLocation-
+Helfer ohne Guards, GLSL-Kopf-Kommentare, triangle→toon · deutsches
+README mit Pflichtkriterien-Tabelle · Portfolio-Ordner
+`2_ModelViewer` (READ_ME · src · release · other) und Canvas-Zip.
+
+**Warum so:** Skalierung statt Normalen-Versatz und der Zeiger-Bau
+sind Isors Entwürfe (DECISIONS 2026-10-08) — Leitlinie „jede Zeile
+verteidigbar" · die Fremd-Header sind aus Warnstufe und Code-Analyse
+genommen, damit die Prüfer-Ansicht nur eigenen Code zeigt (die
+stb-Hinweise waren die zwei offenen VS-Analyse-Hinweise) · Guards an
+den Set-Methoden entfielen auf Isors Einwand: glUniform ignoriert
+−1 laut Spezifikation.
+
+**Besonderheiten:** Der erste Culling-Einsatz deckte den schlafenden
+Wicklungs-Fehler aus V3 auf — Prozess-Story für „Liebe zum Detail" ·
+ballTexture-Prüffehler aus V3 im Review gefunden und behoben ·
+CMake-Frage offen (Leons Ansage kam nach Fertigstellung; Nachfrage
+steht im Feedback-Kästchen, Stuttgart entscheidet) · T1
+Tuning-Fenster bewusst zurückgestellt bis zum OCE-Feedback ·
+unbenutzte grass_color1.png entfernt · Abgabe als Zip (19,7 MB) am
+09.10. gegen 00:30 in Canvas, 21 Tage vor der Frist.

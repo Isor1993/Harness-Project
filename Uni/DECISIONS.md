@@ -531,4 +531,24 @@ Abhak-Semesterprojekt gebunden.
 Verworfen: Minigame im Tower-Universum (Beschluss vom 2026-09-07);
 direkt mit dem Hauptprojekt beginnen.
 
+## 2026-10-09 — Engine-Entscheid: Das Semester-Spiel entsteht in Unity
+
+Was: Der Kontrollpunkt vom 2026-10-01 ist **vorzeitig eingelöst** —
+das Semester-Spiel wird in **Unity/C#** gebaut. Vorentschieden in der
+Reflexionsrunde vom 08.10. nachts, ausgeschlafen bestätigt am 09.10.
+(„Das ist festgesetzt"). Die Unreal-Hands-on-Phase (~24.10.–01.11.)
+entfällt als Entscheidungsgrundlage; der Unreal-Unterricht ab 27.10.
+wird weiter besucht — Lernschiene ohne Lieferdruck. Es bleibt bei
+einer Stack-Entscheidung pro Portfolio-Spiel (nach dem Goldmaster
+wird neu entschieden).
+Warum: Eigener Hands-on-Befund aus zwei C++-Projekten (Lane Defender,
+Model-Viewer) statt der geplanten Unreal-Mini-Übungen — C++ trägt
+fürs Lernen, ist für ein Portfolio-Hauptstück bis zum Prototyp
+27.11. aber noch zu bröckelig; C#/Unity ist zugleich der
+Bewerbungsfokus (~März 2027), und das frische Grafik-Verständnis aus
+dem Viewer (Shader, Pipeline, Culling) zahlt direkt auf Unity ein.
+Verworfen: die Unreal-Hands-on-Phase abwarten (neue Datenlage — zwei
+eigene C++-Projekte sind Anschauung genug, und jeder gewonnene Tag
+gehört jetzt dem Pitch); Unreal fürs Semester-Spiel.
+
 

@@ -22,24 +22,21 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-10-07 spätabends beim `/harness:ende` der
-Abend-Session „3D-Model-Viewer" — V4 und V5 am selben Tag, auf Isors
-Zuruf vorgezogen. Berichte im LOG der Schicht, in `Kern/LERNLOG.md`
-und in den fünf DECISIONS-Einträgen der Schicht.)*
+*(überschrieben 2026-10-09 nachts beim `/harness:ende` der Session
+„Model-Viewer · Outline & Abgabe". Berichte: LOG der Viewer-Schicht,
+`Kern/LERNLOG.md`, Zeugnis `Kern/Zeugnisse/2026-10-09.md`.)*
 
-**V4 und V5 sind fertig — alle sieben Pflichtpunkte der Aufgabe
-erfüllt:** Stylized-Toon-Ball mit Kontakt-Schatten steht auf einer
-Wiese mit Rand-Fade, unter Himmel 05 samt weißer Sonnenscheibe.
-**Jam-Woche 08.–15.10., der Viewer ruht.** Ab Fr 16.10.: Warmup
-glDepthFunc (LEQUAL-Zeilen erklären), dann **T1 · Tuning-Fenster**,
-dann **V6 · Abgabe** inkl. Code-Aufräum-Pass (alles in der ROADMAP
-der Schicht); Outline-Entscheid (O1) nach Zeitlage, Blending (B1)
-gestrichen. Commit-Texte geliefert (Scratchpad, Repo im Dateinamen):
-**V 0.0084 Harness · V 0.0051 Knowledge · V 0.0004 Model-Viewer** —
-Harness und Knowledge enthalten die Pflegetag-Übergabe der
-Parallel-Session. Unverändert offen: Vokabel-Runde Lane Defender,
-Unreal-Toolchain-Test, Datenbaum; nächster Pflegeschritt am
-Kontrollpunkt 02.11. (ruhende Unity-Seiten).
+**Der Viewer ist abgegeben** (09.10., 21 Tage vor der Frist; das
+OCE-Feedback samt CMake-Frage steht aus — Umbau nur auf Ansage,
+ROADMAP der Schicht). **Unity ist fix** (`Uni/DECISIONS.md`
+2026-10-09 — Kontrollpunkt 02.11. vorzeitig eingelöst). Nächster
+Block **Game Pitch** (`Uni/Semester_3/ASSIGNMENT_GAME_PITCH.md`):
+entspannte Design-Sessions, Spielidee bis ~So 12.10. festzurren
+(zwei Kandidaten im Viewer-LOG vom 09.10.), Mini-GDD zur
+Idee-Freigabe, **Code-Start WE 17./18.10.** — sechs Wochenenden bis
+zur Prototyp-Frist 27.11. Nebenher: Jam minimal als C#-Warmup;
+Learn-Session Pipeline wartet (Viewer-ROADMAP → L1). Unverändert
+offen: Vokabel-Runde Lane Defender, Datenbaum, Pflegeschritt 02.11.
 
 ---
 

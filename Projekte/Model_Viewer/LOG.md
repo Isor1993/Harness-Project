@@ -66,3 +66,31 @@ Format: Ereignisse als `- JJJJ-MM-TT — Ereignis (1–3 Sätze)`.
   Einträge). Vier neue Wissensseiten in `Knowledge/Grafik/`, eine
   Störung (VS-Puffer — `Kern/STOERUNGEN.md`), Grindstone-Stand
   18:49 h. Lern-Rubriken in `Kern/LERNLOG.md` unter 2026-10-07.
+- 2026-10-08 — O1 und V6 in der Abgabe-Session: nach dem
+  glDepthFunc-Warmup die Inverted-Hull-Outline als skalierter
+  Zweit-Draw mit Front-Culling (Isors Entwurf — DECISIONS); der
+  erste Culling-Einsatz enttarnte die CW-Wicklung des
+  Kugel-Generators aus V3, Fix auf CCW. Danach der Aufräum-Pass:
+  CApplication mit Zeiger-Membern, Initialize-Gruppen und sechs
+  Render-Stationen (DECISIONS — dritter Entwurf nach Isors
+  Einwänden), Review-Durchgang über alle Dateien (benannte
+  Konstanten, Include-Konvention glad → extern → std → eigene,
+  GetUniformLocation-Helfer — der Rest-Guard fiel auf Isors Einwand
+  per glUniform-−1-Spec, ballTexture-Prüffehler aus V3 behoben,
+  ClampPitchToGround private, triangle→toon umbenannt, 4x MSAA,
+  Fremd-Header von Warnungen und Analyse ausgenommen). Debug- und
+  Release-Build warnungsfrei. Lern-Rubriken in `Kern/LERNLOG.md`.
+- 2026-10-09 — **Abgegeben**, kurz nach Mitternacht und 21 Tage vor
+  der Frist: README auf Deutsch (neue Sprachregel in
+  `Kern/DOC_RULES.md`, Abschnitt 9), Portfolio-Ordner `2_ModelViewer`
+  nach Lane-Muster gefüllt (READ_ME, src aus dem Commit-Stand,
+  startfertiges release), Zip (19,7 MB) in Canvas hochgeladen samt
+  Feedback-Fragen (reicht der Stand? Zusatzpunkte? VS-Solution oder
+  CMake — Leons CMake-Wunsch kam erst nach Fertigstellung, der
+  Termin kollidierte mit dem Jam-Briefing). Isors Entscheide am
+  Abgabetag: keine zusätzliche KI-Deklaration (der Geometry-Vermerk
+  reicht), kein UML. Commits V 0.0005 und V 0.0006; Grindstone
+  22:39 h plus ~2–3 h bewusst nicht erfasste Lernanteile. Danach
+  Zeugnis (`Kern/Zeugnisse/2026-10-09.md`) und Reflexion; zwei
+  Spielideen für den Pitch vorgemerkt (Idle-TD; Held-TD in 3D mit
+  selbst gebauten Wegen).

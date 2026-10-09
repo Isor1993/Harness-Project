@@ -75,25 +75,37 @@ gemeinsamer Durchgang bis es sitzt; die GLSL-Dateien tippt Isor
 - [ ] **T1 · Tuning-Fenster** — die vorhandenen Float-Regler (Kante,
   Weichzone, Lichtrichtung und -farbe, Sonne, Fade) zur Laufzeit
   verstellbar machen; Zielbild klickbares Fenster mit Slidern (Dear
-  ImGui), erlaubte Vorstufe Tasten + Konsolen-Ausgabe. Nach der
-  Jam-Woche, vor V6.
-- [ ] **V6 · Abgabe** — Feinschliff (MSAA, die zwei
+  ImGui), erlaubte Vorstufe Tasten + Konsolen-Ausgabe.
+  **Zurückgestellt am 2026-10-08** (Isors Entscheid): erst, falls das
+  OCE-Feedback ein Settings-UI verlangt — die Abgabe fragt danach.
+- [x] **V6 · Abgabe** — Feinschliff (MSAA, die zwei
   VS-Analyse-Hinweise), **Code-Aufräum-Pass: main in benannte
   Methoden gliedern, danach gemeinsamer Erklär-Durchgang über alles**,
   Release-Build, READ_ME, UML-Entscheid (nur Tipp der Aufgabe — der
   Generator macht es billig), Abgabeordner im Portfolio füllen,
   Zeiten gegen Grindstone prüfen; Upload ~23./24.10., danach die
   Feedback-Fragen an die OCE: reicht der Stand? Werden Schatten
-  erwartet? Wird ein Settings-UI erwartet?
+  erwartet? Wird ein Settings-UI erwartet? **Erledigt am 2026-10-09,
+  zwei Wochen vor dem eigenen Ziel:** Aufräum-Pass als
+  CApplication-Umbau plus Review über alle Dateien samt
+  Erklär-Durchgang, MSAA drin, Analyse-Hinweise als Fremd-Header
+  gelöst, deutsches READ_ME, UML-Entscheid: **kein UML** (Isor),
+  Release-Build, Portfolio-Ordner gefüllt, Zip hochgeladen,
+  Feedback-Fragen im Abgabe-Kästchen (inkl. CMake). Belege: LOG,
+  ABGABE_NOTIZEN, `Kern/Zeugnisse/2026-10-09.md`.
 
 ## Kür — nur bei Zeit vor der Abgabe
 
 - [ ] **K1 · Mini-OBJ-Loader** — ein eigenes Blender-Modell laden;
   erfüllt zusätzlich den Optional-Punkt „Modell-Laden" der Aufgabe.
-- [ ] **O1 · Outline (Inverted Hull)** — den Ball als minimal
+- [x] **O1 · Outline (Inverted Hull)** — den Ball als minimal
   aufgepumpte schwarze Hülle (vert: Position + Normale × Dicke) ein
   zweites Mal zeichnen, nur Rückseiten zeigen → Culling-Lernstück.
   Entscheid nach Zeitlage; der Look trägt auch ohne (2026-10-07).
+  **Erledigt am 2026-10-08** — per Skalierung statt Normalen-Versatz
+  (Isors Entwurf, DECISIONS); der Culling-Einsatz deckte dabei den
+  CW-Wicklungs-Fehler des Generators auf. Beleg: LOG,
+  `Kern/LERNLOG.md`.
 - [ ] **B1 · Blending-Tag** — Alpha-Rand-Fade, additiver Sonnen-Glow,
   Multiply-Schatten: drei Design-Wünsche, eine Technik. **Gestrichen
   am 2026-10-07** (DECISIONS); reaktivieren nur, falls das
@@ -116,7 +128,18 @@ gemeinsamer Durchgang bis es sitzt; die GLSL-Dateien tippt Isor
   zusätzlich Artifact-Seiten; bauen samt `ARTIFACT_INDEX`-Einträgen und
   Rückverweisen in den .md-Dateien. Kandidat fürs nächste Warmup oder
   den Pflegetag.
-- [ ] **Warmup glDepthFunc** — die LEQUAL/LESS-Zeilen um den
+- [x] **Warmup glDepthFunc** — die LEQUAL/LESS-Zeilen um den
   Skybox-Draw als Einstiegs-Erklärstück der nächsten Viewer-Session;
   von Isor am 2026-10-07 selbst bestellt („das ist einfach da drin
-  geschrieben").
+  geschrieben"). **Erledigt am 2026-10-08** als Einstieg der
+  Abgabe-Session (Diagramm, Gleichstand-Regel, Schalter-Hygiene;
+  Lern-Rubriken in `Kern/LERNLOG.md`).
+- [ ] **L1 · Learn-Session Pipeline** — die ganze Strecke F5 → Monitor
+  am eigenen Code, mit ausführlichem Artifact (Isors Plan vom
+  2026-10-08); dabei die Begriffs-Schuldenliste aus dem Zeugnis vom
+  2026-10-09 abtragen: `#define STB_IMAGE_IMPLEMENTATION`,
+  Initialisierungsliste, `glm::value_ptr`, MSAA-Innenleben.
+- [ ] **CMake-Umstellung, nur auf Ansage** — falls das OCE-Feedback
+  Leons CMake-Wunsch bestätigt: CMakeLists als gemeinsames Lernstück
+  (~1–2 h), Code bleibt identisch. Befund aus dem Zeugnis vom
+  2026-10-09; bis zur Antwort ruht der Punkt.

@@ -1947,3 +1947,61 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   **Hilfe:** Experiment statt dritter Erklärung (der eigene Befund
   trug sofort); Mischmodi-Tabelle (Multiply dunkelt, Additiv hellt);
   VS-Reload-Regel benannt.
+- 2026-10-08 · Model-Viewer, Outline-Baustein O1 (Development) —
+  **Selbst:** das Kernproblem des naiven Inverted Hull selbst
+  gefunden („die größere Hülle deckt den Ball zu"), bevor die
+  Technik erklärt war; eigenen Gegenentwurf „Skalierung statt
+  Normalen-Versatz" eingebracht (bei der Kugel mathematisch
+  identisch) — übernommen, der Baustein schrumpfte damit von einem
+  neuen Shader auf rund sieben Zeilen; die Transfer-Frage „dreht
+  Culling mit der Kamera mit?" selbst gestellt; beim
+  glDepthFunc-Warmup den Tiefentest selbst als „näher oder
+  gleichauf" zusammengefasst. **Fehlerbild:** Inverted Hull brauchte
+  drei Anläufe (Querschnitt zu abstrakt; erst Filmstreifen plus
+  Zwei-Filter-Trennung trugen); Culling und Tiefentest anfangs zu
+  „Tiefen-Culling" verschmolzen; MVP-Uniforms und der Zweck von
+  matShadowModel zwei Tage nach V3 nicht mehr abrufbar
+  (Frust-Spitze); Aufgabenrahmen-Sorge („ist ein zweites Objekt
+  überhaupt erlaubt?") am Originaltext der Aufgabe aufgelöst.
+  **Hilfe:** Filmstreifen-Diagramm, Zwei-Frames-Kamerabild und
+  Glasuhr-Anker für die Wickelrichtung; MVP-Refresher als
+  Fototermin-Tabelle; Konstanten und TODO-Führung in main.cpp durch
+  Claude. Beim F5-Test deckte Isors korrekt getippter Culling-Block
+  einen schlafenden Fehler in Claudes V3-Kugel-Generator auf
+  (Dreiecke CW statt CCW gewickelt — ohne Culling nie sichtbar);
+  Isors Diagnose am Bild („es macht kein Culling") traf den Kern,
+  Fix im Generator durch Claude. Im V6-Review-Durchgang hielt Isor
+  seinen Duplikations-Verdacht am Rest-Guard der Set-Methoden gegen
+  Claudes „Parallelität"-Einschätzung — zu Recht: glUniform
+  ignoriert −1 laut Spezifikation, der Guard fiel ersatzlos; eigene
+  Funde dort: 512er-Log-Puffer, −1 als API-Faktum, Fallback-1.0,
+  „könnte CWindow static sein?" selbst problematisiert.
+- 2026-10-08/09 · Model-Viewer, Nachtteil: CApplication-Architektur,
+  Review-Abschluss, Abgabe und Zeugnis (Development → Zeugnis) —
+  **Selbst:** die Architektur dreimal zurückgewiesen, bis sie dem
+  eigenen Denkmodell entsprach (Kommaliste „eindeutig nicht solid",
+  Regions abgelehnt, Zeiger-Design nach C#-Lebenslauf eingefordert —
+  „main nur erzeugen und Run"); im Stationen-Durchgang alle
+  Prüffragen bestanden (this als Adresszettel aufs Objekt selbst
+  nachgeschärft, Stack-Regel beim Rückwärts-Löschen selbst benannt,
+  „Pointer sind auf null" als Kern der Teilabbruch-Sicherheit); die
+  Unterrichtsregel „Zeiger nullen" selbst an den richtigen Platz
+  geschoben (nur wer das delete überlebt); die Literale-Triage in
+  der Geometry-Runde selbst angewendet und die Include-Trennung
+  (extern gegen eigen) selbst gefordert; zum Abschluss die Pipeline
+  frei und im Kern korrekt erzählt — inklusive Double Buffering —
+  samt ehrlicher Selbstquote (90 % GL-Lesen, 70 % mit Vokabeln);
+  Energie-Reflexion klar („im Defizit lerne ich langsamer, aber
+  zuverlässig — Disziplin ist mein Ausgleich"). **Fehlerbild:** die
+  Initialisierungsliste als Vererbung gelesen (C#-Doppelpunkt-Anker)
+  und „Member mit Klammern" nicht einzuordnen; this zuerst auf „die
+  Datei" statt das Objekt gezeigt; „erst löschen, dann deleten" als
+  zwei Schritte gedacht und die Leak-Folge als „bis der Strom weg
+  ist" (das Betriebssystem räumt beim Prozessende); in der
+  Abschluss-Reflexion „macht ja alles der Konstruktor" — Stunden
+  nach dem eigenen Leerer-Konstruktor-Beschluss; #define und
+  value_ptr als offene Posten selbst benannt. **Hilfe:**
+  Drei-Spalten-Vergleich der Member-Lebensläufe (C#-Feld /
+  Wert-Member / Zeiger), Besitz-Tabelle roh/unique/shared,
+  Fünf-Schritte-Lebenslauf eines Zeigers, MSAA-Proberaster;
+  Zeugnis samt eigener Handy-Seite als Projekt-Abschluss.

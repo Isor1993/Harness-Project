@@ -158,6 +158,17 @@ Bestand: Jedes Zeugnis behält seine eigene URL und wird **nie
 nachgezogen** — der alte Stand ist der halbe Zweck. Beim Review-Gate
 sind diese Seiten deshalb zu überspringen.
 
+### 🎓 Zeugnis · 2026-10-09, Model-Viewer-Abgabe
+```
+URL      https://claude.ai/artifact/GXchyhwg1LAGJ6qmELRA7R
+Datum    2026-10-09 — in der Nacht des Viewer-Uploads, 21 Tage vor
+         der Frist (Isors Zuruf); fünftes Zeugnis, wird nie
+         nachgezogen
+Quelle   Kern/Zeugnisse/2026-10-09.md
+Seite →  keine
+Seite ←  keine
+```
+
 ### 🎓 Zeugnis · 2026-09-30, Lane Defender
 ```
 URL      https://claude.ai/artifact/2PCvp9a5HBxQQvEXYStJBZ
