@@ -94,6 +94,9 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 
 | Dokument | Zuständigkeit |
 |---|---|
+| `Projekte/GameJam_S3_2026/DECISIONS.md` | Nur Entscheidungen zu Isors Teil am Game Jam Semester 3 (Team-Projekt, 08.–15.10.2026) — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
+| `Projekte/GameJam_S3_2026/LOG.md` | Nur was wann passiert ist — datierte Ereignisse, älteste oben. |
+| `Projekte/GameJam_S3_2026/ROADMAP.md` | Nur was an Isors Teil des Game Jams als Nächstes gebaut wird — Bausteine und offene Absprachen mit dem Team. |
 | `Projekte/Isor_Tower/ALTSTAND.md` | Nur was am Ende von Semester 2 dastand und was dabei auffiel — die Befunde, die bei einer Übernahme-Entscheidung zählen. |
 | `Projekte/Isor_Tower/DECISIONS/Audio.md` | Nur Entscheidungen zu Audio — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
 | `Projekte/Isor_Tower/DECISIONS/Entities.md` | Nur Entscheidungen zu Entities und KI — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |

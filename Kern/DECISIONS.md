@@ -1504,3 +1504,17 @@ einen Tag nach dem Bau veraltet, weil der Model-Viewer auf V3 sprang.
 Ein Lernstück erklärt ein Konzept; der Code ist Beleg, kein Gegenstand.
 Verworfen: Lernstücke bei jedem Versionssprung nachziehen (genau der
 Rundlauf, der abgeschafft werden sollte). Entschieden von Isor.
+
+## 2026-10-10 — C#-Regeln gelten wieder für jeden Unity-Code
+
+Was: Block 1 und Block 2 der `CODE_GUIDELINES.md` sind nicht mehr auf
+den eingefrorenen Tower beschränkt. Die Sprache entscheidet: C#/Unity
+→ Block 1 und 2, C++ → die C++-Abschnitte nach Ziel-Repo. Inhaltlich
+ist nichts geändert — die Datei war gegen die Sicherung vom 2026-09-07
+im Datenbaum bis auf die drei Altstand-Vermerke gleich.
+Warum: Mit dem Game Jam wird wieder C# geschrieben, und ein
+Unity-Semesterprojekt ist möglich (Engine-Kontrollpunkt 02.11.,
+`Uni/DECISIONS.md`). Isors Vorschlag: „wenn Unity und C#, dann das
+benutzen, und wenn C++, das andere".
+Verworfen: bis zur Engine-Entscheidung warten (der Jam braucht die
+Regeln jetzt) · die Sicherung zurückholen (enthält nichts, was fehlt).

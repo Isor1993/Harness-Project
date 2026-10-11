@@ -213,6 +213,13 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
   schreibt der ältere VS-Puffer die Änderungen beim Build ungesehen
   zurück. Am 2026-10-07 verschwanden so zwei Experiment-Einbauten
   (`Kern/STOERUNGEN.md`; Isors Ja vom 2026-10-07).
+- [ ] **Abgeleitetes erst bestätigen, dann aufschreiben** — Regel
+  festschreiben (Ort beim Bau wählen, z. B. `Kern/WORKFLOW.md` oder
+  Claudes Gedächtnis): Was Claude aus Skizzen, Bildern oder Andeutungen
+  über den Spielaufbau ableitet, bestätigt Isor, bevor es in eine Datei
+  wandert — Code-Kommentar wie Harness-Dokument. Am 2026-10-10 standen
+  so vertauschte Welten in einem Datei-Header und einer ROADMAP
+  (`Kern/STOERUNGEN.md`; Isors Ja vom 2026-10-11).
 
 Was im Betrieb nicht trägt, kommt als Störung in `Kern/STOERUNGEN.md`
 und wird von dort aus zu einem Punkt hier — genau dafür fragt die

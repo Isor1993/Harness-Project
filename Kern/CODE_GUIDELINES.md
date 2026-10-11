@@ -8,12 +8,17 @@ Herkunft: Entstanden als Rohmaterial aus dem Brainstorm vom 2026-07-17.
 Wann sie zuletzt angefasst wurde, sagt `git log` — genauer, als eine
 Hand es je nachführt.
 
-**Geltungsbereich seit der Stack-Entscheidung** (`Uni/DECISIONS.md` →
-„2026-09-07 — Engine- und Sprachfokus"): Für neuen Code gilt C++ — die
-Abschnitte „C++ · Konsolenprojekt" und „C++ · Unreal" unten, eingepflegt
-am 2026-09-08 aus dem SAE-Kursmaterial. Die Blöcke 1 und 2 beschreiben
-den C#/Unity-Stand und gelten unverändert für den eingefrorenen
-Unity-Altstand des Towers. Engine-neutral gelten überall:
+**Geltungsbereich — die Sprache entscheidet** (seit 2026-10-10,
+`Kern/DECISIONS.md`):
+
+| Code | Es gelten |
+|---|---|
+| **C# / Unity** — jedes Unity-Repo (Tower-Altstand, Game Jam, ein mögliches Unity-Semesterprojekt) | Block 1 und Block 2 |
+| **C++** | die Abschnitte „C++ · Konsolenprojekt" und „C++ · Unreal" — welcher, entscheidet das Ziel-Repo |
+
+Die C++-Abschnitte kamen am 2026-09-08 aus dem SAE-Kursmaterial dazu;
+bis zum 2026-10-10 galten die Blöcke 1 und 2 nur für den eingefrorenen
+Tower. Engine-neutral gelten überall:
 Kommentar-Philosophie (Warum statt Was), Datei-Header, Review-Gate,
 Test-Ansatz und die Repo-Grundregeln. Eine Sicherungskopie der reinen
 Unity-Fassung liegt im Datenbaum
@@ -121,9 +126,7 @@ größtenteils selbst.
 
 ## Block 1 — Stil & Naming (Uni-Pflicht, SAE-Conventions Stand 12/2024)
 
-*Unity-Altstand (C#) — gilt für den eingefrorenen Unity-Stand des
-Towers (`Kern/PFADE.md` → `PROJEKT`); für neuen Code gelten die
-C++-Abschnitte oben.*
+*Gilt für jeden C#/Unity-Code — Geltungsbereich oben.*
 
 1. Code ausschließlich Englisch. Für Kommentare und Ausgaben ließe die
    SAE-Vorgabe auch Deutsch zu — hier gilt die schärfere Fassung, und die
@@ -159,7 +162,7 @@ Kommentare ergänzt Claude automatisch beim Review bzw. wenn Code
 geschrieben wurde (vereinbart 2026-07-18).
 
 ### Datei-Header
-Jede Code-Datei beginnt mit diesem Block — `.cs` im Unity-Altstand,
+Jede Code-Datei beginnt mit diesem Block — `.cs` in Unity-Projekten,
 `.h`/`.cpp` in den C++-Projekten:
 
     /*****************************************************************************
@@ -218,8 +221,7 @@ History: pro nennenswerter Änderung eine neue Zeile `<Datum> ER <Was>`.
 
 ## Block 2 — Architektur & Unity-Praxis (eigene Auswahl)
 
-*Unity-Altstand (C#) — gilt für den eingefrorenen Unity-Stand des
-Towers; für neuen Code gelten die C++-Abschnitte oben.*
+*Gilt für jeden C#/Unity-Code — Geltungsbereich oben.*
 
 Quelle: Code-Rules des Dozenten (v2.2), gefiltert im Brainstorm 2026-07-17.
 

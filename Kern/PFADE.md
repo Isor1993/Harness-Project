@@ -34,6 +34,7 @@ für dieselbe Sache.
 | `PROJEKT_UNREAL` | `C:\Repos Isor\Isor-Tower-Unreal\` | Das Unreal-Repo des Towers — Hauptproduktion seit der Stack-Entscheidung; angelegt am 2026-09-08, das Unreal-Projekt selbst folgt mit der Engine-Installation. |
 | `PROJEKT_LANE_DEFENDER` | `C:\Repos Isor\Lane-Defender\` | Das C++-Konsolenprojekt des Moduls 5-101 (`Projekte/Lane_Defender/`); angelegt am 2026-09-08, das VS-Projekt legt Isor beim L1-Setup an. Bei mehreren Projekten je eine Zeile mit eigener Marke. |
 | `PROJEKT_MODEL_VIEWER` | `C:\Repos Isor\Model-Viewer\` | Das OpenGL-Projekt 3D-Model-Viewer des Moduls 5-101 (`Projekte/Model_Viewer/`); angelegt am 2026-10-04 mit Baustein V0. Bibliotheken liegen als Dateien unter `Libraries\` mit im Repo. |
+| `PROJEKT_GAMEJAM` | `C:\Repos Isor\GameJam_S3_2026\` | Das Team-Repo des Game Jams Semester 3 (`Projekte/GameJam_S3_2026/`), Unity/C#; drei Programmierer, Isors Skripte unter `Assets/Scripts/`. Angelegt vom Team, als Schicht geführt seit dem 2026-10-10. |
 
 ## Regeln
 

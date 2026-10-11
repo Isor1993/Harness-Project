@@ -2021,3 +2021,42 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   Antwort auf die Partielängen-Sorge, Dreistufen-Physikmodell,
   Genre-Referenzen (Dome Keeper, Dungeon Defenders, Solo Leveling,
   KonoSuba). **Fehlerbild:** keines — Design-Session ohne Code.
+- 2026-10-10 · Game Jam, J1 bis J5a (Development, Lernmodus; ab J5b
+  auf Isors Wunsch Claude als Schreiber wegen Erkältung) — **Selbst:**
+  `IInteractable` angelegt und `CanInteract` als Sperre selbst
+  vorgesehen; das Eimer-Muster (Schutz-Bool, Prompt leer nach Benutzung)
+  ohne Anleitung aufs Portal übertragen; den Portal-Ablauf selbst
+  entworfen (Spawn beim Gegner-Tod, Gegenportal in der anderen Welt,
+  Zerstören nach Benutzung) und die Prüffrage „woher kennt B sein Ziel"
+  in einem Satz vollständig beantwortet; die Anmal-Architektur selbst
+  hergeleitet (Objekt kennt beide Sprites, ein allgemeines Skript,
+  Spieler kennt nur eine Zahl); Gegner-Entwurf mit `IDamageable`,
+  Enum Patrol/Attack und Raycast selbst; Patrol als Spawnpunkt plus eine
+  Strecke mit Gizmo selbst vorgeschlagen; 2D-Physik auf 3D-Modellen
+  selbst richtig eingeschätzt. **Hilfe:** Rolle des Aufrufer-Parameters
+  (Truhen-Beispiel), TODO-Gerüst für `CanInteract` (Gedächtnis-Bool),
+  Prefab hält keine Szenen-Objekte, Position statt Partner-Referenz
+  (Zahlen-Tabelle), Rückgabe gegen Parameter, kleinschrittige TODOs für
+  `Die()` bei Kopfschmerzen. **Fehlerbild:** Aufrufer-Parameter
+  `Interactable` genannt; `Destroy(this)` statt `Destroy(gameObject)`;
+  Inspector-Feld auf den Spieler statt `interactor`; `Mathf.Min` statt
+  `Max` beim Begrenzen; Schaden als Rückgabetyp statt als Parameter;
+  `Instantiate` ohne Position und `Init`-Ziele nicht über Kreuz.
+- 2026-10-11 · Game Jam, J4 SceneLoader und J6 Paintable (Development,
+  Lernmodus) plus Sandbox-Test — **Selbst:** den SceneLoader mit
+  Helfer-Methode geschnitten und den Rückweg ins Menü selbst gefordert;
+  für Paintable die Lösung „Spieler im Feld, `CanInteract` prüft das
+  Inventar" selbst gefunden — besser als Claudes beide Vorschläge;
+  Paintable Schritt für Schritt selbst getippt (Rückgabe von
+  `FindWithTag` gespeichert, Alpha-Muster, Überblenden mit `Clamp01`);
+  im Test den fehlenden Boden-Collider selbst gefunden; den Layer-Bedarf
+  selbst hinterfragt und „Paintable geht genau einmal, wegen des Bools"
+  selbst erklärt. **Hilfe:** `LoadScene` gegen `LoadSceneAsync`,
+  Durchspiel-Tabellen je Fall für die Lade-Logik, Rückgabewert-Analogie
+  zu `Instantiate`, Farbkopie-Muster für Alpha, Zahlenbeispiel zum
+  Fortschritt; Test-Sandbox (TestPlayer, Kamera, Sprites) von Claude.
+  **Fehlerbild:** Null-Prüfung verdreht (`==` statt `!=`), Laden synchron
+  und im `if` versteckt, `LoadSceneAsync` danach doppelt; Menü-Sonderregel,
+  wo die Null-Prüfung schon reicht; `GetComponent<Player>()` zur Suche in
+  der Szene; Rückgabe von `FindWithTag` zuerst nicht gespeichert;
+  einmal Review ohne vorheriges Speichern der Datei.

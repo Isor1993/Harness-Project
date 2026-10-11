@@ -22,17 +22,18 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-10-09 nachts beim `/harness:ende` der Session
-„Game Pitch · Mini-GDD". Berichte: `Projekte/Isors_Outbreak/` — DECISIONS,
-ROADMAP, GDD-Entwurf, `MINI_GDD.md` — und `Kern/STOERUNGEN.md`.)*
+*(überschrieben 2026-10-11 beim `/harness:ende` der Session „GameJam ·
+Meine Systeme". Berichte: `Projekte/GameJam_S3_2026/` und
+`Kern/STOERUNGEN.md`.)*
 
-**Das Mini-GDD ist verschickt** (G1 erledigt; Freigabe-Antwort steht
-aus, gilt als erteilt). Nächster Block: **volles Pitch-GDD** — zuerst
-Layout-Runde, Erstfassung bis 18.10., Deckblatt-Template und schlanke
-Vorlage liegen bereit (Schicht-ROADMAP → „G2"); **Prototyp ab 18.10.**
-Nebenher: Toolchain-Test vor dem 27.10., Vokabel-Runde Lane Defender,
-Datenbaum, Pflegeschritt 02.11.; weiter unbeantwortet die Knowledge-
-und die Glossar-Frage der Ideenrunde (Kandidaten im Verlauf vom 09.10.).
+**Weiter mit dem vollen Pitch-GDD** (Isor's Outbreak, Schicht-ROADMAP →
+„G2"): Layout-Runde, Erstfassung bis 18.10., Prototyp ab 18.10. —
+läuft in einer eigenen Session. **Game Jam:** Isors Anteil J1–J6 ist
+gepusht und in der Sandbox getestet; offen nur der Inventar-Anschluss,
+sobald das Team Player und Inventar liefert (Review Do 15.10.).
+Nebenher unverändert: Toolchain-Test vor dem 27.10., Vokabel-Runde Lane
+Defender, Datenbaum, Pflegeschritt 02.11.; offen die Knowledge- und
+Glossar-Frage der Ideenrunde vom 09.10.
 
 ---
 

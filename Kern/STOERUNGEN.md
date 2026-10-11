@@ -1084,3 +1084,24 @@ Einträge bleiben) — als Punkt in `Uni/ROADMAP.md` (Isors Ja vom
 offizielle Form.
 **Stand:** offen — die Mini-GDD-Fassungen sind am 2026-10-09
 korrigiert, der Bestand folgt über den ROADMAP-Punkt.
+
+### 2026-10-10 — Spielaufbau aus der Skizze erraten und aufgeschrieben
+**Was:** Beim Portal-Design im Game Jam nahm Claude an, die Welt mit
+Gegnern und Eimern sei die Skizzenwelt und angemalt werde in der
+bunten Welt — genau umgekehrt. Die Annahme stand schon im Datei-Header
+von `ColorBucket.cs` („collects in the sketch world") und im Kopf der
+ROADMAP von `Projekte/GameJam_S3_2026/`, bevor Isor sie korrigierte.
+Beides wurde sofort berichtigt; der Header war noch nicht gepusht.
+**Ursache:** Abgeleitet aus Isors Skizze und den Bildbeschriftungen
+(„sketchWorld" / „coloredWorld") statt einmal nachgefragt — und dann
+ohne Bestätigung in zwei Dateien geschrieben, wo es verbindlich
+aussieht. Dieselbe Familie wie „behauptet statt nachgesehen"
+(2026-08-28, 2026-10-09), hier mit einer Ableitung statt einem
+Gedächtnisinhalt.
+**Regel:** Fehlte. „Nur Belegtes" (`Kern/WORKFLOW.md`, Ablauf von
+`/harness:sichern`) gilt erst beim Sichern, nicht für das Schreiben
+mitten in der Arbeit. Gegenmittel als Aufgabe in `Kern/ROADMAP.md` →
+„Abgeleitetes erst bestätigen, dann aufschreiben" (Isors Ja,
+2026-10-11).
+**Stand:** offen — im Vorfall behoben (Header und ROADMAP am
+2026-10-10 korrigiert), die Regel folgt über den ROADMAP-Punkt.

@@ -721,3 +721,9 @@ damals, nicht den von heute.
   (Isor). Nebenbefund des SAE-Agenten, nicht behoben:
   `CODE_GUIDELINES.md` nennt beim Model-Viewer noch „eigenes Repo
   folgt".
+- 2026-10-10 — **C#-Regeln wieder in Kraft, Projektschicht Game Jam.**
+  Die Blöcke 1 und 2 von `CODE_GUIDELINES.md` gelten wieder für jeden
+  Unity-Code (Tabelle „die Sprache entscheidet"); vorher gegen die
+  Sicherung vom 2026-09-07 verglichen — Unterschied nur die drei
+  Altstand-Vermerke. Dazu `Projekte/GameJam_S3_2026/` mit Marke
+  `PROJEKT_GAMEJAM` und Freigabe in `.claude\settings.json`.
