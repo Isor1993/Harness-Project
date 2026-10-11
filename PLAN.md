@@ -22,11 +22,11 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-10-11 beim `/harness:ende` der Session „GameJam ·
-Meine Systeme". Berichte: `Projekte/GameJam_S3_2026/` und
-`Kern/STOERUNGEN.md`.)*
+*(überschrieben 2026-10-12 beim `/harness:ende` der kurzen Fehlersuche
+Menü-Rückweg. Bericht: `Projekte/GameJam_S3_2026/LOG.md`.)*
 
-**Weiter mit dem vollen Pitch-GDD** (Isor's Outbreak, Schicht-ROADMAP →
+Isor ist krank (Erkältung, dazu vermutlich Hexenschuss), Arzttermin
+geplant — Tempo nach seinem Befinden. **Weiter mit dem vollen Pitch-GDD** (Isor's Outbreak, Schicht-ROADMAP →
 „G2"): Layout-Runde, Erstfassung bis 18.10., Prototyp ab 18.10. —
 läuft in einer eigenen Session. **Game Jam:** Isors Anteil J1–J6 ist
 gepusht und in der Sandbox getestet; offen nur der Inventar-Anschluss,

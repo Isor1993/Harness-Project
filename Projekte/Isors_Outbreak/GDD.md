@@ -13,17 +13,18 @@ markiert ein noch unbefülltes Kapitel.
 
 ## Pitch
 
-Bis zu vier Abenteurer gründen auf einer wilden Insel einen
-Gilden-Außenposten: Mauern, Werkbänke, ein eigenes Labyrinth. Ein Timer
-zählt auf den nächsten Outbreak herunter — Wellen von Fantasywesen, die
-aus den Dungeons der Insel brechen und die Basis zerlegen wollen.
-Zwischen den Wellen schwärmt der Trupp aus und sammelt Material; je
-weiter draußen, desto besser die Beute, und die Gier gegen die Uhr ist
-der eigentliche Endgegner.
-
-*(Platzhalter — Befüllung: um Genre, Plattform und Spielerzahl im
-ersten Absatz ergänzen; Pitch-Schärfung aus dem Mini-GDD einarbeiten,
-siehe „Entwurf".)*
+**Isor's Outbreak** (Arbeitstitel) ist eine Koop-Wellen-Verteidigung
+mit Basisbau: 3D, in Ego-Perspektive mit Zoom heraus bis in die
+dritte Person, für ein bis vier Spieler am PC, solo vollwertig
+spielbar. Die Gruppe wacht ohne Vorgeschichte auf einer wilden Insel
+in einer hellen Anime-Fantasy-Welt auf und baut einen Außenposten, um
+zu überleben. Denn ein Timer zählt auf den nächsten
+Outbreak herunter: Wellen von Fantasywesen, die aus den Dungeons der
+Insel brechen und die Basis zerlegen wollen. Zwischen den Ausbrüchen
+schwärmt der Trupp aus und sammelt Material. Je weiter draußen, desto
+besser die Beute, und die Gier gegen die Uhr ist der eigentliche
+Endgegner. Die Wellen sind endlos; Ziel ist, als Team die höchste
+Welle zu erreichen.
 
 ## Kern-Schleife
 
@@ -86,9 +87,10 @@ der Druck kommt aus neuen Richtungen.
 
 ### Perspektive und Kamera
 
-Dritte Person, die eigene Figur bleibt sichtbar, mit der Möglichkeit
-weiter herauszuzoomen. Ein bis vier Spieler; solo vollwertig spielbar,
-zu viert am besten.
+Gespielt wird in Ego-Perspektive. Die Kamera lässt sich herauszoomen;
+weiter draußen wird das Spiel zur dritten Person und die eigene Figur
+sichtbar. Ein bis vier Spieler; solo vollwertig spielbar, zu viert am
+besten.
 
 ### Steuerung
 
@@ -124,17 +126,23 @@ tragen.)*
 
 ## Thema, Aussehen und Story
 
-Anime-Fantasy mit Abenteurer-Gilden: Die Spieler sind ein Gilden-Trupp,
-die Gegner klassische Fantasywesen — Goblins als Schwarm, Wölfe als die
-Schnellen, Orks als die Robusten, Zyklopen als Brocken. Das Setting ist
+Anime-Fantasy: Die Spieler wachen ohne Vorgeschichte auf der Insel
+auf, die Gegner sind klassische Fantasywesen (Goblins als Schwarm,
+Wölfe als die Schnellen, Orks als die Robusten, Zyklopen als Brocken).
+Das Setting ist
 ernst gemeint, der Ton ist es nicht: hell, freundlich,
 Physik-Slapstick, Raum für Blödsinn unter Freunden. Grafischer
 Nordstern ist der stylized Look von Chop Chop Inc.; geschriebener
 Humor ist Würze, nicht Fundament.
 
-*(Platzhalter — Befüllung: Aussehen konkretisieren (stylized,
-Toon-Richtung) und in einem Satz begründen, warum die Story bewusst
-klein bleibt — die Mitspieler erzeugen den Content.)*
+Die Story bleibt bewusst im Hintergrund: Teile von ihr lassen sich im
+Spiel über die Umgebung und Easter Eggs entdecken, erzählt wird sie
+nicht.
+
+*(Platzhalter — Befüllung: Aussehen konkretisieren, stylized und
+Toon-Richtung.)*
+
+**Offen:** Gilden-Rahmung — siehe „Offene Design-Fragen".
 
 ## Audio und Musik
 
@@ -218,6 +226,9 @@ und Vorlagen.)*
   zum guten Material sind der Spannungsregler.
 - **Witz-Dosierung:** Wie viel geschriebener Humor neben dem
   Physik-Slapstick?
+- **Gilden-Rahmung:** Die Spieler sind kein Gilden-Trupp mehr (Pitch,
+  2026-10-11). Bleiben Abenteurer-Gilden als Hintergrund der Welt, oder
+  fliegt die Gilden-Idee ganz?
 
 ## Entwurf
 
@@ -250,9 +261,3 @@ und Vorlagen.)*
   können), weitere Waffen und Slot-Inhalte, Tränke, Persistenz-Modus,
   größere oder weitere Inseln.
 - Store-Namenskandidat neben dem Arbeitstitel: „Guildbreak".
-- *(2026-10-09, Mini-GDD-Session)* Pitch-Fassung des verschickten
-  Mini-GDD: Einstieg über „wacht auf einer einsamen Insel auf und baut
-  eine Basis, um zu überleben", Spielerzahl im ersten Satz, schlicht
-  „Dungeons" als Begriff („Portal-Risse" vorgeschlagen und von Isor
-  verworfen) — Kandidat für die Pitch-Schärfung im vollen GDD
-  (`MINI_GDD.md`).

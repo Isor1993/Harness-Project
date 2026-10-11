@@ -2060,3 +2060,16 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   wo die Null-Prüfung schon reicht; `GetComponent<Player>()` zur Suche in
   der Szene; Rückgabe von `FindWithTag` zuerst nicht gespeichert;
   einmal Review ohne vorheriges Speichern der Datei.
+- 2026-10-12 · Game Jam, Fehlersuche Menü-Rückweg (Development, kurz,
+  nachts und krank) — **Selbst:** die Ursache der Warnung „Can not play a
+  disabled audio source" vorab richtig im Soundtrack-Manager des Teams
+  vermutet, nicht im eigenen SceneLoader; selbst hergeleitet, dass beim
+  Szenenwechsel alle Szenen-Objekte neu gebaut werden und ein frisches
+  Awake bekommen; dass Destroy nicht sofort löschen kann; dass zwischen
+  Skript und Engine ein Pointer stecken muss; dass reines C++ ohne Schutz
+  weiterliefe und still Speicher beschädigen könnte. **Hilfe:** Ablauf
+  der zwei Objekte (alter MusicManager mit DontDestroyOnLoad gegen neues
+  Szenen-Objekt) als Tabelle; Destroy erst am Frameende; C#-Hülle gegen
+  C++-Engine-Seite, Methoden als Code mit verstecktem `this`. **Fehlerbild:**
+  angenommen, Destroy beende die laufende Methode, und der genullte
+  Pointer sei der aufs Skript statt der vom Skript zur Engine.

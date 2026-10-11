@@ -29,3 +29,7 @@ Format: Ereignisse als `- JJJJ-MM-TT — Ereignis (1–3 Sätze)`.
   Tod mit Portalpaar, Teleport hin und zurück, Überblenden. Layer Player
   und Enemy sowie das Paket *2D Sprite* gepusht; Isors Jam-Anteil ist
   damit bis auf den Inventar-Anschluss fertig.
+- 2026-10-12 — Warnung beim Rückweg ins Menü geklärt: Ursache war der
+  Soundtrack-Manager des Teams (Duplikat ruft nach `Destroy` noch `Play`,
+  fehlendes `return`), nicht Isors SceneLoader. Der Fix ist im Team-Repo
+  als „Eric: Fix Sountrackmanager" committet.
