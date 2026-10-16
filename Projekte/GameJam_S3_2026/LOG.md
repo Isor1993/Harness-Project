@@ -33,3 +33,17 @@ Format: Ereignisse als `- JJJJ-MM-TT — Ereignis (1–3 Sätze)`.
   Soundtrack-Manager des Teams (Duplikat ruft nach `Destroy` noch `Play`,
   fehlendes `return`), nicht Isors SceneLoader. Der Fix ist im Team-Repo
   als „Eric: Fix Sountrackmanager" committet.
+- 2026-10-15 — Reflexionstext für die Game-Jam-Review geschrieben:
+  `ABGABE_REFLEXION.txt` in dieser Schicht, aus Isors mündlichem Bericht,
+  ergänzt um Zahlen und Belege aus Schicht-Doku und Team-Repo; abgegeben
+  wird er von Isor im Canvas-Texteingabefeld (Frist 20:00). Neu belegt
+  dabei: acht Artists und drei Programmierer, zwei gewählte Leads (Art
+  und Programmierung), das Aufgaben-Board kam von Georgi, und die
+  technischen Asset-Vorgaben standen anfangs nicht fest — Isor hat sie
+  erst in der zweiten Wochenhälfte mit dem Art Lead festgelegt, nachdem
+  die Abstimmung zwischen den beiden Leads ausgeblieben war.
+- 2026-10-15 — Inventar-Anschluss gegengelesen: Er ist seit dem
+  2026-10-12 erledigt, ohne Isors Zutun. Der Player-Programmierer hat
+  die drei TODOs in `ColorBucket` und `Paintable` selbst durch
+  `PlayerInventory.AddBucket()`, `HasBucket()` und `TryUseBucket()`
+  ersetzt (Commit `8558e0e`). Isors Jam-Anteil ist damit vollständig.

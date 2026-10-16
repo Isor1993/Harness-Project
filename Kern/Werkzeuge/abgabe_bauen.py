@@ -33,6 +33,10 @@ einen neuen Abschnitt mit arabischer Zählung ab 1. Dieser Modus braucht
 Word und pywin32 auf dem Rechner — dieselbe Voraussetzung wie das
 F9-Füllen der Felder danach.
 
+Abgabe-Ende-Marke: Steht `<!-- abgabe-ende -->` im Manuskript, wird nur
+der Text davor gebaut — interne Abschnitte dahinter (offene Fragen,
+Entwurf) bleiben in jeder gebauten Fassung draußen.
+
 Aufruf:
     python abgabe_bauen.py <quelle.md> <vorlage.docx> <ziel.docx>
         [<bildordner>] [--titelteil=<datei.docx>]
@@ -80,6 +84,26 @@ def sichern(ziel):
                          "%s_%s_vor-neubau%s" % (stamm, stempel, endung))
     shutil.copy2(ziel, kopie)
     return kopie
+
+
+ABGABE_ENDE = "<!-- abgabe-ende -->"
+
+
+def bis_zur_marke(quelle):
+    """Steht die Abgabe-Ende-Marke im Manuskript, endet die Abgabe dort:
+    Der Text davor wandert in eine Zwischendatei, alles ab der Marke
+    bleibt draußen. Ohne Marke wird die Quelle unverändert gebaut."""
+    with io.open(quelle, encoding="utf-8") as f:
+        text = f.read()
+    if ABGABE_ENDE not in text:
+        return quelle
+    gekuerzt = text.split(ABGABE_ENDE, 1)[0].rstrip() + "\n"
+    zwischen = os.path.join(tempfile.gettempdir(), "abgabe_quelle.md")
+    with io.open(zwischen, "w", encoding="utf-8") as f:
+        f.write(gekuerzt)
+    print("Abgabe-Ende-Marke gefunden — gebaut wird bis zur Marke "
+          "(%d von %d Zeichen)." % (len(gekuerzt), len(text)))
+    return zwischen
 
 
 def bauen(quelle, vorlage, ziel, bildordner):
@@ -312,6 +336,7 @@ def main():
     kopie = sichern(ziel)
     if kopie:
         print("Sicherung:", kopie)
+    quelle = bis_zur_marke(quelle)
     if titelteil:
         zwischen = os.path.join(tempfile.gettempdir(),
                                 "abgabe_hauptteil.docx")

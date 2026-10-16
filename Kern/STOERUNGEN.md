@@ -1105,3 +1105,25 @@ mitten in der Arbeit. Gegenmittel als Aufgabe in `Kern/ROADMAP.md` →
 2026-10-11).
 **Stand:** offen — im Vorfall behoben (Header und ROADMAP am
 2026-10-10 korrigiert), die Regel folgt über den ROADMAP-Punkt.
+
+### 2026-10-15 — Abgabetext geschrieben, bevor Isor erzählt hatte
+**Was:** Isor bat um den Reflexionstext für die Game-Jam-Review. Claude
+las die Schicht-Doku und das Team-Repo und schrieb daraus einen
+vollständigen Abgabetext samt Urteilen über die Teamarbeit. Isor stellte
+daraufhin klar: „ich sage was war und daraus machen wir ein text". Der
+Entwurf wurde verworfen und aus seinem Bericht neu gebaut; danach waren
+noch drei Korrekturrunden nötig — das Aufgaben-Board stammte von Georgi
+und nicht von Isor, die Asset-Vorgaben waren nicht vorab in Meetings
+festgelegt worden, und der Absprache-Absatz traf seine Lage nicht.
+**Ursache:** Die Fakten im Repo tragen, was gebaut wurde — nicht, wie
+Isor die Zusammenarbeit beurteilt und was er dabei angenommen hatte.
+Claude behandelte eine Urteilsfrage wie eine Belegfrage und begann beim
+Schreiben statt beim Zuhören. Dieselbe Familie wie „Abgeleitetes erst
+bestätigen, dann aufschreiben" (2026-10-10), hier nicht über den
+Spielaufbau, sondern über Menschen.
+**Regel:** Fehlte. „Nur Belegtes" (`Kern/WORKFLOW.md`) verlangt Belege,
+sagt aber nicht, dass Isors Urteil selbst der Beleg ist und zuerst
+eingeholt wird. Gegenmittel als Aufgabe in `Kern/ROADMAP.md` → „Erst
+Isors Bericht, dann der Text" (Isors Ja, 2026-10-15).
+**Stand:** offen — der Text ist aus Isors Bericht neu geschrieben und
+abgabefertig; die Regel folgt über den ROADMAP-Punkt.

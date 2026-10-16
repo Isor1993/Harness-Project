@@ -1,0 +1,92 @@
+Game Jam Semester 3, Thema "Two Sides"
+
+TEAM UND ROLLEN
+
+Das Team bestand aus rund acht Artists und drei Programmierern, ich war
+einer der Programmierer. Wir haben zwei Leads gewählt, einen für Art
+und einen für Programmierung.
+
+Die Lead-Rolle habe ich bewusst nicht übernommen. Ich habe im Team von
+Anfang an gesagt, wie viel Zeit ich einbringen kann, und die Rolle
+sollte jemand bekommen, der sie noch nicht gemacht hat. Teamleitung
+kenne ich aus meinem Beruf, hier war der Lernwert für andere größer.
+
+Zuständig war ich für die Gegner-KI, die Interfaces, die Mechanik des
+Anmalens, die Portale und den Szenenwechsel zwischen Menü und Spiel.
+Dazu kam im Verlauf Organisatorisches und technische Arbeit im Editor:
+Sprite-Einstellungen, Prefabs, Einbau und Prüfung der Art-Assets. Das
+habe ich übernommen, wo Zeit fehlte oder Absprachen nicht angekommen
+waren.
+
+Mein persönliches Ziel war weniger das Spiel als die Zusammenarbeit:
+sehen, wie ein Team dieser Größe arbeitet und mit wem davon ich
+weiterarbeiten kann.
+
+ORGANISATION UND KOMMUNIKATION
+
+Kommunikation lief über Discord, der Code über GitHub. Georgi aus dem
+Programmier-Team hat ein Aufgaben-Board angelegt, mit einer Section für
+Game Art und einer für Game Programming und den To-do-Listen darin.
+Damit war für beide Seiten sichtbar, wer woran arbeitet, was fertig ist
+und was noch offen war.
+
+Von mir kam ein kurzes Regelblatt für die Asset-Größen, abgestimmt mit
+dem Art Lead, samt Maßstabsvorlage zum Unterlegen: Canvas 1920 x 1080,
+Spieler 150 px hoch, alles andere daran gemessen. Anlass war, dass die
+Assets in sehr unterschiedlichen Maßen ankamen.
+
+WAS GUT LIEF
+
+Die Zusammenarbeit der drei Programmierer lief einwandfrei: abgegrenzte
+Pakete, Berührungspunkte nur über Interfaces, keine doppelte Arbeit und
+keine Blockaden.
+
+Dass ich offene Anschlüsse im Code als TODO markiert habe, hat sich
+ausgezahlt. Das Inventar kam später von einem anderen Programmierer,
+der diese Zeilen selbst gefüllt hat, ohne Rückfrage an mich und ohne
+dass ich etwas umbauen musste.
+
+Das Board hat den Stand ohne Nachfragen sichtbar gemacht.
+
+WAS BESSER WERDEN MUSS
+
+Die Schwachstelle war die Schnittstelle zwischen Programmierung und
+Art, technisch wie in der Absprache.
+
+Technisch kamen die Dateien in sehr unterschiedlichen Maßen und
+Formaten. Ein Portal kam als A4 bei 600 dpi, also 7016 px breit, und
+wäre im Spiel siebzigmal so breit wie der Spieler gewesen.
+Gleichartige Objekte waren um einzelne Pixel verschieden groß, was in
+einer Reihe als Zittern auffällt.
+
+Bei den Absprachen lag es an der Zuständigkeit. Die technischen
+Vorgaben für die Assets standen am Anfang nicht fest. Ich bin davon
+ausgegangen, dass das Art-Team die Formate mit seinem Art Lead klärt
+und die beiden Leads sich darüber abstimmen. Das ist nicht passiert,
+also habe ich es gemeinsam mit dem Art Lead übernommen, allerdings erst
+in der zweiten Hälfte der Woche.
+
+Dazu kam, dass nicht alle bei den Meetings dabei waren und Antworten
+teilweise spät kamen.
+
+Gefehlt hat vor allem eine Rolle: ein Technical Artist Lead, der genau
+diese technischen Vorgaben entscheidet und ins Art-Team trägt. Bei acht
+Artists und drei Programmierern besitzt diese Entscheidung sonst
+niemand. Für eine Woche Game Jam war das verkraftbar, für eine längere
+Produktion wäre es das nicht.
+
+Vorgaben für Dateigrößen, Formate und Namen gehören deshalb vor den
+ersten Asset-Auftrag, nicht in die zweite Hälfte der Woche.
+
+REFLEKTION
+
+Für mich war der Jam vor allem eine Standortbestimmung für die
+Teamarbeit. Ich weiß jetzt, mit wem ich im vierten Semester
+zusammenarbeiten möchte und mit wem eher nicht.
+
+Fachlich nehme ich mit, dass klare Schnittstellen im Code und ein
+sichtbares Board den größten Teil der Abstimmung ersetzen, und dass
+Vorgaben für Assets früh stehen müssen. Vor allem aber, dass man eine
+technische Vorgabe nicht als erledigt annehmen darf, nur weil es für
+beide Seiten einen Lead gibt. Fehlt die Rolle dazwischen, bleibt die
+Frage bei dem liegen, der die Dateien einbaut.

@@ -41,9 +41,12 @@ Alle Bausteine am 2026-10-11 in der lokalen Sandbox durchgetestet
 
 ## Mit dem Team zu klären
 
-- [ ] **Inventar anschließen** — sobald der Player-Programmierer Player
-  und Inventar gebaut hat: Methodennamen absprechen, dann die drei TODOs
-  füllen (Eimer +1, Paintable prüft ≥ 1, Paintable −1).
+- [x] **Inventar anschließen** — **Erledigt am 2026-10-12 durch den
+  Player-Programmierer**, am 2026-10-15 gegengelesen: Er hat die drei
+  TODOs selbst durch `PlayerInventory.AddBucket()`, `HasBucket()` und
+  `TryUseBucket()` ersetzt (Commit `8558e0e`). Die geplante Absprache
+  über Methodennamen entfiel damit — die TODO-Markierungen im Code
+  haben gereicht.
 - [ ] Wie der Player interagierbare Objekte findet (Trigger, Raycast …)
   — davon hängt der Collider2D der Prefabs ab.
 - [ ] Wie der Spieler Gegner trifft (Angriffstaste oder Draufspringen) —

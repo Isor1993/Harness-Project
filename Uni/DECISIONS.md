@@ -551,4 +551,26 @@ Verworfen: die Unreal-Hands-on-Phase abwarten (neue Datenlage — zwei
 eigene C++-Projekte sind Anschauung genug, und jeder gewonnene Tag
 gehört jetzt dem Pitch); Unreal fürs Semester-Spiel.
 
+## 2026-10-13 — Zwei Konzepte parallel bis zur Wahl der Dozentin
 
+Was: Für das Semester-Spiel entstehen zwei vollständige GDDs
+nebeneinander: Isor's Outbreak (`Projekte/Isors_Outbreak/`) und die
+Weg-Bau-Tower-Defense Isor's Detour (`Projekte/Isors_Detour/`). Beide
+gehen an die Dozentin; sie wählt, welches das Semester-Spiel wird, und
+gibt erneut Feedback. Das nicht gewählte Konzept bleibt als fertiges
+GDD für ein späteres Spiel liegen. Reihenfolge: erst das Outbreak-GDD
+(läuft in einer eigenen Session weiter), danach Detour. Ziel: beide
+fertig bis Do/Fr 15./16.10., dann gehen sie zusammen an die Dozentin.
+Warum: Das Freigabe-Feedback vom 2026-10-12 (`LOG.md`) hält Outbreak
+in der Formulierung für zu groß: zu viele ineinandergreifende Systeme,
+kein klarer Fokus, ein 3D-Echtzeit-Kampfsystem ausdrücklich abgeraten.
+Detour trifft die von ihr genannte TD-Richtung (einfache Gegner-KI auf
+einem Pfad, Vielfalt in den Türmen) und bringt mit dem selbst gebauten
+Weg einen eigenen Kniff mit. Isor will Outbreak trotzdem nicht
+verwerfen; zwei fertige Konzepte zahlen zugleich auf das Ziel „zwei
+fertige Spiele bis Studienende" ein (`ROADMAP.md`).
+Verworfen: sofortiger Wechsel auf Detour (Claudes Vergleich vom
+2026-10-12 sah Detour vorn — Isor will beide ausarbeiten und die
+Dozentin wählen lassen); die Idle-Clicker-TD als drittes Konzept
+(trägt weder Koop noch 3D-Figur und zeigt als Programmierprojekt
+wenig); Outbreak unverändert weiterführen (widerspricht dem Feedback).

@@ -1,7 +1,8 @@
-# DECISIONS.md — Entscheidungen Isor's Outbreak
+# DECISIONS.md — Entscheidungen It's D.O.T
 
-Ownership: Nur Entscheidungen zum Koop-Spiel Isor's Outbreak
-(Arbeitstitel; das Semester-Spiel des Moduls 5-101) — was entschieden
+Ownership: Nur Entscheidungen zum Koop-Spiel It's Dungeon Outbreak
+Time (Kürzel It's D.O.T; Harness-Schicht Isors_Outbreak; das
+Semester-Spiel des Moduls 5FSC0XD101_P) — was entschieden
 wurde, warum, und welche Alternativen verworfen wurden. Kein Plan
 (ROADMAP), keine Design-Absicht (GDD), kein Ereignis. Die
 Uni-Aufgabenstellung gehört der Uni-Schicht.
@@ -208,3 +209,306 @@ Verworfen: Code-Start am Wochenende 17./18.10. vor dem GDD (alte
 Übergabe aus der Ideenrunde); Prototyp-Start erst Ende Oktober (erste
 Fassung im Gespräch — Isor zieht ihn direkt ans Ende der
 GDD-Erstfassung).
+
+## 2026-10-14 — Umfang-Schnitt: Kampf bleibt, aber minimal
+
+Was: Die Spieler kämpfen weiter selbst. Das Kampfsystem schrumpft auf
+das Minimum: Jede Waffe hat einen Basisangriff und genau eine
+Fähigkeit (Feuerstab: Feuerball; Schwert: Hieb). Die Leiste mit vier
+befüllbaren Fähigkeiten-Slots fällt aus dem Semester-Schnitt. Ob die
+eine Fähigkeit über die Waffen-Entwicklung modifiziert wird, bleibt
+offen (GDD → „Offene Design-Fragen").
+Warum: Antwort auf das Freigabe-Feedback vom 2026-10-12 (`Uni/LOG.md`):
+kleiner anfangen, vom 3D-Kampfsystem abgeraten. Das Selbst-Kämpfen ist
+für Isor der Kern des Outbreak-Gefühls, und Outbreak muss sich von der
+TD-Richtung von Isor's Detour unterscheiden; der Minimal-Schnitt zeigt
+der Dozentin zugleich den kleinen Fokus.
+Verworfen: Kampf streichen und nur Bauten (Türme, Fallen) verteidigen
+lassen (rückt Outbreak zu nah an Detour); das Vier-Slots-System im
+Semester-Schnitt behalten (widerspricht dem Feedback).
+
+## 2026-10-14 — Kern-Schleife: Echtzeit ohne Phasenzwang
+
+Was: Das Spiel erzwingt keine Phasen. Den Rhythmus gibt der sichtbar
+angekündigte Outbreak vor; zwischen den Ausbrüchen ist das Team frei
+(sammeln, bauen, reparieren). Die Kern-Spannung ist die Aufteilung:
+wer rausgeht, wer bleibt, wer repariert. Wie die Timer ticken (fest
+oder zufällig in Grenzen) und wie der Outbreak angekündigt wird
+(UI-Timer, Umwelt, Portal-Färbung), bleibt offen; fest steht nur das
+Prinzip „sichtbar angekündigt".
+Warum: Isors Zielbild (2026-10-14): Die Spieler sollen eigene
+Strategien entwickeln, statt einem Phasen-Skript zu folgen; die
+Ankündigung muss sichtbar sein, weil „Gier gegen die Uhr" sichtbaren
+Druck braucht.
+Verworfen: feste Phasen (der Timer beendet das Sammeln, dann kommt
+eine Bau-Phase) — die alte Lesart des Schleifen-Textes;
+Rundenbasiertheit.
+
+## 2026-10-14 — Herzobjekt: Niederlage und Gründung am selben Objekt
+
+Was: Die Partie ist verloren, wenn das zentrale Herzobjekt der Basis
+fällt (Arbeitsname „Siegelstein", Name offen). Spieler-Tode beenden
+die Partie nie allein; Respawn-Regeln sind offen. Die Gründung hängt
+am selben Objekt: Die Gruppe trägt es im Gepäck und setzt es frei auf
+der Karte; die Umsetzung der Setz-Mechanik ist offen. Die Werkbank
+verliert ihre Sonderrolle und wird eine normale baubare Station.
+Warum: „Alle tot" als Partie-Ende findet Isor langweilig; verteidigt
+werden soll ein Objekt, bei dem klar ist, warum ohne es alles verloren
+ist. Die Werkbank trägt diese Story nicht (Isor, 2026-10-14). Anfang
+und Ende am selben Objekt halten das Spiel klein, und die freie
+Platzwahl bleibt erhalten.
+Verworfen: die Werkbank als Verloren-Objekt (story-schwach); „alle
+Spieler tot" als Kriterium (langweilig); die Kombination aus Objekt
+und Spieler-Toden (vorerst, bewusst einfach gehalten).
+
+## 2026-10-14 — Welt-Rahmen: feste Insel, zufällige Dungeon-Plätze
+
+Was: Das Spielfeld ist eine fest gestaltete, bewusst kleine Insel; es
+gibt genau eine Karte (Größe im Blockout, so klein wie möglich). Die
+Dungeon-Plätze verteilt das Spiel zu Beginn jeder Partie zufällig neu,
+danach stehen sie fest und sichtbar. Die Gruppe wacht immer am selben
+Ort auf (ein Strand am Inselrand). Das Wasser ist die Grenze: ein paar
+Schritte hineinlaufen geht, schwimmen nicht.
+Warum: Die feste Insel ist der kleinste Schnitt (kein
+Generierungs-Aufwand, Balancing in der Hand) und antwortet auf das
+Freigabe-Feedback; die zufälligen Dungeon-Plätze geben trotzdem jeder
+Runde ein anderes Gesicht und halten die Platzwahl der Gründung
+frisch. Der frühere Verwurf „zufällig spawnende Quellen" (2026-10-09)
+meinte Spawnen während der Partie; zufällige Plätze beim Partie-Start,
+danach fest, bleiben lesbar. Fester Startstrand und die
+Nasse-Füße-Grenze sind die jeweils einfachsten Lösungen (Isor: so
+einfach wie möglich).
+Verworfen: eine je Partie prozedural erzeugte Insel (durch die
+Netz-Grundlage technisch gedeckt, aber größerer Aufwand ohne Not); ein
+zufälliger Startpunkt; Schwimmen oder eine Schadens-Kante am Wasser.
+
+## 2026-10-14 — Ressourcen: Staffelung und Verknappung statt Distanz-Regel
+
+Was: Materialquellen liegen über die ganze Insel verteilt, alles
+mehrfach, kein einzelner bester Ort: Häufiges wie Holz in Wäldern und
+vereinzelt, Stein verstreut, seltenere Quellen wie Erz an wenigen
+Stellen. Abgebaute Quellen sind verbraucht. Die Spannung der
+Sammel-Phase entsteht aus der Verknappung: Die Umgebung der Basis ist
+bald leergesammelt, die Wege werden mit jeder Runde länger. Ob
+erschöpfte Quellen anderswo neu auftauchen, ist offen (GDD → „Offene
+Design-Fragen"). Der Pitch-Satz „je weiter draußen, desto besser die
+Beute" ist entsprechend ersetzt.
+Warum: Isors Modell (2026-10-14): Der Spieler wählt den Basis-Platz
+frei, eine feste Weiter-draußen-Regel passt dazu nicht. Die
+Verknappung erzeugt den Laufweg von selbst und wächst mit der
+Partie-Dauer, parallel zur Wellen-Eskalation; gebaut ist sie billig
+(eine Quelle hat einen Vorrat und verschwindet leer).
+Verworfen: der Distanz-Gradient „weiter draußen ergiebiger" (Teil des
+Eintrags „Ressourcen-Ströme und Team-Lager" vom 2026-10-09 und des
+alten Welt-Texts „bestes Material nah an fremden Dungeons"); gleiche
+Verteilung ohne Seltenheits-Staffelung (ohne sie gäbe es vor dem
+Greifen der Verknappung keinen Grund, weit zu gehen).
+
+## 2026-10-15 — Waffen nur mit Basisangriff, Fähigkeiten werden Erweiterung
+
+Was: Jede Waffe kann in der ersten Version genau eines: ihren
+Basisangriff auf der Aktionstaste (das Schwert schlägt, der Bogen
+schießt). Besondere Fähigkeiten je Waffe sind als spätere Erweiterung
+vorgemerkt. Der Rest bleibt: kein Klassensystem, Waffen liegen im
+Lager und sind jederzeit tauschbar, Start mit einem Nah- und einem
+Fernkampf. Löst den Fähigkeiten-Teil des Eintrags „Umfang-Schnitt:
+Kampf bleibt, aber minimal" (2026-10-14) ab; die offene Frage
+„Fähigkeits-Modifikation" entfällt damit.
+Warum: Noch ein Schnitt kleiner als am Vortag. Der Kampf bleibt Isors
+Kern des Outbreak-Gefühls, aber fürs erste Spielgefühl reicht der
+Basisangriff; als Erweiterungs-Stichpunkt zeigen die Fähigkeiten
+zugleich die Ausbaufähigkeit des Waffen-Systems.
+Verworfen: Basisangriff plus genau eine Fähigkeit (der Stand vom
+2026-10-14); die Fähigkeit als modifizierbares Element der
+Waffen-Entwicklung (stellt sich erst, wenn die Erweiterung kommt).
+
+## 2026-10-15 — Steuerung: Maus/Tastatur und Controller, vorläufige Belegung
+
+Was: Unterstützt werden Maus und Tastatur sowie Controller; die
+Controller-Belegung entsteht im Prototyp. Vorläufige Belegung für Maus
+und Tastatur: WASD laufen, Leertaste springen, linke Maustaste
+Basisangriff und Aktion, E interagieren, I Inventar, B oder
+Mausrad-Klick bauen, M Karte (geplant). Feinschliff im Prototyp; die
+Bau-Eingabe samt Bau-Menü ist offen (GDD → „Offene Design-Fragen").
+Warum: Ein Standard-Layout, das niemand lernen muss (Isor,
+2026-10-15); früh festgehalten, damit Prototyp und GDD dieselbe
+Sprache sprechen.
+Verworfen: nichts — erste Festlegung, bewusst als vorläufig markiert.
+
+## 2026-10-15 — Fall beim Outbreak: Beute bleibt am Fallort
+
+Was: Kippt ein Spieler um, bleibt seine getragene Beute in einem
+Behälter an der Stelle liegen und kann wieder eingesammelt werden.
+Spieler-Tode beenden die Partie nie (Eintrag „Herzobjekt",
+2026-10-14). Offen bleiben die Waffe des Gefallenen und der Rückweg
+ins Spiel: Wiederbelebung durch Mitspieler, automatischer Respawn oder
+beides — samt dem Rand-Fall „alle am Boden", der ohne Rückweg die
+Partie hängen ließe, obwohl das Herzobjekt steht.
+Warum: Der Behälter macht den Fall spürbar, ohne hart zu bestrafen,
+und der Rückhol-Lauf ist noch einmal Gier gegen die Uhr. Gegenseitiges
+Wiederbeleben reizt Isor als Spannungsquelle; entschieden wird das mit
+dem Prototyp.
+Verworfen: nichts ausdrücklich — der Behälter war Isors einzige
+Setzung, Alternativen (Beute-Verlust, Beute bleibt im Inventar) kamen
+nicht zur Wahl.
+
+## 2026-10-15 — Persistenz: jede Partie startet bei null
+
+Was: Über die Partie hinaus bleibt nichts bestehen; jede Partie
+startet bei null. Fortschritt über Partien hinweg (Festung, Waffen,
+Freischaltungen) ist als Erweiterung vorgemerkt, bewusst weit hinten
+in der Reihe. Die offene Frage „Persistenz über Partien" ist damit
+geschlossen.
+Warum: Passt zum Highscore-Prinzip (jede Partie ist ein eigener
+Anlauf), hält die erste Version klein und deckt sich mit dem, was das
+Mini-GDD bereits als Ausbaustufe benannt hat.
+Verworfen: Meta-Progression in der ersten Version (Content- und
+Balance-Kosten ohne Not; „ganz weit weg", Isor 2026-10-15).
+
+## 2026-10-15 — Basis-Bau der ersten Version: Mauern, eine Werkbank, drei Rohstoffe
+
+Was: Gebaut werden in der ersten Version nur Mauern, wahlweise aus
+Holz oder Stein (der Unterschied läuft über die Textur). Tore und
+Türen gibt es nicht; wer die Basis schließt, lässt eine Lücke als
+Eingang und verteidigt dort. Einzige Station ist die Werkbank (der
+Platz zum Schmieden und Entwickeln); weitere Stationen und Tore sind
+als Erweiterung vorgemerkt. Repariert wird mit Material. Die
+Rohstoffe sind Holz, Stein und ein seltenes Erz (Arbeitsname
+Mithril).
+Warum: So klein wie möglich (Isor, 2026-10-15): Tore sind technisch
+aufwendig, und die offene Lücke erzeugt von selbst den bewachten
+Engpass — eine Verteidigungs-Entscheidung statt einer Tür-Mechanik.
+Eine Mauer-Mechanik mit zwei Texturen ist billiger als zwei
+Bausysteme.
+Verworfen: Tore und Türen in der ersten Version (zu schwer, Isor);
+mehrere Werkstationen zum Start.
+
+## 2026-10-15 — Gegner-Eskalation: wenige Typen, Varianten, Nachschub
+
+Was: Zum Start gibt es zwei bis vier Gegnertypen (Kandidaten-Pool
+sind die vier aus dem Thema-Kapitel: Goblins, Wölfe, Orks, Zyklopen);
+die genaue Zahl entscheidet der Prototyp (GDD → offene Frage
+„Umfang-Feinschnitt"). Die Eskalation läuft über das gesamte
+Spielerlebnis: erst wenige Gegner, dann mehr, nach und nach stärkere
+Varianten (etwa ein Goblin-Krieger) und neue Typen, dazu erwachende
+Dungeons als neue Angriffsrichtungen.
+Warum: Vorbild ist die Blutmond-Kurve aus 7 Days to Die (Isor,
+2026-10-15): Menge, Varianten und neue Typen ergeben eine lange
+Eskalation aus wenig Content; Varianten desselben Typs sind
+Asset-günstig.
+Verworfen: eine feste Festlegung auf alle vier Typen zum Start (der
+Feinschnitt bleibt beim Prototyp).
+
+## 2026-10-15 — Benutzeroberfläche: schlankes HUD, Rasterinventar, kurzer Menüfluss
+
+Was: Das HUD zeigt ständig Welle, Outbreak-Ankündigung, eigenes Leben
+und die Quickslot-Leiste (erste Inventar-Reihe, bestimmt die Hand);
+dazu den Herzobjekt-Zustand mit Basis-Alarm, eine
+Mitspieler-Lebensanzeige mit Am-Boden-Signal und einen
+Richtungs-Anker zur Basis. Material-Zähler wohnen im Inventar
+(Rasterfenster auf I, darüber Figur und getragene Slots). Gebaut wird
+über ein Radialmenü (vorläufig). Menüfluss: Hauptmenü,
+Hosten/Beitreten per Join-Code, Lobby mit Bereit-Status und Chat,
+Partie; dazu ein kleines Pausenmenü und ein Abschlussbildschirm mit
+der erreichten Welle. Minimap als Erweiterung. Gestaltungsregel:
+Wichtige Zustände nie allein über Farbe unterscheiden (besonders
+nicht Rot gegen Grün), immer Form oder Text dazu.
+Warum: Ein schlankes HUD passt zum kleinen Schnitt. Herzobjekt-Anzeige
+und Basis-Alarm folgen aus der Niederlage am Herzobjekt (sonst verliert
+man ungesehen), Mitspieler-Status aus dem Revive-Gedanken,
+Richtungs-Anker aus der fehlenden Minimap. Der Abschlussbildschirm ist
+die Auszahlung des Highscore-Ziels. Die Farb-Regel ist
+Barrierefreiheit und bei Isor gelebte Praxis.
+Verworfen: Material-Zähler dauerhaft im HUD (wohnen im Inventar); eine
+Minimap in der ersten Version (später, falls Zeit).
+
+## 2026-10-16 — Thema-Rest: Gilden-Welt, eigene Welt, Low-Poly-Stil
+
+Was: Die Welt bleibt eine Welt der Abenteurer-Gilden; die Spieler
+selbst gehören keiner an, die Gilden zeigen sich über visuelle
+Andeutungen in der Welt (Ruinen, Zeichen, Easter Eggs). Die Welt ist
+eine eigene, keine Fortsetzung von Isor's Tower; sie teilt Themen und
+Stil-Vorbild (Chop Chop Inc.). Das Aussehen ist stylized und low-poly
+im Anime-Stil mit bewusst einfachen Assets; das Vorbild gibt die
+Richtung vor, nicht den Detailgrad. Witz wird nicht eigens dosiert
+oder geregelt: Der Humor entsteht aus Physik und Waffen-Design. Die
+konkreten Gegnertypen bleiben offen, fest sind ihre Rollen (Schwarm,
+schnell, robust, Brocken); die Besetzung entscheidet die
+Asset-Sichtung (GDD → „Offene Design-Fragen", „Gegner-Besetzung").
+Damit sind die offenen Fragen Gilden-Rahmung, Universum und
+Witz-Dosierung geschlossen.
+Warum: Die Gilden-Welt trägt die Umgebungs-Erzählung und das
+Fantasy-Flair ohne Story-Kosten. Eine eigene Welt lässt dem Spiel
+Freiheit, der Stil bleibt am Toon-Shader-Lernpfad. Low-Poly mit
+einfachen Assets ist der realistische Zuschnitt (Art über fertige
+Packs, frei oder zugekauft). Monster erst nach der Asset-Sichtung zu
+besetzen vermeidet, dass das GDD Wesen verspricht, für die es keine
+Modelle gibt (Isor, 2026-10-16).
+Verworfen: die Gilden ganz streichen (die Welt verlöre Flair und
+Easter-Egg-Quelle); die Insel in der Tower-Welt verorten; eine feste
+Monster-Liste vor der Asset-Sichtung.
+
+## 2026-10-16 — Audio: Musik als Phasen-Signal, Sounds für alle Bereiche
+
+Was: Die Musik arbeitet als Phasen-Signal (ruhig beim Sammeln,
+druckvoll zum und im Outbreak); den Wechsel soll man hören, nicht nur
+sehen. Sounds decken alle Spielbereiche ab: Waffen und Treffer,
+Spieler, Gegner samt Kriegsschrei beim Ausbruch, Beute, Bauen und
+Reparieren, Benutzeroberfläche. Besonderes Gewicht hat der
+Physik-Slapstick. Quellen sind fertige Packs, frei oder zugekauft,
+dieselbe Linie wie bei den 3D-Assets.
+Warum: Der Loop lebt von der hörbaren Ankündigung (die
+Outbreak-Ankündigung ist noch offen, der Klang trägt sie in jedem
+Fall), und der Slapstick funktioniert ohne Sound nicht. Fertige Packs
+passen zum Solo-Rahmen; Isors Hinweis vom 2026-10-16: Die Sound-Liste
+ist breiter als nur Musik und Kriegsschrei, weil jedes System
+(Waffen, Spieler, Drops, Gegner, UI, Bauen) eigene Sounds braucht.
+Verworfen: nichts ausdrücklich; eigene Musik- oder Sound-Produktion
+stand im Solo-Rahmen nie zur Wahl.
+
+## 2026-10-16 — Referenzen: nur selbst gekannte Titel, keine Quervergleiche
+
+Was: Das Referenzen-Kapitel nennt 7 Days to Die, Dungeon Defenders,
+Orcs Must Die! Deathtrap, R.E.P.O., RV There Yet?, Chop Chop Inc. und
+Solo Leveling, je mit einem Satz, was Isor's Outbreak daraus zieht.
+Dome Keeper und KonoSuba sind gestrichen. Die Abgrenzung beschreibt
+nur, was diese Nachbarn nicht besetzen; sie vergleicht nicht gegen
+Genres oder Konzepte außerhalb der Liste.
+Warum: Ins Dokument kommen nur Referenzen, die Isor selbst kennt und
+im Gespräch vertreten kann; Dome Keeper und KonoSuba kamen aus Claudes
+Ideenrunde. Und das GDD steht für sich: Verweise auf Ideen außerhalb
+des Spiels (etwa Pfad-Verteidigungen) sagen Außenstehenden nichts
+(Isor, 2026-10-16).
+Verworfen: Dome Keeper und KonoSuba als Referenzen; der
+Abgrenzungs-Satz gegen Pfad-Verteidigungen.
+
+## 2026-10-16 — Zeitplan: Meilensteine statt Kalenderdaten
+
+Was: Das Zeitplan-Kapitel besteht aus sieben Meilensteinen mit groben
+Dauer-Schätzungen (Wochen), ohne Kalenderdaten; Daten bekommt der Plan
+beim Projektstart. Jeder Meilenstein trägt Reserve, Gekipptes fällt in
+die Erweiterungsliste.
+Warum: Ob Isor's Outbreak gebaut wird, entscheidet die Wahl zwischen
+den beiden Konzepten (`Uni/DECISIONS.md` → „2026-10-13 — Zwei Konzepte
+parallel bis zur Wahl der Dozentin"); ein datierter Plan für ein
+ungewähltes Konzept wäre nach einer Woche falsch (Isor, 2026-10-16).
+Dauer-Schätzungen zeigen die Größenordnung trotzdem.
+Verworfen: Kalenderdaten oder Monatsangaben (erster Vorschlag);
+Meilensteine ganz ohne Dauer-Angaben (die Schätzungen kamen auf Isors
+Zuruf dazu).
+
+## 2026-10-16 — Titel: „It's Dungeon Outbreak Time"
+
+Was: Das Spiel heißt im GDD und auf dem Deckblatt „It's Dungeon
+Outbreak Time", Kurzform im Text „It's D.O.T". Löst „Isor's Outbreak"
+als Außentitel ab (Eintrag „Arbeitstitel ‚Isor's Outbreak'",
+2026-10-09); die Harness-Schicht behält ihren Namen
+`Projekte/Isors_Outbreak/` — ein Ordner-Umzug brächte nichts und
+kostete Verweise.
+Warum: Isors Wahl beim Deckblatt-Bau (2026-10-16): Der Name beschreibt
+den Kern-Moment des Spiels, und Cover und Manuskript müssen denselben
+Titel tragen. Die Bedenken aus der Ideenrunde (DoT-Lesart als Damage
+over Time, „dot" als Suchwort schwach) bleiben notiert und werden vor
+einem Store-Release erneut gewogen.
+Verworfen: „Isor's Outbreak" als Außentitel behalten (dann hätte das
+Cover zurückgeglichen werden müssen); die Schicht mit umbenennen.

@@ -22,18 +22,20 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-10-12 beim `/harness:ende` der kurzen Fehlersuche
-Menü-Rückweg. Bericht: `Projekte/GameJam_S3_2026/LOG.md`.)*
+*(überschrieben 2026-10-16 beim `/harness:ende` der Session „Game
+Pitch · Volles GDD". Berichte: `Projekte/Isors_Outbreak/` — GDD,
+DECISIONS, ROADMAP → „G2".)*
 
-Isor ist krank (Erkältung, dazu vermutlich Hexenschuss), Arzttermin
-geplant — Tempo nach seinem Befinden. **Weiter mit dem vollen Pitch-GDD** (Isor's Outbreak, Schicht-ROADMAP →
-„G2"): Layout-Runde, Erstfassung bis 18.10., Prototyp ab 18.10. —
-läuft in einer eigenen Session. **Game Jam:** Isors Anteil J1–J6 ist
-gepusht und in der Sandbox getestet; offen nur der Inventar-Anschluss,
-sobald das Team Player und Inventar liefert (Review Do 15.10.).
-Nebenher unverändert: Toolchain-Test vor dem 27.10., Vokabel-Runde Lane
-Defender, Datenbaum, Pflegeschritt 02.11.; offen die Knowledge- und
-Glossar-Frage der Ideenrunde vom 09.10.
+**Das GDD „It's Dungeon Outbreak Time" ist fertig** (.docx mit
+Deckblatt gebaut); bei Isor liegen PDF-Export und der Versand beider
+Konzepte bis So 19.10. **Nächster Block: das Detour-GDD, ausführlich**
+— voraussichtlich das Semester-Projekt; gleicher Ablauf, die
+Bau-Pipeline steht (`Projekte/Isors_Detour/ROADMAP.md`). Nachträge in
+fremden Revieren offen: Versand-Termin 19.10. in der Uni-Schicht, eine
+Kern/LOG-Zeile zur `abgabe_bauen.py`-Erweiterung (Abgabe-Ende-Marke).
+Danach Model-Viewer Phase 2 (~23./24.10.); nebenher Toolchain-Test vor
+dem 27.10., Vokabel-Runde Lane Defender, Datenbaum, Pflegeschritt
+02.11.
 
 ---
 

@@ -2073,3 +2073,30 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   C++-Engine-Seite, Methoden als Code mit verstecktem `this`. **Fehlerbild:**
   angenommen, Destroy beende die laufende Methode, und der genullte
   Pointer sei der aufs Skript statt der vom Skript zur Engine.
+- 2026-10-15 · Game Jam, Reflexionstext zur Review (Development, Text
+  statt Code) — **Selbst:** den Arbeitsweg korrigiert, bevor er Arbeit
+  kostete („ich sage was war und daraus machen wir ein text"); beim
+  Gegenlesen drei Sachfehler im Entwurf gefunden (Board war Georgis,
+  Asset-Vorgaben nicht vorab festgelegt, Absprache-Absatz falsch
+  gewichtet); die Ursache der Art-Schnittstelle ohne Vorlage selbst
+  benannt — nicht „Absprache gescheitert", sondern „die Rolle Technical
+  Artist Lead fehlte, und die beiden Leads haben die technische Vorgabe
+  nicht untereinander geklärt"; die eigene Kapazität vorab im Team
+  angesagt und die Lead-Rolle bewusst an Unerfahrene abgegeben.
+  **Hilfe:** Aufbau und Formulierung des Textes, Belege und Zahlen aus
+  Repo und Schicht-Doku, Vorschlag zur Ablage außerhalb des Team-Repos.
+  **Fehlerbild:** keines — kein Code.
+- 2026-10-16 · Isor's Outbreak, GDD-Erstfassung (Brainstorm/Design,
+  13.–16.10.) — **Selbst:** die Ressourcen-Verknappung als
+  Spannungsquelle erfunden (abgebaute Quellen sind weg, die Laufwege
+  wachsen von selbst) — sie ersetzte beide vorgeschlagenen Varianten
+  einer festen Verteilungs-Regel; die Umfang-Schnitte nach dem
+  Freigabe-Feedback durchweg selbst getroffen (Kampf auf den
+  Basisangriff verkleinert, Fähigkeiten zu Erweiterungen, nur Mauern
+  und eine Werkbank); Referenzen auf selbst Gekanntes begrenzt; selbst
+  darauf bestanden, dass das GDD für sich steht (keine Uni-Sprache,
+  keine Querverweise auf eigene andere Konzepte). **Hilfe:**
+  Kapitelstruktur nach Aufgabenstellung und Recherche, Formulierung
+  der Kapiteltexte, Konsequenz-Hinweise (Lücke statt Tor als Engpass,
+  Hänger-Fall „alle am Boden", Pitch-Satz ans Verknappungs-Modell
+  angepasst). **Fehlerbild:** keines — kein Code.

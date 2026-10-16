@@ -135,3 +135,16 @@ Warum: Testen, bevor der echte Player existiert, ohne dem Team Dateien
 oder fehlende Skripte unterzuschieben.
 Verworfen: Test in `DEV_Eric` (würde gepusht und verwiese auf Skripte,
 die beim Team fehlen).
+
+## 2026-10-15 — Abgabetext folgt Isors Bericht, Ablage im Harness
+
+Was: Der Reflexionstext für die Game-Jam-Review entsteht aus Isors
+mündlichem Bericht; Schicht-Doku und Team-Repo liefern nur Zahlen und
+Belege dazu. Er liegt als `ABGABE_REFLEXION.txt` in dieser Schicht,
+nicht im Team-Repo.
+Warum: Der Text enthält Isors Urteil über Teamarbeit und Personen, das
+kann nur er liefern. Im Team-Repo läge der Abschnitt „Was besser werden
+muss" offen beim Team.
+Verworfen: Text aus der Schicht-Doku bauen und von Isor gegenlesen
+lassen (kostete am 2026-10-15 drei Korrekturrunden — `Kern/STOERUNGEN.md`)
+· Ablage in `GameJam_S3_2026\Docs\` neben den Discord-Texten.

@@ -170,3 +170,11 @@ damals, nicht den von heute.
   ~15.10., jede Projekt-Abgabe liegt **vor** ihrer Präsentation
   (Alpha-Abgabe 08.01. zur Präsentation 14.01.), die benotete
   Projektplanung erst am 18.12. statt ~10.12.
+- 2026-10-12 — Freigabe-Feedback der Dozentin zum Mini-GDD von Isor's
+  Outbreak eingegangen (per Discord): Projekt in der Formulierung zu
+  groß für drei Monate, zu viele ineinandergreifende Systeme, dazu eine
+  lange Liste offener Fragen (Gegner, Insel, Multiplayer, Inventar,
+  Stats, Stil, Sound, Partielänge). Ihr Rat: kleiner anfangen, einen
+  Fokus wählen (Koop, TD, Survival), Qualität vor Umfang; ein
+  3D-Kampfsystem ausdrücklich abgeraten. Folge: `DECISIONS.md` →
+  „2026-10-13 — Zwei Konzepte parallel bis zur Wahl der Dozentin".

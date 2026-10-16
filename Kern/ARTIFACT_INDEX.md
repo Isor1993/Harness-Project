@@ -149,6 +149,27 @@ Seite ←  die M5-Stand-Zeile der Lane-Defender-ROADMAP nennt die URL
 
 ---
 
+## 📍 Status  — Schicht: Projekt (It's D.O.T)
+
+### 📍 Status · GDD It's D.O.T
+```
+URL      https://claude.ai/artifact/YbJFnspijdqRDth9Xsiy4z
+Stand    2026-10-16 — laufend über die GDD-Session nachgezogen
+         (Versionen 1 bis 18): Kapitelliste mit Status in drei Blöcken,
+         Termine (Versandziel 19.10.), Klärrunden-Kasten, die offenen
+         Design-Fragen. Zeigt seit dem 16.10. die fertige Erstfassung.
+         Gebaut am 2026-10-13 als Überblick zum Nebenher-Offenhalten.
+         Am 2026-10-16 mit dem Spiel umbenannt: hieß „GDD Isor's
+         Outbreak", heißt jetzt „GDD It's D.O.T" (gleiche URL).
+Quelle   Projekte/Isors_Outbreak/GDD.md, .../ROADMAP.md (G2),
+         Uni/Semester_3/STUNDENPLAN.md (Termine)
+Skripte  keine — die Seite zeigt den GDD-Fortschritt, nicht Code
+Seite →  keine
+Seite ←  keine
+```
+
+---
+
 ## 🎓 Zeugnis  — Schicht: Kern
 
 **Kein vierter Typ** — die Seiten gehören zum Session-Typ „Zeugnis"

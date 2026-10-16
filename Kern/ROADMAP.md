@@ -164,6 +164,16 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
   vergleichen; der Namens-Fallback bleibt für Einträge ohne Pfad.
   Anlass: `Kern/STOERUNGEN.md`, 2026-09-19.
 
+- [ ] **Glossar gegen die jüngeren Besitzerdateien gegenlesen** — Rund
+  24 Kurzformen aus sieben Dateien (CODE_GUIDELINES, `Kern/PFADE.md`,
+  Isor-Tower-ROADMAP, Lane-Defender- und Model-Viewer-DECISIONS,
+  STOERUNGEN, Uni-DECISIONS) standen am 2026-10-16 als
+  Gegenlese-Hinweis an; der neue Glossar-Eintrag „Herzobjekt" aus
+  derselben Sicherung hat den Zeitstempel erneuert und die Hinweise
+  verdeckt — gegengelesen ist davon nur „Lern-Log". Die Kurzformen
+  einmal gegen ihre Besitzerdateien halten, danach
+  `pruefen.py --glossar-ok`.
+
 - [ ] **Park-Regel um das Wortlaut-Gebot ergänzen** — In
   `Kern/WORKFLOW.md` (Typ Development) heißt es, Architektur-Fragen
   „werden notiert und in den nächsten Design-Abschnitt gegeben" —
@@ -220,6 +230,15 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
   wandert — Code-Kommentar wie Harness-Dokument. Am 2026-10-10 standen
   so vertauschte Welten in einem Datei-Header und einer ROADMAP
   (`Kern/STOERUNGEN.md`; Isors Ja vom 2026-10-11).
+- [ ] **Erst Isors Bericht, dann der Text** — Regel festschreiben (Ort
+  beim Bau wählen, z. B. `Kern/WORKFLOW.md` bei der Doku-Pflicht oder
+  `CLAUDE.md`): Soll ein Text Isors **Urteil** wiedergeben — Reflexion,
+  Teamarbeit, Präsentation, Standortbestimmung —, holt Claude zuerst
+  seinen Bericht ein und schreibt erst danach; Repo-Fakten ergänzen
+  Zahlen und Belege, sie ersetzen den Bericht nicht. Am 2026-10-15
+  entstand so ein vollständiger Abgabetext mit fremden Urteilen, der
+  drei Korrekturrunden kostete (`Kern/STOERUNGEN.md`; Isors Ja vom
+  2026-10-15).
 
 Was im Betrieb nicht trägt, kommt als Störung in `Kern/STOERUNGEN.md`
 und wird von dort aus zu einem Punkt hier — genau dafür fragt die
