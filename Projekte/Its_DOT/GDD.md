@@ -1,6 +1,6 @@
 <!--
 Ownership: Design-Absicht des Spiels „It's Dungeon Outbreak Time"
-(Harness-Schichtname: Isor's Outbreak) — was es sein soll, nicht wie
+(Harness-Schicht Its_DOT) — was es sein soll, nicht wie
 es gebaut wird — und zugleich das
 Markdown-Manuskript, aus dem `Kern/Werkzeuge/abgabe_bauen.py` die
 .docx-Abgabefassung baut (Formatvorlage und Titelteil im Datenbaum,

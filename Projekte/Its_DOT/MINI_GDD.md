@@ -1,6 +1,7 @@
 <!--
-Ownership: Nur das Markdown-Manuskript des Mini-GDD von Isor's Outbreak
-— die Kurzfassung für die Freigabe durch die Dozentin, aus der
+Ownership: Nur das Markdown-Manuskript des Mini-GDD von It's D.O.T
+(am 2026-10-09 unter dem damaligen Arbeitstitel „Isor's Outbreak"
+verschickt) — die Kurzfassung für die Freigabe durch die Dozentin, aus der
 `Kern/Werkzeuge/abgabe_bauen.py` die .docx-Fassung baut (PDF-Export von
 Hand, Versand per Discord). Die volle Design-Absicht besitzt `GDD.md`,
 das ausführliche Pitch-GDD entsteht als eigenes Manuskript. Dieser

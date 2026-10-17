@@ -1,7 +1,7 @@
 # ROADMAP.md — Bauplan It's D.O.T
 
 Ownership: Nur was an It's Dungeon Outbreak Time (Kürzel It's D.O.T;
-Harness-Schicht Isors_Outbreak) als Nächstes designt oder gebaut
+Harness-Schicht Its_DOT) als Nächstes designt oder gebaut
 wird — Aufgaben und Verweise auf offene Fragen. Begründungen gehören in
 die DECISIONS dieser Schicht, die Design-Absicht ins GDD; die Termine
 besitzt `Uni/Semester_3/STUNDENPLAN.md`.
@@ -50,11 +50,14 @@ wird mit Beleg (LOG-Eintrag oder Datei).
   Prototyp"); vorher die Fragen klären, die den ersten Baustein
   betreffen — mindestens Verloren-Kriterium und Slot-Befüllung
   (`GDD.md` → „Offene Design-Fragen").
-- [ ] **Schicht-Ordner bei Projektstart prüfen** — Wird das Konzept
-  gewählt und gebaut, entscheidet Isor, ob die Schicht von
-  `Isors_Outbreak` auf einen It's-D.O.T-Namen umzieht (Zuruf vom
-  2026-10-16: erst einmal so lassen). Falls ja, Umzug nach den
-  Handgriffen aus `Kern/DOC_RULES.md` → „Wenn Inhalt umzieht".
+- [x] **Schicht-Ordner bei Projektstart prüfen** — **erledigt am
+  2026-10-17:** Umzug nach `Projekte/Its_DOT/` beim P1-Projektstart
+  (Beleg: `DECISIONS.md` → „2026-10-17 — Schicht-Umzug nach Its_DOT").
+  Ursprünglicher Zuschnitt: Wird das Konzept gewählt und gebaut,
+  entscheidet Isor, ob die Schicht von `Isors_Outbreak` auf einen
+  It's-D.O.T-Namen umzieht (Zuruf vom 2026-10-16: erst einmal so
+  lassen). Falls ja, Umzug nach den Handgriffen aus
+  `Kern/DOC_RULES.md` → „Wenn Inhalt umzieht".
 - [ ] **T1 · Mengen- und Physik-Budget messen** — im Prototyp:
   Alive-Cap, Ragdoll-Anzahl, Schwarm gefakt gegen Elite voll;
   Richtwerte stehen im GDD → „Entwurf". Messen statt schätzen.

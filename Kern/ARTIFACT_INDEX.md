@@ -161,7 +161,7 @@ Stand    2026-10-16 — laufend über die GDD-Session nachgezogen
          Gebaut am 2026-10-13 als Überblick zum Nebenher-Offenhalten.
          Am 2026-10-16 mit dem Spiel umbenannt: hieß „GDD Isor's
          Outbreak", heißt jetzt „GDD It's D.O.T" (gleiche URL).
-Quelle   Projekte/Isors_Outbreak/GDD.md, .../ROADMAP.md (G2),
+Quelle   Projekte/Its_DOT/GDD.md, .../ROADMAP.md (G2),
          Uni/Semester_3/STUNDENPLAN.md (Termine)
 Skripte  keine — die Seite zeigt den GDD-Fortschritt, nicht Code
 Seite →  keine

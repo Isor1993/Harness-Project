@@ -1,7 +1,7 @@
 # DECISIONS.md — Entscheidungen It's D.O.T
 
 Ownership: Nur Entscheidungen zum Koop-Spiel It's Dungeon Outbreak
-Time (Kürzel It's D.O.T; Harness-Schicht Isors_Outbreak; das
+Time (Kürzel It's D.O.T; Harness-Schicht Its_DOT; das
 Semester-Spiel des Moduls 5FSC0XD101_P) — was entschieden
 wurde, warum, und welche Alternativen verworfen wurden. Kein Plan
 (ROADMAP), keine Design-Absicht (GDD), kein Ereignis. Die
@@ -512,3 +512,26 @@ over Time, „dot" als Suchwort schwach) bleiben notiert und werden vor
 einem Store-Release erneut gewogen.
 Verworfen: „Isor's Outbreak" als Außentitel behalten (dann hätte das
 Cover zurückgeglichen werden müssen); die Schicht mit umbenennen.
+
+## 2026-10-17 — Schicht-Umzug nach Its_DOT
+
+Was: Die Schicht heißt jetzt `Projekte/Its_DOT/` statt
+`Projekte/Isors_Outbreak/` (git mv, die Datei-Historie bleibt). Damit
+trägt alles einen Namen: Spiel „It's Dungeon Outbreak Time" → Kürzel
+It's D.O.T → Projekt-Repo `Its-DOT` → Unity-Projekt `ItsDOT` →
+Schicht `Its_DOT`. Löst den Schicht-Teil des Eintrags „2026-10-16 —
+Titel: ‚It's Dungeon Outbreak Time'" ab; die lebenden Verweise
+(PLAN, Uni/ROADMAP, GLOSSARY, ARTIFACT_INDEX, Ownership-Köpfe) sind
+nachgezogen, der INDEX ist neu erzeugt, Chroniken bleiben unverändert.
+Warum: Isors Zuruf beim P1-Projektstart (2026-10-17): Er will das
+Spiel überall unter einem Namen wiederfinden. Das Argument vom
+16.10. gegen den Umzug („brächte nichts und kostete Verweise") fiel
+mit dem Projektstart: Jetzt entstehen Repo und Unity-Projekt neu, und
+jeder weitere Arbeitstag hätte frische Verweise auf den alten Namen
+erzeugt — billiger als heute wird der Umzug nie wieder.
+Verworfen: `Isors_Outbreak` behalten (ständiger Namensbruch zwischen
+Schicht und Spiel); ein `Isors_Its_DOT` (anders als beim Tower steckt
+Isors Name nicht im Spieltitel). Das Repo `Its-DOT` bleibt übrigens
+auch dann D.O.T-Eigentum, wenn die Konzept-Wahl auf Pathmakers TD
+fällt — Pathmakers bekäme ein eigenes Repo, denn D.O.T wird
+voraussichtlich irgendwann weiterentwickelt (Isor, 2026-10-17).

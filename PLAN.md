@@ -26,7 +26,7 @@ der Datei, auf die hier verwiesen wird.
 „Pathmakers GDD · Versand". Berichte: `Projekte/Pathmakers_TD/` —
 GDD, DECISIONS, ROADMAP → „G1", erledigt.)*
 
-**It's D.O.T · P1 starten** (`Projekte/Isors_Outbreak/ROADMAP.md` →
+**It's D.O.T · P1 starten** (`Projekte/Its_DOT/ROADMAP.md` →
 „P1"): erst ein Design-Abschnitt — den Plan für die zweiwöchige
 Testarea mit Multiplayer-Test schneiden und die P1-Fragen klären
 (mindestens Verloren-Kriterium und Slot-Befüllung) —, dann bauen.

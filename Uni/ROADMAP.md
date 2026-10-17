@@ -75,9 +75,9 @@ Befunde der Prüfung vom 2026-08-26) stehen mit ihren Belegen in
   (`DECISIONS.md`, Einträge vom 2026-10-01). Eigener Design-Abschnitt;
   mit dem Konzept entsteht die neue Projekt-Schicht samt GDD.
   **Stand 2026-10-09:** Spielidee in der Ideenrunde festgezurrt, die
-  Schicht `Projekte/Isors_Outbreak/` ist mit GDD, DECISIONS und ROADMAP
+  Schicht `Projekte/Its_DOT/` ist mit GDD, DECISIONS und ROADMAP
   angelegt. Offen bleibt die Pitch-Grundlage: das Mini-GDD zur Freigabe
-  (`Projekte/Isors_Outbreak/ROADMAP.md` → „G1 · Mini-GDD zur
+  (`Projekte/Its_DOT/ROADMAP.md` → „G1 · Mini-GDD zur
   Freigabe").
   **Stand 2026-10-13:** Nach dem Freigabe-Feedback entstehen zwei
   volle GDDs, Outbreak und Pathmakers TD (`Projekte/Pathmakers_TD/`);
