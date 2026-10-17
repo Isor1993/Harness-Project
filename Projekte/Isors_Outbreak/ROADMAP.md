@@ -29,8 +29,8 @@ wird mit Beleg (LOG-Eintrag oder Datei).
   Fr 27.11., Präsentation Do 03.12.
   (`Uni/Semester_3/STUNDENPLAN.md`). Seit dem Feedback vom 2026-10-12
   zuerst als Konzept-GDD für die Wahl der Dozentin, zusammen mit dem
-  Detour-GDD; die Fragenliste aus dem Feedback (`Uni/LOG.md`) dient als
-  Prüfliste, der Umfang wird neu geschnitten (`GDD.md` →
+  Pathmakers-TD-GDD; die Fragenliste aus dem Feedback (`Uni/LOG.md`)
+  dient als Prüfliste, der Umfang wird neu geschnitten (`GDD.md` →
   „Umfang-Feinschnitt", der Rest der Feedback-Frage ist seit dem
   2026-10-14 beantwortet).
   **Stand 2026-10-16:** Die GDD-Erstfassung ist komplett (alle Kapitel

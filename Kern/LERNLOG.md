@@ -2100,3 +2100,33 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   der Kapiteltexte, Konsequenz-Hinweise (Lücke statt Tor als Engpass,
   Hänger-Fall „alle am Boden", Pitch-Satz ans Verknappungs-Modell
   angepasst). **Fehlerbild:** keines — kein Code.
+- 2026-10-16 · Pathmakers TD, GDD-Befüllung (Brainstorm/Design) —
+  **Selbst:** das Wirtschaftssystem eigenständig entworfen (drei
+  Ressourcen mit je einer Quelle, Income-Senden nach WMW-Vorbild,
+  Arbeiter bauen Kacheln in der Mine ab) und Claudes einfacheres
+  Modell begründet abgelehnt; das Rundenmodell mit
+  Karte-leer-Bedingung selbst vorgeschlagen; die Oberfläche aus
+  eigener Spielerfahrung korrigiert (Wirtschaftsbereich per Mausklick
+  statt Hinlaufen, eingehende Sends bewusst verdeckt); eine
+  Komfort-Mechanik (Beschleunigung gegen zähe Runden) bewusst
+  herausgenommen; den überholten Engine-Rahmen im Session-Auftrag
+  selbst erkannt. **Hilfe:** Genre-Einordnung und Referenzen (Legion
+  TD 2, Isle of Arrows, Thronefall), Fairness- und
+  Netzwerk-Konsequenzen, Formulierung der Kapiteltexte.
+  **Fehlerbild:** keines — kein Code.
+- 2026-10-17 · Pathmakers TD, GDD-Fertigstellung (Brainstorm/Design) —
+  **Selbst:** das Wellenmodell beim Kapitel-Durchgang richtiggestellt
+  (keine automatischen Wellen — die Sends sind die Wellen; das
+  Festwellen-Modell stand als Missverständnis im GDD) und die Folgen
+  mitentschieden; die Solo-Lösung erfunden (Selbst-Senden statt
+  Sende-KI); den Standardweg als vorverlegte, versetzbare Kacheln
+  vorgeschlagen; die Einkommens-Mechanik präzise spezifiziert (fester
+  Wert je Monster, Grundeinkommen null, eigene Beispielrechnung); die
+  eigene Idee eines zweiten Income-Timers aktiv zur Bewertung gestellt
+  und nach der Gegenrechnung selbst zurückgezogen; Stil aus der
+  eigenen Spiele-Linie begründet und den Toon-Shader bewusst aus dem
+  Abgabetext gehalten. **Hilfe:** Konsequenz-Rechnungen (Früh-Rush →
+  Gold-Startvorrat, Stillstand, Income-Farmen beim Doppel-Timer),
+  Referenz-Recherche mit zwei Korrekturen (Rogue Tower, Thronefall),
+  Asset-Kandidaten, Formulierung aller Kapiteltexte.
+  **Fehlerbild:** keines — kein Code.

@@ -80,8 +80,8 @@ Befunde der Prüfung vom 2026-08-26) stehen mit ihren Belegen in
   (`Projekte/Isors_Outbreak/ROADMAP.md` → „G1 · Mini-GDD zur
   Freigabe").
   **Stand 2026-10-13:** Nach dem Freigabe-Feedback entstehen zwei
-  volle GDDs, Outbreak und Detour (`Projekte/Isors_Detour/`); beide
-  gehen an die Dozentin, sie wählt (`DECISIONS.md` → „2026-10-13 —
+  volle GDDs, Outbreak und Pathmakers TD (`Projekte/Pathmakers_TD/`);
+  beide gehen an die Dozentin, sie wählt (`DECISIONS.md` → „2026-10-13 —
   Zwei Konzepte parallel bis zur Wahl der Dozentin").
 
 - [ ] **Zwei fertige Spiele bis Studienende, eines veröffentlicht** —

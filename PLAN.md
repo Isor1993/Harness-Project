@@ -22,20 +22,22 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-10-16 beim `/harness:ende` der Session „Game
-Pitch · Volles GDD". Berichte: `Projekte/Isors_Outbreak/` — GDD,
-DECISIONS, ROADMAP → „G2".)*
+*(überschrieben 2026-10-17 beim `/harness:ende` der Session
+„Pathmakers GDD · Versand". Berichte: `Projekte/Pathmakers_TD/` —
+GDD, DECISIONS, ROADMAP → „G1", erledigt.)*
 
-**Das GDD „It's Dungeon Outbreak Time" ist fertig** (.docx mit
-Deckblatt gebaut); bei Isor liegen PDF-Export und der Versand beider
-Konzepte bis So 19.10. **Nächster Block: das Detour-GDD, ausführlich**
-— voraussichtlich das Semester-Projekt; gleicher Ablauf, die
-Bau-Pipeline steht (`Projekte/Isors_Detour/ROADMAP.md`). Nachträge in
-fremden Revieren offen: Versand-Termin 19.10. in der Uni-Schicht, eine
-Kern/LOG-Zeile zur `abgabe_bauen.py`-Erweiterung (Abgabe-Ende-Marke).
-Danach Model-Viewer Phase 2 (~23./24.10.); nebenher Toolchain-Test vor
-dem 27.10., Vokabel-Runde Lane Defender, Datenbaum, Pflegeschritt
-02.11.
+**It's D.O.T · P1 starten** (`Projekte/Isors_Outbreak/ROADMAP.md` →
+„P1"): erst ein Design-Abschnitt — den Plan für die zweiwöchige
+Testarea mit Multiplayer-Test schneiden und die P1-Fragen klären
+(mindestens Verloren-Kriterium und Slot-Befüllung) —, dann bauen.
+Beide GDDs sind seit dem 17.10. bei der Dozentin; Isor entscheidet
+nach der Testarea selbst über das Konzept. Uni-Nachträge offen:
+Versand-LOG-Zeile, Wahl-Verschiebung, Versand-Termin; dazu die
+Kern/LOG-Zeile zur `abgabe_bauen.py`-Erweiterung. „Ideen-Vorlauf:
+drittes Spielkonzept" hat ein unabgeholtes Ergebnis — nach dem
+Versand womöglich überholt, Isor entscheidet. Danach Model-Viewer
+Phase 2 (~23./24.10.); nebenher Toolchain-Test vor dem 27.10.,
+Vokabel-Runde Lane Defender, Datenbaum, Pflegeschritt 02.11.
 
 ---
 

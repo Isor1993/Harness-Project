@@ -1127,3 +1127,26 @@ eingeholt wird. Gegenmittel als Aufgabe in `Kern/ROADMAP.md` → „Erst
 Isors Bericht, dann der Text" (Isors Ja, 2026-10-15).
 **Stand:** offen — der Text ist aus Isors Bericht neu geschrieben und
 abgabefertig; die Regel folgt über den ROADMAP-Punkt.
+
+### 2026-10-16 — Session-Auftrag mit überholter Engine-Angabe
+**Was:** Für die Vorbereitungs-Session „Ideen-Vorlauf: drittes
+Spielkonzept" gab Claude als Rahmen „Unreal/C++, erstes
+Unreal-Projekt" mit. Das Semester-Spiel entsteht aber seit dem
+Engine-Entscheid vom 2026-10-09 in Unity/C# (`Uni/DECISIONS.md`).
+Isor erkannte den Fehler am Karten-Text, löschte die Session, und sie
+wurde mit richtigem Rahmen neu gestartet.
+**Ursache:** Claude leitete die Engine aus dem PLAN-Abschnitt
+„Umstellung auf Unreal + C++" (Stand 2026-09-07, heute nur noch
+Lernschiene) und dem eigenen Sitzungsgedächtnis ab, statt die
+besitzende Datei zu prüfen — der Eintrag „2026-10-09 —
+Engine-Entscheid: Unity" stand längst in `Uni/DECISIONS.md`, samt
+Glossar-Zeile „Stack-Entscheidung".
+**Regel:** Fehlte in dieser Schärfe: Fakten in einem Session-Auftrag
+sind Behauptungen wie in einem Dokument — sie kommen aus der
+besitzenden Datei, nicht aus dem Gedächtnis. Verwandte Aufgabe:
+`Kern/ROADMAP.md` → „Abgeleitetes erst bestätigen, dann
+aufschreiben".
+**Stand:** offen — im Vorfall behoben (Session mit richtigem Rahmen
+neu gestartet, Claudes projektübergreifendes Gedächtnis am
+2026-10-16 berichtigt); ob das Gegenmittel ein ROADMAP-Punkt wird,
+liegt bei Isor.

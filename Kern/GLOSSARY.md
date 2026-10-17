@@ -76,6 +76,9 @@ Leseordnung.
 | **Unlit-Shader** | Das kleinste Shaderpaar: MVP durchreichen, eine flache Farbe raus — keine Normalen, kein Licht. Für Dinge, die selbst leuchten oder reine Markierung sind (Sonnenscheibe, Schatten-Fleck). | `Projekte/Model_Viewer/DECISIONS.md`, „2026-10-07 — Sonnen-Gizmo und Kontakt-Schatten über einen Unlit-Shader" |
 | **It's D.O.T** | Kürzel des Spieltitels „It's Dungeon Outbreak Time" (das Semester-Spiel, Harness-Schicht `Projekte/Isors_Outbreak/`). **Nicht** die Spieler-Lesart „DoT" für Damage over Time — genau wegen dieser Kollision steht der Begriff hier. | `Projekte/Isors_Outbreak/DECISIONS.md`, „2026-10-16 — Titel: ‚It's Dungeon Outbreak Time'" |
 | **Herzobjekt** | Das zentrale Objekt der Basis in It's Dungeon Outbreak Time (Arbeitsname „Siegelstein", Name offen): Die Gruppe trägt es bei der Gründung im Gepäck und setzt es frei; wo es steht, steht die Basis — und fällt es, ist die Partie verloren. Spieler-Tode beenden die Partie nie allein. | `Projekte/Isors_Outbreak/GDD.md`, „Ablauf einer Partie" |
+| **Pathmakers TD** | Arbeitstitel der Versus-Weg-Bau-Tower-Defense (Harness-Schicht `Projekte/Pathmakers_TD/`); hieß bis zum 2026-10-16 „Isor's Detour". Der Store-Name fällt erst vor einem Release. | `Projekte/Pathmakers_TD/GDD.md` |
+| **Send** | Ein vom Spieler gekauftes Monster in Pathmakers TD: kostet Diamanten, erhöht dauerhaft das eigene Einkommen und läuft mit dem nächsten Wellenstart beim Sende-Ziel los. Die Sends **sind** die Wellen — automatische Wellen gibt es nicht. | `Projekte/Pathmakers_TD/GDD.md`, „Wirtschaft und Senden" |
+| **Wächter** | Die Türme von Pathmakers TD: Spielfiguren statt Bauwerke, stehen auf der freien Fläche neben dem Weg und verkörpern die vier Turmrollen. | `Projekte/Pathmakers_TD/GDD.md`, „Thema, Aussehen und Story" |
 
 ## Über Nummern und Ausgaben
 
