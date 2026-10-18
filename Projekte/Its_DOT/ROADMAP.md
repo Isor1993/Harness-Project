@@ -50,6 +50,12 @@ wird mit Beleg (LOG-Eintrag oder Datei).
   Prototyp"); vorher die Fragen klären, die den ersten Baustein
   betreffen — mindestens Verloren-Kriterium und Slot-Befüllung
   (`GDD.md` → „Offene Design-Fragen").
+  **Stand 2026-10-18:** Das Fundament steht — Schicht nach `Its_DOT`
+  umgezogen, Repo `Its-DOT` mit Unity-Projekt `ItsDOT` (6.3 LTS,
+  URP), MainMenu-Kette migriert und im Play-Test lauffähig, alle
+  Startwege zielen auf die leere Testarea-Szene (DECISIONS, Einträge
+  vom 2026-10-17/18). Offen vor dem Bauen: den Testarea-Plan
+  schneiden und die P1-Fragen klären.
 - [x] **Schicht-Ordner bei Projektstart prüfen** — **erledigt am
   2026-10-17:** Umzug nach `Projekte/Its_DOT/` beim P1-Projektstart
   (Beleg: `DECISIONS.md` → „2026-10-17 — Schicht-Umzug nach Its_DOT").
@@ -61,3 +67,51 @@ wird mit Beleg (LOG-Eintrag oder Datei).
 - [ ] **T1 · Mengen- und Physik-Budget messen** — im Prototyp:
   Alive-Cap, Ragdoll-Anzahl, Schwarm gefakt gegen Elite voll;
   Richtwerte stehen im GDD → „Entwurf". Messen statt schätzen.
+- [x] **Menü-Nachzügler: First Selected je Panel** — **erledigt am
+  2026-10-18** (Beleg: Its-DOT-Commit „Update V 0.0003" —
+  `PanelFirstSelected` je Panel, `SelectionGuard` am EventSystem,
+  Explicit-/Automatik-Verdrahtung; Wissens-Destillat in der
+  Knowledge-Seite `eventsystem-menu-navigation`). Bekannter Rest:
+  Von Create Lobby führt Links auf Minus statt Back
+  (Automatik-Raterei) — von Isor bewusst so gelassen; die
+  Eskalationsstufe wäre Laufzeit-Umverdrahtung im Code.
+  Ursprünglicher Zuschnitt: beim Panelwechsel verliert das
+  EventSystem die Auswahl; je Panel ein First Selected setzen.
+- [ ] **Relay-Echttest über zwei Netze** — der Play-Test vom
+  2026-10-18 lief lokal; Join-Code über das echte Netz gegen das
+  neue UGS-Projekt einmal belegen, bevor der Multiplayer-Test der
+  Testarea ansteht. Dabei dem Leave-Weg zusehen: Beim Back aus der
+  Lobby warnt `StopAsync: Failed to stop session: session was never
+  started` (vermutlich doppelter Stopp über NetworkManager und
+  Session; aufgefallen am 2026-10-18, womöglich neu seit Multiplayer
+  Services 2.4.1).
+- [ ] **Lobby-Panel: Rollen-Flackern beseitigen** — nach Create
+  Lobby zeigt das Panel erst den Gast-Zustand (Ready) und springt
+  auf Start Game um, sobald der Host registriert ist. Isors
+  Vorschlag vom 2026-10-18: das Panel erst zeigen, wenn Verbindung
+  und Rolle stehen. Berührt Controller, Dienst-Rückrufe und
+  `LobbyPanel.SetRole` — eigener Design-Moment, kein Schnellfix.
+
+## Testarea — Bausteine (Zuschnitt und Schätzungen: DECISIONS → „2026-10-18 — Testarea-Zuschnitt")
+
+- [ ] **B1 · Testarea + Spieler im Netz** — Blockout-Boden,
+  Spielerfigur neu: Owner-Movement, Kamera, Springen; dazu der
+  NGO-Wiedereinstieg (NetworkManager, NetworkObject, Autorität).
+  Startet mit eigener Design-Runde. (~6–8 h)
+- [ ] **B2 · Nahkampf + Schaden** — Health-Komponente neu, Host
+  entscheidet Treffer, Gegner können sterben. Erster Koop-Test über
+  echtes Netz = zugleich der Relay-Echttest von oben. (~4–5 h)
+- [ ] **B3 · Simple Gegner-KI** — host-gesteuert: verfolgen,
+  zuschlagen, sterben; bewusst dumm. (~5–6 h)
+- [ ] **B4 · Dungeon-Portal** — Platzhalter-Portal, spawnt Gegner im
+  Takt; ein Portal, von Hand gesetzt. (~2–3 h)
+- [ ] **B5 · Loot-Drop + Aufsammeln** — Container beim Tod des
+  Gegners, Host schlichtet gleichzeitiges Greifen. (~3–4 h)
+- [ ] **B6 · Quick-Slot-HUD** — Hotbar mit Waffen-Slots, Zähler für
+  zwei bis drei Loot-Sorten (DECISIONS → „Quick-Slot-HUD statt
+  Inventar"). (~4–5 h)
+- [ ] **B7 · Fall + Respawn** — Umkippen, 10-s-Timer, Respawn am
+  Herzobjekt-Platzhalter, Loot-Container am Todesort (DECISIONS →
+  „Fall beim Outbreak"). (~3–4 h)
+- [ ] **Reserve · Fernkampfwaffe** — nur wenn B1–B7 schneller gehen
+  als geschätzt; Projektil übers Netz ist der Mehrpreis.

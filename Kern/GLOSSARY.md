@@ -79,13 +79,14 @@ Leseordnung.
 | **Pathmakers TD** | Arbeitstitel der Versus-Weg-Bau-Tower-Defense (Harness-Schicht `Projekte/Pathmakers_TD/`); hieß bis zum 2026-10-16 „Isor's Detour". Der Store-Name fällt erst vor einem Release. | `Projekte/Pathmakers_TD/GDD.md` |
 | **Send** | Ein vom Spieler gekauftes Monster in Pathmakers TD: kostet Diamanten, erhöht dauerhaft das eigene Einkommen und läuft mit dem nächsten Wellenstart beim Sende-Ziel los. Die Sends **sind** die Wellen — automatische Wellen gibt es nicht. | `Projekte/Pathmakers_TD/GDD.md`, „Wirtschaft und Senden" |
 | **Wächter** | Die Türme von Pathmakers TD: Spielfiguren statt Bauwerke, stehen auf der freien Fläche neben dem Weg und verkörpern die vier Turmrollen. | `Projekte/Pathmakers_TD/GDD.md`, „Thema, Aussehen und Story" |
+| **Testarea** | Die zweiwöchige Probebau-Phase von It's D.O.T samt gleichnamiger Unity-Szene: Multiplayer-Basis plus Kern-Mechanik zum Anfassen. Nach ihr entscheidet Isor selbst zwischen It's D.O.T und Pathmakers TD. | `Projekte/Its_DOT/ROADMAP.md`, „P1 · Prototyp-Start" |
 
 ## Über Nummern und Ausgaben
 
 | Begriff | Kurzform | Besitzer |
 |---|---|---|
 | **Harness-Version** | **Verträglichkeit** des Harness — sagt, ob ein bestehendes Projekt beim Mitziehen umziehen muss. Kein Reifegrad (das ist die Spiel-Version). Steht in `CLAUDE.md`. | `VERSIONIERUNG.md` |
-| **V-Nummer** | Vierstellige Commit-Nummer im Titel `Update V 0.0043`; zählt Sessions, nicht jeden Commit — Zwischenstände von Hand tragen freie Titel. Jedes Repo zählt eigenständig. | `VERSIONIERUNG.md` |
+| **V-Nummer** | Vierstellige Commit-Nummer im Titel `Update V 0.0043`. In Harness und Knowledge zählt sie Sessions (Zwischenstände tragen freie Titel), im Spiel-Repo Its-DOT seit 2026-10-18 jeden Commit. Jedes Repo zählt eigenständig. | `VERSIONIERUNG.md` |
 | **Auslieferung** | **Vorlage** des Kerns unter `05_Werkzeuge\Harness_Auslieferungen\`, benannt nach der Harness-Version — keine Kopie: Was nur Isor betrifft, wird beim Packen entfernt. | `VERSIONIERUNG.md` |
 | **Vorlage** | Zwei Verwendungen, beide meinen „Original zum Kopieren": die Auslieferung als Ganzes (Zeile darüber) und einzeln die Dateien unter `Kern/Vorlagen/`, deren Arbeitskopie in `.claude\` liegt. | `Kern/Vorlagen/README.md` |
 | **Marke** | Platzhalter-Name in Großbuchstaben für einen Ort außerhalb des Repos (z. B. `DATENBAUM`, `KNOWLEDGE`, `PROJEKT_UNREAL`). Regeldateien nennen die Marke; den Pfad dahinter besitzt allein `PFADE.md`. | `Kern/PFADE.md` |

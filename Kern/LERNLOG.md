@@ -2130,3 +2130,57 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   Referenz-Recherche mit zwei Korrekturen (Rogue Tower, Thronefall),
   Asset-Kandidaten, Formulierung aller Kapiteltexte.
   **Fehlerbild:** keines — kein Code.
+- 2026-10-17 · It's D.O.T, P1-Projektstart (Brainstorm/Design, bis in
+  den 18.10.) — **Selbst:** den Migrations-Zuschnitt entschieden (nur
+  MainMenu-Kette, Rest Neubau) und Claudes breitere Übernahme-Liste
+  (Player, Health, Timer, Diagnostic) begründet abgelehnt; die beiden
+  CS0246 nach dem Import selbst richtig diagnostiziert (fehlendes
+  PlayerLook-Skript, fehlende Interfaces), bevor die Erklärung kam;
+  die Editor-Fehler beim Erststart selbst auf den Layout-Altzustand
+  zurückgeführt und per Default-Layout gelöst; Unity-Setup (Projekt,
+  Pakete, UGS-Link) nach Checkliste eigenständig; die
+  First-Selected-Lücke im Menü im Play-Test selbst gefunden.
+  **Hilfe:** Versionslage einordnen (6000.5 gegen 6.3 LTS,
+  Downgrade-Risiko), Export-Mechanik (Asset- gegen Code-Referenzen),
+  Wiederfinden des Szenenwechsels (SceneLoader als ScriptableObject),
+  Migrations-Edits, Header-Pflege und Schicht-Umzug durch Claude.
+  **Fehlerbild:** Commit in GitHub Desktop mit altem Summary-Text
+  abgeschickt (Titel-Dublette „V 0.0090"); die Szenenwechsel-Mechanik
+  des eigenen Altprojekts nach sechs Wochen nicht mehr präsent —
+  Suche in der Hierarchie statt im Project-Fenster.
+- 2026-10-18 · It's D.O.T, Menü-Nacharbeit First Selected +
+  SelectionGuard (Design/Development gemischt, Isor tippt) —
+  **Selbst:** eingefordert, dass erst das Problem verstanden wird und
+  er die Lösung zuerst sucht (Arbeitsweise-Korrektur an Claude); aus
+  dem Fakten-Katalog den Weg B (Komponente je Panel) mitentschieden
+  und den SelectionGuard als Update-Poll mit Last-Selected-Gedächtnis
+  **selbst entworfen**; SelectOnHover selbständig gelesen
+  (Unity-Interface erkannt) und das Single-Responsibility-Argument
+  gegen ein Umschreiben selbst gebracht; Explicit-Navigation nach
+  Anleitung komplett verdrahtet, Automatic-überspringt-Deaktivierte
+  auf beide Restfälle angewandt, Automatic = Horizontal+Vertikal
+  selbst erkannt; akzeptablen Restzustand selbst geschnitten.
+  **Hilfe:** Fakten-Katalog zur EventSystem-Mechanik, Unterschied
+  Inspector-Feld `firstSelectedGameObject` gegen
+  `SetSelectedGameObject`, Automatik-überspringt-Regel (Fakt 7),
+  `activeInHierarchy` gegen `activeSelf` erklärt, Gerüste und
+  Header.
+  **Fehlerbild:** Inspector-Feld statt Methode gesetzt (Konfiguration
+  mit Aktion verwechselt); Guard ohne `return` (Meldung geloggt,
+  dann trotzdem weitergelaufen); Gedächtnis-Variable vor dem
+  Null-Check überschrieben (Merken und Wiederherstellen nicht
+  getrennt) — nach Frame-für-Frame-Durchgang selbst verstanden.
+- 2026-10-18 · It's D.O.T, Testarea-Design (Brainstorm/Design) —
+  **Selbst:** die Systemliste der Testarea aufgestellt (Spieler,
+  Nahkampf, simple KI, Portal, Loot, Quick-Slots — alles von Tag eins
+  netzwerkfähig); die T1-Messung selbst als nicht
+  entscheidungsrelevant herausgeschnitten; das Fall-Design entworfen
+  (Wiederbeleben plus 10-s-Respawn am Herzobjekt, Loot-Container am
+  Todesort) — löst den „alle am Boden"-Hänger aus dem GDD; die
+  Quick-Slot-Hotbar als Minimalform gewählt und „Slot-Befüllung"
+  aufgeklärt; eingefordert, dass jeder Baustein mit Design beginnt
+  und NGO parallel neu gelernt wird. **Hilfe:** Budget-Rechnung
+  (25–30 h realistisch neben Model-Viewer und Unterrichtsblock),
+  Baustein-Schnitt B1–B7 mit Schätzungen, Konsequenz-Hinweise
+  (Multiplayer-Aufschlag je System, Fernkampf als Reserve).
+  **Fehlerbild:** keines — kein Code.

@@ -1150,3 +1150,42 @@ aufschreiben".
 neu gestartet, Claudes projektübergreifendes Gedächtnis am
 2026-10-16 berichtigt); ob das Gegenmittel ein ROADMAP-Punkt wird,
 liegt bei Isor.
+
+### 2026-10-18 — Amend-Empfehlung gegen die Nummern-Regel
+**Was:** Nach Isors Commit mit dupliziertem Titel „Update V 0.0090"
+empfahl Claude Amend plus Force-Push und legte die Wahl als
+Klickfeld vor; Isor folgte der Empfehlung. `Kern/VERSIONIERUNG.md`
+§ 1 schreibt seit dem 2026-09-13 das Gegenteil vor: Eine vergebene
+Nummer wird nie rückwärts repariert — der Ausreißer bleibt stehen,
+wird in der Projekt-Klammer vermerkt, und gezählt wird ab dem
+jüngsten Titel weiter.
+**Ursache:** Claude prüfte die besitzende Datei nicht, bevor er die
+Weggabelung vorlegte — die Empfehlung kam aus allgemeinem
+Git-Wissen statt aus der Regel. Aufgefallen erst Stunden später,
+beim Nachschlagen der Zählweise für das neue Projekt-Repo.
+**Regel:** Dieselbe Schärfung wie am 2026-10-16: Fakten — hier der
+vorgesehene Umgang mit einer Falsch-Nummer — kommen aus der
+besitzenden Datei, nicht aus dem Gedächtnis. Verwandte Aufgabe:
+`Kern/ROADMAP.md` → „Abgeleitetes erst bestätigen, dann
+aufschreiben".
+**Stand:** abgeschlossen — rückgängig machen wäre ein zweiter
+Historien-Umschrieb; die Zählung läuft seit V 0.0091 wieder normal.
+Kein neuer ROADMAP-Punkt (Isor, 2026-10-18), das Gegenmittel läuft
+über den bestehenden.
+
+### 2026-10-18 — Fertige Lösung vor Isors Entwurf
+**Was:** Beim Menü-Fix (First Selected) präsentierte Claude zwei
+fertig benannte Komponenten samt Zuschnitt, bevor Isor das Problem
+durchdenken konnte. Damit waren „Entwurf vor Gerüst" (WORKFLOW,
+Development) und die Arbeitsweise „erst gemeinsam verstehen, Isor
+sucht die Lösung zuerst" übergangen. Isor forderte sie ein; danach
+lief der Takt richtig: Fakten → Isors Entwurf → Bewertung → Isor
+tippt — und trug durch beide Menü-Bausteine.
+**Ursache:** Claude behandelte den „kurzen Fix" als Ausnahme vom
+Lern-Takt. Kleine Aufgaben verleiten zum Lösungs-Sprung; der Takt
+gilt aber größenunabhängig.
+**Regel:** Existierte, fehlte in der Schärfe: Vor dem Gerüst kommt
+das gemeinsame Problem-Verstehen, und die Lösung sucht zuerst Isor —
+auch bei Mini-Fixes.
+**Stand:** abgeschlossen — Claudes projektübergreifendes Gedächtnis
+am 2026-10-18 nachgeschärft; kein ROADMAP-Punkt (Isor, 2026-10-18).

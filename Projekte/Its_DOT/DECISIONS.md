@@ -535,3 +535,110 @@ Isors Name nicht im Spieltitel). Das Repo `Its-DOT` bleibt übrigens
 auch dann D.O.T-Eigentum, wenn die Konzept-Wahl auf Pathmakers TD
 fällt — Pathmakers bekäme ein eigenes Repo, denn D.O.T wird
 voraussichtlich irgendwann weiterentwickelt (Isor, 2026-10-17).
+
+## 2026-10-17 — P1-Zuschnitt: Nur die MainMenu-Kette zieht um
+
+Was: Das Spiel entsteht in einem frischen Unity-Projekt (`ItsDOT` im
+Repo `Its-DOT`, Marke `PROJEKT_ITS_DOT` in `Kern/PFADE.md`). Aus dem
+Tower-Prototyp kommt ausschließlich die MainMenu-Kette mit: die Szene
+und alles, was sie referenziert (NetWorking- und GameFlow-Skripte,
+Menü-UI, Fonts, Mixer) — per Export Package mit Include dependencies.
+Zwei Code-Abhängigkeiten, die der Export nicht sieht, kamen von Hand
+nach (`ISessionService`, `RelaySessionService`); der
+PlayerLook-Verweis in `GameSettings` wurde gekappt, statt den alten
+Player zu holen. Alles andere wird neu gebaut; einzelne Alt-Skripte
+gezielt nachzuholen bleibt erlaubt, der Standard ist Neubau.
+Warum: Kein Asset- und Code-Altbestand im neuen Spiel — jede Zeile
+soll für D.O.T entstanden oder bewusst übernommen sein (Isor,
+2026-10-17). Die übernommene Kette ist die „vorhandene, erprobte
+Grundlage" aus dem GDD.
+Verworfen: Im Prototyp-Projekt weiterarbeiten (voller Altbestand);
+breitere Übernahme wiederverwendbarer Systeme — Player, Health,
+Timer, Diagnostic (Claudes Vorschlag); Ordner von Hand kopieren statt
+Abhängigkeits-Export.
+
+## 2026-10-17 — Unity 6.3 LTS und ein eigenes UGS-Projekt
+
+Was: Das neue Projekt läuft auf Unity 6.3 LTS (6000.3.26f1,
+URP-Template) und hängt an einem eigenen
+Unity-Gaming-Services-Projekt (ItsDOT, verknüpft am 2026-10-17).
+Pakete: Netcode for GameObjects 2.13.3, Multiplayer Services 2.4.1,
+Input System 1.20.1.
+Warum: LTS trägt über Semester, Abgabe und darüber hinaus
+(Kurs-Regel „immer LTS"); die Modul-Vorgabe 6000.0.59f2 läuft aus dem
+Support, und die Dozentin sieht die Versionsfrage entspannt. Der
+Import aus dem 6000.5-Prototyp war damit ein Downgrade — bewusst in
+Kauf genommen, weil nur Szene und Prefabs Format-Risiko trugen und
+Skripte als Quelltext sicher ankommen; der Play-Test bestätigte den
+Import. Eigenes UGS-Projekt, weil D.O.T ein eigenes Spiel ist: einmal
+zehn Minuten Einrichtung statt dauerhaft geteilter Statistik mit dem
+Tower.
+Verworfen: Unity 6.6 (sichere Import-Richtung, aber kein LTS); beim
+6000.5-Stand bleiben (aus dem Installer gefallen, Tech-Support
+endet); das UGS-Projekt des Prototyps weiternutzen.
+
+## 2026-10-18 — Alle Startwege zielen auf die Testarea
+
+Was: `SceneId` ist auf `{ MainMenu, Testarea }` geschnitten;
+Host-Start, Solo und der alte Direktstart laden dieselbe
+Testarea-Szene. Leere Szene angelegt, Build-Szenenliste MainMenu
+(Index 0) plus Testarea.
+Warum: P1 hat genau ein Ziel — die Testarea; Solo läuft ohnehin als
+lokaler Host über dieselbe Netz-Schiene, ein zweites Ziel wäre ein
+toter Enum-Eintrag.
+Verworfen: Die Tower-Ziele Village/StarterVillage als Platzhalter
+behalten.
+
+## 2026-10-18 — Testarea-Zuschnitt: sieben Bausteine, Multiplayer von Tag eins
+
+Was: Die Testarea besteht aus B1–B7 (Testarea + Spieler im Netz ·
+Nahkampf + Schaden · simple Gegner-KI · Dungeon-Portal · Loot-Drop ·
+Quick-Slot-HUD · Fall + Respawn), geschätzt 27–35 h gegen ein
+realistisches Budget von 25–30 h. Fernkampf ist Reserve, der
+Relay-Echttest läuft im ersten Koop-Test mit, das Herzobjekt
+existiert nur als Spawn-Platzhalter. Die T1-Mengenmessung ist bewusst
+in die Vollproduktion verschoben. Jeder Baustein beginnt mit einer
+Design-Runde (Isors Entwurf zuerst); der NGO-Wiedereinstieg wird
+parallel gelernt, immer im Baustein, der die Technik braucht.
+Warum: Zweck der Testarea ist allein Isors Konzept-Entscheidung
+(It's D.O.T gegen Pathmakers TD) — gebaut wird nur, was diese
+Entscheidung informiert. Die zwei Wochen sind Ziel, keine Frist;
+hart ist nur der 27.11. Die Energielage (Rücken, Motivationstief,
+von Isor am 2026-10-18 gemeldet) spricht zusätzlich für kleine,
+einzeln abschließbare Bausteine.
+Verworfen: 200er-Peak jetzt messen (beantwortet keine Konzept-Frage,
+kostet die Testarea); erst solo bauen und später vernetzen
+(Nachrüsten ist teurer als der Aufschlag je Baustein); zwei Waffen
+von Anfang an.
+
+## 2026-10-18 — Fall beim Outbreak: Wiederbeleben und 10-Sekunden-Respawn
+
+Was: Gefallene können von Mitspielern wiederbelebt werden (das Wie
+wird später festgelegt); parallel läuft ein 10-Sekunden-Timer,
+danach respawnt der Gefallene am Herzobjekt. Getragene Beute bleibt
+im Container am Todesort liegen und wird wiedergeholt. Verloren ist
+die Partie ausschließlich durch den Fall des Herzobjekts. Offen
+bleibt nur der Waffen-Teil der GDD-Frage (behält der Gefallene seine
+Waffe?).
+Warum: Beantwortet die offene GDD-Frage „Fall beim Outbreak" samt
+Hänger-Fall — mit Auto-Respawn kann die Partie nicht mehr hängen,
+solange das Herzobjekt steht. Das GDD bleibt bis zur Konzept-Wahl
+eingefroren (Eintrag vom 2026-10-16) und wird bei der Vertiefung
+nachgezogen; bis dahin trägt dieser Eintrag die Antwort.
+Verworfen: nur Wiederbelebung ohne Timer (der Hänger-Fall „alle am
+Boden" bliebe offen).
+
+## 2026-10-18 — Quick-Slot-HUD statt Inventar
+
+Was: Kein Inventar-Fenster. Eine Minecraft-artige Hotbar unten im
+HUD trägt die Waffen-Slots — die „Slot-Befüllung" aus dem P1-Auftrag
+meint genau die Befüllung dieser Quick-Slots. Zwei bis drei
+Loot-Sorten laufen daneben als Zähler im HUD. Aufheben belegt oder
+ersetzt Slots; kein Drag-and-Drop, kein Grid.
+Warum: Liefert das Loot- und Equip-Gefühl für die
+Konzept-Entscheidung zum Bruchteil der Kosten und entspricht der
+GDD-Linie „Rollenwechsel ist ein Griff ins Regal, keine
+Menüentscheidung".
+Verworfen: Inventar-Fenster mit Grid (ein Abendblock für eine Frage,
+die die Hotbar auch beantwortet); nur Zähler ganz ohne Slots (das
+Equip-Gefühl fiele weg).

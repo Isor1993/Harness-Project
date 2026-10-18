@@ -22,21 +22,22 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-10-17 beim `/harness:ende` der Session
-„Pathmakers GDD · Versand". Berichte: `Projekte/Pathmakers_TD/` —
-GDD, DECISIONS, ROADMAP → „G1", erledigt.)*
+*(überschrieben 2026-10-18 beim `/harness:ende` der Session
+„It's D.O.T · P1 Projektstart". Berichte: `Projekte/Its_DOT/` —
+DECISIONS-Einträge vom 2026-10-17/18, ROADMAP → Testarea-Bausteine.)*
 
-**It's D.O.T · P1 starten** (`Projekte/Its_DOT/ROADMAP.md` →
-„P1"): erst ein Design-Abschnitt — den Plan für die zweiwöchige
-Testarea mit Multiplayer-Test schneiden und die P1-Fragen klären
-(mindestens Verloren-Kriterium und Slot-Befüllung) —, dann bauen.
-Beide GDDs sind seit dem 17.10. bei der Dozentin; Isor entscheidet
-nach der Testarea selbst über das Konzept. Uni-Nachträge offen:
-Versand-LOG-Zeile, Wahl-Verschiebung, Versand-Termin; dazu die
-Kern/LOG-Zeile zur `abgabe_bauen.py`-Erweiterung. „Ideen-Vorlauf:
-drittes Spielkonzept" hat ein unabgeholtes Ergebnis — nach dem
-Versand womöglich überholt, Isor entscheidet. Danach Model-Viewer
-Phase 2 (~23./24.10.); nebenher Toolchain-Test vor dem 27.10.,
+**B1 starten — mit Design-Runde, Isors Entwurf zuerst**
+(`Projekte/Its_DOT/ROADMAP.md` → „B1"): Testarea-Blockout und
+Spieler im Netz; der NGO-Wiedereinstieg gehört in den Baustein.
+Das Fundament steht komplett: Repo `Its-DOT` (Marke
+`PROJEKT_ITS_DOT`), Unity 6.3 LTS, Menü lauffähig, leere
+Testarea-Szene. Je Baustein erst Design, dann Bau; Energielage
+beachten — die zwei Testarea-Wochen sind Ziel, keine Frist.
+Uni-Nachträge weiter offen: Versand-LOG-Zeile, Wahl-Verschiebung,
+Versand-Termin, Kern/LOG-Zeile zur `abgabe_bauen.py`-Erweiterung.
+„Ideen-Vorlauf: drittes Spielkonzept": unabgeholtes Ergebnis,
+womöglich überholt — Isor entscheidet. Termine daneben:
+Model-Viewer Phase 2 (~23./24.10.), Toolchain-Test vor dem 27.10.,
 Vokabel-Runde Lane Defender, Datenbaum, Pflegeschritt 02.11.
 
 ---

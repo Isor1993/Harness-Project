@@ -57,6 +57,10 @@ hochgezählt. Sie sagt nichts über Inhalt oder Reifegrad.
   Zählung bewusst fort — ab dort normal weiter.
 - **Lane-Defender:** sauber `0.0001`–`0.0005`; dem jüngsten Titel
   fehlt nur das Wort „Update" (Kosmetik, bleibt).
+- **Its-DOT:** zählt seit 2026-10-18 **jeden Commit** hoch
+  (`0.0001` ff., Isors Entscheid beim P1-Start — er will den
+  Fortschritt im Spiel-Repo sichtbar). Bewusste Abweichung von der
+  Session-Zählung oben; für Harness und Knowledge gilt die weiter.
 <!-- /nicht ausliefern -->
 
 
