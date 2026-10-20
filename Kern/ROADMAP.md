@@ -239,6 +239,15 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
   entstand so ein vollständiger Abgabetext mit fremden Urteilen, der
   drei Korrekturrunden kostete (`Kern/STOERUNGEN.md`; Isors Ja vom
   2026-10-15).
+- [ ] **Bei ausbleibender Antwort auf Typ und Modus einmal nachfassen**
+  — `Kern/WORKFLOW.md` regelt in „Typ, Modus und Regler" und „Der
+  geerbte Titel", dass gefragt wird, aber nicht, was gilt, wenn keine
+  Antwort kommt. Eine fehlende Antwort ist eine offene Frage und kein
+  stillschweigendes Weiter: Claude fasst einmal nach, bevor der
+  Abschnitt weiterläuft. Anlass ist der Vorfall vom 2026-10-20
+  (`Kern/STOERUNGEN.md`) — ein ganzer Abschnitt lief ohne gesetzten Typ
+  und behielt dabei die geerbte Klammer `zu`, die Arbeit für
+  abgeschlossen erklärte.
 
 Was im Betrieb nicht trägt, kommt als Störung in `Kern/STOERUNGEN.md`
 und wird von dort aus zu einem Punkt hier — genau dafür fragt die
