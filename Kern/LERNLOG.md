@@ -2195,3 +2195,17 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   CC-Physik-Halbwahrheit, Terrain-Übertragbarkeit) und die
   Paket-Zerlegung des Movement-Umfangs kamen von Claude.
   **Fehlerbild:** keines — reine Design-Session.
+- 2026-10-20 · It's D.O.T, B1-Blockout (Development, Isor baut) —
+  **Selbst:** das Blockout eigenständig gebaut und das Raum-Konzept
+  dabei selbst weiterentwickelt (komplett ummauerte Räume statt
+  offener Zonen, daraus die Teleporter-Vorverlegung abgeleitet);
+  Layer-Hygiene Ground/Wall unaufgefordert angelegt; Treppe exakt
+  nach Maß; das Scene-Kamera-Problem präzise gemeldet („Boden wird
+  weggecuttet"). **Fehlerbild:** „Editor-Wahrheit gegen
+  Platten-Wahrheit" erneut (Szene ungespeichert gegengelesen —
+  Wiederholung vom 2026-09-04); Maße nach Augenmaß statt Zahlen
+  (Spawn-Abstände 29–43 m statt 2–3 m, Rampen 1 m kurz, beide
+  Obstacles gleich hoch); versehentliche Verschachtelung (großes
+  Herzobjekt als Kind des kleinen Parcours-Markers). **Hilfe:**
+  Szenen-Gegenlesen direkt aus der Datei (Hierarchie mit
+  Weltpositionen), Bauwerte-Tabellen, Dynamic-Clipping-Klickpfad.

@@ -22,18 +22,22 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-10-20 beim `/harness:ende` der Session zum
-Dozentinnen-Durchgang und der Konzept-Wahl. Berichte:
-`Uni/DECISIONS.md` und `Uni/LOG.md`, Einträge vom 2026-10-20.)*
+*(überschrieben 2026-10-20 beim `/harness:ende` der Session
+„It's D.O.T · B1 Testarea" — der Auftrag aus dem ende der
+Konzept-Wahl-Session vom selben Tag bleibt dabei bestehen. Berichte:
+`Uni/DECISIONS.md` und `Uni/LOG.md` vom 2026-10-20; der B1-Stopp in
+`Projekte/Its_DOT/` — LOG, ROADMAP, DECISIONS.)*
 
 **Brainstorm-Runde: Prototyp von Pathmakers TD starten**
 (`Projekte/Pathmakers_TD/ROADMAP.md` → „P1", dazu „A1" und „G2").
 Konzept entschieden am 2026-10-20: It's D.O.T ruht als privates
-Projekt, der Testarea-Bau dort ist gestoppt; Netz-Grundlage,
-Menü-Kette und Spielerfigur daraus sind übernehmbar. Offene
-Nachträge: Versand-Zeile der beiden GDDs in `Uni/LOG.md` (Datum
-ungeklärt) und die Kern/LOG-Zeile zur `abgabe_bauen.py`-Erweiterung.
-Termine: `Uni/Semester_3/STUNDENPLAN.md`.
+Projekt; der Testarea-Stopp samt Reststand ist in
+`Projekte/Its_DOT/` dokumentiert. Netz-Grundlage, Menü-Kette und
+das B1-Movement-Design (Rigidbody-Controller, Sprunggefühl-Paket)
+sind übernehmbar. Offene Nachträge: Versand-Zeile der beiden GDDs in
+`Uni/LOG.md` (Datum ungeklärt) und die Kern/LOG-Zeile zur
+`abgabe_bauen.py`-Erweiterung. Termine:
+`Uni/Semester_3/STUNDENPLAN.md`.
 
 ---
 

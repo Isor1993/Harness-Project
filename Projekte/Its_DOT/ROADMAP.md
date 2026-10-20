@@ -102,6 +102,12 @@ wird die Schicht nur auf Isors Zuruf.
 
 ## Testarea — Bausteine (Zuschnitt und Schätzungen: DECISIONS → „2026-10-18 — Testarea-Zuschnitt")
 
+**Gestoppt am 2026-10-20** mit der Konzept-Wahl (`Uni/DECISIONS.md` →
+„2026-10-20 — Semester-Spiel: Pathmakers TD; It's D.O.T wird privates
+Projekt"; der Stopp-Stand: DECISIONS dieser Schicht → „2026-10-20 —
+B1-Stopp bei der Konzept-Wahl"). Die Punkte bleiben als Stand stehen,
+nicht als Auftrag — wieder aufgenommen wird nur auf Isors Zuruf.
+
 - [ ] **B1 · Testarea + Spieler im Netz** — Blockout-Boden,
   Spielerfigur neu: Owner-Movement, Kamera, Springen; dazu der
   NGO-Wiedereinstieg (NetworkManager, NetworkObject, Autorität).
@@ -111,6 +117,10 @@ wird die Schicht nur auf Isors Zuruf.
   Bau-Reihenfolge stehen (DECISIONS, Einträge vom 2026-10-18/19);
   Schätzung ehrlich neu ~8,5 h. Design-Tafel:
   https://claude.ai/artifact/Pq5FsPuy2CUQguaxTufCR9
+  **Stand 2026-10-20 (Stopp):** Schritt 1 (Blockout) zu etwa vier
+  Fünfteln gebaut — Boden, Wandraster, Parcours-Rohbau, Spawn-Punkte,
+  Layer; Restliste und Begründung im DECISIONS-Eintrag „2026-10-20 —
+  B1-Stopp bei der Konzept-Wahl". Schritte 2–6 nicht begonnen.
 - [ ] **B2 · Nahkampf + Schaden** — Health-Komponente neu, Host
   entscheidet Treffer, Gegner können sterben. Erster Koop-Test über
   echtes Netz = zugleich der Relay-Echttest von oben. (~4–5 h)

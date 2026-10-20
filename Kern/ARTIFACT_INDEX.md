@@ -177,7 +177,9 @@ Stand    2026-10-19 — neu, gebaut in der B1-Design-Runde (Versionen 1
          die Entscheidungen der Runde, Pakete 1 und 2,
          Bau-Reihenfolge, Fertig-Kriterien. Mobil-Seite in fest
          dunklem Stil (Isors Vorgabe vom 2026-07-16), nicht
-         Hausfarbwelt.
+         Hausfarbwelt. Seit dem B1-Stopp (2026-10-20, Konzept-Wahl —
+         Version 6) eingefroren; nachgezogen nur, falls D.O.T privat
+         weitergebaut wird.
 Quelle   Projekte/Its_DOT/DECISIONS.md (Einträge vom 2026-10-18/19),
          Projekte/Its_DOT/ROADMAP.md (B1)
 Skripte  keine — die Seite zeigt den Design-Stand, nicht Code

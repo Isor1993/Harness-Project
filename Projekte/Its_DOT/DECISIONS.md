@@ -726,3 +726,27 @@ später, der Andockpunkt existiert durch die Struktur); Tuning als
 ScriptableObject nach dem Awake-Seed-Muster schon jetzt (in B1 gibt es
 ein Spieler-Prefab, der Umzug ist später ein mechanischer Handgriff);
 Netz zuletzt (Nachrüsten ist teurer als der Aufschlag je Schritt).
+
+## 2026-10-20 — B1-Stopp bei der Konzept-Wahl
+
+Was: Der Testarea-Bau endet mitten in B1, Schritt 1 (Blockout). Gebaut
+und im Repo: Kachel-Boden mit Grid-Material (1 Kachel = 1 m),
+Wandraster mit 9×10 Räumen à 100×100 m auf Layer Wall, der
+Parcours-Rohbau (Treppe maßhaltig; die Rampen noch 1 m kurz, beide
+Obstacles noch 1 m hoch), vier Spawn-Punkte um das mittig gesetzte
+Herzobjekt (Abstände noch 29–43 m statt 2–3 m), alles Begehbare auf
+Layer Ground. Der Teleporter war am 2026-10-20 in B1 vorgezogen worden
+(die Räume sind komplett ummauert, ohne ihn kommt niemand hinaus) und
+ist nicht mehr entstanden. Die Szene bleibt als Stand im Repo;
+B2–B7 starten nicht.
+Warum: Konzept-Wahl vom 2026-10-20 (`Uni/DECISIONS.md` → „2026-10-20 —
+Semester-Spiel: Pathmakers TD; It's D.O.T wird privates Projekt") —
+D.O.T ruht ohne Termin, Weiterbauen nähme dem Semesterprojekt Zeit,
+und die Testarea hat ihren Zweck, die Konzept-Entscheidung zu
+informieren, mit der Wahl verloren. Das Design der B1-Runde
+(Rigidbody-Controller, Movement-V1, Sprunggefühl-Paket, Orbit-Kamera)
+bleibt dokumentiert und ist für Pathmakers TD nutzbar — auch dort
+kommen vier Spieler über Relay zusammen und brauchen eine Spielerfigur.
+Verworfen: B1 noch zu Ende bauen (Zeit gehört ab jetzt Pathmakers TD);
+die Testarea-Szene verwerfen (kostet im Repo nichts und trägt den
+Stand fürs private Weiterbauen).
