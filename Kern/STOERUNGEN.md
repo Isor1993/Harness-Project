@@ -1189,3 +1189,23 @@ das gemeinsame Problem-Verstehen, und die Lösung sucht zuerst Isor —
 auch bei Mini-Fixes.
 **Stand:** abgeschlossen — Claudes projektübergreifendes Gedächtnis
 am 2026-10-18 nachgeschärft; kein ROADMAP-Punkt (Isor, 2026-10-18).
+
+### 2026-10-20 — Typ und Modus gefragt, aber nicht eingefordert
+**Was:** Claude fragte am Session-Anfang nach Typ und Modus, bekam
+keine Antwort und arbeitete ohne Nachfassen weiter. Der ganze Abschnitt
+lief damit ohne gesetzten Typ; benannt wurde er erst beim
+`/harness:ende`. Dazu blieb der geerbte Session-Titel `(zu)` über die
+ganze Arbeit stehen, also ein Titel, der die Session für geschlossen
+erklärt, während in ihr gearbeitet wird.
+**Ursache:** Die Frage stand als Textblock am Ende einer langen
+Antwort und ging unter, weil Isor zugleich im Discord-Gespräch mit der
+Dozentin war. Claude las das Ausbleiben der Antwort als
+stillschweigendes Weitermachen statt als offene Frage. Beim Titel kam
+dazu, dass die Klammer ohne Typ nicht zu setzen war und Claude das
+Thema nach der Regel nicht erfinden darf.
+**Regel:** Existiert und griff nicht: WORKFLOW, „Typ, Modus und
+Regler" (am Anfang jeder Session fragt Claude nach Typ und Modus) und
+„Der geerbte Titel". Beide regeln das Fragen; keine der beiden sagt,
+was bei ausbleibender Antwort gilt.
+**Stand:** offen — Gegenmittel wäre, bei ausbleibender Antwort einmal
+nachzufassen, bevor der Abschnitt weiterläuft.

@@ -608,3 +608,32 @@ die Testarea bis 31.10. als Entscheidungsgrundlage abwarten (das
 Qualitäts-Argument hängt nicht am Messergebnis — es gilt auch dann,
 wenn die Technik trägt); It's D.O.T archivieren (bleibt als privates
 Projekt liegen).
+
+## 2026-10-20 — Material sammeln ab jetzt, veröffentlichen später
+
+Was: Zu jedem Projekt wird ab sofort laufend Rohmaterial gesammelt:
+Clips, Screenshots und kurze Videos, ungeschnitten, in
+`02_Projekte\<Projekt>\Media\` des Datenbaums (`Kern/PFADE.md` →
+`DATENBAUM`), benannt mit Datum und Baustein-Kürzel vorn
+(`2026-10-20_B1_Spieler_laeuft.mp4`). Gegriffen werden der erste Lauf
+eines Systems, sichtbare Vorher-Nachher-Änderungen und ein Clip am
+Baustein-Ende. Veröffentlicht wird davon zunächst nichts: Twitch und
+Publikumsaufbau beginnen erst, wenn wieder Zeit ist, womöglich erst
+nach dem Studium. Unberührt davon bleibt die arbeitgeberseitige Hälfte
+— Portfolio-Seite und spielbare Builds —, weil sie mit der
+Portfolio-Abgabe Ende Februar ohnehin fällig ist. Social Networking ist
+keine Studienleistung der SAE (Isor, 2026-10-20).
+Warum: Rohmaterial ist das Einzige, was durch Warten wirklich verloren
+geht; der Moment, in dem ein System zum ersten Mal läuft, lässt sich
+nicht nachproduzieren. Sammeln kostet Minuten und fällt am
+Baustein-Ende ohnehin an, Veröffentlichen kostet Stunden und
+Aufmerksamkeit, die bis zum Goldmaster dem Spielprojekt gehören. Ein
+Publikum entsteht zudem erst an einem veröffentlichten Spiel; vorher
+postet man auf etwas, das es noch nicht gibt. Die Beschriftung liefert
+der Harness gratis: Datum und Baustein-Kürzel im Dateinamen plus das
+LOG der Schicht genügen, um einen Clip später einzuordnen.
+Verworfen: jetzt mit Social Media anfangen (nimmt Zeit vom
+Semesterprojekt, und ein leerer Account wird älter, nicht größer); gar
+nicht sammeln und das Material später nachproduzieren (bei Erstläufen
+unmöglich); je Clip eine Notizdatei (Aufwand, den die Gewohnheit nicht
+überlebt).
