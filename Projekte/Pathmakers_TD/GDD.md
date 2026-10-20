@@ -452,3 +452,38 @@ bindet nichts)*
   kein Versus), Legion TD 2 (Einsteiger-Guide: jeder Send erhöht das
   Einkommen dauerhaft). Wintermaul Wars nach Isors eigener
   Spielerfahrung, ohne Schriftquelle.
+- *(2026-10-20)* **Zweck-Kette fehlt im Abgabetext** — Befund aus dem
+  Discord-Durchgang mit der Dozentin (`Uni/LOG.md`): Das Dokument sagt
+  dreimal, *dass* der Weg die Verteidigung ist, nennt aber nirgends den
+  Mechanismus. Beim Nachziehen hinein: Ein längerer Weg heißt mehr Zeit
+  unter Beschuss, und Weg und Türme teilen dieselbe Fläche, weil Türme
+  nie auf Wegkacheln stehen. Weg-Bau ist damit die Entscheidung
+  zwischen Laufzeit und Feuerkraft, mit einem Optimum in der Mitte.
+  Isors Bild dafür: erst die gerade Linie von A nach B, später eine
+  Spirale, in der Monster zweimal am selben Turm vorbeilaufen.
+- *(2026-10-20)* **Der Fall „alle halten still"** — der Satz
+  „Passivität bestraft sich selbst" gilt nur für einen Passiven unter
+  Aktiven. Halten alle still, bewegt sich nur die Mine, und die Partie
+  endet nie. An die Dozentin ging das Argument, dass der Pakt
+  Einstimmigkeit braucht und der erste Abweichler dauerhaft vorn liegt.
+  Kandidaten für eine Absicherung (Claude, unbestätigt): ein Taktgeber,
+  der nur bei Stillstand greift; ein hartes Rundenlimit.
+- *(2026-10-20)* **Turtle-Befund** (Isor): Wer nur verteidigt, lebt vom
+  Gold, das ihm die Angreifer mit ihren Sends liefern, und wird dafür
+  kaum bestraft. Seine Decke ist der feste Kachelvorrat ohne Arbeiter
+  und Stufe 3 als Maximum; das Einkommen des Angreifers hat keine.
+  Gegenmaßnahme, falls der Spieltest das Fenster zu lang zeigt:
+  stärkere Kopplung zwischen Gold und Diamanten in Richtung WMW
+  (Arbeiter über Diamanten, Senden früh über Gold, Gold-Überschuss
+  wandert ins Diamanten-Einkommen). Der genaue Mechanismus ist noch
+  nicht ausformuliert.
+- *(2026-10-20)* **Solo als Endlos-Sandbox** — Vorschlag der Dozentin:
+  ein Modus, in dem man nicht verlieren kann (unendlich Leben oder
+  Ressourcen). Isor dazu: eher viele Einstellungen selbst setzbar,
+  falls Zeit bleibt.
+- *(2026-10-20)* **Im Chat beantwortet, gehört in den Abgabetext:** der
+  Grund für den festen Sende-Ring (Balancing einfach halten, freie
+  Zielwahl wäre schwerer auszubalancieren), dass die Nachbarn mit der
+  Kamera dauerhaft sichtbar sind, und der Grund für die Spielerfigur
+  (nostalgisches Gefühl statt Handy-Spiel, Laufzeit als Spannung, Bauen
+  soll sich wie Bauen anfühlen).

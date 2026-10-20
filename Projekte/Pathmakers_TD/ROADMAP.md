@@ -31,6 +31,22 @@ wird mit Beleg (LOG-Eintrag oder Datei).
   Manuskript auf Abgabe-Konvention gebracht (Kommentar-Kopf,
   `#`-Kapitel, Abgabe-Ende-Marke, Quellenverzeichnis-Satz), .docx mit
   Titelteil gebaut, beide GDDs als PDF per Discord an die Dozentin.
-  Die Konzept-Entscheidung fällt nach Isors zweiwöchiger
-  It's-D.O.T-Testarea; bis dahin ruht Pathmakers TD, offene Aufgaben
-  gibt es hier keine.
+  Die Konzept-Entscheidung ist am 2026-10-20 gefallen: Pathmakers TD
+  wird das Semester-Spiel (`Uni/DECISIONS.md` → „2026-10-20 —
+  Semester-Spiel: Pathmakers TD; It's D.O.T wird privates Projekt").
+  Die Schicht ist damit die aktive; die Aufgaben darunter sind neu.
+- [ ] **P1 · Prototyp-Start** — zuerst eine Brainstorm-Runde zum
+  Vorgehen und zum Schnitt der ersten Bausteine (Isor, 2026-10-20),
+  danach der Blockout. Übernehmbar aus dem Its-DOT-Prototyp, weil
+  Pathmakers ebenfalls vier Spieler über Relay braucht: Netz-Grundlage
+  (NGO, Relay, Lobby mit Join-Code), die Menü-Kette und die
+  Spielerfigur samt Kamera.
+- [ ] **A1 · Pitch-Abgabe und Präsentation** — das GDD liegt fertig;
+  nötig sind die Präsentationsfassung und der PDF-Export. Termine in
+  `Uni/Semester_3/STUNDENPLAN.md`.
+- [ ] **G2 · GDD-Nachzug nach der Präsentation** — die
+  Aufgabenstellung verlangt das GDD mit eingearbeitetem Feedback
+  (`Uni/Semester_3/ASSIGNMENT_GAME_PITCH.md`). Einzuarbeiten sind die
+  Zweck-Kette der Mechaniken und die im Discord-Durchgang vom
+  2026-10-20 gegebenen Antworten (`Uni/LOG.md`); das Rohmaterial steht
+  in `GDD.md` → „Entwurf", Eintrag vom 2026-10-20.

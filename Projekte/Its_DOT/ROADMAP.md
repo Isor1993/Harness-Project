@@ -8,6 +8,14 @@ besitzt `Uni/Semester_3/STUNDENPLAN.md`.
 Format: `- [ ] **<Kürzel> · Titel** — Inhalt in Stichworten.` Abgehakt
 wird mit Beleg (LOG-Eintrag oder Datei).
 
+**Die Schicht ruht seit dem 2026-10-20.** It's D.O.T ist privates
+Projekt ohne Termin, das Semester-Spiel ist Pathmakers TD
+(`Uni/DECISIONS.md` → „2026-10-20 — Semester-Spiel: Pathmakers TD;
+It's D.O.T wird privates Projekt"). Die offenen Punkte unten bleiben
+als Bestand stehen und werden nicht weitergebaut; der Prototyp ist dort
+eingefroren, wo ihn der 2026-10-19 verlassen hat. Wieder aufgenommen
+wird die Schicht nur auf Isors Zuruf.
+
 ## Aufgaben
 
 - [x] **G1 · Mini-GDD zur Freigabe** — **erledigt am 2026-10-09:**
@@ -98,6 +106,11 @@ wird mit Beleg (LOG-Eintrag oder Datei).
   Spielerfigur neu: Owner-Movement, Kamera, Springen; dazu der
   NGO-Wiedereinstieg (NetworkManager, NetworkObject, Autorität).
   Startet mit eigener Design-Runde. (~6–8 h)
+  **Stand 2026-10-19:** Design-Runde abgeschlossen — Gym-Testarea auf
+  Kachel-Plane, eigener Rigidbody-Controller, V1-Umfang und
+  Bau-Reihenfolge stehen (DECISIONS, Einträge vom 2026-10-18/19);
+  Schätzung ehrlich neu ~8,5 h. Design-Tafel:
+  https://claude.ai/artifact/Pq5FsPuy2CUQguaxTufCR9
 - [ ] **B2 · Nahkampf + Schaden** — Health-Komponente neu, Host
   entscheidet Treffer, Gegner können sterben. Erster Koop-Test über
   echtes Netz = zugleich der Relay-Echttest von oben. (~4–5 h)

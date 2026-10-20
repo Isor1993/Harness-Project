@@ -574,3 +574,37 @@ Verworfen: sofortiger Wechsel auf Detour (Claudes Vergleich vom
 Dozentin wählen lassen); die Idle-Clicker-TD als drittes Konzept
 (trägt weder Koop noch 3D-Figur und zeigt als Programmierprojekt
 wenig); Outbreak unverändert weiterführen (widerspricht dem Feedback).
+
+## 2026-10-20 — Semester-Spiel: Pathmakers TD; It's D.O.T wird privates Projekt
+
+Was: Das Semester-Spiel des Moduls 5FSC0XD101_P ist **Pathmakers TD**.
+It's D.O.T wird privates Projekt ohne Termin; die Schicht
+`Projekte/Its_DOT/` bleibt bestehen und wird nicht archiviert. Die am
+2026-10-17/18 begonnene D.O.T-Testarea wird nicht fortgeführt; ihr
+Netzwerk- und Spieler-Teil ist für Pathmakers TD weiter nutzbar, weil
+auch dort vier Spieler über Relay zusammenkommen. Nächste Schritte:
+Prototyp bauen und das GDD daran nachziehen. Schließt „2026-10-13 —
+Zwei Konzepte parallel bis zur Wahl der Dozentin" ab — der dort
+beschriebene Ablauf ist eingetreten.
+Warum: Die Dozentin hat im Discord-Durchgang vom 2026-10-20 (`LOG.md`)
+Pathmakers TD empfohlen, mit drei Begründungen: fokussierter und mit
+weniger aufeinander abzustimmenden Systemen; kein Action-Combat nötig,
+weil Projektile und Schadensradien genügen; rundenbasiert mit
+getrennten Gebieten, was die Echtzeit-Synchronisierung im Netz
+entschärft. Ausschlaggebend war ihr Qualitäts-Argument: In Erinnerung
+bleibt, wie gut sich das Gameplay anfühlt, und sie riet ausdrücklich
+davon ab, ein Spiel auf eine Mechanik zu bauen, die man nicht zu
+optimieren vorhat — in D.O.T wäre das der Kampf-Schnitt vom 2026-10-14
+gewesen (je Waffe nur ein Basisangriff). Isors eigene Gründe:
+Pathmakers TD lässt sich im Zeitrahmen ruhiger und sauberer
+ausarbeiten und verspricht damit das bessere Portfolio-Ergebnis; ein
+wirklich ausgereiftes D.O.T schätzt er auf etwa ein Jahr Arbeit
+(eigene Schätzung, nicht gemessen). Technisch lag das Risiko von
+D.O.T ohnehin nicht bei der Gegner-KI, sondern bei der Navigation der
+Gegner um frei gebaute Mauern im Netz.
+Verworfen: It's D.O.T als Semester-Spiel trotz der höheren Motivation
+(Isor am 2026-10-20: „von der Motivation ist das DOT mein Favorit");
+die Testarea bis 31.10. als Entscheidungsgrundlage abwarten (das
+Qualitäts-Argument hängt nicht am Messergebnis — es gilt auch dann,
+wenn die Technik trägt); It's D.O.T archivieren (bleibt als privates
+Projekt liegen).

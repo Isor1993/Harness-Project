@@ -1,8 +1,9 @@
 # DECISIONS.md — Entscheidungen Pathmakers TD
 
 Ownership: Nur Entscheidungen zum Spielkonzept Pathmakers TD
-(Arbeitstitel; Weg-Bau-Tower-Defense, Kandidat für das Semester-Spiel
-des Moduls 5FSC0XD101_P) — was entschieden wurde, warum, und welche
+(Arbeitstitel; Weg-Bau-Tower-Defense, seit dem 2026-10-20 das
+Semester-Spiel des Moduls 5FSC0XD101_P) — was entschieden wurde,
+warum, und welche
 Alternativen verworfen wurden. Kein Plan (ROADMAP), keine
 Design-Absicht (GDD), kein Ereignis. Die Wahl zwischen den
 Semester-Konzepten gehört der Uni-Schicht.

@@ -178,3 +178,20 @@ damals, nicht den von heute.
   Fokus wählen (Koop, TD, Survival), Qualität vor Umfang; ein
   3D-Kampfsystem ausdrücklich abgeraten. Folge: `DECISIONS.md` →
   „2026-10-13 — Zwei Konzepte parallel bis zur Wahl der Dozentin".
+- 2026-10-20 — Discord-Durchgang der Dozentin zum Pathmakers-TD-GDD,
+  am Ende die Entscheidung für das Semester-Spiel. Ihre Punkte der
+  Reihe nach: Grund für den festen Sende-Ring statt freier Zielwahl,
+  Sichtbarkeit der Nachbarn, Bitte um einfache Wireframe-Grafiken (zehn
+  Bilder nachgereicht), Zweck des Weg-Baus und aller Mechaniken, der
+  Fall „niemand greift an", Kartengröße und Layout, Grund für die
+  Spielerfigur statt Maussteuerung, dazu dreimal die Sorge ums
+  Balancing. Zwei Befunde am GDD dabei: Es nennt die Wirkung des
+  Weg-Baus, aber nirgends den Mechanismus (Laufzeit unter Beschuss, Weg
+  gegen Turmfläche) — die Begründung steht vollständig in den DECISIONS
+  der Projekt-Schicht, die sie nicht bekommen hat; und der Satz
+  „Passivität bestraft sich selbst" deckt den Fall nicht ab, dass alle
+  Spieler stillhalten. Ihre Empfehlung am Ende: Pathmakers TD ist
+  besser umsetzbar als It's D.O.T, samt dem Rat, kein Gameplay auf eine
+  Mechanik zu bauen, die nicht optimiert werden soll. Folge:
+  `DECISIONS.md` → „2026-10-20 — Semester-Spiel: Pathmakers TD; It's
+  D.O.T wird privates Projekt".

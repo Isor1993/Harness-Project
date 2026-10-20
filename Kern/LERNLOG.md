@@ -2184,3 +2184,14 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   Baustein-Schnitt B1–B7 mit Schätzungen, Konsequenz-Hinweise
   (Multiplayer-Aufschlag je System, Fernkampf als Reserve).
   **Fehlerbild:** keines — kein Code.
+- 2026-10-19 · It's D.O.T, B1-Design-Runde (Brainstorm/Design) —
+  **Selbst:** eigener Testarea-Entwurf als Startpunkt der Runde
+  (Gym-Prinzip: alles existiert einmal, Zonen, Teleporter-Idee, wächst
+  pro Baustein); Claudes CharacterController-Empfehlung mit extern
+  eingeholtem Rat fundiert hinterfragt und den Rigidbody-Entscheid
+  selbst getragen; die Erweiterbarkeits-Anforderung („Original-Code,
+  später nur erweitern") selbst formuliert. **Hilfe:** Einordnung der
+  Unity-Fallen (Editor-Ordner fliegen aus Builds,
+  CC-Physik-Halbwahrheit, Terrain-Übertragbarkeit) und die
+  Paket-Zerlegung des Movement-Umfangs kamen von Claude.
+  **Fehlerbild:** keines — reine Design-Session.

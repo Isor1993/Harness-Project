@@ -22,23 +22,18 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-10-18 beim `/harness:ende` der Session
-„It's D.O.T · P1 Projektstart". Berichte: `Projekte/Its_DOT/` —
-DECISIONS-Einträge vom 2026-10-17/18, ROADMAP → Testarea-Bausteine.)*
+*(überschrieben 2026-10-20 beim `/harness:ende` der Session zum
+Dozentinnen-Durchgang und der Konzept-Wahl. Berichte:
+`Uni/DECISIONS.md` und `Uni/LOG.md`, Einträge vom 2026-10-20.)*
 
-**B1 starten — mit Design-Runde, Isors Entwurf zuerst**
-(`Projekte/Its_DOT/ROADMAP.md` → „B1"): Testarea-Blockout und
-Spieler im Netz; der NGO-Wiedereinstieg gehört in den Baustein.
-Das Fundament steht komplett: Repo `Its-DOT` (Marke
-`PROJEKT_ITS_DOT`), Unity 6.3 LTS, Menü lauffähig, leere
-Testarea-Szene. Je Baustein erst Design, dann Bau; Energielage
-beachten — die zwei Testarea-Wochen sind Ziel, keine Frist.
-Uni-Nachträge weiter offen: Versand-LOG-Zeile, Wahl-Verschiebung,
-Versand-Termin, Kern/LOG-Zeile zur `abgabe_bauen.py`-Erweiterung.
-„Ideen-Vorlauf: drittes Spielkonzept": unabgeholtes Ergebnis,
-womöglich überholt — Isor entscheidet. Termine daneben:
-Model-Viewer Phase 2 (~23./24.10.), Toolchain-Test vor dem 27.10.,
-Vokabel-Runde Lane Defender, Datenbaum, Pflegeschritt 02.11.
+**Brainstorm-Runde: Prototyp von Pathmakers TD starten**
+(`Projekte/Pathmakers_TD/ROADMAP.md` → „P1", dazu „A1" und „G2").
+Konzept entschieden am 2026-10-20: It's D.O.T ruht als privates
+Projekt, der Testarea-Bau dort ist gestoppt; Netz-Grundlage,
+Menü-Kette und Spielerfigur daraus sind übernehmbar. Offene
+Nachträge: Versand-Zeile der beiden GDDs in `Uni/LOG.md` (Datum
+ungeklärt) und die Kern/LOG-Zeile zur `abgabe_bauen.py`-Erweiterung.
+Termine: `Uni/Semester_3/STUNDENPLAN.md`.
 
 ---
 

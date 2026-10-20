@@ -168,6 +168,23 @@ Seite →  keine
 Seite ←  keine
 ```
 
+### 📍 Status · It's D.O.T B1-Design
+```
+URL      https://claude.ai/artifact/Pq5FsPuy2CUQguaxTufCR9
+Stand    2026-10-19 — neu, gebaut in der B1-Design-Runde (Versionen 1
+         bis 5): Testarea-Aufbau als Zonen-Skizze, Parcours-gegen-
+         Terrain-Tafel, Controller-Architektur mit Andockpunkten,
+         die Entscheidungen der Runde, Pakete 1 und 2,
+         Bau-Reihenfolge, Fertig-Kriterien. Mobil-Seite in fest
+         dunklem Stil (Isors Vorgabe vom 2026-07-16), nicht
+         Hausfarbwelt.
+Quelle   Projekte/Its_DOT/DECISIONS.md (Einträge vom 2026-10-18/19),
+         Projekte/Its_DOT/ROADMAP.md (B1)
+Skripte  keine — die Seite zeigt den Design-Stand, nicht Code
+Seite →  keine
+Seite ←  die B1-Stand-Zeile der Its-DOT-ROADMAP nennt die URL
+```
+
 ---
 
 ## 🎓 Zeugnis  — Schicht: Kern

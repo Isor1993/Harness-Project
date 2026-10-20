@@ -1,8 +1,9 @@
 # DECISIONS.md — Entscheidungen It's D.O.T
 
 Ownership: Nur Entscheidungen zum Koop-Spiel It's Dungeon Outbreak
-Time (Kürzel It's D.O.T; Harness-Schicht Its_DOT; das
-Semester-Spiel des Moduls 5FSC0XD101_P) — was entschieden
+Time (Kürzel It's D.O.T; Harness-Schicht Its_DOT; seit dem 2026-10-20
+privates Projekt ohne Termin, nicht mehr das Semester-Spiel des Moduls
+5FSC0XD101_P) — was entschieden
 wurde, warum, und welche Alternativen verworfen wurden. Kein Plan
 (ROADMAP), keine Design-Absicht (GDD), kein Ereignis. Die
 Uni-Aufgabenstellung gehört der Uni-Schicht.
@@ -642,3 +643,86 @@ Menüentscheidung".
 Verworfen: Inventar-Fenster mit Grid (ein Abendblock für eine Frage,
 die die Hotbar auch beantwortet); nur Zähler ganz ohne Slots (das
 Equip-Gefühl fiele weg).
+
+## 2026-10-18 — Testarea-Aufbau: wachsende Gym-Szene auf Kachel-Plane
+
+Was: Die Testarea ist eine Szene, die als „Gym" wächst: eine flache
+Kachel-Plane (1 Kachel = 1 m) statt Unity Terrain, darauf Primitive
+als Teststationen (Rampen mit 20/40/60°, Stufen), Zonen nebeneinander
+in Laufweite; jedes System soll dort einmal existieren und testbar
+sein (Isors Zielbild für jedes Spiel). Spawn versetzt am
+Herzobjekt-Platzhalter: vier Punkte im Kreis, damit niemand ineinander
+spawnt. Die Szene bleibt eine normale Build-Szene, kein Editor-Ordner.
+Leitplanke: Das Movement wird terrain-tauglich gebaut (Bodenabfrage
+über Kontakt und Raycast, keine Flachboden-Annahmen), damit die echte
+Insel später Unity Terrain sein kann — einmal im Editor erzeugt oder
+von Hand, offen bis zur Vollproduktion; die feste Insel vom 2026-10-14
+bleibt. Vorgemerkt: Teleporter zwischen Zonen mit Beschriftung, eine
+Loot-Schau-Zone, ein eigener Testarea-Editor, ein separater
+Test-Build ohne Testarea in der Spiel-Szenenliste, ein Buckelfeld als
+Terrain-Probe-Station.
+Warum: Am Parcours wird gegen bekannte Werte getestet — eine Rampe aus
+einem gedrehten Würfel hat einen exakten Winkel, gemaltes Terrain nie.
+Unity nimmt Inhalte von `Editor/`-Ordnern nicht in Builds auf, und der
+lokale Multiplayer-Test (Editor + gebauter Spieler) braucht die Szene
+im Build; dazu zielen seit dem 2026-10-18 alle Startwege auf die
+Testarea. Terrain ist örtlich nur eine Schräge — wer Rampen und Stufen
+besteht, besteht Terrain, die Regler wirken auf jedem Collider gleich.
+Verworfen: Unity Terrain für die Testarea (Winkel unbekannt,
+Terrain-Sonderfälle testen das Movement, bevor es eines gibt); die
+Szene in einem Editor-Ordner (fliegt aus jedem Build); alle Spieler
+auf demselben Spawnpunkt (Physik schiebt sie auseinander).
+
+## 2026-10-19 — Movement-Fundament: eigener Controller auf Rigidbody-Basis
+
+Was: Die Spielerfigur bekommt einen selbst geschriebenen Controller
+auf Rigidbody-Basis: Isor schreibt die Steuerlogik (Input, Absicht,
+Sprungkraft, Bodencheck per SphereCast), die Physik-Engine liefert
+Kollision und Kräfte. Treppen werden über unsichtbare Rampen-Collider
+gelöst. Auf fremden Figuren läuft der Rigidbody kinematisch, nur der
+Owner simuliert. Eingabe und Bewegungsabsicht bleiben vom „Motor"
+getrennt — die Versicherung, falls das Fundament je getauscht wird.
+Warum: D.O.T ist laut GDD ein Physik-Slapstick-Spiel — Schubsen,
+Knockback und der Sprungfeder-Boxhandschuh kommen beim Rigidbody echt
+aus der Simulation statt nachgebaut. Isors extern eingeholter Rat
+(„lieber selbst bauen als Unitys Fertigteil") wurde geprüft und trägt
+für dieses Spiel: Beim CharacterController wirken Kräfte nicht
+automatisch auf die Figur zurück, und seine Kollisionsauflösung ist
+eine Blackbox. Der Mehrpreis (~2–3 h plus Tuning) ist bewusst
+akzeptiert; der Code der Testarea ist Original-Code und wird später
+erweitert, nicht neu geschrieben (Isor, 2026-10-19).
+Verworfen: CharacterController (Claudes erste Empfehlung — die
+Budget-Antwort: billiger, aber jede Physik-Reaktion von Hand);
+voll-eigener kinematischer Controller mit selbst geschriebener
+Kollisionsauflösung (Expertenaufgabe in Wochen statt Stunden — nicht
+nie, aber nicht in B1).
+
+## 2026-10-19 — Movement-Umfang V1 und B1-Bau-Reihenfolge
+
+Was: Version 1 des Movements umfasst das Gerüst (Kapsel mit
+eingefrorener Rotation, kamera-relatives Laufen mit Beschleunigen und
+Bremsen, SphereCast-Bodencheck, Schrägen-Limit, Grundsprung,
+Schwerkraft, reduzierte Luftsteuerung, Owner-Autorität im Netz) plus
+das komplette Sprunggefühl-Paket — Coyote Time, Jump Buffer, stärkerer
+Fall, variable Sprunghöhe — plus die Struktur-Vorhalte:
+Knockback-Einstiegspunkt am Motor, Tuning-Werte als einfache
+Inspector-Felder, Tempo-Faktor in der Absicht als Sprint-Vorhalt. Die
+Kamera wird eine eigene Orbit-Kamera (dritte Person, Maus dreht,
+Mausrad zoomt; Wand-Kollision per SphereCast erst, wenn sie stört).
+Bau-Reihenfolge: Blockout → NGO-Gerüst → Kamera → Motor →
+Sprunggefühl und Vorhalte → Abnahme; das Netz kommt in Schritt 2,
+nicht am Ende. Ehrliche B1-Schätzung damit ~8,5 h statt 6–8.
+Warum: Isors Vorgabe „nicht zu minimalistisch, Original-Code, später
+nur erweitern" — erweiterbar machen die Andockpunkte, nicht die
+Featurezahl, und alle vier Sprunggefühl-Posten sind Motor-Interna
+ohne Ausbau-Kosten. Netz ab Schritt 2, weil der Testarea-Zuschnitt
+Multiplayer von Tag eins verlangt und Solo ohnehin als lokaler Host
+läuft: Jeder spätere Schritt wird im echten Netz-Aufbau getestet,
+statt Ownership nachzurüsten. Die eigene Kamera passt zur Linie
+„original statt Fertigteil" und ist klassischer Semester-Stoff.
+Verworfen: Cinemachine (schneller fertig, Wand-Kollision gratis — aber
+wieder eine Blackbox); Dash/Rolle in V1 (Kampf-Design-Frage für
+später, der Andockpunkt existiert durch die Struktur); Tuning als
+ScriptableObject nach dem Awake-Seed-Muster schon jetzt (in B1 gibt es
+ein Spieler-Prefab, der Umzug ist später ein mechanischer Handgriff);
+Netz zuletzt (Nachrüsten ist teurer als der Aufschlag je Schritt).
