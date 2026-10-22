@@ -2209,3 +2209,101 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   Herzobjekt als Kind des kleinen Parcours-Markers). **Hilfe:**
   Szenen-Gegenlesen direkt aus der Datei (Hierarchie mit
   Weltpositionen), Bauwerte-Tabellen, Dynamic-Clipping-Klickpfad.
+- 2026-10-20 · Pathmakers TD, P1-Brainstorm (Brainstorm/Design) —
+  **Selbst:** die Prototyp-Reihenfolge komplett selbst entworfen
+  (Figur → Weg-Bau → Karte → Spawns → Gegner → Leben → Takt/Senden →
+  Ressourcen → Wächter → Mine) und alle Schätzungen selbst gesetzt,
+  bewusst mit Multiplayer-Aufschlag; Netz-first am eigenen Lernziel
+  festgemacht; die Turm-Position gegen Claudes Einwand begründet
+  gehalten (risikoarmer Baukasten, braucht die Systeme davor); die
+  eigene Unsicherheit übers Abgabe-Soll selbst benannt und prüfen
+  lassen. **Hilfe:** Abgabe-Soll aus dem Vorjahrestext (der Prototyp
+  testet die Grundidee, Core-complete ist erst die Alpha), die
+  Budget-Rechnung, Wächter-Lücke und Netz-Weggabelung als Einwände.
+  **Fehlerbild:** keines — kein Code.
+- 2026-10-21 · Pathmakers TD, P-B1 Projektstart und Übernahme
+  (Development) — **Selbst:** Repo samt Unity-Projekt und eigenem
+  UGS-Cloud-Projekt ohne Klickanleitung angelegt; Export/Import der
+  Its-DOT-Basis eigenständig durchgeführt und die Build-Szenenliste
+  selbst gefüllt; den NavMeshAgent fürs Klick-Movement selbst
+  vorgeschlagen und tragfähig begründet (simpel, effektiv, kein
+  Eigenbau); das eigene Steuerungs-Zielbild klar verteidigt (Modell
+  B) und das GDD-Missverständnis offen benannt. **Fehlerbild:** beim
+  Export die Abwahl-Liste nicht angewandt — alles importiert statt
+  der Auswahl (NetTest, Alt-Szenen liefen mit; nachbereinigt); die
+  eigene dokumentierte Steuerungs-Entscheidung vom 16.10. nicht mehr
+  präsent. **Hilfe:** gitignore-Anker-Falle samt Gegentest,
+  GUID-Abgleich der Übernahme, tote Verweise gefunden
+  (NetworkManager-PlayerPrefab, Build-Liste), Modell-A/B-
+  Gegenüberstellung mit GDD-Zitaten.
+- 2026-10-21 · Pathmakers TD, Figur-Design-Runde (Brainstorm/Design) —
+  **Selbst:** das Steuerungsmodell klar durchgesetzt und das
+  GDD-Missverständnis offen benannt; den NavMeshAgent als Werkzeug
+  selbst vorgeschlagen und tragfähig begründet; das Schalter-Prinzip
+  (Komfort mit An/Aus als Settings-Vorsorge) selbst eingebracht,
+  ebenso Status- und Steuerungs-Tafel als stehende Artefakte; den
+  Komfort-Umfang bewusst abgewogen (Halten, Zoom, Marker gleich rein;
+  Grenze und Edge-Pan schaltbar); das eigene Lernziel offen
+  formuliert (länger raus aus C#/Unity, Multiplayer unverstanden,
+  Step-für-Step, selbst tippen). **Fehlerbild:** NavMesh mit
+  NavMeshAgent verwechselt — Agent-Werte für geteilt gehalten und
+  deshalb Spiegel-Felder „zur Sicherheit" gewollt; am
+  Komponenten-Bild aufgelöst, danach selbst für „direkt am Agent"
+  entschieden. **Hilfe:** Agent-Feld-Tabelle mit Startwerten,
+  Kamera-Geometrie als Skizze, das Ein-Besitzer-Argument samt
+  Awake-Seed-Abgrenzung, die Modell-Gegenüberstellung.
+- 2026-10-21 · Pathmakers TD, P-B1 Bau: Spawner, Motor, Klick-Befehl
+  (Development, Isor tippt) — **Selbst:** PlayerSpawner nach eigenem
+  Entwurf (Prefab-Zugriff und SpawnFor-Schnitt selbst vorgeschlagen);
+  Motor-Entwurf im Kern richtig und zwei eigene Irrwege selbst
+  zurückgenommen (Action im Motor, Rigidbody); die NGO-Kernlektion in
+  drei Fragerunden selbst erarbeitet und fehlerfrei nacherzählt
+  (16 Instanzen, je Rechner ein Agent, Input bleibt lokal, nur
+  Positionen reisen, NetworkTransform als Radio); die Drossel-Idee
+  fürs Halten selbst eingebracht, die Pixel-zu-Welt-Lücke selbst
+  benannt; das Out-Parameter-Muster aus C++ selbst auf
+  Physics.Raycast übertragen; den stummen Fehlversuch selbst aufs
+  ungespeicherte Prefab zurückgeführt. **Fehlerbild:** Türsteher
+  invertiert (IsServer statt !IsServer); fehlendes return im Guard
+  und doppeltes if ohne else — das Fallthrough-Muster zweimal in
+  einer Datei; GetComponent für die Szene-Kamera (Nachbar-Griff aufs
+  falsche Ziel); Instantiate-Überladung mit Transform-Parent
+  erwischt; ein Fix von drei ungespeichert und Prefab ungespeichert
+  getestet (Editor-Wahrheit gegen Platten-Wahrheit, zweimal am Tag).
+  **Hilfe:** Mathf.Infinity als Überladungs-Auflösung, Zeit- statt
+  Frame-Drossel samt Zahlen-Trace und Reset-Ort, UI-Guard-Syntax,
+  Debug-Leiter als Diagnose-Werkzeug, vier NGO-Schaubilder
+  (Rechner-Kopien, Radio, Zeitleiste, Netz-Reisegut).
+- 2026-10-21/22 · Pathmakers TD, P-B1 Bau: Kamera, Marker, Netz-Test
+  (Development, Isor tippt) — **Selbst:** StrategyCamera-Erstwurf mit
+  allen vier Aufgaben allein entworfen und getippt; Edge-Pan nach dem
+  Streifen-Bild komplett selbst gespiegelt; Start-Snap und
+  Zoom-Invertierung eigenständig ergänzt; den Plane-Bestand gegen
+  Claudes Quad-Ansage verteidigt — und per Screenshot recht behalten;
+  Marker-ohne-NetworkObject fehlerfrei hergeleitet; die Latenz selbst
+  beobachtet, präzise beschrieben und die richtige Frage gestellt
+  (Unity oder mein Code?); Zeiten eigenständig getrackt und als
+  Messdaten geliefert. **Fehlerbild:** Bewegungsformel als „Position
+  mal Richtung mal Zeit" gemerkt (Plus statt Mal); das +=-Delta
+  zweimal mit Ist-Werten statt Nullen gefüllt; die vorgewarnte
+  Color-Kopie-Falle trotzdem erwischt (Wert kopiert, nie
+  zurückgeschrieben); beim else-if-Umbau das Halte-Reset verloren;
+  falsche Action kopiert (Zoom statt Fokus) — durchweg benennbare
+  Klassen, kaum Neues. **Hilfe:** Rand-Streifen-Bild mit
+  Pixel-Vergleichen, Latenz-Zeitstrahl mit Millisekunden, Ring-Textur
+  generiert, die out-Rollen-Trennung (Cache gehört der Methode),
+  Zahlenbeispiele zu Formel, Drossel und Zoom-Schritt.
+- 2026-10-22 · Pathmakers TD, P-B1-Reflexion (Isors eigene
+  Einschätzungen) — **Selbst:** die eigene NGO-Faustregel destilliert,
+  unaufgefordert und im Kern richtig („sehen das nur ich oder auch die
+  anderen Rechner? → MonoBehaviour oder NetworkBehaviour"); die
+  Motivation als zurückgekehrt benannt; die Abhängigkeit von
+  gelieferten Vokabeln offen angesprochen und Wiederholung als eigenen
+  Lernweg formuliert; den Design-Fortschritt selbst eingeschätzt
+  („noch nicht gut, aber besser — ich denke an mehr Fälle"), was sich
+  mit der Entwurfs-Reihe des Bausteins deckt; eigenständig einen
+  Demo-Clip aufgenommen und im Datenbaum abgelegt; zum Abschluss eine
+  eigene Zeit-Prognose gesetzt (alle Programmiersysteme bis Anfang
+  Januar, danach Gestaltung und Feinschliff) — sie deckt sich,
+  unbeabsichtigt, mit der Alpha-Linie des Moduls (08.01.,
+  Core-Feature-Complete). Kein Fehlerbild — Reflexionsrunde ohne Code.

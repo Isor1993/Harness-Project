@@ -129,8 +129,10 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 | `Projekte/Model_Viewer/DECISIONS.md` | Nur Entscheidungen zum 3D-Model-Viewer (Uni-Aufgabe 2, Modul 5-101) — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
 | `Projekte/Model_Viewer/LOG.md` | Nur was wann passiert ist — datierte Ereignisse, älteste oben. |
 | `Projekte/Model_Viewer/ROADMAP.md` | Nur was am 3D-Model-Viewer als Nächstes gebaut wird — Bausteine und offene Aufgaben. |
+| `Projekte/Pathmakers_TD/ABGABE_NOTIZEN.md` | Nur das Roh-Material für die Abgabe-Doku des Spieleprototyps von Pathmakers TD — je Baustein Zeiten, Gebautes und Erkenntnisse, festgehalten direkt nach dem Baustein. |
 | `Projekte/Pathmakers_TD/DECISIONS.md` | Nur Entscheidungen zum Spielkonzept Pathmakers TD (Arbeitstitel; Weg-Bau-Tower-Defense, seit dem 2026-10-20 das Semester-Spiel des Moduls 5FSC0XD101_P) — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
 | `Projekte/Pathmakers_TD/GDD.md` | Design-Absicht des Spiels Pathmakers TD (Arbeitstitel) — was es sein soll, nicht wie es gebaut wird — und zugleich das Markdown-Manuskript, aus dem `Kern/Werkzeuge/abgabe_bauen.py` die .docx-Abgabefassung baut (Formatvorlage und Titelteil im Datenbaum, `Kern/PFADE.md` → `DATENBAUM`; den Umgang mit der .docx regelt `Uni/DOCX_RULES.md`). |
+| `Projekte/Pathmakers_TD/LOG.md` | Nur was wann passiert ist — datierte Ereignisse, älteste oben. |
 | `Projekte/Pathmakers_TD/ROADMAP.md` | Nur was an Pathmakers TD als Nächstes designt oder gebaut wird — Aufgaben und Verweise auf offene Fragen. |
 | `Projekte/Python_Lesen/DECISIONS.md` | Nur Entscheidungen zum Python-Lesekurs — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
 | `Projekte/Python_Lesen/LOG.md` | Nur was wann passiert ist — datierte Ereignisse und die Einheiten-Einträge des Kurses, älteste oben. |

@@ -443,3 +443,165 @@ die erprobte Netz-Grundlage samt Werkzeugkette ist tatsächlich
 dieselbe.
 Verworfen: ein eigener Aufbau je Dokument (Mehraufwand ohne Nutzen
 für die Wahl).
+
+## 2026-10-20 — Prototyp von Anfang an im Netz
+
+Was: Der Spieleprototyp (Abgabe 27.11., `Uni/Semester_3/STUNDENPLAN.md`)
+wird von Beginn an als Multiplayer gebaut: Übernommen wird die erprobte
+Its-DOT-Grundlage — NGO mit Relay und Join-Code, Lobby, Menü-Kette —,
+und die Spielerfigur entsteht als Owner-Movement nach dem fertigen
+B1-Movement-Design (`Projekte/Its_DOT/DECISIONS.md`, Einträge vom
+2026-10-18/19). Konkretisiert fürs Prototyp-Vorgehen, was „2026-10-16 —
+Versus mit Income-Senden als Kernmodus" mit „von Anfang an
+multiplayer-tauglich" schon festhielt.
+Warum: Multiplayer ist Isors erklärtes Lernziel — seine Spiele sollen
+Multiplayer werden —, und der Prototyp ist laut Aufgabe der Ort zum
+Ausprobieren. Die erprobte Basis macht den Aufpreis klein; Movement und
+Bauen nachträglich netzfähig zu machen wäre genau das technische
+Risiko, vor dem der Aufgabentext warnt („kreative Risiken ja,
+technische Risiken nein" — `Uni/Semester_3/VORJAHR_AUFGABEN.md` →
+„3 · Spieleprototyp").
+Verworfen: erst solo bauen und das Netz vor der Alpha nachrüsten
+(schneller am ersten fühlbaren Weg-Bau, und die Solo-Sandbox wäre als
+Abgabe zulässig — aber Umbau-Risiko, und der Wettrüst-Test mit echten
+Mitspielern fehlte im Erkenntnis-PDF).
+
+## 2026-10-20 — Prototyp-Schnitt: Isors Reihenfolge, Wächter spät
+
+Was: Der Prototyp wird in Bausteine geschnitten (P-B1 Fundament im
+Netz bis P-B8 Mine; Liste und Schätzungen in der ROADMAP → „Prototyp —
+Bausteine"). Die Reihenfolge ist Isors Entwurf: Figur, Weg-Bau, Karte,
+Gegner, Takt und Senden, Ressourcen; der erste Wächter bewusst erst
+als P-B7, die Mine als Streichkandidat zuletzt. Fester Prüfpunkt nach
+P-B4: Liegt der Stand hinter der Schätzung, wird das Vorziehen des
+Wächters besprochen.
+Warum: Reihenfolge und Schätzungen stammen von Isor; die Schätzungen
+tragen bewusst einen Multiplayer-Aufschlag (Beleg: die ehrliche
+B1-Nachschätzung bei It's D.O.T). Der Turm ist nach Isors Einschätzung
+ein eigener, risikoarmer Baukasten, der die Systeme davor braucht, um
+richtig benutzbar und sichtbar zu sein. Der benannte Preis: Der
+Spaß-Test — Weg-Länge gegen Feuerkraft, das Testziel des Prototyps —
+wird erst mit P-B7 möglich; dafür steht der Prüfpunkt. P-B1 bis P-B7
+füllen mit ~55–64 h das Bau-Budget bis zum 27.11. komplett, deshalb
+ist die Mine faktisch Alpha-Material (Notlösung: Kachel-Kauf-Knopf),
+und Playtests samt Erkenntnis-PDF bekommen fest die letzte Woche.
+Verworfen: den Wächter direkt nach dem Gegner-Baustein ziehen (Claudes
+Vorschlag — der Spaß-Test käme früher, aber gegen Isors
+Baukasten-Argument); die Mine als Pflichtteil des Prototyps.
+
+## 2026-10-20 — Projekt-Start: frisches Repo, gezielte Übernahme
+
+Was: Neues Repo `Pathmakers-TD` mit frischem Unity-Projekt
+`PathmakersTD`; in `Kern/PFADE.md` kommt dafür die Marke
+`PROJEKT_PATHMAKERS`. Die Netz- und Menü-Teile werden gezielt aus dem
+Its-DOT-Projekt übernommen, das Projekt wird nicht kopiert.
+Warum: Namens-Muster wie `Its-DOT`/`ItsDOT`; die gezielte Übernahme
+ist der am 2026-10-17 erprobte Weg (MainMenu-Migration, Its-DOT) und
+schleppt keine Outbreak-Reste mit (Testarea, Movement-Rohbau).
+Verworfen: das Its-DOT-Projekt als Kopie weiterführen (schneller am
+Start, aber toter Bestand im Semester-Repo).
+
+## 2026-10-21 — Steuerung: Befehlsklick statt Direktsteuerung
+
+Was: Die Spielerfigur wird per Befehlsklick gesteuert
+(Warcraft-3-Modell): Rechtsklick aufs Feld setzt das Laufziel, die
+Figur läuft selbst hin; WASD bewegt die freie Kamera, eine
+Rückfokus-Taste holt sie zur Figur (Taste und Kamera-Details fallen in
+der Design-Runde). Bewegung über Unitys NavMeshAgent; kein Sprung,
+kein Sprint — nur Beschleunigen und Bremsen, ein Tempo-Upgrade bleibt
+benannte Erweiterung. Löst die Direktsteuerung („Figur läuft per
+Tastatur") und die Folgekamera aus „2026-10-16 — Kamera und
+Bausystem" ab; Geisterbild-Bauen per Linksklick, Hinlauf-Zwang und
+der freie Planungs-Blick gelten unverändert.
+Warum: Das Steuerungs-Kapitel hatte Isors Absicht nie getroffen — wie
+beim Wellenmodell stand ein Missverständnis im GDD und fiel beim
+Baustein-Design auf (Isor: „ich habe gemeint, dass wir Modell B schon
+immer machen"). Direktsteuerung fühlt sich mit der schrägen
+Draufsicht nach Isors Einschätzung schlecht an, und die Maus gehört
+dem Bauen. NavMeshAgent statt Eigenbau: simpel und effektiv (Isor),
+weicht Gebäuden von Haus aus aus, der Aufgabentext erlaubt im
+Prototyp ausdrücklich zweckdienliche Werkzeuge
+(`Uni/Semester_3/VORJAHR_AUFGABEN.md` → „3 · Spieleprototyp"), und
+der Pathfinding-Unterricht folgt am 17.12. ohnehin.
+Verworfen: die dokumentierte Direktsteuerung per WASD samt
+Folgekamera (Modell A — kollidiert mit der Bau-Maus und dem
+Kamera-Gefühl der Draufsicht); ein eigener Klick-Motor ohne NavMesh
+(spart nichts und verliert das Ausweichen); das
+Rigidbody-Movement-Design aus Its-DOT B1 (für Physik-Slapstick
+begründet, den Pathmakers nicht hat — übernommen wird nur die
+Schichten-Trennung Input/Befehl/Bewegung).
+
+## 2026-10-21 — Spielerfigur V1: Klick-Befehl, Agent-Werte, Marker
+
+Was: Der Laufbefehl ist ein Strahl von der Kamera durch den
+Mauszeiger auf den Ground-Layer; nur ein Boden-Treffer wird zum Ziel,
+ungültige Klicks verpuffen still, über der Oberfläche blockt das
+EventSystem den Befehl. Rechtsklick-Halten zieht das Ziel gedrosselt
+nach — gleich in V1. Am Treffer blitzt ein Klick-Ring auf (V1). Die
+Agent-Werte leben direkt am NavMeshAgent im Inspector; Startwerte
+speed 5, acceleration 16, angularSpeed 720, stoppingDistance 0,1,
+autoBraking an. Im Befehls-Code sitzt von Anfang an die Prüfung „ist
+dieses Ziel erlaubt?", die in V1 immer ja sagt — die Gebietsgrenze
+selbst fällt in P-B3 (Richtung: Befehls-Filter plus Grenz-Collider,
+NavMesh-Areas nur bei Pfad-Ausreißern).
+Warum: Das Warcraft-Verhalten hält den Code klein, weil nur gültige
+Treffer überhaupt Befehle werden; Halten und Marker sind Komfort mit
+kleinem Preis (Isors Abwägung: lieber gleich fertig). Werte am
+Agenten statt gespiegelt: ein Besitzer je Zahl, und Tuning im
+Play-Mode wirkt sofort — Isors Spiegel-Sorge beruhte auf der
+Verwechslung von NavMesh (geteilte Fläche) und Agent
+(Instanz-Komponente je Figur). Ein Sammel-SO nach dem
+Awake-Seed-Muster kommt, sobald der erste Nicht-Agent-Wert auftaucht.
+Verworfen: Fehlerton oder Meldung bei ungültigem Klick (Rauschen);
+das Spiegeln der Agent-Werte im Player-Skript (zweiter Besitzer
+derselben Zahl, dazu die stille Laufzeit-Falle der Awake-Kopie); die
+Grenz-Technik schon in V1 (im Gym gibt es keine Gebiete).
+
+## 2026-10-21 — Kamera V1: fester Blick, Komfort mit Schaltern
+
+Was: Eigenes Kamera-Skript (StrategyCamera): fester Blickwinkel ~55°
+nach unten, Starthöhe 14 m, keine Drehung. WASD schiebt parallel zum
+Boden, das Mausrad zoomt die Höhe zwischen Min und Max, die Leertaste
+springt beim Tippen zur eigenen Figur und klebt an ihr, solange sie
+gehalten wird. Freiflug-Grenze und Edge-Pan sind gleich eingebaut,
+beide mit An/Aus-Schalter im Inspector, Start: aus.
+Warum: Der feste Blick hält das Layout lesbar (WC3-Vorbild), und die
+Maus dreht die Kamera nicht, weil sie dem Bauen gehört. Die Schalter
+sind Isors Settings-Vorsorge — heute Inspector-Haken, später die
+fertigen Andockstellen fürs Einstellungs-Menü; Edge-Pan bleibt beim
+Editor-Testen aus, weil die Kamera sonst wegläuft, sobald die Maus
+Richtung Inspector wandert. Bewusster Budget-Aufschlag von rund einer
+Stunde für vier kleine Komfort-Teile (Isor).
+Verworfen: Cinemachine (Blackbox — dieselbe Linie wie in der
+B1-Runde); eine Orbit-Kamera mit Maus-Drehung (kollidiert mit der
+Bau-Maus); den Komfort auf die Ausbauliste schieben (Isor: jedes
+Teil ist unter einer halben Stunde, und dann ist es fertig).
+
+## 2026-10-21 — Figur im Netz und Skript-Zuschnitt
+
+Was: Gespawnt wird über einen PlayerSpawner in der Spielszene nach
+dem LobbyPlayerSpawner-Muster — der Host erzeugt je verbundenem
+Client eine Figur am Spawn-Punkt und übergibt die Ownership; das
+PlayerPrefab-Feld am NetworkManager bleibt leer. Owner-Weiche in
+OnNetworkSpawn: ClickCommandInput und NavMeshAgent laufen nur beim
+Owner, Fremde bekommen die Position über das NetworkTransform mit
+Owner-Autorität; die Kamera ist rein lokal. Skripte: PlayerMotor
+(kapselt den Agent, MoveTo), ClickCommandInput und ClickMarker unter
+Scripts/Player/, StrategyCamera unter Scripts/CameraControl/,
+PlayerSpawner unter Scripts/NetWorking/, Prefab Player unter
+Prefabs/Player/. Eingaben laufen über die neue Action-Map „Gameplay"
+(Command, CameraMove, CameraZoom, FocusPlayer). Bau-Reihenfolge:
+NavMesh und Prefab-Rohbau → Spawner und Netz-Gerüst → Motor und
+Klick-Befehl → Kamera → Marker und Komfort → Netz-Test mit zwei
+Instanzen.
+Warum: Auto-Spawn über das PlayerPrefab-Feld stellte die Figur schon
+in die Lobby; das Spawner-Muster ist erprobt, und Isor kennt es aus
+dem eigenen Code. Die Schichten-Trennung Input → Befehl → Bewegung
+ist die übernommene Versicherung aus dem B1-Design, falls der
+Unterbau je wechselt. Die Action-Map ist die Controller-Vorsorge:
+Support ist Polish-Ziel — später kommen Bindings dazu statt
+Code-Umbau (Isor: ohne Support drohen Minuspunkte, und manche
+Eingaben brauchen je Gerät eigene Lösungen).
+Verworfen: der NGO-Auto-Spawn über das PlayerPrefab-Feld; harte
+Tasten-Abfragen statt Actions; Sprint- oder Dash-Felder auf Vorrat
+(das Tempo-Upgrade ist später genau ein Agent-Feld).

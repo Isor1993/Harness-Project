@@ -189,6 +189,54 @@ Seite ←  die B1-Stand-Zeile der Its-DOT-ROADMAP nennt die URL
 
 ---
 
+## 📍 Status  — Schicht: Projekt (Pathmakers TD)
+
+### 📍 Status · Pathmakers TD
+```
+URL      https://claude.ai/artifact/5JZCpkKe2MVnCC9R2ScuvJ
+Stand    2026-10-22 — nachgezogen beim Sichern: P-B1 fertig samt
+         Ist-Zeit (~12 h, Netz-Test bestanden), die Arbeits-Karte
+         zeigt jetzt P-B2 als Nächstes. Vorher 2026-10-21 — neu,
+         gebaut auf Isors Zuruf in der Figur-Design-Runde: Baustand
+         P-B1, die Bausteine P-B1 bis P-B8 samt P2 und Budget-Kacheln,
+         Entscheidungs-Kurzliste, Termine 27.11./03.12. Wird bei jedem
+         Sichern der Schicht nachgezogen (Isors Zuruf vom 2026-10-21).
+Quelle   Projekte/Pathmakers_TD/ROADMAP.md (Bausteine), .../LOG.md,
+         .../DECISIONS.md; Termine: Uni/Semester_3/STUNDENPLAN.md
+Skripte  keine — die Seite zeigt den Baustand, nicht Code
+Seite →  ⚙️ System · Pathmakers-Steuerung (Fußzeile)
+Seite ←  ⚙️ System · Pathmakers-Steuerung (Fußzeile)
+```
+
+---
+
+## ⚙️ System  — Schicht: Projekt (Pathmakers TD)
+
+### ⚙️ System · Pathmakers-Steuerung (geplant)
+```
+URL      https://claude.ai/artifact/DztjtxavWXmwrMP3YxZoET
+Stand    2026-10-21 — neu, gebaut auf Isors Zuruf: die beschlossene
+         Tastenbelegung der Prototyp-V1 — Maus, Tastatur, Grundsätze
+         samt Action-Map und Schalter-Prinzip.
+Zustand  geplant — beschreibt die Absicht aus der Design-Runde vom
+         2026-10-21, gebaut ist davon nichts; im Turnus gegen die
+         führende Quelle prüfen, bis der Baustein steht.
+Überholt Seit dem 2026-10-22 ist die Steuerung gebaut und im
+         Zwei-Instanzen-Test belegt — „(geplant)" fällt nach der Regel
+         am Pflegetag, nicht vom Commit (`ARTIFACT_RULES.md` →
+         „Pflege"). Inhaltlich stimmt die Seite weiter; einzige
+         Ergänzung seit dem Bau: Hochscrollen zoomt heran
+         (Vorzeichen-Entscheid im Code).
+Quelle   Projekte/Pathmakers_TD/DECISIONS.md → „2026-10-21 — Steuerung:
+         Befehlsklick statt Direktsteuerung"
+Skripte  beschreibt geplante Skripte: ClickCommandInput, PlayerMotor,
+         StrategyCamera, ClickMarker; dazu die Action-Map „Gameplay"
+Seite →  📍 Status · Pathmakers TD (Fußzeile)
+Seite ←  📍 Status · Pathmakers TD (Fußzeile)
+```
+
+---
+
 ## 🎓 Zeugnis  — Schicht: Kern
 
 **Kein vierter Typ** — die Seiten gehören zum Session-Typ „Zeugnis"
