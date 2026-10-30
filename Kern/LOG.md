@@ -727,3 +727,9 @@ damals, nicht den von heute.
   Sicherung vom 2026-09-07 verglichen — Unterschied nur die drei
   Altstand-Vermerke. Dazu `Projekte/GameJam_S3_2026/` mit Marke
   `PROJEKT_GAMEJAM` und Freigabe in `.claude\settings.json`.
+- 2026-10-16 — `Kern/Werkzeuge/abgabe_bauen.py` um die Abgabe-Ende-Marke
+  erweitert (Commit „Update V 0.0090"): Steht `<!-- abgabe-ende -->` im
+  Manuskript, baut das Werkzeug nur den Text davor — interne Abschnitte
+  (offene Fragen, Entwurf) bleiben in jeder Abgabefassung draußen.
+  Erster Nutzer ist das GDD von It's D.O.T. *(Nachgetragen am
+  2026-10-23 — die Zeile fehlte beim Sichern der GDD-Session.)*

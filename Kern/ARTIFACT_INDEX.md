@@ -51,14 +51,16 @@ Zeilen je Eintrag:
 ### 📍 Status · Semester 3
 ```
 URL      https://claude.ai/code/artifact/990b0be5-f2ec-42e2-affe-858d1cc92208
-Stand    2026-10-07 — nachgezogen am Pflegetag: Neuausrichtung vom
-         01.10. als eigener Abschnitt (vier Karten: nur Spielprojekt
-         benotet, Viewer minimal, Engine-Entscheidung bis 02.11.,
-         eigenständiges Spiel), Zeitstrahl um Game Jam, frühe
-         Viewer-Abgabe, Hands-on und Entscheidungstermin ergänzt,
-         Kontrollpunkt vom 22.11. auf den 02.11. verlegt, Lane Defender
-         als abgegeben (03.10.) markiert, Kacheln neu, Phasen 1–3
-         nachgezogen. Termine darüber hinaus unverändert vom 14.09.
+Stand    2026-10-29 — nachgezogen auf Isors Zuruf (Planungs-Runde):
+         alle vier Weichen der Neuausrichtung als eingelöst markiert —
+         Engine-Entscheid Unity (09.10.), Konzept-Wahl Pathmakers TD
+         (20.10.), Viewer abgegeben (09.10.) und von der OCE
+         abgesegnet, Game Jam erledigt. Phase 2 zu, Phase 3 läuft
+         (P-B1/P-B2 fertig, vor Plan); Kacheln neu (29 Tage bis zur
+         Doppelabgabe); Hinweise auf den internen Meilenstein-Plan
+         („immer eine Version voraus") samt Querverweis zur
+         Pathmakers-Tafel. Vorher 2026-10-07 — Neuausrichtung vom
+         01.10. eingepflegt. Termine unverändert vom 14.09.
 Löst ab  `📍 Status · Wo das Projekt steht` (seit 2026-09-11; die Seite
          ist inzwischen gelöscht — Tabelle unten)
 Geprüft  2026-10-07 — gegen Uni/ROADMAP.md, die vier DECISIONS vom
@@ -66,8 +68,8 @@ Geprüft  2026-10-07 — gegen Uni/ROADMAP.md, die vier DECISIONS vom
 Quelle   Uni/ROADMAP.md (Phasenplan), Uni/DECISIONS.md,
          Uni/Semester_3/STUNDENPLAN.md
 Skripte  keine — die Seite zeigt Termine und Plan, nicht Code
-Seite →  keine
-Seite ←  keine
+Seite →  📍 Status · Pathmakers TD (Fußzeile)
+Seite ←  📍 Status · Pathmakers TD (Fußzeile)
 ```
 
 ---
@@ -194,18 +196,24 @@ Seite ←  die B1-Stand-Zeile der Its-DOT-ROADMAP nennt die URL
 ### 📍 Status · Pathmakers TD
 ```
 URL      https://claude.ai/artifact/5JZCpkKe2MVnCC9R2ScuvJ
-Stand    2026-10-22 — nachgezogen beim Sichern: P-B1 fertig samt
-         Ist-Zeit (~12 h, Netz-Test bestanden), die Arbeits-Karte
-         zeigt jetzt P-B2 als Nächstes. Vorher 2026-10-21 — neu,
-         gebaut auf Isors Zuruf in der Figur-Design-Runde: Baustand
-         P-B1, die Bausteine P-B1 bis P-B8 samt P2 und Budget-Kacheln,
-         Entscheidungs-Kurzliste, Termine 27.11./03.12. Wird bei jedem
-         Sichern der Schicht nachgezogen (Isors Zuruf vom 2026-10-21).
-Quelle   Projekte/Pathmakers_TD/ROADMAP.md (Bausteine), .../LOG.md,
-         .../DECISIONS.md; Termine: Uni/Semester_3/STUNDENPLAN.md
+Stand    2026-10-30 — Umbau in der Etappen-Runde: neuer oberster
+         Abschnitt „Diese Woche" (Wochenplan, neu jeweils sonntags)
+         und der komplette „Meilenstein-Plan" M1–M6 mit Fertig-Linien
+         (20.11. Feature-Stopp, 11.12., 26.12., 22.01., 05.02.,
+         16./21.02.) und Inhalts-Listen je Abgabe; Bausteine-Strahl
+         mit Wochen-Soll und P-B8 als „wird gebaut, Streichrecht".
+         Vorher 2026-10-29 (P-B2 fertig, P-B3-Design) und 2026-10-22
+         (P-B1 fertig). Wird bei jedem Sichern der Schicht nachgezogen
+         (Isors Zuruf vom 2026-10-21) — die Sicherungen vom 28./29.10.
+         hatten das ausgelassen, nachgeholt am 29.10.
+Quelle   Projekte/Pathmakers_TD/ROADMAP.md (Bausteine,
+         Meilenstein-Ziele), .../LOG.md, .../DECISIONS.md; Termine:
+         Uni/Semester_3/STUNDENPLAN.md
 Skripte  keine — die Seite zeigt den Baustand, nicht Code
-Seite →  ⚙️ System · Pathmakers-Steuerung (Fußzeile)
-Seite ←  ⚙️ System · Pathmakers-Steuerung (Fußzeile)
+Seite →  ⚙️ System · Pathmakers-Steuerung (Fußzeile) ·
+         📍 Status · Semester 3 (Fußzeile)
+Seite ←  ⚙️ System · Pathmakers-Steuerung (Fußzeile) ·
+         📍 Status · Semester 3 (Fußzeile)
 ```
 
 ---

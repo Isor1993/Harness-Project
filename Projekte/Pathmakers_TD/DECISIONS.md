@@ -605,3 +605,452 @@ Eingaben brauchen je Gerät eigene Lösungen).
 Verworfen: der NGO-Auto-Spawn über das PlayerPrefab-Feld; harte
 Tasten-Abfragen statt Actions; Sprint- oder Dash-Felder auf Vorrat
 (das Tempo-Upgrade ist später genau ein Agent-Feld).
+
+## 2026-10-23 — Kacheln als Objekte auf flachem Baubereich
+
+Was: Der Baubereich jedes Gebiets ist flach; Hügel sind Kulisse
+außenrum und gehören zum Karten-Blockout (ROADMAP → „P-B3 · Karte +
+Spawns"). Jede Wegkachel ist ein eigenes flaches Prefab mit echter
+Dicke (Richtwert 5–10 cm), die Oberseite liegt leicht über dem Boden.
+Das Prefab wird bei einem Meter Kantenlänge gebaut; der Grid-Manager
+skaliert es beim Erzeugen auf die Zellgröße. Die Belegung lebt als
+Tabelle im Grid-Manager — die Kachel-Objekte sind reine Optik, die
+Daten sind die Wahrheit.
+Warum: Auf flachem Boden ist das Raster reine Mathematik (Mausstrahl
+auf den Boden, Zellindex aus X und Z, konstante Höhe) — kein
+Anschmiegen, kein schiefes Geisterbild. Kacheln als Objekte tragen
+alles, was das GDD verlangt: das Geisterbild (dasselbe Prefab,
+halbtransparent), die lose Vorratskachel auf dem Feld (ein Anstrich
+kann kein Ding sein), den Abbau und die Asset-Pläne (Kenney-Kacheln
+sind Meshes). Die Dicke verhindert Z-Fighting zweier deckungsgleicher
+Flächen. Die Trennung Daten gegen Optik hält das Netz klein (nur
+Zellindizes reisen) und gibt der Wegfolge in P-B4 eine Tabelle statt
+Objekte; einige hundert simple Platten-Meshes sind für Unity
+unkritisch.
+Verworfen: der Weg als Textur oder Splatmap im Boden (Laufzeit-Malen
+ist Shader-Territorium, lose Kacheln und Geisterbild passen nicht ins
+Modell, fertige Kachel-Assets blieben ungenutzt); papierdünne Flächen
+exakt auf Bodenhöhe (Z-Fighting); unebener Baubereich.
+
+## 2026-10-23 — Bau-Erlebnis: Kategorie-Leiste und Objekt-Panel
+
+Was: Die Aktionsleiste der Figur ist eine Quick-Slot-Leiste mit
+Kategorien statt Produkten — zwei Slots auf Dauer: Kacheln und Wächter
+(ab P-B7). Die Slots entstehen datengetrieben aus einer
+Kategorie-Liste, tragen Zifferntasten, Esc oder Rechtsklick verlässt
+den Bau-Modus. Bauen: Slot wählen → Geisterbild snappt aufs Raster →
+Linksklick erteilt den Auftrag, Shift-Klicks hängen weitere an;
+ausstehende Aufträge bleiben als nummerierte Geisterbilder stehen, die
+Figur arbeitet sie in Bestell-Reihenfolge ab und baut in V1 sofort bei
+Ankunft (eine Bauzeit je Kachel bleibt vorgemerkter Tuning-Regler).
+Verwalten: Klick auf ein liegendes Objekt öffnet dessen Panel — bei
+Kacheln „Abbauen" (sofort, ohne Hinlauf, Vorrat plus eins), später
+Aufrüsten und die Wächter-Wahl am gebauten Platz (Sockel-Muster).
+Panel-Form am Platz und Preisaufteilung entscheidet die
+P-B7-Design-Runde. Entscheidet die offene Leisten-Frage aus
+„2026-10-16 — Oberfläche: Sende-Gebäude, Aktionsleiste, verdeckte
+Sends" (Quick-Slots); Geisterbild und Hinlauf-Zwang aus „2026-10-16 —
+Kamera und Bausystem" gelten fürs Legen unverändert.
+Warum: Die häufigste Aktion des Spiels ist das Weg-Legen — Slot plus
+Shift-Reihe kostet für einen Weg von 40 Kacheln rund 41 Handgriffe,
+ein Kontextmenü am Feld über 80 (Isors eigener Modell-Vergleich,
+Claudes Rechnung). Kategorien statt Produkte lösen Isors
+Skalierungs-Sorge: Die Leiste wächst nie, die Auswahl wandert in das
+Objekt-Panel, das fürs Abbauen und Aufrüsten ohnehin entsteht — ein
+Muster für alles Liegende, zugleich das Vorbild aus Wintermaul Wars
+(Basis bauen, am Gebäude spezialisieren). Abbauen ohne Hinlauf ist
+Isors Entscheidung und konsequent: Verwalten ist Fernbedienung wie
+Mine und Sende-Gebäude, der Hinlauf ist der Preis fürs Erschaffen.
+Mausrad-Slotwechsel kollidiert mit dem Kamera-Zoom; der Controller
+läuft später über die Action-Map (eine Rad-Darstellung der Slots
+bleibt dort denkbar).
+Verworfen: ein Kreismenü per Linksklick aufs Feld als Bau-Einstieg
+(Isors zweites Modell — fürs Massen-Legen doppelt so teuer und kippte
+die Geisterbild-Entscheidung); ein Slot je Produkt (skaliert nicht,
+Isors eigener Einwand); Abbauen mit Hinlauf (Claudes
+Konsistenz-Vorschlag — Isor: im Panel wegmachen ist schöner;
+Playtest-Merkposten in ROADMAP → „P2 · Playtests und Erkenntnis-PDF");
+Mausrad zum Slot-Blättern.
+
+## 2026-10-23 — Raster: Zellgröße als Wert, Rig als Prefab
+
+Was: Die Zellgröße (Startwert 2 m) ist ein serialisiertes Feld am
+Grid-Manager — genau ein Besitzer, jeder Verbraucher fragt ihn. Das
+ganze Weg-Bau-System ist ein Prefab („Rig"): Grid-Manager mit
+Start-Marker als Kind und Kachel-Prefab als Referenz; die
+Welt-zu-Zelle-Rechnung zieht die eigene Transform-Position ab, Breite
+und Höhe der Rasterfläche in Zellen stehen im Inspector. Testarea:
+eine Instanz, frei hingestellt; echte Karte (P-B3): vier Instanzen, je
+Gebiet eine. Ungültig in P-B2: belegte Zelle, außerhalb der Fläche,
+Vorrat null — das Geisterbild färbt um, der Klick verpufft still;
+keine Reichweiten-Grenze, weit bestellen bestraft der Hinlauf von
+selbst. Verbundene und lose Kacheln sehen in V1 gleich aus (Isor); die
+Zusammenhang-Prüfung ab dem Start-Marker läuft trotzdem und zeigt sich
+nur als Editor-Gizmo. Die Farbwahl gültig/ungültig fällt am echten
+Bild — nie Rot gegen Grün, und ein zweiter Träger (Form oder Symbol)
+ist Pflicht nach dem Barrierefreiheits-Absatz des GDD.
+Warum: Der Inspector-Wert ist Isors Tuning-Linie aus P-B1 (Werte am
+Besitzer, Live-Drehen im Play-Mode); das Kachel-Prefab bei einem Meter
+plus Skalierung durch den Manager hält die Zellgröße an einer Stelle.
+Der Ursprung an der eigenen Position macht das Rig frei verschiebbar —
+Isors Anforderung, das System aus der Testarea unverändert in neue
+Szenen zu übernehmen — und die vier funktional gleichen Gebiete der
+Karte werden zu vier Instanzen statt zu Sonderlogik. Stilles Verpuffen
+ist die Linie des Klick-Befehls aus P-B1. Das Gizmo hält die Prüfung
+testbar, ohne die vertagte Spieler-Optik festzulegen.
+Verworfen: das Raster ab Weltursprung (nicht verschiebbar); die
+Zellgröße je Verbraucher gespiegelt (zweiter Besitzer derselben Zahl);
+eine sichtbare Verbunden-gegen-lose-Optik schon in V1 (Claudes
+Vorschlag — Isor: erstmal gleich lassen, Optik später; Merkposten in
+ROADMAP → „P3 · Polish-Merkliste"); Fehlerton oder Meldung bei
+ungültigem Klick.
+
+## 2026-10-23 — Netz: Host als Buchhalter, Verkündung an alle, Vorhersage als Erweiterung
+
+Was: Die Belegungstabelle gehört dem Host — sein Exemplar ist das
+Original, jede Änderung läuft über ihn. Durchs Netz reisen nur
+Zellindizes plus die ClientId des Legers je Kachel (fürs Gebiets-Recht
+ab P-B3); Kacheln sind keine NetworkObjects. Ablauf: Die Anfrage reist
+erst im Ankunftsmoment der Figur (ServerRpc), der Host prüft Tabelle
+und Vorrat, trägt ein und verkündet per ClientRpc an alle — auch an
+den Absender; jeder Rechner baut die Kachel-Optik aus derselben
+Verkündung. Clients halten eine lokale Tabellen-Kopie nur für die
+Geisterbild-Vorprüfung; ist die Zelle bei Ankunft belegt, verpufft der
+Auftrag still. Als Sofort-Feedback dient eine rein lokale Quittung im
+Bau-Moment (Geisterbild rastet sichtbar ein, später ein Bau-Sound).
+Abbauen läuft denselben Weg. Benannte Erweiterung: Client-Vorhersage —
+der Owner zeigt die Kachel sofort, der Host verifiziert, eine
+Ablehnung rollt zurück (Kachel weg, Vorrat zurück). Auslöser wäre
+spürbares Zögern beim Nahbau in den Playtests; Umbau-Schätzung 2–4 h,
+begrenzt auf PathGridNet und die Auftragsliste. Skript-Zuschnitt:
+PathGrid (Tabelle, Welt-zu-Zelle, Zusammenhang, Gizmo), PathGridNet
+(Anfrage, Host-Prüfung, Verkündung), BuildModeController (Slot-Zustand,
+Geisterbild, Klicks — nur Owner) und TileGhost unter Scripts/Building/;
+BuildOrderQueue (Auftragsliste der Figur, ruft PlayerMotor.MoveTo)
+unter Scripts/Player/; BuildBarUI und TileInfoPanelUI unter
+Scripts/UI/. Die Action-Map „Gameplay" wächst um Slot-Tasten und
+Abbrechen. Bau-Reihenfolge: Grid und Legen rein lokal im Gym →
+Geisterbild und Leiste → Auftragskette mit dem Motor → Netz-RPCs →
+Abbau-Panel → Zwei-Instanzen-Test über Relay.
+Warum: Bauen ist geteilter Weltzustand — anders als das Owner-Movement
+braucht er eine Instanz, deren Reihenfolge gilt: Klicken zwei Spieler
+zugleich dieselbe Zelle, entscheidet die Eingangs-Reihenfolge beim
+Host, statt dass zwei Rechner zwei verschiedene Welten zeigen. Über
+Relay läuft ohnehin jedes Paket durch den Host (Stern-Topologie) —
+„jeder verkündet selbst" spart kein Paket und kauft das Desync-Risiko.
+Die Verkündung an alle inklusive Absender heißt ein einziger Code-Pfad
+ohne Vorläufig-Zustand und ohne Rückrollen. Die Netz-Antwort
+(0,06–0,15 s über Relay) versteckt der Hinlauf der Figur; im Nahbau
+trägt die lokale Quittung — Klick sofort beantwortet, Ergebnis kurz
+danach, das Muster aus Warcraft 3. Das RPC-Paar statt NGO-NetworkList:
+drei nachvollziehbare Schritte statt Sync-Blackbox (dieselbe Linie wie
+gegen Cinemachine), und einen Late-Join gibt es im Spiel nicht.
+Verworfen: Client-Vorhersage schon in V1 (Isors eigene Herleitung —
+korrekt samt Cheat-Einschätzung, aber sie löst ein Problem, das der
+Hinlauf schon löst, und kostet einen Rückroll-Pfad an jeder Kachel);
+Verkündung an alle außer dem Absender (zweiter Code-Pfad ohne
+Ersparnis); ein NetworkObject je Kachel (Overhead für Objekte, die
+sich nie bewegen); NetworkList für die Belegung.
+
+## 2026-10-25 — Leiste: Grundzustands-Panel, Tasten-Zuordnung, HUD-Ordner
+
+Was: Die Leiste trägt drei runde Panels (Isors Entwurf): links das
+Grundzustands-Panel — es leuchtet von selbst, wenn kein Werkzeug in der
+Hand ist, und wirkt per Klick als Alles-aus-Knopf; es ist nie ein
+anwählbarer Pflicht-Modus. Daneben Kacheln und Wächter als
+Werkzeug-Toggles. Die Zifferntasten folgen den Werkzeugen (1 Kacheln,
+2 Wächter ab P-B7), nicht der Panel-Anordnung; das Grundzustands-Panel
+hat keine Taste, sein Tasten-Äquivalent ist Esc; eine dritte
+Slot-Action liegt ungenutzt als Reserve. Ingame-UI-Skripte liegen
+unter Scripts/HUD/ (BuildBarUI, später TileInfoPanelUI); Scripts/UI/
+behält Menü-Kette und generische UI-Helfer. Präzisiert Leisten- und
+Skript-Zuschnitt aus „2026-10-23 — Bau-Erlebnis: Kategorie-Leiste und
+Objekt-Panel" und „2026-10-23 — Netz: Host als Buchhalter, Verkündung
+an alle, Vorhersage als Erweiterung".
+Warum: Laufen geht laut Steuerungs-Entscheidung immer (Rechtsklick) —
+ein Bewegen-Modus mit Klickzwang widerspräche ihr; als Anzeige erhält
+das linke Panel Isors Drei-Panel-Bild trotzdem. Das häufigste Werkzeug
+gehört auf die schnellste Taste. Die HUD-gegen-Menü-Trennung ist Isors
+Ordner-Entscheidung: Die Ingame-Anzeigen wachsen (Ressourcen, Timer,
+Objekt-Panel) und bleiben so sauber von der Menü-Kette getrennt.
+Verworfen: „Bewegen" als anwählbarer Modus (Klickzwang vor der
+häufigsten Handlung); Taste 1 für das linke Panel (Anordnung schlüge
+Werkzeug); BuildBarUI unter Scripts/UI (Claudes Zuschnitt — von Isor
+mit der Ingame-gegen-Menü-Grenze begründet überstimmt).
+
+## 2026-10-28 — Szenen-Ordnung: drei Körbe, SYSTEM als Trennstrich
+
+Was: Drei Ordnungs-Fragen mit je eigenem Zuhause: Der Skript-Ordner
+sortiert nach Fachgebiet (Building/Player/HUD/NetWorking/GameFlow), die
+Szene nach der Frage „beschreibt es diese Welt, oder bietet es einen
+Dienst?", der Netz-Besitz bestimmt den Träger (Persönliches aufs
+Spieler-Prefab, Gemeinsames auf ein Szenen-Objekt). Die Szene hybrid:
+`---SYSTEM ---` ist nur ein Trennstrich, die Dienste (Kamera, Licht,
+PlayerSpawner, TestareaBootstrap, GameNetwork) bleiben Wurzel-Objekte;
+World und UI sind echte Parents, die nie bewegt oder skaliert werden.
+Das Rig heißt jetzt PathBuildingRig und bleibt als Ganzes versetzbar —
+die benannte Ausnahme unter World.
+Warum: Isors Anforderung „sauber, von Namen her verstehen, nicht quer
+verteilt" — mit Blick auf die Erweiterung (Türme). Echte Parents
+vererben ihre Transform: Ein verschobenes SYSTEM-Parent nähme Kamera
+und Dienste mit, Netz-Identitäten in Kind-Ebenen geraten in
+Transform-Sync-Fallen, und der NetworkManager koppelt sich ohnehin
+selbst von jedem Parent ab. World und UI dagegen gruppieren Inhalte,
+die zusammen stehen bleiben.
+Verworfen: SYSTEM als echtes Parent (Isors eigener Verdacht „da könnte
+es Probleme geben" — bestätigt); NavMesh unter SYSTEM (Isors
+Selbstkorrektur: es beschreibt die Welt, keinen Dienst).
+
+## 2026-10-28 — Netz-Träger GameNetwork, ein Skript je gemeinsamem System
+
+Was: PathGridNet wohnt auf GameNetwork — einem leeren Szenen-Objekt mit
+NetworkObject an der Wurzel der Testarea —, nicht auf dem
+Spieler-Prefab. Folgen des Trägers für das RPC-Paar Brief/Durchsage:
+Das Objekt gehört dem Host, der Brief steht deshalb auf
+InvokePermission Everyone und liest den
+Absender aus dem Netcode-Stempel (SenderClientId); die Durchsage ist
+auf InvokePermission Server verriegelt. Erweiterungsregel: ein
+Netz-Skript je gemeinsamem System — Türme reisen später als weiteres
+Reisegepäck (int für den Bau-Typ) durch dasselbe Methodenpaar, kein
+TowerNet je Bau-Sorte. API-Stand dazu: Seit NGO 2.7 gilt das
+universelle [Rpc(SendTo…)]-Attribut (Namen enden auf Rpc,
+InvokePermission statt RequireOwnership); ServerRpc/ClientRpc aus der
+Design-Runde vom 2026-10-23 sind Alt-Bestand, das Projekt läuft auf
+NGO 2.13.
+Warum: Isors eigener Träger-Entwurf („ein separates Objekt, da drauf
+alles, was Netzwerk tut"): Der Spieler existiert beim Szenenstart noch
+nicht und gehört genau einem Client — die Belegung ist aber
+Gemeinschaftszustand; Besitz bestimmt den Träger. Ein Skript je System
+hält das Gemüse im richtigen Korb, wenn die Systeme wachsen.
+Verworfen: PathGridNet auf dem Spieler-Prefab (falscher Besitz, falsche
+Lebenszeit); ein Netz-Skript je Bau-Typ (verteilt ein System über
+viele Dateien).
+
+## 2026-10-28 — Gym-Testweg: NetworkManager-Prefab und TestareaBootstrap
+
+Was: Der NetworkManager ist jetzt ein Prefab
+(Assets/Prefabs/Networking) — eine Konfigurations-Quelle für Menü-Weg
+und Testarea. TestareaBootstrap (Scripts/GameFlow, Script Execution
+Order −100) instanziiert es beim Play direkt in der Testarea und ruft
+StartHost; der Singleton-Guard lässt den Menü-Weg unberührt, dort
+existiert der Manager schon. Regel daraus: Verdrahten in der
+Awake-Phase, Netz-Dienste starten in der Start-Phase — Netcode
+registriert seine Nachrichtentypen zwischen OnEnable und Start.
+Warum: Menü-freier Play-Klick macht jede Netz-Iteration billig, und
+der Host ist selbst Client — der Solo-Lauf im Gym deckt damit den
+kompletten RPC-Pfad ab, nur den zweiten Bildschirm nicht (dafür bleibt
+der Relay-Test). StartHost im Awake wirft die ILPP-Ausnahme „Allowed
+Count: 0" (GitHub-Issue #2986) — Claudes Awake-Rat war falsch, Isors
+Umsetzung jeweils korrekt.
+Verworfen: der NetworkManager fest in der Testarea-Szene (zweite
+Konfigurations-Quelle, Duplikat beim Menü-Weg); StartHost im Awake
+(gemessen am ILPP-Fehler); ein StartClient-Knopf im Gym (Mehr-Spieler
+testet erst der Multiplayer Play Mode ab P-B3 — ROADMAP).
+
+## 2026-10-29 — Lauf-Konflikt: manueller Befehl storniert die Bestellungen
+
+Was: Ein manueller Laufbefehl (Rechtsklick) leert die komplette
+Bestell-Warteschlange — CancelAllOrders in der Kasse zerstört die
+Quittungs-Geister, leert Schlange und Auftrags-Flag; der
+ClickCommandInput ruft es vor jedem MoveTo. Kein Rückkehr-Zwang.
+Anlass: Isors Exploit-Fund im Gym — Bestellung plus Wegklicken baute
+bei Ankunft fern, weil HasArrived zielbezogen ist (am aktuellen
+Laufziel angekommen), die Kasse es aber auftragsbezogen las (an der
+Baustelle angekommen). Bekannter Nebeneffekt: Auch im Bau-Modus
+storniert der Rechtsklick die Shift-Reihe, weil der Laufbefehl immer
+gilt; der P3-Merkposten „Rechtsklick legt das Werkzeug weg" zieht das
+später glatt.
+Warum: Die Figur gehorcht dem letzten Befehl — eine Figur, die sich
+nach dem Umweg eigenmächtig zur Baustelle zurückzieht, fühlt sich wie
+Kontrollverlust an (Isors Spielgefühl-Urteil gegen Claudes
+Rückkehr-Empfehlung), zugleich die RTS-Konvention. Nur den aktuellen
+Auftrag abzubrechen ginge nicht: Die Kasse zöge im nächsten Frame den
+nächsten aus der Schlange und überschriebe den Spieler-Befehl sofort.
+Verworfen: das Rückkehr-Modell (Kasse prüft bei Ankunft die Zelle und
+schickt die Figur zurück — der kleinste Fix, aber das falsche Gefühl);
+Dulden als P3-Merkposten (der geschenkte Hinlauf hätte die
+P2-Messrunde zum Fern-Abbau verfälscht); Abbruch nur des aktuellen
+Auftrags.
+
+## 2026-10-29 — Abbau-Weg: Grundzustand-Klick, Layer-Erkennung, kein Besitz-Check
+
+Was: Der Verwalten-Klick gilt nur im Grundzustand (kein Werkzeug in
+der Hand); im Bau-Modus bleibt Linksklick der Bau-Auftrag. Kacheln
+liegen auf dem eigenen Layer PathTile (den BoxCollider trug das Prefab
+schon); die Zelle kommt aus der Transform-Position des getroffenen
+Objekts, nicht aus dem Treffpunkt — Seitenwand-Treffer liegen auf der
+Zellgrenze und runden sonst in die freie Nachbarzelle. TileInfoPanelUI
+wohnt auf dem immer aktiven HUD-Objekt und schaltet das Panel-Kind
+über eine Referenz; der Abriss-Brief prüft beim Host nur „besetzt?" —
+einen Besitz-Check gibt es in P-B2 nicht (ein gemeinsames Gym-Grid;
+das Gebiets-Recht kommt mit P-B3, voraussichtlich als Gebiets- statt
+Kachel-Prüfung). Die mitreisende Absender-Id bleibt ungenutzt (TODO
+im Code).
+Warum: Layer sind die grobe Klick-Kategorie, die Feinheit liefert der
+Treffer selbst (Objekt samt Komponenten) — das skaliert, ohne je
+Objekt-Sorte einen der 29 Layer zu verbrauchen (Isors Sorge); ein
+Skript auf dem Panel, das es selbst abschaltet, könnte sich nie wieder
+einschalten (Fehlerbild aus Isor's Tower, `Kern/STOERUNGEN.md`-Umfeld
+2026-09-01).
+Verworfen: selbstgebaute Id-Komponenten fürs Erkennen (der Raycast
+liefert das getroffene Objekt gratis); ein Sicherheits-Reset der
+gemerkten Zelle auf (0,0) — (0,0) ist eine gültige Zelle, ein Reset,
+der Gültigkeit vortäuscht, ist gefährlicher als keiner; eine
+Besitz-Tabelle je Kachel schon jetzt (Beschluss vom 2026-10-23:
+Gebiets-Recht ab P-B3); Panel-Öffnen auch im Bau-Modus
+(P3-Merkposten, Spielgefühl).
+
+## 2026-10-29 — Karten-Blockout: vier gleiche Gebiete, Fluss-Kreuz, ein Terrain
+
+Was: Ein Gebiet ist 50 × 70 Zellen (Zelle 2 m): 10 Zellen Baumring
+ringsum (Deko, unbegehbar), darin das Bau-Raster 30 × 30, direkt
+darunter der Wirtschaftsbereich 20 × 30 (vorerst unbegehbar — ob die
+Figur ihn je betritt, ist offen). Vier Gebiete im 2×2, getrennt durch
+ein 10 Zellen breites Fluss-Kreuz; gesamt 110 × 150 Zellen =
+220 × 300 m. Alle vier Gebiete **identisch ausgerichtet**: Start-Marker
+rechts mittig am Raster (Monster und Figuren-Spawn, leicht versetzt),
+Ziel-Marker links mittig, Standardweg als gerade Linie — die Rigs sind
+reine verschobene Prefab-Instanzen, nie rotiert oder gespiegelt. Die
+Szene heißt **GameWorld** (Haupt-Spielszene; Testarea bleibt das Gym).
+Boden ist **ein** Unity-Terrain: Der Fluss ist eine modellierte Senke,
+das NavMesh zerfällt beim Backen in vier Inseln (Böschung steiler als
+Max Slope, zusätzlich ein NavMesh Modifier Volume „Not Walkable" über
+dem Wasser als doppelter Boden) — keine Zonen-Zuweisung nötig, der
+Agent kommt schlicht nicht rüber. Blockout-Texturen je **Zone** (Wasser
+blau, Wald dunkelgrün, Bau-Raster Gras, Wirtschaft Stein); die
+GDD-Zeile „Gebiete optisch leicht verschieden" bleibt bewusst der
+Optik-Phase. Alle Maße sind Inspector-Regler; Prüfwert für die
+Messrunden: Raster-Querung ~17 s bei 3,5 m/s Agententempo.
+Warum: Quadratisches Raster baut Formen leichter nach; 50×50 empfand
+Isor als zu groß. Der Fluss ist sichtbare und technische Grenze in
+einem. Identische Ausrichtung ist maximal fair, erfüllt die
+GDD-Vorgabe „gleiche Lage von Start und Ziel" wörtlich und vermeidet
+nie getestete Rig-Rotationen (Isor: „gespiegelt fühlt sich komisch
+an"). Ein Terrain statt vier heißt ein Bake und eine Fläche; die
+Gebietsgröße war laut GDD ausdrücklich im Prototyp zu bestimmen.
+Verworfen: 50×50-Bau-Raster (zu groß); vier Terrains oder Planes;
+zur Karten-Mitte gespiegelte Gebiete; NavMesh-Zonen je Spieler
+zuweisen (das Insel-Prinzip erledigt es); Gebiets-Unterscheidungs-Optik
+schon im Blockout.
+
+## 2026-10-29 — Spielstart: zufällige Game-Id, MatchSetup, Lade-Timeout
+
+Was: Beim Spielstart würfelt der Host einmal die Zuordnung
+Spieler → Game-Id 1–4 (Gebiete im Uhrzeigersinn: 1 oben links, 2 oben
+rechts, 3 unten rechts, 4 unten links) und verkündet sie an alle.
+Gebiet, Figuren-Spawn und Kamera-Start hängen an der Game-Id, nicht an
+der Beitritts-Reihenfolge. Träger ist ein eigenes Netz-Skript
+**MatchSetup** auf GameNetwork (Ein-Skript-je-System-Regel). Verankert
+wird die Zuordnung an der **stabilen UGS-PlayerId**; die flüchtige
+ClientId ist nur Laufzeit-Zweitschlüssel. Lade-Phase: Verliert ein
+Spieler beim Laden die Verbindung, warten die anderen bis zu einer
+Minute, dann wird er entfernt und das Spiel startet ohne ihn
+(Umsetzung, sobald der Menü-Weg auf GameWorld zeigt). Sichtbar wird
+die Game-Id simpel: als Zahl über der Spielerfigur und einmal im
+Gebiet platziert — bewusst keine Farb-Codierung (Isors Farbsehen;
+Nachentscheid vom selben Abend).
+Warum: Der Zufall entkoppelt die Kartenposition von der
+Lobby-Reihenfolge — niemand kennt sein Gebiet vorab, fair für alle
+(Isors Entwurf). Netcode vergibt die ClientId in Beitritts-Reihenfolge
+und bei jedem Reconnect **neu** — wer je einen Rejoin will, braucht
+von Anfang an einen stabilen Schlüssel, und die PlayerId der
+UGS-Anmeldung ist genau das.
+Verworfen: Gebietszuordnung nach Lobby-Reihenfolge (vorhersehbar,
+unfair); die Game-Id nur an die ClientId hängen (stirbt beim ersten
+Reconnect).
+
+## 2026-10-29 — Verbindungsverlust: Gebiet friert ein, Rejoin als vorbereitete Erweiterung
+
+Was: Fliegt ein Spieler mitten im Spiel raus, läuft das Spiel weiter;
+seine Figur despawnt, sein Gebiet friert ein — die Kacheln bleiben,
+denn die Belegung lebt beim Host. Ein Rejoin ist im Prototyp **nicht
+gebaut, aber vorbereitet**: Das „Original-Datenpaket" (Isors Wort)
+existiert als Host-Belegungstabelle ohnehin, die Durchsage-Empfänger
+sind tolerant (Schon-vorhanden-Wächter), und die Game-Id hängt an der
+stabilen PlayerId. Der spätere Anbau wäre ein **Willkommenspaket**:
+ein gezielter Zustands-Brief des Hosts an den Rückkehrer mit allen
+belegten Zellen samt Leger-Id; Schätzung 2–4 h. Gebaut wird er — wenn
+überhaupt — erst, wenn das Spiel ansonsten so gut wie fertig ist
+(Isors Nachentscheid vom selben Abend); bis dahin gilt nur die
+Vorsorge.
+Warum: Durchsagen sind Ereignisse — wer sie verpasst hat, erfährt sie
+nie; ohne die PlayerId-Verankerung wäre ein Rejoin ein
+Architektur-Umbau, mit ihr ein Anbau. Anlass ist Isors Sorge, ein
+fehlender Wiedereinstieg könnte in der Bewertung negativ auffallen —
+ob das stimmt, klärt eine Unterrichts-Frage, nicht eine Vorab-Baustelle.
+Präzisiert den Netz-Entscheid vom 2026-10-23: „Late-Join gibt es
+nicht" gilt für den laufenden Prototyp-Spielstand, nicht als Verbot
+der Erweiterung.
+Verworfen: Rejoin sofort bauen (Prototyp-Budget); das Spiel bei
+Verbindungsverlust anhalten oder abbrechen (bestraft die drei
+Verbliebenen).
+
+## 2026-10-29 — Meilenstein-Plan: immer eine Version voraus
+
+Was: Interne Fertig-Ziele je Uni-Meilenstein, jeweils rund eine
+Version vor dem Abgabetermin (Termine besitzt
+`Uni/Semester_3/STUNDENPLAN.md`): Zur Prototyp- und Pitch-Abgabe
+(27.11., Präsentation 03.12.) ist der Stand Alpha-nah — Bausteine bis
+P-B7 gebaut, Slides und Erkenntnis-PDF deutlich vor dem Termin. Die
+Alpha (fällig 08.01.) ist intern Ende November bis Mitte Dezember
+fertig — zusätzlich zur Prototyp-Latte heißt das Win-/Lose-Condition,
+Core-Feature-complete, stabil. Die Weihnachtslücke (18.12.–03.01.,
+kein Unterricht) ist die Optik-Phase: Assets, Shader, Effekte, GUI,
+Sound — genau der Beta-Inhalt. Die Beta (fällig 29.01.) ist intern
+Anfang Januar fertig, der Goldmaster (fällig 12.02.) Ende Januar; der
+Februar ist Feinschliff, Projektreflexion (19.02.) und Portfolio
+(26.02.) — und Puffer für Steuer, Stream und Harness. Die benotete
+Zwischenprüfung „Projektplanung" (18.12.) speist sich direkt aus
+diesem Plan. Ins Pitch-GDD kommen die offiziellen Uni-Termine samt
+Pufferzeiten; der interne Vorsprung steht bewusst nicht im GDD.
+Warum: Der Vorsprung ist der Puffer für Notfälle, Extras und das
+echte Leben — „lieber ausbauen als verlieren" (Isor); dieselbe Linie
+wie Fertig-vor-fällig im Semesterplan. Die Krankschreibungs-Tage bis
+zum 04.11. sind das Fenster, in dem der Vorsprung wachsen soll. Die
+GDD-Vorgabe verlangt realistische Zeitabläufe mit Pufferzeiten — der
+interne Plan ist genau dieser Puffer.
+Verworfen: auf die Uni-Termine planen (kein Puffer, jede Störung
+schlägt durch); den internen Vorsprung ins GDD schreiben (das GDD
+trägt die offiziellen Zusagen, nicht die private Latte).
+
+## 2026-10-30 — Meilenstein-Etappen: Fertig-Linien, Inhalte, Wochenplan-Ritual
+
+Was: Die fünf Abgabe-Milestones in Etappen durchentschieden (voller
+Zuschnitt: ROADMAP → „Meilenstein-Plan"). Die tragenden Beschlüsse:
+**Fertig heißt rund eine Woche vor der Abgabe** — die Fertig-Linien
+sind 20.11. (Feature-Stopp Prototyp; gilt nicht für
+Core-Loop-Essentielles), 11.12. (benotete GDD-Fassung), 26.12.
+(Alpha; Isors Wahl statt 19.12. — zwei Wochen Puffer, die Rest-Ferien
+gehören der Optik), 22.01. (Beta), 05.02. (Gold), 16.02./21.02.
+(Reflexion/Portfolio). Diese Linien samt Inhalts-Milestones gehen ins
+Pitch-GDD — sie sind die verlangten „realistischen Zeitabläufe mit
+Pufferzeiten"; privat bleibt nur die Ambition „eine Version voraus".
+P-B8 wird gebaut (nicht mehr Default-Streichkandidat), als letzter
+Prototyp-Baustein mit Streichrecht im Notfall. Die benotete
+Projektplanung bekommt den festen Abschnitt **„Plan gegen
+Wirklichkeit"**: Schätzung gegen Grindstone-Messung je Baustein.
+Alpha: Win/Lose simpel (Leben null → raus, letzter gewinnt, zurück
+ins Menü), erste Spur Audio/Asset als Pipeline-Test. Beta: die
+GDD-Zusage „vier Wächter × drei Stufen, vier Gegnertypen" **bleibt**
+— Stufen sind Wert-Ausbauten übers Objekt-Panel, Assets kommen aus
+den im GDD benannten freien Packs; ins G2 kommt der
+Absicherungs-Satz, dass die Stufen-Feinabstimmung in den Messrunden
+liegt. Sound: Grundvertonung aus Bibliotheken, der
+Audio-Unterricht (ab 18.01.) veredelt. Gold: Messrunden, P3-Polish,
+Code-Aufräum-Pass, finale GDD-Fassung; Rejoin-Entscheidung erst am
+05.02.-Stand. Dazu das **Wochenplan-Ritual**: sonntags (im
+Pflegetag-Takt) wird der Wochenplan aufgestellt und lebt als
+oberster Abschnitt der Status-Tafel — was diese Woche gebaut wird,
+was schon fertig ist.
+Warum: Etappen-Vorgehen auf Isors Wunsch — ein Milestone je
+Chat-Block, gezielt beantwortbar. Die Pufferwoche ist zugleich die
+Abgabe-Fabrik (Playtests, PDF, Slides, Build entstehen erst mit
+fertigem Spiel). Die 4×3-Stufen-Zusage bleibt, weil die Stufen im
+eigenen Design Zahlen sind, keine Content-Stücke — der Panel-Weg
+existiert seit P-B2.
+Verworfen: Alpha-Fertig-Linie 19.12. (Claudes Vorschlag — Isor: zwei
+Wochen Puffer reichen, drei wären zu viel); Statistiken, Spielerprofil
+und Rematch im GDD (Zusatz-Ideen, sonst wird der Umfang
+unrealistisch); ein Trailer für die Gold-Präsentation (gehört nicht
+zum Semesterprojekt, vielleicht später); die Wächter-Stufen aufs GDD
+kürzen (unnötig — Stufen sind leichtgewichtig).

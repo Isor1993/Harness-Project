@@ -487,3 +487,26 @@ bindet nichts)*
   Kamera dauerhaft sichtbar sind, und der Grund für die Spielerfigur
   (nostalgisches Gefühl statt Handy-Spiel, Laufzeit als Spannung, Bauen
   soll sich wie Bauen anfühlen).
+- *(2026-10-23)* **Aktionsleisten-Frage entschieden** (P-B2-Design-
+  Runde): Die Leiste wird eine Quick-Slot-Leiste mit Kategorien
+  (Kacheln, Wächter); welcher Wächter es wird, entscheidet sich am
+  gebauten Platz über dessen Panel — dasselbe Panel, das Abbauen und
+  Aufrüsten trägt (Sockel-Muster nach Wintermaul Wars). Fürs Kapitel
+  „Benutzeroberfläche" beim G2-Nachzug: Der Satz „ob Quick-Slots,
+  Befehlsfeld oder Radialmenü, entscheidet der Prototyp" ist damit
+  beantwortet. Offen für die P-B7-Runde: Panel-Form am Platz (alle
+  vier Wächter sofort oder neutraler Sockel) und die Preisaufteilung
+  zwischen Platz und Wahl. Begründungen in `DECISIONS.md`, Einträge
+  vom 2026-10-23.
+- *(2026-10-29/30)* **Karten-Blockout und Zeitplan entschieden**
+  (P-B3-Design-Runde): Die Karte steht als Blockout — vier gleiche
+  Gebiete à 50×70 Zellen, im 2×2 angeordnet, getrennt durch ein
+  10 Zellen breites Fluss-Kreuz, zusammen 220×300 m auf einem
+  Unity-Terrain; Gebiete per Zahl gekennzeichnet statt per Farbe.
+  Fürs Kapitel „Welt-Struktur" beim G2-Nachzug. Der Zeitplan hat
+  jetzt Kalenderdaten: Der Meilenstein-Plan (Fertig-Linien und
+  Inhalte je Abgabe, `ROADMAP.md` → „Meilenstein-Plan") ersetzt beim
+  G2-Nachzug die datumlose Meilenstein-Folge im Kapitel „Zeitplan";
+  die Fertig-Linien gehen als Pufferzeiten hinein, der interne
+  Vorsprung bleibt bewusst draußen. Begründungen in `DECISIONS.md`,
+  Einträge vom 2026-10-29 und 2026-10-30.

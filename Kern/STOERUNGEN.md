@@ -1209,3 +1209,42 @@ Regler" (am Anfang jeder Session fragt Claude nach Typ und Modus) und
 was bei ausbleibender Antwort gilt.
 **Stand:** offen — Gegenmittel wäre, bei ausbleibender Antwort einmal
 nachzufassen, bevor der Abschnitt weiterläuft.
+
+### 2026-10-28 — Veralteter Netz-Rat zweimal am selben Tag
+**Was:** Beim Netz-Block von Pathmakers TD empfahl Claude erst
+StartHost im Awake (ILPP-Ausnahme beim Play, eine volle Fehlerrunde),
+dann das Rezept `[ServerRpc(RequireOwnership = false)]`, das die IDE
+sofort als veraltet meldete — seit NGO 2.7 gilt das universelle
+`[Rpc]`-Attribut samt InvokePermission, und das Projekt läuft auf
+2.13.3. Isors Umsetzungen waren beide korrekt; die API-Wende löste er
+selbst über den Obsolet-Hinweis, das Timing fand die Web-Recherche.
+**Ursache:** Claude riet aus dem Gedächtnis, statt die Version zu
+prüfen — die `manifest.json` trug die NGO-Version, und der
+Universal-Rpc-Stand lag seit dem 2026-08-28 sogar im eigenen
+Knowledge-Ordner (`Unity/ngo-grundbausteine-praxis.md`). Wiederholung
+des Musters vom 2026-08-28 und vom 2026-10-16/18: Fakten aus dem
+Gedächtnis statt aus der besitzenden Quelle.
+**Regel:** Existiert nur als offener ROADMAP-Punkt („Regel gegen
+ungeprüfte Angaben über Fremdsoftware") und griff deshalb nicht — in
+keiner Regel-Datei verankert.
+**Stand:** offen — Gegenmittel (Isors Zuruf vom selben Tag) am
+ROADMAP-Punkt ergänzt: je Projekt eine Versionsliste, die Claude beim
+Session-Start gegen seinen Wissensstand hält; Zuschnitt beim nächsten
+Harness-Update.
+
+### 2026-10-30 — Tafel-Nachzug beim Sichern zweimal ausgefallen
+**Was:** Die Status-Tafeln tragen im `ARTIFACT_INDEX.md` die Zusage,
+bei jedem Sichern nachgezogen zu werden. Die Sicherungen am 28. und
+29.10. übersprangen das; die Pathmakers-Tafel hinkte dem Stand zwei
+Tage hinterher, bis Isors Tafel-Auftrag vom 30.10. es aufdeckte und
+der Nachzug nachgeholt wurde (Vermerk im `ARTIFACT_INDEX.md`).
+**Ursache:** Die Zusage steht nur als Vermerk im Verzeichnis, nicht in
+der Doku-Pflicht — abgearbeitet wird beim Sichern aber die
+Pflicht-Liste in `WORKFLOW.md`, und die kennt keinen Tafel-Punkt. Eine
+Pflicht außerhalb der Pflicht-Liste fällt genau dann aus, wenn niemand
+zufällig an sie denkt.
+**Regel:** Existiert am falschen Ort — als Vermerk im
+`ARTIFACT_INDEX.md` statt als Zeile der Doku-Pflicht in `WORKFLOW.md`.
+**Stand:** offen — Gegenmittel als Punkt in `Kern/ROADMAP.md`:
+Tafel-Nachzug als feste Zeile der Doku-Pflicht (Isors Ja vom
+2026-10-30).

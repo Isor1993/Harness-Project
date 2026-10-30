@@ -22,15 +22,16 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-10-22 beim `/harness:ende` der Session
-„Pathmakers TD · Prototyp-Start". Berichte: `Projekte/Pathmakers_TD/`
-— LOG, DECISIONS, ROADMAP und `ABGABE_NOTIZEN.md` → „P-B1".)*
+*(überschrieben 2026-10-30 beim `/harness:ende` der Session
+„Pathmakers TD · Karte + Spawns" — P-B2 ist fertig, P-B3-Design und
+Meilenstein-Plan stehen; die Nachträge aus dem alten Auftrag sind
+beide erledigt, Belege in `Uni/LOG.md` und `Kern/LOG.md`.)*
 
-**P-B2 · Weg-Bau starten** (`Projekte/Pathmakers_TD/ROADMAP.md` →
-„Prototyp — Bausteine"): erst die Design-Runde des Bausteins, dann
-bauen. P-B1 ist fertig (Beleg: `ABGABE_NOTIZEN.md` → „P-B1").
-Nachträge weiter offen: GDD-Versand-Zeile in `Uni/LOG.md` (Datum
-fehlt) und die Kern/LOG-Zeile zur `abgabe_bauen.py`-Erweiterung.
+**P-B3 · Karte + Spawns bauen** (`Projekte/Pathmakers_TD/ROADMAP.md` →
+„Prototyp — Bausteine"; Design komplett: `DECISIONS.md`, 2026-10-29):
+Terrain-Blockout in der Szene GameWorld, vier Rigs, MatchSetup —
+Start im Multiplayer Play Mode. Wochen-Soll bis So 02.11.: P-B3, dann
+P-B4-Vorsprung; sonntags das Wochenplan-Ritual auf der Tafel.
 
 ---
 

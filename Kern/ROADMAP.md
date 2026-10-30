@@ -43,6 +43,13 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
   Behauptungen im Gespräch nicht — am 2026-08-28 kosteten drei davon eine
   Suche nach einem Schalter, den es gar nicht mehr gibt
   (`Kern/STOERUNGEN.md`).
+  **Erweitert am 2026-10-28 (Isors Zuruf):** je Projekt eine kleine
+  Versionsliste (Engine, zentrale Pakete) in der Projekt-Schicht, die
+  Claude beim Session-Start gegen seinen Wissensstand hält. Anlass:
+  zweimal am selben Tag veralteter Netcode-Rat (StartHost-Timing,
+  ServerRpc-Attribut statt des universellen [Rpc] seit NGO 2.7),
+  obwohl die `manifest.json` die Version trug. Zuschnitt beim nächsten
+  Harness-Update entscheiden.
 - [ ] **Regler „Wer schreibt" und „Entwurf vor Gerüst" zusammenführen** —
   In `Kern/WORKFLOW.md` klären, was mit „Entwurf vor Gerüst" geschieht,
   wenn der Regler auf *Claude* steht: Die Regel begründet sich damit,
@@ -172,7 +179,11 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
   derselben Sicherung hat den Zeitstempel erneuert und die Hinweise
   verdeckt — gegengelesen ist davon nur „Lern-Log". Die Kurzformen
   einmal gegen ihre Besitzerdateien halten, danach
-  `pruefen.py --glossar-ok`.
+  `pruefen.py --glossar-ok`. *(Erneut verdeckt am 2026-10-30 durch den
+  Eintrag „Fertig-Linie"; der Stand vom Session-Start nannte 9
+  Hinweise mit 25 Kurzformen — zusätzlich zur Liste oben inzwischen
+  auch die Pathmakers-DECISIONS: Client-Vorhersage, Rig,
+  Brief/Durchsage, Gym.)*
 
 - [ ] **Park-Regel um das Wortlaut-Gebot ergänzen** — In
   `Kern/WORKFLOW.md` (Typ Development) heißt es, Architektur-Fragen
@@ -248,6 +259,24 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
   (`Kern/STOERUNGEN.md`) — ein ganzer Abschnitt lief ohne gesetzten Typ
   und behielt dabei die geerbte Klammer `zu`, die Arbeit für
   abgeschlossen erklärte.
+- [ ] **Harness-Ausbau Anfang 2027: Stream-Schicht und
+  Gewerbe-Planungsphase** — Zum Studio-Start (Gewerbe Anfang 2027,
+  Stream-Start um den März; führendes Doku ist `06_Stream\STREAMLOG.md`
+  im Datenbaum, `Kern/PFADE.md` → `DATENBAUM`) bekommt der Harness eine
+  Stream-Schicht und die nächste Version. In dieselbe Planungsphase
+  gehören die Equipment-Merkliste (Standmikro vor Kamera; die
+  Zwei-PC-Streaming-Frage mit dem jetzigen Rechner als Kandidat) und
+  die Selbstständigkeits-Fragen (Rechtsform, Krankenversicherung,
+  Rente) — bewusst nicht früher. Das Steuer-Modul hat seinen eigenen
+  Punkt oben. (Isors Reflexion vom 2026-10-27.)
+- [ ] **Tafel-Nachzug als feste Zeile der Doku-Pflicht** — In
+  `Kern/WORKFLOW.md` (Doku-Pflicht, Immer-Punkte) aufnehmen: Trägt
+  eine Artifact-Seite im `ARTIFACT_INDEX.md` eine Nachzieh-Zusage
+  („bei jedem Sichern"), wird sie beim Sichern geprüft und
+  nachgezogen. Heute steht die Zusage nur im Verzeichnis, das beim
+  Sichern nicht gelesen wird — so fiel der Nachzug am 28. und 29.10.
+  zweimal aus (`Kern/STOERUNGEN.md`, 2026-10-30; Isors Ja vom
+  2026-10-30).
 
 Was im Betrieb nicht trägt, kommt als Störung in `Kern/STOERUNGEN.md`
 und wird von dort aus zu einem Punkt hier — genau dafür fragt die

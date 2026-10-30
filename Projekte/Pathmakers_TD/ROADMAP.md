@@ -51,6 +51,11 @@ wird mit Beleg (LOG-Eintrag oder Datei).
   ursprüngliche Idee, was ändern, was übernehmen —
   `Uni/Semester_3/VORJAHR_AUFGABEN.md` → „3 · Spieleprototyp").
   Bekommt fest die letzte Woche vor dem 27.11., nicht den Rest.
+  Prüf-Merkposten aus der P-B2-Runde: Macht der Fern-Abbau Umbauten
+  zu billig, und zögert das Bauen beim Nahbau spürbar? Letzteres ist
+  der Auslöser für die Client-Vorhersage (DECISIONS → „2026-10-23 —
+  Netz: Host als Buchhalter, Verkündung an alle, Vorhersage als
+  Erweiterung").
 - [ ] **A1 · Pitch-Abgabe und Präsentation** — das GDD liegt fertig;
   nötig sind die Präsentationsfassung und der PDF-Export. Termine in
   `Uni/Semester_3/STUNDENPLAN.md`.
@@ -91,14 +96,56 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
   Rest-Schätzung ~8–9 h). Tafeln: Status
   https://claude.ai/artifact/5JZCpkKe2MVnCC9R2ScuvJ · Steuerung
   https://claude.ai/artifact/DztjtxavWXmwrMP3YxZoET
-- [ ] **P-B2 · Weg-Bau** — Kachelraster, Geisterbild an der Maus,
+- [x] **P-B2 · Weg-Bau** — **erledigt am 2026-10-29** (Beleg:
+  LOG-Einträge 2026-10-23 bis 29, Zeiten und Gebautes in
+  `ABGABE_NOTIZEN.md` → „P-B2 · Weg-Bau"; Relay-Test in beide
+  Richtungen bestanden — Client baut und reißt ab). Ausnahme: der
+  Zuschnitts-Punkt Weg-Zusammenhang ab Startpunkt ist nach P-B3
+  verschoben (Isor, 2026-10-29) — die Prüfung braucht die
+  Start-Marker, die erst P-B3 baut. Ursprünglicher Zuschnitt:
+  Kachelraster, Geisterbild an der Maus,
   Figur läuft zur Baustelle, Kacheln legen und abbauen,
-  Weg-Zusammenhang ab Startpunkt — netzsynchron. (~10–12 h)
+  Weg-Zusammenhang ab Startpunkt — netzsynchron. (~10–12 h; Ist
+  17:26 getrackt)
+  **Stand 2026-10-23:** Die Design-Runde ist abgeschlossen — vier
+  DECISIONS-Einträge vom 2026-10-23 (Kachel-Grundlage, Bau-Erlebnis,
+  Raster-Rig, Netz-Modell samt Skript-Zuschnitt). Bau-Reihenfolge:
+  Grid lokal → Geisterbild und Leiste → Auftragskette → Netz →
+  Abbau-Panel → Relay-Test.
+  **Stand 2026-10-27:** Die lokale Strecke ist komplett — Grid, View,
+  Geisterbild, Schalter, Leiste und Auftragskette gebaut und
+  sichtgeprüft, erster End-to-End-Bau bestanden (Beleg: LOG, Einträge
+  2026-10-23 bis 27). Offen: Netz-Block (PathGridNet), Abbau-Panel,
+  Relay-Test.
+  **Stand 2026-10-28:** Netz-Block gebaut — Szene nach dem
+  Drei-Körbe-Modell geordnet, Gym-Testweg (Play ohne Menü), PathGridNet
+  samt Kassen-Umbau, Solo-Test bestanden (Beleg: LOG 2026-10-28, drei
+  DECISIONS-Einträge). Offen: Abbau-Panel (TileInfoPanelUI),
+  Zwei-Instanzen-Relay-Test.
 - [ ] **P-B3 · Karte + Spawns** — Blockout der echten Karte: vier
   Gebiete, Größe einstellen, Start- und Endpunkte. (~7–8 h)
+  Erster Einrichtungs-Schritt bei Baustart: Multiplayer Play Mode
+  aufsetzen, damit Mehr-Spieler-Tests ohne zweite Editor-Instanz
+  laufen (Merkposten aus der P-B2-Netz-Runde, 2026-10-28).
+  Aus P-B2 verschoben (Isor, 2026-10-29): die
+  Weg-Zusammenhangs-Prüfung ab Startpunkt als Editor-Gizmo
+  (Raster-Entscheid vom 2026-10-23) — sie braucht die Start-Marker
+  dieser Karte.
+  **Stand 2026-10-29:** Die Design-Runde ist abgeschlossen — drei
+  DECISIONS-Einträge vom 2026-10-29 (Karten-Blockout, Spielstart,
+  Verbindungsverlust). Bau-Zuschnitt in Reihenfolge: Multiplayer Play
+  Mode → Prefab-Pass (HUD-Canvas) → Szene GameWorld (ein Terrain,
+  Fluss-Senke samt NavMesh-Modifier, Zonen-Texturen) → vier
+  Rig-Instanzen samt Start-/Ziel-Markern und Zusammenhangs-Gizmo →
+  MatchSetup (Game-Id, Spawn, Kamera-Start) → Territory-Check im
+  ClickCommandInput → Menü-Weg auf GameWorld (Lade-Timeout, wenn die
+  Zeit reicht). Der Standardweg-Autobau ist an P-B4 abgegeben.
 - [ ] **P-B4 · Gegner laufen** — ein Gegnertyp, host-gesteuert:
   Wegfolge, Gabelung abwechselnd, gerade Linie am Wegende,
   Leben-Abzug am Endpunkt. Danach der Prüfpunkt. (~10 h)
+  Erster Schritt: der Standardweg-Autobau — die vorgegebene gerade
+  Kachel-Linie vom Start- zum Ziel-Marker je Gebiet (aus der
+  Karten-Runde vom 2026-10-29).
 - [ ] **P-B5 · Takt + Senden** — Timer mit Bereit-Knopf, Sende-Gebäude
   mit Warteschlange, Sends laufen mit dem Wellenstart, fester
   Sende-Ring. (~5–6 h)
@@ -106,7 +153,11 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
   Einkommen bei Timer null; Preise verdrahtet; Minimal-HUD. (~3–4 h)
 - [ ] **P-B7 · Erster Wächter** — Pfeilturm: über die Figur
   platzieren, Ziel in Reichweite, schießen, Monster sterben, Gold
-  fließt — der Spaß-Test der Abgabe. (~8–10 h)
+  fließt — der Spaß-Test der Abgabe. (~8–10 h) Aus der P-B2-Runde
+  dazu: Die Design-Runde entscheidet die Panel-Form am Wächter-Platz
+  (alle vier sofort oder Sockel-Upgrade) und die Preisaufteilung
+  zwischen Platz und Wahl (DECISIONS → „2026-10-23 — Bau-Erlebnis:
+  Kategorie-Leiste und Objekt-Panel").
 - [ ] **P-B8 · Mine + Arbeiter** — Streichkandidat, faktisch
   Alpha-Material; Notlösung ist ein Kachel-Kauf-Knopf. (~7–8 h)
 - [ ] **P3 · Polish-Merkliste** — gesammelt beim Bauen, fällig
@@ -116,4 +167,88 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
   Tick-Rate und Interpolation messen (Latenz,
   `Knowledge/Unity/netzwerk-latenz-anatomie.md`); Settings-Anbindung
   der Schalter (Edge-Pan, Freiflug-Grenze, Kamera-Dauerfolgen als
-  Option).
+  Option); Spieler-Optik für lose Vorratskacheln (V1 lässt verbunden
+  und lose bewusst gleich aussehen — DECISIONS → „2026-10-23 —
+  Raster: Zellgröße als Wert, Rig als Prefab"); Halte-Bauen (Platzieren
+  bei gehaltener Maustaste, gedrosselt nach dem Halte-Intervall-Muster
+  des ClickCommandInput); Klick-Marker auf Kacheln (der Ring spawnt am
+  Boden und verschwindet im Kachelinneren — Varianten: Lift als
+  Inspector-Wert oder Kacheln in die Ground-Maske, zusammen mit P-B4
+  entscheiden); Nummern auf den Queue-Geistern (DECISIONS nennt
+  nummerierte Geisterbilder, V1 läuft ohne); Abriss-Modus als drittes
+  Werkzeug (viele Kacheln schnell wegreißen, Zuschnitt offen);
+  Rechtsklick im Bau-Modus legt das Werkzeug weg, statt nur zu laufen —
+  heute storniert er dabei auch die Shift-Reihe, weil der Laufbefehl
+  immer gilt; Linksklick im Bau-Modus auf ein liegendes Objekt verlässt
+  den Modus und öffnet dessen Panel (drei Spielgefühl-Merkposten aus
+  der Abbau-Runde, 2026-10-29); UI-Ausgestaltung als eigene große
+  Design-Runde nach der Kernmechanik (Upgrades, Panel-Inhalte mit Bild
+  und Werten, Hover-Infos, Anordnung — Karten-Runde 2026-10-29);
+  Optik-Phase samt Asset-Liste (Welt verschönern, Monster- und
+  Wächter-Figuren, Gebäude für Mine und Senden — evtl. eines für
+  beide —, Bäume, Detail-Texturen; Gebiete optisch unterscheidbar
+  machen — Karten-Runde 2026-10-29).
+
+## Meilenstein-Plan (Fertig-Linien und Inhalte)
+
+Begründung: DECISIONS → „2026-10-29 — Meilenstein-Plan: immer eine
+Version voraus" und „2026-10-30 — Meilenstein-Etappen". Die offiziellen
+Termine besitzt `Uni/Semester_3/STUNDENPLAN.md`. Regel: **Fertig heißt
+rund eine Woche vor der Abgabe** (die Fertig-Linien samt
+Inhalts-Milestones gehen so ins Pitch-GDD — sie sind die verlangten
+Pufferzeiten); intern gilt zusätzlich die private Ambition „immer eine
+Version voraus". Der Wochenplan dazu wird sonntags aufgestellt und
+lebt oben auf der Status-Tafel.
+
+- [ ] **M1 · Spieleprototyp + Game Pitch** — fertig **Fr 20.11.**
+  (Feature-Stopp; gilt nicht für Core-Loop-Essentielles), Abgabe
+  Fr 27.11., Präsentation Do 03.12.
+  Systeme: P-B3 → P-B7; P-B8 als letzter Baustein (~18.–20.11.) mit
+  Streichrecht. Wochen-Soll: P-B3 + P-B4-Start bis So 02.11. · P-B4
+  samt Prüfpunkt + P-B5-Start bis So 08.11. · P-B5 + P-B6, P-B7-Start
+  bis So 15.11. · P-B7 bis ~Di 17.11., dann P-B8.
+  Pufferwoche 20.–27.11. = Abgabe-Fabrik: Playtests übers echte Netz,
+  Erkenntnis-PDF (≥500 Wörter), G2-GDD-Nachzug samt Zeitplan-Kapitel,
+  Pitch-Slides (Teil der Abgabe), spielbarer Build, aufgeräumte
+  Projektdateien; Probe-Pitch vor dem 03.12.
+- [ ] **M2 · Projektplanung (benotet)** — fertig **Fr 11.12.**, Abgabe
+  Fr 18.12. Reine Doku-Etappe (parallel läuft der Alpha-Bau): das GDD
+  wird als PDF benotet („sinnvollen Projektplan erstellen");
+  Pitch-Feedback vom 03.12. einarbeiten, Zeitplan auf Ist-Stand,
+  dazu der feste Abschnitt **„Plan gegen Wirklichkeit"** — Schätzung
+  gegen Grindstone-Messung je Baustein samt Kalibrierungs-Satz.
+- [ ] **M3 · Alpha** — fertig **Sa 26.12.** (Isors Wahl: zwei Wochen
+  Puffer, Rest-Ferien gehören der Optik), Abgabe Fr 08.01.,
+  Präsentation Do 14.01.
+  Systeme: Win-/Lose-Condition simpel (Leben null → raus, letzter
+  gewinnt, zurück ins Menü — Statistiken/Spielerprofil bewusst nicht
+  im GDD), Einkommens-Schleife rund, Lade-Timeout, Vier-Spieler-
+  Härtetest, Refactor-Pass. Erste Spur (Vorjahres-Anforderung):
+  Minimal-Audio (Bau-Sound, Klick) + genau ein echtes Asset als
+  Pipeline-Test; Minimal-HUD deckt „erste GUI" ab.
+  Paket: Build, Ist-Soll-Präsentation, GDD-Update (Änderungen
+  markiert).
+- [ ] **M4 · Beta** — fertig **Do 22.01.**, Abgabe Fr 29.01.,
+  Präsentation Do 04.02. Bauzeit: die Ferien (27.12.–22.01.).
+  UI-Design-Runde zuerst, dann Umsetzung + Menü-Branding raus. Assets
+  integrieren (fertige freie Packs laut GDD): Welt, vier Gegnertypen
+  (Quaternius), Wächter-Figuren (Bug Knight), Gebäude, Gebiets-
+  Kennzeichnung per Zahl. Alle vier Wächter-Rollen gebaut; die drei
+  Stufen je Wächter sind Wert-Ausbauten über das Objekt-Panel
+  (GDD-Zusage bleibt; Absicherungs-Satz im G2: Feinabstimmung der
+  Stufen liegt in den Messrunden). Sound-Grundvertonung aus freien
+  Bibliotheken — der Game-Audio-Unterricht (ab 18.01.) liefert den
+  Feinschliff. Fremde Tester. Paket wie M3.
+- [ ] **M5 · Goldmaster** — fertig **Do 05.02.**, Abgabe Fr 12.02.,
+  Präsentation Do 18.02. Nichts Neues mehr: Balancing-Messrunden
+  (zwölf Stufen-Wertesätze, Preise, Startvorräte, Einkommen; dazu die
+  P2-Prüf-Merkposten), Polish nach der P3-Merkliste (Einkaufszettel,
+  keine Pflicht), Code-Aufräum-Pass (Conventions — wird benotet),
+  finale GDD-Fassung. Kein Trailer (Isor, 2026-10-30: gehört nicht
+  zum Semesterprojekt). Rejoin-Stretch: Entscheidung am 05.02.-Stand,
+  keinen Tag früher (DECISIONS → Verbindungsverlust).
+- [ ] **M6 · Reflexion + Portfolio** — Reflexion fertig Mo 16.02.
+  (Abgabe 19.02., ≥1000 Wörter; erst Isors Bericht, dann Text;
+  Rohmaterial: Lern-Log, ABGABE_NOTIZEN). Portfolio fertig So 21.02.
+  (Abgabe 26.02. — trägt die Modulnote; letzter Betreuungstermin
+  25.02. liegt davor).

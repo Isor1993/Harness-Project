@@ -2307,3 +2307,309 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   Januar, danach Gestaltung und Feinschliff) — sie deckt sich,
   unbeabsichtigt, mit der Alpha-Linie des Moduls (08.01.,
   Core-Feature-Complete). Kein Fehlerbild — Reflexionsrunde ohne Code.
+- 2026-10-23 · Pathmakers TD, P-B2-Design-Runde Weg-Bau
+  (Brainstorm/Design) — **Selbst:** die Client-Vorhersage eigenständig
+  hergeleitet (sofort beim Handelnden anzeigen, Host verifiziert
+  nachträglich, die anderen bekommen es zeitversetzt — samt richtiger
+  Einschätzung, dass der Cheat-Schutz dabei erhalten bleibt) und die
+  Autoritätsfrage präzise gestellt („warum prüft der Host — woher kennt
+  er die Daten?"); den Nahbau-Grenzfall gegen Claudes Hinlauf-Argument
+  gefunden (berechtigt — dort ist die Latenz-Maske null); die
+  Kategorie-Leiste als Lösung der eigenen Skalierungs-Sorge selbst
+  entworfen (Slots für Kategorien, Auswahl am gebauten Platz —
+  WMW-Sockel-Muster) und die Kachel-Frage (Textur gegen Objekt) als
+  erste Design-Frage des Bausteins selbst erkannt; Portabilität des
+  Systems und Zellgröße als Inspector-Wert als Anforderungen selbst
+  formuliert. **Hilfe:** das Race-Beispiel mit Zahlen und die
+  Stern-Topologie des Relays (warum Selbst-Verkünden nichts spart), der
+  Rückroll-Preis der Vorhersage, die Trennung Quittung gegen Ergebnis,
+  die Klick-Rechnung Leiste gegen Kreismenü, das Rig mit eigenem
+  Ursprung als Umsetzung der Portabilität. **Fehlerbild:** keines —
+  kein Code.
+- 2026-10-23 · Pathmakers TD, P-B2 Bau: PathGrid (Development, Isor
+  tippt; ~2 h, tief in der Nacht) — **Selbst:** Vector2Int für
+  Rastergröße und Zellen als eigene, bessere Wahl; beide
+  Übersetzer-Formeln im Kern auf Anhieb (Differenz, teilen, floor;
+  Rückweg mit Zellenmitte); die GetLength-Frage präzise gestellt
+  („.Length kann x und y nicht trennen" — richtig erkannt); die
+  IsInside-gegen-IsOccupied-Verwechslung offen als Verständnisfrage
+  markiert statt drumherum zu bauen; die eigene Müdigkeit als Ursache
+  der späten Fehler selbst diagnostiziert. **Fehlerbild:** Adresse
+  gegen Inhalt — die Zellposition als zu speicherndes Datum gedacht
+  (Dictionary-Griff), am Schrank-Bild aufgelöst; Auto-using von VS
+  unbemerkt übernommen (System.Drawing); SerializeField am falschen
+  Feld (2D-Array statt Rastergröße — stille 0×0-Tabelle); die
+  versteckte 2 in „mal 0,5f" (zweiter Besitzer der Zellgröße); an der
+  Grenz-Prüfung drei Runden am selben if — Off-by-one an der Kante,
+  dann zweimal Türrahmen statt Besucher geprüft (_gridSize statt
+  gridPos — das Quelle-Ziel-Muster, diesmal beim Prüfen); die
+  Türsteher-Ansage dreimal gelesen und nicht umgesetzt (Müdigkeit,
+  selbst benannt). **Hilfe:** Schrank-Bild samt Widget (Index =
+  Adresse, Inhalt = Zustand), Zahlen-Trace je Fehlrunde, Kontrollfrage
+  „wen prüfe ich — Besucher oder Tür?", die zwei Türsteher-Zeilen nach
+  dem dritten Anlauf vorgemacht; Kommentar-Pass wie vereinbart von
+  Claude.
+- 2026-10-24 · Pathmakers TD, P-B2 Bau: PathGrid-Gizmo und Sichtprüfung
+  (Development, Isor tippt; müder Abend, Formeln auf eigenen Zuruf von
+  Claude geliefert) — **Selbst:** die Drei-Blöcke-Struktur nach Gerüst
+  gebaut und die Methode eigenständig an ihren Platz hinter Awake
+  verschoben, ohne Zeilen zu verlieren; den Spawner-Türsteher nach
+  Ansage selbst eingebaut; die Raster-Dichte-Täuschung selbst
+  aufgeklärt (Boden-Textur trägt ihr eigenes Raster) und gewusst, dass
+  Gizmos nur die Scene-View zeigt; alle Sichtprüfungen durchgeführt
+  (Linien, Zieh-Test, am Ende zwei Würfel bei stiller Konsole).
+  **Fehlerbild:** OnDrawGizmos in Awake von Hand gerufen (Unity-Events
+  ruft die Engine — Transfer-Lücke „Methoden muss man rufen"); zweites
+  Auto-using in zwei Tagen unbemerkt (Unity.VisualScripting);
+  transform.y statt origin.y (CS1061); Linien- und Zellen-Logik in eine
+  Doppelschleife vermengt (zwei verschiedene Obergrenzen in einem
+  Loop, DrawLine fehlte ganz); beim Live-Dreh der Rastergröße im Play
+  die IndexOutOfRange-Kaskade ausgelöst (Inspector-Soll gegen
+  Array-Ist). **Hilfe:** das Drei-Blöcke-Gerüst, die Kanten-Formeln auf
+  Zuruf („zu kaputt für Mathe" — legitime Regler-Nutzung), der
+  GetLength-Fix auf „mach du bitte" von Claude ausgeführt, die
+  Domain-Reload-Erklärung (Code-Tausch im laufenden Play tötet den
+  Laufzeit-Zustand, Awake läuft nicht erneut — der eigene Null-Wächter
+  maskierte den Verlust).
+- 2026-10-24 · Pathmakers TD, P-B2 Bau: PathTileView, Abendabschnitt
+  (Regler auf Zuruf: Claude schreibt, Isor klickt und redet; Durchgang
+  in Stationen danach) — **Selbst:** im Abschluss-Durchgang alle drei
+  Kontrollfragen im Kern richtig beantwortet (Start-gegen-Awake als
+  Zustandsfrage, die Dicke gehört dem Prefab und nicht der Zellgröße,
+  das Dictionary-Leck bei Destroy ohne Remove erkannt); Prefab-Bau und
+  Verdrahtung nach Klickpfad selbst, Sichtprüfung bestanden (zwei
+  Kacheln deckungsgleich mit den Gizmo-Würfeln). **Fehlerbild:** die
+  View-Komponente zuerst aufs Kachel-Prefab gelegt statt aufs Rig
+  (Verwalter mit Verwaltetem verwechselt) und dort das Grid-Feld füllen
+  wollen — daran die Unity-Regel gelernt, dass Assets nie auf
+  Szenen-Objekte zeigen können (Einbahnstraße Szene → Asset); viertes
+  Auto-using in zwei Tagen (using static UnityEngine.UI.Image, von
+  Claude geräumt). **Hilfe:** PathTileView komplett von Claude
+  geschrieben (vereinbarter Abend-Regler), Einbahnstraßen-Erklärung,
+  Klickpfade je Schritt.
+- 2026-10-25 · Pathmakers TD, P-B2: PathTileView-Durchgang in vier
+  Häppchen (Isor liest und erklärt, Claude korrigiert — auf Isors
+  Einforderung: „Claude schreibt" war als gemeinsames Step-für-Step
+  gemeint; als Arbeitsregel in Claudes Gedächtnis übernommen) —
+  **Selbst:** Instantiate eigenständig in der Doku nachgeschlagen;
+  Guard, Pivot-Halbhöhen-Hub und CellSize-Kopplung sauber erklärt;
+  beide Synchron-Lecks als Paar verstanden (toter Eintrag gestern,
+  herrenloses Objekt heute); bei der Reihenfolge-Frage den richtigen
+  Instinkt („nach Remove fehlt der Griff") gegen das eigene
+  „theoretisch egal" durchgesetzt und Destroy-markiert-erst korrekt
+  übernommen. **Fehlerbild:** beim Nachschlagen die falsche
+  Instantiate-Überladung erwischt und das Parent-Argument als Position
+  gelesen (das Überladungs-Muster aus P-B1, spiegelverkehrt); das
+  View-Dictionary als „eine Wahrheitsquelle" gelesen (die Tabelle
+  führt, der Zettelkasten folgt) und die Leserichtung Grid-View
+  verdreht (der View fragt das Grid, nie umgekehrt). **Hilfe:** die
+  Überladungs-Gegenüberstellung, der Kopie-Dreischritt am
+  Color-Falle-Anker vom 2026-10-21 (localScale liefert eine
+  struct-Kopie, den Direktweg verbietet der Compiler), das
+  Garderoben-Bild Tabelle-gegen-Zettelkasten.
+- 2026-10-25 · Pathmakers TD, P-B2 Bau: TileGhost und
+  BuildModeController (Development, Isor tippt) — **Selbst:** den
+  TileGhost-Körper als ersten Step des Bausteins fehlerfrei im ersten
+  Anlauf (ShowAt/Hide samt Ternary); den Skalierungs-Dreischritt vom
+  Vortag korrekt übertragen; den UI-Schutz unaufgefordert aus dem
+  eigenen ClickCommandInput übernommen; bei der Fehlersuche eigene
+  Hypothesen angeboten (bools vertauscht? — Richtung richtig, Ebene
+  falsch), die Debug-Zeile selbst eingebaut, abgelesen und wieder
+  entfernt; die Log-Zellen 80+/−29 selbst vorgelesen — Schlussbefund:
+  das System arbeitete korrekt, die Maus war nie über dem Rig-Raster
+  (Doppel-Raster-Täuschung der Bodentextur, Game-View ohne Gizmos).
+  **Fehlerbild:** NetworkBehaviour beim Abgucken vom ClickCommandInput
+  mitkopiert (dort richtig, am Szenen-Rig falsch — über die eigene
+  Faustregel aufgelöst); die Halbhöhen-Hub-Zeile zuerst ins falsche
+  Skript gesetzt (Rig-transform statt Ghost — daraus die Regel „wessen
+  Skript, dessen Transform"), dann hinter den Verbrauch der Kopie
+  (Reihenfolge-Muster; Tausch blieb trotz zweier Ansagen liegen, im
+  Kommentar-Pass von Claude gefixt); Begriffslücke „Rig" offen
+  benannt; Prefab-Handgriffe halb ausgeführt (Box-Collider blieb dran,
+  Surface Type blieb Opaque); „einigermaßen fertig" erneut nur im
+  VS-Puffer (Editor-Wahrheit gegen Platten-Wahrheit). **Hilfe:**
+  GameObject-gegen-Komponenten-Feld als Tabelle (Vorlage klonen gegen
+  Instanz ansprechen), die Log-Deutungstabelle für die Diagnose,
+  Klickpfade für Prefab und Materialien.
+- 2026-10-25 · Pathmakers TD, P-B2 Bau: Bau-Modus-Schalter (Development,
+  Isor tippt) — **Selbst:** die zwei Gameplay-Actions samt Reserve
+  (Slot2/3) vorausschauend angelegt; OnEnable/OnDisable-Paar nach
+  Guideline selbst gesetzt; den Bezeichner-Fix sauber mit Strg+R,R
+  gezogen und die Inspector-Folge (leeres Feld nach Rename) nach
+  Hinweis selbst geprüft; Kipp-Test eigenständig durchgeführt.
+  **Fehlerbild:** IsPressed statt WasPressedThisFrame am Toggle (der
+  Lichtschalter hätte je Frame gekippt — an der 12-Kipper-Rechnung bei
+  0,2 s verstanden); der Türsteher-Block der Skizze beim Einbau
+  ausgelassen (die bools kippten, niemand las sie — Wiederholung des
+  Auslassen-Musters vom PathGrid-Abend); Tippfehler cancle im
+  Feldnamen. **Hilfe:** die Update-Kopf-Skizze, das Lichtschalter-Bild
+  für das Selbst-Umkippen, die Flacker-Rechnung.
+- 2026-10-25 · Pathmakers TD, P-B2 Bau: Slot-Leiste (Development, Isor
+  tippt; eigener Design-Feinschliff vorab: drei runde Panels, das linke
+  als Grundzustands-Anzeige statt Pflicht-Modus) — **Selbst:** die
+  Wer-kennt-wen-Frage richtig entschieden (die Leiste kennt den
+  Controller — Einbahnstraße wie Grid und View am Morgen); die
+  expression-bodied Property selbst vorgeschlagen und nach der
+  Frisch-gegen-eingefroren-Erklärung eingeordnet; den UI-Bau samt
+  Layout Group weitgehend allein; die BuildBarUI bis auf einen Punkt
+  fehlerfrei; den unklaren Begriff („Klick-Türen") sofort nachgefragt
+  statt zu raten; die eigene Ordner-Entscheidung Scripts/HUD (Ingame)
+  gegen Scripts/UI (Menü) begründet verteidigt — Claudes
+  Verschiebe-Ansage war die schlechtere Wahl und wurde zurückgenommen.
+  **Fehlerbild:** das public an den beiden
+  Relay-Methoden erst nach zweiter Ansage gesetzt; die
+  Checkbox-vor-dem-Wert-Falle am Layout Element (Zahl eingetragen,
+  Haken vergessen — Buttons kollabierten auf Textbreite). **Hilfe:** der
+  Multi-Select-Griff für die Layout-Checkboxen, der OnClick-Klickpfad,
+  das Färbe-Snippet mit gespiegeltem Ternary, die Alpha-0-Vorwarnung
+  bei frischen Color-Feldern.
+- 2026-10-27 · Pathmakers TD, P-B2: Eigendurchgang und Auftragskette
+  (Development, Isor tippt) — **Selbst:** vor dem Weiterbauen einen
+  kompletten Eigendurchgang aller sieben Skripte eingefordert und zu
+  rund neunzig Prozent korrekt erzählt (die Array-gegen-Dictionary-
+  Wahrheits-Trennung vom Vortag fest verankert, die Snap-Erklärung
+  druckreif, OnNetworkSpawn als geerbte überschriebene NGO-Methode
+  eingeordnet); die Orchestrator-Frage und die Event-Frage selbst
+  gestellt und beide an den eigenen Regeln gemessen (Puls je Phase,
+  Event erst ab dem zweiten Zuhörer); den Multiplayer-Knoten selbst
+  benannt und am Welt-überall-komplett-Modell gelöst; die
+  Dequeue-Mechanik selbst nachgeschlagen; beide Durchgangs-Fragen zur
+  Kasse richtig (Abräumen in beiden Fällen, Zettel gegen Objekt selbst
+  hergeleitet); den Bau-Test-Crash per Ausschluss-Kette mit auf das
+  falsch verdrahtete Prefab eingegrenzt; erste End-to-End-Kachel
+  gebaut. **Fehlerbild:** PathGrids Hauptjob als „anzeigen" gewichtet
+  (Gizmo ist Editor-Röntgenbild) und den Anzeige-Job der BuildBar
+  unterschlagen; „das Dictionary ist null"-Fehldeutung (Existenz gegen
+  Zustand, erneut); EnqueueOrder zuerst mit Remove statt Add und ohne
+  Enqueue; beim Verdrahten das falsche Prefab ins Queue-Feld gezogen
+  (PathTile statt PathTileGhost). **Hilfe:** die Momente-Tabelle
+  Bestellung/Antritt/Ankunft, die Soll-Struktur beider Methoden nach
+  dem Verlaufen, die Klick-Block-Stationen samt isPressed-gegen-
+  WasPressedThisFrame-Kontrast; Claudes früherer Crash-Trace zur
+  Sammlungs-Wahl wurde beim Nachrechnen gemeinsam präzisiert (der
+  Guard hätte gegriffen — die Regel „frage die Quelle, aus der du
+  nimmst" bleibt).
+- 2026-10-26 · Model-Viewer, Feedback-Kür: Ordnerstruktur + zwei neue
+  Objekte (Development, Isor tippt alles) — **Selbst:** den kompletten
+  Ordner-Umzug allein ausgeführt (Dateien verschoben, .vcxproj-Pfade
+  und Include-Suchpfad als XML von Hand, beim Gegenlesen fehlerfrei;
+  Filter in VS angelegt); die Filter-Lösung kritisch hinterfragt (ob
+  die OCE Platte oder VS-Ansicht meint — berechtigte Frage, beides
+  abgedeckt); den Würfel-Generator fehlerfrei getippt und die
+  Zähl-Methode Flächen × Ecken = Listeneinträge selbständig auf die
+  Pyramide übertragen; die Pyramiden-Verdrahtung ungefragt allein
+  vorgezogen (Member, Destruktor, Stationen, Run — zu ~90 % richtig);
+  die Schatten-Blob-Berührung am Würfel selbst entdeckt und die
+  Design-Lösung (Abstand statt Grafikfeature) selbst vorgeschlagen.
+  **Fehlerbild:** Normalen zunächst als „Richtung zur Sonne" gedacht
+  (über das eigene toon.frag aufgelöst: Mesh liefert Flächenrichtung,
+  Shader rechnet Licht); Pyramide erst als drei offene Seitenflächen
+  entworfen (fehlender Boden — Körper müssen schließen); beim
+  Solo-Verdrahten drei Copy-Paste-Reste (Pyramiden-Daten in
+  m_pCubeMesh = Leck plus nullptr, RenderPyramid mit Würfel-Mesh und
+  -Position, geliehene Würfel-Konstanten) — zwei Fehler verdeckten
+  sich gegenseitig. **Hilfe:** die Drei-Welten-Tafel
+  (Platte/vcxproj/Filter), die Ebenen-Tafel Punkt→Fläche→Würfel→Liste,
+  der Normalen-Querschnitt Kugel gegen Würfel, die
+  Ecken-Nummern-Bilder, die Rechenprobe 6 × 6 × 8 = 288.
+- 2026-10-27 · Abend-Reflexion in zwei Teilen (Isors eigene
+  Einschätzungen, auf eigenen Wunsch ausführlich besprochen) —
+  **Selbst:** die Unreal-Erfahrung nüchtern eingeordnet (RAM-Hunger,
+  dichtere Oberfläche, „aktuell nicht meins" — deckt die
+  Stack-Entscheidung); die eigene Bauweise als „Einzweck-Komponenten,
+  später verallgemeinern" beschrieben und damit unwissentlich die
+  YAGNI-Regel der eigenen Guidelines formuliert; das
+  Junior-Selbstbild („10 Prozent") offen benannt samt eigener Diagnose
+  „Praxis-Volumen fehlt, nicht Arbeitsweise"; das Leere-Blatt-Problem
+  präzise beschrieben und als Fortschritt festgehalten, Systeme
+  inzwischen selbst aufbauen-sagen zu können; das Wochenziel nach
+  Claudes Budget-Einwand mit den echten freien Stunden
+  zurückkorrigiert (acht Stunden je Tag, Sockel P-B2 plus P-B3, Rest
+  ist Vorsprung); die Langfrist-Last selbst sortiert
+  (Selbstständigkeits-Fragen in die 2027-Planungsphase, Sparen als
+  Brücke, Worst-Case-Pfad benannt); Equipment nach der eigenen
+  Kaufregel vertagt; das Scharfschalten des Drei-Gewohnheiten-Plans
+  bewusst abgelehnt mit der Begründung, genau an der Lerngrenze zu
+  arbeiten — gut kalibrierte Selbsteinschätzung. Kein Fehlerbild —
+  Reflexionsrunde ohne Code. **Hilfe:** Belege gegen das
+  Impostor-Gefühl aus dem Lern-Log der Woche, die Budget-Rechnung,
+  die Geparkt-mit-Adresse-Sortierung des März-Bergs, Zeugnis als
+  angebotenes Werkzeug auf Zuruf.
+- 2026-10-28 · Pathmakers TD, P-B2: Netz-Block — Szenen-Ordnung,
+  Gym-Bootstrap, PathGridNet, Kassen-Umbau (Development, Isor tippt) —
+  **Selbst:** den RPC-Entwurf eigenständig aufgestellt (zwei Methoden,
+  Träger-Frage selbst mit „separates Netz-Objekt" beantwortet — wurde
+  die Entscheidung); die API-Wende selbst gelöst (Obsolet-Hinweis der
+  IDE gelesen, [Rpc(SendTo…)] samt InvokePermission eingebaut, die
+  Server-Verriegelung der Durchsage aus eigenem Schluss); die
+  Szenen-Aufteilung nach dem Drei-Körbe-Gespräch allein umgesetzt,
+  inklusive Selbstkorrektur beim NavMesh; Durchsage-Rumpf und
+  Kassen-Umbau fehlerfrei getippt; die richtige Systemfrage gestellt
+  („kommt die Durchsage bei Clients je an?") und nach dem
+  Zustell-Diagramm den Ablauf selbst sauber nacherzählt; das
+  Vorlage-gegen-Instanz-Muster im Bootstrap nach Erklärung selbst
+  gefixt; NetworkManager.Instantiate als Leser-Täuschung eingeordnet
+  (geerbte statische Methoden). **Fehlerbild:** die zwei RPC-Regler
+  (SendTo gegen InvokePermission) zweimal vermischt — „läuft nur beim
+  Host" auf die Durchsage übertragen und einen Abfang-Ort für die
+  Nachricht gesucht; im Bootstrap v1 ein Feld für Vorlage und Instanz
+  zugleich (GetComponent überschrieb den Inspector-Wert, Instantiate
+  fehlte); GameObject als Reisegepäck geplant (Geist-Buchhaltung mit
+  Welt-Zustand verwechselt); redundanter IsHost-Guard im Brief.
+  **Hilfe:** die Zwei-Regler-Tabelle, zwei Zustell-Diagramme
+  (Brief-Weg, Postamt-Zustellung), die Weiche-Erklärung (kein Invoke —
+  normaler Aufruf), Doku-Recherche zur NGO-2.7-API; Claudes Awake-Rat
+  und das ServerRpc-Rezept waren veraltet — beide Fehlerrunden gehen
+  auf Claude, Isors Umsetzungen waren jeweils korrekt.
+- 2026-10-28/29 · Pathmakers TD, P-B2: Abbau-Panel, Lauf-Storno,
+  Relay-Beweis (Development, Isor tippt) — **Selbst:** den bisher
+  besten Entwurf vorgelegt (Klassen, Zuständigkeiten, Methoden und
+  Reisegepäck vorab benannt; die einzige Lücke — das Zwischenspeichern
+  der Zelle — später selbst wiedergefunden; Isors eigene Einschätzung
+  deckt sich mit Claudes); das View-Dictionary-Aha selbst
+  durchgearbeitet (Prefab gegen lebende Instanz) und die
+  Layer-Skalierungs-Frage selbst aufgeworfen; den HasArrived-Exploit
+  beim freien Testen selbst gefunden und selbst diagnostiziert
+  (zielbezogen gegen auftragsbezogen); Claudes Rückkehr-Empfehlung mit
+  einem Spielgefühl-Argument begründet überstimmt (die Figur gehorcht
+  dem letzten Befehl); CancelAllOrders fehlerfrei getippt; den
+  Return/Out-Irrweg an der Button-Methode selbst aufgelöst (void, die
+  Zelle reist im Brief); die On…Clicked-Namensgrenze selbst gezogen
+  (ShowPanel ist kein Button); beide Relay-Testläufe selbst geplant
+  und gefahren; die Abschluss-Reflexion selbst einsortiert (Verstehen
+  vor Tempo als bewusste Wahl, der Block-Zuschnitt als eigentliche
+  Quelle des Schätzfehlers). **Fehlerbild:** ClosePanel mit SetActive(true)
+  (Kopier-Falle); im Verwalten-Klick die Klick-Abfrage vergessen (lief
+  jeden Frame — Hover hätte das Panel dauergeöffnet); Camera.current
+  statt des gecachten Felds, im zweiten Anlauf Camera.main (erst der
+  dritte nahm _camera); ein redundantes inneres if; ein
+  Sicherheits-Reset der Zelle auf (0,0) erwogen (ein gültiger Wert
+  taugt nicht als Leer-Marke); die Geister- und Kachel-Dictionaries
+  zwischenzeitlich zu einem verschmolzen. **Hilfe:** das
+  Stationen-Diagramm des Abbau-Klicks, die Drei-Sorten-Tabelle
+  (Hover-Geist, Quittungs-Geister, echte Kacheln), die
+  Objektmitte-statt-Treffpunkt-Regel, die OnClick-String-Warnung vor
+  dem Umbenennen, das Klickfeld zur Lauf-Konflikt-Gabel.
+- 2026-10-29/30 · Pathmakers TD: P-B3-Design-Runde (Karte, Spielstart,
+  Rejoin) und Meilenstein-Planung in Etappen (Brainstorm/Design) —
+  **Selbst:** den kompletten Karten-Entwurf vorgelegt (vier gleiche
+  Gebiete mit allen Maßen, Baumring, Wirtschaftszone, Fluss als
+  Trenner — wurde fast unverändert der Beschluss); die
+  Terrain-Systemfrage präzise gestellt (vier Terrains oder eins mit
+  vier NavMesh-Zonen); das Rejoin-Risiko selbst benannt und die
+  Anbau-Architektur mitentschieden (Host hält das Original-Datenpaket,
+  stabile PlayerId als Anker); die Gebiets-Kennzeichnung per Zahl
+  statt Farbe selbst gewählt (eigenes Farbsehen mitgedacht); die
+  Etappen-Form der Planungsrunde selbst vorgeschlagen (ein Meilenstein
+  je Block, erst besprechen, dann bauen); die Meilensteine selbst
+  terminiert — eigene Zeitschätzungen je Gewerk (Coden Ende November,
+  Panels Mitte bis Ende Dezember, Ferien für die Optik), Claudes
+  19.12.-Vorschlag begründet auf den 26.12. gedreht (zwei Wochen
+  Puffer reichen, drei verschenken Bauzeit), Streichkandidaten benannt
+  (Mine plus Arbeiter nur bei Unerwartetem) und den Umfang gegen
+  Übertreibung verteidigt (kein Trailer — gehört nicht zum
+  Semesterprojekt). Kein Fehlerbild — Planungsrunde ohne Code.
+  **Hilfe:** die Uni-Definitionen Prototyp/Alpha/Beta/Gold aus den
+  Semester-Unterlagen, die Wächter-Zusage-Prüfung am GDD-Wortlaut
+  (Claudes Streich-Empfehlung wurde daraufhin zurückgenommen), die
+  Fertig-Linien-Mechanik als Gerüst des Plans.

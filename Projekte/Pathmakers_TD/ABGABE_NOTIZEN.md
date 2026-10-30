@@ -63,3 +63,67 @@ Pan/Zoom/Fokus; ohne Grenz-Clamp und Edge-Pan) im Datenbaum unter
 `02_Projekte\PathmakersTD\Media\PB1_Klicklauf-und-Kamera_2026-10-22.mp4`
 (`Kern/PFADE.md` → `DATENBAUM`) — Kandidat für die Pitch-Präsentation
 am 03.12.
+
+## P-B2 · Weg-Bau (2026-10-22 bis 2026-10-29)
+
+**Zeiten** (Grindstone; die Lern-Gespräche sind zu ~90 % enthalten):
+
+| Posten | Zeit |
+|---|---|
+| Design-Runde Weg-Bau | 0:54 |
+| PathGrid | 1:46 |
+| PathTile, TileGhost, BuildModeController, BuildBarUI | 5:43 |
+| BuildOrderQueue samt Place-Klick | 1:38 |
+| Netz-Block (Szenen-Umbau, Gym-Bootstrap, PathGridNet) | 5:14 |
+| Abbau-Panel, Lauf-Storno, Relay-Test | 2:11 |
+| **Summe getrackt** | **17:26** |
+
+Schätzung war 10–12 h — um rund die Hälfte gerissen. Benennbare
+Anteile: der Netz-Lernblock (RPC-Modell samt API-Umbruch), zwei
+Claude-Fehlerrunden (StartHost-Timing, veraltetes ServerRpc-Rezept —
+`Kern/STOERUNGEN.md`, 2026-10-28) und die ungeplante Struktur-Runde
+(Szenen-Ordnung, Gym-Testweg) — Letztere ist Einrichtung, die P-B3
+nicht mehr bezahlt.
+
+**Gebautes:** PathBuildingRig als versetzbares Prefab: PathGrid
+(Belegungstabelle, Welt-Zelle-Übersetzer, Grenz-Wächter, Scene-Gizmo),
+PathTileView (Kachel-Klon je belegter Zelle; Kachel-Prefab PathTile
+mit eigenem Layer), TileGhost samt Ghost-Prefab und zwei transparenten
+Materialien, BuildModeController (Mausstrahl, Snap, Werkzeug-Schalter,
+Place-Klick mit Shift-Reihe, Verwalten-Klick im Grundzustand).
+Im HUD: BuildBarUI (drei Slots) und TileInfoPanelUI (Panel am
+liegenden Objekt, Abriss als Fernbedienung). Auf der Figur:
+BuildOrderQueue (Bestell-Schlange, Quittungs-Geister, Lauf-Storno).
+Im Netz: PathGridNet auf dem Szenen-Objekt GameNetwork — zwei
+gespiegelte RPC-Paare (Brief an den Host, Durchsage an alle) für Legen
+und Abreißen; dazu NetworkManager als Prefab plus TestareaBootstrap
+für den menü-freien Gym-Start und die Testarea nach dem
+Drei-Körbe-Modell geordnet. Relay-Test in beide Richtungen bestanden:
+Client baut und reißt ab, fremder Stempel, der Host prüft als einzige
+Wahrheit.
+
+**Erkenntnisse** (mit Isors Reflexion vom 2026-10-29):
+- Isors Einordnung der gerissenen Schätzung: bewusst Verstehen vor
+  Tempo — lieber über die Zeitschwelle und dafür das Netz wirklich
+  begriffen; die Krankschreibungs-Woche gibt das Polster, und der
+  Lernanteil soll die kommenden Netz-Bausteine verbilligen.
+- Der Schnitt täuschte: „Weg-Bau" klang nach Raster und Kacheln, war
+  aber zu einem großen Teil Netz-Bau — unterschätzt wurde der
+  Zuschnitt des Blocks, nicht das Arbeitstempo. Dazu kamen der
+  API-Umbruch und die Extra-Verständnisknoten.
+- Lage im Semesterplan (Isors Einschätzung): vor dem Plan; die
+  unterwegs gesammelten Spielgefühl-Funde sind bewusst als
+  P3-Merkposten vertagt statt vergessen.
+- Der API-Umbruch von NGO 2.7 (universelles [Rpc], InvokePermission
+  statt RequireOwnership) kostete eine Runde — und der richtige Stand
+  lag seit August im eigenen Knowledge-Ordner. Gegenmittel als
+  Harness-Punkt: Versionsliste je Projekt (`Kern/ROADMAP.md`).
+- „Der Host ist selbst Client" trägt: Der Solo-Lauf im Gym testete
+  bereits den kompletten RPC-Pfad; der Relay-Test bestätigte nur noch
+  den fremden Stempel und die Rundreise (~60 ms beim Client, null
+  beim Host — deckt die Design-Annahme von 0,06–0,15 s).
+- Das Brief/Durchsage-Muster skaliert wie entworfen: Der Abriss war
+  ein gespiegeltes zweites Paar im selben Skript, kein neues System.
+- Exploit-Fund durchs freie Spielen im Gym: Bestellung plus Wegklicken
+  baute fern, weil HasArrived zielbezogen ist. Behoben als
+  Design-Entscheid (Laufbefehl storniert alles), nicht als Flicken.

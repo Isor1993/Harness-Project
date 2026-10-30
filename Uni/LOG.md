@@ -178,6 +178,14 @@ damals, nicht den von heute.
   Fokus wählen (Koop, TD, Survival), Qualität vor Umfang; ein
   3D-Kampfsystem ausdrücklich abgeraten. Folge: `DECISIONS.md` →
   „2026-10-13 — Zwei Konzepte parallel bis zur Wahl der Dozentin".
+- 2026-10-17 — Beide Semester-GDDs an die Dozentin geschickt (PDF per
+  Discord): „It's Dungeon Outbreak Time" und „Pathmakers TD", je am
+  selben Tag aus dem Markdown-Manuskript als .docx mit Titelteil gebaut
+  und von Hand als PDF exportiert — die Vergleichsgrundlage für die
+  Konzept-Wahl (`DECISIONS.md` → „2026-10-13 — Zwei Konzepte parallel
+  bis zur Wahl der Dozentin"). *(Nachgetragen am 2026-10-23; Beleg:
+  `Projekte/Pathmakers_TD/ROADMAP.md` → „G1 · Volles GDD", Stand
+  2026-10-17.)*
 - 2026-10-20 — Discord-Durchgang der Dozentin zum Pathmakers-TD-GDD,
   am Ende die Entscheidung für das Semester-Spiel. Ihre Punkte der
   Reihe nach: Grund für den festen Sende-Ring statt freier Zielwahl,
@@ -195,3 +203,8 @@ damals, nicht den von heute.
   Mechanik zu bauen, die nicht optimiert werden soll. Folge:
   `DECISIONS.md` → „2026-10-20 — Semester-Spiel: Pathmakers TD; It's
   D.O.T wird privates Projekt".
+- 2026-10-29 — Isors Semester-Stand in der Planungs-Runde: Die OCE hat
+  den Model-Viewer offiziell abgesegnet („passt so") — Konsolenprojekt
+  und Viewer sind damit abgehakt, alles Offene hängt am Spielprojekt.
+  Beide Status-Tafeln (Semester 3, Pathmakers TD) auf diesen Stand
+  nachgezogen (`Kern/ARTIFACT_INDEX.md`).

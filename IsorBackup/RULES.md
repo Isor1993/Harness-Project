@@ -30,6 +30,7 @@ Woche falsch.
 03_AssetLibrary\   Eigene\ · Extern_Gekauft\ · Extern_Frei\ · KI_Generiert\ · _Lizenzen\
 04_Lernen\         Tutorials, Kurse, gespeicherte Artikel
 05_Werkzeuge\      Installer, Layouts, Vorlagen, Presets, Harness-Auslieferungen
+06_Stream\         Stream-Aufbau: Setup, Gewerbe- und Steuer-Unterlagen — bleibt lokal, geht nie in ein Repo
 99_Archiv\         erledigt, aber nicht wegwerfen  (+ _Zu_Loeschen\)
 ```
 

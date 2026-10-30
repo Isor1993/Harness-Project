@@ -49,3 +49,14 @@ einer Datei: Regeln, eine ROADMAP („Offene Punkte"), eine Entscheidung
 Ownership-Regel sind das drei Dateien plus Wegweiser.
 Verworfen: Das README als Ganzes im Datenbaum lassen — bequemer beim
 Nachschlagen vor Ort, aber ohne Historie und weiter viersortig.
+
+## 2026-10-23 — Neuer Hauptast `06_Stream` für Stream- und Steuer-Unterlagen
+Was: Der Datenbaum bekommt `06_Stream\` für den Stream-Aufbau (Setup,
+Gewerbe, Steuer, Einnahmen); Arbeitsdokument ist `STREAMLOG.md` dort.
+Warum: Diese Unterlagen dürfen nie auf GitHub — der Datenbaum ist lokal,
+wird extern gesichert und nimmt auf, was nicht Code in einem Repo ist.
+Entschieden von Isor, Brainstorm-Session „Lebensplanung Stream".
+Verworfen: Eigenes lokales Repo ohne Remote (Historie, aber ein vierter
+Pflegefall) und ein gitignorierter Ordner im Harness-Repo (Leak-Risiko
+bei Git-Fehlgriffen; INDEX und `pruefen.py` sähen Dateien, die nur auf
+einem Rechner existieren).
