@@ -1054,3 +1054,104 @@ und Rematch im GDD (Zusatz-Ideen, sonst wird der Umfang
 unrealistisch); ein Trailer für die Gold-Präsentation (gehört nicht
 zum Semesterprojekt, vielleicht später); die Wächter-Stufen aufs GDD
 kürzen (unnötig — Stufen sind leichtgewichtig).
+
+## 2026-10-30 — Werkzeug-Politik: Tools und Formeln schreibt die AI
+
+Was: Editor-Tools werden gemeinsam designt, aber von der AI **komplett
+fertig** geschrieben — kein Block-für-Block; ebenso die Herleitung und
+Umsetzung mathematischer Algorithmen (etwa das Monster-Routing).
+Selbst getippt werden Tools nur, wenn ein Semesterprojekt es fordert.
+Jedes so entstandene Skript wird im Datei-Header deklariert
+(`Author: … (design), Claude AI (code)` plus Description-Zeile).
+Tool-Skripte tragen das Präfix `Tool_` — eine bewusste Abweichung vom
+reinen PascalCase, damit sie im Project-Fenster als Werkzeuge erkennbar
+sind. Erstes Stück: `Tool_MapLayout.cs`, ein Gizmo-Zeichner als
+GameObject-Komponente statt EditorWindow, alle Inspector-Felder mit
+Tooltip. Normaler Spiel-Code bleibt unberührt Isors Lernstoff
+(Gerüst plus TODOs, Isor tippt).
+Warum: Isors Lernzeit gehört der Spiel-Logik, die er verteidigen und
+wiederverwenden muss; Tool- und Formel-Code selbst zu tippen ist ihm
+Zeitverschwendung. Die GameObject-Form statt EditorWindow, weil das
+Tool nur zeichnet und Werte hält — ein Fenster brächte Editor-API ohne
+Nutzen. Die Deklaration, damit bei Abgaben nie Unklarheit entsteht,
+was von wem stammt.
+Verworfen: Tools Block für Block wie Spiel-Code (übt nichts, was Isor
+üben will); EditorWindow-Form (Mehraufwand ohne Mehrwert).
+
+## 2026-10-30 — GameWorld-Anker: Terrain und Kreuz-Mitte
+
+Was: Feste Welt-Anker der Szene GameWorld: Fluss-Kreuz-Mitte bei
+(100, 0, 150) — dort sitzt das MapLayout-Tool —, Terrain 250×320 m auf
+Position (−25, −100, −10) mit 600 m Höhenspielraum, Spielfeld
+x −10…210 / z 0…300. Bau-Raster-Ecken (SW, zugleich Rig-Positionen):
+G1 (10, 0, 220) · G2 (130, 0, 220) · G3 (130, 0, 60) · G4 (10, 0, 60),
+je 30×30 Zellen à 2 m. Rig-Kinder: EnemySpawnPoint lokal (60, 0, 30)
+rechts mittig, EnemyDespawnPoint lokal (0, 0, 30) links mittig — leere
+GameObjects ohne Collider, Anzeige kommt per Gizmo.
+Warum: Das Terrain größer als das Spielfeld, damit der Rand nie ins
+Leere fällt; die krummen Anker folgen aus Kreuz-Mitte minus halber
+Terrain-Größe. Marker ohne Collider, damit Bau- und Klick-Raycasts
+nichts Fremdes treffen. Die Zahlen stehen hier, damit keine Session
+sie aus der Szene zurückrechnen muss.
+Verworfen: Marker als sichtbare Primitive (Collider im Raycast-Weg).
+
+## 2026-10-30 — Monster-Lauf: Wander-Modell, Rollback, Solo-Lernraum
+
+Was: Das Lauf- und Gültigkeits-Design des Kern-Systems, in sieben
+Punkten. **(1)** Monster laufen ausschließlich auf Kacheln, nie auf
+Gras; sie nutzen kein NavMesh, sondern folgen vorberechneten
+Wegpunkten (Zellmittelpunkte, Höhe Kachel-Oberkante) — das NavMesh
+gehört allein der Spielfigur. **(2) Wander-Modell:** Jedes Monster
+merkt sich besuchte Kacheln; an echten Gabelungen splitten die Monster
+abwechselnd, auch in längere Arme; betreten wird nur, was das Ziel ohne
+besuchte Kacheln noch erreicht. Sackgassen und Ringe bleiben
+unbetretener Vorrat. Beweisbar: kein Kreisel, jede Ankunft, kein
+verbotenes Layout — flächig geklebte Kacheln („Klumpen") zählen als
+eine Kreuzung und werden auf kürzestem Weg durchquert. **(3)
+Gültigkeit:** Spawn-Zelle und Ziel-Zelle verbunden, geprüft nach jedem
+Legen/Entfernen; ungültig → alle Kacheln färben sich (vorerst Rot,
+Farbwahl in den Settings als benannte Erweiterung), gebaut werden darf
+weiter. **(4) Rollback („Last known good"):** Beim Wellenstart gültig →
+Stand wird neuer Rückfallpunkt (Kopie der Belegungstabelle beim Host,
+nur im Arbeitsspeicher); ungültig → letzter gültiger Stand wird
+wiederhergestellt, Türme im Weg entfernt und voll erstattet (Kauf plus
+Upgrades), überzählige Kacheln 1:1 in den Vorrat. Der Standardweg
+garantiert Runde 1 — per Induktion existiert immer ein Rückfallpunkt.
+**(5)** Feste Eintritts- und Austritts-Zelle neben Spawn- und
+Ziel-Marker; der Standardweg ist die gerade Kachel-Linie dazwischen.
+**(6)** Routen-Anzeige (Pfeile auf den Kacheln: sieben
+Richtungs-Kombinationen, per Drehung vier Sprites) nur im Solo, dort
+per Schaltfläche an- und abschaltbar; Multiplayer zeigt nur die
+Warnfärbung. **(7)** Solo fragt beim Start einmal „Tutorial — ja/nein?"
+für Info-Tipps; die Architektur dazu: eine zentrale Weg-Rechnung
+(Ausbau von `PathConnectivity`) rechnet einmal pro Kachel-Änderung und
+hält das Ergebnis, alle Leser (Gizmo, Warnfärbung, Rollback,
+Monster-Routen) fragen nur ab. Gebaut wird in Ausbaustufen entlang der
+Abhängigkeiten: erst Flood Fill plus Gizmo (P-B3), dann Gültigkeit und
+Rollback, zuletzt das Routing.
+**Ersetzt:** die Gerade-Linie-Regel aus „2026-10-17 — Weg: Standardweg
+ab Start, Zusammenhang, gerade Linie" (Monster betreten nie mehr Gras;
+Standardweg und Kachel-Sperre bleiben) und die Gabelungs-Teilung aus
+„2026-10-16 — Sende-Ziel und Gabelungs-Regel" (das Abwechselnd lebt im
+Wander-Modell weiter, die Sende-Ziel-Regel bleibt unberührt).
+Warum: Isors Kernargument — die Karte ist zu groß zum Abzählen; wenn
+Monster eine gebaute Abzweigung grundlos ignorieren, ist das
+unerklärlicher Frust, also nehmen sie jede echte Gabelung. Das
+Wander-Modell gibt maximale Baufreiheit (Verlängerungen und Schleifen
+sind Strategie, keine Fehler) und bleibt deterministisch
+netzwerk-synchron, weil alles aus denselben Host-Kacheldaten
+vorberechnet wird. Rollback statt Bestrafung: Die Warnung ist die
+ganze Bauphase sichtbar, die Strafe ist nur verlorene Bauzeit — volle
+Erstattung hält sie mild. Solo/Multiplayer-Trennung: Im Sandkasten
+lernen, im Versus Können zeigen.
+Verworfen: Monster warten oder laufen gerade Linie bei unfertigem Weg
+(ersetzt — die Welle startet nie auf ungültigem Stand); lokale
+Raycast-KI je Monster (kann „kürzer" nicht wissen, Physik-Abfragen für
+eine Frage, die die Datentabelle beantwortet); reines
+Kürzeste-Route-Modell (ignoriert ungleich lange Gabelungen — Isors
+Frust-Szenario); Wasser-Modell „nur Richtung Ziel" (ignoriert
+Umweg-Arme, dasselbe Problem); 2×2-Bauverbot (unnötig, sobald Klumpen
+als eine Kreuzung zählen); Zufalls-Split (bestraft Planung, bräuchte
+synchronisierte Würfe — bleibt Prüf-Variante); Schritt-/Zeitlimit
+gegen Ringe (würde auch ehrliche lange Wege treffen); Routen-Anzeige
+auch im Multiplayer (nähme dem Versus die Könnens-Probe).

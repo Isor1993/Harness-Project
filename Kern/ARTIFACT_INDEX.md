@@ -196,23 +196,26 @@ Seite ←  die B1-Stand-Zeile der Its-DOT-ROADMAP nennt die URL
 ### 📍 Status · Pathmakers TD
 ```
 URL      https://claude.ai/artifact/5JZCpkKe2MVnCC9R2ScuvJ
-Stand    2026-10-30 — Umbau in der Etappen-Runde: neuer oberster
-         Abschnitt „Diese Woche" (Wochenplan, neu jeweils sonntags)
-         und der komplette „Meilenstein-Plan" M1–M6 mit Fertig-Linien
-         (20.11. Feature-Stopp, 11.12., 26.12., 22.01., 05.02.,
-         16./21.02.) und Inhalts-Listen je Abgabe; Bausteine-Strahl
-         mit Wochen-Soll und P-B8 als „wird gebaut, Streichrecht".
-         Vorher 2026-10-29 (P-B2 fertig, P-B3-Design) und 2026-10-22
-         (P-B1 fertig). Wird bei jedem Sichern der Schicht nachgezogen
-         (Isors Zuruf vom 2026-10-21) — die Sicherungen vom 28./29.10.
-         hatten das ausgelassen, nachgeholt am 29.10.
+Stand    2026-10-30 (Abend) — P-B3-Baustand nachgezogen (Karte, Rigs,
+         NavMesh ✓; offen Gizmo/MatchSetup/Territory-Check), zwei neue
+         Entschieden-Zeilen (Monster-Lauf: Wander-Modell + Rollback;
+         Werkzeug-Politik), P-B4-Zeile aufs Wander-Modell umgestellt,
+         Karten-Tafel in die Fußzeile. Davor am selben Tag der Umbau
+         der Etappen-Runde: „Diese Woche" (Wochenplan, neu jeweils
+         sonntags) und der „Meilenstein-Plan" M1–M6 mit Fertig-Linien
+         und Inhalts-Listen; Bausteine-Strahl mit Wochen-Soll. Vorher
+         2026-10-29 (P-B2 fertig) und 2026-10-22 (P-B1 fertig). Wird
+         bei jedem Sichern der Schicht nachgezogen (Isors Zuruf vom
+         2026-10-21).
 Quelle   Projekte/Pathmakers_TD/ROADMAP.md (Bausteine,
          Meilenstein-Ziele), .../LOG.md, .../DECISIONS.md; Termine:
          Uni/Semester_3/STUNDENPLAN.md
 Skripte  keine — die Seite zeigt den Baustand, nicht Code
 Seite →  ⚙️ System · Pathmakers-Steuerung (Fußzeile) ·
+         ⚙️ System · Pathmakers-Karte (Fußzeile) ·
          📍 Status · Semester 3 (Fußzeile)
 Seite ←  ⚙️ System · Pathmakers-Steuerung (Fußzeile) ·
+         ⚙️ System · Pathmakers-Karte (Fußzeile) ·
          📍 Status · Semester 3 (Fußzeile)
 ```
 
@@ -241,6 +244,22 @@ Skripte  beschreibt geplante Skripte: ClickCommandInput, PlayerMotor,
          StrategyCamera, ClickMarker; dazu die Action-Map „Gameplay"
 Seite →  📍 Status · Pathmakers TD (Fußzeile)
 Seite ←  📍 Status · Pathmakers TD (Fußzeile)
+```
+
+### ⚙️ System · Pathmakers-Karte
+```
+URL      https://claude.ai/artifact/JywKDaCVMhyzg9jYKxKuQW
+Stand    2026-10-30 — neu, gebaut im P-B3-Bau (eingelöstes Versprechen
+         der Session): Karte von oben als Tafel 1 (vier Gebiete,
+         Fluss-Kreuz, Start/Ziel als Kugel/Würfel, Game-Ids 1–4),
+         Gebiets-Schnitt als Tafel 2, Maß-Tabelle Zellen→Meter,
+         Unity-Anker (Terrain-Transform, Fluss-Mitte, MapLayout-Objekt)
+         und die Terrain-Layer samt Herkunft.
+Quelle   Projekte/Pathmakers_TD/DECISIONS.md → „Karten-Design"
+         (2026-10-29); Lizenz-Zeilen aus Projekte/Pathmakers_TD/ASSETS.md
+Skripte  Tool_MapLayout
+Seite →  📍 Status · Pathmakers TD (Fußzeile)
+Seite ←  📍 Status · Pathmakers TD (Fußzeile, seit 2026-10-30)
 ```
 
 ---

@@ -23,15 +23,16 @@ ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
 *(überschrieben 2026-10-30 beim `/harness:ende` der Session
-„Pathmakers TD · Karte + Spawns" — P-B2 ist fertig, P-B3-Design und
-Meilenstein-Plan stehen; die Nachträge aus dem alten Auftrag sind
-beide erledigt, Belege in `Uni/LOG.md` und `Kern/LOG.md`.)*
+„Pathmakers TD · Karte + Spawns bauen" — Karte, Rigs und NavMesh
+stehen, dazu die Designrunde Monster-Lauf; Belege im LOG der Schicht.)*
 
-**P-B3 · Karte + Spawns bauen** (`Projekte/Pathmakers_TD/ROADMAP.md` →
-„Prototyp — Bausteine"; Design komplett: `DECISIONS.md`, 2026-10-29):
-Terrain-Blockout in der Szene GameWorld, vier Rigs, MatchSetup —
-Start im Multiplayer Play Mode. Wochen-Soll bis So 02.11.: P-B3, dann
-P-B4-Vorsprung; sonntags das Wochenplan-Ritual auf der Tafel.
+**P-B3 fortsetzen** (`Projekte/Pathmakers_TD/ROADMAP.md` → P-B3,
+„Stand 2026-10-30"): Einstieg ist das Zusammenhangs-Gizmo —
+`PathConnectivity.cs` liegt als Gerüst mit sechs TODOs, Isor tippt,
+TODO 1 enthält die Kanten-Falle (Spawn sitzt auf der Rasterkante).
+Danach MatchSetup → Territory-Check → Menü-Weg. Das Monster-Lauf-Design
+ist komplett (`DECISIONS.md`, 2026-10-30 — Wander-Modell, Rollback);
+Wochen-Soll bis So 02.11.: P-B3, dann P-B4-Vorsprung.
 
 ---
 

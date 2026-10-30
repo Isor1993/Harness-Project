@@ -140,9 +140,21 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
   MatchSetup (Game-Id, Spawn, Kamera-Start) → Territory-Check im
   ClickCommandInput → Menü-Weg auf GameWorld (Lade-Timeout, wenn die
   Zeit reicht). Der Standardweg-Autobau ist an P-B4 abgegeben.
+  **Stand 2026-10-30:** Karte steht — GameWorld gebaut und bemalt,
+  NavMesh in vier Inseln (nach der Layer-Falle, LOG 2026-10-30),
+  `Tool_MapLayout.cs` als Gizmo-Tafel, PathBuildingRig als Prefab mit
+  vier Instanzen samt EnemySpawn-/EnemyDespawnPoint; der Schritt
+  „Multiplayer Play Mode" war schon P-B1-Bestand. Dazu die Designrunde
+  Monster-Lauf (DECISIONS 2026-10-30 — Wander-Modell, Rollback).
+  Offen: das Zusammenhangs-Gizmo (`PathConnectivity.cs` liegt als
+  Gerüst mit sechs TODOs, Isor tippt) → MatchSetup → Territory-Check →
+  Menü-Weg.
 - [ ] **P-B4 · Gegner laufen** — ein Gegnertyp, host-gesteuert:
-  Wegfolge, Gabelung abwechselnd, gerade Linie am Wegende,
-  Leben-Abzug am Endpunkt. Danach der Prüfpunkt. (~10 h)
+  Wegpunkt-Folge nach dem Wander-Modell samt Gültigkeit und Rollback
+  (DECISIONS 2026-10-30 — „Monster-Lauf"; ersetzt den alten Zuschnitt
+  „Gabelung abwechselnd, gerade Linie am Wegende"), Leben-Abzug am
+  Endpunkt. Danach der Prüfpunkt. (~10 h; das Routing schreibt Claude
+  nach der Werkzeug-Politik vom 2026-10-30)
   Erster Schritt: der Standardweg-Autobau — die vorgegebene gerade
   Kachel-Linie vom Start- zum Ziel-Marker je Gebiet (aus der
   Karten-Runde vom 2026-10-29).

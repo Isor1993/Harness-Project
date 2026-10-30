@@ -83,3 +83,19 @@ Format: `- JJJJ-MM-TT — Ereignis.` Ein bis drei Zeilen je Eintrag.
   „Meilenstein-Plan", DECISIONS → „Meilenstein-Etappen"); beide
   Status-Tafeln nachgezogen, die Pathmakers-Tafel neu geschnitten mit
   Wochenplan-Band und M1–M6-Karten.
+- 2026-10-30 — P-B3-Karte gebaut: GameWorld mit Terrain, Fluss-Senke
+  und Zonen-Texturen bemalt (Anker in DECISIONS → „GameWorld-Anker");
+  `Tool_MapLayout.cs` als AI-geschriebenes Gizmo-Tool (DECISIONS →
+  „Werkzeug-Politik", Karten-Tafel `⚙️ System · Pathmakers-Karte` im
+  ARTIFACT_INDEX); NavMesh in vier Inseln zerlegt nach zwei
+  Fehlerrunden (Y-Spanne, dann die Layer-Falle — Knowledge:
+  `Unity/navmesh-include-layers-filtern-modifier.md`); PathBuildingRig
+  zum Prefab gemacht, vier Instanzen auf die Raster-Ecken, Spawn- und
+  Despawn-Punkte als Kinder; `PathConnectivity.cs` als Gerüst
+  angelegt (Isor tippt die Flood-Fill-TODOs). Hinweis: Schritt
+  „Multiplayer Play Mode" des Bau-Zuschnitts war schon P-B1-Bestand.
+- 2026-10-30 — Designrunde Monster-Lauf, aus Isors Stopp vor dem
+  Gizmo-Coden: Wander-Modell, Rollback und Solo-Lernraum in sieben
+  Punkten entschieden, zwei Alt-Regeln abgelöst (DECISIONS →
+  „Monster-Lauf: Wander-Modell, Rollback, Solo-Lernraum"); Knowledge:
+  `Patterns/flood-fill-breitensuche.md`.

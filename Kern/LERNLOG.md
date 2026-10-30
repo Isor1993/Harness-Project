@@ -2613,3 +2613,27 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   Semester-Unterlagen, die Wächter-Zusage-Prüfung am GDD-Wortlaut
   (Claudes Streich-Empfehlung wurde daraufhin zurückgenommen), die
   Fertig-Linien-Mechanik als Gerüst des Plans.
+- 2026-10-30 · Pathmakers TD, P-B3: Editor-Vorarbeit — **Selbst:**
+  GameWorld-Szene samt Terrain unaufgefordert vorbereitet; Zellen→Meter
+  selbst umgerechnet (110×150 Zellen → 220×300 m), eigenständig
+  Rand-Reserve aufgeschlagen und das Terrain auf Layer Ground gesetzt.
+- 2026-10-30 · Pathmakers TD, P-B3: Karten-Bau und Designrunde
+  Monster-Lauf — **Selbst:** die vier Zonen nach dem Gizmo eigenständig
+  bemalt; Prefab samt Spawn-/Despawn-Kindern exakt nach Ansage gebaut
+  (alle Werte beim Gegenlesen korrekt); vor dem Coden gestoppt und eine
+  Designrunde eingefordert („bevor wir Scripts schreiben, wissen, was
+  wir machen"); das Rollback-System („Last known good") selbst
+  vorgeschlagen; die Schwäche des Wasser-Modells selbst benannt (es
+  ignoriert Umweg-Arme); die Nie-zurück-Regel selbst gefunden, aus der
+  das Wander-Modell wurde; Claudes Diagonal-Fehler im
+  Gabelungs-Diagramm erkannt (Kacheln verbinden nur orthogonal);
+  Solo/Multiplayer-Trennung der Routen-Anzeige samt Tutorial-Abfrage
+  selbst entworfen. **Hilfe:** die Layer-Falle beim NavMesh fand
+  Claude in den Inspector-Screenshots (zuvor eine Fehlerrunde mit zu
+  flacher Y-Spanne — Claudes zu knapper Wert); die Formalisierung
+  „echte Gabelung" und das Flur/Kreuzungs-Denken; die
+  Ausbaustufen-Logik und die Bau-Reihenfolge nach Abhängigkeiten —
+  Erfahrungslücke offen benannt und Erklärung eingefordert
+  („warum fängt man beim untersten Teil an?"). **Fehlerbild:** anfangs
+  Durchrechnung und Monster-KI vermengt (Raycast-Modell), im Gespräch
+  selbst aufgelöst.
