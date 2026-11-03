@@ -196,15 +196,23 @@ Seite ←  die B1-Stand-Zeile der Its-DOT-ROADMAP nennt die URL
 ### 📍 Status · Pathmakers TD
 ```
 URL      https://claude.ai/artifact/5JZCpkKe2MVnCC9R2ScuvJ
-Stand    2026-10-30 (Abend) — P-B3-Baustand nachgezogen (Karte, Rigs,
-         NavMesh ✓; offen Gizmo/MatchSetup/Territory-Check), zwei neue
-         Entschieden-Zeilen (Monster-Lauf: Wander-Modell + Rollback;
-         Werkzeug-Politik), P-B4-Zeile aufs Wander-Modell umgestellt,
-         Karten-Tafel in die Fußzeile. Davor am selben Tag der Umbau
-         der Etappen-Runde: „Diese Woche" (Wochenplan, neu jeweils
-         sonntags) und der „Meilenstein-Plan" M1–M6 mit Fertig-Linien
-         und Inhalts-Listen; Bausteine-Strahl mit Wochen-Soll. Vorher
-         2026-10-29 (P-B2 fertig) und 2026-10-22 (P-B1 fertig). Wird
+Stand    2026-11-03 — Ende-Nachzug: Monster-Sende-Kette V1 in der
+         Wochen-Karte und am P-B4-Strahl (Grunt läuft die Linie,
+         Solo-Test bestanden), Kennzahlen auf Grindstone 37:49 h,
+         Hinweis auf den ausstehenden Sonntags-Wochenplan. Vorher
+         2026-11-02 (Sichern-Nachzug: P-B3 fertig — 31.10.,
+         7:36 h — und P-B4 gestartet, Standardweg-Autobau fertig:
+         Weg-Kopf, lokale Linie, Kachel-Sperre; Wochenplan-Karte und
+         Bausteine-Strahl entsprechend), 2026-10-31
+         (Sichern-Nachzug: Wochenplan-Karte auf den
+         Tagesstand — Gizmo ✓, MatchSetup komplett + GameWorld
+         spielbar ✓, Bau-Regel + Panel-Ausstieg ✓; Rest nur noch
+         Menü-Weg —, P-B3-Zeile im Bausteine-Strahl entsprechend, zwei
+         neue Entschieden-Zeilen: Brett statt Brief / ein
+         Bau-Controller; gebaut nur bei vollem Weg), 2026-10-30
+         (Abend, P-B3-Baustand + Monster-Lauf; davor am selben Tag der
+         Etappen-Umbau: „Diese Woche" und Meilenstein-Plan M1–M6),
+         2026-10-29 (P-B2 fertig), 2026-10-22 (P-B1 fertig). Wird
          bei jedem Sichern der Schicht nachgezogen (Isors Zuruf vom
          2026-10-21).
 Quelle   Projekte/Pathmakers_TD/ROADMAP.md (Bausteine,

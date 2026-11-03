@@ -183,7 +183,12 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
   Eintrag „Fertig-Linie"; der Stand vom Session-Start nannte 9
   Hinweise mit 25 Kurzformen — zusätzlich zur Liste oben inzwischen
   auch die Pathmakers-DECISIONS: Client-Vorhersage, Rig,
-  Brief/Durchsage, Gym.)*
+  Brief/Durchsage, Gym.)* *(Stand 2026-10-31: Beim Sichern wurden die
+  fünf angezeigten Gruppen gegengelesen und quittiert — Its_DOT,
+  Lane_Defender, Model_Viewer, Pathmakers, Uni. Offen aus der
+  10-16-Liste bleiben CODE_GUIDELINES, `Kern/PFADE.md`,
+  Isor-Tower-ROADMAP und STOERUNGEN; deren Hinweise sind durch den
+  neuen Zeitstempel weiter verdeckt.)*
 
 - [ ] **Park-Regel um das Wortlaut-Gebot ergänzen** — In
   `Kern/WORKFLOW.md` (Typ Development) heißt es, Architektur-Fragen
@@ -277,6 +282,14 @@ nicht und wurden zum 2026-08-25 nachgetragen (`Kern/LOG.md`, Vermerk
   Sichern nicht gelesen wird — so fiel der Nachzug am 28. und 29.10.
   zweimal aus (`Kern/STOERUNGEN.md`, 2026-10-30; Isors Ja vom
   2026-10-30).
+- [ ] **Review-Gate auch vor Claude-geschriebenen Stücken** — Das Gate
+  in `Kern/CODE_GUIDELINES.md` greift gelebt nur vor Isors Bausteinen;
+  am 2026-10-31 bekamen zwei Claude-geschriebene Skripte Fehlerlogs
+  ohne die `#if UNITY_EDITOR`-Kapselung, obwohl die Regel in den
+  Guidelines steht — gefunden erst durch Isors Checkup-Auftrag
+  (`Kern/STOERUNGEN.md`, 2026-10-31; Isors Ja vom selben Tag).
+  Festschreiben, dass das Gate vor jedem Code-Stück gilt, egal wer
+  tippt; Zuschnitt beim nächsten Harness-Update.
 
 Was im Betrieb nicht trägt, kommt als Störung in `Kern/STOERUNGEN.md`
 und wird von dort aus zu einem Punkt hier — genau dafür fragt die

@@ -99,3 +99,89 @@ Format: `- JJJJ-MM-TT — Ereignis.` Ein bis drei Zeilen je Eintrag.
   Punkten entschieden, zwei Alt-Regeln abgelöst (DECISIONS →
   „Monster-Lauf: Wander-Modell, Rollback, Solo-Lernraum"); Knowledge:
   `Patterns/flood-fill-breitensuche.md`.
+- 2026-10-31 — Zusammenhangs-Gizmo gebaut (Isor tippte die sechs
+  TODOs von `PathConnectivity.cs`): Flutfüllung ab der geklemmten
+  Einstiegszelle, blaues Overlay über den PathGrid-Würfeln. Der
+  Gerüst-Hint der Vorsession zu IsOccupied war falsch (Draußen zählt
+  als belegt) — IsInside kam als erste Prüfung dazu, sonst wäre die
+  Füllung ins Endlose gelaufen.
+- 2026-10-31 — GameWorld spielbar gemacht: System-Gruppe, HUD,
+  EventSystem und Kamera aus der Testarea umgezogen, SpawnPoints neu
+  gesetzt, Szene in die Build-Liste; `TestareaBootstrap` zu
+  `SceneBootstrap` umbenannt (dient jetzt beiden Szenen). Beim ersten
+  Lauf den Falsch-Rig-Bug gefunden (Isors eigener Debug-Durchgang:
+  FindFirstObjectByType griff Rig 4 — Laufziel und Quittungs-Geist im
+  fremden Gebiet, Kachel korrekt bei Rig 1).
+- 2026-10-31 — Bau-Regel eingezogen (DECISIONS → „Bau-Regel"):
+  `HasFullPath` im Motor (pathStatus == PathComplete), die Kasse baut
+  nur bei vollem Weg, Verwerfen räumt auf; Fluss-Test bestanden.
+  Isors Lauf-Pendeln bei hohem Tempo über die Agent-Werte gelöst
+  (Beschleunigung/AutoBraking — Bremsweg = Tempo²/(2×a)).
+- 2026-10-31 — MatchSetup komplett (DECISIONS → „Rig-Zuweisung:
+  Brett statt Brief"): NetworkList als Brett (Platz = Game-Id),
+  Losbeutel-Zufall beim Host, PlayerSpawner spawnt nach Game-Id statt
+  Beitritts-Reihenfolge, Kasse und BuildModeController holen ihr Rig
+  per Try-Muster von MatchSetup — keine Szenen-Suche mehr. Der
+  PlayerId-Anker für Rejoin folgt mit dem Menü-Weg (im Gym gibt es
+  keine UGS-Anmeldung).
+- 2026-10-31 — Bau-Input dem Spieler gegeben (DECISIONS → „Bau-Input
+  gehört dem Spieler"): ein BuildModeController als Szenen-Objekt
+  statt vier je Rig (vier lauschten auf dieselben Actions und liefen
+  auseinander — fremde öffneten Panels mit fremden Zellindizes), ein
+  Ghost statt vier; beide Szenen umgebaut, Testarea bekam ihr eigenes
+  MatchSetup. Dazu Isors Architektur-Checkup über alle 24 Skripte:
+  Befunde A1 (Kasse hart statt Try — behoben), A2 (Spawner nach
+  Beitritts-Reihenfolge — behoben), Formkram begradigt; die
+  Dozenten-Regel `#if UNITY_EDITOR` um Fehlerlogs bestätigt und in
+  den zwei neuen Skripten nachgezogen. Territory-Check beim Laufen
+  ist durch das Insel-NavMesh erledigt (Fehlklick-Filter → P3).
+- 2026-10-31 — Panel-Ausstieg aus P3 vorgezogen: Kachel-Klick im
+  Baumodus legt das Werkzeug weg und öffnet das Panel
+  (TryOpenTilePanel meldet jetzt bool); Play-Probe bestanden, Destroy
+  trifft die richtige Zelle.
+- 2026-10-31 — Menü-Weg auf GameWorld und **P-B3 fertig**: SceneId
+  um GameWorld erweitert (hinten angehängt — Platz ist Bedeutung),
+  alle drei Menü-Starts umgestellt, SceneLoader-Asset nachgezogen;
+  Solo-Test über das Menü bestanden. P-B3: 7:36 h getrackt bei 7–8 h
+  Schätzung, einen Tag vor dem Wochen-Soll (ABGABE_NOTIZEN → „P-B3").
+  Lade-Timeout und PlayerId-Anker als P-B3a in die ROADMAP.
+- 2026-11-01 — P-B4-Start, Weg-Kopf und Standardweg (DECISIONS →
+  „Standardweg: lokal gebaut"): PathConnectivity macht die
+  Marker-Rechnung als `GetEntryCell` öffentlich und bekommt
+  `GetExitCell` als Geschwister (Klemme spiegelverkehrt; springt links
+  nie an — untere Kante gehört beim Abrunden zur Zelle, obere kippt
+  nach außen); neues `DefaultPathBuilder`-Skript legt die Linie lokal
+  in `Start`. Isor tippte alles; Stolperer im Review gefangen:
+  Klemm-Korrektur als Weiche gebaut (Normalfall lief in
+  `Vector2Int.zero`) und eine Schleifen-Bedingung ohne Läufer
+  (Endlosschleife — vor dem Play-Druck repariert), dazu `<` statt `<=`
+  am Eintritts-Ende.
+- 2026-11-02 — Kachel-Sperre komplett und **Standardweg-Autobau
+  abgenommen** (DECISIONS → „Kachel-Sperre"): PathGrid besitzt
+  `_lockedCells`/`LockCell`/`IsLocked`, der Builder sperrt die zwei
+  End-Zellen, `RequestRemoveTileRpc` weist gesperrte Zellen still ab.
+  Beide Testgriffe grün: Mittel-Kachel abreißbar (Gizmo-Decke reißt),
+  End-Kachel unzerstörbar. Altlast raus: verirrtes
+  `using NUnit.Framework;` im PathGrid. Wochen-Soll „P-B3 +
+  P-B4-Start bis So 02.11." damit erfüllt. Merkposten in P3:
+  Panel/Upgrades auf den End-Zellen — Playtest entscheidet.
+- 2026-11-02 — P-B4-Designrunde „Gegner laufen" und Monster-Pipeline
+  (DECISIONS → „Monster: der Host simuliert" und „Monster-Typen:
+  Steckbrief-Assets"): MonsterDefinition als Steckbrief-SO samt
+  Grunt-Asset, Monster.cs als Host-Läufer (MoveTowards über die
+  Wegpunkt-Liste, IsServer-Wache), Monster_Grunt-Prefab in der
+  Network-Prefabs-Liste. Dazwischen Isors eigener Vorschlag umgesetzt:
+  InfoPanelUI als abstrakte Panel-Basis, TileInfoPanelUI umgebaut
+  (DECISIONS → „HUD-Panels: eine abstrakte Basisklasse").
+- 2026-11-02/03 — Sende-Kette V1 komplett und Solo-Test bestanden:
+  SendBuilding samt Layer Clickable, SendBuildingSelector („nur
+  meins" per Game-ID), HUD-Sende-Knopf, SendBuildingPanelUI als
+  zweiter Panel-Erbe, MonsterSpawner auf GameNetwork — Brief trägt
+  nur die Typ-Nummer, Spawn() ist die Durchsage (DECISIONS →
+  „Sende-Panel: zwei Wege hinein" und „Sende-Brief: nur die
+  Typ-Nummer reist"). Knopf → Grunt läuft die Linie, despawnt am
+  Austritt. Unterwegs den Player-Doppel-Spawn behoben: Default
+  Player Prefab geleert (das Feld spawnt selbst, bei 0/0/0),
+  Player.prefab dafür in die Prefab-Liste — der PlayerSpawner bleibt
+  der eine Schreiber. Offen: Multiplayer-Doppeltest, Aufräum-Runde
+  (Ein-Panel-Regel, Klick-Verteiler-Entscheid).

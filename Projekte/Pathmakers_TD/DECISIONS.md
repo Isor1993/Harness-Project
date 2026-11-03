@@ -1155,3 +1155,255 @@ als eine Kreuzung zählen); Zufalls-Split (bestraft Planung, bräuchte
 synchronisierte Würfe — bleibt Prüf-Variante); Schritt-/Zeitlimit
 gegen Ringe (würde auch ehrliche lange Wege treffen); Routen-Anzeige
 auch im Multiplayer (nähme dem Versus die Könnens-Probe).
+
+## 2026-10-31 — Bau-Regel: gebaut wird nur bei vollem Weg
+
+Was: Ein Bau-Auftrag wird bei Ankunft nur ausgeführt, wenn der
+NavMeshAgent seinen Weg vollständig gehen konnte — der Motor bekommt
+neben `HasArrived` die zweite Eigenschaft `HasFullPath`
+(`pathStatus == PathComplete`), und die Queue baut nur, wenn beide
+wahr sind; Verwerfen räumt trotzdem auf (Geist weg, nächster
+Auftrag). Kein eigener Reichweiten-Regler: „kurz davor" ist die
+`stoppingDistance` des Agents, einstellbar am Player-Prefab.
+Verworfen wird still; ein „geht nicht"-Feedback und die
+Vorab-Prüfung beim Hovern (Geist gar nicht erst zeigen, wenn kein
+Weg hinführt) stehen auf der P3-Merkliste.
+Warum: Der Agent klemmt unerreichbare Ziele auf den Inselrand und
+meldet dort „angekommen" — ohne das Tor entstand die Kachel trotzdem
+(gefunden beim ersten GameWorld-Lauf, sichtbar gemacht durch den
+Falsch-Rig-Bug). Das Wissen über Wege gehört dem Motor („the only
+place that talks to the NavMeshAgent"), die Queue fragt nur —
+deshalb kein Abstandsmessen in der Queue.
+Verworfen: eigenes `_buildReach`-Feld in der Queue (doppelter
+Besitzer neben stoppingDistance); Distanz messen statt den
+NavMesh fragen (pathStatus beantwortet genau diese Frage).
+
+## 2026-10-31 — Rig-Zuweisung: Brett statt Brief, Zuweisung statt Suche
+
+Was: Die beim Spielstart gewürfelte Zuordnung Game-Id → Spieler
+(Beschluss „Spielstart", 2026-10-29) wird als **Schwarzes Brett**
+geteilt: MatchSetup schreibt sie host-seitig in einen
+Netzwerk-Zustand (NetworkVariable/NetworkList), den Netcode auf
+alle Rechner spiegelt; jeder liest, wann er bereit ist. Befüllt wird
+das Brett per **Losbeutel**: alle ClientIds in eine lokale Liste, je
+Runde einen zufälligen Index ziehen, den Gezogenen hinten ans Brett
+anhängen (Platz = Game-Id) und aus dem Beutel entfernen — Zufall ohne
+Dopplung, lokal gemischt, weil jede Brett-Änderung gefunkt würde. MatchSetup
+ist Szenen-Objekt auf GameNetwork und hält die vier Rigs als
+Inspector-Felder — gespawnte Figuren (BuildOrderQueue u. a.) holen
+ihr Rig per Anfrage an MatchSetup, nie mehr per Szenen-Suche
+(`FindFirstObjectByType` ist in der GameWorld mit vier Rigs
+grundsätzlich falsch und obendrein deprecated — Instance-ID-Ordnung,
+nicht Hierarchie). Grid und View gehören paarweise zum Rig.
+Warum: Durchsagen sind Ereignisse — wer beim Senden nicht bereit
+ist, erfährt sie nie (dasselbe Argument wie im
+Verbindungsverlust-Beschluss); das Brett löst das Spawn-Timing von
+selbst und ist zugleich die Rejoin-Vorsorge. Auslöser war der
+Falsch-Rig-Bug vom 2026-10-31: Die Suche lieferte Rig 4, Laufziel
+und Quittungs-Geist lagen im fremden Gebiet.
+Verworfen: RPC-Durchsage als Transport (verpassbar); eine bessere
+Suchfunktion (FindAnyObjectByType — „irgendeins von vier" kann nie
+richtig sein); Rig-Suche per GameObject-Name (String-Kopplung).
+
+## 2026-10-31 — Bau-Input gehört dem Spieler: ein BuildModeController
+
+Was: Der BuildModeController zieht vom Rig-Prefab auf ein einzelnes
+Szenen-Objekt (`BuildMode` unter `---SYSTEM---`) — es gibt eine Maus,
+einen Spieler, ein aktives Werkzeug, also einen Controller. Sein Grid
+holt er zur Laufzeit von MatchSetup (gleiches Muster wie die
+BuildOrderQueue); der TileGhost wird ebenfalls eine einzelne
+Szenen-Instanz statt ein Kind je Rig. Die Testarea bekommt dieselbe
+Struktur (MatchSetup mit Ein-Rig-Array), damit beide Szenen eine
+Architektur teilen. Dazu Isors fester Maßstab, ab jetzt Leitlinie:
+Architektur-Sauberkeit hat Vorrang vor Umbaugröße — Besitzfrage
+zuerst, bewusste Ausbaustufen sind erlaubt, werden aber als Naht
+benannt.
+Warum: In der Vier-Rig-GameWorld lauschten vier Controller auf
+dieselben globalen Input-Actions; ihre Baumodus-Zustände liefen beim
+ersten Platzieren auseinander (nur der gültige legt das Werkzeug weg),
+wonach fremde Controller im Verwalten-Modus Panels mit fremden
+Zellindizes öffneten. Vier Kopien, von denen drei schlafen, würden die
+falsche Aussage „Input ist Rig-Sache" einbetonieren — der Kopf des
+Skripts sagt selbst „Local only, like the camera".
+Verworfen: vier Controller mit Selbst-Abschaltung der fremden
+(Minimal-Änderung, aber falscher Besitz); den Controller auf die
+Spielerfigur legen (gespawntes Prefab kann Ghost, Panel und Actions
+nicht halten — dasselbe Szenen-Referenz-Problem wie bei der Queue).
+
+## 2026-11-02 — Standardweg: lokal gebaut, Startzustand ist Szenen-Wissen
+
+Was: Die gerade Start-Linie (Beschluss „Monster-Lauf", Punkt 5) baut
+jeder Rechner beim Szenen-Start **selbst**: das neue
+`DefaultPathBuilder`-Skript am Rig holt die Eintritts-/Austritts-Zelle
+von `PathConnectivity` (dort wurde die Marker-Rechnung öffentlich und
+bekam das Austritts-Geschwister) und legt je Zelle das bekannte Paar
+Grid-Belegen plus View-Kachel — in `Start`, weil Grid und View ihre
+Tabellen in `Awake` bauen. Dabei wird die Ein-Schreibstelle-Regel
+**präzisiert**, nicht gebrochen: „Die Durchsage ist die einzige
+Stelle, die Grid und View schreibt" gilt für **Laufzeit-Änderungen
+durch Spieler**; Anfangszustand ist Szenen-Wissen und wird lokal
+geschrieben — wie das Terrain, das auch niemand funkt.
+Warum: Die Linie leitet sich vollständig aus Daten ab, die jeder
+Rechner identisch besitzt (Szene, Marker, Rastermaße) — dieselbe
+Rechnung ergibt überall dasselbe Ergebnis, es gibt nichts zu
+übertragen. Der Netz-Weg hätte die PathGridNet-Vier-Rig-Naht sofort
+fällig gemacht und Ereignisse für Anfangszustand benutzt — exakt die
+Verpassbarkeit, gegen die das Brett gebaut wurde.
+Verworfen: Host verkündet jede Start-Kachel per Durchsage (dreißig
+Nachrichten für etwas, das jeder selbst weiß; verpassbar; zieht die
+Vier-Rig-Naht vor); Linie ins Brett legen (Brett ist für Zustand, der
+sich je Match unterscheidet — die Linie ist immer gleich).
+
+## 2026-11-02 — Kachel-Sperre: nur Eintritts- und Austritts-Zelle
+
+Was: Gesperrt gegen Abriss sind genau **zwei** Zellen je Gebiet — die
+Eintritts- und die Austritts-Zelle der Start-Linie. Das Wissen wohnt
+im `PathGrid` (Daten-Besitzerin: Liste `_lockedCells`, `LockCell`,
+`IsLocked`, kein Unlock — die Sperre gilt das ganze Match), gesetzt
+vom `DefaultPathBuilder` nach dem Legen, geprüft host-seitig als
+zweiter Wächter in `RequestRemoveTileRpc` — formgleich mit dem
+`IsOccupied`-Wächter, Ablehnung still. Die Kacheln **dazwischen**
+bleiben abreißbar: Umbauen ist die Strategie, Gültigkeits-Warnung und
+Rollback fangen den Rest. Bauen auf gesperrte Zellen blockt schon der
+vorhandene Belegt-Wächter, da gesperrte Zellen immer belegt sind.
+Warum: Ohne Eintritt oder Austritt gibt es keinen gültigen Weg mehr,
+den Umbauen retten könnte — der Rollback hätte keinen Rückfallpunkt
+mit diesen Zellen, wenn sie je frei würden. Alles darüber hinaus zu
+sperren würde dem Spieler Strategie wegnehmen.
+Verworfen: die ganze Start-Linie sperren (nimmt das Umbauen, also das
+Spiel); Sperre im Netz-Skript halten (PathGridNet ist Transport, das
+Grid ist die Daten-Besitzerin); Spieler-Feedback beim abgelehnten
+Abriss (P3-Merkliste, zusammen mit dem Panel-Verhalten der End-Zellen
+— Playtest entscheidet, ob sie Panel und Upgrades bekommen).
+
+## 2026-11-02 — Monster: der Host simuliert, alle anderen zeigen an
+
+Was: Monster sind host-gespawnte NetworkObjects. Die **Simulation**
+(Bewegung Zellmitte zu Zellmitte, Ankunfts-Prüfung, Leben-Abzug,
+Despawn) läuft ausschließlich beim Host hinter einer `IsServer`-Wache —
+das Spiegelbild der `IsOwner`-Wache der Spielerfigur; die
+**Darstellung** (Mesh, später Healthbar und Effekte) läuft überall.
+Positionen reisen per NetworkTransform mit Server-Autorität (dort die
+Werkseinstellung — nichts umzustellen). Keine Physik, kein NavMesh:
+Der Host schiebt die Position selbst, das NavMesh bleibt den
+Spielerfiguren.
+Warum: Ein laufendes Monster ist laufender Weltzustand, und jeder
+geteilte Zustand hat bei uns genau einen Schreiber („Host als
+Buchhalter", 2026-10-23 — dasselbe Prinzip wie Kachel-Durchsage und
+Game-Id-Brett). Lokale Simulation driftet, weil Frames nie gleich
+getaktet sind; sobald Folgenreiches an der Position hängt
+(Turmschuss, Leben-Abzug), kippen die Stände in verschiedene
+Ergebnisse, und keiner wäre „der richtige". Der Host-Weg heilt
+Abweichungen von selbst: Das nächste Positions-Paket überschreibt mit
+der Wahrheit. Abgrenzung zum Standardweg-Beschluss: Die Linie ist
+einmaliges Szenen-Wissen, ein Monster lebt durch Zeit — die
+Prüffrage „könnte ein Rechner das Ergebnis falsch haben?" trennt die
+beiden.
+Verworfen: Monster lokal auf jedem Rechner (Drift, vier Wahrheiten);
+Lockstep (alle simulieren bitgleich, nur Eingaben reisen — braucht
+festen Tick, deterministische Ganzzahl-Mathematik und identische
+Reihenfolge von allem, eine Abweichung spaltet die Partie ohne
+Reparaturweg; kauft Bandbreite, die erst bei Einheiten-Massen à la
+RTS fehlt, nicht bei ein paar Dutzend Monstern). Client-Vorhersage
+bleibt benannte Erweiterung wie beim Netz-Beschluss vom 2026-10-23.
+
+## 2026-11-02 — Monster-Typen: Steckbrief-Assets statt Klassen-Pyramide
+
+Was: Es gibt **ein** Monster-Skript (den Läufer) und je Monster-Typ
+ein ScriptableObject als Steckbrief: Tempo, Leben, Diamant-Preis,
+Einkommens-Plus, Leben-Kosten am Ziel, Optik. Ein neuer Typ ist ein
+neues Asset, null Zeilen Code; der Boss ist dieselbe Klasse mit
+dickeren Zahlen (Leben-Kosten 5, Siegbedingungs-Beschluss
+2026-10-16). Übers Netz reist nur die Typ-Nummer — die Steckbriefe
+sind Szenen-Wissen, identisch auf jedem Rechner; ein Array der
+Steckbriefe macht den Index zur Bedeutung (dasselbe
+Platz-ist-Bedeutung-Muster wie SceneId und Game-Id). Vererbung
+entsteht erst beim ersten echten **Verhaltens**-Unterschied (das
+fliegende Monster: anderes Laufen) — dann an der Stelle, die der
+Unterschied verlangt.
+Warum: Klassen folgen Verhalten, Assets folgen Zahlen. Grunt und Boss
+unterscheiden sich nur in Zahlen; eine Klasse, deren Inhalt „andere
+Werte im Konstruktor" ist, trägt kein Verhalten und ist bei der
+Abgabe schwer zu verteidigen. Neue Typen ohne Code-Änderung können
+nichts Bestehendes brechen (Isors Maßstab „nicht tausendmal
+anfassen"), Balancing läuft im Inspector zwischen zwei Play-Läufen —
+konsequente Fortsetzung des Awake-Seed-Musters.
+Verworfen: MonsterBase-Hierarchie auf Vorrat (die Trennstelle würde
+heute geraten statt vom echten Unterschied diktiert — eine falsch
+sitzende Hierarchie umzubauen ist teurer als eine richtige später
+einzuziehen); Zahlen je Typ im Prefab statt im SO (je Typ ein
+Prefab-Klon, Werte doppelt gepflegt).
+
+## 2026-11-02 — HUD-Panels: eine abstrakte Basisklasse
+
+Was: Alle Info-Panels erben von `InfoPanelUI` (abstrakt): Die Basis
+besitzt den Panel-Root und das Paar `ShowPanel`/`OnCloseClicked`,
+jeder Erbe seinen Kontext und seine Knöpfe — `TileInfoPanelUI` die
+Zelle samt Abriss, `SendBuildingPanelUI` den Sende-Knopf. Braucht ein
+Erbe Kontext beim Öffnen, überlädt er `ShowPanel` (gleicher Name,
+andere Parameter) und ruft das geerbte Zeigen. Kein „Base"-Suffix im
+Namen: `abstract` ist das Compiler-Gesetz, der Name bleibt der
+Ist-ein-Satz (`TileInfoPanelUI : InfoPanelUI`).
+Warum: Isors eigener Vorschlag vor dem zweiten Panel — geteiltes
+Verhalten plus ein konkreter zweiter Fall ist der richtige Zeitpunkt
+für Vererbung; der zweite Erbe war danach fast gratis. Merksatz:
+gemeinsamer **Code** → Basisklasse, gemeinsame **Fähigkeit** ohne
+Code → Interface (das kommt später z. B. als IDamageable über
+Monster, Gebäude und Türme hinweg).
+Verworfen: Interface statt Basisklasse (hätte Panel-Root und beide
+Methodenkörper in jeden Erben kopiert — genau das Duplikat, das weg
+sollte); Kachel-Wissen in der Basis (`_net`/`_cellPos` gehören dem
+Kachel-Erben — Besitzfrage); Name „InfoPanelBase" (Namens-Bitte statt
+Compiler-Gesetz).
+
+## 2026-11-02 — Sende-Panel: zwei Wege hinein, nur das eigene Gebäude
+
+Was: Das Sende-Panel öffnet auf **zwei** Wegen — HUD-Knopf (OnClick →
+geerbtes `ShowPanel`, null neuer Code) und Welt-Klick aufs
+Sendegebäude. Der Welt-Klick läuft im neuen `SendBuildingSelector`
+(Spieler-Eingabe, wohnt beim BuildModeController-Objekt): Raycast nur
+auf die **generische** Layer `Clickable`, dann Ausweis-Kontrolle per
+`TryGetComponent<SendBuilding>`, dann Game-ID-Vergleich — das
+`SendBuilding` am Würfel trägt seine Besitzer-Game-ID als
+Szenen-Wissen (wie die Rig-Reihenfolge), der Selector vergleicht mit
+der eigenen aus MatchSetup. Die UI-Wache ist Komfort; die echte Wache
+steht host-seitig im Brief-Empfänger.
+Warum: Beide Wege sind beschlossenes UX (Isor: Spieler wollen beides).
+Layer sind knapp (32, Bitmaske vor dem Treffer) — sie bleiben grobe
+Türsteher-Kategorien; **was** getroffen wurde, sagt die Komponente:
+Compiler-geprüft statt vertippbarer Tag-String, und sie liefert das
+Objekt gleich mit, das die Game-ID sowieso tragen muss.
+Verworfen: eine Layer je Objektsorte (skaliert nicht über 32);
+Tag-Vergleich (String, liefert nichts in die Hand); Klick-Code im
+BuildModeController (Auswählen ist kein Bauen — anderer Besitzer).
+Benannte Nähte, Aufräum-Runde auf grünem Stand beschlossen: die
+Ein-Panel-Regel in der Basis (heute können zwei Panels zugleich
+offen stehen) und der Klick-Verteiler — ein Ray, der per Ausweis
+verteilt — fällig ab dem **dritten** Klickbaren (Türme).
+
+## 2026-11-03 — Sende-Brief: nur die Typ-Nummer reist
+
+Was: Der `MonsterSpawner` (GameNetwork, bei den gemeinsamen Systemen)
+empfängt `RequestSendMonsterRpc(int monsterTypeIndex)` — der Brief
+trägt **nur die Typ-Nummer**. Der Katalog (`MonsterDefinition[]`,
+Platz = Nummer, Grunt = 0) ist Szenen-Wissen. Der Host wacht
+(Nummer im gültigen Fenster, Absender auf dem Brett — die ClientId
+liefert der RPC selbst), baut die Route selbst (V1: Eintritts- bis
+Austritts-Zelle des eigenen Rigs über PathConnectivity und
+TranslateToWorldPos; das Ring-Ziel kommt mit P-B5) und spawnt in
+drei Schritten: Instantiate, `InitializeMonster` (lokal füttern),
+`NetworkObject.Spawn()`. **Spawn ist die Durchsage** — ein eigenes
+Announce-RPC gibt es nicht. Wegpunkte, Steckbrief und Lebenspunkte
+bleiben host-lokal; kein `SpawnWithOwnership`, Monster gehören dem
+Server.
+Warum: Dem Host nichts erzählen, was er selbst nachschlagen kann
+(dieselbe Regel wie beim Kachel-Brief); die Gäste simulieren nicht
+und brauchen die Daten nicht — die Spawn-Durchsage trägt nur
+Katalognummer, Netz-ID und Position, die Hülle entsteht je Rechner
+aus der eigenen Prefab-Liste. Die spätere Diamanten-Wache gehört
+genau hierhin: Das Konto wird Host-Brett, das UI graut nur aus —
+UI höflich, Host misstrauisch.
+Verworfen: Wegpunkte oder Werte im Brief (Host weiß sie selbst, ein
+Client könnte lügen); eigenes Announce-RPC (der NGO-Spawn ist die
+Durchsage schon); Kosten-Prüfung nur im Client (veraltete Kopie,
+Doppelklick-Rennen, manipulierbar).

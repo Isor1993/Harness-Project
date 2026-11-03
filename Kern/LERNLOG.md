@@ -2637,3 +2637,142 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   („warum fängt man beim untersten Teil an?"). **Fehlerbild:** anfangs
   Durchrechnung und Monster-KI vermengt (Raycast-Modell), im Gespräch
   selbst aufgelöst.
+- 2026-10-31 · Pathmakers TD, P-B3: Zusammenhangs-Gizmo, Flutfüllung
+  (Development, Isor tippt) — **Selbst:** die Weggabelung „Prüfung
+  viermal kopieren?" selbst erkannt und beide sauberen Auswege selbst
+  vorgeschlagen (private Methode oder Array + foreach); das
+  Nachbar-Array eigenständig vor die Schleife gezogen und
+  wiederbefüllt statt je Durchlauf neu angelegt; die foreach samt
+  Dreifach-Prüfung (IsInside, IsOccupied, !Contains) nach Ansage in
+  Worten fehlerfrei getippt; TODO 2 und 3 unaufgefordert
+  vorweggenommen. **Fehlerbild:** Kanten-Klemmen zuerst blind (immer
+  −1 statt nur bei „draußen" — nach dem 11,9-m-Zahlenbeispiel selbst
+  auf IsInside umgebaut); FloorToInt auf eine Ganzzahl (unklar, dass
+  TranslateToGridPos schon rundet); while-Bedingung invertiert
+  (<= 0 — Schleife wäre nie gelaufen); „frei" und „belegt"
+  verwechselt (begehbar heißt occupied); Konstruktor nur als „selbst
+  schreiben" im Kopf — die eigenen new-Aufrufe nicht als
+  Konstruktor-Aufrufe erkannt. **Hilfe:** nach „ich komme nicht mit"
+  die Zerlegung in Mini-Schritte (einer je Runde) mit der
+  Zettelstapel/Besuchsbuch-Metapher und einer Trace-Tabelle über drei
+  Kacheln; die Doppelrolle von reached (Besuchsbuch und Ergebnis)
+  erklärt; die Endlos-Falle vorab markiert: der Gerüst-Hint der
+  Vorsession („IsOccupied answers inside + occupied") war falsch,
+  IsOccupied meldet Draußen-Zellen als belegt — ohne IsInside wäre
+  die Füllung ins Endlose gelaufen (Editor-Freeze).
+- 2026-10-31 · Pathmakers TD, P-B3: GameWorld spielbar, Rig-Bug,
+  Bau-Regel (Development, Isor tippt) — **Selbst:** den
+  Falsch-Rig-Bug in einem kompletten eigenen Debug-Durchgang
+  eingekreist (Hypothese PathTileView → Debug.Log → kam nie an →
+  Hypothese verworfen → Queue → Grid-Name geloggt → Rig 4 überführt);
+  die Zellzählung von zwei Seiten (17 bzw. 14 bei 30er-Raster) war
+  ein konsistenter Doppelbeleg für Index 16, ohne dass er es merkte;
+  die FindFirst-Deprecation selbst in der Unity-Doku gefunden und
+  den Kern selbst gezogen („wir können das so nicht ausführen, wir
+  müssen definieren, welches wir bekommen"); die Richtung der Lösung
+  (Rig-Zuweisung beim Spawn statt Suche) selbst skizziert; den
+  Szenen-Umzug großteils selbst verdrahtet (Panel an allen vier Rigs,
+  Panel→Netz); die Bau-Regel selbst eingefordert („kann nicht sein,
+  dass er baut, obwohl er nicht ankommt") und die Architektur-Unruhe
+  richtig gespürt (Regler gehört nicht in die Queue — der Motor ist
+  „the only place that talks to the NavMeshAgent").
+  **Fehlerbild:** beim Szenen-Kopieren SpawnPoints vergessen und die
+  alte Kamera behalten (gerissene Szenen-Verweise); HasFullPath
+  zuerst als Konstanten-Vergleich geschrieben
+  (NavMeshPathStatus.PathComplete == 0 — immer wahr, der Agent kam
+  im Ausdruck nicht vor); Fehlannahme „Live-Abfrage geht doch nicht
+  als Property" (Pfeil-Property wird bei jedem Lesen neu
+  ausgewertet, Gegenbeispiel stand in HasArrived direkt darüber);
+  das Full-Path-Tor erst in die Gesamt-Bedingung gehängt
+  (Queue-Freeze: Verwerfen hätte nie aufgeräumt), nach der
+  Zwei-Fälle-Tabelle selbst umgebaut; Schritt 2 vor Schritt 1
+  getestet (Compile-Fehler als Szenenlisten-Problem gedeutet).
+  **Hilfe:** die Stationen-Tabelle der Fehlerkette (Maus-Ghost
+  richtig · Queue falsch · Netz richtig); Instance-ID-Ordnung als
+  Erklärung, warum „First" nicht Hierarchie heißt; die
+  pathStatus-Drei-Werte-Tabelle (PathPartial = Flussufer-Fall);
+  stoppingDistance als schon existierender „kurz davor"-Regler; das
+  Zwei-Ebenen-if-Gerüst; zweimal Tempo rausgenommen auf Isors Zuruf
+  („wir machen gerade zu viel auf einmal").
+- 2026-10-31 · Pathmakers TD, P-B3: Architektur-Checkup, MatchSetup
+  fertig, Panel-Ausstieg (Development, Isor tippt) — **Selbst:** den
+  Architektur-Maßstab selbst eingefordert (Sauberkeit vor Tempo, als
+  Lernziel begründet) und den Lese-Checkup beauftragt; Option a (ein
+  Controller beim Spieler) nach der Besitz-Abwägung gewählt; den
+  A2-Spawner-Umbau nahezu fehlerfrei getippt (Game-Id-Schleife,
+  continue bei 0, minus 1); TryOpenTilePanel fehlerfrei auf bool
+  gebracht und den Baumodus-Ausstieg nach der Update-Landkarte richtig
+  gesetzt; das Lauf-Pendeln selbst gemeldet und nach der
+  Bremsweg-Erklärung eigenständig über die Agent-Werte gelöst
+  (AutoBraking/Beschleunigung); den Szenen-Umbau (BuildMode-Objekt,
+  Einzel-Ghost, Verdrahtung, Testarea-MatchSetup) weitgehend allein
+  durchgezogen. **Fehlerbild:** die A1-Try-Methode invertiert gebaut
+  (erst „null → raus", dann die Suche — unerreichbarer Code) und ohne
+  return true, die zwei Tore (Update, EnqueueOrder) nicht verdrahtet —
+  Umbenennen allein verdrahtet nichts; beim Szenen-Umbau den
+  Controller im Prefab übersehen (dazu ein Instanz-Zusatz in der
+  Testarea); zweimal „ist drin" gemeldet, während die Datei
+  ungespeichert war; die Zwei-Welten-Struktur von Update (return
+  trennt Verwalten und Bauen) erst mit der Landkarte gesehen —
+  „irgendwie bin ich doof" war keins: die Verwechslung zweier
+  Aufruf-Stellen derselben Methode. **Hilfe:** die Befundliste des
+  Checkups (A1–A7 plus Formkram, abgearbeitet nach Isors
+  Priorisierung); die Bremsweg-Formel Tempo²/(2×Beschleunigung) mit
+  Zahlenbeispiel; die Update-Landkarte; die YAML-Zählungen, die den
+  Prefab-Rest und den Testarea-Zusatz fanden; totes _view-Feld der
+  Queue als Fund erklärt (seit dem Kassen-Umbau ungelesen).
+- 2026-11-01/02 · Pathmakers TD, P-B4-Start: Weg-Kopf, Standardweg,
+  Kachel-Sperre (Development, Isor tippt) — **Selbst:** im
+  Verständnis-Check die Doppelaufgabe des Builders (Raster belegen
+  UND Kacheln zeigen) selbst hergeleitet, bevor sie erklärt war;
+  den MonoBehaviour-lokal-Ansatz im Entwurf richtig begründet
+  („überall einmal gleich gemacht"); Stück 3 (Sperr-Liste, zwei
+  Methoden, Builder-Aufrufe, Netz-Wächter) in einem Wurf fehlerfrei
+  über drei Dateien gebaut — nur Stil-Trim nötig; die
+  Panel-Design-Frage der End-Zellen selbst aufgemacht und richtig
+  zum Playtest vertagt (Konsistenz-Argument: gleiches Aussehen
+  braucht gleiches Verhalten). **Fehlerbild:** die Klemm-Korrektur
+  beim Herausziehen in Methoden zur Weiche umgebaut (return im if,
+  Normalfall lief in erfundenes Vector2Int.zero — in beiden
+  Methoden gleich, vom Gizmo-Test nicht aufdeckbar, weil der
+  Spawn-Marker immer außen liegt); die Schleifen-Bedingung ohne den
+  Läufer geschrieben (exitCell.x < entryCell.y — konstant wahr,
+  Endlosschleife mit Instanziierung je Durchlauf; dieselbe Familie
+  wie der Konstanten-Vergleich vom 2026-10-31), dazu die falsche
+  Achse (y statt x) und einmal mehr die Einschließlich-Grenze
+  (< statt <=, Eintrittszelle wäre leer geblieben — der Hinweis
+  stand vorab im Chat). **Hilfe:** die Zwei-Fälle-Tabelle der
+  Rückgabe (außerhalb/innerhalb mit echten Zellnummern); die
+  Kanten-Rechnung 60÷2=30 kippt raus, 0÷2=0 bleibt drin (warum die
+  Klemme links nie anspringt); Warnung vor Play bei der
+  Endlosschleife; das Gerüst mit drei TODOs samt
+  Einschließlich-Hinweis.
+- 2026-11-02/03 · Pathmakers TD, P-B4: Monster-Pipeline und
+  Sende-Kette (Development, Isor tippt) — **Selbst:** die
+  Panel-Basisklasse selbst vorgeschlagen und richtig begründet
+  (geteiltes Zeigen/Schließen hoch, Knöpfe und Kontext in die Erben);
+  den SendBuildingSelector in einem Wurf fast fehlerfrei gebaut,
+  Enable/Disable der Action unaufgefordert nach Hausmuster; den
+  Player-Doppel-Spawn selbst bemerkt und auf das frisch gefüllte
+  Default-Player-Feld eingegrenzt; die Setter-Frage am Steckbrief-SO
+  gestellt und das Typ-gegen-Exemplar-Argument übernommen; die
+  Wegpunkt-Naht hinterfragt („Despawn ist doch immer klar?" — die
+  Besitz-Antwort saß danach); eine ehrliche Architektur-Durchsicht
+  eingefordert und das Fließband verlangt, als es chaotisch wurde;
+  Refactoring bewusst auf den grünen Stand gelegt (Klickfeld).
+  **Fehlerbild:** dreimal gekippte oder halbe Wachen an einem Abend —
+  `clientId == 0` warf den Host raus (Host hat ClientId 0; die
+  0-Prüfung gehörte auf die Game-ID), die Bereichs-Wache erst mit
+  `> 0 || <=` (alles flog raus), dann `> 0` statt `< 0` belassen
+  (−3 schlüpfte durch); bei Instantiate den Rückgabetyp als
+  NetworkObject erwartet („nicht kompatibel") statt „gibt zurück, was
+  man reinsteckt"; das Monster zunächst ungefüttert gespawnt (Liste
+  und InitializeMonster fehlten zwischen Instantiate und Spawn);
+  Verständnis-Einbruch vor dem ersten eigenen Netz-Spawn („ich bin
+  draußen, mir fehlt eine Übersicht") — die drei richtigen Kernsätze
+  standen schon im eigenen Diktat. **Hilfe:** das
+  Durchsage-Diagramm in drei Ebenen (Absender/Host/alle Rechner) samt
+  „fast nichts reist mit"; Zwei-Fälle-Tabellen mit echten Zahlen je
+  Wache; die Layer/Tag/Komponenten-Tabelle (Türsteher gegen Ausweis);
+  Vererbung-gegen-Interface am eigenen Panel-Fall; TODOs wieder in
+  die Arbeitsdatei nach Isors berechtigter Rüge.

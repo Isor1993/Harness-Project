@@ -127,3 +127,79 @@ Wahrheit.
 - Exploit-Fund durchs freie Spielen im Gym: Bestellung plus Wegklicken
   baute fern, weil HasArrived zielbezogen ist. Behoben als
   Design-Entscheid (Laufbefehl storniert alles), nicht als Flicken.
+
+## P-B3 · Karte + Spawns (2026-10-29 bis 2026-10-31)
+
+**Zeiten** (Grindstone; die Designrunden vom 29./30.10. — Karte,
+Spielstart, Monster-Lauf — sind **nicht** getrackt, ebenso bewusst
+nicht die Lese- und Zwischenzeiten vom 31.10.):
+
+| Posten | Zeit |
+|---|---|
+| GameWorld-Blockout + Tool_MapLayout (30.10.) | 1:49 |
+| PathConnectivity — Flutfüllung + Gizmo | 1:28 |
+| GameWorld testbar machen (Szenen-Umzug) | 1:16 |
+| Bau-Regel, MatchSetup, Panel-Fixes | 1:46 |
+| BuildModeController-Umbau (Input-Zuteilung) | 1:16 |
+| **Summe getrackt** | **7:36** |
+
+Schätzung war 7–8 h — **gehalten**, einen Tag vor dem Wochen-Soll.
+Der P-B2-Lernblock hat gezahlt, was er versprochen hat: Brief/
+Durchsage, Besitz und die NGO-Grundmuster saßen diesmal.
+
+**Gebautes:** Szene GameWorld spielbar und im Menü verdrahtet
+(System-Umzug aus der Testarea, SceneBootstrap statt
+TestareaBootstrap, Build-Liste, SceneId.GameWorld im Menü-Weg);
+Tool_MapLayout als AI-geschriebenes Karten-Gizmo; PathConnectivity
+(Flutfüllung ab der geklemmten Spawn-Zelle, blaues Erreichbar-Overlay
+— zugleich die spätere Gültigkeits-Rechnung); Bau-Regel im Motor
+(HasFullPath: gebaut wird nur bei vollem NavMesh-Weg, Verwerfen räumt
+auf); MatchSetup (NetworkList-Brett, Losbeutel-Zufall, GetGameId/
+GetRigGrid als einzige Index-Umrechner); PlayerSpawner spawnt nach
+Game-Id statt Beitritts-Reihenfolge; BuildModeController als ein
+Spieler-Objekt statt vier Rig-Kopien, samt Panel-Ausstieg im Baumodus;
+Kasse und Controller holen ihr Rig per Try-Muster — keine Szenen-Suche
+mehr.
+
+**Erkenntnisse** (vorläufig, Reflexion folgt):
+- Szenen-Suche skaliert nicht: FindFirst „funktionierte" mit einem
+  Rig und griff mit vieren das falsche — der Falsch-Rig-Bug, von Isor
+  im eigenen Debug-Durchgang überführt. Antwort auf Architektur-Ebene:
+  Zuweisung statt Suche (Brett), nicht eine bessere Suchfunktion.
+- Ein-Rig-Annahmen steckten an mehr Stellen als gedacht (Kasse,
+  Controller, Spawner; PathGridNet bleibt als benannte Naht) — der
+  Lese-Checkup über alle Skripte vor dem Weiterbauen hat sich gelohnt.
+- Die Engine wusste die Bau-Antwort schon: pathStatus unterscheidet
+  „angekommen" von „so weit es ging" — erst fragen, was der NavMesh
+  weiß, statt selbst zu messen; der „kurz davor"-Regler existierte
+  als stoppingDistance ebenfalls bereits.
+- Isors Architektur-Grundsatz ausgesprochen und angewendet:
+  Sauberkeit vor Umbaugröße — ein Controller beim Spieler statt vier
+  schlafender Kopien (DECISIONS, 2026-10-31).
+- Vier Grindstone-Schübe à ~1,5 h mit klaren Schnitten erwiesen sich
+  als gut nachvollziehbare Tracking-Einheit.
+
+**Medien:** Scene-Screenshot des Gizmos (blaue Kette, abgetrennte
+Kacheln orange) liegt im Chat vom 2026-10-31; ein Demo-Clip des
+Bausteins steht noch aus.
+
+## P-B4 · Gegner laufen (seit 2026-11-01, läuft)
+
+**Zeiten** (Grindstone, Zwischenstand 2026-11-03 früh — der Baustein
+läuft noch; Schätzung ~10 h):
+
+| Posten | Zeit |
+|---|---|
+| Sichern Standardweg + Einstieg Designrunde (02.11.) | 0:24 |
+| Designrunde „Gegner laufen" (Host simuliert, Steckbriefe) | 0:45 |
+| MonsterDefinition + Grunt-Asset | 0:06 |
+| Monster.cs (Läufer) | 0:31 |
+| SendBuilding + Panel-Basisklasse | 0:28 |
+| Sende-Kette bis zum laufenden Grunt (Selector, Knopf, MonsterSpawner, Tests) | 2:08 |
+| **Zwischensumme 02./03.11.** | **4:22** |
+
+Gesamt-Grindstone am 2026-11-03: **37:49:32**. Abzüglich der
+Bausteine P-B1 bis P-B3 (zusammen 33:07) sind bisher **~4:43** auf
+P-B4 gebucht; die ~0:20 über der Zwischensumme oben sind der 01.11.
+(Weg-Kopf/Standardweg, nur knapp getrackt). Gebautes und
+Erkenntnisse folgen beim Baustein-Abschluss.

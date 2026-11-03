@@ -22,17 +22,17 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-10-30 beim `/harness:ende` der Session
-„Pathmakers TD · Karte + Spawns bauen" — Karte, Rigs und NavMesh
-stehen, dazu die Designrunde Monster-Lauf; Belege im LOG der Schicht.)*
+*(überschrieben 2026-11-03 beim `/harness:ende` der
+P-B4-Development-Session — Monster-Sende-Kette V1 steht, Solo-Test
+bestanden; Belege im LOG der Schicht.)*
 
-**P-B3 fortsetzen** (`Projekte/Pathmakers_TD/ROADMAP.md` → P-B3,
-„Stand 2026-10-30"): Einstieg ist das Zusammenhangs-Gizmo —
-`PathConnectivity.cs` liegt als Gerüst mit sechs TODOs, Isor tippt,
-TODO 1 enthält die Kanten-Falle (Spawn sitzt auf der Rasterkante).
-Danach MatchSetup → Territory-Check → Menü-Weg. Das Monster-Lauf-Design
-ist komplett (`DECISIONS.md`, 2026-10-30 — Wander-Modell, Rollback);
-Wochen-Soll bis So 02.11.: P-B3, dann P-B4-Vorsprung.
+**P-B4 fortsetzen** (`Projekte/Pathmakers_TD/ROADMAP.md` → P-B4,
+„Stand 2026-11-03"): **Zuerst die Aufräum-Runde** (Isors Ansage):
+Ein-Panel-Regel in `InfoPanelUI`, dann der Klick-Verteiler-Entscheid.
+Danach der Multiplayer-Doppeltest (Sende-Kette auf beiden
+Bildschirmen, „nur meins" per Game-ID), dann weiter im Baustein:
+Leben-Brett, Wander-Routing (schreibt Claude). Wochen-Soll: P-B4 samt
+Prüfpunkt + P-B5-Start bis So 08.11.
 
 ---
 
@@ -94,6 +94,9 @@ Unterrichtsblock reicht".
       Offen nur noch der Toolchain-Test (neues C++-Blank-Projekt):
       Epics Doku empfiehlt für 5.8 ausdrücklich VS 2026, für 5.6 ist es
       ungeprüft — Plan B bleiben die VS-2022-Build-Tools.
+      **Überholt am 2026-10-30** (Isor): Unreal läuft nur noch im
+      Unterricht — der private Toolchain-Test entfällt; braucht der
+      Kurs ihn, passiert er dort.
 - [x] **Neues Projekt-Repo für den Unreal-Tower anlegen** —
       Namensvorschlag kommt von Claude; `.gitignore`/LFS nach
       Unreal-Muster (`Binaries/`, `Intermediate/`, `Saved/`,

@@ -122,7 +122,12 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
   samt Kassen-Umbau, Solo-Test bestanden (Beleg: LOG 2026-10-28, drei
   DECISIONS-Einträge). Offen: Abbau-Panel (TileInfoPanelUI),
   Zwei-Instanzen-Relay-Test.
-- [ ] **P-B3 · Karte + Spawns** — Blockout der echten Karte: vier
+- [x] **P-B3 · Karte + Spawns** — **erledigt am 2026-10-31** (Beleg:
+  LOG-Einträge 2026-10-29 bis 31, Zeiten und Gebautes in
+  `ABGABE_NOTIZEN.md` → „P-B3 · Karte + Spawns"; 7:36 h getrackt bei
+  7–8 h Schätzung, einen Tag vor dem Wochen-Soll; Menü-Weg führt in
+  die GameWorld, Solo-Test bestanden). Ursprünglicher Zuschnitt:
+  Blockout der echten Karte: vier
   Gebiete, Größe einstellen, Start- und Endpunkte. (~7–8 h)
   Erster Einrichtungs-Schritt bei Baustart: Multiplayer Play Mode
   aufsetzen, damit Mehr-Spieler-Tests ohne zweite Editor-Instanz
@@ -149,6 +154,29 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
   Offen: das Zusammenhangs-Gizmo (`PathConnectivity.cs` liegt als
   Gerüst mit sechs TODOs, Isor tippt) → MatchSetup → Territory-Check →
   Menü-Weg.
+  **Stand 2026-10-31:** Gizmo gebaut und in der GameWorld geprüft,
+  GameWorld spielbar (Szenen-Umzug, Build-Liste, SceneBootstrap),
+  Bau-Regel (nur bei vollem Weg), MatchSetup komplett (Brett,
+  Losbeutel, Spawner nach Game-Id, Kasse und Controller per
+  Try-Muster), ein BuildModeController statt vier, Panel-Ausstieg aus
+  P3 vorgezogen — Belege im LOG (sieben Einträge vom 2026-10-31) und
+  in den DECISIONS. Territory-Check beim Laufen durch das
+  Insel-NavMesh erledigt (Fehlklick-Filter → P3). **Offen nur noch:
+  der Menü-Weg auf GameWorld** (SceneId-Enum + SceneLoader-Asset +
+  drei Menü-Stellen; dabei den PlayerId-Anker fürs Brett nachziehen,
+  sobald der UGS-Weg ihn liefert). Bekannte Naht danach:
+  `PathGridNet` adressiert genau ein Rig (ein Grid, eine View,
+  rig-lokale Zellindizes in den RPCs) — Rig-Kennung im Brief oder ein
+  Netz-Skript je Rig; bis dahin von Hand auf Rig_1 verdrahtet (Isor,
+  2026-10-31: nach dem Baustein, wenn Zeit ist).
+- [ ] **P-B3a · Spielstart-Anbauten** — zwei kleine Posten aus den
+  Beschlüssen, baubar seit der Menü-Weg steht (2026-10-31), Kür neben
+  P-B4, kein Blocker: der **Lade-Timeout** (Beschluss „Spielstart",
+  2026-10-29: verliert ein Spieler beim Laden die Verbindung, warten
+  die anderen bis zu einer Minute, dann startet das Spiel ohne ihn)
+  und der **PlayerId-Anker** am MatchSetup-Brett (Rejoin-Vorsorge:
+  host-seitige Zuordnung UGS-PlayerId → Game-Id, jetzt möglich, weil
+  der UGS-Weg die Id liefert — im Gym gibt es sie weiterhin nicht).
 - [ ] **P-B4 · Gegner laufen** — ein Gegnertyp, host-gesteuert:
   Wegpunkt-Folge nach dem Wander-Modell samt Gültigkeit und Rollback
   (DECISIONS 2026-10-30 — „Monster-Lauf"; ersetzt den alten Zuschnitt
@@ -157,7 +185,24 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
   nach der Werkzeug-Politik vom 2026-10-30)
   Erster Schritt: der Standardweg-Autobau — die vorgegebene gerade
   Kachel-Linie vom Start- zum Ziel-Marker je Gebiet (aus der
-  Karten-Runde vom 2026-10-29).
+  Karten-Runde vom 2026-10-29). **Stand 2026-11-02: erster Schritt
+  fertig und abgenommen** — PathConnectivity als Weg-Kopf
+  (GetEntryCell/GetExitCell), DefaultPathBuilder legt die Linie lokal,
+  PathGrid sperrt die zwei End-Zellen gegen Abriss (DECISIONS
+  2026-11-02 — „Standardweg: lokal gebaut" und „Kachel-Sperre");
+  Wochen-Soll P-B4-Start damit erfüllt. **Stand 2026-11-03: die
+  Sende-Kette V1 steht** — Designrunde „Gegner laufen" entschieden
+  und gebaut (DECISIONS 2026-11-02/03 — „Host simuliert",
+  „Steckbrief-Assets", „HUD-Panels", „Sende-Panel", „Sende-Brief"):
+  Steckbrief-SO samt Grunt, Host-Läufer, Panel-Basis, Sendegebäude
+  mit beiden Öffnungswegen, MonsterSpawner; Solo-Test bestanden —
+  Knopf → Grunt läuft die Linie (LOG 2026-11-02/03, Zeiten in
+  ABGABE_NOTIZEN → „P-B4"). Offen, in dieser Reihenfolge:
+  Aufräum-Runde zuerst (Ein-Panel-Regel in der Panel-Basis,
+  Klick-Verteiler-Entscheid — Isors Ansage vom 2026-11-03), dann
+  Multiplayer-Doppeltest (Sende-Kette auf beiden Bildschirmen,
+  „nur meins"), dann Leben-Brett und Wander-Routing (schreibt
+  Claude), dann der Prüfpunkt.
 - [ ] **P-B5 · Takt + Senden** — Timer mit Bereit-Knopf, Sende-Gebäude
   mit Warteschlange, Sends laufen mit dem Wellenstart, fester
   Sende-Ring. (~5–6 h)
@@ -173,7 +218,15 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
 - [ ] **P-B8 · Mine + Arbeiter** — Streichkandidat, faktisch
   Alpha-Material; Notlösung ist ein Kachel-Kauf-Knopf. (~7–8 h)
 - [ ] **P3 · Polish-Merkliste** — gesammelt beim Bauen, fällig
-  frühestens mit den Messrunden: Menü-Branding tauschen (trägt noch
+  frühestens mit den Messrunden: Szenen-Hygiene Testarea (die
+  Szenendatei trägt einen verwaisten BuildModeController-Datenblock
+  ohne GameObject — im Editor unsichtbar, beim Umbau vom 2026-10-31
+  übrig geblieben; bei Gelegenheit ausräumen); Fehlklick-Filter beim
+  Laufbefehl (Klick ins fremde Gebiet läuft heute ans Ufer, spawnt den
+  Ring am unerreichbaren Punkt und storniert die Bau-Warteschlange —
+  die harte Grenze erledigt das Insel-NavMesh, das hier ist nur
+  Spielgefühl; Kandidat: Ziel vorab per NavMesh-Pfadprüfung ablehnen,
+  2026-10-31); Menü-Branding tauschen (trägt noch
   das Isor's-Tower-Logo aus der Übernahme-Kette); Wand-Klick-Filter
   (der Klick-Strahl ignoriert Wände und trifft den Boden dahinter);
   Tick-Rate und Interpolation messen (Latenz,
@@ -199,7 +252,12 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
   Optik-Phase samt Asset-Liste (Welt verschönern, Monster- und
   Wächter-Figuren, Gebäude für Mine und Senden — evtl. eines für
   beide —, Bäume, Detail-Texturen; Gebiete optisch unterscheidbar
-  machen — Karten-Runde 2026-10-29).
+  machen — Karten-Runde 2026-10-29); Eintritts-/Austritts-Zelle:
+  Panel und Upgrades ja oder nein — im Playtest entscheiden; Regel:
+  verhalten sie sich anders als normale Kacheln, müssen sie auch
+  anders aussehen (Portal-Optik), sonst normale Kachel mit
+  Schloss-Symbol im Panel; nur der Abriss bleibt immer tabu
+  (Sperre vom 2026-11-02).
 
 ## Meilenstein-Plan (Fertig-Linien und Inhalte)
 

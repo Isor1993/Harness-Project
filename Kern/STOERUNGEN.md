@@ -1248,3 +1248,42 @@ zufällig an sie denkt.
 **Stand:** offen — Gegenmittel als Punkt in `Kern/ROADMAP.md`:
 Tafel-Nachzug als feste Zeile der Doku-Pflicht (Isors Ja vom
 2026-10-30).
+
+### 2026-10-31 — Dozenten-Regel in neuem Code verletzt, Review-Gate ausgefallen
+**Was:** Zwei am selben Tag geschriebene Skripte (MatchSetup, der
+BuildModeController-Umbau) bekamen Fehlerlogs **ohne** die
+`#if UNITY_EDITOR`-Kapselung, die `Kern/CODE_GUIDELINES.md` als
+Dozenten-Regel vorschreibt. Aufgefallen nicht beim Schreiben, sondern
+erst, als Isors Checkup-Auftrag die zwei Log-Stile im Bestand
+nebeneinanderlegte und Isor die Uni-Vorgabe benannte; die Logs wurden
+am selben Tag nachgekapselt.
+**Ursache:** Das Review-Gate („vor dem Coden durchgehen") wurde in den
+schnellen Bau-Runden nicht aufgerufen — geschrieben wurde nach dem
+Muster im Kontext statt gegen die Regel-Datei, und ausgerechnet die
+Alt-Skripte, die es richtig machen, waren da noch nicht gelesen.
+Dasselbe Grundmuster wie am 2026-10-28 (Fakten aus dem Gedächtnis
+statt aus der besitzenden Quelle), diesmal mit einer Regel statt
+eines Fakts.
+**Regel:** Existiert (`CODE_GUIDELINES.md`, Debug-Ausgaben-Zeile) und
+griff nicht, weil der Kontrollpunkt davor — das Review-Gate — ausfiel.
+**Stand:** Verstoß am selben Tag behoben. Gegenmittel als Punkt in
+`Kern/ROADMAP.md`: Review-Gate auch vor Claude-geschriebenen Stücken
+(Isors Ja vom 2026-10-31).
+
+### 2026-11-02 — TODOs im Chat statt in der Arbeitsdatei
+**Was:** Claude legte die Gerüst-TODOs für das Sendegebäude zweimal
+als Chat-Block vor, statt sie als TODO-Kommentare in die Arbeitsdatei
+zu schreiben. Isor mahnte die Regel an („Warum ist das auf einmal
+anders?"); die TODOs wurden nachgetragen, der Rest der Session lief
+regelkonform.
+**Ursache:** Abdrift über mehrere kleine Gerüste in Folge — bei
+kleinen Stücken wirkte der Chat-Block billiger, und nichts hielt
+dagegen: Die Arbeitsteilung „Chat erklärt, die TODOs führen im
+Arbeits-File" lebt nur in Claudes projektübergreifendem Gedächtnis,
+nicht in einer Harness-Regeldatei.
+**Regel:** Existiert nur im Gedächtnis — dieselbe Bauart wie beim
+Versionslisten-Vorfall vom 2026-10-28: Eine Regel ohne Regeldatei
+greift unzuverlässig.
+**Stand:** behoben 2026-11-02 in derselben Session. Gegenmittel-Frage
+an Isor gestellt: ob die TODO-Arbeitsteilung als Satz zum Regler „Wer
+schreibt" in `Kern/WORKFLOW.md` verankert wird.
