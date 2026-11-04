@@ -197,12 +197,18 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
   Steckbrief-SO samt Grunt, Host-Läufer, Panel-Basis, Sendegebäude
   mit beiden Öffnungswegen, MonsterSpawner; Solo-Test bestanden —
   Knopf → Grunt läuft die Linie (LOG 2026-11-02/03, Zeiten in
-  ABGABE_NOTIZEN → „P-B4"). Offen, in dieser Reihenfolge:
-  Aufräum-Runde zuerst (Ein-Panel-Regel in der Panel-Basis,
-  Klick-Verteiler-Entscheid — Isors Ansage vom 2026-11-03), dann
-  Multiplayer-Doppeltest (Sende-Kette auf beiden Bildschirmen,
-  „nur meins"), dann Leben-Brett und Wander-Routing (schreibt
-  Claude), dann der Prüfpunkt.
+  ABGABE_NOTIZEN → „P-B4"). **Stand 2026-11-04: Aufräum-Runde,
+  Spawn-Fix, Rig-Naht und Doppeltest erledigt** — Ein-Panel-Regel und
+  Türen-Regel in der Panel-Basis, Klick-Verteiler für P-B7 bestätigt,
+  Spawn-Reise repariert (Warp-Brief), Rig-Naht Variante A gezogen;
+  Multiplayer-Doppeltest bestanden (DECISIONS 2026-11-04, LOG).
+  Dazwischen der Ordnungssystem-Durchgang (eigene DECISIONS-Einträge
+  in Kern und Projekt). Offen, in dieser Reihenfolge: **Bühne
+  fertigbauen** (ActiveUiMode Block 2+, DECISIONS → „Bühne statt
+  Spezialfälle"; dabei die Alt-Spezialfälle löschen), dann Leben-Brett
+  (Isors Entwurf zuerst: wo wohnen die Leben, wer meldet die Ankunft),
+  Wander-Routing (schreibt Claude), dann der Prüfpunkt. Beim
+  Baustein-Ende: das Mess-Log im PlayerSpawner entfernen.
 - [ ] **P-B5 · Takt + Senden** — Timer mit Bereit-Knopf, Sende-Gebäude
   mit Warteschlange, Sends laufen mit dem Wellenstart, fester
   Sende-Ring. (~5–6 h)

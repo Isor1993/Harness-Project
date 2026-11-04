@@ -185,3 +185,26 @@ Format: `- JJJJ-MM-TT — Ereignis.` Ein bis drei Zeilen je Eintrag.
   Player.prefab dafür in die Prefab-Liste — der PlayerSpawner bleibt
   der eine Schreiber. Offen: Multiplayer-Doppeltest, Aufräum-Runde
   (Ein-Panel-Regel, Klick-Verteiler-Entscheid).
+- 2026-11-03/04 — Aufräum-Runde, Spawn-Jagd, Rig-Naht: Ein-Panel-Regel
+  in der Panel-Basis (statisches Feld), Türen-Regel (OpenForTile /
+  OpenForBuilding, ShowPanel protected), Werkzeug-Ziehen schließt das
+  Panel; Klick-Verteiler bestätigt für P-B7. Spawn-Jagd über drei
+  Ursachen bis zum NGO-Quelltext-Beweis, Fix: SamplePosition-Wache +
+  genullte Prefab-Wurzel + WarpToSpawnRpc (DECISIONS → „Spawn-Reise").
+  Rig-Naht vorgezogen und komplett (DECISIONS → „Rig-Naht gezogen:
+  Variante A"): rigId in allen vier Briefen, Revier-Wache beim Host,
+  Rig-Register am Brett, IsInside-Wache gegen fremde Panels.
+  **Multiplayer-Doppeltest bestanden** — jeder baut nur auf dem
+  eigenen Feld, jeder sendet (noch) auf die eigene Linie. Danach die
+  Bühne entschieden (DECISIONS → „Bühne statt Spezialfälle") und
+  Block 1 gebaut (IUiMode).
+- 2026-11-04 — Ordnungssystem-Durchgang auf Isors Stopp: Gewerk-Modell,
+  Präfix-Tabelle und Szenen-Zonen beschlossen (Kern-DECISIONS
+  2026-11-04, Regeln in CODE_GUIDELINES), der ganze Bestand in fünf
+  Stationen umgezogen und umbenannt (Projekt-DECISIONS →
+  „Aufräum-Durchgang"), Play-Test Host + Client grün. Neu:
+  `Werkzeuge/systeme.py` erzeugt `SYSTEME.md` (Scripts-Systeme,
+  Assets-Ebene, Szenen-Wurzeln aus den .unity-Dateien) und die
+  Artifact-Seite „⚙️ System · Pathmakers-Projektübersicht" — deren
+  erste Fassung ohne die Hausregeln gebaut war und neu gebaut wurde
+  (Kern-STOERUNGEN 2026-11-04).

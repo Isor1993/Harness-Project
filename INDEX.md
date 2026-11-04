@@ -135,6 +135,7 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 | `Projekte/Pathmakers_TD/GDD.md` | Design-Absicht des Spiels Pathmakers TD (Arbeitstitel) — was es sein soll, nicht wie es gebaut wird — und zugleich das Markdown-Manuskript, aus dem `Kern/Werkzeuge/abgabe_bauen.py` die .docx-Abgabefassung baut (Formatvorlage und Titelteil im Datenbaum, `Kern/PFADE.md` → `DATENBAUM`; den Umgang mit der .docx regelt `Uni/DOCX_RULES.md`). |
 | `Projekte/Pathmakers_TD/LOG.md` | Nur was wann passiert ist — datierte Ereignisse, älteste oben. |
 | `Projekte/Pathmakers_TD/ROADMAP.md` | Nur was an Pathmakers TD als Nächstes designt oder gebaut wird — Aufgaben und Verweise auf offene Fragen. |
+| `Projekte/Pathmakers_TD/SYSTEME.md` | Nur die erzeugten Listen — System-Ordner unter `Assets/Scripts/` (plus `Assets/Editor/`), die oberste Assets-Ebene und die Wurzel-Objekte jeder Szene. |
 | `Projekte/Python_Lesen/DECISIONS.md` | Nur Entscheidungen zum Python-Lesekurs — was entschieden wurde, warum, und welche Alternativen verworfen wurden. |
 | `Projekte/Python_Lesen/LOG.md` | Nur was wann passiert ist — datierte Ereignisse und die Einheiten-Einträge des Kurses, älteste oben. |
 | `Projekte/Python_Lesen/ROADMAP.md` | Nur was im Python-Lesekurs als Nächstes drankommt — der Themenplan in Blöcken und die offenen Kurs-Aufgaben. |
@@ -151,6 +152,7 @@ muss (`Kern/DOC_RULES.md`, Abschnitt 8).
 | `Projekte/Isor_Tower/Werkzeuge/prefab_status.py` | Erzeugt PREFAB_STATUS.md aus den tatsächlich vorhandenen .prefab-Dateien. |
 | `Projekte/Isor_Tower/Werkzeuge/systeme.py` | Erzeugt SYSTEME.md aus den Script-Ordnern des Unity-Projekts. |
 | `Projekte/Isor_Tower/Werkzeuge/szene_pruefen.py` | Liest eine Unity-Szene samt UI-Prefabs und meldet Aufbau, Werte und Verdrahtung. |
+| `Projekte/Pathmakers_TD/Werkzeuge/systeme.py` | Erzeugt SYSTEME.md aus dem Unity-Projekt von Pathmakers TD. |
 
 ## Befehle — Auslöser, Ablauf in `Kern/WORKFLOW.md`
 

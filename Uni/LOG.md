@@ -208,3 +208,9 @@ damals, nicht den von heute.
   und Viewer sind damit abgehakt, alles Offene hängt am Spielprojekt.
   Beide Status-Tafeln (Semester 3, Pathmakers TD) auf diesen Stand
   nachgezogen (`Kern/ARTIFACT_INDEX.md`).
+- 2026-11-03 — PLAN-Zeitraum „Umstellung auf Unreal + C++"
+  geschnitten (Isors Bestätigung): alle Punkte erledigt oder überholt
+  — seit dem Engine-Entscheid vom 2026-10-09 läuft das Semester-Spiel
+  in Unity/C#, Unreal und C++ sind nur noch Unterrichts-Lernschiene.
+  Die Belege stehen an den Einzelpunkten (`Uni/ROADMAP.md`,
+  `Uni/DECISIONS.md`, Einträge 2026-09-07 bis 2026-10-09).

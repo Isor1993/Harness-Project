@@ -1284,6 +1284,30 @@ nicht in einer Harness-Regeldatei.
 **Regel:** Existiert nur im Gedächtnis — dieselbe Bauart wie beim
 Versionslisten-Vorfall vom 2026-10-28: Eine Regel ohne Regeldatei
 greift unzuverlässig.
-**Stand:** behoben 2026-11-02 in derselben Session. Gegenmittel-Frage
-an Isor gestellt: ob die TODO-Arbeitsteilung als Satz zum Regler „Wer
-schreibt" in `Kern/WORKFLOW.md` verankert wird.
+**Stand:** behoben 2026-11-02 in derselben Session; Gegenmittel
+verankert 2026-11-03 — die TODO-Arbeitsteilung steht jetzt in
+`Kern/WORKFLOW.md` → „Typ, Modus und Regler" (Isors Ja vom
+2026-11-03).
+
+### 2026-11-04 — Artifact-Seite ohne die Hausregeln gebaut
+**Was:** Claude baute die neue Seite „Pathmakers-Projektübersicht",
+ohne vorher `Kern/ARTIFACT_RULES.md` zu lesen: helles/dunkles
+Doppel-Theme statt der einen Hausfarbwelt, kein Titel-Schema, kein
+Tafel-Aufbau. Isors Befund: „sieht aus wie zusammengeklebter Plain
+Text". Die Seite wurde in derselben Session komplett neu gebaut,
+gleiche URL.
+**Ursache:** Die Regeldatei existiert und ist vollständig — aber kein
+Ablauf erzwingt ihr Lesen vor einem Publish. Das Review-Gate kennt nur
+den Artifact-**Check** (veraltet eine bestehende Seite durch
+Code-Änderung?), nicht den Bau-Fall; die Leseordnung beim
+Session-Start nennt die Datei nicht.
+**Regel:** Existierte vollständig (`ARTIFACT_RULES.md`), griff aber
+nicht — dieselbe Lücke wie bei den TODO- und Versionslisten-Vorfällen,
+nur umgekehrt: Dort fehlte die Regeldatei, hier fehlte der Zwang, sie
+zu lesen.
+**Stand:** behoben 2026-11-04 in derselben Session (Neubau nach den
+Regeln, Fehlstart im `ARTIFACT_INDEX`-Eintrag vermerkt); als
+Sofort-Gegenmittel eine projektübergreifende Gedächtnis-Regel bei
+Claude. Gegenmittel-Frage an Isor offen: Soll ein Satz „vor Bau oder
+Nachzug einer Seite zuerst diese Datei lesen" fest in
+`ARTIFACT_RULES.md` → „Wann geschaut wird" — als ROADMAP-Punkt?

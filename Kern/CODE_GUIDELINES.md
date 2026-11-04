@@ -365,34 +365,117 @@ sondern private Methoden, und gehören damit unter Punkt 6.
 - Unity-6-APIs (`rb.linearVelocity`, nicht `rb.velocity`). 4 Spaces,
   keine Tabs.
 
-### Ordnerstruktur — Assets nach Typ
-Grundentscheidung: `Kern/DECISIONS.md`, 2026-08-20. Die folgende Fassung
-ist am 2026-08-22 gegen den tatsächlichen Assets-Baum gelesen worden,
-nicht aus den Notizen abgeschrieben.
+### Ordnerstruktur — Gewerk oben, Typ darunter
+Grundentscheidung 2026-08-20 („Typ oben"), **abgelöst am 2026-11-04**:
+Die oberste Ebene beantwortet jetzt die Gewerk-Frage — *wer erzeugt
+und bearbeitet das?* — , erst darunter kommt der Typ (das
+Gewerk-Modell). Begründung und Abwägung in `Kern/DECISIONS.md`
+(2026-11-04).
 
-- **Oberste Ebene ist der Typ, darunter je ein Ordner pro System oder
-  Wesen.** Vorhanden sind `Scripts/`, `Prefabs/`, `Materials/`,
-  `Textures/`, `SO_Settings/`, `Shader/`, `VFX/`, `FBX/`, `Audio/`,
-  `Animation/`, `Fonts/`, `Scenes/`, `Settings/`, `License/`.
-  Beispiele: `Scripts/WorldGeneration/`, `Prefabs/Sheep/`.
-  Nur anlegen, was gebraucht wird — keine leeren Ordner.
-- **Editor-Code zentral in `Assets/Editor/`** (Isor, 2026-08-22). Der
-  Ordner muss wörtlich `Editor` heißen; Unity kompiliert ihn editor-only
-  und strippt ihn aus Builds. Das löst die frühere Angabe ab, Editor-Code
-  dürfe auch im System-Ordner liegen.
+- **Oberste Ebene:** `Art/` (alles vom Grafik-Gewerk: `Textures/`,
+  `Materials/`, `Meshes/`) · `Audio/` · `Scripts/` · `Prefabs/`
+  (Engine-Zusammenbau, kein Gewerk-Erzeugnis) · `Scenes/` ·
+  `SO_Settings/` (Spieldaten) · `Settings/` · `Fonts/` · `Terrain/`
+  (benannte Ausnahme: von Unity generiert und empfindlich — sammelt
+  alles Terrain-Gebundene: Asset, Layers, Brushes). Nur anlegen, was
+  gebraucht wird — keine leeren Ordner.
+- **Darunter je ein Ordner pro System** (`Scripts/Building/`,
+  `Prefabs/Player/`, `Textures/Ground/`).
+- **Scripts-Ordner beantworten die System-Frage:** *Zu welchem
+  Spielsystem gehört dieses Verhalten fachlich?* Nicht: auf welchem
+  Objekt liegt die Komponente (Träger-Frage), und nicht: welches Wort
+  steht im Klassennamen. **Ausnahme Canvas-Schicht:** Alles, was auf
+  einem Canvas lebt, sortiert nach Schicht — `UI/` (Menü-Kette und
+  generische Helfer) und `HUD/` (Ingame-Anzeigen).
+- **Editor-Code, geschärfte Fassung** *(ersetzt die vom 2026-08-22)*:
+  Reine Editor-Skripte (EditorWindow, CustomInspector) **müssen** in
+  einen Ordner namens `Editor/`. Werkzeug-Komponenten, die in der
+  Szene leben (Gizmo-Tools), gehören nach `Scripts/Tools/` mit
+  `#if UNITY_EDITOR`-Zaun — sie dürfen **nicht** nach `Editor/`,
+  sonst fehlt die Komponente im Build und die Szene bricht.
 - **Kein `Shared/` mehr.** Querschnitts-Utilities bekommen einen eigenen
-  Scripts-Ordner nach ihrer Sache — im Projekt sind das
-  `Scripts/Interfaces/`, `Scripts/Timer/`, `Scripts/Health/` und
-  `Scripts/Diagnostic/`.
+  Scripts-Ordner nach ihrer Sache (z. B. `Scripts/UiMode/`).
+- **Interfaces wohnen zentral in `Scripts/Interfaces/`** (Isor,
+  2026-11-04): Ein Vertrag gehört bewusst niemandem, und Nutzerkreise
+  wachsen — ein `IDamageable` hätte nie ein System-Zuhause
+  (IDamageable-Argument). Gehört ein Interface erkennbar einem System
+  (sein Hauptnutzer definiert es), bekommt es dort einen
+  System-Unterordner (`Interfaces/UiMode/`); allgemeine Verträge liegen
+  lose in der Wurzel. Wächst ein System-Interface über sein System
+  hinaus, wandert es nur einen Ordner hoch — die Hauptregel kippt nie.
 - **Fremdpakete bleiben unangetastet:** `ThirdParty/` und `TextMesh Pro/`
   behalten ihre innere Struktur — sie ist Teil des Herkunftsnachweises
   im TDD.
 - Ordnernamen Englisch, PascalCase. Umbenennen/Verschieben immer im
   Unity-Editor, nie im Explorer — sonst brechen die .meta-GUIDs und
   damit alle Referenzen.
-- **Preis der Umstellung, bewusst gezahlt:** Die Systemgrenzen, die am
-  2026-08-08 durch die Trennung in vier Systeme sichtbar geworden waren,
-  sind im Ordnerbaum nicht mehr zu erkennen.
+
+### Asset-Benennung — erst was, dann wie
+Beschlossen am 2026-11-04 (Isor): Jeder Asset-Name beginnt mit dem,
+**was** es ist, dann folgt, **wie** es heißt — `Präfix_Name_Variante`.
+Kürzel nur, wo sie Branchenstandard sind (die Tabelle ist die
+erlaubte Liste); alles andere wird ausgeschrieben. Das Schema stammt
+aus der Unreal-Welt und gilt in Unity-Teams genauso — es trägt also
+auch auf der Unreal-Lernschiene.
+
+| Asset | Präfix | Beispiel |
+|---|---|---|
+| Textur | `T_` | `T_Ground_Grass_02_Color` |
+| Material | `M_` | `M_GroundGrid` |
+| Mesh (FBX) | `SM_` | `SM_SendBuilding` |
+| Prefab | `P_` | `P_PathTile` |
+| ScriptableObject | `SO_` | `SO_Grunt` |
+| Terrain-Layer | `TL_` | `TL_Grass` |
+| Terrain-Pinsel | `Brush_` | `Brush_01` |
+| Musik | `Music_` | `Music_LoyaltyFreak_TheWind` |
+| Soundeffekt | `SFX_` | `SFX_TilePlace` |
+| Szene | kein Präfix | `GameWorld` |
+| C#-Skript | kein Präfix | `BuildModeController` — Klassenname = Dateiname |
+| Interface | `I` | `ISessionService` (C#-Standard) |
+
+- **Querregeln:** PascalCase, Englisch, nie Leerzeichen im Namen.
+  Unity-Taufnamen („New Terrain", „NewBrush") werden sofort ersetzt.
+- **Nicht umbenannt werden:** von Unity oder Paketen generierte
+  Dateien (TMP-Fonts, `DefaultNetworkPrefabs`, NavMesh-Dateien in
+  Szenen-Ordnern) und Fremdpaket-Inhalte.
+- Warum das Präfix trägt: Es macht Verwechslungen sichtbar — der
+  Aufräum-Durchgang am 2026-11-04 fand ein Material mit Textur-Kürzel
+  und ein Prefab mit fremdem Namen; beide fielen erst durch das
+  Schema auf.
+
+### Szenen-Aufbau — Zonen in Strich-Optik
+Verallgemeinert am 2026-11-04 aus der Pathmakers-Entscheidung
+„Drei Körbe" (2026-10-28, Projekt-DECISIONS). Gilt für **alle**
+Szenen eines Projekts, Testszenen eingeschlossen — gerade dort wird
+oft umgebaut, und genau dabei zahlt sich die Ordnung aus.
+
+- **Jede Zone trägt die Strich-Optik** (`--- Name ---`), damit die
+  Zugehörigkeit auf den ersten Blick sichtbar ist. Zwei Techniken,
+  gleiche Optik: Wo ein echter Parent erlaubt ist, **ist** das
+  Strich-Objekt der Parent (zuklappbar). Wo nicht, ist es ein leeres
+  Etikett, und die Objekte liegen lose darunter.
+- **Feste Zonen, feste Reihenfolge:** `--- SYSTEM ---` (Etikett,
+  lose: Kamera, Licht, Netz-Träger, Spawner, NavMesh, Bootstrap,
+  lokale Eingabe-Dienste, Szenen-Werkzeuge) · `--- World ---`
+  (echter Parent) · `--- UI ---` (echter Parent: Canvas samt seiner
+  Kinder, EventSystem). Weitere Zonen nur als benannte Ausnahme mit
+  Begründung in den Projekt-DECISIONS.
+- **Der Einsortier-Prüfsatz:** *Beschreibt die Position des Objekts
+  die Welt — oder ist sie egal, weil es einen Dienst leistet?*
+  Welt-Beschreiber → World (auch NavMesh-Blocker: die Sperre liegt
+  an einem Ort). Dienste → SYSTEM (auch das Richtungslicht: nur
+  seine Drehung zählt, die Position ist bedeutungslos).
+- **Parent-Strich-Objekte stehen auf 0/0/0 und werden nie bewegt** —
+  sonst verschiebt sich alles darin mit (Geisterversätze, siehe
+  Spawn-Jagd vom 2026-11-03).
+- **Warum SYSTEM die Etikett-Zone ist:** NetworkBehaviours wohnen
+  auf gespawnten Netz-Objekten (Netz-Besitz bestimmt den Träger),
+  und gespawnte Objekte landen zur Laufzeit in der Wurzel —
+  Umparenten hat im Netz Sonderregeln. Ein Träger-Objekt darf
+  mehrere Dienst-Skripte tragen; der Objektname nennt den Träger,
+  nicht jedes System einzeln.
+- **Gleiche Dienste heißen in allen Szenen gleich** (einmal
+  `NavMesh Surface`, überall `NavMesh Surface`).
 
 ### Review-Gate (vor dem Coden)
 Vor jeder Implementierung den Plan gegen diese Datei prüfen — Claude

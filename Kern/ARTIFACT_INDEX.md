@@ -196,7 +196,12 @@ Seite ←  die B1-Stand-Zeile der Its-DOT-ROADMAP nennt die URL
 ### 📍 Status · Pathmakers TD
 ```
 URL      https://claude.ai/artifact/5JZCpkKe2MVnCC9R2ScuvJ
-Stand    2026-11-03 — Ende-Nachzug: Monster-Sende-Kette V1 in der
+Stand    2026-11-04 — Ende-Nachzug: Wochenplan-Haken (Aufräum-Runde ✓,
+         Doppeltest ✓ samt Spawn-Fix und Rig-Naht, Ordnungssystem ✓,
+         Bühne ▸), P-B4-Strahlzeile, drei neue Entschieden-Zeilen
+         (Rig-Naht Variante A, Bühne, Ordnung festgeschrieben),
+         Fußzeilen-Link auf die neue Projektübersicht. Vorher
+         2026-11-03 — Ende-Nachzug: Monster-Sende-Kette V1 in der
          Wochen-Karte und am P-B4-Strahl (Grunt läuft die Linie,
          Solo-Test bestanden), Kennzahlen auf Grindstone 37:49 h,
          Hinweis auf den ausstehenden Sonntags-Wochenplan. Vorher
@@ -221,9 +226,11 @@ Quelle   Projekte/Pathmakers_TD/ROADMAP.md (Bausteine,
 Skripte  keine — die Seite zeigt den Baustand, nicht Code
 Seite →  ⚙️ System · Pathmakers-Steuerung (Fußzeile) ·
          ⚙️ System · Pathmakers-Karte (Fußzeile) ·
-         📍 Status · Semester 3 (Fußzeile)
+         ⚙️ System · Pathmakers-Projektübersicht (Fußzeile, seit
+         2026-11-04) · 📍 Status · Semester 3 (Fußzeile)
 Seite ←  ⚙️ System · Pathmakers-Steuerung (Fußzeile) ·
          ⚙️ System · Pathmakers-Karte (Fußzeile) ·
+         ⚙️ System · Pathmakers-Projektübersicht (Fußzeile) ·
          📍 Status · Semester 3 (Fußzeile)
 ```
 
@@ -268,6 +275,28 @@ Quelle   Projekte/Pathmakers_TD/DECISIONS.md → „Karten-Design"
 Skripte  Tool_MapLayout
 Seite →  📍 Status · Pathmakers TD (Fußzeile)
 Seite ←  📍 Status · Pathmakers TD (Fußzeile, seit 2026-10-30)
+```
+
+### ⚙️ System · Pathmakers-Projektübersicht
+```
+URL      https://claude.ai/artifact/6NohweJhsSPufEkw3rJ2cU
+Stand    2026-11-04 — neu, gebaut am Ende des Ordnungssystem-Durchgangs
+         (Isors Wunsch nach einer sichtbaren Gesamtübersicht): die drei
+         Ordnungs-Regeln, Kennzahl-Kacheln, vier Tafeln (Assets-Ebene,
+         Präfix-Tabelle, GameWorld- und Testarea-Zonen), Prüfsatz als
+         Merksatz, die 10 Systeme als Karten; MainMenu als „Zonen folgen
+         bei der Menü-Überarbeitung" markiert. Die erste Fassung vom
+         selben Tag stand nicht in der Hausfarbwelt (ARTIFACT_RULES
+         nicht gelesen — Isors Befund) und wurde sofort neu gebaut,
+         gleiche URL.
+Quelle   Projekte/Pathmakers_TD/SYSTEME.md (erzeugt von
+         Werkzeuge/systeme.py); Regeln: Kern/CODE_GUIDELINES.md
+         (Ordnerstruktur, Asset-Benennung, Szenen-Aufbau)
+Skripte  keine einzelnen — die Seite zeigt die Struktur; sie veraltet,
+         wenn Ordner, Szenen-Wurzeln oder Systemzahl sich ändern
+         (systeme.py-Lauf vergleicht, Seite dann nachziehen)
+Seite →  📍 Status · Pathmakers TD (Fußzeile)
+Seite ←  📍 Status · Pathmakers TD (Fußzeile, seit 2026-11-04)
 ```
 
 ---

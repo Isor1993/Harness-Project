@@ -201,5 +201,17 @@ läuft noch; Schätzung ~10 h):
 Gesamt-Grindstone am 2026-11-03: **37:49:32**. Abzüglich der
 Bausteine P-B1 bis P-B3 (zusammen 33:07) sind bisher **~4:43** auf
 P-B4 gebucht; die ~0:20 über der Zwischensumme oben sind der 01.11.
-(Weg-Kopf/Standardweg, nur knapp getrackt). Gebautes und
-Erkenntnisse folgen beim Baustein-Abschluss.
+(Weg-Kopf/Standardweg, nur knapp getrackt). Getrackt ist die aktive
+Bauzeit — Denk-, Frage- und Designstrecken laufen teils ungetrackt
+(Isor, 2026-11-03); fürs „Plan gegen Wirklichkeit"-Kapitel zählt
+deshalb die Tabelle als Untergrenze. Gebautes und Erkenntnisse
+folgen beim Baustein-Abschluss.
+
+**Nachtrag 2026-11-04:** Aufräum-Runde, Spawn-Fix (Warp-Brief nach
+NGO-Quelltext-Beweis), Rig-Naht Variante A und bestandener
+Multiplayer-Doppeltest (Belege: DECISIONS/LOG 2026-11-04). Dazwischen
+der **Ordnungssystem-Durchgang** (Gewerk-Modell, Präfixe, Szenen-Zonen;
+kompletter Bestand umgezogen) — eigener Posten fürs „Plan gegen
+Wirklichkeit"-Kapitel: Infrastruktur-Tag mitten im Baustein, bewusst
+gewählt („erst sauber machen, dann weiter"). Grindstone-Zeiten des
+03./04.11. beim Baustein-Abschluss nachtragen.

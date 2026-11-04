@@ -1355,6 +1355,18 @@ Methodenkörper in jeden Erben kopiert — genau das Duplikat, das weg
 sollte); Kachel-Wissen in der Basis (`_net`/`_cellPos` gehören dem
 Kachel-Erben — Besitzfrage); Name „InfoPanelBase" (Namens-Bitte statt
 Compiler-Gesetz).
+Nachtrag 2026-11-03/04: Die Überlade-Lösung ist abgelöst — von außen
+klopft man an die Namens-Tür des Erben (`OpenForTile(cell, rigId)`,
+`OpenForBuilding()`), das geerbte `ShowPanel` ist **protected**: das
+Zeigen bleibt Familiensache (Türen-Regel; Auslöser war Isors zweimal
+angemahnte Namenskritik an der Doppelbedeutung von ShowPanel).
+Schließen bleibt public für den X-Knopf. Dazu kamen die
+Ein-Panel-Regel in die Basis (statisches Feld `_currentOpenPanel` —
+die Datenstruktur erzwingt die Regel) samt `CloseOpenPanel` als
+statischem Dienst, und das Ziehen des Kachel-Werkzeugs schließt das
+offene Panel („die letzte Absicht gewinnt"). Diese Spezialfälle sind
+Zwischenstand: Die Bühne (Eintrag 2026-11-04) löst sie ab, sobald sie
+fertig gebaut ist.
 
 ## 2026-11-02 — Sende-Panel: zwei Wege hinein, nur das eigene Gebäude
 
@@ -1379,7 +1391,9 @@ BuildModeController (Auswählen ist kein Bauen — anderer Besitzer).
 Benannte Nähte, Aufräum-Runde auf grünem Stand beschlossen: die
 Ein-Panel-Regel in der Basis (heute können zwei Panels zugleich
 offen stehen) und der Klick-Verteiler — ein Ray, der per Ausweis
-verteilt — fällig ab dem **dritten** Klickbaren (Türme).
+verteilt — fällig ab dem **dritten** Klickbaren (Türme). Eingelöst
+am 2026-11-03/04: Die Ein-Panel-Regel steht in der Basis, und der
+Klick-Verteiler-Entscheid ist bestätigt — er kommt mit P-B7.
 
 ## 2026-11-03 — Sende-Brief: nur die Typ-Nummer reist
 
@@ -1407,3 +1421,113 @@ Verworfen: Wegpunkte oder Werte im Brief (Host weiß sie selbst, ein
 Client könnte lügen); eigenes Announce-RPC (der NGO-Spawn ist die
 Durchsage schon); Kosten-Prüfung nur im Client (veraltete Kopie,
 Doppelklick-Rennen, manipulierbar).
+
+## 2026-11-04 — Spawn-Reise: der Spawner fragt das NavMesh, platziert wird per Warp-Brief
+
+Was: Der `PlayerSpawner` prüft jeden Spawnpunkt mit
+`NavMesh.SamplePosition` (Suchradius als Inspector-Feld; Fehlschlag =
+Editor-LogError, kein Spawn), instanziiert am Treffer und schickt dem
+Owner **nach** dem Spawn einen Warp-Brief: `WarpToSpawnRpc(Vector3)`
+mit `SendTo.Owner`, der Motor ruft `_agent.Warp(...)` — die einzige
+legale Platzierung eines NavMeshAgents. Die Wurzel des Player-Prefabs
+steht auf 0/0/0 (Isor genullt, sie stand bei −404/1/31). Grundlage
+ist der NGO-Quellcode statt Spekulation: `NetworkSpawnManager.cs`
+Zeile 935 instanziiert **ohne** Position, Zeile 946 setzt sie erst
+danach — auf Gast-Rechnern wird ein Spieler in der Prefab-Pose
+geboren, und bei Owner-Autorität zählt danach allein der Stand des
+Owner-Rechners. Der Warp-Brief setzt deshalb genau dort an, wo die
+Wahrheit wohnt. Doppeltest Host + Client danach grün.
+Warum: Die Spawn-Jagd vom 2026-11-03 fand drei gestapelte Ursachen
+(Spawnpunkte auf Y=0 unterm NavMesh, Prefab-Wurzel weit abseits,
+Agent klemmt nach rohem Versetzen) — jede Einzelmaßnahme wirkte nur
+halb, und erst der Quelltext-Beweis erklärte, warum der Client-Spieler
+„halb in der Erde" hing, obwohl der Inspector richtige Werte zeigte
+(zwei Zeitpunkte: Geburt gegen Abgleich).
+Verworfen: Y-Werte von Hand nachsetzen (heilt das Symptom, nicht die
+Geburt in der Prefab-Pose); auf Synchronize Transform vertrauen (läuft
+einmalig beim Spawn und verliert gegen die Owner-Autorität);
+Transform direkt setzen ohne Warp (der Agent schnappt zurück).
+
+## 2026-11-04 — Rig-Naht gezogen: Variante A, der Brief nennt sein Rig
+
+Was: Alle vier Bau-Briefe im `PathGridNet` tragen als ersten Parameter
+`int rigId` — Anfragen wie Durchsagen. Der Host wacht als
+Revier-Wache: `GetGameId(SenderClientId) != rigId` → stille Ablehnung;
+danach holt er Grid und View aus dem Rig-Register des Bretts
+(`MatchSetup.GetRigGrid` und neu `GetRigView` samt `_rigViews`-Feld).
+`rigId == gameId` ist Spielregel, keine Namensdopplung: das Brett sagt
+*wer*, der Brief *wo*. Sender halten ihre Id als Feld (der
+BuildModeController löst sie mit dem Grid auf, die Queue über
+`OwnerClientId`); das Kachel-Panel bekommt sie beim Öffnen mitgegeben
+(`OpenForTile(cell, rigId)`), weil es kein NetworkBehaviour ist. Eine
+`IsInside`-Wache im Controller schließt zugleich das Leck, dass sich
+Panels fremder Kacheln öffnen ließen. Ergebnis im Doppeltest: Jeder
+baut nur noch auf dem eigenen Feld. Der `MonsterSpawner` war bereits
+rig-richtig und blieb unangetastet.
+Warum: Vorgezogen aus der benannten Naht vom 2026-10-31 („bis dahin
+von Hand auf Rig_1 verdrahtet"), weil der Multiplayer-Doppeltest sonst
+gegen ein falsch verdrahtetes Brett getestet hätte. Variante A behält
+die eine Mailbox und macht die Adresse zum Briefinhalt — dieselbe
+Host-misstrauisch-Linie wie alle bisherigen Wachen.
+Verworfen: Variante B, ein Netz-Skript je Rig (vier Mailboxen, mehr
+Szenen-Verdrahtung, kein Gewinn bei vier Rigs); Grid und View je
+Aufruf frisch suchen statt Register (wiederholte Suche — und die
+Zuordnung gehört dem Brett, Besitzfrage); den Parameter nach gameId
+umbenennen (der Brief adressiert ein Rig; dass der Wert der Game-Id
+gleicht, ist Spielregel und steht im Glossar).
+
+## 2026-11-04 — Bühne statt Spezialfälle: IUiMode und ActiveUiMode (Bau gestartet)
+
+Was: Die UI-Exklusivität wird verallgemeinert. Jeder UI-Modus — die
+Info-Panels, das Kachel-Werkzeug, später der Sende-Ring — implementiert
+`IUiMode { void ExitMode(); }`; eine statische Registratur
+`ActiveUiMode` (`Claim`/`Release`) hält, wer auf der Bühne steht, und
+lässt beim Claim den Vorgänger abtreten. Ablage nach der neuen
+Interface-Regel: `Scripts/Interfaces/UiMode/IUiMode.cs` (**gebaut am
+2026-11-04, Block 1** — Isor gegen den Rat des Gefühls korrekt ohne
+redundantes `public` abgeschlossen) und `Scripts/UiMode/ActiveUiMode.cs`
+(Block 2, offen). Nach dem Umbau fallen die Spezialfälle: das statische
+`_currentOpenPanel` samt `CloseOpenPanel` in der Panel-Basis und das
+Panel-Schließen im `ToggleTileTool`.
+Warum: Isors Befund — Panel-gegen-Panel und Werkzeug-gegen-Panel waren
+schon zwei Paar-Spezialfälle, und jeder neue Modus hätte weitere Paare
+erzeugt („unsere Architektur wird grad schlechter"). Die Bühne macht
+Exklusivität zu einer Regel mit genau einem Besitzer.
+Verworfen: Observer-Events zwischen den Beteiligten (mehr Verdrahtung,
+Reihenfolge unklar, und es blieben Paare); beim Zwischenstand bleiben
+(trägt nicht über P-B5 hinaus).
+
+## 2026-11-04 — Aufräum-Durchgang: das Ordnungssystem angewandt
+
+Was: Das neue Kern-Ordnungssystem (`Kern/DECISIONS.md` 2026-11-04,
+Regeln in `CODE_GUIDELINES.md`) in einem Durchgang auf den ganzen
+Bestand angewandt — Isor im Editor, Claude mit Arbeitsliste und
+Datei-Kontrolle. Projektspezifische Festlegungen dabei:
+**`Scripts/Sending/`** ist eigenes System (SendBuilding +
+SendBuildingSelector; der Sende-Ring aus P-B5 kommt dazu) — das
+Wort „Building" im Namen macht das Sendegebäude nicht zum Bausystem.
+`MonsterSpawner` → `Monsters/` (Netz ist sein Werkzeug, nicht sein
+Fach), `BuildOrderQueue` → `Building/` (liegt nur netz-bedingt auf
+dem Spieler-Prefab). Beide Szenen tragen die drei Zonen; die
+NavMesh-Blocker heißen englisch (`NavBlock_River_…`) und wohnen in
+World — die Sperre liegt an einem Ort. `MatchSetup` bleibt auf
+GameNetwork: NetworkBehaviour braucht einen gespawnten Netz-Träger,
+ein eigenes Empty hätte die Brett-Synchronisation still beendet.
+Funde des Kontroll-Laufs: Material mit Textur-Kürzel
+(`T_ClickMarkerRing.mat` → `M_`), LobbyPlayer-Prefab war beim
+Umbenennen zu „P_NetworkManager" geworden (Skript-Beweis per GUID,
+Namenstausch in zwei Schritten, nichts gebrochen — Unity referenziert
+GUIDs, nicht Namen). Play-Test Host + Client danach sauber.
+Warum: Isors Stopp vor der Weiterarbeit — zu viele Baustellen ohne
+sichtbares Ordnungssystem; Regeln standen verstreut und der Bestand
+wich ab. Die System-Frage statt Träger-Frage löst genau die Fälle,
+die ihn störten (Send-Zeug unter Player, Spawner unter Networking).
+Verworfen: Sendegebäude in `Building/` lassen (Wortgleichheit ist
+kein Sortierkriterium) · MatchSetup auf ein eigenes Szenen-Empty
+(sichtbarer, aber funktional tot) · Testarea von den Regeln
+ausnehmen (gerade dort wird umgebaut).
+Offen als Merkposten: `Settings/`-Template-Reste (SampleSceneProfile,
+Mobile_*) erst nach Graphics-Prüfung anfassen · Testarea-Wandnamen
+(„WallVerical", Leerzeichen) bei Gelegenheit · `Assets/Editor/`
+entsteht erst mit dem ersten reinen Editor-Skript ·
+MainMenu-Zonen erst bei der Menü-Überarbeitung (Isor, 2026-11-04).

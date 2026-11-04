@@ -1518,3 +1518,55 @@ Unity-Semesterprojekt ist möglich (Engine-Kontrollpunkt 02.11.,
 benutzen, und wenn C++, das andere".
 Verworfen: bis zur Engine-Entscheidung warten (der Jam braucht die
 Regeln jetzt) · die Sicherung zurückholen (enthält nichts, was fehlt).
+
+## 2026-11-04 — Ordnungssystem: Gewerk oben, Benennung, Szenen-Zonen
+
+Was: Drei Regelwerke in einem Zug, alle in `CODE_GUIDELINES.md`:
+**(1)** Ordnerstruktur abgelöst — oberste Ebene ist jetzt das Gewerk
+(`Art/` mit Textures/Materials/Meshes darunter, `Audio/`, `Scripts/` …),
+der Typ kommt darunter; `Terrain/` bleibt als benannte Ausnahme oben
+(Unity-generiert, empfindlich). Löst „Typ oben" vom 2026-08-20 ab; die
+damalige Preis-Notiz (Systemgrenzen im Baum unsichtbar) entfällt, weil
+die System-Ordner unter jedem Typ weiterleben. **(2)** Asset-Benennung
+„erst was, dann wie": `Präfix_Name_Variante`, Kürzel nur aus der
+Standard-Tabelle (T_, M_, SM_, P_, SO_, TL_, Brush_, Music_, SFX_),
+Szenen und Skripte ohne Präfix. **(3)** Szenen-Aufbau: Zonen in
+Strich-Optik — `--- SYSTEM ---` als Etikett über losen Diensten,
+`--- World ---` und `--- UI ---` als echte Parents auf 0/0/0; der
+Einsortier-Prüfsatz heißt „beschreibt die Position die Welt, oder ist
+sie egal?". Verallgemeinert aus Pathmakers „Drei Körbe" (2026-10-28).
+Dazu die Editor-Code-Regel geschärft: Die Fassung vom 2026-08-22
+kannte nur „Editor-Code muss nach `Editor/`" — jetzt steht auch die
+Gegenrichtung da (Szenen-Werkzeuge mit `#if`-Zaun dürfen **nicht**
+hinein, sonst bricht die Szene im Build).
+Warum: Isors Befund vor der Weiterarbeit an Pathmakers: Die Regeln
+existierten, aber verstreut (Guidelines plus zwei Chronik-Einträge),
+und keine Stelle zeigte den Ist-Zustand — zweimal wurde eine längst
+getroffene Entscheidung (UI/HUD-Grenze, Drei Körbe) nicht erinnert.
+Das Gewerk-Modell ist Isors Entwurf: zukunftssicher (FBX und Shader
+wachsen unter `Art/`, statt neue Top-Ordner zu erzeugen) und
+branchenüblich; die Präfixe sind der Unreal-Standard und gelten damit
+auch auf der Lernschiene. Der Nutzen war noch am selben Tag belegt:
+Der Kontroll-Durchgang fand ein Material mit Textur-Kürzel und den
+LobbyPlayer unter dem Namen P_NetworkManager — beides nur durch das
+Schema sichtbar.
+Verworfen: Typ oben beibehalten (jedes neue Gewerk-Erzeugnis hätte
+einen neuen Top-Ordner erzeugt) · Art nach Typ auflösen (Claudes
+erster Vorschlag; Isors Gewerk-Modell trägt weiter) · eigene
+Szenen-Zone für NavMesh (jede Zone ist eine Einsortier-Entscheidung
+mehr; Empfindlichkeit schützt der klare Name, nicht der Strich).
+Auslöser: Isors Stopp am 2026-11-04 mitten in der Bühne-Arbeit: zu
+viele Baustellen, „wir halten uns nicht an unser Ordnungssystem oder
+es ist nicht gut genug — erst sauber machen, dann weiter."
+Entschieden von Isor.
+Ergänzt am selben Tag, beim ersten Anwendungsfall (IUiMode):
+**Interfaces wohnen zentral in `Scripts/Interfaces/`**, mit
+System-Unterordnern für Verträge, die erkennbar einem System gehören,
+und loser Wurzel für allgemeine. Drei Fassungen diskutiert: beim
+System wohnen (konsequente System-Frage, aber die Zuordnung kann
+kippen, wenn Nutzer dazukommen) · alles zentral und flach (stabil,
+aber der Besitz wird unsichtbar) · Isors Hybrid, der beides behält —
+ein falsch eingeschätztes Interface wandert nur einen Ordner hoch
+statt quer durch den Baum. Sein Beweisfall: Ein `IDamageable` hat
+nie ein System-Zuhause. Regel in `CODE_GUIDELINES.md` →
+„Ordnerstruktur". Entschieden von Isor.

@@ -119,6 +119,14 @@ Der Modus setzt die Voreinstellungen. Zwei Regler lassen sich einzeln
 Die Erklärtiefe hat bewusst **keinen** eigenen Regler — sie bewegt sich
 nie allein. Heruntergedreht wird bei knappem Nutzungslimit der Bildanteil.
 
+**Aufgaben wandern in die Arbeitsdatei** *(seit 2026-11-03)*: Steht der
+Regler „Wer schreibt" auf *Isor*, liefert Claude Gerüste als
+TODO-Kommentare **in der Datei**, an der Stelle, an die der Code gehört
+— der Chat erklärt, die Datei führt. Das gilt größenunabhängig, auch
+für Mini-Gerüste; TODO-Blöcke im Chat sind nur für Handgriffe ohne
+Datei (Editor-Arbeit) zulässig. *(Aus der Störung vom 2026-11-02 —
+die Regel lebte vorher nur in Claudes Gedächtnis und driftete.)*
+
 ### Zeigen statt vorstellen lassen
 - **Nie** „stell dir vor" oder etwas, das ein inneres Bild verlangt.
 - **Gern** Diagramme, Skizzen, Artifact-Seiten, Screenshots — ansehbar.

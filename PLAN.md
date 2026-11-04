@@ -22,17 +22,23 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-11-03 beim `/harness:ende` der
-P-B4-Development-Session — Monster-Sende-Kette V1 steht, Solo-Test
-bestanden; Belege im LOG der Schicht.)*
+*(überschrieben 2026-11-04 beim `/harness:ende` der
+P-B4/Ordnungssystem-Session — Aufräum-Runde, Doppeltest, Rig-Naht und
+das komplette Ordnungssystem erledigt; Belege im LOG der Schicht und
+in beiden DECISIONS.)*
 
-**P-B4 fortsetzen** (`Projekte/Pathmakers_TD/ROADMAP.md` → P-B4,
-„Stand 2026-11-03"): **Zuerst die Aufräum-Runde** (Isors Ansage):
-Ein-Panel-Regel in `InfoPanelUI`, dann der Klick-Verteiler-Entscheid.
-Danach der Multiplayer-Doppeltest (Sende-Kette auf beiden
-Bildschirmen, „nur meins" per Game-ID), dann weiter im Baustein:
-Leben-Brett, Wander-Routing (schreibt Claude). Wochen-Soll: P-B4 samt
-Prüfpunkt + P-B5-Start bis So 08.11.
+**Zuerst die Commits** (Isor, nach dem Aufwachen): Harness
+`Update V 0.0102`, Spiel `Update V 0.0007` — Vorschlag liegt als Datei
+bei der Ende-Nachricht vom 04.11. Dann **P-B4 fortsetzen**
+(`Projekte/Pathmakers_TD/ROADMAP.md` → P-B4, „Stand 2026-11-04"):
+**Bühne Block 2** — `ActiveUiMode` in `Scripts/UiMode/` (liegt als
+leere Unity-Vorlage bereit; wird **statische Klasse ohne
+MonoBehaviour**, Claim/Release; die Reihenfolge-Falle beim Claim
+zeigt Claude am Code). Danach Blöcke 3+ (Panels und BuildMode auf
+IUiMode umstellen, Alt-Spezialfälle löschen), dann Leben-Brett (Isors
+Zwei-Satz-Entwurf zuerst), Wander-Routing (schreibt Claude),
+Prüfpunkt. Wochen-Soll unverändert: P-B4 samt Prüfpunkt + P-B5-Start
+bis So 08.11.
 
 ---
 
@@ -61,68 +67,3 @@ nicht sofort behoben. Ein Befund ist ein Zustand, kein Auftrag.
       **Erledigt am 2026-09-08** — Beleg: `Uni/ROADMAP.md` →
       „Abgabe-Struktur beim Semesterstart kopieren".
 
-### Umstellung auf Unreal + C++ — entschieden 2026-09-07
-
-Beschluss und Begründung: `Uni/DECISIONS.md` → „2026-09-07 — Engine- und
-Sprachfokus". Der Unity-Bauplan des Towers ist archiviert
-(`Projekte/Isor_Tower/_ARCHIV.md`). Isors Lernpfad: Konsolenprojekt =
-C++-Grundlagen auf C#-Niveau bringen → 3D-Model-Viewer = Grafik und
-Shader → dann Unreal-C++ mit seinen Eigenheiten.
-
-*Nachtrag 2026-10-01:* Kontrollpunkt und Spielziel sind neu gefasst —
-Engine-Entscheidung spätestens 02.11. nach eigenem Hands-on,
-Semester-Spiel eigenständig statt Tower-Variante (`Uni/DECISIONS.md`,
-Einträge vom 2026-10-01). Der offene Toolchain-Test unten bleibt,
-rutscht aber von „vor dem Prototyp nötig" auf „vor dem
-Unterrichtsblock reicht".
-
-- [x] **Visual Studio 2022 mit C++-Workload installieren** — vor der
-      ersten eigenen C++-Übung nötig; Unreal-Version mit dem Kurs
-      abgleichen und installieren (Unterrichtsblock ab 27.10., früher
-      schadet nicht). **Erledigt am 2026-09-08 (VS-Teil):** VS
-      Community 2026 samt C++-Workload und cl.exe war schon
-      installiert und ist verifiziert — ein 2022 braucht es dafür
-      nicht. Der Unreal-Teil steht als eigener Punkt darunter.
-- [ ] **Unreal installieren, sobald die Kursversion bestätigt ist** —
-      Kandidat laut Abgabe-Vorlage im Datenbaum: 5.6. Dabei prüfen, ob
-      diese Unreal-Version das installierte VS 2026 als Toolchain
-      akzeptiert — sonst die VS-2022-Build-Tools daneben installieren.
-      **Stand 2026-09-08:** Kursversion offiziell bestätigt
-      (Versionsblatt Studienjahr 0925: Unreal 5.6, dazu
-      OpenGL-Empfehlung Core 450 für den Model-Viewer — `Uni/LOG.md`).
-      5.6.1 ist installiert, Bridge und Fab-Plugin folgen automatisch.
-      Offen nur noch der Toolchain-Test (neues C++-Blank-Projekt):
-      Epics Doku empfiehlt für 5.8 ausdrücklich VS 2026, für 5.6 ist es
-      ungeprüft — Plan B bleiben die VS-2022-Build-Tools.
-      **Überholt am 2026-10-30** (Isor): Unreal läuft nur noch im
-      Unterricht — der private Toolchain-Test entfällt; braucht der
-      Kurs ihn, passiert er dort.
-- [x] **Neues Projekt-Repo für den Unreal-Tower anlegen** —
-      Namensvorschlag kommt von Claude; `.gitignore`/LFS nach
-      Unreal-Muster (`Binaries/`, `Intermediate/`, `Saved/`,
-      `DerivedDataCache/`, `.vs/`; `*.uasset`/`*.umap` über LFS).
-      Danach `Kern/PFADE.md` und die Freigaben nachziehen.
-      **Erledigt am 2026-09-08:** `Isor-Tower-Unreal` angelegt (git
-      init, .gitignore, LFS-Attribute, README), Marke `PROJEKT_UNREAL`
-      in `Kern/PFADE.md`, Freigabe in `.claude\settings.json`. Dazu
-      ungeplant das Repo `Lane-Defender` (Marke
-      `PROJEKT_LANE_DEFENDER`), Begründung in
-      `Projekte/Lane_Defender/DECISIONS.md`.
-- [x] **`Kern/CODE_GUIDELINES.md` auf C++ erweitern** — SAE-C++-
-      Konvention (aus den Semester-3-Unterlagen holen) fürs
-      Konsolenprojekt, Epic C++ Coding Standard fürs Spiel; die
-      C#/Unity-Blöcke bleiben als Altstand-Regeln gekennzeichnet.
-      Sicherungskopie der Unity-Fassung liegt im Datenbaum. Wartet auf
-      das SAE-Kursmaterial — der C++-Kurs ist am 2026-09-08 gestartet.
-      **Erledigt am 2026-09-08:** die Abschnitte „C++ — welche
-      Konvention wo gilt", „C++ · Konsolenprojekt — SAE-Konvention
-      (Pflicht)" und „C++ · Unreal — Epic C++ Coding Standard
-      (vorgegeben)" stehen in der Datei; SAE-PDF im Datenbaum
-      (`01_Uni\_Regelwerk\`), Epic-Destillat ausgelagert
-      (`Kern/ROADMAP.md` → „Epic C++ Coding Standard destillieren"),
-      dazu `💡 Lernstück · SAE-C++-Konventionen` im `ARTIFACT_INDEX.md`.
-- [x] **Unreal-Pendant zur „nie durchsuchen"-Regel** — heute nennt
-      `CLAUDE.md` nur die Unity-Ordner; sobald das Unreal-Repo
-      existiert, kommen `Binaries/`, `Intermediate/`, `Saved/`,
-      `DerivedDataCache/`, `.vs/` dazu. **Erledigt am 2026-09-08** —
-      die Regel steht in `CLAUDE.md`, im selben Zug wie das Repo.

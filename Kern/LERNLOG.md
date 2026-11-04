@@ -2776,3 +2776,60 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   Wache; die Layer/Tag/Komponenten-Tabelle (Türsteher gegen Ausweis);
   Vererbung-gegen-Interface am eigenen Panel-Fall; TODOs wieder in
   die Arbeitsdatei nach Isors berechtigter Rüge.
+- 2026-11-03/04 · Pathmakers TD, P-B4: Aufräum-Runde, Spawn-Jagd,
+  Rig-Naht (Development, Isor tippt) — **Selbst:** zur
+  Ein-Panel-Regel zwei Lösungsformen selbst entworfen (Liste gegen
+  Feld) und die Feld-Variante im Kern richtig begründet; die
+  Nur-wenn-noch-this-Wache beim Schließen auf Anhieb sauber; in der
+  NavMesh-Jagd alle Stationen selbst gefahren (Stacktrace, Transforms,
+  Marker) und die Prefab-Wurzel bei −404/31 selbst gefunden; den
+  Zwei-Zeitpunkte-Einwand („Inspector zeigt doch die richtige
+  Position") zu Recht erhoben; den Doppelnamen ShowPanel zweimal
+  angemahnt, bis der Grund sichtbar war — eigener Entscheid
+  OpenForTile samt Türen-Regel, danach selbst die Konsequenz-Prüfung
+  „warum bleibt Schließen public?" gestellt; an der Rig-Naht die
+  Feld-gegen-Lokale-Frage selbst aufgeworfen, Wachen-Reihenfolge und
+  GetRigView-Spiegel fehlerfrei; CloseOpenPanel samt Controller-If
+  fast ohne Hilfe. **Fehlerbild:** beim Ein-Panel-Feld den Null-Fall
+  trotz Vorab-Hinweis ausgelassen (NullRef beim ersten Öffnen), beim
+  Fix die Registrierung mit in den Bedingungsblock gezogen (zweiter
+  Anlauf nötig); static-Modell verschmolzen („static = einmal und
+  überall") — Standard-private übersehen, public für überflüssig
+  gehalten; Alias-Zeile `int rigId = gameId` als Krücke, weil
+  Parameter- und Argumentname nicht getrennt waren; die ID-Beschaffung
+  lange gesucht, obwohl OwnerClientId-Weg und Singleton-Zugriff beide
+  schon im eigenen Code standen (Glaube: ohne NetworkBehaviour kein
+  Zugang); in der Queue doppelt nachgeschlagen statt das eigene Feld
+  zu nutzen. **Hilfe:** Zwei-Zeitpunkte-Tabelle (Geburt gegen
+  Abgleich) und der Blick in den NGO-Quellcode (Instantiate ohne
+  Position, Zeile 935/946) statt Spekulation; ID-Merktabelle
+  (OwnerClientId · LocalClientId · ConnectedClientsIds); Tür-Diagramm
+  (zwei Zugangsregeln → eine) samt Sichtbarkeits-Tabelle an eigenen
+  Beispielen; Rig-ID-Reise-Diagramm (nachschlagen → weiterreichen →
+  prüfen); Merksätze „die Datenstruktur erzwingt die Regel", „Feld
+  speichert zwischen Aufrufen, Lokale pro Aufruf", „die letzte
+  Absicht gewinnt".
+- 2026-11-04 · Pathmakers TD + Harness: Ordnungssystem-Durchgang und
+  Bühne Block 1 (Development, gemeinsam) — **Selbst:** das
+  Gewerk-Modell für die Assets-Ebene selbst entworfen (deckt sich mit
+  echter Studio-Praxis, ohne sie zu kennen) und das Szenen-System
+  verbessert (Strich-Optik überall, Parent wo möglich, Etikett wo
+  nicht); die Interface-Ablage-Frage dreimal geschärft bis zur
+  eigenen Hybrid-Regel (zentral + System-Unterordner), inklusive des
+  tragenden IDamageable-Arguments — eigenständige
+  Architektur-Synthese; T_-Präfix und TL_-Layer-Namen hatte er
+  intuitiv schon regelkonform vergeben; fünf Stationen Editor-Arbeit
+  weitgehend fehlerfrei durchgezogen; beim Artifact die Abweichung
+  von den Hausregeln selbst erkannt und benannt. **Fehlerbild:** beim
+  Prefab-Umbenennen den Namen aufs falsche Prefab gelegt
+  (P_NetworkManager war der LobbyPlayer — LRS-Verwechslung, vom
+  Präfix-System gefangen); die Groß/Klein-Umbenennung NetWorking →
+  Networking rutschte still durch (Windows unterscheidet nicht);
+  MatchSetup-Skript aufs leere Szenen-Empty ziehen wollen
+  (NetworkBehaviour braucht gespawnten Netz-Träger — vor dem Schaden
+  gestoppt); im Interface `public` vor die Methode gesetzt („fühlte
+  sich richtig an" — legal seit C# 8, nur redundant). **Hilfe:**
+  Arbeitsliste als kopierbare Datei in Stationen; Zweischritt-Trick
+  für Groß/Klein-Umbenennungen; GUID-Beweis per Skript-Suche
+  (welches Prefab trägt welches Skript); Szenen-Wurzeln direkt aus
+  den .unity-Dateien gelesen statt Erinnerung.

@@ -109,6 +109,9 @@ Leseordnung.
 | **Systems Hungarian** | Typkürzel vor dem Namen (`i`, `f`, `b`, `p`, `C` …), in der SAE-C++-Konvention kombiniert mit den Rollen-Präfixen `m_`/`a_` — `m_iNumb`, `bIsValid`. Gilt in Konsolenprojekt und Model-Viewer durchgängig, wie in den SAE-Beispielen. | `CODE_GUIDELINES.md`, C++ · Konsolenprojekt |
 | **Epic C++ Coding Standard** | Epics verbindliche C++-Konvention für alles im Unreal-Repo — vorgegeben, nicht gewählt; Typ-Präfixe nach Vererbung (`U`/`A`/`F`/`E`/`I`/`T`, `b` für bool). Das Arbeitsdestillat steht noch aus. | `CODE_GUIDELINES.md`, C++ · Unreal |
 | **Fab** | Epics Marketplace für Unreal-Assets. „Holen" heißt dort claimen: Einmal Geclaimtes bleibt dauerhaft in der Account-Bibliothek, heruntergeladen wird erst bei Bedarf. | `Projekte/Isor_Tower/ROADMAP.md`, „Unreal-Grundausstattung über Fab" |
+| **rigId** | Adresse im Bau-Brief von Pathmakers: welches Rig gemeint ist. Trägt nach Spielregel denselben Wert wie die Game-Id — das Brett sagt *wer*, der Brief *wo*; zwei Namen, weil zwei Fragen. | `Projekte/Pathmakers_TD/DECISIONS.md`, „Rig-Naht gezogen: Variante A" |
+| **Bühne** | Haus-Name für die UI-Exklusivität in Pathmakers: Jeder UI-Modus implementiert `IUiMode`, die statische Registratur `ActiveUiMode` hält den einen, der „auf der Bühne steht", und lässt den Vorgänger abtreten. | `Projekte/Pathmakers_TD/DECISIONS.md`, „Bühne statt Spezialfälle" |
+| **Gewerk-Modell** | Ordnungsprinzip der Assets-Ordner: Die oberste Ebene beantwortet „wer erzeugt das?" (Art, Audio, Scripts …), erst darunter kommt der Typ. Löste am 2026-11-04 „Typ oben" ab. | `CODE_GUIDELINES.md`, Ordnerstruktur |
 
 Jeder hier geführte Begriff nennt seinen Besitzer. Ob die Liste
 **vollständig** ist, kann diese Datei nicht selbst sagen — sie wird von
