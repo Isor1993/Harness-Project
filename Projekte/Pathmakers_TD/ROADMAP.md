@@ -181,8 +181,9 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
   Wegpunkt-Folge nach dem Wander-Modell samt Gültigkeit und Rollback
   (DECISIONS 2026-10-30 — „Monster-Lauf"; ersetzt den alten Zuschnitt
   „Gabelung abwechselnd, gerade Linie am Wegende"), Leben-Abzug am
-  Endpunkt. Danach der Prüfpunkt. (~10 h; das Routing schreibt Claude
-  nach der Werkzeug-Politik vom 2026-10-30)
+  Endpunkt. Danach der Prüfpunkt. (~10 h; beim Routing liefert Claude
+  Herleitung und Formeln, Isor tippt — Werkzeug-Politik-Präzisierung
+  vom 2026-11-07)
   Erster Schritt: der Standardweg-Autobau — die vorgegebene gerade
   Kachel-Linie vom Start- zum Ziel-Marker je Gebiet (aus der
   Karten-Runde vom 2026-10-29). **Stand 2026-11-02: erster Schritt
@@ -207,8 +208,25 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
   fertigbauen** (ActiveUiMode Block 2+, DECISIONS → „Bühne statt
   Spezialfälle"; dabei die Alt-Spezialfälle löschen), dann Leben-Brett
   (Isors Entwurf zuerst: wo wohnen die Leben, wer meldet die Ankunft),
-  Wander-Routing (schreibt Claude), dann der Prüfpunkt. Beim
-  Baustein-Ende: das Mess-Log im PlayerSpawner entfernen.
+  Wander-Routing (Herleitung Claude, Isor tippt), dann der Prüfpunkt.
+  Beim Baustein-Ende: das Mess-Log im PlayerSpawner entfernen.
+  **Stand 2026-11-05/07: Bühne fertig, Leben-Brett fertig, Grid-Umbau,
+  Routing-Design entschieden** — ActiveUiMode gebaut und Block 3
+  durchgezogen (Panels und Werkzeug auf IUiMode, Alt-Spezialfälle
+  gelöscht, Sichtprüfung sechs Punkte grün); LivesBoard als
+  NetworkList-Brett samt Übergabe-Kette Spawner → Monster → Brett,
+  Doppeltest grün (20 → 19 → 18 auf beiden Rechnern); PathGrid von
+  bool auf CellContent (DECISIONS → „Zellinhalt statt Belegt-Bit";
+  dabei den Abriss-Bug gefangen, der Entfernen wieder auf Tile
+  setzte); `CanReachExit` fertig (Flutfüllung mit Sperrliste);
+  Wander-Routing ausdesignt (DECISIONS → „Wander-Routing: Planen beim
+  Spawn") und `WanderRouter`-Gerüst begonnen. **Offen, in dieser
+  Reihenfolge:** WanderRouter fertig (NextArmIndex, dann die
+  Strecken-Schleife — Herleitung Claude, Isor tippt), MonsterSpawner
+  von der Zwei-Punkte-Linie auf die Router-Route umstellen,
+  Sichtprüfungen (Gerade · Gabelung · Sackgasse · Ring · Klumpen),
+  dann der Prüfpunkt. Beim Baustein-Ende außerdem: Auto-Save im
+  Editor prüfen (Speichern-Teufel, Kern-STOERUNGEN 2026-11-07).
 - [ ] **P-B5 · Takt + Senden** — Timer mit Bereit-Knopf, Sende-Gebäude
   mit Warteschlange, Sends laufen mit dem Wellenstart, fester
   Sende-Ring. (~5–6 h)
@@ -220,7 +238,10 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
   dazu: Die Design-Runde entscheidet die Panel-Form am Wächter-Platz
   (alle vier sofort oder Sockel-Upgrade) und die Preisaufteilung
   zwischen Platz und Wahl (DECISIONS → „2026-10-23 — Bau-Erlebnis:
-  Kategorie-Leiste und Objekt-Panel").
+  Kategorie-Leiste und Objekt-Panel"). Seit dem CellContent-Umbau
+  (2026-11-07) außerdem: Schreibt der Wächter seine Zelle als
+  `CellContent.Tower` in die Bau-Tabelle? Der Enum-Wert ist
+  vorgemerkt, sein erster Schreiber kommt hier.
 - [ ] **P-B8 · Mine + Arbeiter** — Streichkandidat, faktisch
   Alpha-Material; Notlösung ist ein Kachel-Kauf-Knopf. (~7–8 h)
 - [ ] **P3 · Polish-Merkliste** — gesammelt beim Bauen, fällig
@@ -263,7 +284,9 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
   verhalten sie sich anders als normale Kacheln, müssen sie auch
   anders aussehen (Portal-Optik), sonst normale Kachel mit
   Schloss-Symbol im Panel; nur der Abriss bleibt immer tabu
-  (Sperre vom 2026-11-02).
+  (Sperre vom 2026-11-02); `CollectReachableCells`: Erreicht-Liste von
+  List auf HashSet umstellen (O(1)-Contains statt Listensuche —
+  Feinschliff aus der CanReachExit-Runde, 2026-11-07).
 
 ## Meilenstein-Plan (Fertig-Linien und Inhalte)
 

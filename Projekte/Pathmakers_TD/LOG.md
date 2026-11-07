@@ -208,3 +208,22 @@ Format: `- JJJJ-MM-TT — Ereignis.` Ein bis drei Zeilen je Eintrag.
   Artifact-Seite „⚙️ System · Pathmakers-Projektübersicht" — deren
   erste Fassung ohne die Hausregeln gebaut war und neu gebaut wurde
   (Kern-STOERUNGEN 2026-11-04).
+- 2026-11-04/07 — Bühne komplett, Leben-Brett, CellContent-Umbau,
+  Routing-Design: ActiveUiMode gebaut (Block 2) und Block 3
+  durchgezogen — InfoPanelUI und BuildModeController auf IUiMode,
+  Alt-Spezialfälle gelöscht, Sichtprüfung sechs Punkte grün; das
+  `public` im Interface bleibt bewusst (DECISIONS-Nachtrag „Bühne").
+  LivesBoard als NetworkList-Brett auf GameNetwork samt Übergabe-Kette
+  MonsterSpawner → Monster → Brett, Leben-Abzug am Ziel; Doppeltest
+  grün (20 → 19 → 18 auf beiden Rechnern). PathGrid von bool auf
+  `CellContent` (DECISIONS → „Zellinhalt statt Belegt-Bit"): HasTile
+  als Lauf-Frage, SetContent, Enums-Ordner; beim Umbau den Abriss-Bug
+  gefangen (Entfernen schrieb Tile statt Empty). `CanReachExit`
+  fertig — Flutfüllung mit Sperrliste, Isor tippte, drei Funde im
+  Review (Startzellen-Dreher, zwei verlorene `!`). Werkzeug-Politik
+  präzisiert (Formeln Claude, Code Isor) und das Wander-Routing
+  ausdesignt (DECISIONS → „Wander-Routing: Planen beim Spawn");
+  `WanderRouter`-Gerüst begonnen. Zwei Störungen notiert
+  (Speichern-Teufel, Gerüst vor Design — Kern-STOERUNGEN 2026-11-07);
+  drei Wissensseiten (Flutfüllung erweitert, NetworkList-Brett,
+  emergenter Typ).

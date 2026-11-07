@@ -22,23 +22,23 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-11-04 beim `/harness:ende` der
-P-B4/Ordnungssystem-Session — Aufräum-Runde, Doppeltest, Rig-Naht und
-das komplette Ordnungssystem erledigt; Belege im LOG der Schicht und
-in beiden DECISIONS.)*
+*(überschrieben 2026-11-07 beim `/harness:ende` der
+Development-Session „P-B4 Gegner laufen". Die Prüf-Aufträge der
+vorigen Übergabe sind erledigt: Die drei Kern-Dateien vom 06.11.
+gehen im Harness-Commit V 0.0103 mit, Spiel-Commit V 0.0007 war
+gemacht.)*
 
-**Zuerst die Commits** (Isor, nach dem Aufwachen): Harness
-`Update V 0.0102`, Spiel `Update V 0.0007` — Vorschlag liegt als Datei
-bei der Ende-Nachricht vom 04.11. Dann **P-B4 fortsetzen**
-(`Projekte/Pathmakers_TD/ROADMAP.md` → P-B4, „Stand 2026-11-04"):
-**Bühne Block 2** — `ActiveUiMode` in `Scripts/UiMode/` (liegt als
-leere Unity-Vorlage bereit; wird **statische Klasse ohne
-MonoBehaviour**, Claim/Release; die Reihenfolge-Falle beim Claim
-zeigt Claude am Code). Danach Blöcke 3+ (Panels und BuildMode auf
-IUiMode umstellen, Alt-Spezialfälle löschen), dann Leben-Brett (Isors
-Zwei-Satz-Entwurf zuerst), Wander-Routing (schreibt Claude),
-Prüfpunkt. Wochen-Soll unverändert: P-B4 samt Prüfpunkt + P-B5-Start
-bis So 08.11.
+**P-B4 abschließen** (`Projekte/Pathmakers_TD/ROADMAP.md` → P-B4,
+„Stand 2026-11-05/07"): `WanderRouter` fertigbauen — erst
+`NextArmIndex` (Gerüst mit TODOs liegt in
+`Scripts/Building/WanderRouter.cs`, Design steht in DECISIONS →
+„2026-11-07 — Wander-Routing"), dann die Strecken-Schleife
+(Herleitung Claude, Isor tippt), MonsterSpawner auf die Router-Route
+umstellen, Sichtprüfungen (Gerade · Gabelung · Sackgasse · Ring ·
+Klumpen), dann der **Prüfpunkt**. Wochen-Soll „P-B4 samt Prüfpunkt +
+P-B5-Start bis So 08.11." steht knapp — der Sonntag gehört dem
+Routing. Beim Baustein-Ende: Mess-Log im PlayerSpawner raus,
+Auto-Save im Editor prüfen.
 
 ---
 

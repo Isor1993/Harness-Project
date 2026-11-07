@@ -343,3 +343,25 @@ er benutzt statt gebaut — die Testphase läuft (`PLAN.md`).
   (`Kern/STOERUNGEN.md`). Gefunden hat es Isor, nicht die Prüfliste. Der
   Punkt trifft die Lücke, weil die DECISIONS die einzige Stelle sind, an
   der **verworfene** Wege festgehalten werden.
+- [ ] **ARTIFACT_RULES: Lesepflicht vor dem Bau** (Isors Ja vom
+  2026-11-04) — in `ARTIFACT_RULES.md` → „Wann geschaut wird" der Satz:
+  Vor dem Bau oder Nachzug einer Seite wird diese Datei zuerst gelesen.
+  Gegenmittel zur Störung „Artifact-Seite ohne die Hausregeln gebaut"
+  (`Kern/STOERUNGEN.md`, 2026-11-04): Die Regeldatei existierte, aber
+  kein Ablauf erzwang ihr Lesen — dieselbe Heilung wie beim
+  TODO-Vorfall, nur dass der Anker hier in die Regeldatei selbst gehört.
+- [ ] **Viererpakete: Design-Ausnahme als Halbsatz** (Isors Ja vom
+  2026-11-04) — an die Viererpakete-Regel in `Kern/WORKFLOW.md` der
+  Halbsatz, dass Design-Gespräche frei im Chat laufen (Klickfelder und
+  Pakete sind fürs Sichten und Sortieren, nicht fürs Ausdesignen).
+  Gegenmittel zur Störung „Klickfeld-Dialoge mitten im Design-Gespräch"
+  (`Kern/STOERUNGEN.md`, 2026-11-04).
+- [ ] **Development: Design-Runde vor jeder neuen Klasse** (Isors Ja vom
+  2026-11-07) — in `Kern/WORKFLOW.md` → „Development" der Satz: Bevor
+  eine neue Klasse ein Gerüst oder TODOs bekommt, wird ihr Design
+  (Zweck, Datenmodell, verworfene Varianten samt Folgen) im Chat
+  entschieden — auch bei Claudes Algorithmus-Anteilen, denn Isor tippt
+  und muss das Design kennen. Gegenmittel zur Störung „Gerüst vor
+  Design" (`Kern/STOERUNGEN.md`, 2026-11-07): Die Regel „nur Umsetzung
+  des Vorentschiedenen" existierte, griff aber für das Innere neuer
+  Klassen nicht.

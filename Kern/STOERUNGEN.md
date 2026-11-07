@@ -1308,6 +1308,61 @@ zu lesen.
 **Stand:** behoben 2026-11-04 in derselben Session (Neubau nach den
 Regeln, Fehlstart im `ARTIFACT_INDEX`-Eintrag vermerkt); als
 Sofort-Gegenmittel eine projektübergreifende Gedächtnis-Regel bei
-Claude. Gegenmittel-Frage an Isor offen: Soll ein Satz „vor Bau oder
-Nachzug einer Seite zuerst diese Datei lesen" fest in
-`ARTIFACT_RULES.md` → „Wann geschaut wird" — als ROADMAP-Punkt?
+Claude. Gegenmittel verankert als Punkt in `Kern/ROADMAP.md`
+(Lesepflicht-Satz für `ARTIFACT_RULES.md` → „Wann geschaut wird" —
+Isors Ja vom 2026-11-04).
+
+### 2026-11-04 — Klickfeld-Dialoge mitten im Design-Gespräch
+**Was:** Beim Ausdesignen des Ordnungssystems legte Claude Isor einen
+Vier-Punkte-Entscheidungsdialog als Klickfelder vor. Isor brach den
+Dialog ab und stellte klar: Design-Gespräche brauchen die volle
+Information im Chat — „da zu wenig Info ist für mich". Danach lief die
+Design-Runde regelkonform frei.
+**Ursache:** Die Klickfeld-Regel hat eine benannte Ausnahme
+(Design-Gespräche laufen frei im Chat), aber die Ausnahme lebte nur in
+Claudes projektübergreifendem Gedächtnis — im Harness steht nur die
+Viererpakete-Regel, die das Klickfeld-Format nahelegt.
+**Regel:** Existierte nur im Gedächtnis und driftete — dieselbe Bauart
+wie der TODO-Vorfall vom 2026-11-02.
+**Stand:** behoben 2026-11-04 in derselben Session (Design-Runde frei
+geführt); Eintrag auf Isors Entscheid vom 2026-11-04. Gegenmittel
+verankert als Punkt in `Kern/ROADMAP.md`: Design-Ausnahme als Halbsatz
+an die Viererpakete-Regel in `Kern/WORKFLOW.md` (Isors Ja vom
+2026-11-04).
+
+### 2026-11-07 — Speichern-Teufel: dreimal ungespeicherte Dateien
+**Was:** In der P-B4-Session lagen dreimal frisch getippte Änderungen
+nur im Editor-Puffer, nicht auf der Platte — Claude las und bewertete
+veraltete Stände (ClearTool-Löschung, LivesBoard-Wächter,
+Monster/Spawner-Übergabe). Aufgefallen jeweils daran, dass der
+Dateistand dem Gespräch widersprach.
+**Ursache:** Visual Studio speichert nicht automatisch, und der
+Arbeitsrhythmus „Isor tippt → Claude liest" hat keinen
+Speicher-Handgriff dazwischen.
+**Regel:** Gab es nicht — der Fall war unbenannt. Sofort-Gegenmittel in
+der Session: Claude prüft bei Widersprüchen zuerst den Plattenstand
+statt den Befund zu melden.
+**Stand:** offen; Gegenmittel „Auto-Save-Einstellung im Editor prüfen"
+als Merkposten in `Projekte/Pathmakers_TD/ROADMAP.md` → P-B4 (Isors Ja
+vom 2026-11-07).
+
+### 2026-11-07 — Gerüst vor Design: TODOs für Unentschiedenes
+**Was:** Claude legte den WanderRouter-Rumpf samt TODOs an, obwohl
+Datenmodell und Arbeitsweise der Klasse nie gemeinsam entschieden
+waren — das Design existierte nur in Claudes Kopf. Isor konnte die
+TODOs nicht sinnvoll tippen („Halbwahrheiten, Puzzlestücke") und
+stoppte; die Design-Runde wurde in derselben Session nachgeholt
+(Projekt-DECISIONS → „2026-11-07 — Wander-Routing").
+**Ursache:** Claude behandelte den Algorithmus-Anteil als „eigenen"
+Teil, für den keine Design-Runde nötig schien — dabei tippt Isor seit
+der Werkzeug-Politik-Präzisierung auch diesen Code und muss das Design
+kennen.
+**Regel:** Existierte sinngemäß (`WORKFLOW.md` → Development: „nur
+Umsetzung dessen, was vorentschieden ist"), griff aber für das Innere
+einer neuen Klasse nicht — dieselbe Bauart wie die
+Gedächtnis-Drift-Fälle.
+**Stand:** behoben 2026-11-07 in derselben Session (Design-Runde
+nachgeholt, Entscheidungen in den Projekt-DECISIONS); als
+Sofort-Gegenmittel eine Gedächtnis-Regel bei Claude. Gegenmittel
+verankert als Punkt in `Kern/ROADMAP.md`: Design-Runde-Satz in
+`Kern/WORKFLOW.md` → „Development" (Isors Ja vom 2026-11-07).

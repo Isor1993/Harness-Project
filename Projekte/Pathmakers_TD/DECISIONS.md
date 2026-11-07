@@ -1484,8 +1484,7 @@ Info-Panels, das Kachel-Werkzeug, später der Sende-Ring — implementiert
 `ActiveUiMode` (`Claim`/`Release`) hält, wer auf der Bühne steht, und
 lässt beim Claim den Vorgänger abtreten. Ablage nach der neuen
 Interface-Regel: `Scripts/Interfaces/UiMode/IUiMode.cs` (**gebaut am
-2026-11-04, Block 1** — Isor gegen den Rat des Gefühls korrekt ohne
-redundantes `public` abgeschlossen) und `Scripts/UiMode/ActiveUiMode.cs`
+2026-11-04, Block 1**) und `Scripts/UiMode/ActiveUiMode.cs`
 (Block 2, offen). Nach dem Umbau fallen die Spezialfälle: das statische
 `_currentOpenPanel` samt `CloseOpenPanel` in der Panel-Basis und das
 Panel-Schließen im `ToggleTileTool`.
@@ -1496,6 +1495,13 @@ Exklusivität zu einer Regel mit genau einem Besitzer.
 Verworfen: Observer-Events zwischen den Beteiligten (mehr Verdrahtung,
 Reihenfolge unklar, und es blieben Paare); beim Zwischenstand bleiben
 (trägt nicht über P-B5 hinaus).
+Nachtrag 2026-11-05/07: Blocks 2 und 3 sind gebaut, die
+Alt-Spezialfälle (`_currentOpenPanel`, `CloseOpenPanel`,
+Panel-Schließen im Werkzeug) sind gelöscht — Sichtprüfung sechs
+Punkte grün (LOG). Korrektur zum Block-1-Halbsatz oben: Das `public`
+am Interface-Vertrag **bleibt bewusst stehen** (Isor, 2026-11-05: es
+zeigt direkt, was es ist — Lesbarkeit schlägt die Redundanz-Regel);
+die ursprüngliche Fassung dieses Eintrags behauptete das Gegenteil.
 
 ## 2026-11-04 — Aufräum-Durchgang: das Ordnungssystem angewandt
 
@@ -1531,3 +1537,87 @@ Mobile_*) erst nach Graphics-Prüfung anfassen · Testarea-Wandnamen
 („WallVerical", Leerzeichen) bei Gelegenheit · `Assets/Editor/`
 entsteht erst mit dem ersten reinen Editor-Skript ·
 MainMenu-Zonen erst bei der Menü-Überarbeitung (Isor, 2026-11-04).
+
+## 2026-11-07 — Werkzeug-Politik präzisiert: Formeln ja, Code nein
+
+Was: Der Algorithmen-Teil der Werkzeug-Politik vom 2026-10-30 ist
+geändert: Bei mathematischen Algorithmen (etwa dem Monster-Routing)
+liefert Claude **nur Herleitung und Formeln** — den Code tippt Isor,
+wie allen übrigen Spiel-Code. Komplett von Claude geschrieben (und im
+Header deklariert) werden weiterhin ausschließlich Editor-Tools. Löst
+aus dem Eintrag „2026-10-30 — Werkzeug-Politik" den Halbsatz „ebenso
+die Herleitung und **Umsetzung** mathematischer Algorithmen" ab; der
+Tool-Teil samt `Tool_`-Präfix und Deklaration gilt unverändert.
+Warum: Isors Einspruch beim Routing-Start — ein Algorithmus ist
+Spiel-Logik, die er bei der Abgabe verteidigen muss, kein Werkzeug
+neben dem Spiel. „Du gibst mir Formeln, an die ich mich halte; ich
+tippe trotzdem."
+Verworfen: das Routing komplett von Claude schreiben lassen (stand so
+in ROADMAP und Politik — übt genau das nicht, was das Semester prüft).
+
+## 2026-11-07 — Zellinhalt statt Belegt-Bit: CellContent, zwei Fragen
+
+Was: Die Bau-Tabelle im `PathGrid` speichert je Zelle ein
+`CellContent`-Enum statt eines bool: `Empty` (zwingend Mitglied 0 — ein
+frisches Enum-Array ist lauter Nullen, die Tabelle startet gratis
+leer), `Tile`, `Tower` (vorgemerkt, erster Schreiber kommt mit P-B7);
+Reihenfolge für immer fix (Enum-Sicherheit), Neues hängt hinten an.
+Darauf zwei Fragen mit zwei Besitzern: `IsOccupied` ist die
+**Bau-Frage** (belegt?, außerhalb zählt als belegt — Vertrag
+unverändert), neu `HasTile` die **Lauf-Frage** (trägt die Zelle eine
+Kachel?, außerhalb zählt als nein — da läuft niemand). `SetContent`
+ersetzt `SetOccupied`; alles Laufende (`CollectReachableCells`,
+`CanReachExit`) fragt `HasTile`. Ablage: eigener Ordner
+`Scripts/Enums/<System>/`, **eine Datei je Enum** — spiegelt die
+Interface-Regel vom 2026-11-04.
+Warum: Türme sind sicher, und ein bool kann „belegt" nicht von
+„begehbar" trennen — das Routing wäre später über Turm-Zellen
+gelaufen. Isors Forderung an der richtigen Stelle: Wir brauchen die
+Unterscheidung **jetzt** (das Routing ist ihr erster Verbraucher),
+also wird sie richtig gebaut statt als Fassade über dem bool —
+Architektur-Sauberkeit vor Umbaugröße. Der zentrale Enums-Ordner mit
+System-Unterordnern ist Isors Vorschlag, analog zu den Interfaces.
+Verworfen: `HasTile` als Fassade über dem bool (Claudes erster
+Vorschlag — nach Umbaugröße statt Zuständigkeit sortiert, von Isor
+gekippt); alle Enums gesammelt in einer Datei (beim Suchen und in der
+Versionsgeschichte unhandlich); das Enum in `PathGrid.cs` deklarieren
+(fachlich gleichwertig, gegen die Ordner-Einheitlichkeit).
+
+## 2026-11-07 — Wander-Routing: Planen beim Spawn, Zähler je Gabelungszelle
+
+Was: Das Wander-Modell (Beschluss 2026-10-30) wird so umgesetzt:
+**(1)** Der neue `WanderRouter` (ein Skript je Rig, `Building/`) baut
+die **komplette Route beim Spawn** auf dem Host; das Monster läuft
+stumpf seine fertige Wegpunktliste ab wie bisher — es denkt unterwegs
+nicht. Sicher ist das durch die bestehende Kachel-Sperre „verlegt wird
+nur, solange keine Monster im Gebiet unterwegs sind" (2026-10-17): Das
+Gitter ist während des Laufs eingefroren. **(2)** An jeder Zelle
+entsteht die **Kandidatenliste frisch** (Nachbar hat Kachel + nicht
+besucht + `CanReachExit` ohne die Besucht-Liste sagt Ja) — einen
+gespeicherten Kacheltyp gibt es nicht, der „Typ" liegt in den
+Nachbarn. **(3)** Das Abwechseln an Gabelungen trägt ein
+**Zähler je Gabelungszelle** (`Dictionary<Vector2Int, int>`, Schlüssel
+= Zelladresse): Wahl = `zähler % kandidatenzahl`, danach +1; gefragt
+wird nur bei mehr als einem Kandidaten, und der Zähler lebt die ganze
+Partie — so verteilt sich der Monsterstrom an jeder Gabelung
+zuverlässig auf alle Arme, die Dreier-Kreuzung gratis mit. Ein Nein
+von `CanReachExit` ist eine normale Antwort (Sackgassen-Arm steht
+nicht zur Wahl), kein Fehler. Benannte Naht: Live-Umplanen bei
+Kachel-Änderung als Ausbaustufe (Router rechnet Restrouten auf ein
+Umbau-Ereignis neu) — mit der Einfrier-Regel in V1 ohne Anwendungsfall.
+Warum: Besitz-Trennung — der Router besitzt das Planen, das Monster
+das Laufen; `Monster` frisst heute schon eine Wegpunktliste, nur der
+Absender wechselt. Der Zähler je Zelle ist die einzige geprüfte
+Variante ohne Parity-Falle: Ein globaler Zähler (und ebenso einer je
+Kreuzungs-Typ) kommt bei zwei Gabelungen auf der Strecke an der ersten
+immer mit demselbem Rest an — alle Monster biegen gleich ab, die
+Verteilung friert ein. Ein Richtungs-Enum als gespeicherter Wert
+scheitert daran, dass das Angebot einer Zelle je Ankunftsrichtung und
+Besucht-Liste anders ausfällt.
+Verworfen: Entscheiden beim Schritt statt beim Spawn (Monster würde
+Planer und Läufer zugleich, Flutfüllungen in jedem Schritt — als
+Live-Reaktion durch die Einfrier-Regel ohnehin unnötig); ein globaler
+0/1-Wechsler und ein Zähler je Kacheltyp (Isors Kandidaten — beide
+Parity-Falle, dazu beruhte die Typ-Zählung „12 Varianten" auf einer
+festen Laufrichtung, die es auf Schlängelwegen nicht gibt);
+gespeicherte letzte Richtung je Gabelung (veraltet je Besucher).

@@ -2833,3 +2833,109 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   für Groß/Klein-Umbenennungen; GUID-Beweis per Skript-Suche
   (welches Prefab trägt welches Skript); Szenen-Wurzeln direkt aus
   den .unity-Dateien gelesen statt Erinnerung.
+- 2026-11-04/05 · Pathmakers TD: Bühne Block 2, ActiveUiMode
+  (Development, gemeinsam) — **Selbst:** über die zwei gestellten
+  TODOs hinaus eigenständig Klassen-Hülle, Feld und beide
+  Methoden-Signaturen vorgebaut; statische Klasse selbst richtig
+  hergeleitet (kein GameObject, nicht in die Szene ziehbar); die
+  Systemfrage „wofür überhaupt Release?" selbst gestellt — traf genau
+  die Claim/Release-Arbeitsteilung; Claim-Wächter und Türsteher-If
+  jeweils im zweiten Anlauf korrekt, beide aus der eigenen
+  InfoPanelUI-Vorlage übersetzt. **Fehlerbild:** in Claim trat zuerst
+  der Neue ab (`newMode.ExitMode()` statt Feld — Übersetzungsfehler
+  aus der this-Welt der Vorlage); Release prüfte den Parameter gegen
+  null statt Feld gegen Anrufer und rief ExitMode zurück — die
+  dadurch entstehende Endlosschleife (Reentrancy, neues Konzept)
+  nicht gesehen; IDE-Autovervollständigung schleppte
+  Unity.VisualScripting-using ein; Begriffe: „If-Schleife" (ist eine
+  Verzweigung), Interface-Vertrag als „kann eingehalten werden"
+  (wer implementiert, muss liefern), „statisch läuft im Hintergrund
+  mit" (liegt nur da, läuft nie von selbst). **Hilfe:**
+  Ablauf-Widget mit Feldstand je Ereignis; Reihenfolge-Falle als
+  verschachtelte Aufruf-Zeitleiste; Endlosschleifen-Trace bis zum
+  Stack Overflow; Faustregel „Claim schließt, Release streicht nur
+  aus der Liste"; zwei-Abgänge-Bild (verdrängt gegen geht selbst).
+- 2026-11-07 · Pathmakers TD: Leben-Brett — Netz-Architektur geklärt,
+  LivesBoard gebaut (Development, gemeinsam) — **Selbst:** die
+  Zielarchitektur im Diktat eigenständig hergeleitet (Server hält den
+  Spielzustand je Spieler, Clients halten Kopien, nur Änderungen
+  wandern, Wünsche hoch / Zustand runter) — ohne zu wissen, dass
+  NetworkList genau das fertig liefert; Host/Server-Begriffe selbst
+  geschärft („Host ist zufällig auch Spieler"); Mathf.Max-Untergrenze
+  mit eigener Begründung (negativ = Fehlanzeige) und -1 als
+  Fehlerwert gewählt; GetLives-für-alle selbst erkannt
+  („kann theoretisch jeder lesen"); Architektur-Review der UI-Systeme
+  selbst angestoßen. **Fehlerbild:** der große Knoten — glaubte, das
+  Kopien-Abgleich-System selbst bauen zu müssen, und suchte deshalb
+  RPC-Meldewege für die Monster-Ankunft (Ankunft passiert nur auf dem
+  Server: IsServer-Wächter im Monster-Update übersehen); GetLives
+  zunächst mit IsServer-Sperre gebaut — Widerspruch zum eigenen
+  Diktat; Bereichs-Wächter dreimal nachgebessert (> statt >=, keine
+  Untergrenze, gegen Client-Zahl statt Listen-Länge geprüft);
+  „NetworkList sendet die Liste" statt „hält Kopien gespiegelt";
+  Sorge, mittendrin statt von oben zu bauen (Vertical Slice als
+  Antwort). **Hilfe:** Drei-Rechner-Bild (Wahrheit gegen Puppen);
+  Briefe-gegen-Bretter-Tafel; Schubladen-Bild für den Spielzustand
+  (statt großer PlayerData-Kiste, mit benannter Naht); Bauplan gegen
+  Inhalt (NetworkList-Typ gegen Listen-Exemplar) am eigenen
+  MonsterDefinition-Beispiel; Merksatz „Schreiben ist Server-Sache,
+  Lesen ist für alle". **Nachtrag Stationen 2–4:** Übergabe-Kette
+  Spawner → Monster → Brett selbst fehlerfrei gebaut (Felder,
+  Parameter, Aufruf), Buchung-vor-Despawn-Reihenfolge selbst richtig
+  gesetzt, die Szenen-verdrahtet-gegen-übergeben-Regel sofort
+  angewandt; Sichtprüfung solo und im Doppeltest bestanden.
+  Wiederkehrendes Muster des Tages: dreimal ungespeicherte Dateien
+  („Speichern-Teufel") — Gegenmittel Auto-Save prüfen, noch offen.
+- 2026-11-05/07 · Pathmakers TD: Bühne Block 3 — Panels und Werkzeug
+  auf IUiMode, Alt-Spezialfälle gelöscht (Development, gemeinsam) —
+  **Selbst:** sich beim Panel-Umbau selbst Vererbung hergeleitet
+  (jedes Kind-Panel ist ein InfoPanelUI, trägt sein eigenes
+  _panelRoot — statisch gegen Instanzfeld selbst auseinandergehalten);
+  beim Werkzeug die richtigen Stellen für Claim/Release selbst
+  gefunden und die Else-Frage (eigener Release-Zweig gegen
+  ClearTool-Wiederverwendung) selbst als Architekturfrage erkannt —
+  das „wäre doppelt"-Gefühl war korrekt; ExitMode = ClearTool als
+  Einzeiler selbst gewählt; Sichtprüfung sechs Punkte, alle grün.
+  **Fehlerbild:** Alt-System zuerst neben der Bühne weiterbetrieben
+  statt es zu löschen (zwei Buchführungen — Wurzel aller Folgefehler
+  der Runde, inkl. Release(null) nach dem Nullen des Felds);
+  ShowPanel schaltete das Panel beim Zeigen aus (Kopier-Ausrutscher
+  SetActive(false)); dreimal das statische Feld statt this an die
+  Bühne gereicht; beim Werkzeug das Panel statt sich selbst
+  angemeldet (Claim(_tileInfoPanelUI) — Rollenfehler: wer Modus wird,
+  meldet sich selbst); Sorge vor Mehrfach-ClearTool in Update
+  (aufgelöst: nur Tastendruck-Frames, und idempotent dank Türsteher).
+  **Hilfe:** Rollen-Tabelle der Zielwelt (eine Zumach-Routine,
+  OnCloseClicked nur Türschild, CloseOpenPanel stirbt); Merksätze
+  „wenn eine Instanz-Methode über sich selbst spricht, heißt das
+  Wort this" und „auf die Bühne stellt man sich selbst, nie jemand
+  anderen"; Doppel-ClearTool-Trace mit Türsteher-Spalte;
+  Systemfakt X-Knopf-Verdrahtung vor dem Entwurf.
+- 2026-11-07 · Pathmakers TD: CellContent-Umbau, CanReachExit,
+  Routing-Design (Development, gemeinsam) — **Selbst:** zwei große
+  Architektur-Instinkt-Treffer: den IsOccupied-Vertrag gegen Claudes
+  falsche Behauptung verteidigt (belegt heißt nicht Kachel — der Code
+  gab ihm recht) und die Jetzt-richtig-Forderung gestellt, als Claude
+  eine HasTile-Fassade überm bool empfahl (Tempo-vor-Zuständigkeit —
+  Claudes Fehler, eingeräumt); Enums-Ordnerregel selbst
+  vorgeschlagen; CanReachExit-Rumpf weitgehend selbst getippt, mit
+  eigener gültiger Variante (Ausgangs-Prüfung beim Dequeue statt beim
+  Beitritt); die Verteilungs-Sorge an der Gabelung selbst als Frage
+  gestellt (traf exakt die Parity-Falle der verworfenen Varianten);
+  Arbeitsweise eingefordert: Design-Runde vor neuer Klasse (Störung
+  „Gerüst vor Design" — sein Stopp war berechtigt). **Fehlerbild:**
+  CellContent als „neue Klasse" statt als Enum-Typ gelesen (unter
+  Erschöpfung — Bauplan-gegen-Typ-Verwechslung); „HashSet addet eh
+  nicht doppelt" → beide `!` aus der Beitritts-Bedingung gestrichen
+  (den fehlenden Duplikatschutz der Queue übersehen — Endlos-Pingpong);
+  reached beim Start mit dem Ausgang statt der Startzelle befüllt
+  (siebte das Ziel für immer aus); das Kacheltyp-Modell mit festen
+  Öffnungen (12 Varianten) aus Plättchen-Spielen übertragen — beruhte
+  auf fester Laufrichtung, die das Wander-Modell nicht hat;
+  `return false` als Fehlerfall mit Debug-Log gelesen statt als
+  normale Antwort. **Hilfe:** Trace-Widget falsche gegen richtige
+  Startzelle (Schritt-Tabelle); Drei-Mini-Gitter „der Typ liegt in
+  den Nachbarn"; Parity-Zahlenbeispiel mit zwei Gabelungen;
+  Design-Runde WanderRouter mit Varianten samt Folgen (A gegen B,
+  drei Zähler-Modelle); Merksätze „dieselbe Zelle in reached und
+  open", „Nein ist eine normale Antwort".
