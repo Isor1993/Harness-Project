@@ -215,3 +215,31 @@ kompletter Bestand umgezogen) — eigener Posten fürs „Plan gegen
 Wirklichkeit"-Kapitel: Infrastruktur-Tag mitten im Baustein, bewusst
 gewählt („erst sauber machen, dann weiter"). Grindstone-Zeiten des
 03./04.11. beim Baustein-Abschluss nachtragen.
+
+**Nachtrag 2026-11-08 (Routing fertig):** WanderRouter komplett
+(Zähler + Strecken-Schleife, Zeile für Zeile), erster Sichttest
+kippte die Lauf-Regel — Design-Befund, kein Code-Bug: Abwechseln an
+jeder Gabelung erzeugt unlesbare Umwege. Inline-Design-Runde →
+**Distanzfeld** (DECISIONS „Lauf-Regel") samt Dirty-Flag-Cache; der
+Regelwechsel kostete dank Planer/Sieb/Zähler-Trennung nur eine
+geänderte und eine neue Methode. Dazu Höhen-Feature (DECISIONS
+„Monster-Höhe"), Prefab-Eichung, Mess-Log raus. Zeiten (Grindstone,
+Screenshots 08.11. ~02:41):
+
+| Posten | Zeit |
+|---|---|
+| Bühne Block 3: BuildModeController ans Interface (07.11.) | 0:44 |
+| Lebensbrett samt Designrunde „Daten senden wie?" (07.11.) | 3:01 |
+| PathConnectivity/Routing-Algo, drei Schübe (07.11.) | 3:26 |
+| WanderRouter Zeile für Zeile, Nachtstrecke (07./08.11.) | 2:34 |
+| **Summe der Schübe 07./08.11.** | **9:45** |
+
+Gesamt-Grindstone am 08.11.: **51:40:33** → abzüglich P-B1 bis P-B3
+(33:07) sind **~18:33** auf P-B4 gebucht, Schätzung war ~10 h.
+Einordnung fürs „Plan gegen Wirklichkeit"-Kapitel: Im Ist stecken der
+Ordnungssystem-Tag (04.11.), mehrere Designrunden (Monster-Lauf,
+Wander-Routing, Lauf-Regel) und ein kompletter Regelwechsel nach
+Sichttest — der reine Bau lag näher an der Schätzung. Die
+08.11.-Strecke nach 02:41 (Lauf-Regel-Umbau, Höhen-Feature, Tests)
+war bei Screenshot-Stand noch ungebucht; beim Baustein-Abschluss
+nachtragen, zusammen mit den noch offenen Zeiten des 03.–06.11.

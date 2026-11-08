@@ -1621,3 +1621,90 @@ Live-Reaktion durch die Einfrier-Regel ohnehin unnötig); ein globaler
 Parity-Falle, dazu beruhte die Typ-Zählung „12 Varianten" auf einer
 festen Laufrichtung, die es auf Schlängelwegen nicht gibt);
 gespeicherte letzte Richtung je Gabelung (veraltet je Besucher).
+
+## 2026-11-08 — Lauf-Regel: Distanzfeld statt Abwechseln an jeder Gabelung
+
+Was: Die Monster laufen nur noch **kürzeste Wege zum Ausgang**; das
+Abwechseln (Zähler je Gabelungszelle, Beschluss 2026-11-07) greift nur
+noch bei **Gleichstand** mehrerer gleich kurzer Arme. Umsetzung:
+**(1)** `PathConnectivity` bekommt ein **Distanzfeld** (*flow field*) —
+eine Flutfüllung vom Ausgang, die jeder Wegzelle ihre Schrittzahl bis
+zum Ziel gibt. **(2)** Das Sieb in `WanderRouter.CollectCandidates`
+schrumpft auf einen Vergleich: Kandidat ist ein Nachbar genau dann,
+wenn seine Distanz um 1 kleiner ist als die der aktuellen Zelle.
+Besucht-Liste und `CanReachExit`-Aufruf fliegen aus dem Sieb —
+zahl-abwärts kann weder kreisen noch in Sackgassen laufen
+(`CanReachExit` bleibt für Bau-Regel und Gizmo bestehen). **(3)** Das
+Feld wird **gecacht mit Dirty-Flag**: `PathGrid` zählt bei jedem
+Legen/Abreißen einen Änderungszähler hoch; `PathConnectivity` merkt
+sich Feld samt Zählerstand und rechnet nur neu, wenn der Zähler
+abweicht. Mit der Einfrier-Regel (kein Bauen, solange Monster laufen)
+rechnet so faktisch das erste Monster jeder Runde einmal, der Rest
+liest gratis — Isors „einmalig zu Rundenbeginn", ohne an den
+P-B5-Takt gekoppelt zu sein und ohne Reset-Pflicht. Benannte Nähte:
+Live-Umplanen bei Kachel-Änderung (durch die Einfrier-Regel in V1
+ohne Anwendungsfall) und Monster, die live am Feld laufen statt mit
+gebackener Wegpunktliste (erst bei Einheitenzahlen, die die Liste
+teuer machen).
+Warum: Der erste Routing-Sichttest (2026-11-08) zeigte: Abwechseln an
+**jeder** Gabelung erzeugt Umwege, die vom Ziel wegführen — kein
+Spieler kann den Lauf vorhersehen, Wege „ergeben keinen Sinn" (Isors
+Befund samt Soll-Skizzen). Spieler-Erwartung im TD ist der kürzeste
+Weg; Splitten soll es nur zwischen gleich kurzen Wegen geben. Das
+Distanzfeld ist dafür das Genre-Standardmuster und macht den Code
+einfacher statt komplexer (ein Vergleich statt drei Prüfungen, ein
+Zustand weniger). Besitz-Trennung bleibt: `PathConnectivity` liefert
+Fakten (Zahlen), `WanderRouter` trifft die Wahl (Zähler bei
+Gleichstand), Spawner und Monster bleiben unberührt.
+Verworfen: Abwechseln an jeder Gabelung beibehalten (gespielt
+widerlegt, s. o.); Distanzfeld frisch pro Spawn ohne Cache (Claudes
+V1-Vorschlag — funktional gleichwertig und simpler, aber „einmal pro
+Runde" ist das richtige Modell, und der Zähler-Cache kostet nur drei
+Zeilen im PathGrid); Rundenbeginn-Condition im `MonsterSpawner`
+(Isors erster Kandidat — hängt am P-B5-Takt, den es noch nicht gibt,
+braucht eine Reset-Pflicht, die vergessen werden kann, und zieht
+Feld-Pflege in den Spawner, dem sie nicht gehört); A*-Pfadsuche je
+Monster (teurer und fehleranfälliger, wenn alle Einheiten zum selben
+Ziel wollen).
+
+## 2026-11-08 — Monster-Höhe: Brett besitzt die Kacheldicke, Steckbrief den Körper
+
+Was: Wegpunkte liegen auf der **Lauffläche**: `PathGrid` bekommt
+`_tileHeight` (Inspector, 0,1 — die gemessene Kacheldicke) und
+`TranslateToSurfacePos` (Zellmitte plus Kacheldicke);
+`WanderRouter.BuildRoute` übersetzt damit. Das Monster hebt sich
+**selbst**: `HeightOffset` im Monster-Steckbrief (halbe Körperhöhe,
+Grunt 1,0), beim Spawn einmal und an jedem Wegpunkt-Ziel angewandt.
+`TranslateToWorldPos` bleibt unverändert — Geisterbild, Gizmos und
+Platzierung rechnen weiter mit dem Boden.
+Warum: Zwei Besitzer, zwei Werte — ein Monster soll die Kacheldicke
+nicht kennen (dickere Kacheln hießen sonst alle Steckbriefe
+nachziehen), das Brett nicht die Körpergröße. Die Hand-Eichung
+(0,85/0,9) entpuppte sich als „halbe Kapselhöhe minus
+TileHeight-Irrtum"; nach der Korrektur auf 0,1/1,0 tragen beide
+Zahlen wörtliche Bedeutung (Regel fürs nächste Monster: HeightOffset
+= halbe Körperhöhe, fertig).
+Verworfen: ein kombinierter Offset je Monster-SO inklusive
+Kacheldicke (Isors erster Gedanke, von ihm selbst zur
+Zwei-Werte-Trennung geschärft); `TranslateToWorldPos` anheben (hätte
+Geisterbild und Platzierung mit verschoben).
+
+## 2026-11-08 — Prüfpunkt P-B4: Plan halten, Bau-Komfort als P-B6a vorgezogen
+
+Was: Der im Meilenstein-Plan vorgesehene Prüfpunkt nach P-B4 ist
+entschieden: **P-B7 (erster Wächter) wird nicht vorgezogen** — es
+bleibt bei P-B5 → P-B6 → P-B7. Neu eingeschoben wird **P-B6a
+„Bau-Komfort"** (~2–3 h) zwischen P-B6 und P-B7: Halte-Bauen (bei
+gehaltener Maustaste ziehen, Geisterbilder zeigen die Reihe,
+Loslassen baut) und der Abriss-Modus als drittes Werkzeug — beide von
+der P3-Merkliste vorgezogen.
+Warum: Das Vorzieh-Argument (früher Spaß-Test) ist schwach geworden —
+das Risiko-Stück des Prototyps war das Routing, und es läuft seit
+heute; der Wächter braucht Gold und Preise aus P-B6, um sinnvoll
+testbar zu sein. Bau-Komfort rückt vor, weil jede Testrunde bis zur
+Abgabe Wege baut und abreißt — das Werkzeug verzinst sich ab dem
+ersten Playtest (Isors Testschmerz vom 08.11.: „alles zu löschen ist
+echt schwer").
+Verworfen: P-B7 vorziehen (s. o.); Bau-Komfort sofort vor P-B5
+(hätte den P-B5-Start am Soll-Sonntag gekostet); Bau-Komfort auf P3
+lassen (der Testschmerz bliebe bis zur Pufferwoche).

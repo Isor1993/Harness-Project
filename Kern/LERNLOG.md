@@ -2939,3 +2939,55 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   Design-Runde WanderRouter mit Varianten samt Folgen (A gegen B,
   drei Zähler-Modelle); Merksätze „dieselbe Zelle in reached und
   open", „Nein ist eine normale Antwort".
+- 2026-11-07 · Pathmakers TD: WanderRouter — NextCandidateIndex
+  (Development, Zeile für Zeile) — **Selbst:** die Modulo-Rechnung am
+  eigenen Beispiel korrekt durchgerechnet (0 % 2 = 0 samt Begründung
+  „kein Rest") — der behauptete Mathe-Mangel war keiner; den
+  Unbekannt-Zweig mit Add statt return selbst umgesetzt; das
+  Magic-Number-Prinzip selbst eingefordert (Zahlen mit Bedeutung
+  benennen — trifft die Directions-Tabelle der kommenden
+  Strecken-Schleife); nach Frust-Tief selbst benannt, was er braucht
+  (Erfolgserlebnisse, kleinere Schritte). **Fehlerbild:** den
+  Rückgabe-Index wiederholt als Richtung gelesen („0 = geradeaus") —
+  zweites Auftreten des Kacheltyp-Musters vom Vortag, diesmal am
+  Listenplatz; die Nachbar-Abfrage in der Zähler-Methode gesucht
+  statt in der Strecken-Schleife (Zuständigkeits-Schnitt zwischen
+  zwei Methoden derselben Klasse noch nicht gefestigt). **Hilfe:**
+  Arbeitsform auf Zeile-für-Zeile mit Sofort-Bestätigung umgestellt
+  (Regler „Wer schreibt" feiner gedreht, kein Moduswechsel);
+  Zwei-Panels-Diagramm „gleiche Zelle, mal Gabelung, mal Durchgang";
+  Vier-Monster-Tabelle Zähler → Platz → Tür; Merksatz „pos = wo stehe
+  ich, candidateCount = offene Türen, Rückgabe = Türnummer".
+- 2026-11-08 · Pathmakers TD: BuildRoute, Lauf-Regel-Wechsel,
+  Distanzfeld, Höhen-Feature (Development, Zeile für Zeile, später
+  delegiert) — **Selbst:** den Methoden-Entwurf über die drei
+  Leitfragen korrekt beantwortet (GetEntryCell/GetExitCell/
+  Waypoint-Liste) und hinterher erkannt, dass das Entwerfen war;
+  BuildRoute-Stationen weitgehend fehlerfrei getippt, dabei Station 1
+  dem Diktat voraus; beim Spielen den **Design-Fehler der Lauf-Regel
+  gefunden, die Soll-Regel formuliert und mit Skizzen belegt**
+  (kürzeste Wege, Split nur bei Gleichstand — traf das
+  Flow-Field-Standardmuster); die Cache-Frage („nur zu Rundenbeginn
+  rechnen") selbst aufgeworfen; die Greedy-Falle selbst erfragt
+  („nur bis zur nächsten Kreuzung?"); Refactoring-Bedarf an der
+  langen Methode selbst erkannt; Höhen-Besitz selbst designt
+  (Offset ins Monster-SO) und zur Zwei-Werte-Trennung mitgeschärft;
+  BuildDistanceField-Selbsttest bestanden (4 aus 3-und-5, Begründung
+  zunächst wacklig); Prefab-Wurzeln aus eigenem Antrieb geeicht.
+  **Fehlerbild:** Schritt-Zeilen in den if-Block gerutscht
+  (Endlosschleife — nach Trace selbst verschoben); Queue als
+  „Stapel" gelesen (FIFO/LIFO-Verwechslung); Punkt-Syntax
+  `array[i].Methode()` als foreach-Kurzform gedeutet; Dictionary
+  erst ge-new-t, dann sofort durch Methodenergebnis ersetzt
+  (Doppel-Init); im Cache-Wächter die halbe Bedingung vergessen
+  (nur null-Check, ChangeCount-Vergleich fehlte — Trace zeigte das
+  ewig alte Feld); Selbstbild-Tief „nur bauen nach Anleitung"
+  trotz eigener Design-Leistung derselben Stunde. **Hilfe:**
+  Klassen-Landkarte mit Fertig-Haken gegen das Verloren-Gefühl
+  (plus Merkregel: Profis halten das nicht im Kopf, sie schauen auf
+  die Karte); Distanzfeld-Diagramm mit Zahlen am Ring;
+  Senior-Einordnung (YAGNI, ADRs) auf seine Nachfrage; echte
+  Code-Namen statt Hausbegriffen (sein Einspruch, als Regel
+  übernommen); Delegation der mechanischen Stücke an Claude auf
+  seinen Zuruf (Refactor, Höhen-Feature) — Verständnis je vorab
+  von ihm formuliert.

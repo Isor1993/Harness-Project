@@ -227,3 +227,28 @@ Format: `- JJJJ-MM-TT — Ereignis.` Ein bis drei Zeilen je Eintrag.
   (Speichern-Teufel, Gerüst vor Design — Kern-STOERUNGEN 2026-11-07);
   drei Wissensseiten (Flutfüllung erweitert, NetworkList-Brett,
   emergenter Typ).
+- 2026-11-07/08 — Routing fertig, Lauf-Regel gekippt, Distanzfeld:
+  `WanderRouter` komplett (NextCandidateIndex und BuildRoute, Zeile
+  für Zeile — Claude diktierte, Isor tippte; Sieb als
+  CollectCandidates ausgelagert). Der erste Sichttest deckte einen
+  Design-Fehler auf: Abwechseln an jeder Gabelung erzeugt unlesbare
+  Umwege (Isors Befund samt Soll-Skizzen). Design-Runde inline:
+  Lauf-Regel auf Distanzfeld umgestellt (DECISIONS → „Lauf-Regel") —
+  `PathGrid.ChangeCount` als Dirty-Flag, `GetDistanceField`/
+  `BuildDistanceField` in PathConnectivity, Sieb = Zahlenvergleich,
+  Besucht-Liste raus. Sichttests grün: Umweg wird ignoriert, gleich
+  lange Arme splitten 50/50, Feld frischt nach Umbau (Dirty-Flag-
+  Gegenprobe). Dazu das Höhen-Feature (DECISIONS → „Monster-Höhe"),
+  Prefab-Wurzeln geeicht, Mess-Log im PlayerSpawner entfernt;
+  Auto-Save geprüft: gibt es im Editor nicht, Isor bleibt bewusst
+  bei Strg+S (Antwort auf das Gegenmittel der Speichern-Teufel-
+  Störung). Nach der Reflexionsrunde der Prüfpunkt entschieden: Plan
+  halten, Wächter nicht vorgezogen, Bau-Komfort als P-B6a eingeschoben
+  (DECISIONS → „Prüfpunkt P-B4") — **P-B4 damit abgehakt** (~18:33 h
+  bei ~10 h Schätzung, Einordnung in ABGABE_NOTIZEN). Drei
+  Wissensseiten (Distanzfeld, Dirty-Flag, Queue gegen Stack), Glossar
+  um beide Begriffe ergänzt, beide Status-Tafeln nachgezogen samt
+  Wochenplan 09.–15.11. und neuem Karten-Block auf der
+  Pathmakers-Tafel. Isors Befund zum Schluss: Sends spawnen noch beim
+  Absender — das ist der P-B5-Posten „fester Sende-Ring", erster Punkt
+  der nächsten Design-Runde.

@@ -51,7 +51,14 @@ Zeilen je Eintrag:
 ### 📍 Status · Semester 3
 ```
 URL      https://claude.ai/code/artifact/990b0be5-f2ec-42e2-affe-858d1cc92208
-Stand    2026-10-29 — nachgezogen auf Isors Zuruf (Planungs-Runde):
+Stand    2026-11-08 — nachgezogen auf Isors Zuruf (Reflexionsrunde nach
+         P-B4): Kopf-Stempel und Kacheln auf den Tagesstand (19 Tage
+         bis zur Doppelabgabe, vier Bausteine fertig, 51:40 h),
+         November-Karte und Phase 3 auf „P-B1 bis P-B4 fertig, Routing
+         übers Distanzfeld, Wochen-Soll getroffen"; interne Fertig-Ziele
+         im Zeitstrahl auf die Meilenstein-Daten der Pathmakers-Tafel
+         präzisiert (Alpha 26.12., Beta 22.01., Gold 05.02.).
+         Vorher 2026-10-29 — nachgezogen auf Isors Zuruf (Planungs-Runde):
          alle vier Weichen der Neuausrichtung als eingelöst markiert —
          Engine-Entscheid Unity (09.10.), Konzept-Wahl Pathmakers TD
          (20.10.), Viewer abgegeben (09.10.) und von der OCE
@@ -196,7 +203,18 @@ Seite ←  die B1-Stand-Zeile der Its-DOT-ROADMAP nennt die URL
 ### 📍 Status · Pathmakers TD
 ```
 URL      https://claude.ai/artifact/5JZCpkKe2MVnCC9R2ScuvJ
-Stand    2026-11-04 — Ende-Nachzug: Wochenplan-Haken (Aufräum-Runde ✓,
+Stand    2026-11-08 — Sichern-Nachzug nach P-B4-Abschluss: neuer
+         Wochenplan 09.–15.11. (P-B5, P-B6, P-B6a Bau-Komfort,
+         P-B7-Start — sonntags aufgestellt), Vorwoche komplett
+         abgehakt, „Zuletzt fertig" auf P-B4 (~18:33 h gegen ~10 h
+         Schätzung samt Einordnung), neuer Block „Die Karte: wer macht
+         was beim Monster-Lauf" (Besitz-Kette des Routings, gegen
+         Isors Querbeet-Gefühl), P-B4-Strahlzeile ✓, P-B6a-Zeile neu,
+         Kennzahlen 51:40 h / 18–23 h offen / 12 Tage bis
+         Feature-Stopp, vier neue Entschieden-Zeilen (Lauf-Regel
+         Distanzfeld, Dirty-Flag, Monster-Höhe, Prüfpunkt), M2-Zeile
+         um die Schätz-Lehre ergänzt. Vorher
+         2026-11-04 — Ende-Nachzug: Wochenplan-Haken (Aufräum-Runde ✓,
          Doppeltest ✓ samt Spawn-Fix und Rig-Naht, Ordnungssystem ✓,
          Bühne ▸), P-B4-Strahlzeile, drei neue Entschieden-Zeilen
          (Rig-Naht Variante A, Bühne, Ordnung festgeschrieben),

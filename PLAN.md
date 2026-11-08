@@ -22,23 +22,20 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-11-07 beim `/harness:ende` der
-Development-Session „P-B4 Gegner laufen". Die Prüf-Aufträge der
-vorigen Übergabe sind erledigt: Die drei Kern-Dateien vom 06.11.
-gehen im Harness-Commit V 0.0103 mit, Spiel-Commit V 0.0007 war
-gemacht.)*
+*(überschrieben 2026-11-08 beim `/harness:ende` der
+Development-Session „P-B4 Gegner laufen", Fortsetzung. P-B4 ist
+fertig und abgehakt — Routing läuft übers Distanzfeld, Prüfpunkt
+entschieden: Plan halten, Bau-Komfort als P-B6a eingeschoben.)*
 
-**P-B4 abschließen** (`Projekte/Pathmakers_TD/ROADMAP.md` → P-B4,
-„Stand 2026-11-05/07"): `WanderRouter` fertigbauen — erst
-`NextArmIndex` (Gerüst mit TODOs liegt in
-`Scripts/Building/WanderRouter.cs`, Design steht in DECISIONS →
-„2026-11-07 — Wander-Routing"), dann die Strecken-Schleife
-(Herleitung Claude, Isor tippt), MonsterSpawner auf die Router-Route
-umstellen, Sichtprüfungen (Gerade · Gabelung · Sackgasse · Ring ·
-Klumpen), dann der **Prüfpunkt**. Wochen-Soll „P-B4 samt Prüfpunkt +
-P-B5-Start bis So 08.11." steht knapp — der Sonntag gehört dem
-Routing. Beim Baustein-Ende: Mess-Log im PlayerSpawner raus,
-Auto-Save im Editor prüfen.
+**P-B5 starten, mit der Design-Runde „Takt + Senden"**
+(`Projekte/Pathmakers_TD/ROADMAP.md` → P-B5): Erster Punkt ist der
+**feste Sende-Ring** — Sends spawnen heute noch beim Absender
+(V1-Vermerk im `MonsterSpawner`); zu klären: Ring-Reihenfolge, leere
+Plätze/Ausgeschiedene, Sende-Zeitpunkt (sofort gegen Wellenstart).
+Danach Timer mit Bereit-Knopf. Wochen-Soll bis So 15.11.: P-B5 +
+P-B6 + P-B6a (Bau-Komfort), dann P-B7-Start. Beim nächsten
+Grindstone-Screenshot die offenen Zeiten nachtragen (03.–06.11. und
+08.11. nach 02:41 — `ABGABE_NOTIZEN.md` → „P-B4").
 
 ---
 

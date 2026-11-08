@@ -177,7 +177,11 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
   und der **PlayerId-Anker** am MatchSetup-Brett (Rejoin-Vorsorge:
   host-seitige Zuordnung UGS-PlayerId → Game-Id, jetzt möglich, weil
   der UGS-Weg die Id liefert — im Gym gibt es sie weiterhin nicht).
-- [ ] **P-B4 · Gegner laufen** — ein Gegnertyp, host-gesteuert:
+- [x] **P-B4 · Gegner laufen** — **erledigt am 2026-11-08** (Beleg:
+  LOG-Einträge 2026-11-02 bis 08, Zeiten und Gebautes in
+  `ABGABE_NOTIZEN.md` → „P-B4"; Sichttests grün, Prüfpunkt entschieden —
+  DECISIONS → „2026-11-08 — Prüfpunkt P-B4"). Ursprünglicher
+  Zuschnitt: ein Gegnertyp, host-gesteuert:
   Wegpunkt-Folge nach dem Wander-Modell samt Gültigkeit und Rollback
   (DECISIONS 2026-10-30 — „Monster-Lauf"; ersetzt den alten Zuschnitt
   „Gabelung abwechselnd, gerade Linie am Wegende"), Leben-Abzug am
@@ -227,11 +231,33 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
   Sichtprüfungen (Gerade · Gabelung · Sackgasse · Ring · Klumpen),
   dann der Prüfpunkt. Beim Baustein-Ende außerdem: Auto-Save im
   Editor prüfen (Speichern-Teufel, Kern-STOERUNGEN 2026-11-07).
+  **Stand 2026-11-08: fertig bis auf den Prüfpunkt** — WanderRouter
+  komplett, erster Sichttest kippte die Lauf-Regel (Design-Befund:
+  Abwechseln an jeder Gabelung erzeugt unlesbare Umwege), Umstieg
+  auf Distanzfeld samt Dirty-Flag-Cache (DECISIONS → „Lauf-Regel");
+  Sichttests grün (Umweg ignoriert, gleiche Arme splitten 50/50,
+  Feld frischt nach Umbau), MonsterSpawner umgestellt, Höhen-Feature
+  (DECISIONS → „Monster-Höhe"), Mess-Log raus, Auto-Save geprüft
+  (gibt es nicht — bleibt bewusst bei Strg+S). Die alten Sichtfälle
+  Sackgasse/Klumpen sind mit der neuen Regel strukturell erledigt
+  (zahl-abwärts kann beides nicht betreten), explizit gefahren sind
+  Umweg, gleiche Ringe und die Umbau-Gegenprobe. **Prüfpunkt
+  entschieden am 2026-11-08: Plan halten** — Wächter nicht vorgezogen,
+  Bau-Komfort als P-B6a eingeschoben (DECISIONS → „2026-11-08 —
+  Prüfpunkt P-B4").
 - [ ] **P-B5 · Takt + Senden** — Timer mit Bereit-Knopf, Sende-Gebäude
   mit Warteschlange, Sends laufen mit dem Wellenstart, fester
   Sende-Ring. (~5–6 h)
 - [ ] **P-B6 · Ressourcen** — Gold, Diamanten, Kacheln als Werte;
   Einkommen bei Timer null; Preise verdrahtet; Minimal-HUD. (~3–4 h)
+- [ ] **P-B6a · Bau-Komfort** — vorgezogen von der P3-Merkliste
+  (Prüfpunkt-Entscheid 2026-11-08, DECISIONS → „Prüfpunkt P-B4"):
+  **Halte-Bauen** (bei gehaltener Maustaste über Kacheln ziehen,
+  Geisterbilder zeigen die Reihe, Loslassen baut) und der
+  **Abriss-Modus als drittes Werkzeug** (Einzelklick reißt ab;
+  Shift-Halten für Reihen als Kür). V1 ohne Luxus: Halten-und-Ziehen
+  plus Abriss-Knopf reicht. Zweck: jede Testrunde bis zur Abgabe baut
+  und reißt Wege — das Werkzeug verzinst sich sofort. (~2–3 h)
 - [ ] **P-B7 · Erster Wächter** — Pfeilturm: über die Figur
   platzieren, Ziel in Reichweite, schießen, Monster sterben, Gold
   fließt — der Spaß-Test der Abgabe. (~8–10 h) Aus der P-B2-Runde
@@ -286,7 +312,10 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
   Schloss-Symbol im Panel; nur der Abriss bleibt immer tabu
   (Sperre vom 2026-11-02); `CollectReachableCells`: Erreicht-Liste von
   List auf HashSet umstellen (O(1)-Contains statt Listensuche —
-  Feinschliff aus der CanReachExit-Runde, 2026-11-07).
+  Feinschliff aus der CanReachExit-Runde, 2026-11-07); Player-Standhöhe
+  klären (der Player steht auf Kachelhöhe, der Ground liegt einen Tick
+  tiefer — wie steht er auf Boden gegen Kachel? Merkposten aus der
+  Prefab-Eichung, 2026-11-08).
 
 ## Meilenstein-Plan (Fertig-Linien und Inhalte)
 
