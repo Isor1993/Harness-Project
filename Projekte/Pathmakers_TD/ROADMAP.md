@@ -56,6 +56,14 @@ wird mit Beleg (LOG-Eintrag oder Datei).
   der Auslöser für die Client-Vorhersage (DECISIONS → „2026-10-23 —
   Netz: Host als Buchhalter, Verkündung an alle, Vorhersage als
   Erweiterung").
+  Neu aus dem P-B5-Test (Isor, 2026-11-08, Änderungswahrscheinlichkeit
+  von ihm auf ~90 % geschätzt): Die Kampfphase kann sich am
+  Karte-leer-Tor extrem ziehen (großes Feld, ~3-Minuten-Runden) —
+  langweilen sich die anderen, obwohl Bauen und Senden währenddessen
+  erlaubt sind? Reihenfolge der Stellschrauben, falls ja: erst
+  Monster-Tempo / Ausschüttungs-Takt / Wegstrecken, erst danach der
+  Modell-Umbau fester Wellentakt statt Karte-leer-Tor (wäre eine
+  eigene Design-Runde, kippt den Beschluss vom 2026-10-16).
 - [ ] **A1 · Pitch-Abgabe und Präsentation** — das GDD liegt fertig;
   nötig sind die Präsentationsfassung und der PDF-Export. Termine in
   `Uni/Semester_3/STUNDENPLAN.md`.
@@ -245,11 +253,32 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
   entschieden am 2026-11-08: Plan halten** — Wächter nicht vorgezogen,
   Bau-Komfort als P-B6a eingeschoben (DECISIONS → „2026-11-08 —
   Prüfpunkt P-B4").
-- [ ] **P-B5 · Takt + Senden** — Timer mit Bereit-Knopf, Sende-Gebäude
+- [x] **P-B5 · Takt + Senden** — **erledigt am 2026-11-08** (Beleg:
+  LOG-Eintrag 2026-11-08, Zeiten und Gebautes in `ABGABE_NOTIZEN.md`
+  → „P-B5"; Tests bestanden: Solo-Selbstsenden, gegenseitiges Senden,
+  Schnappschuss-Abgrenzung, HUD beidseitig; 4:47 bei 5–6 h Schätzung).
+  Ursprünglicher Zuschnitt: Timer mit Bereit-Knopf, Sende-Gebäude
   mit Warteschlange, Sends laufen mit dem Wellenstart, fester
   Sende-Ring. (~5–6 h)
+  **Stand 2026-11-08:** Die Design-Runde ist abgeschlossen — sechs
+  DECISIONS-Einträge vom 2026-11-08 (Rundentakt ohne Bereit-Knopf,
+  Sende-Ring mit SeatState, Sende-Pool mit Schnappschuss, Einkommens-
+  Uhr, Brett-Zugang, Ressourcen vorerst nur Gold). Der Bereit-Knopf
+  aus dem Zuschnitt ist damit gestrichen. Bau-Reihenfolge: Enums +
+  Brett-Erweiterung (SeatState, GetSendTarget, Instance) → GameClock →
+  MonsterSpawner auf Pool + Schnappschuss → GameClockUI (Minimal-HUD).
+- [ ] **P-B5v · Design-Runde Ressourcen** — vor P-B6 (Beschluss
+  2026-11-08, DECISIONS → „Ressourcen: vorerst nur Gold"): Bleibt es
+  bei einer Währung, oder kommen Diamanten zurück, und was trägt dann
+  welche? Dazu Startkapital, Einkommens-Werte je Monstertyp und die
+  Kachel-Quelle (Mine gegen Kauf-Knopf, hängt an P-B8). Ergebnis
+  bestimmt den P-B6-Zuschnitt und den G2-Nachzug von „Wirtschaft und
+  Senden".
 - [ ] **P-B6 · Ressourcen** — Gold, Diamanten, Kacheln als Werte;
   Einkommen bei Timer null; Preise verdrahtet; Minimal-HUD. (~3–4 h)
+  Zuschnitt steht unter Vorbehalt der Ressourcen-Runde (P-B5v):
+  vorerst nur Gold, Einkommen tickt auf der eigenen Uhr statt bei
+  Timer null (DECISIONS 2026-11-08).
 - [ ] **P-B6a · Bau-Komfort** — vorgezogen von der P3-Merkliste
   (Prüfpunkt-Entscheid 2026-11-08, DECISIONS → „Prüfpunkt P-B4"):
   **Halte-Bauen** (bei gehaltener Maustaste über Kacheln ziehen,
@@ -301,7 +330,11 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
   den Modus und öffnet dessen Panel (drei Spielgefühl-Merkposten aus
   der Abbau-Runde, 2026-10-29); UI-Ausgestaltung als eigene große
   Design-Runde nach der Kernmechanik (Upgrades, Panel-Inhalte mit Bild
-  und Werten, Hover-Infos, Anordnung — Karten-Runde 2026-10-29);
+  und Werten, Hover-Infos, Anordnung — Karten-Runde 2026-10-29; dabei
+  eine Benennungsregel für Canvas-/HUD-Objekte festlegen und in die
+  CODE_GUIDELINES geben — Lücke bemerkt beim GameClock-HUD,
+  2026-11-08; Interims-Konvention: Objekt heißt wie sein
+  Skript-Feld, PascalCase mit Typ-Suffix);
   Optik-Phase samt Asset-Liste (Welt verschönern, Monster- und
   Wächter-Figuren, Gebäude für Mine und Senden — evtl. eines für
   beide —, Bäume, Detail-Texturen; Gebiete optisch unterscheidbar
@@ -315,7 +348,10 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
   Feinschliff aus der CanReachExit-Runde, 2026-11-07); Player-Standhöhe
   klären (der Player steht auf Kachelhöhe, der Ground liegt einen Tick
   tiefer — wie steht er auf Boden gegen Kachel? Merkposten aus der
-  Prefab-Eichung, 2026-11-08).
+  Prefab-Eichung, 2026-11-08); Spur-Versatz beim Monster-Lauf (je
+  Monster ein fester seitlicher Versatz von etwa ±0,3 Kachelbreiten,
+  rein kosmetisch gegen das Übereinanderlaufen — Überlappung selbst
+  ist akzeptiert, DECISIONS → „Sende-Pool", 2026-11-08).
 
 ## Meilenstein-Plan (Fertig-Linien und Inhalte)
 

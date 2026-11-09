@@ -1708,3 +1708,149 @@ echt schwer").
 Verworfen: P-B7 vorziehen (s. o.); Bau-Komfort sofort vor P-B5
 (hätte den P-B5-Start am Soll-Sonntag gekostet); Bau-Komfort auf P3
 lassen (der Testschmerz bliebe bis zur Pufferwoche).
+
+## 2026-11-08 — Rundentakt: feste kurze Bauphase ohne Bereit-Knopf
+
+Was: Der Rundentakt wird eine Zwei-Phasen-Maschine:
+`RoundPhase { BuildPhase = 0, CombatPhase }` (Enum-Sicherheit: 0 ist
+der Startwert, Reihenfolge fix, Neues hinten). Die **Bauphase ist fest
+kurz** — Startwert 10 Sekunden, Inspector-Wert —, einen Bereit-Knopf
+gibt es **nicht** mehr (löst diesen Teil des Oberflächen-Beschlusses
+vom 2026-10-16 ab; das Karte-leer-Tor von dort bleibt). Timer null →
+Wellenstart → Kampfphase; die endet, wenn die Karte leer ist, und das
+zählt die **Uhr selbst** über einen Lebend-Zähler (Spawner meldet +1,
+Monster −1 bei Tod wie bei Ankunft). Zuschnitt: neues Skript
+`GameClock` (Host-Logik, wohnt auf dem GameNetwork-Objekt, Ablage
+`Scripts/GameState/` neben dem LivesBoard), synchronisiert je Phase
+den **Endzeitpunkt** statt eines tickenden Werts — die Clients rechnen
+den Countdown selbst. Dazu schon in P-B5 ein Minimal-HUD
+(`GameClockUI`: Phase plus Countdowns), damit der Takt testbar ist.
+Enums als je eine Datei in `Scripts/Enums/GameState/` (Ordner-Regel
+vom 2026-11-07).
+Warum: Die lange Bauphase samt Bereit-Knopf stammt aus der Zeit vor
+dem „Bauen jederzeit im leeren Gebiet"-Modell — gebaut wird faktisch
+während der Kampfphase des Gegners, die Bauphase ist nur noch die
+Atempause zwischen den Wellen. Kurz und fest heißt: kein UI-Baustein,
+kein Warten auf Trödler, und jeder hat vor jeder Welle dieselbe
+garantierte Mindest-Bauzeit. Den Endzeitpunkt statt des Zählers zu
+synchronisieren spart den Dauer-Netzverkehr eines tickenden Werts.
+Verworfen: Bereit-Knopf (verkürzt nur eine Phase, die jetzt ohnehin
+nur 10 Sekunden lang ist, und kostet UI plus Netz-Logik); 30 Sekunden
+Bauphase (Isors erster Probewert — kollabierte in der Runde mit den
+„10–15 Sekunden nach Karte leer" zu einem einzigen Timer-Wert);
+tickender synchronisierter Countdown (Netzverkehr ohne Gegenwert).
+
+## 2026-11-08 — Sende-Ring: SeatState am Brett, Ziel beim Wellenstart
+
+Was: Das MatchSetup-Brett bekommt je Platz einen Zustand:
+`SeatState { Empty = 0, Active, Eliminated }` — **nie da** und
+**ausgeschieden** sind absichtlich zwei Werte, weil spätere Anzeigen
+sie verschieden behandeln (Zuschauen, Karten-Verdunkelung,
+Spieler-Übersicht, Statistik); den ersten `Eliminated`-Schreiber baut
+erst die Win/Lose-Etappe (M3). Das Sende-Ziel liefert das Brett über
+`GetSendTarget(gameId)`: nächster `Active`-Platz im Uhrzeigersinn
+(Game-Id hochzählen, nach 4 kommt 1), nicht-aktive Plätze werden
+übersprungen; ist der Absender allein aktiv, ist er selbst das Ziel —
+das deckt Solo (Beschluss 2026-10-17) und den Fall „alle anderen
+ausgeschieden" mit derselben Regel. **Aufgelöst wird das Ziel beim
+Wellenstart**, nicht beim Einzahlen in den Pool: Wer zwischen
+Einzahlung und Welle ausscheidet, wird sauber übersprungen.
+Warum: Der Ring selbst ist seit dem 2026-10-17 beschlossen
+(Uhrzeigersinn, Platz 1 oben links, Game-Id fest am Platz); offen
+waren leere Plätze, Ausgeschiedene und der Zeitpunkt. Ein bool
+„belegt" hätte die zwei Abwesenheits-Sorten verschmolzen — dieselbe
+Falle wie beim Belegt-Bit im PathGrid (2026-11-07), diesmal vorab
+vermieden statt nachgebaut. Späte Auflösung macht den Pool dumm und
+das Brett zur einzigen Wahrheit über Plätze.
+Verworfen: Ziel beim Einzahlen festschreiben (ein Ausscheiden
+dazwischen schickte Monster an einen leeren Platz); bool statt Enum
+(s. o.); `Eliminated` jetzt schon beschreiben (es gibt noch kein
+Ausscheiden — nur der Wert wird reserviert).
+
+## 2026-11-08 — Sende-Pool: Schnappschuss bei Timer null
+
+Was: Je Spieler sammelt ein **Sende-Pool** die gekauften Monster;
+eingezahlt werden darf **jederzeit**, auch mitten im Kampf. Beim
+Wellenstart (Timer null) zieht der Host einen **Schnappschuss**: Nur
+was zu diesem Moment im Pool liegt, läuft in dieser Welle — alles
+später Eingezahlte gehört zur nächsten. Gespawnt wird der
+Schnappschuss nicht auf einen Schlag, sondern im **Ausschüttungs-Takt**
+(Abstand zwischen zwei Spawns, Inspector-Wert). Die Pools wohnen im
+`MonsterSpawner` — der besitzt schon Katalog, Wache und Spawnen; der
+heutige Sofort-Spawn (V1-Vermerk) wird zum Einzahlen umgebaut. Dass
+sich Monster auf der Kachel überlappen können, ist **akzeptiert**
+(Genre-Standard; Slow-Effekte und schmale Wege stauchen jede
+Kolonne); ein kosmetischer Spur-Versatz von etwa ±0,3 Kachelbreiten
+geht als Merkposten auf die P3-Liste.
+Warum: Der Schnappschuss schließt das Loch zwischen „Einzahlen
+jederzeit" und dem Karte-leer-Tor: Ohne ihn könnte stetes Nachfüllen
+die Kampfphase des Gegners endlos verlängern und ihm die Bauphase
+dauerhaft stehlen. Isor kam in der Runde unabhängig auf dieselbe
+Regel — der Konsens wurde festgestellt, nicht verhandelt. Der
+Ausschüttungs-Takt ist fürs Auge und für die Türme: eine Kolonne
+statt eines Klumpens.
+Verworfen: Pool nur in der Bauphase befüllbar (nähme dem Senden die
+Jederzeit-Qualität, die seit dem 2026-10-16 beschlossen ist);
+Nachfüllen läuft in die laufende Welle (das Loch, s. o.); alles auf
+einen Schlag spawnen (Klumpen statt Kolonne).
+
+## 2026-11-08 — Einkommen: eigene freilaufende Uhr
+
+Was: Das Einkommen bekommt einen **eigenen Timer**, unabhängig vom
+Rundentakt: Tick alle 30 Sekunden (Inspector-Wert), laufend ab
+Spielstart, egal welche Phase gerade ist. Das löst den Teil „Income
+bei Timer null — genau ein Timer" des Beschlusses vom 2026-10-17
+bewusst ab. Grundeinkommen null, wachsen tut es nur übers Senden
+(unverändert); als Startkapital stehen 100 Gold als Richtwert. In
+P-B5 entsteht nur die Uhr samt HUD-Anzeige; die Auszahlung selbst
+baut die Ressourcen-Etappe.
+Warum: Hängt das Einkommen am Wellenstart, belohnen lange Kampfrunden
+den, der sie verursacht — niemand kann das Spiel künstlich in die
+Länge ziehen oder strecken, wenn die Einkommens-Uhr einfach
+weiterläuft. Isors Spielgefühl-Argument: Ein fester Puls macht mehr
+Spaß und bestraft zähe Runden von selbst. Der alte „ein
+Timer"-Beschluss stammt aus einer Zeit, in der Rundentakt und
+Wirtschaft noch ein Gedanke waren; jetzt sind es zwei Systeme mit
+zwei Besitzern.
+Verworfen: Income beim Wellenstart (der alte Beschluss — koppelt die
+Wirtschaft an die Rundenlänge und damit an das Verhalten der Gegner);
+Income nur in der Kampfphase (künstlich, niemand versteht die Pause).
+
+## 2026-11-08 — Brett-Zugang: Singleton-Zeiger statt statischer Klasse
+
+Was: `MatchSetup` bekommt einen **Singleton-Zeiger**
+(`MatchSetup.Instance`): gesetzt in `OnNetworkSpawn`, geleert in
+`OnNetworkDespawn`, am Zugriff das Try-Muster. **Neuer Code** holt
+sich das Brett über `Instance`; die bestehende
+SerializeField-Verdrahtung bleibt stehen und wird nicht umgezogen.
+Die Daten selbst bleiben, wo sie sind — am NetworkBehaviour-Brett mit
+seinen NetworkLists.
+Warum: Isors Anlass ist echt — jede neue Klasse per Inspector an
+dasselbe Brett zu verdrahten ist Fleißarbeit ohne Aussage. Seine
+vorgeschlagene statische Datenklasse scheitert aber am Netz: Statische
+Felder synchronisiert NGO nicht, es entstünde eine zweite Wahrheit
+neben den NetworkLists. Der Singleton-Zeiger (Hausbegriff:
+Brett-Zeiger) nimmt den Verdrahtungsschmerz und lässt die eine
+Wahrheit am Brett. Alt-Code bleibt unangetastet, weil ein Umzug ohne
+Funktionsgewinn nur Risiko wäre.
+Verworfen: statische Datenklasse als Game-Id-Sammelpunkt (Isors
+erster Vorschlag, s. o.); SerializeField-Verdrahtung für alles Neue
+weiterziehen (der Schmerz, der die Frage auslöste); Umzug des
+Alt-Codes auf Instance (Risiko ohne Gewinn).
+
+## 2026-11-08 — Ressourcen: vorerst nur Gold, Modell in eigene Runde
+
+Was: Der Prototyp fährt bis auf Weiteres **einspurig mit Gold** —
+Senden kostet Gold, Einkommen zahlt Gold, Startkapital 100 als
+Richtwert. Das Drei-Ressourcen-Modell des GDD (Gold · Diamanten ·
+Kacheln, je eine Quelle) steht damit **in Frage, aber nicht
+verworfen**: Ob die zweite Währung kommt und was sie trägt,
+entscheidet eine **eigene Design-Runde vor P-B6** (ROADMAP-Punkt).
+Warum: Isor gefällt das aktuelle Modell nicht mehr, und P-B5 braucht
+die Antwort nicht — Takt, Ring und Pool funktionieren mit jeder
+Währung. Die Frage jetzt zu erzwingen hieße, unter Zeitdruck ein
+Wirtschaftsmodell festzunageln, das die Abgabe-Playtests dann
+widerlegen. Fürs GDD gilt: Das Kapitel „Wirtschaft und Senden" wird
+beim G2-Nachzug auf den Stand der Ressourcen-Runde gebracht.
+Verworfen: Diamanten in P-B6 einfach mitbauen (bisheriger Zuschnitt —
+baute ein Modell, an das der Designer selbst nicht mehr glaubt).

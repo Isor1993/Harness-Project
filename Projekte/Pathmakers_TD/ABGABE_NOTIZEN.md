@@ -183,7 +183,7 @@ mehr.
 Kacheln orange) liegt im Chat vom 2026-10-31; ein Demo-Clip des
 Bausteins steht noch aus.
 
-## P-B4 · Gegner laufen (seit 2026-11-01, läuft)
+## P-B4 · Gegner laufen (2026-11-01 bis 2026-11-08)
 
 **Zeiten** (Grindstone, Zwischenstand 2026-11-03 früh — der Baustein
 läuft noch; Schätzung ~10 h):
@@ -243,3 +243,61 @@ Sichttest — der reine Bau lag näher an der Schätzung. Die
 08.11.-Strecke nach 02:41 (Lauf-Regel-Umbau, Höhen-Feature, Tests)
 war bei Screenshot-Stand noch ungebucht; beim Baustein-Abschluss
 nachtragen, zusammen mit den noch offenen Zeiten des 03.–06.11.
+
+**Zeiten-Schluss 2026-11-08:** Die Strecke nach 02:41 ist nie gebucht
+worden — Gegenprobe: Gesamtstand 56:27:23 minus der beiden
+P-B5-Scheiben (4:47) ergibt exakt den 02:41-Stand 51:40:33. P-B4
+schließt damit endgültig bei **~18:33** als Untergrenze (die
+Schluss-Strecke und Teile des 03.–06.11. liefen ungetrackt);
+Gebautes und Belege stehen im LOG (Einträge 2026-11-02 bis 08) und
+in den DECISIONS.
+
+## P-B5 · Takt + Senden (2026-11-08)
+
+**Zeiten** (Grindstone; Schätzung ~5–6 h):
+
+| Posten | Zeit |
+|---|---|
+| Design-Runde „Takt + Senden" (Nachtstrecke) | 0:33 |
+| Bau: vier Stationen samt Tests | 4:13 |
+| **Summe** | **4:47** |
+
+Gesamt-Grindstone am 08.11. abends: **56:27:23**. Die lange
+Design-Diskussion der Nacht ist nur mit 0:33 enthalten
+(Untergrenzen-Regel wie gehabt: getrackt ist die aktive Zeit).
+**Erste Unterschreitung der eigenen Schätzung** — 4:47 gegen 5–6 h,
+trotz des Multiplayer-Kerns.
+
+**Gebautes:** `SeatState`- und `RoundPhase`-Enum
+(`Scripts/Enums/GameState/`); MatchSetup-Erweiterung —
+Platz-Zustände als zweite NetworkList, `GetSendTarget` (nächster
+aktiver Platz im Uhrzeigersinn, Selbst-Senden gratis als letzter
+Kandidat), `Instance`-Zeiger (Scene-Singleton); `GameClock` neu
+(`Scripts/GameState/`) — Zwei-Phasen-Takt mit Karte-leer-Tor über
+Lebend-Zähler, freilaufende Einkommens-Uhr, synchronisiert werden
+Endzeitpunkte auf der ServerTime statt tickender Werte;
+`MonsterSpawner`-Umbau — Pool je Absender, Schnappschuss bei Timer
+null, Ausschüttungs-Kolonne per Coroutine (Inspector-Takt), Spawn
+aufs **Ziel**-Rig (der V1-Vermerk „sender's own" ist getilgt);
+Monster meldet seinen Abgang an die Uhr; `GameClockUI`
+(`Scripts/HUD/`) als Minimal-HUD — Phase plus beide Countdowns,
+reines Ablesen der Getter. Tests bestanden: Solo-Selbstsenden,
+gegenseitiges Senden, Schnappschuss-Abgrenzung (später Einkauf
+wartet auf die nächste Welle), HUD-Countdowns auf Host und Client.
+
+**Erkenntnisse** (vorläufig, Reflexion folgt):
+- Die Unterschreitung hat zwei benennbare Quellen: komplette
+  Design-Runde **vor** dem Bau (keine Inline-Designstrecken wie in
+  P-B4) und TODO-Gerüste, die seit Isors Feedback das Werkzeug
+  nennen, nicht nur das Ziel.
+- Werkzeug-Deklaration fürs „Plan gegen Wirklichkeit"-Kapitel: Die
+  fünf Schluss-Korrekturen im MonsterSpawner tippte Claude auf
+  Zuruf (Missverständnis über den Umfang, nur eine Stelle war
+  gemeint); alles andere tippte Isor nach Gerüst.
+- Endzeitpunkt-Muster belegt: nichts tickt übers Netz, die über die
+  Partie eingefrorene Nachkommastelle des Income-Termins ist der
+  sichtbare Drift-Freiheits-Beweis.
+- Design-Befund aus dem Spieltest: Die Kampfphase kann sich am
+  Karte-leer-Tor stark ziehen (~3-Minuten-Runden auf dem großen
+  Feld); als Prüf-Merkposten bei P2, Isors eigene
+  Änderungswahrscheinlichkeit ~90 %.

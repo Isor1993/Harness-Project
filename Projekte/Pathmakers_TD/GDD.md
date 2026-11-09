@@ -510,3 +510,47 @@ bindet nichts)*
   die Fertig-Linien gehen als Pufferzeiten hinein, der interne
   Vorsprung bleibt bewusst draußen. Begründungen in `DECISIONS.md`,
   Einträge vom 2026-10-29 und 2026-10-30.
+- *(2026-11-08)* **Takt + Senden entschieden** (P-B5-Design-Runde),
+  drei Abweichungen vom Abgabetext für den G2-Nachzug: **(1)** Die
+  Bauphase ist fest kurz (Richtwert 10 Sekunden) statt „etwa eine
+  Minute", und den Bereit-Knopf gibt es nicht mehr — gebaut wird
+  ohnehin jederzeit im leeren Gebiet, die Bauphase ist nur die
+  Atempause („Die Schleife" anpassen). **(2)** Das Einkommen tickt
+  auf einer eigenen Uhr alle 30 Sekunden ab Spielstart, phasen-
+  unabhängig — nicht mehr beim Wellenstart („Wirtschaft und Senden"
+  anpassen). **(3)** Das Drei-Ressourcen-Modell steht in Frage: Der
+  Prototyp fährt vorerst nur Gold; ob Diamanten kommen, entscheidet
+  eine eigene Design-Runde vor P-B6 — das Kapitel „Wirtschaft und
+  Senden" wird danach nachgezogen. Dazu als Regeln bestätigt: Sends
+  sammeln sich im Pool (Einzahlen jederzeit), beim Wellenstart zählt
+  ein Schnappschuss, Späteres läuft in der nächsten Welle;
+  ausgeschiedene und leere Plätze werden im Sende-Ring übersprungen,
+  der letzte Aktive schickt an sich selbst. Begründungen in
+  `DECISIONS.md`, sechs Einträge vom 2026-11-08.
+- *(2026-11-08)* **Vorab-Gedanken zur Ressourcen-Runde P-B5v** (Isor,
+  aus der Reflexionsrunde — roh, bindet nichts): Kandidat **„Gold
+  kauft, Diamant verbessert"** — Monster *und* Tower kosten Gold
+  (eine Kauf-Währung = jede Münze stellt dieselbe
+  Angriff-oder-Verteidigung-Frage, leichter zu balancen); die Mine
+  arbeitet **Diamanten** ab statt Kacheln, Diamanten kaufen Arbeiter
+  und Upgrades. Alternativ angedacht: Währungen nicht separieren,
+  sondern tauschbar machen. Offene Upgrade-Flächen gesammelt: Tower
+  (Stufen wie im GDD oder anders?), Sende-Gebäude (Ausbau schaltet
+  neue Mob-Typen frei? einzelne Mobs verbessern? globale Buffs wie
+  +2 % Tempo?), Tiles, Arbeiter. Leitfragen für die Runde: woran
+  hängt das Sende-Einkommen im Gold-Modell (Schneeball-Prüfung);
+  wer liefert Kacheln, wenn die Mine Diamanten liefert; Folgen für
+  P-B8 (bisher Streichkandidat, würde zur Diamanten-Quelle);
+  welche der vier Upgrade-Flächen bleibt fürs Semester überhaupt
+  offen.
+  **Nachtrag aus derselben Runde** (Isor, konkretisiert): **Gold** —
+  Monster senden, Türme bauen, Türme upgraden; das Einkommen zahlt
+  Gold. **Diamanten** — werden in der Mine abgearbeitet; kaufen
+  Kacheln (!), Sende-Gebäude-/Mob-Upgrades und (wahrscheinlich) die
+  Minenarbeiter; Start mit einem Arbeiter. Die Mine hält er
+  inzwischen für machbar in der Zeit („nicht so kompliziert") — das
+  rüttelt am Streichkandidaten-Status von P-B8. Die Upgrade-Flächen
+  bleiben bewusst offen („nur Ideen, sehen ob sie reinpassen").
+  Für die Runde bleiben damit: Arbeiter-Währung (Gold oder Diamant),
+  die Schneeball-Prüfung des Gold-Einkommens, der P-B8-Status und
+  die Startwerte.

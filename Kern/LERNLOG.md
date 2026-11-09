@@ -2991,3 +2991,132 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   übernommen); Delegation der mechanischen Stücke an Claude auf
   seinen Zuruf (Refactor, Höhen-Feature) — Verständnis je vorab
   von ihm formuliert.
+- 2026-11-08 · Pathmakers TD: Design-Runde „Takt + Senden" (Design,
+  P-B5) — **Selbst:** die Schnappschuss-Regel für den Sende-Pool
+  eigenständig formuliert (deckungsgleich mit Claudes Loch-Warnung,
+  bevor die verstanden war); den Konflikt „freilaufende Uhr gegen
+  Kachel-Sperre" beim lauten Denken selbst gefunden und bis zur
+  Bauphasen-Lösung getrieben (traf das schon beschlossene Modell);
+  den Verdrahtungs-Schmerz der Game-Id-Auskünfte als
+  Architekturfrage erkannt und einen zentralen Zugriffspunkt
+  vorgeschlagen (zur Singleton-Variante geschärft statt statischer
+  Datenklasse); die Platz-Zustands-Differenzierung (nie da gegen
+  ausgeschieden) mit Anzeige-Begründung selbst gefordert; das
+  Ressourcen-Modell als klärungsbedürftig erkannt und eine eigene
+  Design-Runde angesetzt statt durchzuwinken. **Fehlerbild:**
+  Währungen vermengt (Startkapital „100 Gold" fürs Senden gedacht,
+  das nach Beschluss-Lage Diamanten kostet — mündete in die
+  Ressourcen-Runde); der Income-Alt-Beschluss samt damaliger
+  Begründung war nicht präsent (Ablösung dann bewusst entschieden,
+  kein Versehen). **Hilfe:** Beschluss-Lage aus den DECISIONS
+  vorgelegt (verworfene Varianten samt Gründen); Rundentakt-Diagramm;
+  Trade-off-Gegenüberstellung statische Datenklasse gegen
+  Singleton-Zeiger; Ring-Besetzungsfälle als Schaubild.
+
+- **2026-11-08 · Pathmakers TD: Brett-Erweiterung getippt (Development,
+  P-B5, Station 1).** **Selbst:** Los-Schleife eigenständig in
+  `AssignClients` ausgelagert (samt richtigem Bauchgefühl, die zu
+  kleine foreach *nicht* auszulagern und den Quick-Action-Vorschlag
+  mit Bool-Rückgabe abzulehnen); `GetSeatState` selbst hergeleitet —
+  Wache, Rück-Cast und das `gameId − 1` nach kurzem Wackeln allein
+  aufgelöst; den Ring-Lauf nach konkretisiertem Gerüst (Formel von
+  Claude) fehlerfrei zusammengesetzt; `OnNetworkDespawn` nach einmal
+  Abgucken korrekt. **Fehlerbild:** `return` statt if/else in der
+  Füll-Schleife — nicht gewusst, dass `return` die ganze Methode
+  verlässt, nicht nur die Schleife (Merksatz return/break/continue
+  bekommen); `Instance = this` beim Abarbeiten übersprungen, als der
+  TODO gelöscht war (Zeiger wäre für immer null geblieben — im Review
+  gefangen); Singleton als Konzept unscharf (»macht static das nicht
+  automatisch?« — Unterschied ein Zeiger gegen ein Objekt erklärt
+  bekommen). **Hilfe:** Property-Syntax `{ get; private set; }` war
+  unbekannt (Feld kompiliert auch, Zaun erklärt bekommen);
+  Werkzeugwahl for gegen foreach (Index-Vergleich braucht den
+  Zähler); auf eigenen Wunsch visuelle Hilfe: interaktiver
+  Ring-Simulator fürs Nachrechnen der Schleife. **Feedback von ihm:**
+  TODOs waren ihm zu dünn — seither nennt jeder TODO das Werkzeug,
+  nicht nur das Ziel.
+
+- **2026-11-08 · Pathmakers TD: GameClock getippt (Development, P-B5,
+  Station 2).** **Selbst:** Im Entwurf die NetworkVariable-Rechte
+  richtig gefordert („alle lesen, nur Server schreibt" — exakt der
+  Default); das eigene Störgefühl „warum zählt die Uhr Monster?" als
+  Besitzfrage artikuliert; Update, StartBuildPhase und die leere
+  Welle nach Vorlage fehlerfrei; bei den Gettern die eigene Methode
+  GetPhase() wiederverwendet statt Cast zu doppeln; Doppel-Check-
+  Muster (Phase + Bedingung) aus Update selbständig nach
+  ReportMonsterGone übertragen. **Fehlerbild:** Mathf.Max als Befehl
+  statt Frage benutzt (Rückgabewert weggeworfen, erwartete Mutation);
+  Enum-Zahlenwert mit dem Monster-Zähler verglichen
+  (`== (int)RoundPhase.CombatPhase` — die 1 hinter dem Namen nicht
+  präsent); im Entwurf deltaTime-Aufaddieren statt des beschlossenen
+  Endzeitpunkt-Modells; Income-Tick um 1 s statt ums Intervall
+  geschoben; Phasen-Check als Zuweisung getippt (`_phase = (int)…`
+  — .Value-Hülle und Frage/Befehl vermengt). **Hilfe:** Update-Zeilen
+  und Getter-Formeln konkret vorgegeben (nach „brauche Hilfe");
+  Metronom-gegen-Geld-Trennung für die Income-Frage;
+  Schnappschuss-Größe-sofort-melden gegen den Ausschüttungs-Takt
+  erklärt (Zähler darf zwischen gestaffelten Spawns nicht 0 berühren).
+
+- **2026-11-08 · Pathmakers TD: Spawner-Umbau (Development, P-B5,
+  Station 3).** **Selbst:** Im Entwurf aus dem Stand die Coroutine
+  mit yield-Wait als Staffel-Werkzeug genannt (unsicher, aber
+  richtig); RPC eigenständig zum Einzahlen eingedampft; die heikle
+  ReleaseWave-Schrittfolge (Schnappschuss → leeren → melden →
+  Kolonne) korrekt zusammengebaut; GameClock- und Monster-Verdrahtung
+  (Feld, fünfter Parameter, Meldung vor Despawn) komplett fehlerfrei
+  allein. **Fehlerbild:** Array.Length mit List.Count verwechselt
+  (Pool-Leer-Check fragte die Fächerzahl); Enum-Zahl erneut
+  zweckentfremdet (`(int)SeatState.Empty` als Wachwert-0 — diesmal
+  zufällig funktionierend, Typ-Lüge erklärt); zweistufiges Anlegen
+  eines Arrays von Listen nicht gekonnt (erst Fächer, dann Listen —
+  daran festgefahren); foreach-Elementtyp nicht erkannt und Argumente
+  nicht durchgereicht; übersehener Gerüst-TODO zum zweiten Mal heute
+  (OnNetworkSpawn, zuvor Instance = this). **Hilfe:** Beim
+  Listen-Array festgefahren und „gemeinsam" erbeten — gemeint war nur
+  diese eine Stelle; Claude tippte stattdessen alle fünf Korrekturen
+  (deklarierte Ausnahme, aber Übergriff: Punkte 2–5 hätte Isor selbst
+  gemacht, Missverständnis auf Claudes Seite). Das
+  Zwei-Stufen-Problem (erst Fächer, dann Listen) hat Isor
+  hinterher **selbst korrekt diagnostiziert** — der
+  Festfahr-Punkt war Syntax, nicht Verständnis. **Nachtrag Test:**
+  systematisch geprüft (gegenseitig senden, Schnappschuss-Abgrenzung,
+  Solo, Inspector-Tuning — alles grün) und den Design-Befund „zähe
+  Kampfphase am Karte-leer-Tor" selbst erkannt und richtig als
+  Playtest-Frage eingeordnet statt sofort umzubauen (ROADMAP → P2,
+  Prüf-Merkposten).
+
+- **2026-11-08 · Pathmakers TD: GameClockUI getippt (Development,
+  P-B5, Station 4).** **Selbst:** Im Entwurf den kompletten Bogen
+  allein geschlagen — erst die komplizierte Idee (Startschuss plus
+  lokales deltaTime-Zählen), dann selbständig in die GameClock
+  geschaut, die public Getter erkannt und auf die einfache Lösung
+  gekippt („simples Skript, Getter in die TextMeshes"); UI-Bau und
+  Verdrahtung komplett allein; getestet auf Host und Client. Dazu
+  selbst eine Konventionslücke gemeldet (keine Benennungsregel für
+  Canvas-Objekte — als Posten in die UI-Runde). **Fehlerbild:**
+  Phasen-Logik invertiert getippt (Countdown in der Kampfphase
+  abgerufen, wo der Getter vertragsgemäß 0 liefert) — nach Erklärung
+  des Getter-Vertrags selbst gedreht und getestet. **Hilfe:**
+  MonoBehaviour gegen NetworkBehaviour begründet (Netz-Identität nur
+  für Teilnehmer am Netzverkehr); CeilToInt-gegen-Runden als
+  Countdown-Detail.
+
+- **2026-11-08 · Reflexionsrunde nach P-B5 (Development-Abschnitt).**
+  **Selbst:** Eigene Stärken/Schwächen klar benannt (Design und
+  Harness-Arbeit stark, Coden schwächer); zwei konkrete
+  Wissenslücken selbst identifiziert und Lernbedarf angemeldet:
+  **Defines** („trotz tausend Erklärungen nichts damit anfangen")
+  und **Delegates** (Container-Grundidee vorhanden, Anwendung
+  unklar — Unterrichtsstoff am 09.11., Lernrunde vor dem Unterricht
+  vereinbart, Aufhänger: die Income-Naht der GameClock). Dazu die
+  Ressourcen-Runde konkretisiert (Gold kauft, Diamant verbessert —
+  GDD-Entwurf). **Einordnung:** Discord-Vergleich mit
+  Höhersemestrigen löste Neid-Gefühl aus („die können es ohne KI");
+  aufgelöst über Reps-Differenz und den Befund, dass er Defines
+  längst täglich benutzt (#if UNITY_EDITOR im eigenen Code).
+  **Energie:** bewusste Crunch-Nacht (~16 h wach), als Ausnahme
+  deklariert; Nachmittag zur Rhythmus-Reparatur freigeräumt.
+  **Energie-Notiz:** Selbstzweifel diktiert („müsste es flüssiger
+  können, habe die Zeit nicht") — eingeordnet: Werkzeug-Treffer
+  Coroutine, drei Stationen an einem Abend, Solo-Strecken bleiben
+  das Messinstrument.

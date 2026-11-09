@@ -30,17 +30,19 @@ Kurzform; die Regeln besitzt `Kern/CODE_GUIDELINES.md`.
 
 | System | Skripte | Letzte Änderung | Beschreibung |
 |---|---|---|---|
-| Building | 8 | 2026-11-04 | Pfad-Bausystem: Grid, Ghost, Bau-Queue, Konnektivität, Netz-Briefe (PathGridNet) |
+| Building | 9 | 2026-11-08 | Pfad-Bausystem: Grid, Ghost, Bau-Queue, Konnektivität, Netz-Briefe (PathGridNet) |
+| Enums | 3 | 2026-11-08 | Reine Enum-Deklarationen, Unterordner je System, eine Datei je Enum (CellContent, SeatState, RoundPhase) |
 | GameFlow | 4 | 2026-10-31 | Szenenwechsel und Boot: Loader, Ladebalken, Bootstrap, Hauptmenü-Steuerung |
-| HUD | 4 | 2026-11-04 | Ingame-Anzeigen: Bau-Leiste und die Info-Panels (Basis + Kachel + Senden) |
+| GameState | 2 | 2026-11-08 | Spielzustand des Matches: LivesBoard (Leben-Brett) und GameClock (Rundentakt samt Einkommens-Uhr) |
+| HUD | 5 | 2026-11-08 | Ingame-Anzeigen: Bau-Leiste und die Info-Panels (Basis + Kachel + Senden) |
 | Interfaces | 2 | 2026-11-04 | Alle Verträge, zentral: lose = allgemein (ISessionService), Unterordner je System (UiMode/IUiMode) |
-| Monsters | 3 | 2026-11-03 | Gegner: Läufer-Skript, Steckbrief-SOs, Host-Spawner |
-| Networking | 5 | 2026-11-03 | Match-Infrastruktur: MatchSetup (Brett), Spawner, Lobby, Relay |
+| Monsters | 3 | 2026-11-08 | Gegner: Läufer-Skript, Steckbrief-SOs, Host-Spawner |
+| Networking | 5 | 2026-11-08 | Match-Infrastruktur: MatchSetup (Brett), Spawner, Lobby, Relay |
 | Player | 4 | 2026-11-03 | Der Avatar selbst: Motor, Kamera, Klick-Eingabe, Marker |
-| Sending | 2 | 2026-11-03 | Senden-System: Sendegebäude und Welt-Klick; Sende-Ring folgt mit P-B5 |
+| Sending | 2 | 2026-11-03 | Senden-System: Sendegebäude und Welt-Klick; der Sende-Ring selbst wohnt seit P-B5 beim Brett (Networking) und Spawner (Monsters) |
 | Tools | 1 | 2026-10-30 | Werkzeug-Komponenten in der Szene (Map-Layout-Gizmo), Editor-Teil hinter #if-Zaun |
 | UI | 8 | 2026-10-31 | Menü-Kette und generische UI-Helfer (Lobby, Optionen, Auswahl-Wächter) |
-| UiMode | 1 | 2026-11-04 | Die Bühne: ActiveUiMode-Registratur — im Bau (Block 2), liegt noch als Unity-Vorlage da |
+| UiMode | 1 | 2026-11-05 | Die Bühne: ActiveUiMode-Registratur — seit P-B4 komplett, Panels und Werkzeug laufen über IUiMode |
 
 ## Assets — oberste Ebene
 
@@ -52,7 +54,7 @@ Kurzform; die Regeln besitzt `Kern/CODE_GUIDELINES.md`.
 | Prefabs | 14 |
 | SO_Settings | 2 |
 | Scenes | 5 |
-| Scripts | 42 |
+| Scripts | 49 |
 | Settings | 7 |
 | Terrain | 8 |
 | TextMesh Pro | 170 |
@@ -64,6 +66,7 @@ Reihenfolge wie im Hierarchie-Panel; Zahl = direkte Kinder.
 ### GameWorld
 
 - --- SYSTEM ---
+- MonsterSpawner
 - Main Camera
 - Directional Light
 - GameNetwork

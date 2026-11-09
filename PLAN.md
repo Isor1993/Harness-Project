@@ -22,20 +22,20 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-11-08 beim `/harness:ende` der
-Development-Session „P-B4 Gegner laufen", Fortsetzung. P-B4 ist
-fertig und abgehakt — Routing läuft übers Distanzfeld, Prüfpunkt
-entschieden: Plan halten, Bau-Komfort als P-B6a eingeschoben.)*
+*(überschrieben 2026-11-08 beim `/harness:ende` der Session „P-B5
+Takt + Senden". P-B5 ist fertig und abgehakt — Design-Runde plus
+vier Stationen an einem Tag, 4:47 bei 5–6 h Schätzung; die
+Grindstone-Nachträge sind erledigt, P-B4 ist zeitlich geschlossen.)*
 
-**P-B5 starten, mit der Design-Runde „Takt + Senden"**
-(`Projekte/Pathmakers_TD/ROADMAP.md` → P-B5): Erster Punkt ist der
-**feste Sende-Ring** — Sends spawnen heute noch beim Absender
-(V1-Vermerk im `MonsterSpawner`); zu klären: Ring-Reihenfolge, leere
-Plätze/Ausgeschiedene, Sende-Zeitpunkt (sofort gegen Wellenstart).
-Danach Timer mit Bereit-Knopf. Wochen-Soll bis So 15.11.: P-B5 +
-P-B6 + P-B6a (Bau-Komfort), dann P-B7-Start. Beim nächsten
-Grindstone-Screenshot die offenen Zeiten nachtragen (03.–06.11. und
-08.11. nach 02:41 — `ABGABE_NOTIZEN.md` → „P-B4").
+**Zuerst Delegates, dann die Ressourcen-Runde:**
+1. **Delegates-Lernrunde vor dem Unterricht am Mo 09.11.** —
+   Aufhänger ist die Income-Naht in `GameClock.Update` (die Uhr soll
+   rufen, ohne den Hörer zu kennen).
+2. **Design-Runde Ressourcen (P-B5v)**, Mo-Abend oder Di — Vorab-
+   Modell und Leitfragen stehen in `GDD.md` → „Entwurf" (2026-11-08):
+   offen sind Arbeiter-Währung, Schneeball-Prüfung, P-B8-Status,
+   Startwerte. Danach P-B6 bauen. Wochen-Soll bis So 15.11.: P-B6 +
+   P-B6a, dann P-B7-Start — P-B5 ist schon durch.
 
 ---
 

@@ -252,3 +252,20 @@ Format: `- JJJJ-MM-TT — Ereignis.` Ein bis drei Zeilen je Eintrag.
   Pathmakers-Tafel. Isors Befund zum Schluss: Sends spawnen noch beim
   Absender — das ist der P-B5-Posten „fester Sende-Ring", erster Punkt
   der nächsten Design-Runde.
+- 2026-11-08 — P-B5 „Takt + Senden" designt und gebaut, an einem Tag:
+  Design-Runde mit sechs DECISIONS-Einträgen (Rundentakt ohne
+  Bereit-Knopf, Sende-Ring mit SeatState, Sende-Pool mit
+  Schnappschuss, freilaufende Einkommens-Uhr, Brett-Zugang per
+  Instance-Zeiger, Ressourcen vorerst nur Gold — Ressourcen-Runde als
+  P-B5v in die ROADMAP), Wechsel auf Development, dann vier Stationen
+  in Folge: MatchSetup erweitert (SeatState-Liste, `GetSendTarget`,
+  `Instance`), `GameClock` neu, `MonsterSpawner` auf
+  Pool/Schnappschuss/Ausschüttungs-Kolonne umgebaut — Sends spawnen
+  jetzt beim **Ziel**, der V1-Vermerk ist getilgt —, `GameClockUI`
+  als Minimal-HUD. Tests grün: Solo-Selbstsenden, gegenseitiges
+  Senden, Schnappschuss-Abgrenzung, HUD auf beiden Maschinen. Zwei
+  Posten geparkt: Kampfphasen-Zähigkeit als P2-Prüf-Merkposten
+  (Isors Befund, ~90 % Änderungswahrscheinlichkeit), fehlende
+  Benennungsregel für Canvas-Objekte in die UI-Runde. **P-B5
+  abgehakt** — 4:47 bei 5–6 h Schätzung, erste Unterschreitung
+  (Zeiten und Werkzeug-Deklaration in ABGABE_NOTIZEN → „P-B5").
