@@ -302,3 +302,23 @@ Format: `- JJJJ-MM-TT — Ereignis.` Ein bis drei Zeilen je Eintrag.
   Income-Anstieg, Tick-Auszahlung, Zieh-Bauen und -Abreißen mit
   Vorrats-Grenze, Färbung, Rollback. Wer was tippte: Lernlog,
   Eintrag 2026-11-12/14.
+- 2026-11-15 — Design-Runde P-B7 entschieden, Code-Durchgang komplett,
+  Kurswahl vor dem Bau. **Design-Runde** (vier DECISIONS-Einträge vom
+  15.11.): Wächter-Modell Grundfigur mit Spezialisierung am stehenden
+  Turm, Adventure-Namen samt Krieger als Nahkreis-Fläche, Preisleiter
+  50/75/100/150 mit Kopfgeld-20-%-Regel, Turm in der Bau-Tabelle samt
+  Isors Bau-Regel „Türme nur bei gültigem Weg" — der Rollback bleibt
+  reines Kachel-System, die Turm-Erstattung entfällt ersatzlos
+  (Knowledge-Seite „Verhindern statt auflösen"). Danach der am 14.11.
+  vereinbarte **Code-Durchgang** der Claude-getippten Teile, alle drei
+  Stationen: ResourceHudUI, P-B6a (Halte-Bauen, Abriss, Kachel-Kasse),
+  P-B6b (Färbung, Geraden-Regel, Rollback) — der Code gilt damit als
+  Isors; Stationen und Lücken im Lern-Log. Dazu das
+  **Standort-Gespräch**: Überblicks-Verlust diagnostiziert
+  (Multiplayer-Denkmodell und nicht selbst getippter Code, nicht die
+  Architektur), Entscheidung „Fertig bauen vor Refactoring" samt
+  erhöhtem Hilfe-Level bis zum Prototyp-Stand (DECISIONS),
+  Refactor-Merkliste als P-R in der ROADMAP angelegt (erste Posten:
+  rigId/gameId, Path*-Namensfamilie, Methoden-Dichte), und als
+  Überblicks-Stütze die Artifact-Seite „⚙️ System · Code-Lageplan"
+  gebaut — alle Spiel-Skripte dafür frisch gelesen (ARTIFACT_INDEX).

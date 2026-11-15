@@ -1996,3 +1996,139 @@ teurer); Vollrot-Färbung (Geist unsichtbar); Rollback auch vor der
 ersten Welle (bräuchte einen Initial-Schnappschuss zu einem sauber
 definierten Zeitpunkt, den es beim Szenenstart nicht gibt — benannte
 Lücke statt Sonderlogik, die Gerade-Linie-Regel fängt den Fall).
+
+## 2026-11-15 — Wächter-Modell: Grundfigur, Spezialisierung am stehenden Turm
+
+Was: Isors Hybrid aus der P-B7-Design-Runde. Gekauft wird eine
+**Grundfigur** — ein schwacher Allrounder mit Bogen, der selbst
+kämpft —, platziert über die Figur (Hinlauf, Erschaffen-Regel vom
+2026-10-23). Am **stehenden** Turm wählt das Objekt-Panel die
+**Richtung** (Fernbedienung, ohne Hinlauf); die vier Richtungen
+tragen exakt die vier Funktionen aus „2026-10-16 — Turm-Set der
+ersten Version" (schnelles Einzelziel · Fläche · Verlangsamen ·
+hoher Einzelschaden auf Reichweite), darüber die bekannten drei
+linearen Stufen. Geändert wird am 16.10.-Beschluss nur der
+**Kaufweg** (eine Grundfigur statt vier Produkte); Funktions- und
+Balance-Matrix gegen die Monstertypen bleiben unberührt. Eine
+zweite Spezialisierungs-Ebene unter der Richtung (Elemente,
+Axt-Krieger, Assassine) ist benannte Erweiterung nach dem Semester.
+P-B7 baut nur die Grundfigur; Richtungswahl und Stufen kommen mit
+Alpha/Beta (M4 nennt bereits alle vier Rollen).
+Warum: Kein toter Sockel — jeder Kauf wirkt sofort. Späte
+Festlegung ist ein Informationsvorteil: erst sehen, was der Gegner
+sendet, dann die Rolle wählen — Gegenspiel im Sende-Duell. Eine
+Figur, die sich entwickelt, erzählt den Wächter-Figuren-Beschluss
+(2026-10-17) besser als vier Katalog-Türme. Das Zustands-Budget
+bleibt: Grundfigur + 4 × 3 Stufen = 13 statt 12 Zustände.
+Verworfen: Direktwahl aller vier beim Platzieren (Form A der Runde
+— verschenkt die späte Festlegung); toter Sockel ohne eigenen Kampf
+(Form B); die zweite Verzweigungs-Ebene schon jetzt (36+ Zustände —
+der Asset- und Balancing-Grund vom 2026-10-16 trägt unverändert).
+
+## 2026-11-15 — Wächter-Namen im Adventure-Register, Krieger als Nahkreis-Fläche
+
+Was: Arbeitsnamen für Grundfigur und Richtungen — **Dorfschütze**
+(Grundfigur), **Ranger** (Einzelziel, Bogen-Steigerung der
+Grundfigur), **Krieger** (Fläche als Rundumschlag im Nahkreis,
+kurze Reichweite), **Magier** (Verlangsamen, Frostzauber),
+**Armbrustschütze** (hoher Einzelschaden, große Reichweite). Die
+**Funktionen sind fest, die Namen weich** bis zur
+Beta-Asset-Runde, wenn die echten Figuren (M4, Bug-Knight-Pack)
+auf dem Tisch liegen. Der Krieger ändert die Flächen-Funktion von
+„Geschoss auf Distanz" zu „Rundumschlag am Turm" — die kurze
+Reichweite ist der eingebaute Preis und macht ihn
+platzierungs-sensibler (Spieltest-Regler).
+Warum: Das Thema verlangt das Adventure-Register — Bombardier und
+Scharfschütze sind Isor zu neumodisch. Der Krieger bleibt, weil
+Isor ihn will und der Nahkreis ihn glaubwürdig macht (ein Krieger
+schießt nicht); Ranger als reine Bogen-Steigerung ist bewusst
+gewählt: ihr Reiz ist „billig und zuverlässig", das neue Verhalten
+liefern die anderen Richtungen.
+Verworfen: Bombardier und Scharfschütze als Namen (zu neumodisch);
+der Krieger als Distanz-Figur (unglaubwürdig); Alchemist als
+Flächen-Richtung auf Distanz (zweite Wahl, falls der Nahkreis im
+Spieltest nicht trägt).
+
+## 2026-11-15 — Turmpreise als Leiter, Kopfgeld als 20-Prozent-Regel
+
+Was: Richtwerte der P-B7-Runde, alles in Gold, der Spieltest
+stellt ein. **Preisleiter:** Grundfigur 50 · Richtungswahl 75 ·
+Stufe 2 100 · Stufe 3 150 — ein voller Spezialist kostet 375.
+**Kopfgeld:** eine Regel statt vier Einzelwerte — rund 20 % des
+Sende-Preises (Normal 5 · Schnell 10 · Tank 20 · Boss 40). P-B7
+verdrahtet davon nur Grundfigur 50 und Kopfgeld Normal 5; der Rest
+sind GDD-Richtwerte für Alpha/Beta.
+Warum: Die Leiter benutzt dieselben Zahlenschritte wie die
+Sende-Leiter (50–200) — vertraut, und Angriff wie Verteidigung
+bleiben vergleichbar teuer. Jeder Schritt ist teurer als der
+davor, also ist Breite gegen Tiefe eine echte Wahl (zwei frische
+Spezialisten 250 gegen einen vollen 375). Kopfgeld bewusst klein:
+Der Sender bekommt sein Einkommen dauerhaft, der Verteidiger das
+Kopfgeld einmal — ein höheres Kopfgeld finanzierte das Verteidigen
+selbst und belohnte das Turteln, gegen das Durchbruch-Ziel der
+Ressourcen-Runde. Eröffnungs-Probe bei 100 Startgold: Voll-Eco
+(4 Normals, +20 je Tick), Voll-Defense (2 Dorfschützen) und Mix
+sind alle spielbar, keine offensichtlich richtig.
+Verworfen: Kopfgeld je Typ frei gesetzt (vier Stellschrauben statt
+einer); Kopfgeld in Einkommenshöhe oder darüber (Verteidigen
+finanzierte sich selbst).
+
+## 2026-11-15 — Turm in der Bau-Tabelle; Türme nur bei gültigem Weg, Rollback bleibt Kachel-System
+
+Was: Der Wächter snappt aufs Raster und schreibt seine Zelle als
+`CellContent.Tower` in die Bau-Tabelle — der erste Schreiber des
+seit dem 2026-11-07 vorgemerkten Werts. Netz-Brief wie beim
+Kachel-Bau (Rig plus Zellindex, Host prüft); die drei Verbote
+(keine Kachel unter den Turm, kein Turm auf Kachel, kein Turm auf
+Turm) kommen über das vorhandene `IsOccupied` gratis, das Routing
+fragt `HasTile` und bleibt unberührt. Dazu Isors Bau-Regel:
+**Türme werden nur platziert, solange der eigene Weg gültig ist**
+(den Bool liefert die P-B6b-Färbung je Gebiet). Folge: Beim
+Schnappschuss liegt auf jeder Weg-Zelle eine Kachel, Türme
+entstehen nur bei gültigem Weg auf freien Zellen — eine Turm-Zelle
+kann nie Schnappschuss-Zelle sein, der Konfliktfall ist
+konstruktionsbedingt unmöglich. Die in P-B6b angekündigte
+**Turm-Erstattung im Rollback entfällt ersatzlos**; der Rollback
+bleibt ein reines Kachel-System. Spieltest-Merkposten (→ ROADMAP
+P2): Fühlt sich der Turm-Stopp während des Weg-Umbaus zäh an?
+Warum: Ein Besitzer der Belegt-Frage (die Tabelle), kein zweites
+Prüfsystem per Collider. Isors Regel verhindert den Konflikt,
+statt ihn aufzulösen — eine Bool-Prüfung statt Erstattungslogik
+oder Zellen-Sperrliste, und als Botschaft sofort verständlich:
+erst Weg fertig, dann Verteidigung.
+Verworfen: Turm-Erstattung im Rollback (Option A der Runde —
+Erstattungslogik plus mieses Gefühl am Wellenstart); Turm-Sperre
+nur auf Schnappschuss-Zellen (Option B — permissiver, aber
+Zellen-Liste statt ein Bool); freie Platzierung ohne Raster
+(zweiter Besitzer der Belegt-Frage).
+
+## 2026-11-15 — Fertig bauen vor Refactoring; Hilfe-Level bis zum Prototyp-Stand erhöht
+
+Was: Der Prototyp wird erst fertig gebaut (P-B7, dann P-B8 mit
+Streichrecht), das große Refactoring kommt danach als eigene Runde —
+Klasse für Klasse gemeinsam durchgehen und entscheiden, was umgebaut
+wird. Bis dahin nimmt Isor bewusst mehr Hilfe von Claude an, als die
+Arbeitsteilung vom 2026-11-07 (Herleitung Claude, Isor tippt)
+vorsieht; die Refactor-Runde ist die ausgemachte Rückerober-Runde,
+in der das Verständnis Klasse für Klasse zurückgeholt wird. Ab
+sofort führt die ROADMAP eine **Refactor-Merkliste**: Was beim Bauen
+stört (Namen, Methoden-Dichte, Doppelungen), wird notiert statt
+sofort umgebaut. Als Überblicks-Stütze kommt ein **Lageplan** dazu —
+ein Diagramm aus dem echten Code: wer besitzt was, wer ruft wen, und
+auf welcher Maschine läuft was.
+Warum: Feature-Stopp 18.–20.11. — ein Refactoring jetzt fräße genau
+das P-B7-Fenster, und Umbau an funktionierendem Netz-Code ohne neues
+Feature ist das höchste Still-kaputt-Risiko. Isors eigenes Argument
+trägt: Erst mit allen Bauteilen sieht man die echten Nähte. Der
+Befund der Standort-Frage dazu: Der Überblicks-Verlust liegt primär
+am Multiplayer-Denkmodell (wo läuft welcher Code) und daran, dass
+der Code vom 14.11. nicht durch Isors Finger ging — nicht an der
+Architektur; dafür ist Refactoring das falsche und zu teure
+Werkzeug. Echte Namensschulden existieren (rigId/gameId/„rig" für
+dieselbe Nummer, die Path*-Namensfamilie) und gehen auf die
+Merkliste.
+Verworfen: Refactoring jetzt, P-B7 danach (der Feature-Stopp
+wackelt, und Teile würden nach P-B7/P-B8 erneut angefasst); nur die
+Namen sofort umbenennen (Mittelweg — zahlt auch in die knappe Zeit,
+und die Namen stören beim Bauen nicht genug, um das Fenster zu
+riskieren).

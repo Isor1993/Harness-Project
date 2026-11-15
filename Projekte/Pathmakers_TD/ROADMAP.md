@@ -64,6 +64,10 @@ wird mit Beleg (LOG-Eintrag oder Datei).
   Monster-Tempo / Ausschüttungs-Takt / Wegstrecken, erst danach der
   Modell-Umbau fester Wellentakt statt Karte-leer-Tor (wäre eine
   eigene Design-Runde, kippt den Beschluss vom 2026-10-16).
+  Neu aus der P-B7-Runde (2026-11-15): Fühlt sich der Turm-Stopp
+  während des Weg-Umbaus zäh an (Bau-Regel „Türme nur bei gültigem
+  Weg", DECISIONS → „2026-11-15 — Turm in der Bau-Tabelle")? Und:
+  Macht die kurze Reichweite den Krieger zu platzierungs-sensibel?
 - [ ] **A1 · Pitch-Abgabe und Präsentation** — das GDD liegt fertig;
   nötig sind die Präsentationsfassung und der PDF-Export. Termine in
   `Uni/Semester_3/STUNDENPLAN.md`.
@@ -316,6 +320,17 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
   vorgemerkt, sein erster Schreiber kommt hier. Aus der
   Ressourcen-Runde (2026-11-10) dazu: Die P-B7-Design-Runde
   entscheidet auch das Kopfgeld je Monster und die Turmpreise.
+  **Stand 2026-11-15:** Die Design-Runde ist abgeschlossen — vier
+  DECISIONS-Einträge vom 2026-11-15 (Wächter-Modell: Grundfigur
+  mit Spezialisierung am stehenden Turm · Adventure-Namen samt
+  Krieger als Nahkreis-Fläche · Preisleiter 50/75/100/150 und
+  Kopfgeld-20-%-Regel · Tower in der Bau-Tabelle samt Bau-Regel
+  „Türme nur bei gültigem Weg"). Zuschnitt damit präzisiert: P-B7
+  baut die **Grundfigur** (Dorfschütze — platzieren bei gültigem
+  Weg, `CellContent.Tower`, schießen, Kopfgeld Normal 5, Preis 50);
+  Richtungswahl und Stufen kommen mit Alpha/Beta. Die in P-B6b
+  angekündigte Turm-Erstattung im Rollback **entfällt ersatzlos**
+  (Bau-Regel verhindert den Konfliktfall konstruktiv).
 - [ ] **P-B8 · Mine + Arbeiter** — Streichkandidat, faktisch
   Alpha-Material; ersetzt den Tropf aus P-B6 durch das echte
   Minen-Gebäude: Arbeiter kaufen und upgraden (Maximalgrenze),
@@ -375,6 +390,19 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
   Monster ein fester seitlicher Versatz von etwa ±0,3 Kachelbreiten,
   rein kosmetisch gegen das Übereinanderlaufen — Überlappung selbst
   ist akzeptiert, DECISIONS → „Sende-Pool", 2026-11-08).
+- [ ] **P-R · Refactor-Merkliste** — angelegt am 2026-11-15
+  (DECISIONS → „2026-11-15 — Fertig bauen vor Refactoring");
+  gesammelt beim Bauen, fällig mit dem Refactor-Pass der Alpha (M3).
+  Ablauf dann: Klasse für Klasse gemeinsam durchgehen — die
+  ausgemachte Rückerober-Runde fürs Verständnis. Posten:
+  rigId/gameId/„rig" vereinheitlichen (drei Namen für dieselbe
+  Nummer, quer durch BuildModeController, PathGridNet und
+  MatchSetup); die Path*-Namensfamilie entzerren (PathGrid ·
+  PathGridNet · PathTileView · PathConnectivity sind beim Lesen
+  schwer auseinanderzuhalten); dichte Methoden-Bodies mit
+  Hilfsmethoden lesbarer machen (Kandidat: WanderRouter.BuildRoute —
+  Kachel-Lauf und Wegpunkt-Umwandlung trennen); weitere Posten
+  kommen beim Bauen dazu.
 
 ## Meilenstein-Plan (Fertig-Linien und Inhalte)
 

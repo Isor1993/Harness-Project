@@ -22,22 +22,27 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-11-14 beim `/harness:ende` der Session „P-B6
-Ressourcen". P-B5v, P-B6, P-B6a und P-B6b sind fertig und abgehakt —
-die Wirtschaft läuft vom Tropf bis zur gelegten Kachel, samt
-Weg-Wächter und Rollback; die Delegates-Runde lief am echten System.
-Wochen-Soll bis So 15.11. damit erfüllt bis auf den P-B7-Start.)*
+*(überschrieben 2026-11-15 beim `/harness:ende` der Session
+„Code-Durchgang P-B6". Design-Runde P-B7 ist entschieden — vier
+DECISIONS-Einträge vom 15.11. —, der Code-Durchgang ist komplett, der
+14.11.-Code gilt als Isors. Neu: Refactor-Merkliste P-R in der
+ROADMAP, Hilfe-Level erhöht bis Prototyp-Stand, Lageplan-Tafel.)*
 
-**P-B7-Design-Runde, dann bauen — dazwischen der Code-Durchgang:**
-1. **Design-Runde P-B7** (braucht Isor frisch): Panel-Form am
-   Wächter-Platz, Preisaufteilung Platz/Wahl, Kopfgeld je Monstertyp,
-   Turmpreise, `CellContent.Tower` — die offenen Punkte stehen am
-   ROADMAP-Eintrag P-B7.
-2. **Code-Durchgang** der am 14.11. Claude-getippten Teile
-   (ResourceHudUI, P-B6a, P-B6b) Stück für Stück, sobald Isor fit
-   ist — vereinbart 2026-11-14, Lernlog.
-3. Danach **P-B7 bauen** (~8–10 h) — Feature-Stopp-Linie 18.–20.11.
-   im Blick; P-B8 behält sein Streichrecht, der Tropf trägt solange.
+**P-B7 bauen — der Dorfschütze (~8–10 h, eher unterer Rand):**
+1. Optionaler Fünf-Minuten-Blitzcheck zum Einstieg: Distanzfeld und
+   RestorePath-Mengenlogik — die zwei müden Stellen aus Station 3
+   (Lern-Log, 2026-11-15).
+2. Erste Entwurfsfrage: der **Skript-Zuschnitt** — Brief-Paar fürs
+   Turm-Setzen (eigenes Netz-Skript oder Anbau an PathGridNet),
+   Wächter-Skript, Panel als drittes InfoPanelUI-Kind. Die sechs
+   Andock-Nähte stehen auf der Lageplan-Tafel (ARTIFACT_INDEX →
+   „⚙️ System · Code-Lageplan").
+3. Zuschnitt: **nur die Grundfigur** — platzieren über die Figur bei
+   gültigem Weg (`IsPathValid`), `CellContent.Tower`, schießen,
+   Kopfgeld Normal 5, Preis 50 (DECISIONS vom 2026-11-15).
+4. Feature-Stopp 18.–20.11., danach P-B8 mit Streichrecht.
+   Hilfe-Level: Claude greift stärker unter die Arme; Rückeroberung
+   in der Refactor-Runde (DECISIONS → „Fertig bauen vor Refactoring").
 
 ---
 

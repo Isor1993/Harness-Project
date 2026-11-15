@@ -3169,3 +3169,88 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   Claude-getippten Code in einer frischen Session Stück für Stück
   durch, danach gilt er als seiner. Die vollständige Trennung steht
   nur hier.
+
+- **2026-11-15 · Pathmakers TD: Design-Runde P-B7 Wächter
+  (Brainstorm/Design).** **Selbst:** Das hybride Wächter-Modell
+  (Grundfigur als kämpfender Allrounder, Spezialisierung am
+  stehenden Turm) als eigener Entwurf eingebracht — schlug beide
+  vorgelegten Formen (Direktwahl, toter Sockel); die
+  Adventure-Namensgrenze selbst gezogen (Bombardier/Scharfschütze
+  zu neumodisch). Beim Rollback die einfachste Lösung selbst
+  gefunden: „Türme nur bei gültigem Weg bauen" macht Erstattung
+  wie Zell-Sperre überflüssig — stach Claudes Optionen A und B,
+  inklusive der richtigen Gegenfrage „vergesse ich einen Case?".
+  **Hilfe:** Claude lieferte das Funktions-Mapping auf die vier
+  GDD-Rollen (Budget-Rechnung 13 statt 36 Zustände), die
+  Preis-Richtwerte samt Eröffnungs-Rechnung und die
+  Konfliktfall-Analyse Rollback gegen Turm.
+
+- **2026-11-15 · Pathmakers TD: Code-Durchgang P-B6, Station
+  ResourceHudUI (Development).** **Selbst:** Das Claude-getippte
+  Skript eigenständig und fast vollständig richtig vorgetragen —
+  Delegate-Vokabular korrekt angewandt („unsere Methode wird in den
+  Delegate reingemacht"); `AddListener` unbekannt, aber selbst als
+  Event-Abo hergeleitet (traf genau: onClick ist das
+  UnityEvent-Gegenstück zum C#-Event); die Guard-Wirkung in
+  HandleRowChanged exakt eingeordnet (unnötige Arbeit, keine
+  falschen Zahlen — weil RefreshDisplay stets die eigene Zeile
+  liest). **Nachgeschärft:** Abo plus Erstbefüllung (ein Event
+  meldet nur die Zukunft, den Ist-Stand holt man einmal selbst);
+  Datenrichtung Board→Anzeige (jedes HUD hört alle Zeilen und
+  filtert die eigene — nicht „nur der Richtige führt aus");
+  `ToString` ist Umwandlung, kein Cast; bei der
+  Warum-nicht-lokal-buchen-Frage die Host-Buchhalter-Hälfte
+  ergänzt (View-Hälfte kam von ihm).
+
+- **2026-11-15 · Pathmakers TD: Code-Durchgang P-B6, Station P-B6a
+  (Development).** **Selbst:** Den Knoten „eine Instanz je PC, Event
+  feuert überall lokal" nach der Vier-PC-Tabelle selbst aufgelöst
+  und sauber zurückerklärt; Queue-als-Dubletten-Filter samt
+  Besitzer-Begründung benannt; die Kassen-Kette (Client-Vorprüfung →
+  Host-Gauntlet → Announce) im Szenario weitgehend richtig
+  durchlaufen. **Lücken (Ermüdung sichtbar, zweite Tageshälfte der
+  Session):** Einzelklick-Frage zuerst als „hört nur auf Loslassen"
+  gedeutet (IsPressed-bestellt/Release-räumt-auf nachgeschärft);
+  Treffpunkt-gegen-Transform und die Regel „Erschaffen kostet
+  Hinlauf, Verwalten ist Fernbedienung" nicht erinnert — beide
+  aufgelöst bekommen. Szenario-Pointe (unbezahlbare Briefe entstehen
+  gar nicht erst) kam von Claude.
+
+- **2026-11-15 · Pathmakers TD: Code-Durchgang P-B6, Station P-B6b
+  (Development).** **Selbst:** `SendTo.Everyone` nach kurzem
+  Wackler („der Host rechnet") selbst zurückerobert — „jeder
+  bekommt die Methode, bei ihm ausgeführt" traf den Kern; die zwei
+  Schleifen-Ausgänge von BuildRoute (Ausgang erreicht oder break am
+  Loch) sauber benannt, womit die Geraden-Regel-Prüfung
+  `currentCell != exitPos` als vollständig erkannt war; beim
+  Rollback die Grobrichtung („eins baut ab, eins baut auf") selbst
+  gesehen. **Lücken (Session-Ende, Erschöpfung deutlich):**
+  Distanzfeld-Frage (warum liefert die Eingangs-Seite des Lochs
+  null Kandidaten) mit „keine Ahnung" abgegeben — Auflösung: die
+  Flutung vom Ausgang erreicht die Eingangs-Seite nie, die Zellen
+  stehen gar nicht im Dictionary; die Mengen-Logik der zwei
+  RestorePath-Schleifen nicht zu Ende gehalten — per
+  A-B-C-X-Tabelle aufgelöst. Kassen-Invariante (Abriss zuerst,
+  Bücher gehen exakt auf, darum darf TryPayTiles ignoriert werden)
+  und der Turm-Beweis in Code-Form (Schleife 2 trifft nie eine
+  Turm-Zelle) kamen von Claude — Letzterer ist aber sein eigener
+  Design-Beweis vom Mittag. Damit sind alle drei Stationen durch;
+  der Code vom 14.11. gilt nach Vereinbarung 2026-11-14 als seiner.
+
+- **2026-11-15 · Standort-Gespräch: Überblick und Hilfe-Level
+  (Brainstorm).** Isor meldete Überblicks-Verlust und den Impuls,
+  sofort zu refactoren — konnte die Ursache aber selbst nicht
+  zuordnen (Routine? Level zu hoch? Architektur?). Befund aus den
+  Durchgangs-Daten: Die Knoten der letzten Sessions waren durchweg
+  „Wo läuft dieser Code?"-Fragen (Multiplayer-Denkmodell), keine
+  Struktur-Fragen; dazu trägt sich nicht selbst getippter Code
+  schwerer, und es gibt echte, benennbare Namensschulden
+  (rigId/gameId). Nicht auf der Täterliste: das Gesamtlevel —
+  Gegenbeweis ist die gewonnene Design-Runde vom selben Tag.
+  Entscheidung von Isor: fertig bauen, bewusst mehr Hilfe annehmen,
+  Verständnis in der Refactor-Runde Klasse für Klasse zurückerobern
+  (DECISIONS Pathmakers → „2026-11-15 — Fertig bauen vor
+  Refactoring"). Die Annahme von Hilfe als realistische
+  Projektsteuerung selbst eingeordnet und akzeptiert, trotz
+  erklärtem Unbehagen — für den Selbstmaßstab zählt die
+  Refactor-Runde dann als Solo-Strecke.

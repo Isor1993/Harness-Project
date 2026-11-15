@@ -573,3 +573,20 @@ bindet nichts)*
   Begründungen in `DECISIONS.md`, vier Einträge vom 2026-11-10. Das
   Kapitel „Wirtschaft und Senden" wird beim G2-Nachzug entsprechend
   umgebaut.
+- *(2026-11-15)* **Wächter entschieden** (P-B7-Design-Runde) — löst
+  die vertagten Punkte vom 2026-11-10 auf und ändert den Kaufweg
+  des Turm-Sets: Gekauft wird eine **Grundfigur** (Dorfschütze —
+  schwacher Allrounder mit Bogen, kämpft selbst), die **am
+  stehenden Turm** über das Objekt-Panel in eine von vier
+  Richtungen spezialisiert wird; die Richtungen tragen die vier
+  bekannten Funktionen (Ranger · Krieger als Rundumschlag im
+  Nahkreis · Magier · Armbrustschütze), darüber die drei linearen
+  Stufen. Namen weich bis zur Beta-Asset-Runde, Funktionen fest;
+  eine zweite Spezialisierungs-Ebene (Elemente, Assassine) ist
+  benannte Erweiterung nach dem Semester. Richtwerte: Preisleiter
+  50 / 75 / 100 / 150, Kopfgeld rund 20 % des Sende-Preises
+  (5 / 10 / 20 / 40). Dazu die Bau-Regel: Türme nur bei gültigem
+  Weg — der Weg-Rollback fasst damit nie Türme an. Begründungen in
+  `DECISIONS.md`, vier Einträge vom 2026-11-15. Das Kapitel „Türme
+  und Upgrades" wird beim G2-Nachzug auf das Grundfigur-Modell
+  umgebaut.

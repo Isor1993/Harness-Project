@@ -317,6 +317,32 @@ Seite →  📍 Status · Pathmakers TD (Fußzeile)
 Seite ←  📍 Status · Pathmakers TD (Fußzeile, seit 2026-11-04)
 ```
 
+### ⚙️ System · Code-Lageplan
+```
+URL      https://claude.ai/artifact/PnkSwSQjVTAWKasSZtB493
+Stand    2026-11-15 — neu, gebaut im Standort-Gespräch (Überblicks-
+         Verlust vor P-B7, DECISIONS → „2026-11-15 — Fertig bauen vor
+         Refactoring"): die vier Laufwelten samt Merksatz („wo läuft
+         diese Methode?"), Tafel 1 Besitzkarte aller Spiel-Skripte mit
+         Laufwelt-Marken, Tafel 2 Bau-Brief von der Maus bis ins HUD,
+         Tafel 3 Wellen-Takt, Andock-Liste P-B7 (als geplant markiert).
+         Alle Skripte dafür frisch gelesen (Stand nach P-B6b).
+Quelle   der Code selbst (Repo Pathmakers-TD, Assets/Scripts);
+         Beschlüsse: Projekte/Pathmakers_TD/DECISIONS.md
+Skripte  ClickCommandInput, BuildModeController, SendBuildingSelector,
+         StrategyCamera, PlayerMotor, BuildOrderQueue, ClickMarker,
+         ResourceHudUI, GameClockUI, BuildBarUI, TileInfoPanelUI,
+         SendBuildingPanelUI, InfoPanelUI, ActiveUiMode, PathGridNet,
+         ResourceBoard, LivesBoard, MatchSetup, GameClock,
+         MonsterSpawner, PlayerSpawner, PathGrid, PathTileView,
+         PathConnectivity, WanderRouter, DefaultPathBuilder, TileGhost,
+         Monster, MonsterDefinition, SendBuilding
+Seite →  📍 Status · Pathmakers TD (Fußzeile) · ⚙️ System ·
+         Pathmakers-Projektübersicht (Fußzeile) · ⚙️ System ·
+         Pathmakers-Karte (Fußzeile)
+Seite ←  keine
+```
+
 ---
 
 ## 🎓 Zeugnis  — Schicht: Kern
