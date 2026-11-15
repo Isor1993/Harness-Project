@@ -269,3 +269,36 @@ Format: `- JJJJ-MM-TT — Ereignis.` Ein bis drei Zeilen je Eintrag.
   Benennungsregel für Canvas-Objekte in die UI-Runde. **P-B5
   abgehakt** — 4:47 bei 5–6 h Schätzung, erste Unterschreitung
   (Zeiten und Werkzeug-Deklaration in ABGABE_NOTIZEN → „P-B5").
+- 2026-11-14 — P-B6, P-B6a und P-B6b gebaut und geprüft (Abschnitt
+  seit dem Wechsel am 2026-11-10, getippt 12.–14.11.). **P-B6
+  Ressourcen:** `ResourceBoard` (`Scripts/GameState/`) als drittes
+  Brett — NetworkList mit Struct-Zeile (Gold/Diamanten/Kacheln/Income
+  je Platz, INetworkSerializable + IEquatable), Host einziger
+  Schreiber, eigenes `RowChanged`-Event übersetzt NGOs OnListChanged
+  in Game-Ids; Tropf auf der ServerTime, Kassen-Methoden im
+  Try-Muster, Kachel-Kauf als Brief; Hooks: GameClock zahlt den
+  Income-Tick aus, MonsterSpawner mit Preis-Schranke (zahlen → Income
+  → Pool); `ResourceHudUI` (`Scripts/HUD/`) als erster Abonnent;
+  `MonsterDefinition.DiamondCost` zu `GoldCost` umbenannt
+  (Review-Gate-Fund — der Stand stammte aus der Nur-Gold-Zeit). Die
+  seit P-B5 offene Delegates-Lernrunde lief dabei am echten System:
+  Interface, C#-Event und UnityEvent als drei Gesichter desselben
+  Musters. **P-B6a Bau-Komfort:** Halte-Bauen (gehaltene Taste
+  bestellt jede überstrichene Zelle, die Queue-Geister zeigen die
+  Reihe), Abriss als drittes Werkzeug mit denselben Zieh- und
+  Shift-Regeln, Destroy-Slot in der BuildBar. Auf Isors Ansage dazu
+  die **Kachel-Kasse**: Bauen bucht beim Setzen ab, Abriss erstattet,
+  der Geist rechnet Vorrat minus laufende Bestellungen (DECISIONS →
+  „Kachel-Kasse"). **P-B6b Weg-Wächter**, vorgezogen auf Isors
+  Erinnerung an den Rollback-Beschluss vom 2026-10-30: `IsPathValid`
+  in PathConnectivity, Warn-Tönung je Gebiet nach jedem Announce
+  (gemischt statt Vollrot, Regler — Isors UX-Befund im Test),
+  Rollback „Last known good" beim Wellenstart samt Kassen-Ausgleich
+  (DECISIONS → „Rollback V1"). Testfund dabei: schlafender Crash im
+  WanderRouter bei kaputtem Weg — behoben, indem die beschlossene
+  Gerade-Linie-Regel erstmals implementiert wurde (Abbruch bei leerer
+  Kandidatenliste, Austritt angehängt). Tests grün auf Host und
+  Client: Startwerte, Tropf, Kachel-Kauf, Preis-Schranke samt
+  Income-Anstieg, Tick-Auszahlung, Zieh-Bauen und -Abreißen mit
+  Vorrats-Grenze, Färbung, Rollback. Wer was tippte: Lernlog,
+  Eintrag 2026-11-12/14.

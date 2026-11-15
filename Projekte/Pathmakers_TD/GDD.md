@@ -554,3 +554,22 @@ bindet nichts)*
   Für die Runde bleiben damit: Arbeiter-Währung (Gold oder Diamant),
   die Schneeball-Prüfung des Gold-Einkommens, der P-B8-Status und
   die Startwerte.
+- *(2026-11-10)* **Ressourcen entschieden** (P-B5v-Design-Runde) —
+  löst die offenen Punkte vom 2026-11-08 auf: Zwei Währungen. **Gold
+  kämpft** — Senden, Türme bauen und aufrüsten; das Einkommen zahlt
+  Gold, fester Einkommens-Wert je Typ addiert sich beim Senden,
+  Kopfgeld für Kills bleibt. **Diamanten bauen aus** — Kacheln,
+  Arbeiter (mit Maximalgrenze), Upgrades; einzige Quelle ist die
+  Mine, bis P-B8 ersatzweise ein Tropf. Sende-Vorrat je Monstertyp
+  (10 Stück, +1 alle 5 s) als Spam-, Performance- und
+  Schneeball-Bremse; höhere Monster mit besserem Einkommen je Gold —
+  Partieende durch Durchbruch. Mine = Wirtschafts-Panel (Arbeiter
+  kaufen/upgraden, Kacheln kaufen), Sendegebäude bleibt pur Senden;
+  Monster-Upgrades in der Mine als Idee notiert. Richtwerte: Normal
+  25 Gold / +5, Leiter 50–200; Start 100 Gold, 0 Diamanten,
+  5 Kacheln, Kachel-Preis 5 Diamanten, Tropf 1 Diamant / 10 s.
+  Vertagt: Kopfgeld-Wert und Turmpreise in die P-B7-Runde, die
+  Einkommens-Werte der höheren Typen an den Einbau der Typen.
+  Begründungen in `DECISIONS.md`, vier Einträge vom 2026-11-10. Das
+  Kapitel „Wirtschaft und Senden" wird beim G2-Nachzug entsprechend
+  umgebaut.

@@ -22,20 +22,22 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-11-08 beim `/harness:ende` der Session „P-B5
-Takt + Senden". P-B5 ist fertig und abgehakt — Design-Runde plus
-vier Stationen an einem Tag, 4:47 bei 5–6 h Schätzung; die
-Grindstone-Nachträge sind erledigt, P-B4 ist zeitlich geschlossen.)*
+*(überschrieben 2026-11-14 beim `/harness:ende` der Session „P-B6
+Ressourcen". P-B5v, P-B6, P-B6a und P-B6b sind fertig und abgehakt —
+die Wirtschaft läuft vom Tropf bis zur gelegten Kachel, samt
+Weg-Wächter und Rollback; die Delegates-Runde lief am echten System.
+Wochen-Soll bis So 15.11. damit erfüllt bis auf den P-B7-Start.)*
 
-**Zuerst Delegates, dann die Ressourcen-Runde:**
-1. **Delegates-Lernrunde vor dem Unterricht am Mo 09.11.** —
-   Aufhänger ist die Income-Naht in `GameClock.Update` (die Uhr soll
-   rufen, ohne den Hörer zu kennen).
-2. **Design-Runde Ressourcen (P-B5v)**, Mo-Abend oder Di — Vorab-
-   Modell und Leitfragen stehen in `GDD.md` → „Entwurf" (2026-11-08):
-   offen sind Arbeiter-Währung, Schneeball-Prüfung, P-B8-Status,
-   Startwerte. Danach P-B6 bauen. Wochen-Soll bis So 15.11.: P-B6 +
-   P-B6a, dann P-B7-Start — P-B5 ist schon durch.
+**P-B7-Design-Runde, dann bauen — dazwischen der Code-Durchgang:**
+1. **Design-Runde P-B7** (braucht Isor frisch): Panel-Form am
+   Wächter-Platz, Preisaufteilung Platz/Wahl, Kopfgeld je Monstertyp,
+   Turmpreise, `CellContent.Tower` — die offenen Punkte stehen am
+   ROADMAP-Eintrag P-B7.
+2. **Code-Durchgang** der am 14.11. Claude-getippten Teile
+   (ResourceHudUI, P-B6a, P-B6b) Stück für Stück, sobald Isor fit
+   ist — vereinbart 2026-11-14, Lernlog.
+3. Danach **P-B7 bauen** (~8–10 h) — Feature-Stopp-Linie 18.–20.11.
+   im Blick; P-B8 behält sein Streichrecht, der Tropf trägt solange.
 
 ---
 

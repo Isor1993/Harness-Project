@@ -301,3 +301,46 @@ wartet auf die nächste Welle), HUD-Countdowns auf Host und Client.
   Karte-leer-Tor stark ziehen (~3-Minuten-Runden auf dem großen
   Feld); als Prüf-Merkposten bei P2, Isors eigene
   Änderungswahrscheinlichkeit ~90 %.
+
+## P-B6 · Ressourcen + P-B6a/P-B6b (2026-11-12 bis 14)
+
+**Zeiten:** noch ungebucht — beim nächsten Grindstone-Abgleich
+nachtragen. Schätzungen zum Vergleich: P-B6 ~3–4 h (oberer Rand
+angesetzt), P-B6a ~2–3 h; P-B6b war ungeschätzt (vorgezogen, siehe
+DECISIONS → „Rollback V1").
+
+**Gebautes:** `ResourceBoard` (`Scripts/GameState/`) — drittes Brett
+nach MatchSetup/LivesBoard: NetworkList mit Struct-Zeile
+(`ResourceRow`: Gold, Diamanten, Kacheln, Income;
+INetworkSerializable + IEquatable), Host einziger Schreiber, eigenes
+`RowChanged`-Event (Index → Game-Id) über NGOs OnListChanged; Tropf
+als vorläufige Diamanten-Quelle auf der ServerTime; Kassen-Methoden
+im Try-Muster (TryPay/Add je Währung, PayIncomeTick);
+`RequestBuyTileRpc` als Kachel-Kauf-Brief. Hooks: GameClock ruft
+`PayIncomeTick` beim Income-Tick, MonsterSpawner zahlt vor dem
+Pool-Einwurf (`TryPayGold` → `AddIncome`),
+`MonsterDefinition.GoldCost` (vorher DiamondCost). `ResourceHudUI`
+(`Scripts/HUD/`) — Ressourcenleiste oben links, erster Abonnent von
+RowChanged, Kauf-Knopf. P-B6a: Halte-Bauen und Zieh-Abriss im
+`BuildModeController` (Drag-Merker, Shift behält das Werkzeug),
+Destroy-Slot in der BuildBar; Kachel-Kasse in `PathGridNet`
+(Abbuchung beim Setzen, Erstattung beim Abriss) plus
+Client-Vorprüfung über `BuildOrderQueue.PendingOrders`. P-B6b:
+`IsPathValid` (PathConnectivity), Warn-Tönung je Gebiet
+(PathTileView, Misch-Regler), Rollback „Last known good" beim
+Wellenstart (`PathGridNet.EnforceValidPaths`, Aufruf aus der
+GameClock) samt Kassen-Ausgleich; Gerade-Linie-Regel im WanderRouter
+implementiert (zuvor schlafender Crash bei kaputtem Weg). Tests
+bestanden auf Host und Client: Startwerte, Tropf, Kauf,
+Preis-Schranke samt Income-Anstieg, Tick-Auszahlung, Zieh-Bauen und
+-Abreißen mit Vorrats-Grenze, Färbung, Rollback.
+
+**Erkenntnisse** (vorläufig, Reflexion folgt nach dem
+Code-Durchgang — wer was tippte, hält das Lernlog fest):
+- Die Delegates-Lernrunde am echten System statt an der Tafel trug:
+  Interface, C#-Event und UnityEvent als ein Muster mit drei
+  Anbietern, verankert an eigenem Code (ISessionService als selbst
+  geschriebener, INetworkSerializable als erfüllter Vertrag).
+- Zwei Testbefunde von Isor wurden noch am selben Tag zu Bausteinen:
+  die Erinnerung an den Rollback-Beschluss (wurde P-B6b) und der
+  Geist-verspricht-Unbaubares-Befund (wurde die Client-Vorprüfung).

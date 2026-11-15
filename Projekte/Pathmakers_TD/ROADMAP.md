@@ -267,19 +267,27 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
   aus dem Zuschnitt ist damit gestrichen. Bau-Reihenfolge: Enums +
   Brett-Erweiterung (SeatState, GetSendTarget, Instance) → GameClock →
   MonsterSpawner auf Pool + Schnappschuss → GameClockUI (Minimal-HUD).
-- [ ] **P-B5v · Design-Runde Ressourcen** — vor P-B6 (Beschluss
-  2026-11-08, DECISIONS → „Ressourcen: vorerst nur Gold"): Bleibt es
-  bei einer Währung, oder kommen Diamanten zurück, und was trägt dann
-  welche? Dazu Startkapital, Einkommens-Werte je Monstertyp und die
-  Kachel-Quelle (Mine gegen Kauf-Knopf, hängt an P-B8). Ergebnis
-  bestimmt den P-B6-Zuschnitt und den G2-Nachzug von „Wirtschaft und
-  Senden".
-- [ ] **P-B6 · Ressourcen** — Gold, Diamanten, Kacheln als Werte;
-  Einkommen bei Timer null; Preise verdrahtet; Minimal-HUD. (~3–4 h)
-  Zuschnitt steht unter Vorbehalt der Ressourcen-Runde (P-B5v):
-  vorerst nur Gold, Einkommen tickt auf der eigenen Uhr statt bei
-  Timer null (DECISIONS 2026-11-08).
-- [ ] **P-B6a · Bau-Komfort** — vorgezogen von der P3-Merkliste
+- [x] **P-B5v · Design-Runde Ressourcen** — **erledigt am 2026-11-10**
+  (Beleg: `DECISIONS.md`, vier Einträge vom 2026-11-10; GDD →
+  „Entwurf", Nachtrag 2026-11-10). Ergebnis: Gold kämpft, Diamanten
+  bauen aus; Sende-Pool je Typ als Bremse; Mine als Wirtschafts-Panel
+  mit Arbeiter-Maximum; Tropf als Diamanten-Quelle in P-B6, P-B8
+  behält Streichrecht; Startwerte als Richtwerte.
+- [x] **P-B6 · Ressourcen** — **erledigt am 2026-11-14** (Beleg:
+  LOG-Eintrag 2026-11-14; Gebautes in `ABGABE_NOTIZEN.md` → „P-B6";
+  Tests auf Host und Client grün; Zeiten noch ungebucht, werden dort
+  nachgetragen). Zuschnitt war: nach der Ressourcen-Runde
+  (DECISIONS, Einträge vom 2026-11-10): Gold, Diamanten und Kacheln
+  als Werte; Einkommens-Auszahlung auf der eigenen Uhr (Grundwert 0,
+  Tick 30 s); Preise verdrahtet (Normal 25 / +5, Leiter 50–200 als
+  Daten); der **Tropf** als vorläufige Diamanten-Quelle (1 Diamant je
+  10 s, kalibriert wie „Mine mit einem Arbeiter"); Kachel-Kauf gegen
+  Diamanten; Minimal-HUD. (~3–4 h, eher oberer Rand)
+- [x] **P-B6a · Bau-Komfort** — **erledigt am 2026-11-14** (Beleg:
+  LOG-Eintrag 2026-11-14; dazu kam auf Isors Ansage die
+  **Kachel-Kasse** — Abbuchung beim Setzen, Erstattung beim Abriss,
+  Client-Vorprüfung; DECISIONS → „Kachel-Kasse"). Zuschnitt war:
+  vorgezogen von der P3-Merkliste
   (Prüfpunkt-Entscheid 2026-11-08, DECISIONS → „Prüfpunkt P-B4"):
   **Halte-Bauen** (bei gehaltener Maustaste über Kacheln ziehen,
   Geisterbilder zeigen die Reihe, Loslassen baut) und der
@@ -287,6 +295,15 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
   Shift-Halten für Reihen als Kür). V1 ohne Luxus: Halten-und-Ziehen
   plus Abriss-Knopf reicht. Zweck: jede Testrunde bis zur Abgabe baut
   und reißt Wege — das Werkzeug verzinst sich sofort. (~2–3 h)
+- [x] **P-B6b · Weg-Wächter und Rollback** — **erledigt am
+  2026-11-14**, eingeschoben auf Isors Erinnerung an den
+  Rollback-Beschluss (DECISIONS → „Rollback V1"; Beleg: LOG-Eintrag
+  2026-11-14): Gültigkeits-Färbung je Gebiet nach jedem
+  Legen/Entfernen, Rollback „Last known good" beim Wellenstart samt
+  Kassen-Ausgleich, Gerade-Linie-Regel im WanderRouter erstmals
+  implementiert (vorher schlafender Crash bei kaputtem Weg). V1 ohne
+  Turm-Erstattung; benannte Lücke: vor der ersten Welle kein
+  Rückfallpunkt. Die Turm-Erstattung kommt mit P-B7.
 - [ ] **P-B7 · Erster Wächter** — Pfeilturm: über die Figur
   platzieren, Ziel in Reichweite, schießen, Monster sterben, Gold
   fließt — der Spaß-Test der Abgabe. (~8–10 h) Aus der P-B2-Runde
@@ -296,9 +313,15 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
   Kategorie-Leiste und Objekt-Panel"). Seit dem CellContent-Umbau
   (2026-11-07) außerdem: Schreibt der Wächter seine Zelle als
   `CellContent.Tower` in die Bau-Tabelle? Der Enum-Wert ist
-  vorgemerkt, sein erster Schreiber kommt hier.
+  vorgemerkt, sein erster Schreiber kommt hier. Aus der
+  Ressourcen-Runde (2026-11-10) dazu: Die P-B7-Design-Runde
+  entscheidet auch das Kopfgeld je Monster und die Turmpreise.
 - [ ] **P-B8 · Mine + Arbeiter** — Streichkandidat, faktisch
-  Alpha-Material; Notlösung ist ein Kachel-Kauf-Knopf. (~7–8 h)
+  Alpha-Material; ersetzt den Tropf aus P-B6 durch das echte
+  Minen-Gebäude: Arbeiter kaufen und upgraden (Maximalgrenze),
+  Kachel-Kauf-Panel. Notlösung seit der Ressourcen-Runde (DECISIONS,
+  „2026-11-10 — P-B8-Zweiteilung"): Tropf bleibt, Kacheln kauft ein
+  schlichter Knopf gegen Diamanten. (~7–8 h)
 - [ ] **P3 · Polish-Merkliste** — gesammelt beim Bauen, fällig
   frühestens mit den Messrunden: Szenen-Hygiene Testarea (die
   Szenendatei trägt einen verwaisten BuildModeController-Datenblock

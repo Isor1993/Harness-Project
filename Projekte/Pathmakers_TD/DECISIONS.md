@@ -1854,3 +1854,145 @@ widerlegen. Fürs GDD gilt: Das Kapitel „Wirtschaft und Senden" wird
 beim G2-Nachzug auf den Stand der Ressourcen-Runde gebracht.
 Verworfen: Diamanten in P-B6 einfach mitbauen (bisheriger Zuschnitt —
 baute ein Modell, an das der Designer selbst nicht mehr glaubt).
+
+## 2026-11-10 — Ressourcen-Modell: Gold kämpft, Diamanten bauen aus
+
+Was: Zwei Währungen mit klaren Rollen (Design-Runde P-B5v). **Gold**
+ist die Kampf-Währung: Monster senden, Türme bauen und aufrüsten; das
+Einkommen zahlt Gold (eigene Uhr, Beschluss 2026-11-08). **Diamanten**
+sind die Ausbau-Währung: Kacheln, Arbeiter, Upgrades. Die
+Einkommens-Mechanik bleibt — fester Einkommens-Wert je Monstertyp,
+addiert sich beim Senden dauerhaft —, nur jetzt in Gold. Kills zahlen
+dem Verteidiger weiterhin Gold (Kopfgeld; Wert in der P-B7-Runde).
+Richtwerte: Normal 25 Gold / +5 Einkommen, Preisleiter 50 / 75 / 100 /
+150 / 200; höhere Typen bekommen **besseres** Einkommen je Gold. Die
+Eskalation ist damit gewollt: Partien enden durch Durchbruch, nicht
+durch Abflachen. Alle Zahlen sind erste Richtwerte, der Spieltest
+stellt ein.
+Warum: Eine Kauf-Währung für Angriff und Verteidigung heißt: Jede
+Münze stellt dieselbe Frage „angreifen oder verteidigen" — leichter zu
+balancen als drei getrennte Quellen (Isors Kern-Argument aus der
+Reflexionsrunde vom 2026-11-08). Diamanten als Spezialwährung, weil an
+Gold „schon zu viel dran hängt"; die Systeme bleiben getrennt und
+koppeln bewusst nur über die Kacheln (der Weg-Bau hängt an Diamanten).
+Das Durchbruch-Ziel entschärft nebenbei den Turtle-Befund vom
+2026-10-20: Gegen ein Einkommen ohne Decke hält reines Verteidigen
+nicht ewig durch.
+Verworfen: das Drei-Quellen-Modell des GDD (Gold aus Kills, Diamanten
+als Sende- und Einkommens-Währung — Isor glaubt nicht mehr an den
+Schnitt); Währungen tauschbar machen (angedachte Alternative der
+Reflexionsrunde — höbe die Trennung wieder auf); dauerhaft nur Gold
+(der P-B5-Zwischenstand — verlöre die Ausbau-Ebene).
+
+## 2026-11-10 — Sende-Pool je Monstertyp: 10 Plätze, Nachschub als Bremse
+
+Was: Jeder Monstertyp hat im Sendegebäude einen eigenen Vorrat von
+maximal 10 Stück; verbrauchte Plätze füllen sich mit etwa einem Stück
+alle 5 Sekunden wieder auf (Richtwerte, Inspector-Werte).
+Warum: Isors Doppel-Zweck — begrenzt Spam desselben Typs und deckelt
+die Spawn-Rate (Performance). Die Tick-Rechnung der Runde zeigte den
+dritten Effekt: Der Nachschub ist die Schneeball-Bremse der Frühphase.
+Solange nur Normals gesendet werden, kippt das Einkommens-Wachstum bei
+6 Sends je 30-Sekunden-Tick (150 Gold Einkommen) von Zinseszins auf
+linear; im Voll-Eco-Beispiel (100 Startgold) Minute 10 bei 400 statt
+685 Gold je Tick. Die Eskalation läuft danach gewollt über die
+Preisleiter weiter — teurere Typen mit besserem Einkommen heben den
+Deckel (siehe „Ressourcen-Modell"). Theoretisches Sende-Maximum mit
+sechs Typen: ~72 Monster je Minute und Spieler — der
+Performance-Merkposten für die Messrunden.
+Verworfen: ein gemeinsamer Pool über alle Typen (Claudes Kandidat —
+härtere Bremse und die Wahl „viele billige oder wenige teure", aber
+Isor will die Begrenzung je Typ und das Gefühl „je Gebäude" aus
+Wintermaul).
+
+## 2026-11-10 — Mine als Wirtschafts-Panel, Arbeiter in Diamanten mit Maximum
+
+Was: Arbeiter werden mit **Diamanten** gekauft und haben eine obere
+Maximalgrenze; Start mit einem Arbeiter, der in der Mine Diamanten
+abbaut (was genau und wie schnell: Spieltest). Das Minen-Panel ist der
+Ort der Wirtschaft — Semester-Minimum: Arbeiter kaufen, Arbeiter
+upgraden, Kacheln kaufen. Das Sendegebäude bleibt pur Senden.
+Monster-Upgrades im Minen-Panel sind eine notierte Idee ohne Termin.
+Warum: Arbeiter in Diamanten hält die Gold-Frage rein — Gold stellt
+jede Runde nur „angreifen oder verteidigen". Die Diamanten-Schleife
+(Arbeiter → mehr Diamanten → mehr Arbeiter) ist derselbe Zinseszins
+wie beim Gold und bekommt mit dem Arbeiter-Maximum ihre Bremse. Die
+Upgrades wandern in die Mine, damit das Sende-Panel nicht überläuft
+(Isors UI-Argument).
+Verworfen: Arbeiter für Gold (verwässerte die
+Angriff-oder-Verteidigung-Frage; die Gold-Diamant-Kopplung vom
+2026-10-20, die dafür sprach, braucht es durchs Durchbruch-Ziel nicht
+mehr); Upgrades im Sendegebäude (Panel-Überflutung).
+
+## 2026-11-10 — P-B8-Zweiteilung: Tropf in P-B6, Mine behält Streichrecht
+
+Was: P-B6 baut alle drei Werte (Gold, Diamanten, Kacheln), die
+Einkommens-Auszahlung auf der eigenen Uhr, die Preise — und als
+vorläufige Diamanten-Quelle einen **Tropf**: ein fester Betrag alle
+paar Sekunden (Richtwert 1 Diamant je 10 Sekunden), kalibriert auf
+das, was die Mine mit einem Arbeiter liefern würde. P-B8 ersetzt den
+Tropf durch das echte Minen-Gebäude (Arbeiter samt Maximum und
+Upgrade, Kachel-Kauf-Panel) und behält sein Streichrecht. Die
+Notlösung heißt damit nicht mehr „Kachel-Kauf-Knopf gegen Gold",
+sondern: Tropf bleibt, Kacheln kauft ein schlichter Knopf gegen
+Diamanten. Startwerte-Richtwerte der Runde: 100 Gold, 0 Diamanten,
+5 Kacheln Vorrat (plus Standardweg), Kachel-Preis 5 Diamanten,
+Einkommens-Grundwert 0.
+Warum: Sicherheit — der Ressourcen-Kern hängt nicht mehr am letzten
+Baustein vor dem Feature-Stopp (P-B8 liegt am 18.–20.11. direkt an
+der Linie, hinter 8–10 Stunden P-B7). Der Tropf ist beim
+Programmieren fast geschenkt („gibt Sicherheit und ist nicht schwer",
+Isor); die Kalibrierung auf „Mine mit einem Arbeiter" macht den
+späteren Tausch balance-neutral, alle Spieltest-Erkenntnisse aus der
+Tropf-Zeit bleiben gültig. Fällt P-B8, verliert das Spiel nur die
+Inszenierung, nicht die Wirtschaft.
+Verworfen: P-B8 fest einplanen ohne Streichrecht (Terminrisiko,
+s. o.); die alte Notlösung behalten (stammt aus der
+Nur-Gold-Zwischenzeit und passt nicht mehr zum Modell); P-B8
+ersatzlos streichen (ohne Diamanten-Quelle bricht der Weg-Bau).
+
+## 2026-11-14 — Kachel-Kasse: Abbuchung beim Setzen, Erstattung beim Abriss
+
+Was: Der Kachel-Vorrat aus P-B6 ist an den Weg-Bau angeschlossen.
+Bezahlt wird beim **tatsächlichen Setzen** — die Host-Prüfung in
+`PathGridNet.RequestPlaceTileRpc` bucht eine Kachel ab, und ein
+leerer Vorrat heißt schlicht: Es wird nichts gesetzt. Abriss
+erstattet 1:1 in den Vorrat. Dazu eine **Client-Vorprüfung**: Der
+Bau-Geist rechnet Vorrat minus laufende Bestellungen
+(`BuildOrderQueue.PendingOrders`), färbt sich bei erschöpftem Budget
+ungültig und lässt die Bestellung gar nicht erst raus — der Host
+bleibt als zweites Schloss trotzdem bestehen.
+Warum: Eine Abbuchung schon beim Bestellen müsste bei platzenden
+Aufträgen (Wegabbruch, manueller Move löscht die Queue)
+rückerstatten; beim Setzen ist die Buchung atomar mit dem Bau. Die
+Vorprüfung kam aus Isors Testbefund: Ohne sie verspricht der Geist
+Baubares, die Figur läuft hin und baut nichts.
+Verworfen: Abbuchung beim Bestellen (Rückerstattungs-Pflege für
+jeden Abbruchfall); nur die Host-Prüfung ohne Client-Check (ehrlich,
+aber die Figur läuft vergebens — der Geist soll die Wahrheit sagen).
+
+## 2026-11-14 — Rollback V1: als P-B6b vorgezogen, ohne Türme, Tönung gemischt
+
+Was: Gültigkeits-Färbung und Rollback aus „Monster-Lauf"
+(2026-10-30, Punkte 3 und 4) sind als eigener Baustein **P-B6b**
+direkt nach P-B6a gebaut — in einem V1-Zuschnitt: **ohne
+Turm-Erstattung** (es gibt noch keine Türme), mit benannter
+**Erste-Welle-Lücke** (vor dem ersten Wellenstart existiert kein
+Rückfallpunkt; dort trägt die Gerade-Linie-Regel), und die
+Warnfärbung ist eine **Mischung** in die Kachelfarbe (Regler
+`Invalid Strength`, Standard 15 %) statt Vollrot. Die
+Gerade-Linie-Regel wurde dabei erstmals implementiert: Der
+WanderRouter bricht bei leerer Kandidatenliste ab und hängt den
+Austritt als letzten Wegpunkt an.
+Warum: P-B6a hat den kaputten Weg vom Ausnahme- zum Alltagsfall
+gemacht (Isors Einwand nach dem Abriss-Werkzeug); vor P-B7 ist der
+Rollback am billigsten, weil der komplizierteste Teil — Türme im Weg
+erstatten — komplett entfällt. Der erste Test bewies die
+Dringlichkeit: schlafender Crash im WanderRouter, sobald eine Route
+auf einen zerrissenen Weg traf. Vollrot fraß den Abriss-Geist
+(Isors UX-Befund), die Mischung hält ihn lesbar.
+Verworfen: Rollback erst nach P-B7 (dann inklusive Turm-Erstattung,
+teurer); Vollrot-Färbung (Geist unsichtbar); Rollback auch vor der
+ersten Welle (bräuchte einen Initial-Schnappschuss zu einem sauber
+definierten Zeitpunkt, den es beim Szenenstart nicht gibt — benannte
+Lücke statt Sonderlogik, die Gerade-Linie-Regel fängt den Fall).

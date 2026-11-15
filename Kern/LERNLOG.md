@@ -3120,3 +3120,52 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   können, habe die Zeit nicht") — eingeordnet: Werkzeug-Treffer
   Coroutine, drei Stationen an einem Abend, Solo-Strecken bleiben
   das Messinstrument.
+
+- **2026-11-10 · Pathmakers TD: Design-Runde P-B5v Ressourcen
+  (Brainstorm/Design).** **Selbst:** Zwei-Währungs-Modell („Gold
+  kämpft, Diamanten bauen aus"), die Pool-je-Typ-Bremse und das
+  Minen-Panel kamen als eigener Entwurf aus der Reflexionsrunde und
+  hielten der Prüfung stand — in sich stimmig, alle vier offenen
+  Punkte in einer Sitzung entschieden; den Nachschub-Deckel intuitiv
+  richtig gesetzt, bevor die Rechnung seine Bremswirkung zeigte.
+  **Hilfe:** Claude lieferte nur Rechnung und Konsequenzen
+  (Tick-Simulation mit Knick-Kurve, Performance-Obergrenze,
+  Tropf-Kalibrierung auf „Mine mit einem Arbeiter"). Eigenständige
+  Design-Leistung.
+
+- **2026-11-12/14 · Pathmakers TD: P-B6 Ressourcen gebaut, P-B6a/b
+  dazu (Development).** **Selbst:** Das komplette `ResourceBoard`
+  selbst getippt — Struct mit beiden Interface-Verträgen,
+  NetworkList, erstes eigenes Event samt Abo-Kette, sechs
+  Kassen-Methoden, erste selbst geschriebene RPC, Tropf-Uhr. Die
+  Transferaufgabe (vier Methoden aus zwei Mustern ableiten) bis auf
+  zwei Flüchtigkeiten allein gelöst (falsches Muster bei
+  PayIncomeTick, über die Compiler-Meldung selbst gefunden;
+  viermal fehlendes `public`; C#-Default „ohne Modifizierer =
+  privat" sitzt jetzt). Beide Ressourcen-Hooks in GameClock und
+  MonsterSpawner **eigenständig vorab** verdrahtet, ebenso SO-Werte
+  und GameNetwork-Szene — nur der Array-Zugriff
+  (`_monsterDefinitions.GoldCost` statt `[index]`) und die
+  if-ohne-Klammern-Falle brauchten Korrektur. Interface-Konzept
+  erarbeitet: die eigene Nachfrage „sind das Interfaces, die ich
+  geschrieben habe, oder gibt es sie schon?" traf genau die
+  Zwei-Rollen-Unterscheidung; die Prüffrage („warum kann die Liste
+  meine Felder nicht selbst lesen?") richtig beantwortet. Werttyp-
+  Dreischritt (Kopie holen, ändern, zurückschreiben) verstanden und
+  in Update selbst angewendet. Im Test zweimal design-treffsicher:
+  an den Rollback-Beschluss vom 2026-10-30 erinnert (wurde P-B6b)
+  und die Vollrot-Färbung als UX-Problem erkannt.
+  **Hilfe:** Stationen-Gerüste und die Delegates-Rundenstoffe
+  (Interface → Event → UnityEvent) von Claude; Equals- und
+  NetworkSerialize-Körper nach gezeigter Vorlage getippt; die
+  Feuer-Zeile des Events brauchte zwei Anläufe (Platzhalter-throw
+  zweimal stehen geblieben).
+  **Claude-getippt (deklariert; Erschöpfung nach dem Board, Isor
+  wollte weitermachen):** `ResourceHudUI`, P-B6a komplett
+  (Halte-Bauen, Abriss-Werkzeug, Kachel-Kasse samt Vorprüfung),
+  P-B6b komplett (Färbung, Rollback, WanderRouter-Fix) sowie die
+  Editor-Verdrahtung per Bildschirmzugriff. **Vereinbart
+  2026-11-14:** Die Skripte tragen keinen Vermerk; Isor geht den
+  Claude-getippten Code in einer frischen Session Stück für Stück
+  durch, danach gilt er als seiner. Die vollständige Trennung steht
+  nur hier.

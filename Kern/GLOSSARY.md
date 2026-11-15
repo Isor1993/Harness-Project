@@ -93,6 +93,7 @@ Leseordnung.
 | **Gesperrte Zelle** | Raster-Zelle in Pathmakers TD, die kein Spieler je abreißen kann — im Spiel genau die Eintritts- und die Austritts-Zelle. Das Wissen wohnt im `PathGrid` (`LockCell`/`IsLocked`, kein Unlock), geprüft host-seitig im Abriss-Brief; Bauen darauf blockt schon der Belegt-Wächter. | `Projekte/Pathmakers_TD/DECISIONS.md`, „2026-11-02 — Kachel-Sperre: nur Eintritts- und Austritts-Zelle" |
 | **Katalog** | Das Steckbrief-Array im `MonsterSpawner` von Pathmakers TD: Platz im Array = Typ-Nummer im Sende-Brief (Grunt = 0) — das Platz-ist-Bedeutung-Muster, angewandt auf Monster-Typen. Jeder Rechner hält denselben Katalog; übers Netz reist nur die Nummer. | `Projekte/Pathmakers_TD/DECISIONS.md`, „2026-11-03 — Sende-Brief: nur die Typ-Nummer reist" |
 | **Ausweis-Kontrolle** | Identitätsprüfung nach einem Raycast-Treffer per `TryGetComponent`: Die Komponente ist der Ausweis — Compiler-geprüft statt Tag-String und liefert gleich das Objekt zum Weiterarbeiten. Die Layer bleibt davor der grobe Türsteher (was darf der Ray überhaupt treffen). | `Projekte/Pathmakers_TD/DECISIONS.md`, „2026-11-02 — Sende-Panel: zwei Wege hinein, nur das eigene Gebäude" |
+| **Tropf** | Die vorläufige passive Diamanten-Quelle von Pathmakers TD: ein fester Betrag alle paar Sekunden, kalibriert auf „Mine mit einem Arbeiter". P-B8 ersetzt ihn durchs echte Minen-Gebäude; fällt P-B8, bleibt er die Notlösung. | `Projekte/Pathmakers_TD/DECISIONS.md`, „2026-11-10 — P-B8-Zweiteilung: Tropf in P-B6, Mine behält Streichrecht" |
 
 ## Über Nummern und Ausgaben
 
