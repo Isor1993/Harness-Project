@@ -203,7 +203,20 @@ Seite ←  die B1-Stand-Zeile der Its-DOT-ROADMAP nennt die URL
 ### 📍 Status · Pathmakers TD
 ```
 URL      https://claude.ai/artifact/5JZCpkKe2MVnCC9R2ScuvJ
-Stand    2026-11-08 — Sichern-Nachzug nach P-B4-Abschluss: neuer
+Stand    2026-11-17 — Nachzug im P-B7-Bau (die Seite hing seit dem
+         08.11. hinterher): Vorwoche als erledigt-Karte (P-B5 4:47 h,
+         Ressourcen-Runde, P-B6/P-B6a/P-B6b am 14.11., P-B7-Design-
+         Runde 15.11.), neue Wochen-Karte bis zum Feature-Stopp
+         Fr 20.11., Block „Gerade in Arbeit: P-B7" mit den fünf
+         gebauten Stationen (TowerNet, Turm-Werkzeug, Schütze,
+         sterbliches Monster, Turm-Panel) und dem Offen-Rest
+         (Balancing, Abschluss), Besitz-Kette um VillageArcher,
+         Bausteine-Strahl P-B5–P-B6b ✓ / P-B7 ▸, Kennzahlen (8/10,
+         3 Tage), vier neue Entschieden-Zeilen (Ressourcen-Runde,
+         Wächter-Modell, Turm-Briefkasten/Kachel-Muster + Abriss,
+         Schützen-Entwurf), M1-/M4-Zeilen nachgezogen, Fußzeile
+         verlinkt jetzt auch den Code-Lageplan. Vorher
+         2026-11-08 — Sichern-Nachzug nach P-B4-Abschluss: neuer
          Wochenplan 09.–15.11. (P-B5, P-B6, P-B6a Bau-Komfort,
          P-B7-Start — sonntags aufgestellt), Vorwoche komplett
          abgehakt, „Zuletzt fertig" auf P-B4 (~18:33 h gegen ~10 h
@@ -243,6 +256,7 @@ Quelle   Projekte/Pathmakers_TD/ROADMAP.md (Bausteine,
          Uni/Semester_3/STUNDENPLAN.md
 Skripte  keine — die Seite zeigt den Baustand, nicht Code
 Seite →  ⚙️ System · Pathmakers-Steuerung (Fußzeile) ·
+         ⚙️ System · Code-Lageplan (Fußzeile, seit 2026-11-17) ·
          ⚙️ System · Pathmakers-Karte (Fußzeile) ·
          ⚙️ System · Pathmakers-Projektübersicht (Fußzeile, seit
          2026-11-04) · 📍 Status · Semester 3 (Fußzeile)
@@ -320,7 +334,15 @@ Seite ←  📍 Status · Pathmakers TD (Fußzeile, seit 2026-11-04)
 ### ⚙️ System · Code-Lageplan
 ```
 URL      https://claude.ai/artifact/PnkSwSQjVTAWKasSZtB493
-Stand    2026-11-15 — neu, gebaut im Standort-Gespräch (Überblicks-
+Stand    2026-11-17 — P-B7-Nachzug nach dem Bau des Dorfschützen:
+         Besitzkarte um die Gruppe „Türme" (VillageArcher,
+         TowerDefinition) und TowerNet am GameNetwork-Objekt ergänzt,
+         TowerInfoPanelUI im HUD, Jobs von BuildModeController/
+         BuildOrderQueue/BuildBarUI/PathGrid/Monster/MonsterDefinition
+         nachgezogen, Tafel 2 und 3 um den Turm-Brief bzw. den
+         Schuss-Schritt erweitert, Andock-Liste von „geplant" auf
+         „gebaut 15.–17.11." gedreht. Vorher
+         2026-11-15 — neu, gebaut im Standort-Gespräch (Überblicks-
          Verlust vor P-B7, DECISIONS → „2026-11-15 — Fertig bauen vor
          Refactoring"): die vier Laufwelten samt Merksatz („wo läuft
          diese Methode?"), Tafel 1 Besitzkarte aller Spiel-Skripte mit
@@ -332,15 +354,17 @@ Quelle   der Code selbst (Repo Pathmakers-TD, Assets/Scripts);
 Skripte  ClickCommandInput, BuildModeController, SendBuildingSelector,
          StrategyCamera, PlayerMotor, BuildOrderQueue, ClickMarker,
          ResourceHudUI, GameClockUI, BuildBarUI, TileInfoPanelUI,
-         SendBuildingPanelUI, InfoPanelUI, ActiveUiMode, PathGridNet,
-         ResourceBoard, LivesBoard, MatchSetup, GameClock,
-         MonsterSpawner, PlayerSpawner, PathGrid, PathTileView,
-         PathConnectivity, WanderRouter, DefaultPathBuilder, TileGhost,
-         Monster, MonsterDefinition, SendBuilding
+         TowerInfoPanelUI, SendBuildingPanelUI, InfoPanelUI,
+         ActiveUiMode, PathGridNet, TowerNet, ResourceBoard,
+         LivesBoard, MatchSetup, GameClock, MonsterSpawner,
+         PlayerSpawner, PathGrid, PathTileView, PathConnectivity,
+         WanderRouter, DefaultPathBuilder, TileGhost, Monster,
+         MonsterDefinition, SendBuilding, VillageArcher,
+         TowerDefinition
 Seite →  📍 Status · Pathmakers TD (Fußzeile) · ⚙️ System ·
          Pathmakers-Projektübersicht (Fußzeile) · ⚙️ System ·
          Pathmakers-Karte (Fußzeile)
-Seite ←  keine
+Seite ←  📍 Status · Pathmakers TD (Fußzeile, seit 2026-11-17)
 ```
 
 ---

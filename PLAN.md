@@ -22,27 +22,26 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-11-15 beim `/harness:ende` der Session
-„Code-Durchgang P-B6". Design-Runde P-B7 ist entschieden — vier
-DECISIONS-Einträge vom 15.11. —, der Code-Durchgang ist komplett, der
-14.11.-Code gilt als Isors. Neu: Refactor-Merkliste P-R in der
-ROADMAP, Hilfe-Level erhöht bis Prototyp-Stand, Lageplan-Tafel.)*
+*(überschrieben 2026-11-17 beim `/harness:ende` der Session
+„Pathmakers TD · P-B7 Dorfschütze". P-B7 ist fertig und abgehakt —
+der Core-Loop ist erstmals geschlossen, Solo-Tests grün, Artifacts
+nachgezogen, Zeiten samt P-B5-Nachtrag gebucht.)*
 
-**P-B7 bauen — der Dorfschütze (~8–10 h, eher unterer Rand):**
-1. Optionaler Fünf-Minuten-Blitzcheck zum Einstieg: Distanzfeld und
-   RestorePath-Mengenlogik — die zwei müden Stellen aus Station 3
-   (Lern-Log, 2026-11-15).
-2. Erste Entwurfsfrage: der **Skript-Zuschnitt** — Brief-Paar fürs
-   Turm-Setzen (eigenes Netz-Skript oder Anbau an PathGridNet),
-   Wächter-Skript, Panel als drittes InfoPanelUI-Kind. Die sechs
-   Andock-Nähte stehen auf der Lageplan-Tafel (ARTIFACT_INDEX →
-   „⚙️ System · Code-Lageplan").
-3. Zuschnitt: **nur die Grundfigur** — platzieren über die Figur bei
-   gültigem Weg (`IsPathValid`), `CellContent.Tower`, schießen,
-   Kopfgeld Normal 5, Preis 50 (DECISIONS vom 2026-11-15).
-4. Feature-Stopp 18.–20.11., danach P-B8 mit Streichrecht.
-   Hilfe-Level: Claude greift stärker unter die Arme; Rückeroberung
-   in der Refactor-Runde (DECISIONS → „Fertig bauen vor Refactoring").
+**Erst Build, dann die große Design-Runde (Isors Entscheid, 17.11.):**
+1. **V 0.0.005 bauen** — Player Settings auf `0.0.005`, Ablage im
+   Datenbaum unter `02_Projekte\PathmakersTD\Builds\
+   PathmakersTD_0.0.005_2026-11-18\` (`Kern/PFADE.md` → `DATENBAUM`).
+   Die Marke „erster geschlossener Core-Loop".
+2. **Große Design-Runde als Erstes** (Typ Brainstorm/Design): Isor
+   legt fest, wie das Spiel am Ende sein soll — liefert zugleich das
+   GDD/Pitch-Material der Pufferwoche und das Zielbild für den
+   Alpha-Refactor. Die Wächter-Runde (Basisklasse/Strategy, Isors
+   Naht-Skizze am M4-Eintrag) wird mit verhandelt. Begründung und
+   Termin: ROADMAP → P-R.
+3. Danach **P-B8** (Mine + Arbeiter, ~7–8 h), soweit das Fenster bis
+   zum Feature-Stopp **Fr 20.11.** trägt — Streichrecht greift sonst.
+4. Hilfe-Level bleibt erhöht bis Prototyp-Stand; Rückeroberung in der
+   Refactor-Runde (DECISIONS → „Fertig bauen vor Refactoring").
 
 ---
 

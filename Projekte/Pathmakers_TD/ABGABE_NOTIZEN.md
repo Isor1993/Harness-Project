@@ -265,8 +265,14 @@ in den DECISIONS.
 Gesamt-Grindstone am 08.11. abends: **56:27:23**. Die lange
 Design-Diskussion der Nacht ist nur mit 0:33 enthalten
 (Untergrenzen-Regel wie gehabt: getrackt ist die aktive Zeit).
-**Erste Unterschreitung der eigenen Schätzung** — 4:47 gegen 5–6 h,
-trotz des Multiplayer-Kerns.
+**Nachtrag 2026-11-17 — nachgeschätzt auf ~8 h:** Beim
+Gesamtstand-Abgleich (68:29) fiel eine Tracking-Lücke auf — die
+Plausibilitätsrechnung der Spanne ergab 4–8 fehlende Stunden, und
+Isors Erinnerung ordnet sie P-B5 zu. Entscheid: P-B5 wird mit
+**~8 h** geführt (4:47 getrackt, Rest nicht getrackt). Die
+ursprünglich notierte „erste Unterschreitung der eigenen Schätzung"
+ist damit hinfällig — real liegt P-B5 über der Schätzung, wie die
+Bausteine davor.
 
 **Gebautes:** `SeatState`- und `RoundPhase`-Enum
 (`Scripts/Enums/GameState/`); MatchSetup-Erweiterung —
@@ -286,10 +292,12 @@ gegenseitiges Senden, Schnappschuss-Abgrenzung (später Einkauf
 wartet auf die nächste Welle), HUD-Countdowns auf Host und Client.
 
 **Erkenntnisse** (vorläufig, Reflexion folgt):
-- Die Unterschreitung hat zwei benennbare Quellen: komplette
-  Design-Runde **vor** dem Bau (keine Inline-Designstrecken wie in
-  P-B4) und TODO-Gerüste, die seit Isors Feedback das Werkzeug
-  nennen, nicht nur das Ziel.
+- Komplette Design-Runde **vor** dem Bau (keine Inline-
+  Designstrecken wie in P-B4) und TODO-Gerüste, die seit Isors
+  Feedback das Werkzeug nennen, nicht nur das Ziel — beides hat den
+  Bau spürbar beschleunigt. *(Ursprünglich als Quellen einer
+  Schätz-Unterschreitung notiert; die fiel mit dem Zeit-Nachtrag
+  vom 17.11., die Arbeitsweisen-Lehre bleibt.)*
 - Werkzeug-Deklaration fürs „Plan gegen Wirklichkeit"-Kapitel: Die
   fünf Schluss-Korrekturen im MonsterSpawner tippte Claude auf
   Zuruf (Missverständnis über den Umfang, nur eine Stelle war
@@ -304,10 +312,15 @@ wartet auf die nächste Welle), HUD-Countdowns auf Host und Client.
 
 ## P-B6 · Ressourcen + P-B6a/P-B6b (2026-11-12 bis 14)
 
-**Zeiten:** noch ungebucht — beim nächsten Grindstone-Abgleich
-nachtragen. Schätzungen zum Vergleich: P-B6 ~3–4 h (oberer Rand
-angesetzt), P-B6a ~2–3 h; P-B6b war ungeschätzt (vorgezogen, siehe
-DECISIONS → „Rollback V1").
+**Zeiten:** ~8 h als Schätzaufteilung (Isors Entscheid 2026-11-17):
+Der getrackte Zuwachs seit P-B5 (56:27 → 68:29 am 17.11., also
+12:02) wird 8/4 geteilt — ~8 h für diesen Block samt
+Ressourcen-Runde vom 10.11., ~4 h für die ersten beiden P-B7-Tage
+(15. + 17.11., laufen dort beim Abschluss ein). Keine
+Tagesgenauigkeit; die Spanne trägt die beim P-B5-Nachtrag erkannte
+Tracking-Lücke. Schätzungen zum Vergleich: P-B6 ~3–4 h (oberer
+Rand angesetzt), P-B6a ~2–3 h; P-B6b war ungeschätzt (vorgezogen,
+siehe DECISIONS → „Rollback V1").
 
 **Gebautes:** `ResourceBoard` (`Scripts/GameState/`) — drittes Brett
 nach MatchSetup/LivesBoard: NetworkList mit Struct-Zeile
@@ -344,3 +357,53 @@ Code-Durchgang — wer was tippte, hält das Lernlog fest):
 - Zwei Testbefunde von Isor wurden noch am selben Tag zu Bausteinen:
   die Erinnerung an den Rollback-Beschluss (wurde P-B6b) und der
   Geist-verspricht-Unbaubares-Befund (wurde die Client-Vorprüfung).
+
+## P-B7 · Erster Wächter (2026-11-15 bis 17)
+
+**Zeiten** (Schätzung ~8–10 h): ~4 h als Schätzaufteilung für die
+beiden Bau-Tage (siehe P-B6-Abschnitt — 8/4-Teilung des Zuwachses
+bis zum Stand 68:29 am 17.11.); dazu die Design-Runde vom 15.11.,
+die im P-B6-Anteil mitläuft. Deutlich unter der Schätzung — aber
+nach der P-B5-Lehre ohne Unterschreitungs-Anspruch notiert: Die
+Spanne trägt eine bekannte Tracking-Unschärfe.
+
+**Gebautes:** `TowerDefinition` (`Scripts/Towers/`) — Steckbrief-SO
+nach Monster-Vorbild (GoldCost, Range, Damage, FireInterval).
+`TowerNet` (`Scripts/Towers/`) — eigener Turm-Briefkasten neben
+PathGridNet (Isors Schnitt: eigenes System, teilt nur die
+Bau-Tabelle): gespiegelte Brief-Paare Stellen/Abreißen,
+Host-Spießrutenlauf (Territorium · Grid · frei · Weg gültig ·
+`TryPayGold`), Announce stellt/zerstört die lokale Kopie überall
+(Kachel-Muster, kein NetworkObject), Abriss erstattet 70 % (50 →
+35). `BuildOrderKind` (`Scripts/Enums/Building/`) — Aufträge der
+Figur tragen ihre Sorte vom Klick bis zur Ankunft; `BuildOrderQueue`
+zählt je Sorte (Kachel-Vorrat gegen Gold-Reserve getrennt).
+Turm-Werkzeug als Slot 3 im `BuildModeController` (ein Klick, ein
+Turm; Gold-Vorprüfung färbt den Geist), vierter Slot in der
+BuildBar. Monster sterblich: `TakeDamage`/`Die` als
+ReachGoal-Spiegel (Kopfgeld `_bounty` aus dem Steckbrief an den
+Verteidiger, Abmeldung bei der GameClock — die Welle endet auch
+durch Kills), Fortschritts-Fenster `NextWaypointIndex`/
+`DistanceToNextWaypoint` für die Zielwahl. `VillageArcher`
+(`Scripts/Towers/`) — Host-only-Schütze: Frag-im-Takt
+(`Physics.OverlapSphere` auf der Monster-Layer), First-Regel mit
+Dranbleiben bis Tod oder Austritt. `TowerInfoPanelUI`
+(`Scripts/HUD/`) — drittes Panel-Kind, Abreißen-Knopf; geöffnet
+über Klick auf den stehenden Turm (Spiegel von TryOpenTilePanel,
+eigene Tower-Layer). Solo-Tests grün: Platzieren mit Gold-Abzug,
+Schuss-Takt mit Treffer-Log, Kill samt Kopfgeld-Buchung, Abriss
+mit Erstattung. Steckbrief-Testwerte bewusst grob (Damage 20,
+Takt 0,5 s); echtes Balancing in P2/M5. Build V 0.0.005 für den
+18.11. verabredet.
+
+**Erkenntnisse** (vorläufig, Reflexion folgt — wer was tippte,
+hält das Lernlog fest):
+- Die Null-Falle frischer SO-Felder schlug dreimal zu (Range,
+  Bounty): Ein Steckbrief ohne gefüllte Felder erzeugt stille
+  Nicht-Funktion statt Fehler. Merksatz: nach dem Anlegen einmal
+  alle Felder füllen, dann erst testen.
+- Die Debug-Log-Brille (Treffer + Kill nach ReachGoal-Vorbild)
+  verwandelte „geht nicht" sofort in eine Diagnose-Gabel — die
+  Konsole trug jede Fehlersuche des Tages.
+- Isors Reihenfolge-Entscheid „erst Design-Runde, dann Refactor"
+  entstand aus dem Bau heraus (ROADMAP → P-R, Termin 18.11.).

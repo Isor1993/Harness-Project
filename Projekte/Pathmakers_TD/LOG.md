@@ -322,3 +322,26 @@ Format: `- JJJJ-MM-TT — Ereignis.` Ein bis drei Zeilen je Eintrag.
   rigId/gameId, Path*-Namensfamilie, Methoden-Dichte), und als
   Überblicks-Stütze die Artifact-Seite „⚙️ System · Code-Lageplan"
   gebaut — alle Spiel-Skripte dafür frisch gelesen (ARTIFACT_INDEX).
+- 2026-11-15/17 — **P-B7 gebaut: der Dorfschütze steht, der
+  Core-Loop ist erstmals geschlossen** (bauen → senden → laufen →
+  schießen → sterben → Gold). Fünf Stationen: TowerDefinition als
+  Steckbrief-SO; TowerNet als eigener Turm-Briefkasten (gespiegelte
+  Brief-Paare Stellen/Abreißen, Kachel-Muster); Anbindung ans
+  Platzieren (BuildOrderKind — Aufträge tragen ihre Sorte, Zählung
+  je Sorte, Turm-Werkzeug Slot 3 mit Gold-Vorprüfung, vierter
+  BuildBar-Slot); das sterbliche Monster (TakeDamage/Die als
+  ReachGoal-Spiegel, Bounty-Feld im Steckbrief, Fortschritts-Fenster
+  für die First-Regel); VillageArcher (Frag-im-Takt per
+  OverlapSphere, First-Regel mit Dranbleiben) und TowerInfoPanelUI
+  (drittes Panel-Kind, Abreißen-Knopf, 70 % = 35 Gold). Solo-Tests
+  grün: Platzieren mit Gold-Abzug, Schuss-Takt mit Treffer-Log,
+  Kill samt Kopfgeld-Buchung, Abriss über beide Klick-Wege.
+  Testwerte 20 Schaden / 0,5 s bewusst fürs Testen; echtes
+  Balancing an P2/M5. Nebenher: Artifact-Nachzüge (Code-Lageplan
+  auf „gebaut" gedreht, Status-Seite vom 08.11. auf den 17.11.
+  geholt), Zeiten-Nachtrag P-B5 ~8 h wegen erkannter Tracking-Lücke
+  samt 8/4-Teilung der Folgespanne (ABGABE_NOTIZEN), Entscheid
+  „große Design-Runde vor dem Alpha-Refactor, Start 18.11. als
+  Erstes" (ROADMAP P-R), Abriss-Werkzeug für Türme als
+  Alpha-Nachtrag (DECISIONS). Build V 0.0.005 ist für den 18.11.
+  verabredet. Wer was tippte: Lern-Log, Eintrag 2026-11-15–17.

@@ -260,7 +260,9 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
 - [x] **P-B5 · Takt + Senden** — **erledigt am 2026-11-08** (Beleg:
   LOG-Eintrag 2026-11-08, Zeiten und Gebautes in `ABGABE_NOTIZEN.md`
   → „P-B5"; Tests bestanden: Solo-Selbstsenden, gegenseitiges Senden,
-  Schnappschuss-Abgrenzung, HUD beidseitig; 4:47 bei 5–6 h Schätzung).
+  Schnappschuss-Abgrenzung, HUD beidseitig; ~8 h nachgeschätzt bei
+  5–6 h Schätzung — 4:47 getrackt, Tracking-Lücke erkannt und als
+  Nachtrag vom 2026-11-17 in `ABGABE_NOTIZEN.md` dokumentiert).
   Ursprünglicher Zuschnitt: Timer mit Bereit-Knopf, Sende-Gebäude
   mit Warteschlange, Sends laufen mit dem Wellenstart, fester
   Sende-Ring. (~5–6 h)
@@ -308,9 +310,15 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
   implementiert (vorher schlafender Crash bei kaputtem Weg). V1 ohne
   Turm-Erstattung; benannte Lücke: vor der ersten Welle kein
   Rückfallpunkt. Die Turm-Erstattung kommt mit P-B7.
-- [ ] **P-B7 · Erster Wächter** — Pfeilturm: über die Figur
-  platzieren, Ziel in Reichweite, schießen, Monster sterben, Gold
-  fließt — der Spaß-Test der Abgabe. (~8–10 h) Aus der P-B2-Runde
+- [x] **P-B7 · Erster Wächter** — **erledigt am 2026-11-17** (Beleg:
+  LOG-Eintrag 2026-11-15/17; Gebautes, Zeiten und Erkenntnisse in
+  `ABGABE_NOTIZEN.md` → „P-B7"; Solo-Tests grün: Platzieren mit
+  Gold-Abzug, Schuss-Takt, Kill samt Kopfgeld, Abriss mit 70 %;
+  Steckbrief-Werte sind Testwerte, Balancing in P2/M5; Build
+  V 0.0.005 für den 18.11. verabredet). Zuschnitt war: Pfeilturm:
+  über die Figur platzieren, Ziel in Reichweite, schießen, Monster
+  sterben, Gold fließt — der Spaß-Test der Abgabe. (~8–10 h) Aus der
+  P-B2-Runde
   dazu: Die Design-Runde entscheidet die Panel-Form am Wächter-Platz
   (alle vier sofort oder Sockel-Upgrade) und die Preisaufteilung
   zwischen Platz und Wahl (DECISIONS → „2026-10-23 — Bau-Erlebnis:
@@ -393,6 +401,18 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
 - [ ] **P-R · Refactor-Merkliste** — angelegt am 2026-11-15
   (DECISIONS → „2026-11-15 — Fertig bauen vor Refactoring");
   gesammelt beim Bauen, fällig mit dem Refactor-Pass der Alpha (M3).
+  Vorstufe (Isors Ansage 2026-11-17): **erst eine große
+  Design-Runde, dann der Refactor** — Isor legt fest, wie das Spiel
+  am Ende sein soll, und erst mit diesem Zielbild wird umgebaut.
+  Begründung: Der Refactor weiß dann, was angepasst werden muss und
+  was wegfallen kann, statt Bestand zu polieren, der ohnehin kippt.
+  Termin (Isors Entscheid, gleiche Session): Die Design-Runde
+  startet **am 18.11. als Erstes** — vor P-B8, dessen Streichrecht
+  den Platz dafür hergibt. So liefert sie zugleich das Material für
+  GDD und Pitch der Pufferwoche; das Pitch-Feedback vom 03.12. wird
+  nachgetragen statt abgewartet. Die vorgemerkte Wächter-Runde
+  (Basisklasse/Strategy, M4-Eintrag) wird dort mit verhandelt. Der
+  Refactor selbst bleibt beim Alpha-Pass (M3).
   Ablauf dann: Klasse für Klasse gemeinsam durchgehen — die
   ausgemachte Rückerober-Runde fürs Verständnis. Posten:
   rigId/gameId/„rig" vereinheitlichen (drei Namen für dieselbe
@@ -401,7 +421,10 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
   PathGridNet · PathTileView · PathConnectivity sind beim Lesen
   schwer auseinanderzuhalten); dichte Methoden-Bodies mit
   Hilfsmethoden lesbarer machen (Kandidat: WanderRouter.BuildRoute —
-  Kachel-Lauf und Wegpunkt-Umwandlung trennen); weitere Posten
+  Kachel-Lauf und Wegpunkt-Umwandlung trennen); die drei
+  Werkzeug-Bools des BuildModeController zu einem Werkzeug-Zustand
+  zusammenfassen (der dritte kam mit dem P-B7-Turm-Werkzeug,
+  Fattening-Befund vom 2026-11-15); weitere Posten
   kommen beim Bauen dazu.
 
 ## Meilenstein-Plan (Fertig-Linien und Inhalte)
@@ -451,7 +474,16 @@ lebt oben auf der Status-Tafel.
   Kennzeichnung per Zahl. Alle vier Wächter-Rollen gebaut; die drei
   Stufen je Wächter sind Wert-Ausbauten über das Objekt-Panel
   (GDD-Zusage bleibt; Absicherungs-Satz im G2: Feinabstimmung der
-  Stufen liegt in den Messrunden). Sound-Grundvertonung aus freien
+  Stufen liegt in den Messrunden). Vorgemerkte Design-Frage für die
+  Wächter-Runde davor (Isor, 2026-11-15, beim P-B7-Zuschnitt):
+  Basisklasse für die Wächter und Fähigkeiten als austauschbare
+  Verhaltens-Objekte (Strategy Pattern) — bewusst nicht in P-B7
+  entschieden, weil erst der zweite Typ die echte Naht zeigt.
+  Isors Naht-Skizze dazu (2026-11-15, Schützen-Entwurf): Suchen und
+  Range-Berechnung sind bei allen Türmen gleich, nur das Austeilen
+  (Einzelschaden, Flächenschaden, Sonderwirkung) wechselt je Typ —
+  die Trennlinie Sucher/Austeiler wäre der Schnitt fürs Pattern.
+  Sound-Grundvertonung aus freien
   Bibliotheken — der Game-Audio-Unterricht (ab 18.01.) liefert den
   Feinschliff. Fremde Tester. Paket wie M3.
 - [ ] **M5 · Goldmaster** — fertig **Do 05.02.**, Abgabe Fr 12.02.,

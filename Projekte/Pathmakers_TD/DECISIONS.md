@@ -2132,3 +2132,98 @@ wackelt, und Teile würden nach P-B7/P-B8 erneut angefasst); nur die
 Namen sofort umbenennen (Mittelweg — zahlt auch in die knappe Zeit,
 und die Namen stören beim Bauen nicht genug, um das Fenster zu
 riskieren).
+
+## 2026-11-15 — P-B7-Skript-Zuschnitt: eigener Turm-Briefkasten, Dorfschütze ohne Basisklasse
+
+Was: Das Brief-Paar fürs Turm-Setzen bekommt ein **eigenes
+Netz-Skript** (Arbeitsname TowerNet) auf dem GameNetwork-Objekt,
+neben PathGridNet nach dessen Vorbild — nicht als drittes Paar
+hinein. Der Dorfschütze selbst wird **ein konkretes Skript ohne
+Basisklasse**; seine Werte (Preis 50, Reichweite, Schaden,
+Feuerrate) liegen in einem Steckbrief-Asset nach dem
+MonsterDefinition-Hausmuster, nicht hart im Code. Die Form-Frage
+der späteren Wächter-Familie (Basisklasse gegen austauschbare
+Verhaltens-Objekte, Strategy Pattern) ist bewusst offen und als
+Design-Frage der Wächter-Runde vor M4 vorgemerkt (ROADMAP → M4).
+Warum: Besitzfrage (Isor): Der Turm ist ein eigenes System, das
+nur auf dieselbe Bau-Tabelle zugreift — PathGridNets Zuständigkeit
+ist die Netz-Schicht des Wegbaus, und die Path*-Namensschuld auf
+der Refactor-Merkliste soll nicht weiter wachsen. Gegen die
+Basisklasse jetzt spricht Isors eigener Beschluss „Spezialisierung
+am stehenden Turm": Eine Instanz kann ihre Klasse nicht wechseln,
+der Richtungs-Kauf bräuchte mit Vererbung Despawn plus Spawn statt
+einer Wertänderung — eine Basisklasse heute wäre eine Wette auf
+genau die Form, die das Design anzweifelt. Das Steckbrief-Asset
+ist die benannte Naht: Die Werte liegen schon richtig, egal welche
+Form die Wächter-Runde wählt.
+Verworfen: Anbau an PathGridNet (kleinster Eingriff, Verdrahtung
+liegt da — aber die Datei wüchse um ein Drittel und ihr Name löge
+danach); Basisklasse sofort anlegen (Isors erster Impuls — eine
+Hülle mit einem einzigen Kind, Nutzen erst ab dem zweiten Typ und
+Formfrage ungeklärt).
+
+## 2026-11-15 — Turm-Abriss: 70-Prozent-Erstattung, in P-B7 als Panel-Knopf
+
+Was: Türme sind abreißbar; erstattet werden **70 % der
+investierten Summe** (Richtwert, Spieltest stellt ein) — dieselbe
+Regel später auch fürs Downgrade. In P-B7 heißt das: Remove-Paar
+in TowerNet als Spiegel des Place-Paars, ausgelöst **nur über
+einen Abreißen-Knopf im Wächter-Panel** (Vorbild
+TileInfoPanelUI); bei Grundfigur 50 also 35 Gold zurück. Der Turm
+entsteht und verschwindet im **Kachel-Muster** (Announce läuft
+überall, jede Maschine stellt/entfernt ihre Kopie lokal — kein
+NetworkObject, weil am stehenden Turm nichts laufend repliziert
+wird; falls die Alpha replizierten Zustand braucht, wird das
+Muster dort neu geprüft).
+Warum: Anti-Turtle-Logik wie beim Kopfgeld — volle Erstattung
+machte Verteidigung gratis umbaubar, keine machte jeden Fehlklick
+zur Dauerstrafe; 30 % Verlust hält Festlegung spürbar. Eine
+Prozent-Regel statt Einzelwerten skaliert von selbst auf die
+Preisleiter (voller Spezialist 375 → 262). In P-B7 statt Alpha,
+weil das Remove-Paar mit dem Place-Paar als Vorlage klein ist,
+das beschlossene Panel damit seinen Inhalt bekommt und die
+Playtests ab dem 20.11. sonst jeden verklickten Turm für immer
+auf seiner Zelle festnagelten.
+Verworfen: Abriss übers Abriss-Werkzeug des BuildModeController
+(Isors Erst-Idee — fasste ein drittes System an, das P-B7 sonst
+nicht berührt; das Werkzeug bleibt reine Kachel-Sache); Abriss
+komplett in die Alpha schieben (Playtest-Argument); volle oder
+keine Erstattung (siehe Warum).
+Nachtrag (gleicher Tag, nach dem ersten Platzier-Test): Das
+„Werkzeug bleibt reine Kachel-Sache" gilt nur für P-B7. Isors
+Entscheid: Später soll das Abriss-Werkzeug **zusätzlich** Türme
+einreißen (bei vielen Türmen ist das Panel pro Turm zu
+umständlich); der Panel-Knopf bleibt daneben bestehen. Gehört in
+die Alpha-Runde, nicht in P-B7 — der TowerNet-Brief dafür
+existiert schon, es fehlt nur der Werkzeug-Anschluss.
+
+## 2026-11-15 — Schützen-Entwurf: Host-Logik, Frag-im-Takt, First-Ziel, Kopfgeld im Steckbrief
+
+Was: Die Schuss-Logik des Dorfschützen läuft **nur beim Host** —
+dort läuft die echte Monster-Simulation, Schaden ist Buchhaltung
+wie Gold; die Gäste sehen die Folgen über die Replikation
+(sterbendes Monster despawnt überall). Ziele findet der Turm
+**ohne Buchführung**: Im Schusstakt fragt er die Physik frisch
+(`Physics.OverlapSphere`, Monster auf eigener Layer) statt eine
+Trigger-Liste zu pflegen. Zielwahl **First-Regel**: fokussiert
+wird das Monster, das auf seiner Route am weitesten ist (messbar
+über den Wegpunkt-Index), und gehalten bis es stirbt oder die
+Reichweite verlässt — erst dann wird neu gewählt. Kopfgeld ist
+ein **festes Steckbrief-Feld** im MonsterDefinition (Normal: 5),
+gebucht beim Tod an den Verteidiger.
+Warum: Host-only, weil jede andere Maschine nur Positions-Kopien
+sieht — doppelte Schadensrechnung wäre doppelte Buchung.
+Frag-im-Takt statt Trigger-Liste, weil eine gepflegte Liste
+veraltet (Monster stirbt am Nachbarturm, Leiche bleibt in der
+Liste); die frische Abfrage kann nicht veralten und kostet bei
+Takt-Feuern nichts. First + dranbleiben, weil der Turm sonst
+seinen Schaden auf viele Angeschlagene verteilt und keinen tötet
+(Isors Regel). Steckbrief-Wert statt 20-Prozent-Formel, weil der
+Spieltest jeden Typ einzeln verstellen können soll, ohne dass
+eine versteckte Formel mitzieht.
+Verworfen: Trigger-Sphäre mit Enter/Exit-Liste (Rigidbody-Pflicht
+plus Leichen-Problem); Kopfgeld als 20 % von GoldCost (heute
+zufällig wahr, aber Formel-Kopplung); Flächenschaden und
+wechselnde Suchregeln (hinterm Zaun — Strategy-Frage der
+Wächter-Runde vor M4, Isors Naht-Skizze steht dort in der
+ROADMAP).

@@ -3254,3 +3254,53 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   Projektsteuerung selbst eingeordnet und akzeptiert, trotz
   erklärtem Unbehagen — für den Selbstmaßstab zählt die
   Refactor-Runde dann als Solo-Strecke.
+
+- **2026-11-15 · Pathmakers TD: Blitzcheck vor P-B7 (Development).**
+  **Selbst:** Beide müden Stellen aus Station 3 am Beispiel-Gitter
+  gelöst — Distanzfeld (Exit 0, Elternzahl plus 1, nur direkte
+  Nachbarn; nicht erreichte Kacheln tauchen im Dictionary gar nicht
+  auf — die „keine Ahnung"-Lücke vom Vortag damit geschlossen),
+  RestorePath-Announces beiden Mengen richtig zugeordnet, die
+  Cache-Bedingung von GetDistanceField vollständig benannt (Feld
+  vorhanden und Änderungszahl gleich → Cache, sonst Neubau).
+  **Lücke:** Das Vorrats-Netto von RestorePath (Erstattung gegen
+  Bezahlung, netto = abgerissen minus zurückgelegt) weggelassen —
+  von Claude ergänzt, ebenso der −1-Start von _fieldChangeCount.
+
+- **2026-11-15 · Pathmakers TD: P-B7 Stationen 1–2 — TowerDefinition
+  und TowerNet (Development, Hilfe-Level erhöht).** **Selbst:** In
+  beiden Request-Läufen die Tore 1–3 nach dem PathGridNet-Vorbild
+  eigenständig getippt (Territorium, Grid-Null, Zell-Frage), beim
+  Abriss den umgedrehten Wächter `!HasTower` selbst gesetzt;
+  `HasTower` in PathGrid komplett selbst als Schwester von HasTile.
+  **Hilfe:** Place-Tore 4+5 von Claude nach Hänger — Besitz-Irrtum:
+  die Weg-Frage mit `grid.` bei der Tabelle gesucht statt beim
+  Weg-Kopf (PathConnectivity im eigenen Feld). **Fehlerbild
+  (neu):** Struct-Kopie — Erstattung über `GetRow(...).Gold +=`
+  geschrieben: kompiliert, ändert aber nur die Wertkopie (value
+  type), stiller No-Op, dazu Besitz-Verstoß am Board; von Claude
+  aufgelöst, den `AddGold`-Fix selbst eingebaut. Steckbrief
+  (Station 1) und Announce-Bodies laut Abmachung von Claude.
+
+- **2026-11-15–17 · Pathmakers TD: P-B7 Stationen 3–5 — Werkzeug,
+  Schütze, Panel (Development, Hilfe-Level erhöht).** **Selbst:**
+  Turm-Vorprüfung im BuildModeController als Tipp-Aufgabe gelöst —
+  beide Abweichungen vom Kachel-Vorbild eigenständig getroffen
+  (Multiplikation der unterwegs reservierten Preise, Schwelle
+  `>= GoldCost` statt `> 0`); `TakeDamage`/`Die` komplett selbst
+  getippt, mit `Mathf.Clamp` als Eigenleistung übers Gerüst hinaus
+  und richtigem `IsServer`-Wächter; die Fehlersuche-Kette selbst
+  getrieben: NRE-Zeile gelesen, aus drei Kandidaten den fehlenden
+  Steckbrief am Controller gefunden, „Komponente auf dem Kind statt
+  Root" am Prefab-Bild selbst diagnostiziert, die Bounty-0-Ursache
+  selbst gefunden. **Hilfe:** Station-4-Entwurf kippte zweimal ins
+  Zu-Große (Basisklasse erneut, Damage-Arten-System, IDamageable) —
+  jeweils über die Besitz-/Zaun-Argumentation sortiert, Strategy
+  bleibt auf der Wächter-Runde; der „lokal oder vernetzt?"-Knoten
+  mit dem Zwei-Maschinen-Bild gelöst (Show lokal, Buchhaltung Host);
+  die Schützen-Lücken A–C auf Isors Zuruf („nicht so fit") von
+  Claude getippt, mit Erklärgang statt Tipp-Arbeit. **Fehlerbild
+  (neu):** Frisch angelegte SO-Felder stehen auf 0 — dreimal
+  dieselbe Falle in einer Session (Range leer → Sucher findet nie,
+  Bounty leer → Kill zahlt nichts); Merksatz: nach jedem
+  Steckbrief-Anlegen einmal alle Felder füllen, bevor getestet wird.
