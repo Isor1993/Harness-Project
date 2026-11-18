@@ -2227,3 +2227,141 @@ zufällig wahr, aber Formel-Kopplung); Flächenschaden und
 wechselnde Suchregeln (hinterm Zaun — Strategy-Frage der
 Wächter-Runde vor M4, Isors Naht-Skizze steht dort in der
 ROADMAP).
+
+## 2026-11-18 — Große Design-Runde: Zielbild steht, Refactor startet sofort
+
+Was: Die am 17.11. verabredete große Design-Runde ist gelaufen —
+13 Topics (Menü bis Endscreen), alle Ergebnisse als datierte
+Entwurf-Einträge vom 2026-11-18 im GDD. Daraus der Ablauf-Entscheid
+in drei Wellen: **(1) Prototyp-Refactor ab sofort** — Klasse für
+Klasse gemeinsam durchgehen (die ausgemachte Rückerober-Runde),
+den Bestand aufs Zielbild bringen, dabei die 16 Monster als
+Kapsel-Platzhalter mit Grob-Balancing einziehen; der Build daraus
+ist die Abgabe vom 27.11. **(2) Ab Alpha System-für-System-Ausbau**
+auf Endversion-Stand (dort fallen auch Minimap, Escape-Menü,
+Name-Tags und die Polish-Technik-Fragen an) — Alpha fließt in
+Beta, Beta in Goldmaster. **(3) Gesamtpolish am Ende;** die
+Menü-Optik ist der allerletzte Punkt, Perfektion erst nächstes
+Semester. Zeitfenster der Welle 1: bis etwa Mo/Di 24./25.11., dann
+übernimmt die Abgabe-Fabrik (Playtests übers Netz, Erkenntnis-PDF,
+G2-Nachzug, Pitch-Slides — die Slides sind Teil der Abgabe am
+27.11., nicht erst der Präsentation am 03.12.).
+Warum: Der Refactor braucht das Zielbild (Beschluss „Fertig bauen
+vor Refactoring", 2026-11-15) — das liegt jetzt vor; der
+Klassen-Durchgang ist zugleich Isors Lern- und
+Rückeroberungs-Strecke, und ein sauberes Grundgerüst vor Alpha
+verhindert, dass der System-Ausbau auf kippendem Bestand baut.
+Verworfen: Refactor erst im Alpha-Pass M3 (ursprünglicher Plan —
+verschenkte die verbleibende Woche und baute die Abgabe auf dem
+alten Stand); Abgabe-Fabrik vor dem Refactor (die Fabrik wird
+schneller, wenn G2 aus dem frischen Zielbild schöpft).
+
+## 2026-11-18 — P-B8 gestrichen: der Tropf trägt den Prototyp
+
+Was: Das Streichrecht von P-B8 (Mine + Arbeiter) ist gezogen — der
+Baustein entfällt für M1, der Tropf bleibt die Diamanten-Quelle
+der Abgabe. Die echte Mine kommt im Alpha-System-Durchgang, dann
+gleich im Pendel-Modell (eigener Eintrag unten).
+Warum: Die Design-Runde hat den P-B8-Platz planmäßig verbraucht
+(Isors Entscheid vom 17.11.), der Refactor ist wichtiger als ein
+weiteres Feature vor dem Feature-Stopp — und das neue Pendel-Modell
+macht die Mine ohnehin größer als den alten P-B8-Zuschnitt.
+Verworfen: die Mine klein bis zum 20.11. bauen (hätte den
+Refactor-Start gekostet und wäre in der Alpha wieder umgebaut
+worden).
+
+## 2026-11-18 — Wächter-Architektur: Basisklasse „Sucher" plus Austeil-Verhalten
+
+Was: Die vertagte Wächter-Frage (ROADMAP → M4) ist entschieden —
+Zielbild für den Refactor: eine gemeinsame **Basisklasse** trägt,
+was bei allen Türmen gleich ist (Ziel finden per Frag-im-Takt,
+Reichweite, Schusstakt, Stufen-Verwaltung, Panel-Anbindung), das
+**Austeilen** steckt in einem austauschbaren Verhaltens-Objekt
+(Strategy Pattern): Einzelschaden · Fläche · Mehrfachschuss ·
+Verlangsamung. Die Skill-Profile: Krieger = AOE im Nahkreis,
+Magier = Slow, Archer/Ranger = Multischuss, vierte Richtung =
+hoher Einzelschaden (Name offen, Funktion fest). Werte je Stufe
+aus den Steckbrief-Assets.
+Warum: Isors Naht-Skizze vom 2026-11-15 (Sucher/Austeiler) hat
+sich bestätigt — mit allen vier Typen samt Skills ist die Naht
+sichtbar, das Warten auf den „zweiten gebauten Typ" bringt keine
+neue Information mehr. Ein neuer Turm-Typ (auch die
+Spezialklassen des nächsten Semesters) ist dann ein Asset plus
+ggf. ein Verhalten, kein neuer Turm-Code.
+Verworfen: je Turm eine eigene Klasse per Vererbung (kopiert die
+Such-Logik vierfach); die Entscheidung weiter vertagen (die
+Information liegt vollständig vor).
+
+## 2026-11-18 — 16 Monster-Typen noch dieses Semester, vier davon Bosse
+
+Was: Das Spiel bekommt **16 Monster-Typen schon im Semester** —
+im Prototyp-Refactor zunächst als Kapsel-Platzhalter mit grobem
+Balancing (Werte müssen noch nicht stimmen). Normale Typen
+unterscheiden sich über Steckbrief-Attribute (Leben, Tempo …);
+**vier der 16 sind Bosse** mit zusätzlich je einem Spezial-Skill
+(Aura auf Nachbarn, Extrem-Werte — Auswahl offen), deutlich
+teurer, mehr Einkommens-Wert, mehr Kopfgeld. Der Spezial-Skill
+ist wie beim Turm ein optionales austauschbares Verhalten am
+Steckbrief. Income-/Preisleiter als Formel-Kurve statt
+Handtabelle, kalibriert in den Messrunden. Überschreibt den
+M4-Inhalt „vier Gegnertypen"; M4 integriert stattdessen die
+Assets für die 16.
+Warum: Isors Vorsatz — eine TD lebt von Monster-Vielfalt, und die
+Datenform trägt es (ein Typ = ein Steckbrief-Asset). Claudes
+Empfehlung, im Semester bei vier zu bleiben, ist damit
+überstimmt; die Kosten liegen im Balancing und im Sende-Panel
+(16 Plätze), nicht im Code.
+Verworfen: 16 erst im Endausbau nach dem Semester (Claudes
+Vorschlag); Bosse als eigene Klassen statt Steckbrief + Verhalten.
+
+## 2026-11-18 — Turm-Stufen: Anzahl offen, Formel-Skalierung als Kandidat
+
+Was: Die „drei linearen Stufen" aus der P-B7-Runde sind
+aufgehoben — die Stufenzahl je Turm ist offen, Kandidat ist
+unbegrenztes Leveln mit einer Skalierungs-Formel (Basiswert ×
+Wachstumsfaktor je Level, für Werte wie Upgrade-Preis), getragen
+von den Steckbrief-Assets. Ab einer Stufe verbessert sich auch
+der Skill selbst (AOE größer, Multi → Triple). Der Abgabetext
+(„drei Stufen je Wächter") zieht beim G2-Nachzug nach.
+Warum: Eine Formel skaliert auf jede Stufenzahl, ohne dass je
+Stufe eine Tabellenzeile gepflegt wird — und die endgültige Tiefe
+soll der Playtest bestimmen, nicht eine früh festgenagelte Drei.
+Verworfen: feste drei Stufen (band das Balancing an eine Zahl,
+die nie gemessen wurde).
+
+## 2026-11-18 — Mine im Zielbild: Pendel-Lieferung statt Timer
+
+Was: Die Diamanten-Gutschrift hängt im Zielbild an der **Ankunft
+des Arbeiters am Sendegebäude** — die Arbeiter pendeln sichtbar
+zwischen Mine und Sendegebäude, die Einkommensrate ergibt sich
+aus Pendelstrecke × Arbeiterzahl. Das Minen-Panel ist das
+Wirtschafts-Panel (Kacheln kaufen, Arbeiter kaufen/upgraden,
+später mehr). Der Tropf bleibt bis dahin die Notlösung; die
+Diamanten-Quelle bleibt im Code eine austauschbare Komponente.
+Warum: Sichtbare Wirtschaft statt unsichtbarem Tick — der Spieler
+sieht sein Einkommen laufen, und Upgrades haben natürliche Hebel
+(mehr Arbeiter, schnellere Arbeiter). Gebaut wird das erst im
+Alpha-Durchgang (P-B8 ist gestrichen).
+Verworfen: Timer-Tick als Endzustand (der Tropf war immer als
+Platzhalter kalibriert — „Mine mit einem Arbeiter").
+
+## 2026-11-18 — Statistik-Endscreen im Semester, Zähler ab dem Refactor
+
+Was: Der Endscreen wird schon im Semester die
+**Statistik-Tabelle**: eine eigene Endscreen-Szene mit den Werten
+aller Spieler (eigene Reihe hervorgehoben, je Wert der Beste
+markiert, Platzierung); Werte-Kandidaten offen (Spieldauer,
+höchstes Income, Diamanten-Income, Kacheln, Sends, Kills).
+Ausgeschiedene können zuschauen oder jederzeit gehen (Escape →
+Leave); wer geht, sieht den Schnappschuss zum Leave-Zeitpunkt —
+Szenenwechsel heißt Partie verlassen, bewusst einfach. Endet die
+Partie, wechseln alle automatisch in die Endscreen-Szene. Dafür
+entsteht im Refactor eine **Statistik-Sammelstelle** je Spieler,
+in die die Systeme ihre Ereignisse melden.
+Warum: Zähler nachrüsten ist teuer, früh einplanen fast gratis —
+und die Tabelle ist Isors gewünschtes Partie-Ende-Erlebnis. Die
+simple M3-Fassung (Leben null → raus, letzter gewinnt) bleibt als
+Win/Lose-Kern darunter bestehen.
+Verworfen: Statistik erst nächstes Semester (nur Profile/Ränge
+und Diagramme bleiben dort); Live-Zahlen für vorzeitig Gegangene
+(bräuchte eine Netz-Verbindung aus der Endscreen-Szene heraus).

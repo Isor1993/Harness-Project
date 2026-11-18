@@ -590,3 +590,213 @@ bindet nichts)*
   `DECISIONS.md`, vier Einträge vom 2026-11-15. Das Kapitel „Türme
   und Upgrades" wird beim G2-Nachzug auf das Grundfigur-Modell
   umgebaut.
+- *(2026-11-18)* **Zielbild Menü** (große Design-Runde, Topic 1 von 13):
+  Das Menü-System bleibt wie gebaut (MainMenu → Lobby/Join-Code →
+  Spiel), kein Umbau geplant. Dazu kommen: Einstiegs-Auswahl
+  **Solo/Multiplayer** (beides existiert schon, erwartet werden nur
+  minimale Differenzen) · **Settings** (Kandidaten: die drei
+  Kamera-Schalter der Polish-Merkliste — Edge-Pan, Freiflug-Grenze,
+  Kamera-Dauerfolgen —, später Audio-Lautstärke, dazu Tutorial
+  an/aus) · **Credits** als fester Punkt, Inhalt aus `ASSETS.md`
+  (bei CC-BY-Assets ist Namensnennung Lizenzpflicht). **Tutorial**
+  ist als Tooltip-Reihe gemeint: Panels, die beim ersten Start in
+  fester Reihenfolge aufgehen und weggeklickt werden; der Schalter
+  schaltet sie ab. Minimal gehalten, ganz am Schluss gebaut, Umfang
+  nach Restzeit — es soll nur existieren, der Ausbau kommt später.
+  **Rejoin** und das optische Final-Design sind bewusst nach hinten
+  geschoben (eher nächstes Semester; Rejoin-Entscheid bleibt beim
+  Goldmaster-Stand, `DECISIONS.md` → „Verbindungsverlust");
+  Notfall-Regel „Menü bleibt simpel" ist akzeptiert.
+- *(2026-11-18)* **Zielbild Game Scene / Welt** (große Design-Runde,
+  Topic 2 von 13): Die Welt wird **einmal von Hand gebaut, gebacken,
+  fertig** — keine Generierung, kein Placement-Algorithmus (kleine
+  Flächen, Einmalaufwand schlägt Werkzeugbau). Je Spieler-Gebiet drei
+  Zonen: **Bauregion** (das PathGrid-Raster) · **Wirtschaftsraum**
+  (Mine, pendelnde Arbeiter, Sendegebäude) · **Wald** als Rand. Der
+  Wald ist eine echte Sperre: Die Bäume bekommen **Collider**, damit
+  die Spielfläche abgegrenzt aussieht und niemand hindurchläuft —
+  und als Tür für spätere Interaktion. **Fluss-Shader:** eigener,
+  wenn Zeit bleibt, sonst Isors vorhandener. **Kamera-Rand:** Terrain
+  an den Rändern um ein gutes Stück erweitern statt Nebelwand —
+  auflösungs- und seitenverhältnis-unabhängig sieht die Kamera nie
+  die Weltkante; die Kamera-Grenzen werden auf den Spielbereich
+  geeicht (Settings-Schalter Freiflug-Grenze siehe Polish-Merkliste).
+  Asset-Bedarf vorgemerkt für die Optik-Phase: 2–3 Baum-Assets,
+  1–2 Gras-Assets, von Hand verstreut. **Offen:** Wald-Placement
+  spiegeln/kopieren oder je Gebiet frei verstreuen — wird beim Bauen
+  entschieden. Vorgemerkt: Beim Refactor ändern sich Bedeutungen
+  einzelner Szenen-Bestandteile (Isors Ansage, Details dort).
+- *(2026-11-18)* **Zielbild Spielerfigur & Steuerung** (große
+  Design-Runde, Topic 3 von 13): Der Bestand ist bestätigt — Third
+  Person mit Top-Down-Diagonale, Befehlsklick statt Direktsteuerung,
+  Kamera mit Folgen/Edge-Pan/Freiflug, Nachbarn dauerhaft einsehbar.
+  Die Figur **bleibt ein reiner Bauer**: laufen, Wege legen, Türme
+  setzen, Panels bedienen — kein Kampf, keine aktiven Fähigkeiten;
+  der Refactor braucht an der Spielerfigur keine Kampf-Schnittstellen.
+  Benannte Tür nach dem Semester (unsicher, bindet nichts): wählbare
+  Figur-Typen/Rassen (z. B. Mensch, Ork) — bis dahin bewusst eine
+  einzige Spielfigur. Steuerungselemente wachsen nach Spielgefühl
+  (Slot-Tasten-Anzahl offen); die Details gehören in die
+  UI-Design-Runde der Polish-Merkliste (vor M4).
+- *(2026-11-18)* **Zielbild HUD** (große Design-Runde, Topic 4
+  von 13): **Look simpel.** Oben rechts die Ressourcen-Reihe (von
+  außen nach innen: Kacheln · Gold · Diamanten); daneben der
+  Wave-Timer plus **neu** ein Wellen-Zähler — Monster der Welle
+  gesamt/übrig als grober Überblick, gespeist aus dem
+  Wellenstart-Schnappschuss des Sende-Pools. Oben links Spieler-Info,
+  mindestens der eigene Name. Unten die **runden Werkzeug-Slots**
+  mit Shortcuts: Move · Kacheln · Türme · Senden · Abreißen
+  (bestätigt den Refactor-Posten Werkzeug-Zustand statt Bools —
+  fünf Modi brauchen einen Zustands-Wert). **Panels je Objektart:**
+  Kachel-Panel (Bild, Schließen-X, Abriss mit sichtbarer
+  70-%-Erstattung) · Basis-Tower-Panel (Bild, Standardtext,
+  Spezialisierungs-Buttons mit Tower-Bildern — danach nur noch
+  Level Up) · fertiges Tower-Panel (Bild, Werte, Level Up /
+  Destroy/Sell, Hover auf Level Up zeigt die Wert-Änderung).
+  **Tower-Bild als Live-Kamera:** Render Texture auf einen
+  Showroom-Spot in der Welt (Tower-Figuren außerhalb der
+  Spielfläche); rendert nur bei offenem Panel, kleine Auflösung —
+  Fallback statisches Bild, falls die Zeit kippt. **Offen:**
+  Panel-Position (seitlich, mittig oder gemischt) · weitere Inhalte
+  oben links · Slot-Anzahl. Sende-Panels beim Topic Senden.
+- *(2026-11-18)* **Zielbild Kacheln** (große Design-Runde, Topic 5
+  von 13): Der gebaute Bestand ist als Zielbild bestätigt —
+  Kachel-Kasse (5 Diamanten, Abriss erstattet 70 %), Halte-Bauen mit
+  Geisterbildern, Gültigkeits-Färbung, Rollback beim Wellenstart,
+  gesperrte Ein-/Austritts-Zellen, Türme nur bei gültigem Weg. Als
+  Design-Aussage fürs GDD bekräftigt: Die Kacheln sind **die freie
+  Gestaltungs-Mechanik** des Spiels — der Spieler bestimmt über das
+  Weg-Layout, wie die Monster laufen, und baut seine Strategien aus
+  Wegführung plus Turm-Platzierung (deckt sich mit der Zweck-Kette
+  vom 2026-10-20, die beim G2-Nachzug in den Abgabetext geht). Neu
+  dazu nur das Kachel-Panel aus dem HUD-Zielbild (Topic 4).
+- *(2026-11-18)* **Zielbild Tower** (große Design-Runde, Topic 6
+  von 13 — die vorgemerkte Wächter-Runde ist damit verhandelt):
+  Fünf Figuren im Prototyp — Basis (Village Archer, levelt nicht)
+  plus vier Spezialisierungen mit je **einem Skill-Profil**: Krieger
+  = Rundumschlag im Nahkreis (AOE) · Magier = Verlangsamung ·
+  Archer/Ranger = Multischuss (Stufen-Ausbau Richtung Triple) ·
+  vierte Richtung = hoher Einzelschaden auf ein Ziel (Name offen,
+  „Armbrustschütze" nur Platzhalter — Funktionen fest, Namen weich).
+  Stufen verbessern Attribute und ab einer Stufe den Skill selbst
+  (AOE größer, Multi → Triple). **Stufenzahl offen** — Kandidat:
+  unbegrenzt mit Skalierungs-Formel (Basiswert × Wachstumsfaktor je
+  Level für Werte und Preis, getragen von den Steckbrief-Assets);
+  ersetzt die „drei linearen Stufen" aus der P-B7-Runde, der
+  Abgabetext („drei Stufen je Wächter") zieht beim G2-Nachzug nach.
+  Verschiedene Kaufpreise je Richtung (Leiter 50/75/100/150 bleibt
+  Richtwert). **Cut fürs Semester:** nur Level Up — Spezialklassen
+  als zweite Ebene (Krieger → Warrior/Paladin, Magier →
+  Fire/Ice/Storm, Archer → Richtung Assassine) und Kachel-Upgrades
+  sind benannte Erweiterung nächstes Semester. **Architektur-Zielbild
+  für den Refactor** (löst die vertagte Wächter-Frage vom
+  2026-11-15): Basisklasse „Sucher" (Ziel finden, Reichweite,
+  Schuss-Takt, Stufen, Panel-Anbindung — bei allen gleich) plus
+  austauschbares **Austeil-Verhalten** (Strategy Pattern:
+  Einzel · Fläche · Mehrfach · Slow), Werte aus Steckbrief-Assets —
+  ein neuer Turm-Typ ist dann ein Asset plus ggf. ein Verhalten,
+  kein neuer Turm-Code.
+- *(2026-11-18)* **Zielbild Monster** (große Design-Runde, Topic 7
+  von 13): Der gebaute Bestand ist bestätigt (Steckbrief-Assets,
+  Host-Simulation, Distanzfeld-Lauf). **16 Monster-Typen noch dieses
+  Semester** (Isors Entscheid gegen Claudes Vier-bleiben-Empfehlung;
+  überschreibt den M4-Inhalt „vier Gegnertypen" — ROADMAP-Nachzug
+  beim Sichern): Auswahl offen, Richtung Slimes/Golems/Orks, ggf.
+  1–2 Modelle von einem befreundeten Artist (Quellen-/
+  Namensnennungs-Eintrag nötig). Normale Monster unterscheiden sich
+  über **eigene Steckbrief-Attribute** (viel Leben, schneller …);
+  **vier der 16 sind Boss-Monster** mit zusätzlich je einem
+  Spezial-Skill, der über das Monster selbst hinauswirkt oder extrem
+  ausschlägt (Aura auf Nachbarn, Extrem-Tempo, Extrem-Leben —
+  Auswahl offen), dafür deutlich teurer, mehr Einkommens-Wert, mehr
+  Kopfgeld. Architektur-Zielbild analog zu den Türmen: Spezial-Skill
+  als optionales austauschbares Verhalten am Steckbrief —
+  Normal-Monster haben keins, Bosse eins. Income/Preise über eine
+  Formel-Kurve statt Handtabelle, kalibriert in den Messrunden
+  (P2/M5). **Nächstes Semester** (Richtung offen): Monster-Upgrades
+  — einzeln, übers Sendegebäude oder ein zweites Gebäude mit neuen
+  Typen.
+- *(2026-11-18)* **Zielbild Senden** (große Design-Runde, Topic 8
+  von 13): Das System ist als Zielbild bestätigt — Senden immer im
+  Uhrzeigersinn, ausgeschiedene Plätze werden übersprungen (sind 1,
+  2, 3 im Spiel und 4 raus, sendet 3 an 1), Sende-Pool mit
+  Schnappschuss beim Wellenstart, Einkommens-Wert addiert sich beim
+  Senden. **Sende-Panel:** Titelzeile (Richtung „Send Monster"),
+  Schließen-X, darunter die 16 Monster als **statische Bilder**
+  (bewusst keine Live-Renderer — die Kür bleibt dem Tower-Panel);
+  Hover auf ein Monster füllt ein Info-Feld: kleines Bild,
+  Spezialitäten, Kosten, Income-Gewinn — dieselbe Hover-Logik wie
+  die Level-Up-Vorschau im Tower-Panel. Für die UI-Runde vorgemerkt
+  (kein Entscheid): 4×4-Raster, Bosse visuell abgesetzt (Form, nicht
+  nur Farbe), nicht Leistbares ausgrauen, Klick-Verhalten samt
+  Mehrfach-Komfort.
+- *(2026-11-18)* **Zielbild Rundentakt & Wellenmodell** (große
+  Design-Runde, Topic 9 von 13): Bewusst **kein neuer Entscheid** —
+  der gebaute Takt (Rundentakt ohne Bereit-Knopf, kurze Bauphase,
+  Karte-leer-Tor, Einkommens-Uhr) ist Arbeitsstand; ob er hält,
+  entscheiden die Playtests mit der bestehenden
+  Stellschrauben-Reihenfolge aus dem P2-Posten (erst Monster-Tempo /
+  Ausschüttungs-Takt / Wegstrecken, Modell-Umbau fester Wellentakt
+  nur als letztes Mittel). Konsequenz für den Refactor: Das
+  Wellenende-Kriterium bleibt eine **offene Tür** — so bauen, dass
+  Karte-leer-Tor gegen festen Takt tauschbar ist, ohne das
+  Drumherum anzufassen.
+- *(2026-11-18)* **Zielbild Ressourcen** (große Design-Runde,
+  Topic 10 von 13): Das Zwei-Währungen-Modell der P-B5v-Runde ist
+  als Zielbild bestätigt — **Gold kämpft** (Senden, Türme bauen und
+  upgraden; Einkommen steigt durchs Senden und zahlt im Takt aus),
+  **Diamanten bauen aus** (aus der Mine über Arbeiter; kaufen
+  Arbeiter und Kacheln — hauptsächlich die Upgrade-Währung).
+  **Neu:** Das **Income wird im HUD angezeigt**, beim
+  Spieler-Info-Bereich oben links (zweiter Inhalt neben dem Namen —
+  schließt die offene Stelle aus Topic 4); endgültige Platzierung
+  nach Design. **Kacheln** erscheinen in der Ressourcen-Reihe als
+  reine Bestandsanzeige (wie viele man hat/setzen kann); gekauft
+  wird in der Mine, evtl. zusätzlich ein Schnellkauf-Button — wird
+  beim Bauen entschieden. **Nächstes Semester** (offen): Diamanten
+  schalten weitere Dinge frei — Kandidaten: extra Sende-Slot/-Area,
+  Verbesserung spezieller Monster/Bosse.
+- *(2026-11-18)* **Zielbild Mine + Arbeiter** (große Design-Runde,
+  Topic 11 von 13): Die Mine ist ein **sichtbares Gebäude** im
+  Wirtschaftsraum; die Arbeiter pendeln als sichtbare Figuren
+  zwischen Mine und Sendegebäude, und **die Diamanten-Gutschrift
+  erfolgt bei Ankunft am Sendegebäude** — die Einkommensrate ergibt
+  sich aus Pendelstrecke × Arbeiterzahl, nicht aus einem Timer
+  (ersetzt das Tropf-Modell; für den Refactor bleibt die
+  Diamanten-Quelle eine austauschbare Komponente). Das Minen-Panel
+  trägt die Wirtschafts-Funktionen: Kacheln kaufen, Arbeiter kaufen,
+  Arbeiter upgraden, später weitere Upgrades. Dazu als
+  system-übergreifender Polish-Posten (später): ein
+  **Floating-Text-/Effekt-System** — +Gold beim Monster-Kill,
+  +Diamanten bei Arbeiter-Ankunft, Effekte bei Verkauf und
+  Level-Up.
+- *(2026-11-18)* **Zielbild Solo-Modus** (große Design-Runde,
+  Topic 12 von 13): Solo ist **kein eigenes System**, sondern der
+  Sonderfall des Sende-Rings — man schickt sich die eigenen Sends
+  selbst (Regel „letzter Aktiver sendet an sich selbst" greift
+  schon). Dazu zwei Lernhilfen, **beide nur im Solo**: die
+  Tutorial-Tooltips aus dem Menü-Zielbild (Panel-Reihe beim
+  Einstieg, an-/abschaltbar — präzisiert Topic 1: das Tutorial lebt
+  im Solo-Modus) und später **Richtungspfeile**, die anzeigen, in
+  welche Richtung die Monster laufen. Im Multiplayer gibt es bewusst
+  beides nicht.
+- *(2026-11-18)* **Zielbild Endscreen, Leben & Win/Lose** (große
+  Design-Runde, Topic 13 von 13): Win/Lose bleibt wie im M3-Plan
+  (Leben null → ausgeschieden, letzter Aktiver gewinnt), **aber der
+  Endscreen wird schon im Semester die Statistik-Tabelle**: eine
+  eigene Endscreen-Szene mit den Werten aller Spieler, die eigene
+  Reihe hervorgehoben, je Wert der Beste markiert, Platzierung
+  dazu. Werte-Kandidaten (Liste offen): Gesamtspieldauer, höchstes
+  Income, höchstes Diamanten-Income, Kacheln gekauft/gesetzt,
+  meistgesendete Monster, meiste Kills. **Ablauf:** Ein
+  Ausgeschiedener kann zuschauen oder jederzeit gehen (auch per
+  Escape → Leave); wer geht, sieht in der Endscreen-Szene den
+  Schnappschuss zum Leave-Zeitpunkt (Szenenwechsel = Partie
+  verlassen, bewusst einfach). Endet die Partie, kommen alle
+  automatisch in die Endscreen-Szene; von dort über die Lobby
+  zurück ins Hauptmenü (Fluss-Details offen). **Konsequenz fürs
+  Refactor-Zielbild:** eine Statistik-Sammelstelle je Spieler, in
+  die die Systeme ihre Ereignisse melden (Kills, Sends, Käufe …) —
+  die Zähler laufen ab dem Refactor mit, nicht nachgerüstet.
+  **Nächstes Semester** (offen): mehr Werte, Diagramme, evtl.
+  Spielerprofil mit Rängen.

@@ -22,26 +22,20 @@ Steht **oben**, weil es das Erste ist, was zählt. Wird bei jedem
 ist ein gültiger Inhalt. Höchstens fünf Zeilen; Ausführliches steht in
 der Datei, auf die hier verwiesen wird.
 
-*(überschrieben 2026-11-17 beim `/harness:ende` der Session
-„Pathmakers TD · P-B7 Dorfschütze". P-B7 ist fertig und abgehakt —
-der Core-Loop ist erstmals geschlossen, Solo-Tests grün, Artifacts
-nachgezogen, Zeiten samt P-B5-Nachtrag gebucht.)*
+*(überschrieben 2026-11-18 beim `/harness:ende` der Session
+„Pathmakers TD · Große Design-Runde". Die Runde ist komplett —
+13 Topics als GDD-Entwurf-Einträge, sieben DECISIONS-Einträge,
+P-B8 gestrichen, Refactor vorgezogen.)*
 
-**Erst Build, dann die große Design-Runde (Isors Entscheid, 17.11.):**
-1. **V 0.0.005 bauen** — Player Settings auf `0.0.005`, Ablage im
-   Datenbaum unter `02_Projekte\PathmakersTD\Builds\
-   PathmakersTD_0.0.005_2026-11-18\` (`Kern/PFADE.md` → `DATENBAUM`).
-   Die Marke „erster geschlossener Core-Loop".
-2. **Große Design-Runde als Erstes** (Typ Brainstorm/Design): Isor
-   legt fest, wie das Spiel am Ende sein soll — liefert zugleich das
-   GDD/Pitch-Material der Pufferwoche und das Zielbild für den
-   Alpha-Refactor. Die Wächter-Runde (Basisklasse/Strategy, Isors
-   Naht-Skizze am M4-Eintrag) wird mit verhandelt. Begründung und
-   Termin: ROADMAP → P-R.
-3. Danach **P-B8** (Mine + Arbeiter, ~7–8 h), soweit das Fenster bis
-   zum Feature-Stopp **Fr 20.11.** trägt — Streichrecht greift sonst.
-4. Hilfe-Level bleibt erhöht bis Prototyp-Stand; Rückeroberung in der
-   Refactor-Runde (DECISIONS → „Fertig bauen vor Refactoring").
+**Prototyp-Refactor startet (Isors Entscheid, 18.11.):**
+1. **Klasse für Klasse gemeinsam durchgehen** (Rückerober-Runde):
+   Bestand aufs Zielbild bringen (GDD-Entwurf 2026-11-18, Posten in
+   ROADMAP → P-R), dabei die 16 Monster als Kapseln einziehen.
+2. Fenster bis **~Mo/Di 24./25.11.**, dann Abgabe-Fabrik (Playtests,
+   Erkenntnis-PDF, G2-Nachzug, Pitch-Slides, Build) — Abgabe Fr 27.11.
+3. Der Build V 0.0.005 vom 17.11. ist bewusst verschoben; beim
+   Refactor-Start klären, ob er noch vorab fällt oder der
+   Abgabe-Build die Marke übernimmt.
 
 ---
 

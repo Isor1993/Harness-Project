@@ -3304,3 +3304,17 @@ wurde, was die Chroniken ohnehin trugen. Ab hier wird laufend geführt.*
   dieselbe Falle in einer Session (Range leer → Sucher findet nie,
   Bounty leer → Kill zahlt nichts); Merksatz: nach jedem
   Steckbrief-Anlegen einmal alle Felder füllen, bevor getestet wird.
+
+- **2026-11-18 · Pathmakers TD: Große Design-Runde
+  (Brainstorm/Design).** **Selbst:** das Zielbild über 13 Topics
+  eigenständig strukturiert und durchentschieden — Topic-Liste
+  selbst aufgestellt, je Topic komplette Entwürfe geliefert (HUD-
+  Layout, Panel-Formen, Pendel-Wirtschaft, Statistik-Endscreen),
+  den Scope-Entscheid 16 Monster gegen Claudes Empfehlung bewusst
+  getroffen und den Drei-Wellen-Plan (Refactor → System-Ausbau →
+  Gesamtpolish) selbst entworfen. **Hilfe:** Claude als
+  Lückenfinder (vierte Turm-Richtung lag im eigenen P-B7-Beschluss,
+  Solo-Frage, Senden/Takt als fehlende Topics, Terminfolgen der
+  Abgabewoche) und als Architektur-Übersetzer (Naht-Skizze
+  Sucher/Austeiler → Basisklasse plus Strategy, Verhalten auch für
+  Boss-Skills). **Fehlerbild:** keines — Design-Session ohne Code.

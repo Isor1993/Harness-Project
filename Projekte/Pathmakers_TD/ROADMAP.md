@@ -339,12 +339,18 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
   Richtungswahl und Stufen kommen mit Alpha/Beta. Die in P-B6b
   angekündigte Turm-Erstattung im Rollback **entfällt ersatzlos**
   (Bau-Regel verhindert den Konfliktfall konstruktiv).
-- [ ] **P-B8 · Mine + Arbeiter** — Streichkandidat, faktisch
-  Alpha-Material; ersetzt den Tropf aus P-B6 durch das echte
-  Minen-Gebäude: Arbeiter kaufen und upgraden (Maximalgrenze),
-  Kachel-Kauf-Panel. Notlösung seit der Ressourcen-Runde (DECISIONS,
-  „2026-11-10 — P-B8-Zweiteilung"): Tropf bleibt, Kacheln kauft ein
-  schlichter Knopf gegen Diamanten. (~7–8 h)
+- [x] **P-B8 · Mine + Arbeiter** — **gestrichen am 2026-11-18**
+  (Streichrecht gezogen, DECISIONS → „2026-11-18 — P-B8 gestrichen:
+  der Tropf trägt den Prototyp"): Der Tropf bleibt die
+  Diamanten-Quelle der Abgabe; die echte Mine kommt im
+  Alpha-Durchgang, dann gleich im Pendel-Modell (DECISIONS →
+  „2026-11-18 — Mine im Zielbild"). Ursprünglicher Zuschnitt:
+  Streichkandidat, faktisch Alpha-Material; ersetzt den Tropf aus
+  P-B6 durch das echte Minen-Gebäude: Arbeiter kaufen und upgraden
+  (Maximalgrenze), Kachel-Kauf-Panel. Notlösung seit der
+  Ressourcen-Runde (DECISIONS, „2026-11-10 — P-B8-Zweiteilung"):
+  Tropf bleibt, Kacheln kauft ein schlichter Knopf gegen Diamanten.
+  (~7–8 h)
 - [ ] **P3 · Polish-Merkliste** — gesammelt beim Bauen, fällig
   frühestens mit den Messrunden: Szenen-Hygiene Testarea (die
   Szenendatei trägt einen verwaisten BuildModeController-Datenblock
@@ -397,24 +403,41 @@ Multiplayer-Aufschlag; P-B1 bis P-B7 füllen das Bau-Budget bis zum
   Prefab-Eichung, 2026-11-08); Spur-Versatz beim Monster-Lauf (je
   Monster ein fester seitlicher Versatz von etwa ±0,3 Kachelbreiten,
   rein kosmetisch gegen das Übereinanderlaufen — Überlappung selbst
-  ist akzeptiert, DECISIONS → „Sende-Pool", 2026-11-08).
+  ist akzeptiert, DECISIONS → „Sende-Pool", 2026-11-08). **Neu aus
+  der großen Design-Runde (2026-11-18, Zielbild in den
+  GDD-Entwurf-Einträgen):** Floating-Text-/Effekt-System
+  (systemübergreifend: +Gold beim Kill, +Diamanten bei
+  Arbeiter-Ankunft, Verkauf/Level-Up); Technik-Wahl Partikel-System
+  oder VFX Graph für die Effekte; Click-Sounds und
+  Schuss-Animationen; Live-Kamera im Tower-Panel (Render Texture
+  auf einen Showroom-Spot, nur bei offenem Panel — Fallback
+  statisches Bild); Escape-/Ingame-Menü (Leave, Settings-Zugriff);
+  Name-Tags über Figur oder Gebiet; Minimap (Isors Wunsch,
+  Zeitfrage); Richtungspfeile als Solo-Lernhilfe (nur Solo, wie
+  die Tutorial-Tooltips); Wellen-Zähler im HUD (Monster
+  gesamt/übrig aus dem Wellenstart-Schnappschuss).
 - [ ] **P-R · Refactor-Merkliste** — angelegt am 2026-11-15
-  (DECISIONS → „2026-11-15 — Fertig bauen vor Refactoring");
-  gesammelt beim Bauen, fällig mit dem Refactor-Pass der Alpha (M3).
-  Vorstufe (Isors Ansage 2026-11-17): **erst eine große
-  Design-Runde, dann der Refactor** — Isor legt fest, wie das Spiel
-  am Ende sein soll, und erst mit diesem Zielbild wird umgebaut.
-  Begründung: Der Refactor weiß dann, was angepasst werden muss und
-  was wegfallen kann, statt Bestand zu polieren, der ohnehin kippt.
-  Termin (Isors Entscheid, gleiche Session): Die Design-Runde
-  startet **am 18.11. als Erstes** — vor P-B8, dessen Streichrecht
-  den Platz dafür hergibt. So liefert sie zugleich das Material für
-  GDD und Pitch der Pufferwoche; das Pitch-Feedback vom 03.12. wird
-  nachgetragen statt abgewartet. Die vorgemerkte Wächter-Runde
-  (Basisklasse/Strategy, M4-Eintrag) wird dort mit verhandelt. Der
-  Refactor selbst bleibt beim Alpha-Pass (M3).
-  Ablauf dann: Klasse für Klasse gemeinsam durchgehen — die
-  ausgemachte Rückerober-Runde fürs Verständnis. Posten:
+  (DECISIONS → „2026-11-15 — Fertig bauen vor Refactoring").
+  Die Vorstufe ist **erledigt am 2026-11-18**: Die große
+  Design-Runde ist gelaufen (13 Topics, Ergebnisse als
+  Entwurf-Einträge vom 2026-11-18 im GDD; Wächter-Frage
+  entschieden — DECISIONS → „2026-11-18 — Wächter-Architektur").
+  Neuer Termin (Isors Entscheid, 2026-11-18): Der Refactor startet
+  **sofort**, nicht erst im Alpha-Pass — Klasse für Klasse
+  gemeinsam durchgehen (die ausgemachte Rückerober-Runde), den
+  Bestand aufs Zielbild bringen, die 16 Monster als Kapseln
+  einziehen; der Build daraus ist die Abgabe vom 27.11., Fenster
+  bis ~24./25.11., dann Abgabe-Fabrik (DECISIONS → „2026-11-18 —
+  Große Design-Runde"). Posten:
+  **Neu aus der Design-Runde (2026-11-18):** Wächter auf
+  Basisklasse „Sucher" + Austeil-Verhalten umbauen (Strategy,
+  DECISIONS-Eintrag); Verhaltens-Schnittstelle am Monster-Steckbrief
+  für Boss-Skills; Statistik-Sammelstelle je Spieler (Zähler laufen
+  ab dem Refactor mit); Wellenende-Kriterium tauschbar halten
+  (Karte-leer-Tor gegen festen Takt); Diamanten-Quelle als
+  austauschbare Komponente (Tropf → Pendel-Lieferung); Turm-/
+  Monster-Werte formelfähig in den Steckbriefen (Skalierung je
+  Level). Bestand:
   rigId/gameId/„rig" vereinheitlichen (drei Namen für dieselbe
   Nummer, quer durch BuildModeController, PathGridNet und
   MatchSetup); die Path*-Namensfamilie entzerren (PathGrid ·
@@ -441,11 +464,14 @@ lebt oben auf der Status-Tafel.
 - [ ] **M1 · Spieleprototyp + Game Pitch** — fertig **Fr 20.11.**
   (Feature-Stopp; gilt nicht für Core-Loop-Essentielles), Abgabe
   Fr 27.11., Präsentation Do 03.12.
-  Systeme: P-B3 → P-B7; P-B8 als letzter Baustein (~18.–20.11.) mit
-  Streichrecht. Wochen-Soll: P-B3 + P-B4-Start bis So 02.11. · P-B4
+  Systeme: P-B3 → P-B7; P-B8 ist gestrichen (2026-11-18,
+  Streichrecht). Wochen-Soll: P-B3 + P-B4-Start bis So 02.11. · P-B4
   samt Prüfpunkt + P-B5-Start bis So 08.11. · P-B5 + P-B6, P-B7-Start
-  bis So 15.11. · P-B7 bis ~Di 17.11., dann P-B8.
-  Pufferwoche 20.–27.11. = Abgabe-Fabrik: Playtests übers echte Netz,
+  bis So 15.11. · P-B7 bis ~Di 17.11. · 18.11. große Design-Runde
+  (gelaufen), danach **Prototyp-Refactor** Klasse für Klasse samt
+  16 Kapsel-Monstern bis ~Mo/Di 24./25.11. (DECISIONS →
+  „2026-11-18 — Große Design-Runde").
+  Restwoche bis 27.11. = Abgabe-Fabrik: Playtests übers echte Netz,
   Erkenntnis-PDF (≥500 Wörter), G2-GDD-Nachzug samt Zeitplan-Kapitel,
   Pitch-Slides (Teil der Abgabe), spielbarer Build, aufgeräumte
   Projektdateien; Probe-Pitch vor dem 03.12.
@@ -469,20 +495,20 @@ lebt oben auf der Status-Tafel.
 - [ ] **M4 · Beta** — fertig **Do 22.01.**, Abgabe Fr 29.01.,
   Präsentation Do 04.02. Bauzeit: die Ferien (27.12.–22.01.).
   UI-Design-Runde zuerst, dann Umsetzung + Menü-Branding raus. Assets
-  integrieren (fertige freie Packs laut GDD): Welt, vier Gegnertypen
-  (Quaternius), Wächter-Figuren (Bug Knight), Gebäude, Gebiets-
-  Kennzeichnung per Zahl. Alle vier Wächter-Rollen gebaut; die drei
-  Stufen je Wächter sind Wert-Ausbauten über das Objekt-Panel
-  (GDD-Zusage bleibt; Absicherungs-Satz im G2: Feinabstimmung der
-  Stufen liegt in den Messrunden). Vorgemerkte Design-Frage für die
-  Wächter-Runde davor (Isor, 2026-11-15, beim P-B7-Zuschnitt):
-  Basisklasse für die Wächter und Fähigkeiten als austauschbare
-  Verhaltens-Objekte (Strategy Pattern) — bewusst nicht in P-B7
-  entschieden, weil erst der zweite Typ die echte Naht zeigt.
-  Isors Naht-Skizze dazu (2026-11-15, Schützen-Entwurf): Suchen und
-  Range-Berechnung sind bei allen Türmen gleich, nur das Austeilen
-  (Einzelschaden, Flächenschaden, Sonderwirkung) wechselt je Typ —
-  die Trennlinie Sucher/Austeiler wäre der Schnitt fürs Pattern.
+  integrieren (fertige freie Packs laut GDD): Welt, die Modelle für
+  die 16 Monster-Typen (Quaternius u. a.; die Typen existieren seit
+  dem Prototyp-Refactor als Kapseln — DECISIONS → „2026-11-18 —
+  16 Monster-Typen noch dieses Semester"), Wächter-Figuren
+  (Bug Knight), Gebäude, Gebiets-Kennzeichnung per Zahl. Alle vier Wächter-Rollen gebaut; die Stufen
+  je Wächter sind Wert-Ausbauten über das Objekt-Panel (Stufenzahl
+  seit dem 2026-11-18 offen, Formel-Skalierung als Kandidat —
+  DECISIONS → „2026-11-18 — Turm-Stufen"; der G2-Nachzug passt die
+  Drei-Stufen-Zusage des Abgabetexts an). Die vorgemerkte
+  Wächter-Runde ist **entschieden am 2026-11-18** in der großen
+  Design-Runde: Basisklasse „Sucher" plus Austeil-Verhalten als
+  Strategy, umgesetzt wird sie im vorgezogenen Prototyp-Refactor
+  (DECISIONS → „2026-11-18 — Wächter-Architektur"; Isors
+  Naht-Skizze Sucher/Austeiler vom 2026-11-15 hat sich bestätigt).
   Sound-Grundvertonung aus freien
   Bibliotheken — der Game-Audio-Unterricht (ab 18.01.) liefert den
   Feinschliff. Fremde Tester. Paket wie M3.
